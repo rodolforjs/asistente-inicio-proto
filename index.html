@@ -33,6 +33,12 @@ button{cursor:pointer}
 .appi{flex:none;width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,#ff8a5c,#ff4a14);display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
 .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:7px 8px 7px 15px;font-size:15px;font-weight:600;box-shadow:0 12px 20px -10px rgba(15,23,42,.35),inset 0 1px 0 rgba(255,255,255,.5)}
 .pill i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;font-style:normal;font-size:13px}
+.fl .ft{transform-style:preserve-3d;backface-visibility:hidden}
+.fl .bk{position:absolute;inset:0;border-radius:inherit;background:#0e1014;color:#fff;padding:16px;opacity:0;visibility:hidden;display:flex;flex-direction:column;justify-content:center;box-shadow:0 24px 40px -18px rgba(15,23,42,.5)}
+.fl[data-s]{cursor:pointer}
+.pill{cursor:pointer;user-select:none}
+.scr{position:absolute;inset:0;z-index:5;opacity:0;visibility:hidden;background:#fbfbfd;padding:56px 18px 18px;border-radius:42px}
+#hero-h1 .ch{display:inline-block;cursor:default}
 .tag{display:inline-block;border-radius:999px;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}
 /* fichas de la sincronización */
 .card{transform-style:preserve-3d;will-change:transform}
@@ -99,18 +105,23 @@ button{cursor:pointer}
               <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">hace 2 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Papá aprobó su regalo. Llega el 18.</p></div></div>
               <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">hace 5 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Encontré 3 fechas nuevas en tu calendario.</p></div></div>
             </div>
-            <div class="absolute inset-x-0 bottom-2 mx-auto h-[5px] w-[110px] rounded-full bg-black/70"></div>
+            
+            <div id="scr-cal" class="scr"><p class="text-[22px] font-semibold tracking-tight">Marzo</p><div class="mt-3 grid grid-cols-7 gap-y-2 text-center text-[11px] text-black/50"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="mt-1 grid grid-cols-7 gap-y-1.5 text-center text-[13px] font-medium"><span class="grid size-8 place-items-center justify-self-center rounded-full ">1</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">2</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">3</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">4</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">5</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">6</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">7</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">8</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">9</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">10</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">11</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">12</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">13</span><span class="grid size-8 place-items-center justify-self-center rounded-full bg-brand text-white font-semibold">14</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">15</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">16</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">17</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">18</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">19</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">20</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">21</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">22</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">23</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">24</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">25</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">26</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">27</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">28</span></div><div class="mt-4 flex gap-2.5 rounded-2xl bg-black/[.04] p-3"><i class="w-1 rounded-full bg-brand"></i><div class="leading-tight"><p class="text-[13px] font-semibold">Cumpleaños de Mamá</p><p class="text-[11.5px] text-black/50">Todo el día · 🎁 14 días antes</p></div></div></div>
+            <div id="scr-gift" class="scr"><div class="h-[210px] rounded-[26px]" style="background:linear-gradient(150deg,#ffd9a8,#ff7a45)"><svg viewBox="0 0 74 74" class="size-full p-10"><circle cx="37" cy="44" r="19" fill="#fff" opacity=".9"/><path d="M56 40c8 0 8 12 0 12" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div><p class="mt-4 text-[20px] font-semibold tracking-tight">Set de té de autor</p><p class="text-[13px] text-black/50">Para Mamá · le gusta el té y la cerámica</p><p class="mt-2 text-[22px] font-semibold">$24.990</p><div class="mt-4 grid h-11 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">Aprobar regalo</div></div>
+            <div id="scr-ok" class="scr text-center"><svg viewBox="0 0 80 80" class="mx-auto mt-10 size-28"><circle cx="40" cy="40" r="36" fill="#22a06b"/><path id="okp" d="M24 41l11 11 21-23" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="mt-6 text-[22px] font-semibold tracking-tight">Papá aprobó</p><p class="mt-1 text-[14px] text-black/50">Día del Padre · llega el 18</p><div class="mx-auto mt-6 h-1.5 w-40 overflow-hidden rounded-full bg-black/10"><i id="okbar" class="block h-full w-full origin-left rounded-full bg-[#22a06b]"></i></div><p class="mt-2 text-[12px] text-black/40">Despachando…</p></div>
+            <div id="scr-ring" class="scr text-center"><svg viewBox="0 0 120 120" class="mx-auto mt-6 size-44 -rotate-90"><circle cx="60" cy="60" r="50" fill="none" stroke="#e5eaf2" stroke-width="10"/><circle id="ring2" cx="60" cy="60" r="50" fill="none" stroke="#ff5924" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/></svg><p class="-mt-[104px] text-[52px] font-semibold leading-none tracking-tight">6</p><p class="text-[13px] text-black/50">días para avisarte</p><p class="mt-[70px] text-[18px] font-semibold">Emilia · Nacimiento</p><p class="text-[13px] text-black/50">Te dejo 3 opciones listas</p></div>
+            <div class="absolute inset-x-0 bottom-2 z-10 mx-auto h-[5px] w-[110px] rounded-full bg-black/70"></div>
           </div>
         </div>
 
         <!-- evento creado -->
-        <div class="fl glass rounded-[26px] p-4" data-d="1.4" style="left:0;top:70px;width:236px">
+        <div class="fl glass rounded-[26px] p-4" data-d="1.4" data-s="cal" data-bt="Lo agendo yo" data-b1="Sin que lo escribas" data-b2="Detecto cumpleaños, bodas y fechas en tu calendario." style="left:0;top:70px;width:236px">
           <div class="flex items-center gap-2"><span class="tag" style="background:#ff5924">Evento creado</span></div>
           <div class="mt-3 flex gap-3"><i class="block w-1 shrink-0 rounded-full bg-brand"></i><div class="leading-tight"><p class="text-[16px] font-semibold">Cumpleaños de Mamá</p><p class="mt-1 text-[13px] text-slate2">Sáb 14 mar · todo el día</p><p class="mt-2.5 text-[12px] font-medium text-black/60">🎁 Recordatorio 14 días antes</p></div></div>
         </div>
 
         <!-- regalo propuesto -->
-        <div class="fl glass rounded-[26px] p-3.5" data-d="1.8" style="left:-26px;top:396px;width:262px">
+        <div class="fl glass rounded-[26px] p-3.5" data-d="1.8" data-s="gift" data-bt="Elijo por ti" data-b1="Según sus gustos y tu presupuesto" data-b2="Si no te convence, te muestro 2 más." style="left:-26px;top:396px;width:262px">
           <div class="flex gap-3">
             <div class="relative size-[74px] shrink-0 overflow-hidden rounded-[18px]" style="background:linear-gradient(150deg,#ffd9a8,#ff7a45)"><svg viewBox="0 0 74 74" class="absolute inset-0"><circle cx="37" cy="44" r="19" fill="#fff" opacity=".9"/><path d="M56 40c8 0 8 12 0 12" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M30 24c-3-5 4-7 2-12M42 24c-3-5 4-7 2-12" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/></svg></div>
             <div class="min-w-0 leading-tight"><span class="tag" style="background:#22a06b">Propuesta lista</span><p class="mt-1.5 text-[15px] font-semibold">Set de té de autor</p><p class="mt-0.5 text-[12.5px] text-slate2">$24.990 · llega el 12 mar</p></div>
@@ -119,13 +130,13 @@ button{cursor:pointer}
         </div>
 
         <!-- aprobada -->
-        <div class="fl glass flex items-center gap-3 rounded-[22px] px-4 py-3" data-d="1.2" style="left:498px;top:262px;width:222px">
+        <div class="fl glass flex items-center gap-3 rounded-[22px] px-4 py-3" data-d="1.2" data-s="ok" data-bt="Con un toque" data-b1="Yo compro y despacho" data-b2="Llega antes de la fecha." style="left:498px;top:262px;width:222px">
           <span class="grid size-9 shrink-0 place-items-center rounded-full bg-[#22a06b]"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
           <div class="leading-tight"><p class="text-[14px] font-semibold">Aprobada</p><p class="text-[12px] text-slate2">Papá · Día del Padre</p></div>
         </div>
 
         <!-- aviso con anillo -->
-        <div class="fl glass flex items-center gap-3 rounded-[26px] p-3.5" data-d="1.6" style="left:506px;top:430px;width:214px">
+        <div class="fl glass flex items-center gap-3 rounded-[26px] p-3.5" data-d="1.6" data-s="ring" data-bt="Sin sorpresas" data-b1="Te aviso con tiempo" data-b2="14 días antes, para elegir y recibir." style="left:506px;top:430px;width:214px">
           <svg width="52" height="52" viewBox="0 0 52 52" class="shrink-0 -rotate-90"><circle cx="26" cy="26" r="21" fill="none" stroke="#e5eaf2" stroke-width="6"/><circle id="ring" cx="26" cy="26" r="21" fill="none" stroke="#ff5924" stroke-width="6" stroke-linecap="round" stroke-dasharray="132" stroke-dashoffset="40"/></svg>
           <div class="leading-tight"><p class="text-[12px] font-medium text-slate2">Emilia · Nacimiento</p><p class="text-[18px] font-semibold tracking-tight">Aviso en 6 días</p></div>
         </div>
@@ -237,8 +248,66 @@ function notifs(){
      .to(n,{opacity:0,y:10,duration:.5,stagger:.08,ease:'power2.in'})
      .set('#ring',{strokeDashoffset:40});
 }
+
+/* ---------- Hover: todo reacciona ---------- */
+let hoverReady=false;
+function initHover(){
+  if(hoverReady||REDUCE) return; hoverReady=true;
+  const scr=n=>$('scr-'+n);
+  // tarjetas: se voltean a su cara oscura y la pantalla del teléfono cambia
+  fls().filter(e=>e.dataset.s).forEach(el=>{
+    const ft=document.createElement('div'); ft.className='ft'; while(el.firstChild) ft.appendChild(el.firstChild); el.appendChild(ft);
+    const bk=document.createElement('div'); bk.className='bk';
+    bk.innerHTML=`<span class="tag self-start" style="background:#ff5924">${el.dataset.bt}</span><p class="mt-2 text-[16px] font-semibold leading-tight">${el.dataset.b1}</p><p class="mt-1 text-[12.5px] leading-snug text-white/65">${el.dataset.b2}</p>`;
+    el.appendChild(bk);
+    const sc=scr(el.dataset.s); let tl;
+    el.addEventListener('pointerenter',()=>{
+      tl&&tl.kill(); nTl&&nTl.pause();
+      tl=gsap.timeline()
+        .to(el,{scale:1.06,duration:.4,ease:'back.out(2)'},0)
+        .to(ft,{rotationX:-90,opacity:0,duration:.22,ease:'power2.in',transformPerspective:700},0)
+        .set(bk,{visibility:'visible'},.2).fromTo(bk,{rotationX:90,opacity:0,transformPerspective:700},{rotationX:0,opacity:1,duration:.35,ease:'back.out(1.6)'},.2)
+        .set(sc,{visibility:'visible'},0).fromTo(sc,{opacity:0,scale:.96},{opacity:1,scale:1,duration:.4,ease:'power3.out'},0);
+      if(el.dataset.s==='ok') tl.fromTo('#okp',{drawSVG:'0%'},{drawSVG:'100%',duration:.5,ease:'power2.out'},.15).fromTo('#okbar',{scaleX:0},{scaleX:1,duration:1.6,ease:'power1.inOut'},.2);
+      if(el.dataset.s==='ring') tl.fromTo('#ring2',{strokeDashoffset:314},{strokeDashoffset:314*(1-.78),duration:1.1,ease:'power3.out'},.1);
+      if(el.dataset.s==='cal') tl.from('#scr-cal .bg-brand',{scale:0,duration:.5,ease:'back.out(3)'},.25);
+    });
+    el.addEventListener('pointerleave',()=>{
+      tl&&tl.kill();
+      tl=gsap.timeline({onComplete:()=>nTl&&nTl.resume()})
+        .to(el,{scale:1,duration:.5,ease:'elastic.out(1,.6)'},0)
+        .to(bk,{rotationX:-90,opacity:0,duration:.2,ease:'power2.in'},0).set(bk,{visibility:'hidden'},.2)
+        .fromTo(ft,{rotationX:90},{rotationX:0,opacity:1,duration:.35,ease:'back.out(1.6)'},.2)
+        .to(sc,{opacity:0,duration:.3},0).set(sc,{visibility:'hidden'},.3);
+    });
+  });
+  // píldoras: se menean; click = se quitan y vuelven
+  document.querySelectorAll('.pill').forEach(p=>{
+    p.addEventListener('pointerenter',()=>gsap.to(p,{scale:1.1,rotation:gsap.utils.random(-5,5),duration:.45,ease:'elastic.out(1,.45)'}));
+    p.addEventListener('pointerleave',()=>gsap.to(p,{scale:1,rotation:0,duration:.5,ease:'elastic.out(1,.5)'}));
+    p.addEventListener('click',()=>gsap.timeline().to(p,{scale:0,opacity:0,rotation:-20,duration:.3,ease:'back.in(2)'}).to(p,{scale:1,opacity:1,rotation:0,duration:.7,ease:'elastic.out(1,.5)'},'+=1.4'));
+  });
+  // etiquetas y botones redondos
+  document.querySelectorAll('.fl:not([data-s])').forEach(el=>{
+    if(el.querySelector('.pill')) return;
+    el.style.cursor='pointer';
+    el.addEventListener('pointerenter',()=>gsap.to(el,{scale:1.18,rotation:gsap.utils.random(-14,14),duration:.5,ease:'back.out(2.4)'}));
+    el.addEventListener('pointerleave',()=>gsap.to(el,{scale:1,rotation:0,duration:.6,ease:'elastic.out(1,.5)'}));
+  });
+  // notificaciones: se levantan y pausan el ciclo
+  document.querySelectorAll('#nts .nt').forEach(n=>{
+    n.addEventListener('pointerenter',()=>{nTl&&nTl.pause(); gsap.to(n,{scale:1.04,y:-3,duration:.35,ease:'back.out(2)',overwrite:'auto'});});
+    n.addEventListener('pointerleave',()=>{gsap.to(n,{scale:1,y:0,duration:.4,ease:'power3.out',overwrite:'auto',onComplete:()=>nTl&&nTl.resume()});});
+  });
+  // titular: cada letra salta al pasar
+  document.querySelectorAll('#h1 > span').forEach(e=>e.style.overflow='visible');
+  (window.__chars||[]).forEach(c=>{ c.classList.add('ch'); c.style.display='inline-block'; c.addEventListener('pointerenter',()=>gsap.fromTo(c,{y:0,rotation:0},{keyframes:[{y:-18,rotation:gsap.utils.random(-8,8),duration:.18,ease:'power2.out'},{y:0,rotation:0,duration:.9,ease:'elastic.out(1,.4)'}],overwrite:'auto'})); });
+  // CTA: el icono del calendario se anima
+  $('connect').addEventListener('pointerenter',()=>gsap.fromTo('#connect svg',{rotation:0,scale:1},{keyframes:[{rotation:-14,scale:1.2,duration:.15},{rotation:0,scale:1,duration:.6,ease:'elastic.out(1,.4)'}]}));
+}
+
 function intro(){
-  const s1 = SplitText.create('#w1',{type:'chars'}), s2 = SplitText.create('#w2',{type:'chars'});
+  const s1 = SplitText.create('#w1',{type:'chars'}), s2 = SplitText.create('#w2',{type:'chars'}); window.__chars=[...s1.chars,...s2.chars];
   const tl = gsap.timeline({defaults:{ease:'expo.out'}});
   tl.from('nav',{y:-24,opacity:0,duration:.7})
     .from('#eyebrow',{opacity:0,x:-16,duration:.6},'-=.4')
@@ -247,7 +316,7 @@ function intro(){
     .from('#ul',{drawSVG:0,duration:.8,ease:'power2.inOut'},'-=.5')
     .from(['#sub','#ctaw','#micro'],{opacity:0,y:18,duration:.7,stagger:.09},'-=.7')
     .from('#phone',{y:90,opacity:0,scale:.94,duration:1.2,ease:'expo.out'},'-=1.2')
-    .from(fls(),{scale:.55,opacity:0,y:'+=40',duration:1,stagger:{each:.09,from:'random'},ease:'back.out(1.8)',clearProps:'scale,opacity',onComplete:float},'-=.8')
+    .from(fls(),{scale:.55,opacity:0,y:'+=40',duration:1,stagger:{each:.09,from:'random'},ease:'back.out(1.8)',clearProps:'scale,opacity',onComplete(){float();initHover();}},'-=.8')
     .add(notifs,'-=.6');
 }
 
