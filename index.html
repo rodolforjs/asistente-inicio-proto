@@ -6,126 +6,140 @@
 <title>Cuenta conmigo · asistente de regalos (prototipo)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#f6efe4;--paper:#fffaf2;--ink:#1b1612;--accent:#ee5a2b;--night:#15110d;--line:rgba(255,255,255,.12);
-  --serif:'Instrument Serif',Georgia,serif;--mono:'DM Mono',ui-monospace,monospace;--sans:'Hanken Grotesk',system-ui,sans-serif;
+:root{--cream:#f3e9d6;--paper:#fbf4e6;--ink:#231f1a;--accent:#d9481f;--night:#15110d;--line:rgba(255,255,255,.12);--twine:#b08a52;
+  --serif:'Fraunces',Georgia,serif;--mono:'DM Mono',ui-monospace,monospace;--sans:'Hanken Grotesk',system-ui,sans-serif;
   --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
-body::after{content:"";position:fixed;inset:0;background:var(--grain);opacity:.10;mix-blend-mode:multiply;pointer-events:none;z-index:200}
+body::after{content:"";position:fixed;inset:0;background:var(--grain);opacity:.13;mix-blend-mode:multiply;pointer-events:none;z-index:200}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.serif{font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1}
 
-/* ---------- barra flotante ---------- */
-.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:40;width:min(980px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:10px 12px 10px 22px;border-radius:999px;background:rgba(255,250,242,.72);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
-  box-shadow:0 10px 34px rgba(150,80,40,.14),inset 0 0 0 1px rgba(255,255,255,.7)}
-.logo{font-family:var(--serif);font-size:25px;letter-spacing:-.01em}
-.nav ul{display:flex;gap:26px;list-style:none;padding:0}
-.nav a{color:var(--ink);text-decoration:none;font-size:15px;opacity:.78}
-.nav ul a::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:8px;vertical-align:middle;background:var(--c)}
-.nav li:nth-child(1){--c:#ee5a2b}.nav li:nth-child(2){--c:#f3c93a}.nav li:nth-child(3){--c:#f07ab8}
-.nav .go{background:var(--accent);color:#fff;opacity:1;font-weight:600;padding:10px 20px;border-radius:999px;font-size:14.5px}
-@media(max-width:760px){.nav ul{display:none}}
-
-/* ---------- hero con halo ---------- */
-.hero{position:relative;min-height:100vh;overflow:hidden;display:grid;place-items:center;text-align:center;padding:130px 20px 90px}
-.blob{position:absolute;border-radius:50%;filter:blur(46px);will-change:transform}
-.b1{width:46vw;height:46vw;left:-14vw;top:2%;background:radial-gradient(circle,#ff9f4a 0,#ffb870 45%,transparent 72%)}
-.b2{width:44vw;height:44vw;right:-14vw;top:-6%;background:radial-gradient(circle,#ff6a4d 0,#ff8a68 45%,transparent 72%)}
-.b3{width:38vw;height:38vw;right:-6vw;bottom:-18vw;background:radial-gradient(circle,#ffb0d4 0,#ffcbe3 45%,transparent 72%)}
-.b4{width:36vw;height:36vw;left:-8vw;bottom:-16vw;background:radial-gradient(circle,#ffe27a 0,#ffeaa0 45%,transparent 72%)}
-.disc{position:absolute;left:50%;top:-14vw;width:min(92vw,1240px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:var(--paper);box-shadow:0 0 90px 40px rgba(255,205,160,.42)}
-.hero .in{position:relative;z-index:3}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;opacity:.8}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,11vw,176px);line-height:.92;letter-spacing:-.03em}
-h1 .ln{display:block;overflow:hidden;padding:0 .04em .1em}
-h1 .ln>span{display:block}
-h1 em{color:var(--accent)}
-.sub{max-width:660px;margin:30px auto 0;font-size:20px;line-height:2.1;color:#3a322b}
-.pill{display:inline-block;padding:1px 14px;margin:0 2px;border-radius:999px;border:1.5px solid var(--c);color:var(--c);font-size:18px;line-height:1.5;background:rgba(255,255,255,.5)}
-.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:18px 32px;border-radius:999px;font-weight:600;font-size:17px;margin-top:38px;
-  box-shadow:0 14px 30px rgba(27,22,18,.28),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .2s,background .2s}
+/* ---------- boleto (botón) ---------- */
+.ctaw{display:inline-block;filter:drop-shadow(0 10px 14px rgba(40,20,5,.3))}
+.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:19px 36px;font-weight:600;font-size:17px;letter-spacing:.01em;
+  -webkit-mask:radial-gradient(circle 10px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 10px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 10px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 10px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;transition:background .2s,transform .2s}
 .cta:hover{background:var(--accent);transform:translateY(-2px)}
 .cta svg{width:22px;height:22px}
-.micro{margin-top:22px;font-family:var(--mono);font-size:12px;opacity:.6}
-.scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.12em;opacity:.55;z-index:3}
+.cta.sm{padding:11px 24px;font-size:14px}
 
-/* ---------- tablero ---------- */
-.sec{padding:0 clamp(18px,5vw,70px)}
-.frame{max-width:1180px;margin:-30px auto 0;position:relative;z-index:4;border-radius:30px;padding:26px 30px 34px;background:linear-gradient(180deg,#f4efe8,#ece6dc);
-  box-shadow:0 40px 90px rgba(120,70,30,.22),0 4px 12px rgba(120,70,30,.12),inset 0 1px 0 rgba(255,255,255,.8)}
-.frame h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(34px,4.6vw,58px);color:#8b8794;letter-spacing:-.01em;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.08);margin-bottom:22px}
-.board{display:flex;gap:16px;align-items:flex-start}
-.colm{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
-.colm:nth-child(2){margin-top:46px}.colm:nth-child(4){margin-top:26px}
-@media(max-width:900px){.board{flex-wrap:wrap}.colm{flex:1 1 calc(50% - 16px)}.colm:nth-child(n){margin-top:0}}
-@media(max-width:560px){.colm{flex-basis:100%}}
-.bc{background:#fff;border-radius:16px;padding:18px;box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 10px 24px rgba(60,40,20,.10),0 1px 3px rgba(60,40,20,.08);position:relative;overflow:hidden}
-.bc .cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8b8794;margin-top:12px}
-.quote{font-family:var(--serif);font-size:34px;line-height:1.08;text-align:center;padding:26px 18px 8px}
-.quote em{color:var(--accent)}
-.quote .qm{display:block;font-size:40px;line-height:.6;color:var(--accent)}
-.check{list-style:none;padding:0;font-size:14.5px;display:grid;gap:11px}
-.check li{display:flex;gap:10px;align-items:flex-start}
-.check i{flex:none;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #bbb;margin-top:1px}
-.check .ok i{background:#8fb7a4 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path d='M5 9.5l2.6 2.6L13 6.6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>");box-shadow:none}
-.check .ok span{text-decoration:line-through;opacity:.5}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;font-family:var(--mono);font-size:11px;text-align:center;margin-top:10px}
-.cal b{font-weight:400;opacity:.4;font-size:10px}
-.cal span{padding:6px 0;border-radius:8px}
-.cal .hl{background:linear-gradient(135deg,#ff9f4a,#ee5a2b);color:#fff;box-shadow:0 4px 10px rgba(238,90,43,.4)}
-.cal .hl2{background:linear-gradient(135deg,#ffb0d4,#f07ab8);color:#fff}
-.calh{font-family:var(--serif);font-size:26px}
-.num{background:linear-gradient(150deg,#ffb870,#ee5a2b 55%,#e0457f);color:#fff;border:0}
-.num b{font-family:var(--serif);font-weight:400;font-size:104px;line-height:.85;letter-spacing:-.04em;display:block}
-.num p{font-size:15px;line-height:1.35;margin-top:12px;max-width:190px}
-.num::after,.photo::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.16;mix-blend-mode:overlay;pointer-events:none}
-.prop .im{height:170px;margin:-18px -18px 14px;background:#e8dfcf center/cover}
-.prop .tg{position:absolute;top:12px;left:12px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:3px 10px;border-radius:999px;text-transform:uppercase}
-.prop h4{font-size:15px;font-weight:600;line-height:1.25}
-.prop p{font-size:13px;opacity:.65;margin-top:4px}
-.btns{display:flex;gap:6px;margin-top:12px}
-.btns span{font-size:12px;padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px #cfc8bd}
-.btns span:first-child{background:var(--ink);color:#fff;box-shadow:none}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
-.chips span{font-size:13px;padding:4px 12px;border-radius:999px;border:1.5px solid var(--c);color:var(--c)}
-.bc h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.1}
-.steps{display:flex;align-items:center;margin-top:16px}
-.steps i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;color:#fff;background:var(--c);box-shadow:0 6px 14px rgba(0,0,0,.18)}
-.steps u{flex:1;height:2px;background:repeating-linear-gradient(90deg,#cfc8bd 0 5px,transparent 5px 9px)}
-.sl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;margin-top:7px;opacity:.6}
-.bar{height:12px;border-radius:99px;background:#eee7dc;margin:14px 0 8px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.12)}
-.bar i{display:block;height:100%;width:38%;border-radius:99px;background:linear-gradient(90deg,#ffb870,#ee5a2b)}
-.big{font-family:var(--serif);font-size:44px;letter-spacing:-.02em;line-height:1}
+/* ---------- barra ---------- */
+.nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px clamp(18px,4vw,56px);
+  background:rgba(243,233,214,.88);backdrop-filter:blur(8px);border-bottom:1px solid rgba(35,31,26,.14)}
+.logo{font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:24px;letter-spacing:-.01em}
+.logo i{font-style:normal;color:var(--accent)}
+.nav ul{display:flex;gap:30px;list-style:none;padding:0;margin-left:auto;margin-right:8px}
+.nav ul a{color:var(--ink);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.nav ul a:hover{color:var(--accent)}
+@media(max-width:760px){.nav ul{display:none}.nav .ctaw{margin-left:auto}}
 
-/* ---------- secciones de texto ---------- */
-.block{max-width:1100px;margin:0 auto;padding:130px 0 0}
-.kick{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center}
-.h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.6vw,80px);line-height:1;letter-spacing:-.02em;text-align:center;margin:18px auto 0;max-width:900px}
-.h2 em{color:var(--accent)}
-.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:64px}
-@media(max-width:860px){.steps3{grid-template-columns:1fr}}
-.st{border-radius:26px;padding:30px 28px 34px;min-height:300px;position:relative;overflow:hidden;color:var(--ink);box-shadow:0 22px 50px rgba(120,70,30,.16),inset 0 1px 0 rgba(255,255,255,.6)}
-.st::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.16;mix-blend-mode:multiply;pointer-events:none}
-.st:nth-child(1){background:linear-gradient(160deg,#ffd9a8,#ff9f6a)}
-.st:nth-child(2){background:linear-gradient(160deg,#ffd0e4,#f59cc4)}
-.st:nth-child(3){background:linear-gradient(160deg,#fbe9a0,#f3c93a)}
-.st b{font-family:var(--serif);font-weight:400;font-size:120px;line-height:.8;display:block;letter-spacing:-.04em}
-.st h3{font-size:22px;font-weight:700;margin:26px 0 8px}
-.st p{font-size:16px;line-height:1.45;max-width:300px}
-.manif{max-width:760px;margin:0 auto;text-align:left}
-.manif .lead{font-family:var(--serif);font-size:clamp(28px,3.6vw,44px);line-height:1.12;margin-top:36px;color:#4a4256}
-.no{margin:46px auto 0;display:grid;gap:6px;width:max-content;max-width:100%}
-.no p{font-family:var(--serif);font-size:clamp(28px,4vw,48px);line-height:1.2}
-.no b{font-family:var(--sans);font-weight:700;color:var(--accent);margin-right:10px}
-.final{margin:150px clamp(10px,3vw,40px) 40px;border-radius:40px;padding:110px 24px;text-align:center;position:relative;overflow:hidden;
-  background:radial-gradient(ellipse at 15% 20%,#ffb870,transparent 55%),radial-gradient(ellipse at 90% 30%,#ff6a4d,transparent 55%),radial-gradient(ellipse at 60% 110%,#ffb0d4,transparent 55%),#ffcf9a}
-.final::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.14;mix-blend-mode:multiply;pointer-events:none}
-.final h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,92px);line-height:.98;letter-spacing:-.02em;position:relative;z-index:2}
-.final .cta{position:relative;z-index:2}
+/* ---------- hero: papel con los 12 meses ---------- */
+.hero{position:relative;overflow:hidden;min-height:calc(100vh - 66px);display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);align-items:center;padding:30px clamp(18px,4vw,56px) 70px;
+  background:repeating-linear-gradient(90deg,rgba(35,31,26,.07) 0 1px,transparent 1px calc((100% - 0px)/12))}
+.hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;border-top:1px solid rgba(35,31,26,.14);
+  background:linear-gradient(0deg,rgba(176,138,82,.14),transparent)}
+.months{position:absolute;left:0;right:0;bottom:8px;display:grid;grid-template-columns:repeat(12,1fr);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;opacity:.55;padding-left:8px}
+@media(max-width:980px){.hero{grid-template-columns:1fr;padding-top:20px}}
+.copy{position:relative;z-index:3;max-width:640px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:26px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--ink)}
+h1{font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:clamp(60px,9vw,148px);line-height:.9;letter-spacing:-.035em}
+h1 .ln{display:block;overflow:hidden;padding:0 .04em .08em}
+h1 .ln>span{display:block}
+h1 em{font-style:italic;font-weight:400;color:var(--accent);position:relative}
+h1 em svg{position:absolute;left:0;bottom:-.02em;width:100%;height:.22em;overflow:visible}
+h1 em path{stroke:var(--accent);stroke-width:5;fill:none;stroke-linecap:round}
+.sub{max-width:500px;margin:32px 0 0;font-size:20px;line-height:1.5;color:#3d352c}
+.sub b{font-weight:600;background:linear-gradient(transparent 62%,rgba(233,178,58,.55) 62%)}
+.copy .ctaw{margin-top:40px}
+.micro{margin-top:26px;font-family:var(--mono);font-size:12px;opacity:.65;max-width:430px;line-height:1.5}
+
+/* ---------- cordel y etiquetas ---------- */
+.garland{position:relative;height:min(78vh,640px);min-height:480px;z-index:2}
+.garland svg.tw{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.garland svg.tw path{stroke:var(--twine);stroke-width:2.2;fill:none;stroke-dasharray:1 0}
+@media(max-width:980px){.garland{height:380px;min-height:380px;margin-top:20px}}
+.tg{position:absolute;top:0;left:0;width:var(--w,150px);transform-origin:50% 0;filter:drop-shadow(0 16px 16px rgba(60,30,10,.3));will-change:transform}
+.tg .str{display:block;width:2px;height:var(--sl,30px);margin:0 auto;background:var(--twine)}
+.tg .bd{position:relative;padding:34px 12px 12px;color:#fff;clip-path:polygon(16% 0,84% 0,100% 11%,100% 100%,0 100%,0 11%);background:var(--g)}
+.tg .bd::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.3;mix-blend-mode:overlay;pointer-events:none}
+.tg .hole{position:absolute;top:11px;left:50%;width:15px;height:15px;margin-left:-7.5px;border-radius:50%;background:var(--cream);box-shadow:inset 0 2px 3px rgba(0,0,0,.35),0 0 0 3px rgba(255,255,255,.25)}
+.tg .leaf{background:var(--paper);color:var(--ink);border-radius:8px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.tg .leaf .mo{display:block;background:rgba(35,31,26,.9);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-align:center;padding:4px 0}
+.tg .leaf .dy{display:block;font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:700;font-size:clamp(44px,4vw,58px);line-height:1;text-align:center;padding:8px 0 10px;letter-spacing:-.04em}
+.tg .who{margin-top:12px;font-weight:700;font-size:17px;line-height:1.1}
+.tg .oc{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-top:3px}
+.tg .st{margin-top:11px;padding-top:9px;border-top:2px dashed rgba(255,255,255,.55);font-size:12px;font-weight:600;line-height:1.25}
+.k-cumple{--g:linear-gradient(160deg,#f0753a,#d9481f)}
+.k-padre{--g:linear-gradient(160deg,#6f95e8,#3b5ec2)}
+.k-boda{--g:linear-gradient(160deg,#f3cf5f,#e0962a)}
+.k-bebe{--g:linear-gradient(160deg,#b7a6f0,#7a9fe0)}
+.k-navidad{--g:linear-gradient(160deg,#4f9a73,#1f5a3e)}
+.k-boda .bd,.k-boda .st{color:var(--ink)}.k-boda .st{border-top-color:rgba(35,31,26,.4)}
+
+/* ---------- secciones ---------- */
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,56px)}
+.kick{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.kick::before{content:"";width:34px;height:1px;background:var(--ink)}
+.h2{font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:clamp(38px,5.2vw,78px);line-height:.98;letter-spacing:-.03em;margin-top:18px;max-width:900px}
+.h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+
+/* cinta del año */
+.year{padding:120px 0 0}
+.ribbon{position:relative;margin-top:46px;height:430px;border-top:1px solid rgba(35,31,26,.14);border-bottom:1px solid rgba(35,31,26,.14);
+  background:repeating-linear-gradient(90deg,rgba(35,31,26,.07) 0 1px,transparent 1px calc(100%/12))}
+.ribbon .twine{position:absolute;left:0;right:0;top:34px;height:2px;background:var(--twine)}
+.ribbon .mn{position:absolute;bottom:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;opacity:.55}
+.ribbon .tg{--w:92px;top:34px}
+.ribbon .tg .bd{padding:28px 7px 8px}
+.ribbon .tg .hole{top:8px;width:11px;height:11px;margin-left:-5.5px}
+.ribbon .tg .leaf .mo{font-size:8.5px;padding:3px 0}
+.ribbon .tg .leaf .dy{font-size:34px;padding:4px 0 6px}
+.ribbon .tg .who{font-size:12.5px;margin-top:8px}
+.ribbon .tg .st{font-size:10px;margin-top:7px;padding-top:6px}
+.legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;background:var(--c);vertical-align:-1px}
+@media(max-width:760px){.ribbon{overflow-x:auto;height:430px}.ribbon .in{width:900px;position:relative;height:100%}}
+
+/* cómo funciona + recibo */
+.how{padding:130px 0 0}
+.how .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start;margin-top:56px}
+@media(max-width:900px){.how .grid{grid-template-columns:1fr;gap:50px}}
+.stp{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:30px 0;border-top:1px solid rgba(35,31,26,.2)}
+.stp:last-child{border-bottom:1px solid rgba(35,31,26,.2)}
+.stp b{font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:300;font-size:84px;line-height:.8;color:var(--accent);letter-spacing:-.05em}
+.stp h3{font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:30px;letter-spacing:-.02em}
+.stp p{font-size:17px;line-height:1.5;margin-top:8px;max-width:440px;color:#3d352c}
+.receipt{background:#fffdf6;font-family:var(--mono);font-size:13px;padding:30px 26px 46px;transform:rotate(1.6deg);position:relative;
+  box-shadow:0 30px 50px rgba(60,30,10,.2);-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/16px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/16px 100%;filter:drop-shadow(0 24px 22px rgba(60,30,10,.18))}
+.receipt::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.18;mix-blend-mode:multiply;pointer-events:none}
+.receipt h4{font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:26px;text-align:center;letter-spacing:-.01em}
+.receipt .sb{text-align:center;font-size:11px;letter-spacing:.14em;opacity:.6;margin:6px 0 18px;text-transform:uppercase}
+.receipt .ln2{display:flex;gap:6px;align-items:baseline;padding:5px 0}
+.receipt .ln2 u{flex:1;border-bottom:1.5px dotted rgba(35,31,26,.35);text-decoration:none;transform:translateY(-3px)}
+.receipt .ln2 s{text-decoration:none;color:#2f7a52;font-weight:500}
+.receipt .ln2 s.p{color:var(--accent)}
+.receipt .tot{border-top:2px dashed rgba(35,31,26,.45);margin-top:14px;padding-top:14px;display:flex;justify-content:space-between;font-weight:500}
+.receipt .bc2{height:36px;margin-top:18px;background:repeating-linear-gradient(90deg,#231f1a 0 2px,transparent 2px 4px,#231f1a 4px 5px,transparent 5px 9px)}
+
+/* cierre */
+.final{margin:150px clamp(10px,3vw,40px) 40px;padding:100px clamp(22px,6vw,90px);position:relative;overflow:hidden;color:var(--ink);
+  background:linear-gradient(135deg,#dcb987,#c99f66);box-shadow:0 30px 60px rgba(90,50,10,.25);
+  -webkit-mask:radial-gradient(circle 14px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 14px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;border-radius:10px}
+.final::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.28;mix-blend-mode:multiply;pointer-events:none}
+.final h2{position:relative;z-index:2;font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:clamp(40px,6vw,96px);line-height:.95;letter-spacing:-.035em;max-width:900px}
+.final h2 em{font-style:italic;font-weight:400;color:#7e2a10}
+.final .ctaw{margin-top:44px;position:relative;z-index:2}
+.stamp{position:absolute;right:clamp(20px,6vw,90px);top:50%;z-index:2;width:190px;height:190px;border-radius:50%;border:4px double #7e2a10;color:#7e2a10;display:grid;place-items:center;text-align:center;
+  font-family:var(--mono);font-weight:500;letter-spacing:.16em;font-size:13px;transform:translateY(-50%) rotate(-12deg);opacity:.85}
+.stamp b{display:block;font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:700;font-size:30px;letter-spacing:.02em;margin:4px 0}
+@media(max-width:900px){.stamp{display:none}}
 footer{text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;opacity:.55;padding:20px 0 40px}
 
 /* ---------- SINCRONIZACIÓN ---------- */
@@ -187,103 +201,66 @@ footer{text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.
 .ghost{font-family:var(--mono);font-size:12px;text-decoration:underline;opacity:.7;margin-right:18px}
 .toast{position:fixed;left:50%;top:22px;transform:translateX(-50%);background:var(--accent);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:500;z-index:300;opacity:0;pointer-events:none;box-shadow:0 12px 30px rgba(238,90,43,.4)}
 @media(prefers-reduced-motion:reduce){.pulse{animation:none}}
+
+.card .art::before{content:"";position:absolute;top:10px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--night);box-shadow:inset 0 2px 3px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.35);z-index:2}
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <span class="logo">Cuenta conmigo</span>
-  <ul><li><a href="#que">Qué hace</a></li><li><a href="#como">Cómo funciona</a></li><li><a href="#por-que">Por qué</a></li></ul>
-  <a class="go" href="#" id="navgo">Conectar calendario</a>
+  <span class="logo">Cuenta conmigo<i>.</i></span>
+  <ul><li><a href="#que">Tu año</a></li><li><a href="#como">Cómo funciona</a></li></ul>
+  <span class="ctaw"><button class="cta sm" id="navgo">Conectar calendario</button></span>
 </nav>
 
 <header class="hero">
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
-  <div class="disc"></div>
-  <div class="in">
+  <div class="copy">
     <p class="eyebrow" id="eyebrow">Tu asistente de regalos</p>
-    <h1 id="h1"><span class="ln"><span>Regalos</span></span><span class="ln"><span><em>resueltos.</em></span></span></h1>
-    <p class="sub" id="sub">Todas tus fechas —
-      <span class="pill" style="--c:#e8812f">cumpleaños</span>
-      <span class="pill" style="--c:#d9529a">aniversarios</span>
-      <span class="pill" style="--c:#3a9ac4">bautizos</span>
-      <span class="pill" style="--c:#c99a12">amigo secreto</span> y
-      <span class="pill" style="--c:#2f8a5f">Navidad</span> —
-      en un solo lugar que se acuerda por ti.</p>
-    <button class="cta" id="connect">
+    <h1 id="h1"><span class="ln"><span>Regalos</span></span><span class="ln"><span><em>resueltos.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path id="ul" d="M4 12 C 60 2, 110 18, 160 9 S 250 4, 296 11"/></svg></em></span></span></h1>
+    <p class="sub" id="sub">Conecta tu calendario y <b>se acuerda por ti</b>: a quién le regalas, cuándo, y te deja la propuesta lista antes de la fecha.</p>
+    <span class="ctaw" id="connectw"><button class="cta" id="connect">
       <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 9.5h18M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       Conectar Google Calendar
-    </button>
+    </button></span>
     <p class="micro" id="micro">Después te sigue avisando solo, con tiempo para elegir y recibir.</p>
   </div>
-  <span class="scroll">DESLIZA ↓</span>
+  <div class="garland" id="garland"><svg class="tw" id="tw"><path id="twp"/></svg></div>
+  <div class="months" id="months"></div>
 </header>
 
-<section class="sec" id="que">
-  <div class="frame">
-    <h2>Tu año de regalos…</h2>
-    <div class="board">
-      <div class="colm">
-        <div class="bc quote"><span class="qm">“</span>Mamá cumple en <em>14 días</em>.<span class="qm" style="margin-top:6px">”</span><div class="cap" style="text-align:center">Propuesta lista · tú decides</div></div>
-        <div class="bc"><h3>Esta semana</h3>
-          <ul class="check" style="margin-top:14px">
-            <li class="ok"><i></i><span>Papá — propuesta aprobada</span></li>
-            <li><i></i><span>Carla — elegir entre 3 opciones</span></li>
-            <li><i></i><span>Andrés — confirmar la fecha</span></li>
-          </ul></div>
-      </div>
-      <div class="colm">
-        <div class="bc prop"><div class="im" data-p="mama"></div><span class="tg">Propuesta lista</span>
-          <h4>Mamá ¿Cuál es tu Historia?</h4><p>Llega el 12 de marzo, 2 días antes.</p>
-          <div class="btns"><span>Sí</span><span>Otra</span><span>Cambiar</span></div></div>
-        <div class="bc"><h3>Lo que aprendí de Mamá</h3>
-          <div class="chips"><span style="--c:#e8812f">hecho a mano</span><span style="--c:#d9529a">libros</span><span style="--c:#3a9ac4">cosas de mesa</span><span style="--c:#8a8494">nada rosado</span></div>
-          <div class="cap">Se actualiza con cada regalo</div></div>
-      </div>
-      <div class="colm">
-        <div class="bc"><div class="calh">Marzo</div><div class="cal" id="cal"></div></div>
-        <div class="bc"><h3>Presupuesto del año</h3><div class="big" style="margin-top:12px">$240.000</div>
-          <div class="bar"><i></i></div><div class="sl"><span>Usado $91.000</span><span>38%</span></div></div>
-      </div>
-      <div class="colm">
-        <div class="bc num"><b>11</b><p>fechas leídas desde tu calendario, y sumando.</p></div>
-        <div class="bc"><h3>Si no respondo…</h3>
-          <div class="steps"><i style="--c:#2f8a5f">1</i><u></u><i style="--c:#e8812f">2</i><u></u><i style="--c:#d9529a">3</i></div>
-          <div class="sl"><span>WhatsApp</span><span>Correo</span><span>Calendario</span></div>
-          <div class="cap">Insisto por donde elegiste</div></div>
-      </div>
-    </div>
+<section class="year" id="que">
+  <div class="wrap">
+    <p class="kick">Tu año</p>
+    <h2 class="h2">Cada fecha, una etiqueta. <em>Todas</em> a la vista.</h2>
+    <div class="ribbon" id="ribbon"><div class="in" id="ribin" style="position:relative;height:100%"><div class="twine"></div></div></div>
+    <div class="legend"><span style="--c:#2f7a52">Propuesta lista</span><span style="--c:#d9481f">Por elegir</span><span style="--c:#8a8494">Confirmar fecha</span></div>
   </div>
 </section>
 
-<section class="sec" id="como">
-  <div class="block">
+<section class="how" id="como">
+  <div class="wrap">
     <p class="kick">Cómo funciona</p>
-    <h2 class="h2">Tú piensas en quien lo recibe. <em>Nosotros</em> nos hacemos cargo del resto.</h2>
-    <div class="steps3">
-      <div class="st"><b>1</b><h3>Conectas tu calendario</h3><p>Lee tus cumpleaños, aniversarios y bautizos, y arma una ficha por persona. Si agregas una fecha nueva, la suma sola.</p></div>
-      <div class="st"><b>2</b><h3>Se anticipa</h3><p>Cuando se acerca la fecha, te avisa con una propuesta lista, con tiempo para elegir y recibir.</p></div>
-      <div class="st"><b>3</b><h3>Tú decides cuánto</h3><p>Delego o Elijo yo, por persona. Nada se compra sin tu aprobación.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="por-que">
-  <div class="block manif">
-    <p class="kick" style="text-align:left">Por qué</p>
-    <p class="lead">Los regalos no se olvidan por falta de cariño, sino por falta de cabeza. Cada año partes de cero, y la fecha te pilla igual.</p>
-    <div class="no">
-      <p><b>NO</b>olvidos de última hora</p>
-      <p><b>NO</b>catálogos interminables</p>
-      <p><b>NO</b>compras sin tu aprobación</p>
-      <p><b>NO</b>empezar de cero cada año</p>
+    <h2 class="h2">Tú piensas en quien lo recibe. <em>Nosotros</em> en el resto.</h2>
+    <div class="grid">
+      <div>
+        <div class="stp"><b>1</b><div><h3>Conectas tu calendario</h3><p>Lee tus cumpleaños, aniversarios y bautizos y arma una ficha por persona. Si agregas una fecha nueva, la suma sola.</p></div></div>
+        <div class="stp"><b>2</b><div><h3>Se anticipa</h3><p>Cuando se acerca la fecha, te avisa con una propuesta lista, con tiempo para elegir y recibir.</p></div></div>
+        <div class="stp"><b>3</b><div><h3>Tú decides cuánto</h3><p>Delego o Elijo yo, por persona. Nada se compra sin tu aprobación.</p></div></div>
+      </div>
+      <div class="receipt" id="receipt">
+        <h4>Tu año de regalos</h4><div class="sb">Cuenta conmigo · recibo de ejemplo</div>
+        <div id="rl"></div>
+        <div class="tot"><span>11 fechas</span><span>0 olvidos</span></div>
+        <div class="bc2"></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="final">
-  <h2>Que esta vez la fecha te encuentre con el regalo listo.</h2>
-  <button class="cta" id="connect2" style="margin-top:44px">Conectar Google Calendar</button>
+  <div class="stamp"><div>CUENTA<b>RESUELTO</b>CONMIGO</div></div>
+  <h2>Que esta vez la fecha te encuentre con el <em>regalo listo.</em></h2>
+  <span class="ctaw"><button class="cta" id="connect2">Conectar Google Calendar</button></span>
 </section>
 <footer>CUENTA CONMIGO · PROTOTIPO · NOMBRE PROVISORIO</footer>
 
@@ -307,35 +284,15 @@ footer{text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.
 </section>
 <div class="toast" id="toast"></div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
 const P = {"mama": "https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_400x.png?v=1773247306", "abuelo": "https://cdn.shopify.com/s/files/1/1481/4916/files/abuelocualestuhistoria_400x.png?v=1773247716", "panera": "https://cdn.shopify.com/s/files/1/1481/4916/files/zpuIF0Huip_400x.png?v=1748447762", "biobio": "https://cdn.shopify.com/s/files/1/1481/4916/files/Capturadepantalla2025-08-22ala_s_9.08.02a.m._400x.png?v=1755870188", "pinchos": "https://cdn.shopify.com/s/files/1/1481/4916/files/Capturadepantalla2025-07-10ala_s_9.22.37a.m._400x.png?v=1752154408", "cojin": "https://cdn.shopify.com/s/files/1/1481/4916/products/T6CxZpV2Bk_400x.jpg?v=1677083808", "spray": "https://cdn.shopify.com/s/files/1/1481/4916/files/Capturadepantalla2026-10-08ala_s_11.15.11a.m._400x.png?v=1791487532", "toalla": "https://cdn.shopify.com/s/files/1/1481/4916/files/TPAGUEBtgh_400x.png?v=1741806074", "mudador": "https://cdn.shopify.com/s/files/1/1481/4916/products/hJ0PC2BVAP_400x.jpg?v=1642037014"};
 const img = k => P[k] ? `url('${P[k]}')` : 'none';
-document.querySelectorAll('[data-p]').forEach(e => e.style.backgroundImage = img(e.dataset.p));
 gsap.registerPlugin(ScrollTrigger);
 const $ = id => document.getElementById(id);
 const REDUCE = matchMedia('(prefers-reduced-motion:reduce)').matches;
-
-/* calendario de marzo (1 mar 2027 = lunes) */
-(function(){ const c=$('cal'); let h=''; 'LMMJVSD'.split('').forEach(d=>h+=`<b>${d}</b>`);
-  for(let d=1;d<=31;d++){ const cls=d===14?'hl':d===28?'hl2':''; h+=`<span class="${cls}">${d}</span>`; } c.innerHTML=h; })();
-
-/* ---------- Inicio ---------- */
-function intro(){
-  const tl = gsap.timeline({defaults:{ease:'power4.out'}});
-  tl.from('.nav',{y:-40,opacity:0,duration:.8})
-    .from('#eyebrow',{opacity:0,y:12,duration:.6},'-=.4')
-    .from('#h1 .ln>span',{yPercent:110,duration:1.1,stagger:.14},'-=.3')
-    .from('#sub',{opacity:0,y:18,duration:.7},'-=.6')
-    .from('.pill',{opacity:0,scale:.6,duration:.6,stagger:.09,ease:'back.out(2)'},'-=.5')
-    .from(['#connect','#micro'],{opacity:0,y:18,duration:.7,stagger:.1},'-=.4');
-  [['.b1',40,30],['.b2',-50,40],['.b3',-30,-30],['.b4',40,-26]].forEach(([s,x,y],i)=>
-    gsap.to(s,{x,y,duration:7+i*1.3,yoyo:true,repeat:-1,ease:'sine.inOut'}));
-  gsap.utils.toArray('.bc,.st').forEach(el=>gsap.from(el,{opacity:0,y:50,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%'}}));
-  gsap.from('.final h2',{opacity:0,y:40,duration:1,scrollTrigger:{trigger:'.final',start:'top 75%'}});
-  gsap.utils.toArray('.no p').forEach((p,i)=>gsap.from(p,{opacity:0,x:-30,duration:.7,delay:i*.08,scrollTrigger:{trigger:'.no',start:'top 85%'}}));
-}
 
 /* ---------- Sincronización ---------- */
 const PEOPLE = [
@@ -474,13 +431,93 @@ async function runSync(){
 }
 function closeSync(){ $('sync').style.display='none'; document.body.style.overflow=''; }
 
+
+
+/* ---------- Inicio ---------- */
+const MESES = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+$('months').innerHTML = MESES.map(m=>`<span>${m}</span>`).join('');
+
+function tagHTML(p, sub){
+  return `<div class="tg k-${p.k}"><i class="str"></i><div class="bd"><span class="hole"></span>
+    <div class="leaf"><span class="mo">${MES[p.m]}</span><b class="dy">${p.d}</b></div>
+    <div class="who">${p.n}</div><div class="oc">${p.o}</div><div class="st">${sub}</div></div></div>`;
+}
+
+/* cordel del hero */
+const HERO = [
+  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, k:'cumple',  s:'En 14 días · propuesta lista', t:.09, sl:30},
+  {n:'Papá',        o:'Día del Padre', m:5,  d:21, k:'padre',   s:'Aprobada · llega el 18',       t:.285, sl:74},
+  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, k:'boda',    s:'3 opciones por elegir',        t:.48, sl:36},
+  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  k:'bebe',    s:'Aviso en 6 días',              t:.68, sl:78},
+  {n:'Navidad',     o:'Familia',       m:11, d:24, k:'navidad', s:'Te aviso en noviembre',        t:.865, sl:34},
+];
+let hang = [];
+function layoutGarland(){
+  const g = $('garland'), W = g.clientWidth, H = g.clientHeight, small = innerWidth<=980;
+  const svg = $('tw'); svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const p = $('twp');
+  p.setAttribute('d', small ? `M-20,36 C ${W*.3},90 ${W*.7},-10 ${W+20},50` : `M-30,70 C ${W*.28},210 ${W*.55},-30 ${W+30},120`);
+  const L = p.getTotalLength();
+  hang.forEach(h=>h.el.remove()); hang = [];
+  const list = small ? HERO.filter((_,i)=>i%2===0) : HERO;
+  list.forEach((o,i)=>{
+    const wrap = document.createElement('div'); wrap.innerHTML = tagHTML(o,o.s);
+    const el = wrap.firstChild; el.style.setProperty('--sl',(small?o.sl*.6:o.sl)+'px'); el.style.setProperty('--w',small?'112px':'128px');
+    g.appendChild(el);
+    const pt = p.getPointAtLength(L*o.t);
+    gsap.set(el,{x:pt.x-(small?56:64),y:pt.y});
+    hang.push({el,o,i});
+  });
+}
+function swing(){
+  hang.forEach(({el,i})=>{
+    gsap.fromTo(el,{rotation:-4+i%2*2},{rotation:4-i%2*2,duration:2.6+i*.45,yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.15});
+  });
+}
+addEventListener('mousemove',e=>{
+  if(REDUCE) return;
+  const nx = (e.clientX/innerWidth-.5);
+  hang.forEach(({el,i})=>gsap.to(el,{skewX:nx*-5,duration:1,ease:'power3.out',overwrite:'auto'}));
+});
+
+/* cinta del año */
+const STATE = {'Mamá':['Lista','#2f7a52'],'Andrés':['Confirmar','#8a8494'],'Carla':['Elegir','#d9481f'],'Papá':['Lista','#2f7a52'],'Abuela Rosa':['Elegir','#d9481f'],
+  'Sofi y Nico':['Elegir','#d9481f'],'Pareja':['Lista','#2f7a52'],'Tío Jorge':['Elegir','#d9481f'],'Emilia':['Lista','#2f7a52'],'Amigo secreto':['Confirmar','#8a8494'],'Navidad':['Elegir','#d9481f']};
+function buildRibbon(){
+  const r = $('ribin'); r.querySelectorAll('.tg,.mn').forEach(n=>n.remove());
+  MESES.forEach((m,i)=>{ const s=document.createElement('span'); s.className='mn'; s.style.left=(i/12*100+.6)+'%'; s.textContent=m; r.appendChild(s); });
+  PEOPLE.forEach((p,i)=>{
+    const [st,c] = STATE[p.n]||['',''];
+    const w = document.createElement('div'); w.innerHTML = tagHTML(p,`<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c};box-shadow:0 0 0 2px rgba(255,255,255,.7);margin-right:6px"></span>${st}`);
+    const el = w.firstChild; el.style.left = `calc(${xPct(p.m,p.d)}% - 46px)`; el.style.setProperty('--sl',[18,150,40,168,26,158,62,176,22,148,44][i]+'px'); r.appendChild(el);
+  });
+}
+function buildReceipt(){
+  $('rl').innerHTML = PEOPLE.slice(0,8).map(p=>{ const [st,c]=STATE[p.n]||['','']; return `<div class="ln2"><span>${String(p.d).padStart(2,'0')} ${MES[p.m]}</span><span>${p.n}</span><u></u><s class="${st==='Lista'?'':'p'}">${st.toUpperCase()}</s></div>`; }).join('');
+}
+
+function intro(){
+  const tl = gsap.timeline({defaults:{ease:'power4.out'}});
+  tl.from('.nav',{y:-30,opacity:0,duration:.7})
+    .from('#eyebrow',{opacity:0,x:-16,duration:.6},'-=.3')
+    .from('#h1 .ln>span',{yPercent:110,duration:1.1,stagger:.14},'-=.3')
+    .from('#sub',{opacity:0,y:18,duration:.7},'-=.6')
+    .from(['#connectw','#micro'],{opacity:0,y:18,duration:.7,stagger:.1},'-=.4');
+  const u = $('ul'), len = u.getTotalLength(); gsap.set(u,{strokeDasharray:len,strokeDashoffset:len});
+  tl.to(u,{strokeDashoffset:0,duration:.9,ease:'power2.inOut'},'-=.2');
+  tl.from(hang.map(h=>h.el),{y:'-=260',opacity:0,duration:1.2,stagger:.14,ease:'back.out(1.2)',onComplete:swing},'-=1.2');
+  gsap.from('.ribbon .tg',{y:'-=40',opacity:0,duration:.8,stagger:.07,ease:'back.out(1.4)',scrollTrigger:{trigger:'.ribbon',start:'top 80%'}});
+  gsap.utils.toArray('.stp,.receipt,.final h2').forEach(el=>gsap.from(el,{opacity:0,y:46,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}}));
+}
+
 ['connect','connect2','navgo'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
 $('again').onclick = runSync;
 $('enter').onclick = closeSync;
 $('skip').onclick = () => { skipped = true; gsap.globalTimeline.timeScale(30); setTimeout(()=>gsap.globalTimeline.timeScale(1),700); };
 addEventListener('keydown',e=>{ if(e.key==='Escape') closeSync(); });
 
-intro();
+layoutGarland(); buildRibbon(); buildReceipt(); intro();
+let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(()=>{ layoutGarland(); swing(); },200); });
 </script>
 </body>
 </html>
