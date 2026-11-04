@@ -3,117 +3,295 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Asistente de regalos · prototipo de inicio</title>
+<title>Cuenta conmigo · asistente de regalos (prototipo)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#f3ecdf;--ink:#1b1612;--accent:#e4572e;--night:#15110d;--line:rgba(255,255,255,.12);
-  --serif:'Instrument Serif',Georgia,serif;--mono:'DM Mono',ui-monospace,monospace;--sans:'Hanken Grotesk',system-ui,sans-serif}
+:root{--cream:#f6efe4;--paper:#fffaf2;--ink:#1b1612;--accent:#ee5a2b;--night:#15110d;--line:rgba(255,255,255,.12);
+  --serif:'Instrument Serif',Georgia,serif;--mono:'DM Mono',ui-monospace,monospace;--sans:'Hanken Grotesk',system-ui,sans-serif;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
 *{box-sizing:border-box;margin:0}
-html,body{height:100%}
+html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;background:var(--grain);opacity:.10;mix-blend-mode:multiply;pointer-events:none;z-index:200}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 
-/* ---------- INICIO ---------- */
-.home{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:28px clamp(20px,4vw,60px);position:relative;z-index:5}
-.logo{font-family:var(--serif);font-size:26px}
-.nav a{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none}
-.hero{flex:1;display:grid;place-items:center;text-align:center;padding:0 20px 80px;position:relative;z-index:3}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,11.5vw,184px);line-height:.92;letter-spacing:-.025em}
-h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+/* ---------- barra flotante ---------- */
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:40;width:min(980px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:10px 12px 10px 22px;border-radius:999px;background:rgba(255,250,242,.72);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:0 10px 34px rgba(150,80,40,.14),inset 0 0 0 1px rgba(255,255,255,.7)}
+.logo{font-family:var(--serif);font-size:25px;letter-spacing:-.01em}
+.nav ul{display:flex;gap:26px;list-style:none;padding:0}
+.nav a{color:var(--ink);text-decoration:none;font-size:15px;opacity:.78}
+.nav ul a::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:8px;vertical-align:middle;background:var(--c)}
+.nav li:nth-child(1){--c:#ee5a2b}.nav li:nth-child(2){--c:#f3c93a}.nav li:nth-child(3){--c:#f07ab8}
+.nav .go{background:var(--accent);color:#fff;opacity:1;font-weight:600;padding:10px 20px;border-radius:999px;font-size:14.5px}
+@media(max-width:760px){.nav ul{display:none}}
+
+/* ---------- hero con halo ---------- */
+.hero{position:relative;min-height:100vh;overflow:hidden;display:grid;place-items:center;text-align:center;padding:130px 20px 90px}
+.blob{position:absolute;border-radius:50%;filter:blur(46px);will-change:transform}
+.b1{width:46vw;height:46vw;left:-14vw;top:2%;background:radial-gradient(circle,#ff9f4a 0,#ffb870 45%,transparent 72%)}
+.b2{width:44vw;height:44vw;right:-14vw;top:-6%;background:radial-gradient(circle,#ff6a4d 0,#ff8a68 45%,transparent 72%)}
+.b3{width:38vw;height:38vw;right:-6vw;bottom:-18vw;background:radial-gradient(circle,#ffb0d4 0,#ffcbe3 45%,transparent 72%)}
+.b4{width:36vw;height:36vw;left:-8vw;bottom:-16vw;background:radial-gradient(circle,#ffe27a 0,#ffeaa0 45%,transparent 72%)}
+.disc{position:absolute;left:50%;top:-14vw;width:min(92vw,1240px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:var(--paper);box-shadow:0 0 90px 40px rgba(255,205,160,.42)}
+.hero .in{position:relative;z-index:3}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;opacity:.8}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,11vw,176px);line-height:.92;letter-spacing:-.03em}
+h1 .ln{display:block;overflow:hidden;padding:0 .04em .1em}
 h1 .ln>span{display:block}
 h1 em{color:var(--accent)}
-.sub{max-width:520px;margin:28px auto 36px;font-size:19px;line-height:1.45}
-.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--cream);padding:18px 30px;border-radius:999px;font-weight:600;font-size:17px;transition:transform .2s,background .2s}
+.sub{max-width:660px;margin:30px auto 0;font-size:20px;line-height:2.1;color:#3a322b}
+.pill{display:inline-block;padding:1px 14px;margin:0 2px;border-radius:999px;border:1.5px solid var(--c);color:var(--c);font-size:18px;line-height:1.5;background:rgba(255,255,255,.5)}
+.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:18px 32px;border-radius:999px;font-weight:600;font-size:17px;margin-top:38px;
+  box-shadow:0 14px 30px rgba(27,22,18,.28),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .2s,background .2s}
 .cta:hover{background:var(--accent);transform:translateY(-2px)}
 .cta svg{width:22px;height:22px}
-.micro{margin-top:16px;font-family:var(--mono);font-size:12px;opacity:.65}
+.micro{margin-top:22px;font-family:var(--mono);font-size:12px;opacity:.6}
+.scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.12em;opacity:.55;z-index:3}
 
-.tag{position:absolute;z-index:2;width:clamp(130px,13vw,190px);background:#fff;border-radius:14px;padding:10px 10px 12px;box-shadow:0 14px 34px rgba(27,22,18,.14);will-change:transform}
-.tag .im{aspect-ratio:1;border-radius:8px;background:#e8dfcf center/cover}
-.tag .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;margin-top:9px;text-transform:uppercase}
-.tag .n{font-size:13px;font-weight:600;margin-top:2px;line-height:1.2}
-.tag::before{content:"";position:absolute;top:8px;right:10px;width:9px;height:9px;border-radius:50%;background:var(--cream);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
-.t1{left:5%;top:20%}.t2{right:5%;top:17%}.t3{left:11%;bottom:7%}.t4{right:10%;bottom:9%}.t5{left:41%;top:2%;display:none}
-@media(max-width:900px){.tag{opacity:.9;width:110px}.t1{left:-2%;top:12%}.t2{right:-2%;top:10%}.t3{left:-1%;bottom:2%}.t4{right:-1%;bottom:3%}}
+/* ---------- tablero ---------- */
+.sec{padding:0 clamp(18px,5vw,70px)}
+.frame{max-width:1180px;margin:-30px auto 0;position:relative;z-index:4;border-radius:30px;padding:26px 30px 34px;background:linear-gradient(180deg,#f4efe8,#ece6dc);
+  box-shadow:0 40px 90px rgba(120,70,30,.22),0 4px 12px rgba(120,70,30,.12),inset 0 1px 0 rgba(255,255,255,.8)}
+.frame h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(34px,4.6vw,58px);color:#8b8794;letter-spacing:-.01em;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.08);margin-bottom:22px}
+.board{display:flex;gap:16px;align-items:flex-start}
+.colm{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.colm:nth-child(2){margin-top:46px}.colm:nth-child(4){margin-top:26px}
+@media(max-width:900px){.board{flex-wrap:wrap}.colm{flex:1 1 calc(50% - 16px)}.colm:nth-child(n){margin-top:0}}
+@media(max-width:560px){.colm{flex-basis:100%}}
+.bc{background:#fff;border-radius:16px;padding:18px;box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 10px 24px rgba(60,40,20,.10),0 1px 3px rgba(60,40,20,.08);position:relative;overflow:hidden}
+.bc .cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8b8794;margin-top:12px}
+.quote{font-family:var(--serif);font-size:34px;line-height:1.08;text-align:center;padding:26px 18px 8px}
+.quote em{color:var(--accent)}
+.quote .qm{display:block;font-size:40px;line-height:.6;color:var(--accent)}
+.check{list-style:none;padding:0;font-size:14.5px;display:grid;gap:11px}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check i{flex:none;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #bbb;margin-top:1px}
+.check .ok i{background:#8fb7a4 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'><path d='M5 9.5l2.6 2.6L13 6.6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>");box-shadow:none}
+.check .ok span{text-decoration:line-through;opacity:.5}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;font-family:var(--mono);font-size:11px;text-align:center;margin-top:10px}
+.cal b{font-weight:400;opacity:.4;font-size:10px}
+.cal span{padding:6px 0;border-radius:8px}
+.cal .hl{background:linear-gradient(135deg,#ff9f4a,#ee5a2b);color:#fff;box-shadow:0 4px 10px rgba(238,90,43,.4)}
+.cal .hl2{background:linear-gradient(135deg,#ffb0d4,#f07ab8);color:#fff}
+.calh{font-family:var(--serif);font-size:26px}
+.num{background:linear-gradient(150deg,#ffb870,#ee5a2b 55%,#e0457f);color:#fff;border:0}
+.num b{font-family:var(--serif);font-weight:400;font-size:104px;line-height:.85;letter-spacing:-.04em;display:block}
+.num p{font-size:15px;line-height:1.35;margin-top:12px;max-width:190px}
+.num::after,.photo::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.16;mix-blend-mode:overlay;pointer-events:none}
+.prop .im{height:170px;margin:-18px -18px 14px;background:#e8dfcf center/cover}
+.prop .tg{position:absolute;top:12px;left:12px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:3px 10px;border-radius:999px;text-transform:uppercase}
+.prop h4{font-size:15px;font-weight:600;line-height:1.25}
+.prop p{font-size:13px;opacity:.65;margin-top:4px}
+.btns{display:flex;gap:6px;margin-top:12px}
+.btns span{font-size:12px;padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px #cfc8bd}
+.btns span:first-child{background:var(--ink);color:#fff;box-shadow:none}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.chips span{font-size:13px;padding:4px 12px;border-radius:999px;border:1.5px solid var(--c);color:var(--c)}
+.bc h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.1}
+.steps{display:flex;align-items:center;margin-top:16px}
+.steps i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;color:#fff;background:var(--c);box-shadow:0 6px 14px rgba(0,0,0,.18)}
+.steps u{flex:1;height:2px;background:repeating-linear-gradient(90deg,#cfc8bd 0 5px,transparent 5px 9px)}
+.sl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;margin-top:7px;opacity:.6}
+.bar{height:12px;border-radius:99px;background:#eee7dc;margin:14px 0 8px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.12)}
+.bar i{display:block;height:100%;width:38%;border-radius:99px;background:linear-gradient(90deg,#ffb870,#ee5a2b)}
+.big{font-family:var(--serif);font-size:44px;letter-spacing:-.02em;line-height:1}
+
+/* ---------- secciones de texto ---------- */
+.block{max-width:1100px;margin:0 auto;padding:130px 0 0}
+.kick{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.6vw,80px);line-height:1;letter-spacing:-.02em;text-align:center;margin:18px auto 0;max-width:900px}
+.h2 em{color:var(--accent)}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:64px}
+@media(max-width:860px){.steps3{grid-template-columns:1fr}}
+.st{border-radius:26px;padding:30px 28px 34px;min-height:300px;position:relative;overflow:hidden;color:var(--ink);box-shadow:0 22px 50px rgba(120,70,30,.16),inset 0 1px 0 rgba(255,255,255,.6)}
+.st::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.16;mix-blend-mode:multiply;pointer-events:none}
+.st:nth-child(1){background:linear-gradient(160deg,#ffd9a8,#ff9f6a)}
+.st:nth-child(2){background:linear-gradient(160deg,#ffd0e4,#f59cc4)}
+.st:nth-child(3){background:linear-gradient(160deg,#fbe9a0,#f3c93a)}
+.st b{font-family:var(--serif);font-weight:400;font-size:120px;line-height:.8;display:block;letter-spacing:-.04em}
+.st h3{font-size:22px;font-weight:700;margin:26px 0 8px}
+.st p{font-size:16px;line-height:1.45;max-width:300px}
+.manif{max-width:760px;margin:0 auto;text-align:left}
+.manif .lead{font-family:var(--serif);font-size:clamp(28px,3.6vw,44px);line-height:1.12;margin-top:36px;color:#4a4256}
+.no{margin:46px auto 0;display:grid;gap:6px;width:max-content;max-width:100%}
+.no p{font-family:var(--serif);font-size:clamp(28px,4vw,48px);line-height:1.2}
+.no b{font-family:var(--sans);font-weight:700;color:var(--accent);margin-right:10px}
+.final{margin:150px clamp(10px,3vw,40px) 40px;border-radius:40px;padding:110px 24px;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 15% 20%,#ffb870,transparent 55%),radial-gradient(ellipse at 90% 30%,#ff6a4d,transparent 55%),radial-gradient(ellipse at 60% 110%,#ffb0d4,transparent 55%),#ffcf9a}
+.final::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.14;mix-blend-mode:multiply;pointer-events:none}
+.final h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,92px);line-height:.98;letter-spacing:-.02em;position:relative;z-index:2}
+.final .cta{position:relative;z-index:2}
+footer{text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;opacity:.55;padding:20px 0 40px}
 
 /* ---------- SINCRONIZACIÓN ---------- */
-.sync{position:fixed;inset:0;background:var(--night);color:var(--cream);z-index:50;display:none;flex-direction:column;padding:26px clamp(18px,4vw,56px) 24px;overflow:auto}
+.sync{position:fixed;inset:0;z-index:150;display:none;flex-direction:column;padding:26px clamp(18px,4vw,56px) 24px;overflow:auto;color:var(--cream);
+  background:radial-gradient(ellipse 60% 50% at 8% 108%,rgba(238,90,43,.42),transparent 60%),radial-gradient(ellipse 50% 40% at 100% -8%,rgba(255,150,100,.2),transparent 60%),radial-gradient(ellipse 40% 40% at 60% 112%,rgba(240,122,184,.22),transparent 60%),var(--night)}
+.sync::before{content:"";position:fixed;inset:0;background:var(--grain);opacity:.12;mix-blend-mode:screen;pointer-events:none}
+.sync>*{position:relative}
 .sync-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
 .status{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
 .pulse{width:9px;height:9px;border-radius:50%;background:var(--accent);animation:pl 1.2s ease-in-out infinite}
 .pulse.done{background:#8fd18b;animation:none}
 @keyframes pl{50%{transform:scale(1.7);opacity:.4}}
 .counter{display:flex;gap:34px}
-.counter div{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
-.counter b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(38px,5vw,64px);letter-spacing:-.02em;opacity:1;color:var(--cream);line-height:1}
-.counter .f b{color:var(--accent)}
-.skip{font-family:var(--mono);font-size:12px;text-decoration:underline;opacity:.7}
-
-.field{position:relative;height:36vh;min-height:200px;margin:18px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform-origin:top}
+.counter div{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.counter b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(38px,5vw,64px);letter-spacing:-.02em;color:var(--cream);line-height:1}
+.counter .f b{color:#ff8a5c}
+.skip{font-family:var(--mono);font-size:12px;text-decoration:underline;opacity:.7;margin-top:10px}
+.field{position:relative;height:34vh;min-height:190px;margin:18px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
 .col{position:absolute;top:0;bottom:0;border-left:1px solid var(--line)}
 .mon{position:absolute;bottom:-26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;opacity:.55}
-.dot{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(243,236,223,.55);margin:-3px 0 0 -3px}
+.dot{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(246,239,228,.55);margin:-3px 0 0 -3px}
 .dot.hit{width:7px;height:7px;z-index:3}
-.dot .lb{position:absolute;left:12px;top:-8px;font-family:var(--mono);font-size:11px;white-space:nowrap;opacity:0;color:var(--cream)}
-.scan{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--accent);box-shadow:0 0 22px 6px rgba(228,87,46,.55);left:0;opacity:0}
+.dot .lb{position:absolute;left:12px;top:-8px;font-family:var(--mono);font-size:11px;white-space:nowrap;opacity:0}
+.scan{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--accent);box-shadow:0 0 22px 6px rgba(238,90,43,.55);left:0;opacity:0}
 
-.people{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:46px}
-@media(max-width:1100px){.people{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:700px){.people{grid-template-columns:repeat(2,1fr)}}
-.card{background:var(--cream);color:var(--ink);border-radius:14px;padding:10px;display:flex;gap:10px;align-items:center;min-height:76px;position:relative}
-.card .im{width:52px;height:52px;flex:none;border-radius:8px;background:#e8dfcf center/cover}
-.card .nm{font-weight:600;font-size:14px;line-height:1.15}
-.card .dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;margin-top:3px;opacity:.7}
-.card.doubt{outline:2px dashed var(--accent);outline-offset:-2px;flex-wrap:wrap}
-.card .ask{font-size:12px;width:100%;display:flex;align-items:center;gap:8px;margin-top:2px}
-.card .ask button{background:var(--ink);color:var(--cream);border-radius:999px;padding:3px 12px;font-size:12px}
+.people{display:flex;gap:14px;align-items:flex-start;margin-top:46px}
+.pcol{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.pcol:nth-child(2n){margin-top:22px}
+@media(max-width:1000px){.people{flex-wrap:wrap}.pcol{flex:1 1 calc(33% - 14px)}}
+@media(max-width:640px){.pcol{flex:1 1 calc(50% - 14px)}}
+.card{border-radius:18px;overflow:hidden;color:var(--ink);position:relative;background:var(--paper);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 38px rgba(0,0,0,.42),0 2px 6px rgba(0,0,0,.3)}
+.card .art{position:relative;height:calc(var(--h,140px)*.72);overflow:hidden}
+.card .art svg{position:absolute;inset:0;width:100%;height:100%}
+.card .art::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.22;mix-blend-mode:overlay}
+.card .d{position:absolute;left:14px;bottom:4px;font-family:var(--serif);font-size:56px;line-height:1;letter-spacing:-.03em;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.18)}
+.card .mo{position:absolute;right:12px;top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:rgba(255,255,255,.95)}
+.card .meta{padding:9px 13px 11px}
+.card .meta b{display:block;font-weight:600;font-size:15px}
+.card .meta i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;opacity:.6}
+.card.doubt{outline:2px dashed var(--accent);outline-offset:-2px}
+.card .ask{font-size:12.5px;display:flex;align-items:center;gap:8px;margin-top:9px}
+.card .ask button{background:var(--ink);color:var(--cream);border-radius:999px;padding:4px 13px;font-size:12px}
 .card .ask button+button{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .card.live{outline:2px solid var(--accent);outline-offset:-2px}
-.chip{position:absolute;top:-9px;right:8px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;padding:2px 8px;border-radius:999px;text-transform:uppercase}
-
-.foot{margin-top:auto;padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.chip{position:absolute;top:10px;left:10px;z-index:3;background:var(--accent);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;padding:3px 9px;border-radius:999px;text-transform:uppercase}
+.k-cumple .art{background:linear-gradient(150deg,#ffc27a,#ee5a2b)}
+.k-navidad .art{background:linear-gradient(150deg,#9bd6a4,#1f6b4a)}
+.k-amor .art{background:linear-gradient(150deg,#ffb0d4,#9b86f0)}
+.k-boda .art{background:linear-gradient(150deg,#ffe27a,#ff8f6a)}
+.k-bebe .art{background:linear-gradient(150deg,#b8e0ff,#c9b6ff)}
+.k-oficina .art{background:linear-gradient(150deg,#e2ea8a,#4f9e7c)}
+.k-padre .art{background:linear-gradient(150deg,#9fc4ff,#4a62d8)}
+.foot{margin-top:auto;padding-top:30px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .summary{font-family:var(--serif);font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
-.summary em{color:var(--accent)}
-.foot .cta{background:var(--cream);color:var(--ink)}
+.summary em{color:#ff8a5c}
+.foot .cta{background:var(--cream);color:var(--ink);margin-top:0}
 .foot .cta:hover{background:var(--accent);color:#fff}
 .ghost{font-family:var(--mono);font-size:12px;text-decoration:underline;opacity:.7;margin-right:18px}
-.toast{position:fixed;left:50%;top:22px;transform:translateX(-50%);background:var(--accent);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:500;z-index:60;opacity:0;pointer-events:none}
+.toast{position:fixed;left:50%;top:22px;transform:translateX(-50%);background:var(--accent);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:500;z-index:300;opacity:0;pointer-events:none;box-shadow:0 12px 30px rgba(238,90,43,.4)}
 @media(prefers-reduced-motion:reduce){.pulse{animation:none}}
 </style>
 </head>
 <body>
 
-<section class="home" id="home">
-  <nav class="nav"><span class="logo">Cuenta conmigo</span><a href="#como">Cómo funciona</a></nav>
-  <div class="tag t1" data-d=".9"><div class="im" data-p="mama"></div><div class="t">Para Mamá · 14 mar</div><div class="n">Mamá ¿Cuál es tu Historia?</div></div>
-  <div class="tag t2" data-d="1.4"><div class="im" data-p="panera"></div><div class="t">Para Carla · 19 may</div><div class="n">Panera Cetáceos</div></div>
-  <div class="tag t3" data-d="1.1"><div class="im" data-p="cojin"></div><div class="t">Para la abuela · 3 ago</div><div class="n">Funda cojín Picaflor</div></div>
-  <div class="tag t4" data-d="1.6"><div class="im" data-p="biobio"></div><div class="t">Para Andrés · 2 abr</div><div class="n">Set Bío Bío</div></div>
+<nav class="nav">
+  <span class="logo">Cuenta conmigo</span>
+  <ul><li><a href="#que">Qué hace</a></li><li><a href="#como">Cómo funciona</a></li><li><a href="#por-que">Por qué</a></li></ul>
+  <a class="go" href="#" id="navgo">Conectar calendario</a>
+</nav>
 
-  <main class="hero">
-    <div>
-      <p class="eyebrow" id="eyebrow">Tu asistente de regalos</p>
-      <h1 id="h1"><span class="ln"><span>Regalos</span></span><span class="ln"><span><em>resueltos.</em></span></span></h1>
-      <p class="sub" id="sub">Conecta tu calendario y se acuerda por ti: a quién le regalas, cuándo, y te deja la propuesta lista.</p>
-      <button class="cta" id="connect">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 9.5h18M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        Conectar Google Calendar
-      </button>
-      <p class="micro" id="micro">Después te sigue avisando solo, con tiempo para elegir y recibir.</p>
+<header class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+  <div class="disc"></div>
+  <div class="in">
+    <p class="eyebrow" id="eyebrow">Tu asistente de regalos</p>
+    <h1 id="h1"><span class="ln"><span>Regalos</span></span><span class="ln"><span><em>resueltos.</em></span></span></h1>
+    <p class="sub" id="sub">Todas tus fechas —
+      <span class="pill" style="--c:#e8812f">cumpleaños</span>
+      <span class="pill" style="--c:#d9529a">aniversarios</span>
+      <span class="pill" style="--c:#3a9ac4">bautizos</span>
+      <span class="pill" style="--c:#c99a12">amigo secreto</span> y
+      <span class="pill" style="--c:#2f8a5f">Navidad</span> —
+      en un solo lugar que se acuerda por ti.</p>
+    <button class="cta" id="connect">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 9.5h18M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Conectar Google Calendar
+    </button>
+    <p class="micro" id="micro">Después te sigue avisando solo, con tiempo para elegir y recibir.</p>
+  </div>
+  <span class="scroll">DESLIZA ↓</span>
+</header>
+
+<section class="sec" id="que">
+  <div class="frame">
+    <h2>Tu año de regalos…</h2>
+    <div class="board">
+      <div class="colm">
+        <div class="bc quote"><span class="qm">“</span>Mamá cumple en <em>14 días</em>.<span class="qm" style="margin-top:6px">”</span><div class="cap" style="text-align:center">Propuesta lista · tú decides</div></div>
+        <div class="bc"><h3>Esta semana</h3>
+          <ul class="check" style="margin-top:14px">
+            <li class="ok"><i></i><span>Papá — propuesta aprobada</span></li>
+            <li><i></i><span>Carla — elegir entre 3 opciones</span></li>
+            <li><i></i><span>Andrés — confirmar la fecha</span></li>
+          </ul></div>
+      </div>
+      <div class="colm">
+        <div class="bc prop"><div class="im" data-p="mama"></div><span class="tg">Propuesta lista</span>
+          <h4>Mamá ¿Cuál es tu Historia?</h4><p>Llega el 12 de marzo, 2 días antes.</p>
+          <div class="btns"><span>Sí</span><span>Otra</span><span>Cambiar</span></div></div>
+        <div class="bc"><h3>Lo que aprendí de Mamá</h3>
+          <div class="chips"><span style="--c:#e8812f">hecho a mano</span><span style="--c:#d9529a">libros</span><span style="--c:#3a9ac4">cosas de mesa</span><span style="--c:#8a8494">nada rosado</span></div>
+          <div class="cap">Se actualiza con cada regalo</div></div>
+      </div>
+      <div class="colm">
+        <div class="bc"><div class="calh">Marzo</div><div class="cal" id="cal"></div></div>
+        <div class="bc"><h3>Presupuesto del año</h3><div class="big" style="margin-top:12px">$240.000</div>
+          <div class="bar"><i></i></div><div class="sl"><span>Usado $91.000</span><span>38%</span></div></div>
+      </div>
+      <div class="colm">
+        <div class="bc num"><b>11</b><p>fechas leídas desde tu calendario, y sumando.</p></div>
+        <div class="bc"><h3>Si no respondo…</h3>
+          <div class="steps"><i style="--c:#2f8a5f">1</i><u></u><i style="--c:#e8812f">2</i><u></u><i style="--c:#d9529a">3</i></div>
+          <div class="sl"><span>WhatsApp</span><span>Correo</span><span>Calendario</span></div>
+          <div class="cap">Insisto por donde elegiste</div></div>
+      </div>
     </div>
-  </main>
+  </div>
 </section>
+
+<section class="sec" id="como">
+  <div class="block">
+    <p class="kick">Cómo funciona</p>
+    <h2 class="h2">Tú piensas en quien lo recibe. <em>Nosotros</em> nos hacemos cargo del resto.</h2>
+    <div class="steps3">
+      <div class="st"><b>1</b><h3>Conectas tu calendario</h3><p>Lee tus cumpleaños, aniversarios y bautizos, y arma una ficha por persona. Si agregas una fecha nueva, la suma sola.</p></div>
+      <div class="st"><b>2</b><h3>Se anticipa</h3><p>Cuando se acerca la fecha, te avisa con una propuesta lista, con tiempo para elegir y recibir.</p></div>
+      <div class="st"><b>3</b><h3>Tú decides cuánto</h3><p>Delego o Elijo yo, por persona. Nada se compra sin tu aprobación.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="por-que">
+  <div class="block manif">
+    <p class="kick" style="text-align:left">Por qué</p>
+    <p class="lead">Los regalos no se olvidan por falta de cariño, sino por falta de cabeza. Cada año partes de cero, y la fecha te pilla igual.</p>
+    <div class="no">
+      <p><b>NO</b>olvidos de última hora</p>
+      <p><b>NO</b>catálogos interminables</p>
+      <p><b>NO</b>compras sin tu aprobación</p>
+      <p><b>NO</b>empezar de cero cada año</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <h2>Que esta vez la fecha te encuentre con el regalo listo.</h2>
+  <button class="cta" id="connect2" style="margin-top:44px">Conectar Google Calendar</button>
+</section>
+<footer>CUENTA CONMIGO · PROTOTIPO · NOMBRE PROVISORIO</footer>
 
 <section class="sync" id="sync" aria-live="polite">
   <div class="sync-top">
     <div>
       <div class="status"><span class="pulse" id="pulse"></span><span id="stxt">Conectando con Google Calendar</span></div>
-      <button class="skip" id="skip" style="margin-top:10px">Saltar animación</button>
+      <button class="skip" id="skip">Saltar animación</button>
     </div>
     <div class="counter">
       <div>Eventos leídos<b id="cRead">0</b></div>
@@ -130,53 +308,74 @@ h1 em{color:var(--accent)}
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
 const P = /*PRODUCTS*/;
 const img = k => P[k] ? `url('${P[k]}')` : 'none';
 document.querySelectorAll('[data-p]').forEach(e => e.style.backgroundImage = img(e.dataset.p));
-
-/* Fechas que "encuentra" el asistente (datos de ejemplo) */
-const PEOPLE = [
-  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, y:30, p:'mama'},
-  {n:'Andrés',      o:'Cumpleaños',    m:3,  d:2,  y:72, p:'biobio'},
-  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, p:'panera', doubt:true},
-  {n:'Papá',        o:'Día del Padre', m:5,  d:21, y:62, p:'pinchos'},
-  {n:'Abuela Rosa', o:'Cumpleaños',    m:7,  d:3,  y:30, p:'cojin'},
-  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, y:78, p:'spray'},
-  {n:'Pareja',      o:'Aniversario',   m:8,  d:12, y:40, p:'abuelo'},
-  {n:'Tío Jorge',   o:'Cumpleaños',    m:9,  d:9,  y:70, p:'toalla'},
-  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  y:26, p:'mudador'},
-  {n:'Amigo secreto',o:'Oficina',      m:11, d:18, y:62, p:'panera'},
-  {n:'Navidad',     o:'Familia',       m:11, d:24, y:28, p:'cojin'},
-];
-const NEW = {n:'Familia Soto', o:'Bautizo', m:7, d:22, y:50, p:'toalla'};
-const MES = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
-const MESL = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-const TOTAL = 214;
+gsap.registerPlugin(ScrollTrigger);
 const $ = id => document.getElementById(id);
-const xPct = (m,d) => (m + d/31) / 12 * 100;
+const REDUCE = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-/* ---------- Inicio: entrada y flotación ---------- */
+/* calendario de marzo (1 mar 2027 = lunes) */
+(function(){ const c=$('cal'); let h=''; 'LMMJVSD'.split('').forEach(d=>h+=`<b>${d}</b>`);
+  for(let d=1;d<=31;d++){ const cls=d===14?'hl':d===28?'hl2':''; h+=`<span class="${cls}">${d}</span>`; } c.innerHTML=h; })();
+
+/* ---------- Inicio ---------- */
 function intro(){
   const tl = gsap.timeline({defaults:{ease:'power4.out'}});
-  tl.from('#eyebrow',{opacity:0,y:12,duration:.6})
+  tl.from('.nav',{y:-40,opacity:0,duration:.8})
+    .from('#eyebrow',{opacity:0,y:12,duration:.6},'-=.4')
     .from('#h1 .ln>span',{yPercent:110,duration:1.1,stagger:.14},'-=.3')
-    .from(['#sub','#connect','#micro'],{opacity:0,y:18,duration:.7,stagger:.1},'-=.6')
-    .from('.tag',{opacity:0,scale:.6,rotate:()=>gsap.utils.random(-14,14),duration:.9,stagger:.12,ease:'back.out(1.6)'},'-=.8');
-  document.querySelectorAll('.tag').forEach((t,i)=>{
-    const rot = [-7,6,5,-5][i];
-    gsap.set(t,{rotate:rot});
-    gsap.to(t,{y:'+=14',duration:+t.dataset.d+1.4,yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.2});
-  });
+    .from('#sub',{opacity:0,y:18,duration:.7},'-=.6')
+    .from('.pill',{opacity:0,scale:.6,duration:.6,stagger:.09,ease:'back.out(2)'},'-=.5')
+    .from(['#connect','#micro'],{opacity:0,y:18,duration:.7,stagger:.1},'-=.4');
+  [['.b1',40,30],['.b2',-50,40],['.b3',-30,-30],['.b4',40,-26]].forEach(([s,x,y],i)=>
+    gsap.to(s,{x,y,duration:7+i*1.3,yoyo:true,repeat:-1,ease:'sine.inOut'}));
+  gsap.utils.toArray('.bc,.st').forEach(el=>gsap.from(el,{opacity:0,y:50,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%'}}));
+  gsap.from('.final h2',{opacity:0,y:40,duration:1,scrollTrigger:{trigger:'.final',start:'top 75%'}});
+  gsap.utils.toArray('.no p').forEach((p,i)=>gsap.from(p,{opacity:0,x:-30,duration:.7,delay:i*.08,scrollTrigger:{trigger:'.no',start:'top 85%'}}));
 }
-const depth = [18,-24,-14,22];
-addEventListener('mousemove',e=>{
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  const nx = e.clientX/innerWidth-.5, ny = e.clientY/innerHeight-.5;
-  document.querySelectorAll('.tag').forEach((t,i)=>gsap.to(t,{x:nx*depth[i]*2.2,rotateY:nx*10,rotateX:-ny*8,duration:.9,ease:'power3.out',overwrite:'auto'}));
-});
 
 /* ---------- Sincronización ---------- */
+const PEOPLE = [
+  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, y:30, k:'cumple',  h:170},
+  {n:'Andrés',      o:'Cumpleaños',    m:3,  d:2,  y:72, k:'cumple',  h:120},
+  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, k:'cumple',  h:140, doubt:true},
+  {n:'Papá',        o:'Día del Padre', m:5,  d:21, y:62, k:'padre',   h:190},
+  {n:'Abuela Rosa', o:'Cumpleaños',    m:7,  d:3,  y:30, k:'cumple',  h:130},
+  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, y:78, k:'boda',    h:180},
+  {n:'Pareja',      o:'Aniversario',   m:8,  d:12, y:40, k:'amor',    h:150},
+  {n:'Tío Jorge',   o:'Cumpleaños',    m:9,  d:9,  y:70, k:'cumple',  h:120},
+  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  y:26, k:'bebe',    h:175},
+  {n:'Amigo secreto',o:'Oficina',      m:11, d:18, y:62, k:'oficina', h:135},
+  {n:'Navidad',     o:'Familia',       m:11, d:24, y:28, k:'navidad', h:165},
+];
+const NEW = {n:'Familia Soto', o:'Bautizo', m:7, d:22, k:'bebe', h:150};
+const MES = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+const TOTAL = 214;
+const xPct = (m,d) => (m + d/31) / 12 * 100;
+
+/* gráfica generativa por ocasión */
+function art(k, seed){
+  let s = seed*97+13; const r = () => (s = (s*16807)%2147483647)/2147483647;
+  const W=200,H=200; let g='';
+  if(k==='cumple'||k==='bebe'){ for(let i=0;i<16;i++){ const x=r()*W,y=r()*H,rr=3+r()*9; g+= i%3? `<circle cx="${x}" cy="${y}" r="${rr}" fill="#fff" opacity="${.25+r()*.5}"/>` : `<rect x="${x}" y="${y}" width="${rr*1.6}" height="${rr*.7}" rx="2" fill="#fff" opacity=".6" transform="rotate(${r()*180} ${x} ${y})"/>`; } 
+    if(k==='bebe') g+=[70,50,32].map((rad,i)=>`<path d="M${100-rad} 150 a${rad} ${rad} 0 0 1 ${rad*2} 0" fill="none" stroke="#fff" stroke-width="7" opacity="${.5+i*.15}"/>`).join(''); }
+  if(k==='navidad'){ for(let i=0;i<14;i++){ const a=i/14*Math.PI*2; g+=`<line x1="150" y1="60" x2="${150+Math.cos(a)*130}" y2="${60+Math.sin(a)*130}" stroke="#fff" stroke-width="2" opacity=".35"/>`; } g+=`<circle cx="150" cy="60" r="16" fill="#fff" opacity=".8"/>`; }
+  if(k==='amor'){ g+=`<circle cx="100" cy="95" r="52" fill="#fff" opacity=".45"/><circle cx="145" cy="95" r="52" fill="#ee5a2b" opacity=".4" style="mix-blend-mode:multiply"/>`; }
+  if(k==='boda'){ g+=`<circle cx="95" cy="90" r="40" fill="none" stroke="#fff" stroke-width="9" opacity=".85"/><circle cx="135" cy="90" r="40" fill="none" stroke="#fff" stroke-width="9" opacity=".55"/>`; }
+  if(k==='oficina'){ for(let i=0;i<5;i++) g+=`<rect x="${90+i*14}" y="${20+i*14}" width="80" height="80" rx="8" fill="none" stroke="#fff" stroke-width="2.5" opacity="${.9-i*.14}" transform="rotate(${i*9} 130 60)"/>`; }
+  if(k==='padre'){ for(let i=0;i<9;i++) g+=`<rect x="${20+i*22}" y="${100-(i%4+1)*18}" width="14" height="${(i%4+1)*36}" rx="7" fill="#fff" opacity="${.25+i%3*.2}"/>`; }
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${g}</svg>`;
+}
+function cardEl(p, extra='', seed=1){
+  const c = document.createElement('div'); c.className = `card k-${p.k} ${extra}`;
+  c.style.setProperty('--h', p.h+'px');
+  c.innerHTML = `<div class="art">${art(p.k,seed)}<span class="mo">${MES[p.m]}</span><span class="d">${p.d}</span></div><div class="meta"><b>${p.n}</b><i>${p.o}</i></div>`;
+  return c;
+}
+
 let skipped = false;
 const wait = s => new Promise(r => gsap.delayedCall(s, r));
 const T = tw => new Promise(r => tw.then(r));
@@ -187,47 +386,33 @@ function buildField(){
     const c = document.createElement('div'); c.className='col'; c.style.left=(m/12*100)+'%'; f.appendChild(c);
     const l = document.createElement('div'); l.className='mon'; l.style.left=(m/12*100+.6)+'%'; l.textContent=MES[m]; f.appendChild(l);
   }
-  const dots = [];
-  /* eventos "de ruido": reuniones, dentista, etc. (posición pseudoaleatoria fija) */
-  let s = 7; const rnd = () => (s = (s*16807) % 2147483647) / 2147483647;
-  for(let i=0;i<TOTAL-PEOPLE.length;i++){
-    const m = Math.floor(rnd()*12), d = 1+Math.floor(rnd()*30);
-    dots.push({x:xPct(m,d), y:6+rnd()*88, hit:false});
-  }
+  const dots = []; let s = 7; const rnd = () => (s = (s*16807) % 2147483647) / 2147483647;
+  for(let i=0;i<TOTAL-PEOPLE.length;i++){ const m = Math.floor(rnd()*12), d = 1+Math.floor(rnd()*30); dots.push({x:xPct(m,d), y:6+rnd()*88, hit:false}); }
   PEOPLE.forEach((p,i)=>dots.push({x:xPct(p.m,p.d), y:p.y, hit:true, i}));
   dots.sort((a,b)=>a.x-b.x);
   dots.forEach(d=>{
-    const el = document.createElement('div'); el.className='dot'+(d.hit?' hit':'');
-    el.style.left=d.x+'%'; el.style.top=d.y+'%';
+    const el = document.createElement('div'); el.className='dot'+(d.hit?' hit':''); el.style.left=d.x+'%'; el.style.top=d.y+'%';
     if(d.hit){ const lb=document.createElement('span'); lb.className='lb'; lb.textContent=PEOPLE[d.i].n; el.appendChild(lb); d.lb=lb; }
     f.appendChild(el); d.el=el;
   });
   return dots;
 }
 
-function cardEl(p, extra=''){
-  const c = document.createElement('div'); c.className='card '+extra;
-  c.innerHTML = `<div class="im" style="background-image:${img(p.p)}"></div><div><div class="nm">${p.n}</div><div class="dt">${p.o} · ${p.d} ${MESL[p.m]}</div></div>`;
-  return c;
-}
-
 async function runSync(){
-  skipped = false; gsap.globalTimeline.timeScale(1);
-  const sync = $('sync'); sync.style.display='flex';
+  skipped = false; gsap.globalTimeline.timeScale(REDUCE?30:1);
+  const sync = $('sync'); sync.style.display='flex'; sync.scrollTop=0; document.body.style.overflow='hidden';
   $('people').innerHTML=''; $('summary').innerHTML='';
   gsap.set('#enter',{opacity:0,pointerEvents:'none'});
   $('cRead').textContent='0'; $('cFound').textContent='0';
   $('pulse').className='pulse'; $('stxt').textContent='Conectando con Google Calendar';
-  gsap.set('#field',{opacity:1,scale:1,y:0}); gsap.set('#scan',{opacity:0,left:'0%'});
+  gsap.set('#field',{opacity:1,height:'34vh'}); gsap.set('#scan',{opacity:0,left:'0%'});
   gsap.fromTo(sync,{opacity:0},{opacity:1,duration:.5});
   const dots = buildField();
 
-  /* 1 · los eventos llegan */
   await wait(.5);
   $('stxt').textContent='Leyendo tus eventos';
   await T(gsap.from(dots.map(d=>d.el),{opacity:0,y:-26,duration:.5,stagger:{amount:1.3,from:'random'},ease:'power2.out'}));
 
-  /* 2 · el haz recorre el año y separa lo que importa */
   $('stxt').textContent='Buscando cumpleaños, aniversarios y fechas de regalo';
   gsap.set('#scan',{opacity:1});
   let idx = 0, found = 0; const proxy = {p:0};
@@ -236,35 +421,33 @@ async function runSync(){
     $('cRead').textContent = Math.round(proxy.p/100*TOTAL);
     while(idx<dots.length && dots[idx].x<=proxy.p){
       const d = dots[idx++];
-      if(d.hit){
-        found++; $('cFound').textContent = found;
-        gsap.to(d.el,{scale:2.6,backgroundColor:'#e4572e',boxShadow:'0 0 18px 4px rgba(228,87,46,.7)',duration:.45,ease:'back.out(3)'});
+      if(d.hit){ found++; $('cFound').textContent = found;
+        gsap.to(d.el,{scale:2.6,backgroundColor:'#ee5a2b',boxShadow:'0 0 18px 4px rgba(238,90,43,.7)',duration:.45,ease:'back.out(3)'});
         gsap.to(d.lb,{opacity:1,duration:.4});
       } else gsap.to(d.el,{opacity:.12,duration:.4});
     }
   }}));
-  gsap.to('#scan',{opacity:0,duration:.4});
-  $('cRead').textContent = TOTAL;
+  gsap.to('#scan',{opacity:0,duration:.4}); $('cRead').textContent = TOTAL;
 
-  /* 3 · cada fecha se vuelve una persona */
   $('stxt').textContent='Armando las fichas';
-  const box = $('people'); const cards = [];
-  PEOPLE.forEach(p=>{ const c = cardEl(p, p.doubt?'doubt':''); if(p.doubt){
-      c.insertAdjacentHTML('beforeend','<div class="ask"><span>¿Es tu hermana?</span><button data-a="si">Sí</button><button data-a="no">No</button></div>'); }
-    box.appendChild(c); cards.push(c); });
+  const box = $('people'); box.innerHTML='';
+  const NC = innerWidth>1000?6:innerWidth>640?3:2;
+  const cols = Array.from({length:NC},()=>{ const c=document.createElement('div'); c.className='pcol'; box.appendChild(c); return c; });
+  const cards = [];
+  PEOPLE.forEach((p,i)=>{ const c = cardEl(p, p.doubt?'doubt':'', i+1);
+    if(p.doubt) c.querySelector('.meta').insertAdjacentHTML('beforeend','<div class="ask"><span>¿Es tu hermana?</span><button data-a="si">Sí</button><button data-a="no">No</button></div>');
+    cols[i%NC].appendChild(c); cards.push(c); });
   const hits = dots.filter(d=>d.hit);
-  const fr = $('field').getBoundingClientRect();
   gsap.set(cards,{opacity:0});
   hits.forEach(d=>{
     const c = cards[d.i], r = c.getBoundingClientRect(), dr = d.el.getBoundingClientRect();
-    gsap.fromTo(c,{x:dr.left+dr.width/2-(r.left+r.width/2), y:dr.top+dr.height/2-(r.top+r.height/2), scale:.15, opacity:0},
-      {x:0,y:0,scale:1,opacity:1,duration:.9,ease:'back.out(1.5)',delay:d.i*.11});
-        gsap.to(d.lb,{opacity:0,duration:.2,delay:d.i*.11});
+    gsap.fromTo(c,{x:dr.left+dr.width/2-(r.left+r.width/2), y:dr.top+dr.height/2-(r.top+r.height/2), scale:.12, opacity:0, rotate:gsap.utils.random(-25,25)},
+      {x:0,y:0,scale:1,opacity:1,rotate:0,duration:1,ease:'back.out(1.4)',delay:d.i*.11});
+    gsap.to(d.lb,{opacity:0,duration:.2,delay:d.i*.11});
   });
-  await wait(PEOPLE.length*.11+.9);
-  gsap.to('#field',{height:96,duration:.9,ease:'power3.inOut'}); gsap.to(hits.map(d=>d.el),{scale:1.5,duration:.6});
+  await wait(PEOPLE.length*.11+1);
+  gsap.to('#field',{height:84,duration:.9,ease:'power3.inOut'}); gsap.to(hits.map(d=>d.el),{scale:1.5,duration:.6});
 
-  /* una ficha dudosa pide confirmar: tiembla y pregunta */
   const dc = box.querySelector('.doubt');
   gsap.fromTo(dc,{x:-5},{x:5,duration:.07,repeat:7,yoyo:true,ease:'sine.inOut',onComplete:()=>gsap.set(dc,{x:0})});
   $('pulse').className='pulse done'; $('stxt').textContent='Listo · conectado con Google Calendar';
@@ -275,29 +458,29 @@ async function runSync(){
   dc.querySelectorAll('button').forEach(b=>b.onclick=()=>{
     const si = b.dataset.a==='si';
     dc.classList.remove('doubt'); dc.querySelector('.ask').remove();
-    if(si){ dc.querySelector('.dt').textContent += ' · hermana'; }
+    if(si) dc.querySelector('.meta i').textContent += ' · hermana';
     $('summary').innerHTML = `Encontré <em>${PEOPLE.length} fechas</em>. Voy aprendiendo con cada una.`;
     gsap.fromTo(dc,{scale:1.06},{scale:1,duration:.5,ease:'elastic.out(1,.5)'});
   });
 
-  /* 4 · en vivo: aparece una fecha nueva desde el calendario */
   await wait(3.2);
-  if(!$('sync').style.display || $('sync').style.display==='none') return;
+  if($('sync').style.display==='none') return;
   const t = $('toast'); t.textContent='Detecté un bautizo nuevo en tu calendario · 22 ago';
   gsap.fromTo(t,{opacity:0,y:16},{opacity:1,y:0,duration:.5});
-  const nc = cardEl(NEW,'live'); nc.insertAdjacentHTML('beforeend','<span class="chip">Nueva</span>'); box.appendChild(nc);
-  gsap.from(nc,{y:-120,opacity:0,scale:.8,duration:.8,ease:'bounce.out'});
+  const nc = cardEl(NEW,'live',20); nc.insertAdjacentHTML('afterbegin','<span class="chip">Nueva</span>');
+  cols[NC-1].appendChild(nc);
+  gsap.from(nc,{y:-140,opacity:0,scale:.8,duration:.9,ease:'bounce.out'});
   await wait(2.6); gsap.to(t,{opacity:0,duration:.5});
 }
+function closeSync(){ $('sync').style.display='none'; document.body.style.overflow=''; }
 
-$('connect').onclick = runSync;
+['connect','connect2','navgo'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
 $('again').onclick = runSync;
-$('enter').onclick = () => { $('sync').style.display='none'; };
+$('enter').onclick = closeSync;
 $('skip').onclick = () => { skipped = true; gsap.globalTimeline.timeScale(30); setTimeout(()=>gsap.globalTimeline.timeScale(1),700); };
-addEventListener('keydown',e=>{ if(e.key==='Escape') $('sync').style.display='none'; });
+addEventListener('keydown',e=>{ if(e.key==='Escape') closeSync(); });
 
 intro();
-if(matchMedia('(prefers-reduced-motion:reduce)').matches) gsap.globalTimeline.timeScale(30);
 </script>
 </body>
 </html>
