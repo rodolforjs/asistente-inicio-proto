@@ -26,24 +26,14 @@ button{cursor:pointer}
 /* boleto */
 .ticket{-webkit-mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
 .grid12{background:repeating-linear-gradient(90deg,#e5eaf2 0 1px,transparent 1px calc(100%/12))}
-/* etiquetas del cordel */
-.tg{position:absolute;top:0;left:0;width:var(--w,128px);transform-origin:50% 0;filter:drop-shadow(0 22px 18px rgba(15,23,42,.22)) drop-shadow(0 2px 3px rgba(15,23,42,.2));will-change:transform}
-.tg .str{display:block;width:2px;height:var(--sl,30px);margin:0 auto;background:linear-gradient(90deg,#8d96a6,#c4cad5)}
-.tg .bd{position:relative;padding:34px 11px 12px;clip-path:polygon(16% 0,84% 0,100% 11%,100% 100%,0 100%,0 11%);background:var(--bg);color:var(--fg)}
-.tg .bd::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.28),transparent 45%,rgba(0,0,0,.18));pointer-events:none}
-.tg .bd::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.28;mix-blend-mode:overlay;pointer-events:none}
-.tg .hole{position:absolute;top:11px;left:50%;width:15px;height:15px;margin-left:-7.5px;border-radius:50%;background:#f5f7f9;box-shadow:inset 0 2px 3px rgba(0,0,0,.45),0 0 0 3px rgba(255,255,255,.3)}
-.tg .leaf{background:#fff;color:#0e1014;border-radius:9px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.18),inset 0 0 0 1px rgba(0,0,0,.05)}
-.tg .leaf .mo{display:block;background:var(--hd,#0e1014);color:#fff;font-size:10px;font-weight:600;letter-spacing:.22em;text-align:center;padding:4px 0}
-.tg .leaf .dy{display:block;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(44px,4.2vw,60px);line-height:1;text-align:center;padding:8px 0 10px;letter-spacing:-.05em}
-.tg .who{margin-top:12px;font-weight:700;font-size:16px;line-height:1.1}
-.tg .oc{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-top:3px}
-.tg .st{margin-top:10px;padding-top:9px;border-top:2px dashed currentColor;border-top-color:color-mix(in srgb,currentColor 40%,transparent);font-size:11.5px;font-weight:600;line-height:1.25}
-.k-cumple{--bg:#ff5924;--fg:#fff}
-.k-padre{--bg:#0e1014;--fg:#fff;--hd:#ff5924}
-.k-boda{--bg:#fff;--fg:#0e1014;--hd:#0e1014}
-.k-bebe{--bg:#c9d2ff;--fg:#0e1014}
-.k-navidad{--bg:#12372a;--fg:#fff;--hd:#ff5924}
+/* escena estilo iOS */
+.glass{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 0 0 1px rgba(15,23,42,.05),0 24px 40px -18px rgba(15,23,42,.28),0 4px 10px -4px rgba(15,23,42,.1)}
+.fl{position:absolute;will-change:transform}
+.nt{border-radius:20px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 8px 20px -10px rgba(40,20,10,.35)}
+.appi{flex:none;width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,#ff8a5c,#ff4a14);display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:7px 8px 7px 15px;font-size:15px;font-weight:600;box-shadow:0 12px 20px -10px rgba(15,23,42,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+.pill i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;font-style:normal;font-size:13px}
+.tag{display:inline-block;border-radius:999px;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}
 /* fichas de la sincronización */
 .card{transform-style:preserve-3d;will-change:transform}
 .card .art{position:relative;overflow:hidden}
@@ -96,7 +86,60 @@ button{cursor:pointer}
       </div>
       <p id="micro" class="mt-6 max-w-[420px] text-xs leading-relaxed text-slate2">Después te sigue avisando solo, con tiempo para elegir y recibir.</p>
     </div>
-    <div id="garland" class="relative h-full min-h-[300px]"><svg id="tw" class="pointer-events-none absolute inset-0 size-full overflow-visible"><path id="twp" fill="none" stroke="#9aa3b2" stroke-width="2.2"/></svg></div>
+    <div id="garland" class="relative h-full min-h-[300px] overflow-visible">
+      <div id="canvas" class="absolute left-1/2 top-1/2" style="width:720px;height:640px;margin:-320px 0 0 -360px">
+        <!-- teléfono -->
+        <div id="phone" class="absolute" style="left:215px;top:20px;width:290px;height:600px;border-radius:50px;background:#0b0c0f;padding:9px;box-shadow:0 0 0 2px #2a2d33,0 0 0 3px #0b0c0f,0 60px 80px -30px rgba(15,23,42,.55),0 20px 30px -12px rgba(15,23,42,.3)">
+          <div class="relative size-full overflow-hidden" style="border-radius:42px;background:linear-gradient(170deg,#ffe3d3 0%,#f3d9f5 48%,#cfd9ff 100%)">
+            <div class="absolute left-1/2 top-2.5 z-10 h-[26px] w-[88px] -translate-x-1/2 rounded-full bg-black"></div>
+            <div class="absolute inset-x-6 top-3 flex justify-between text-[12px] font-semibold text-black/80"><span>9:41</span><span class="mr-0.5 opacity-0">.</span></div>
+            <div class="pt-14 text-center text-black/80"><p class="text-[13px] font-semibold">Miércoles 4 de noviembre</p><p class="font-sans text-[78px] font-semibold leading-[1] tracking-[-0.045em] text-black/85">9:41</p></div>
+            <div id="nts" class="absolute inset-x-3 top-[218px] flex flex-col gap-2">
+              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">ahora</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Mamá cumple en 14 días. Tu propuesta ya está lista.</p></div></div>
+              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">hace 2 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Papá aprobó su regalo. Llega el 18.</p></div></div>
+              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">hace 5 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Encontré 3 fechas nuevas en tu calendario.</p></div></div>
+            </div>
+            <div class="absolute inset-x-0 bottom-2 mx-auto h-[5px] w-[110px] rounded-full bg-black/70"></div>
+          </div>
+        </div>
+
+        <!-- evento creado -->
+        <div class="fl glass rounded-[26px] p-4" data-d="1.4" style="left:0;top:70px;width:236px">
+          <div class="flex items-center gap-2"><span class="tag" style="background:#ff5924">Evento creado</span></div>
+          <div class="mt-3 flex gap-3"><i class="block w-1 shrink-0 rounded-full bg-brand"></i><div class="leading-tight"><p class="text-[16px] font-semibold">Cumpleaños de Mamá</p><p class="mt-1 text-[13px] text-slate2">Sáb 14 mar · todo el día</p><p class="mt-2.5 text-[12px] font-medium text-black/60">🎁 Recordatorio 14 días antes</p></div></div>
+        </div>
+
+        <!-- regalo propuesto -->
+        <div class="fl glass rounded-[26px] p-3.5" data-d="1.8" style="left:-26px;top:396px;width:262px">
+          <div class="flex gap-3">
+            <div class="relative size-[74px] shrink-0 overflow-hidden rounded-[18px]" style="background:linear-gradient(150deg,#ffd9a8,#ff7a45)"><svg viewBox="0 0 74 74" class="absolute inset-0"><circle cx="37" cy="44" r="19" fill="#fff" opacity=".9"/><path d="M56 40c8 0 8 12 0 12" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M30 24c-3-5 4-7 2-12M42 24c-3-5 4-7 2-12" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/></svg></div>
+            <div class="min-w-0 leading-tight"><span class="tag" style="background:#22a06b">Propuesta lista</span><p class="mt-1.5 text-[15px] font-semibold">Set de té de autor</p><p class="mt-0.5 text-[12.5px] text-slate2">$24.990 · llega el 12 mar</p></div>
+          </div>
+          <div class="mt-3 flex gap-2"><span class="grid h-9 flex-1 place-items-center rounded-full bg-black text-[13px] font-semibold text-white">Aprobar</span><span class="grid h-9 flex-1 place-items-center rounded-full bg-black/[.06] text-[13px] font-semibold">Ver 2 más</span></div>
+        </div>
+
+        <!-- aprobada -->
+        <div class="fl glass flex items-center gap-3 rounded-[22px] px-4 py-3" data-d="1.2" style="left:498px;top:262px;width:222px">
+          <span class="grid size-9 shrink-0 place-items-center rounded-full bg-[#22a06b]"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <div class="leading-tight"><p class="text-[14px] font-semibold">Aprobada</p><p class="text-[12px] text-slate2">Papá · Día del Padre</p></div>
+        </div>
+
+        <!-- aviso con anillo -->
+        <div class="fl glass flex items-center gap-3 rounded-[26px] p-3.5" data-d="1.6" style="left:506px;top:430px;width:214px">
+          <svg width="52" height="52" viewBox="0 0 52 52" class="shrink-0 -rotate-90"><circle cx="26" cy="26" r="21" fill="none" stroke="#e5eaf2" stroke-width="6"/><circle id="ring" cx="26" cy="26" r="21" fill="none" stroke="#ff5924" stroke-width="6" stroke-linecap="round" stroke-dasharray="132" stroke-dashoffset="40"/></svg>
+          <div class="leading-tight"><p class="text-[12px] font-medium text-slate2">Emilia · Nacimiento</p><p class="text-[18px] font-semibold tracking-tight">Aviso en 6 días</p></div>
+        </div>
+
+        <!-- píldoras -->
+        <div class="fl" data-d="2.2" style="left:488px;top:60px"><span class="pill" style="background:#c9d2ff">Mamá <i>✕</i></span></div>
+        <div class="fl" data-d="1.0" style="left:560px;top:122px"><span class="pill" style="background:#ffe48a">Papá <i>✕</i></span></div>
+        <div class="fl" data-d="2.0" style="left:524px;top:184px"><span class="pill" style="background:#ffc2d1">Sofi y Nico <i>✕</i></span></div>
+        <div class="fl" data-d="2.4" style="left:28px;top:12px"><span class="tag" style="background:#6a4be0;padding:6px 14px;font-size:11px">Cumpleaños</span></div>
+        <div class="fl" data-d="1.1" style="left:20px;top:300px"><span class="tag" style="background:#0e1014;padding:6px 14px;font-size:11px">Navidad</span></div>
+        <div class="fl glass grid size-14 place-items-center rounded-full" data-d="2.6" style="left:130px;top:224px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e1014" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg></div>
+        <div class="fl glass grid size-14 place-items-center rounded-full" data-d="1.5" style="left:610px;top:360px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff5924" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div>
+      </div>
+    </div>
   </section>
 
   <div id="months" class="absolute inset-x-0 bottom-2 z-10 grid grid-cols-12 pl-2 text-[10.5px] font-semibold tracking-[.14em] text-slate2/80"></div>
@@ -165,46 +208,35 @@ const xPct = (m,d) => (m + d/31) / 12 * 100;
 const daysTo = (m,d) => { const n=new Date(); const t=new Date(n.getFullYear(),m,d); if(t<n) t.setFullYear(n.getFullYear()+1); return Math.ceil((t-n)/864e5); };
 const CHIP = {Lista:'bg-emerald-400/15 text-emerald-300 ring-emerald-400/30',Elegir:'bg-orange-400/15 text-orange-300 ring-orange-400/30',Confirmar:'bg-white/10 text-white/70 ring-white/20'};
 
-/* ---------- Hero: cordel de etiquetas ---------- */
-function tagHTML(p, sub){
-  return `<div class="tg k-${p.k}"><i class="str"></i><div class="bd"><span class="hole"></span>
-    <div class="leaf"><span class="mo">${MES[p.m]}</span><b class="dy">${p.d}</b></div>
-    <div class="who">${p.n}</div><div class="oc">${p.o}</div><div class="st">${sub}</div></div></div>`;
+/* ---------- Hero: escena estilo iOS ---------- */
+const fls = () => [...document.querySelectorAll('.fl')];
+function fit(){
+  const g=$('garland'); const k=Math.min(g.clientWidth/720, g.clientHeight/640, 1.08);
+  gsap.set('#canvas',{scale:k,transformOrigin:'50% 50%'});
 }
-const HERO = [
-  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, k:'cumple',  s:'En 14 días · propuesta lista', t:.09,  sl:30},
-  {n:'Papá',        o:'Día del Padre', m:5,  d:21, k:'padre',   s:'Aprobada · llega el 18',       t:.285, sl:74},
-  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, k:'boda',    s:'3 opciones por elegir',        t:.48,  sl:36},
-  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  k:'bebe',    s:'Aviso en 6 días',              t:.68,  sl:78},
-  {n:'Navidad',     o:'Familia',       m:11, d:24, k:'navidad', s:'Te aviso en noviembre',        t:.865, sl:34},
-];
-let hang = [];
-function layoutGarland(){
-  const g = $('garland'), W = g.clientWidth, H = g.clientHeight, small = innerWidth<=1024;
-  $('tw').setAttribute('viewBox',`0 0 ${W} ${H}`);
-  const p = $('twp');
-  p.setAttribute('d', small ? `M-20,30 C ${W*.3},80 ${W*.7},-10 ${W+20},40` : `M-30,${H*.12} C ${W*.28},${H*.34} ${W*.55},${-H*.04} ${W+30},${H*.2}`);
-  const L = p.getTotalLength();
-  hang.forEach(h=>h.el.remove()); hang = [];
-  const list = small ? HERO.filter((_,i)=>i%2===0) : HERO;
-  const tw = small?104:128;
-  list.forEach((o,i)=>{
-    const wrap = document.createElement('div'); wrap.innerHTML = tagHTML(o,o.s);
-    const el = wrap.firstChild; el.style.setProperty('--sl',(small?o.sl*.5:Math.min(o.sl,H*.14))+'px'); el.style.setProperty('--w',tw+'px');
-    g.appendChild(el);
-    const pt = p.getPointAtLength(L*o.t);
-    gsap.set(el,{x:pt.x-tw/2,y:pt.y});
-    hang.push({el,o,i});
-  });
-}
-function swing(){
-  hang.forEach(({el,i})=>gsap.fromTo(el,{rotation:-4+i%2*2},{rotation:4-i%2*2,duration:2.6+i*.45,yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.15}));
-}
-addEventListener('mousemove',e=>{
+let bobs=[];
+function float(){
+  bobs.forEach(t=>t.kill()); bobs=[];
   if(REDUCE) return;
-  const nx = e.clientX/innerWidth-.5;
-  hang.forEach(({el})=>gsap.to(el,{skewX:nx*-6,duration:1,ease:'power3.out',overwrite:'auto'}));
+  fls().forEach((el,i)=>bobs.push(gsap.to(el,{y:gsap.utils.random(-11,11),x:gsap.utils.random(-5,5),duration:gsap.utils.random(2.4,4),yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.1})));
+}
+addEventListener('pointermove',e=>{
+  if(REDUCE) return;
+  const nx=e.clientX/innerWidth-.5, ny=e.clientY/innerHeight-.5;
+  gsap.to('#phone',{rotationY:nx*8,rotationX:-ny*5,transformPerspective:1000,duration:1,ease:'power3.out',overwrite:'auto'});
 });
+let nTl;
+function notifs(){
+  nTl && nTl.kill();
+  const n=gsap.utils.toArray('#nts .nt');
+  nTl=gsap.timeline({repeat:-1,repeatDelay:.4});
+  gsap.set(n,{opacity:0});
+  n.forEach((el,i)=>nTl.fromTo(el,{y:-26,scale:.92,opacity:0,transformOrigin:'50% 0'},{y:0,scale:1,opacity:1,duration:.7,ease:'back.out(1.6)'},i*1.05));
+  nTl.to('#ring',{strokeDashoffset:20,duration:1.2,ease:'power2.inOut'},0.4)
+     .to({}, {duration:2.2})
+     .to(n,{opacity:0,y:10,duration:.5,stagger:.08,ease:'power2.in'})
+     .set('#ring',{strokeDashoffset:40});
+}
 function intro(){
   const s1 = SplitText.create('#w1',{type:'chars'}), s2 = SplitText.create('#w2',{type:'chars'});
   const tl = gsap.timeline({defaults:{ease:'expo.out'}});
@@ -214,8 +246,9 @@ function intro(){
     .from(s2.chars,{yPercent:115,rotate:-8,duration:1,stagger:.035},'-=.85')
     .from('#ul',{drawSVG:0,duration:.8,ease:'power2.inOut'},'-=.5')
     .from(['#sub','#ctaw','#micro'],{opacity:0,y:18,duration:.7,stagger:.09},'-=.7')
-    .from('#twp',{drawSVG:'0%',duration:1.1,ease:'power2.inOut'},'-=1.2')
-    .from(hang.map(h=>h.el),{y:'-=240',opacity:0,duration:1.1,stagger:.12,ease:'back.out(1.3)',onComplete:swing},'-=.9');
+    .from('#phone',{y:90,opacity:0,scale:.94,duration:1.2,ease:'expo.out'},'-=1.2')
+    .from(fls(),{scale:.55,opacity:0,y:'+=40',duration:1,stagger:{each:.09,from:'random'},ease:'back.out(1.8)',clearProps:'scale,opacity',onComplete:float},'-=.8')
+    .add(notifs,'-=.6');
 }
 
 /* ---------- Sincronización ---------- */
@@ -357,8 +390,8 @@ $('enter').onclick = closeSync;
 $('skip').onclick = () => { gsap.globalTimeline.timeScale(30); setTimeout(()=>gsap.globalTimeline.timeScale(1),700); };
 addEventListener('keydown',e=>{ if(e.key==='Escape') closeSync(); });
 
-document.fonts.ready.then(()=>{ layoutGarland(); intro(); });
-let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(()=>{ layoutGarland(); swing(); },200); });
+document.fonts.ready.then(()=>{ fit(); intro(); });
+let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(fit,100); });
 </script>
 </body>
 </html>
