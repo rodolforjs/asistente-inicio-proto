@@ -328,46 +328,55 @@ function intro(){
 function art(k, seed){
   let s = seed*97+13; const r = () => (s = (s*16807)%2147483647)/2147483647;
   const W=200,H=150; let g='';
-  const soft=(x,y,rad,o)=>`<circle cx="${x}" cy="${y}" r="${rad}" fill="#fff" opacity="${o}"/>`;
-  const line=(d,o=.55,w=1.6)=>`<path d="${d}" fill="none" stroke="#fff" stroke-width="${w}" stroke-linecap="round" opacity="${o}"/>`;
-  if(k==='cumple'){
-    g+=soft(150,40,62,.12)+soft(172,118,40,.14);
-    for(let i=0;i<22;i++){ const x=r()*W,y=r()*H,rr=2.5+r()*6.5; g+= i%3? `<circle cx="${x}" cy="${y}" r="${rr}" fill="#fff" opacity="${.22+r()*.5}"/>` : `<rect x="${x}" y="${y}" width="${rr*2.2}" height="${rr*.8}" rx="2" fill="#fff" opacity=".7" transform="rotate(${r()*180} ${x} ${y})"/>`; }
-    g+=line('M118 14c18 24-8 40 12 62s-6 40 14 60',.5)+line('M150 6c14 20-6 34 8 54',.4);
+  const dot=(x,y,rad,o)=>`<circle cx="${x}" cy="${y}" r="${rad}" fill="#fff" opacity="${o}"/>`;
+  const ln=(d,o=.55,w=1.6)=>`<path d="${d}" fill="none" stroke="#fff" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" opacity="${o}"/>`;
+  const spark=(x,y,z,o=.9)=>`<path d="M${x} ${y-z}l${z*.28} ${z*.72} ${z*.72} ${z*.28}-${z*.72} ${z*.28}-${z*.28} ${z*.72}-${z*.28}-${z*.72}-${z*.72}-${z*.28} ${z*.72}-${z*.28}Z" fill="#fff" opacity="${o}"/>`;
+  const heart=(cx,cy,sc,o,rot=0)=>`<path d="M50 90C10 62 14 24 36 24c8 0 14 5 14 12 0-7 6-12 14-12 22 0 26 38-14 66Z" fill="#fff" opacity="${o}" transform="translate(${cx} ${cy}) rotate(${rot}) scale(${sc}) translate(-50 -57)"/>`;
+  const confetti=(n,x0=0)=>{ let o=''; for(let i=0;i<n;i++){ const x=x0+r()*(W-x0),y=r()*H,rr=2+r()*4.5; o+= i%3? dot(x,y,rr*.7,.25+r()*.45) : `<rect x="${x}" y="${y}" width="${rr*2.4}" height="${rr*.8}" rx="1.5" fill="#fff" opacity=".6" transform="rotate(${r()*180} ${x} ${y})"/>`; } return o; };
+
+  if(k==='cumple'){ // globos
+    g+=confetti(18);
+    g+=ln('M126 92C120 108 134 116 126 142',.55)+ln('M152 100C158 114 144 124 150 144',.55)+ln('M180 90C186 106 174 118 182 140',.55);
+    [[126,70,19,23,.95],[152,78,19,23,.7],[180,68,17,21,.85]].forEach(([x,y,rx,ry,o])=>{
+      g+=`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="#fff" opacity="${o}"/><path d="M${x-3} ${y+ry-1}l3 6 3-6Z" fill="#fff" opacity="${o}"/><ellipse cx="${x-rx*.42}" cy="${y-ry*.38}" rx="${rx*.18}" ry="${ry*.3}" fill="#fff" opacity=".75" transform="rotate(25 ${x-rx*.42} ${y-ry*.38})"/>`; });
   }
-  if(k==='bebe'){
-    g+=soft(150,150,96,.1);
-    g+=[84,64,46,30].map((rad,i)=>`<path d="M${150-rad} 150 a${rad} ${rad} 0 0 1 ${rad*2} 0" fill="none" stroke="#fff" stroke-width="${i%2?5:9}" stroke-linecap="round" opacity="${.38+i*.16}"/>`).join('');
-    for(let i=0;i<5;i++) g+=soft(112+r()*80,12+r()*58,1.6+r()*2.6,.75);
-    g+=`<path d="M176 34l2.4 5.2 5.6.6-4.2 3.8 1.2 5.6-5-2.8-5 2.8 1.2-5.6-4.2-3.8 5.6-.6Z" fill="#fff" opacity=".85"/>`;
+  if(k==='bebe'){ // mamadera + luna y estrellas
+    g+=[70,52,36].map((rad,i)=>ln(`M${150-rad} 150a${rad} ${rad} 0 0 1 ${rad*2} 0`,.22+i*.1,i%2?4:8)).join('');
+    g+=`<path d="M141 20q9-12 18 0v9h-18Z" fill="#fff" opacity=".95"/><rect x="133" y="29" width="34" height="10" rx="4" fill="#fff" opacity=".75"/><rect x="131" y="39" width="38" height="66" rx="12" fill="#fff" opacity=".92"/>`;
+    g+=ln('M131 56h12M131 68h12M131 80h12',.9,2).replace(/#fff/g,'#9aa8ff');
+    g+=`<path d="M131 86h38v7q0 12-12 12h-14q-12 0-12-12Z" fill="#fff" opacity="1"/><path d="M131 80h38" stroke="#bcd3ff" stroke-width="0"/>`;
+    g+=spark(112,34,9)+spark(186,64,7,.8)+spark(110,100,6,.7)+dot(120,64,2,.7)+dot(184,106,2.4,.6);
+    g+=`<path d="M176 24a12 12 0 1 0 9 17 9 9 0 1 1-9-17Z" fill="#fff" opacity=".85" transform="translate(-6 -4)"/>`;
   }
-  if(k==='navidad'){
-    g+=soft(150,52,34,.13)+soft(150,52,18,.2);
-    for(let i=0;i<18;i++){ const a=i/18*Math.PI*2, L=i%2?96:128; g+=`<line x1="${150+Math.cos(a)*44}" y1="${52+Math.sin(a)*44}" x2="${150+Math.cos(a)*L}" y2="${52+Math.sin(a)*L}" stroke="#fff" stroke-width="${i%2?1.4:2}" opacity="${i%2?.25:.4}"/>`; }
-    g+=`<circle cx="150" cy="52" r="9" fill="#fff" opacity=".95"/>`;
-    for(let i=0;i<16;i++) g+=soft(r()*W,r()*H,1.2+r()*2.4,.5);
+  if(k==='navidad'){ // arbol
+    for(let i=0;i<22;i++) g+=dot(r()*W,r()*H,1+r()*2.2,.4+r()*.4);
+    g+=`<rect x="143" y="116" width="14" height="14" rx="2" fill="#fff" opacity=".55"/><polygon points="150,34 178,70 122,70" fill="#fff" opacity=".95"/><polygon points="150,52 184,92 116,92" fill="#fff" opacity=".78"/><polygon points="150,74 190,118 110,118" fill="#fff" opacity=".6"/>`;
+    g+=spark(150,22,13,1);
+    g+=dot(142,66,3.2,.5).replace('#fff','#ff5924')+dot(160,88,3.4,.9).replace('#fff','#ff5924')+dot(136,106,3.2,.95).replace('#fff','#ff5924')+dot(166,108,3.2,.95).replace('#fff','#ff5924');
+    g+=ln('M126 86q24 12 48-2',.5,1.4);
   }
-  if(k==='amor'){
-    g+=`<circle cx="118" cy="70" r="50" fill="#fff" opacity=".42"/><circle cx="156" cy="70" r="50" fill="#ff5924" opacity=".38" style="mix-blend-mode:multiply"/>`;
-    g+=`<circle cx="137" cy="70" r="64" fill="none" stroke="#fff" stroke-width="1.4" opacity=".5"/><circle cx="137" cy="70" r="80" fill="none" stroke="#fff" stroke-width="1" opacity=".3"/>`;
-    for(let i=0;i<7;i++) g+=soft(100+r()*96,8+r()*134,1.6+r()*3,.6);
+  if(k==='amor'){ // corazones
+    g+=heart(138,78,1.05,.95)+heart(172,48,.5,.7,14)+heart(112,36,.34,.6,-14)+heart(176,112,.38,.55,10);
+    g+=heart(138,78,.62,.45,0).replace('#fff','#ff5924');
+    g+=spark(116,112,7,.8)+dot(190,84,2.4,.7)+dot(104,70,2,.6);
   }
-  if(k==='boda'){
-    g+=soft(140,70,70,.1);
-    g+=`<circle cx="120" cy="74" r="40" fill="none" stroke="#fff" stroke-width="9" opacity=".92"/><circle cx="158" cy="74" r="40" fill="none" stroke="#fff" stroke-width="9" opacity=".55"/><circle cx="120" cy="74" r="32" fill="none" stroke="#fff" stroke-width="1.2" opacity=".6"/><circle cx="158" cy="74" r="32" fill="none" stroke="#fff" stroke-width="1.2" opacity=".4"/>`;
-    g+=`<path d="M139 24l5 9 9 4-9 4-5 9-5-9-9-4 9-4Z" fill="#fff"/>`;
-    for(let i=0;i<8;i++) g+=soft(96+r()*100,r()*H,1.2+r()*2,.6);
+  if(k==='boda'){ // argollas con brillante
+    g+=`<circle cx="124" cy="86" r="30" fill="none" stroke="#fff" stroke-width="9" opacity=".95"/><circle cx="160" cy="86" r="30" fill="none" stroke="#fff" stroke-width="9" opacity=".6"/><circle cx="124" cy="86" r="24" fill="none" stroke="#fff" stroke-width="1.2" opacity=".6"/>`;
+    g+=`<polygon points="160,30 174,42 160,60 146,42" fill="#fff" opacity=".95"/><path d="M146 42h28M160 30l-6 12 6 18 6-18Z" fill="none" stroke="#ffb86b" stroke-width="1.4" stroke-linejoin="round" opacity=".9"/>`;
+    g+=spark(112,36,9)+spark(186,70,7,.8)+spark(106,130,6,.7)+dot(190,120,2.4,.6);
   }
-  if(k==='oficina'){
-    for(let i=0;i<6;i++) g+=`<rect x="${92+i*13}" y="${14+i*12}" width="84" height="84" rx="10" fill="none" stroke="#fff" stroke-width="${i%2?1.6:2.6}" opacity="${.9-i*.13}" transform="rotate(${i*8} 150 60)"/>`;
-    g+=soft(176,120,3,.8)+soft(120,128,2.2,.6)+soft(100,40,2.6,.5);
+  if(k==='oficina'){ // regalo de amigo secreto
+    g+=confetti(10,96);
+    g+=`<rect x="120" y="76" width="60" height="58" rx="6" fill="#fff" opacity=".92"/><rect x="112" y="58" width="76" height="20" rx="6" fill="#fff" opacity=".7"/><rect x="144" y="58" width="12" height="76" fill="#ff5924" opacity=".95"/><path d="M150 58C132 58 126 36 138 36c9 0 12 14 12 22Zm0 0c18 0 24-22 12-22-9 0-12 14-12 22Z" fill="#ff5924" opacity=".95"/>`;
+    g+=`<circle cx="182" cy="32" r="14" fill="#fff" opacity=".95"/><text x="182" y="38.5" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="18" fill="#0e1014" opacity=".75">?</text>`;
   }
-  if(k==='padre'){
-    for(let i=0;i<11;i++){ const hh=(i%4+1)*30+(i%3)*8; g+=`<rect x="${14+i*17}" y="${150-hh}" width="11" height="${hh}" rx="5.5" fill="#fff" opacity="${.18+i%4*.17}"/>`; }
-    g+=line('M0 120C40 96 70 124 110 90s60-30 90-46',.55,2);
-    g+=soft(176,40,5,.9);
+  if(k==='padre'){ // corbata
+    g+=`<polygon points="138,18 162,18 167,40 133,40" fill="#fff" opacity=".95"/><polygon points="133,40 167,40 182,126 150,142 118,126" fill="#fff" opacity=".88"/>`;
+    g+=ln('M126 62l48-14M123 80l56-16M121 98l60-18M124 116l54-14',.9,5).replace(/#fff/g,'#5a78ff');
+    g+=ln('M133 40h34',.5,1.6).replace('#fff','#5a78ff');
+    g+=spark(106,44,8,.85)+spark(192,28,6,.7)+dot(108,118,2.6,.7);
   }
-  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${g}</svg>`;
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${k==='bebe'?`<g transform="translate(-16 10)">${g}</g>`:g}</svg>`;
 }
 function cardEl(p, extra='', seed=1){
   const c = document.createElement('div');
@@ -376,7 +385,6 @@ function cardEl(p, extra='', seed=1){
     <div class="p-4">
       <div class="flex items-start justify-between gap-2"><div class="min-w-0"><b class="block truncate text-[15px] font-semibold leading-tight">${p.n}</b><p class="mt-0.5 text-[10.5px] font-semibold uppercase tracking-[.14em] text-white/55">${p.o}</p></div>
         <span class="shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ring-1 ${CHIP[p.st]}">${p.st}</span></div>
-      <div class="mt-3.5 flex items-center justify-between border-t border-white/10 pt-3 text-[11.5px] text-white/55"><span>Aviso 10 días antes</span><span class="num">en ${daysTo(p.m,p.d)} días</span></div>
     </div><i class="sheen"></i>`;
   c.addEventListener('pointermove',e=>{ if(REDUCE) return; const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
     c.style.setProperty('--mx',x*100+'%'); c.style.setProperty('--my',y*100+'%');
