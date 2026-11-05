@@ -6,7 +6,7 @@
 <title>Cuenta conmigo · asistente de regalos (prototipo)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <style type="text/tailwindcss">
 @theme{
@@ -131,10 +131,6 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .pl-ask button{border-radius:999px;background:#fff;padding:6px 12px;font-weight:600;box-shadow:0 0 0 1px #e5eaf2;transition:background .15s,color .15s}
 .pl-ask button:hover{background:#0e1014;color:#fff}
 .pl-ask em{font-style:normal;margin-left:4px;font-weight:500}
-.pl-how{margin-top:12px;font-size:13px}
-.pl-how summary{cursor:pointer;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
-.pl-mode{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;color:#5f6b7d}
-.pl-mode span{font-weight:600;color:#0e1014;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
 .pl-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
 .pc3{display:flex;min-width:0;flex-direction:column;overflow:hidden;border-radius:20px;background:#fff;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:transform .18s,box-shadow .18s}
 .pc3:hover{transform:translateY(-3px)}
@@ -222,6 +218,70 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
   .pp-date{min-width:42px}
 }
 @media(prefers-reduced-motion:reduce){.ap-sw,.ap-sw::after,.pp-c,.pp-img{transition:none}.pl-dots i{animation:none}}
+/* Delego: con volumen */
+.pl{gap:56px}
+.pl-l{padding-top:20px}
+.pl-r{padding-top:8px;padding-bottom:4px}
+.pl-pick{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:0;margin-top:22px;flex:none;min-height:0;max-height:none;overflow:hidden;border-radius:28px;background:#fff;box-shadow:0 0 0 1px rgba(229,234,242,.9),0 34px 50px -34px rgba(15,23,42,.38)}
+.pl-ph{border-radius:0;box-shadow:none;min-height:348px}
+.pl-info{display:flex;min-width:0;flex-direction:column;padding:28px 30px 26px}
+.pl-cta{box-shadow:0 16px 24px -12px rgba(14,16,20,.55)}
+.pl-cta-w{width:100%;padding:17px 26px;font-size:16px}
+.pl-fine{margin-top:11px}
+.pl-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;margin-top:24px}
+.pl-ask{margin-top:0}
+.pl-ask em{flex-basis:100%;margin-left:0;min-height:0}
+.pl-ask em:empty{display:none}
+.fn{display:flex;align-items:stretch}
+.fn li{position:relative;display:flex;min-width:0;flex-direction:column;gap:3px;padding:0 22px 0 0;margin-right:18px}
+.fn li:not(:last-child)::after{content:"";position:absolute;right:0;top:12px;width:9px;height:9px;border-top:1.5px solid #aab2bf;border-right:1.5px solid #aab2bf;transform:rotate(45deg)}
+.fn b{font-family:'Newsreader',serif;font-weight:400;font-size:27px;line-height:1;letter-spacing:-.02em}
+.fn span{max-width:72px;font-size:11.5px;line-height:1.2;color:#5f6b7d}
+.fn li:last-child{margin-right:0;padding-right:0}
+.fn li:last-child b{color:#ff5924}
+.fn li:last-child span{color:#0e1014;font-weight:600}
+/* Elijo yo: escena */
+.sc{position:relative;flex:none;height:clamp(300px,calc(100vh - 306px),540px);margin-top:20px;overflow:hidden;border-radius:28px;background:#fbf7ee;box-shadow:0 0 0 1px rgba(229,234,242,.9),0 34px 50px -34px rgba(15,23,42,.38);cursor:grab;touch-action:pan-y;user-select:none}
+.sc.drag{cursor:grabbing}
+.sc-p{position:absolute;left:0;top:0;height:100%;aspect-ratio:5/1;will-change:transform}
+.sc-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.st{position:absolute;z-index:2;display:block;transform:rotate(var(--r));transition:filter .2s}
+.st-cut{display:block;filter:drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 12px 9px rgba(50,35,20,.3));transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.st-cut img{display:block;width:100%;pointer-events:none;-webkit-user-drag:none}
+.st:hover .st-cut{transform:translateY(-6px) rotate(-1.5deg)}
+.st-dot{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:#fff;font-size:18px;font-weight:500;line-height:1;color:#0e1014;box-shadow:0 0 0 5px rgba(255,255,255,.4),0 4px 10px rgba(15,23,42,.3);animation:stp 2s infinite}
+@keyframes stp{0%,100%{box-shadow:0 0 0 4px rgba(255,255,255,.45),0 4px 10px rgba(15,23,42,.3)}50%{box-shadow:0 0 0 11px rgba(255,255,255,.12),0 4px 10px rgba(15,23,42,.3)}}
+.st[aria-pressed=true] .st-dot{display:none}
+.st-bow{position:absolute;left:50%;top:14%;display:none;width:66px;margin-left:-33px;transform-origin:center}
+.st[aria-pressed=true] .st-bow{display:block}
+.st-tag{position:absolute;right:2%;bottom:8%;border-radius:8px;background:#fff06a;padding:3px 9px;font-size:13px;font-weight:700;color:#0e1014;box-shadow:0 3px 8px rgba(15,23,42,.25);transform:rotate(-3deg)}
+.st[aria-pressed=true] .st-tag{background:#0e1014;color:#fff}
+.sc-cap{position:absolute;left:24px;top:16px;z-index:3;pointer-events:none;font-family:'Caveat',cursive;font-size:30px;font-weight:500;line-height:1;color:#0e1014}
+.sc-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:-54px;z-index:3;position:relative;pointer-events:none}
+.sc-nav button{pointer-events:auto;border-radius:999px;background:rgba(255,255,255,.9);padding:7px 14px;font-size:13px;font-weight:600;box-shadow:0 2px 10px rgba(15,23,42,.14);transition:background .15s,color .15s}
+.sc-nav button:hover{background:#fff}
+.sc-nav button[aria-pressed=true]{background:#0e1014;color:#fff}
+.sc-f{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px 28px;margin-top:38px}
+.pl-t-sm{font-size:clamp(26px,2.4vw,32px)}
+@media(max-width:1023px){.sc{height:340px}}
+@media(max-width:560px){
+  .pl-pick{grid-template-columns:minmax(0,1fr)}
+  .pl-ph{min-height:0;aspect-ratio:4/3}
+  .pl-info{padding:20px}
+  .pl-foot{gap:18px}
+  .fn{width:100%;justify-content:space-between}
+  .fn li{margin-right:0;padding-right:12px}
+  .fn li:not(:last-child)::after{display:none}
+  .fn span{font-size:10.5px}
+  .sc{height:300px}
+  .sc-f{grid-template-columns:minmax(0,1fr)}
+  .sc-nav{flex-wrap:nowrap;justify-content:flex-start;gap:6px;margin-top:10px;overflow-x:auto;pointer-events:auto;scrollbar-width:none}
+  .sc-nav button{flex:none;padding:7px 12px;font-size:12.5px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
+  .sc-cap{left:16px;top:12px;font-size:23px}
+  .sc-f{margin-top:16px}
+  .sc-f .shrink-0,.sc-f .pl-cta{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.st-dot{animation:none}.st-cut{transition:none}}
 .ask-card{box-shadow:0 0 0 2px #ff5924,0 0 0 6px rgba(255,89,36,.18),0 30px 40px -22px rgba(15,23,42,.55)!important}
 .card .new{position:absolute;left:12px;top:9px;background:#fff;color:#0e1014;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:99px;z-index:3}
 .hero-art .art::before{display:none}
@@ -749,8 +809,6 @@ const defaultFocus = () => { const v=yr(); return v.find(p=>phase(p)==='now') ||
 const arrival = p => dleft(p)<=3 ? 'mañana' : 'el '+fdate(addD(occ(p),-3));
 const days = n => n===0?'hoy':n===1?'mañana':`en ${n} días`;
 const whyOf = p => GIFT[p.n][1];
-const channels = () => { const c=[cfg.wa&&'WhatsApp',cfg.mail&&'correo'].filter(Boolean); return c.length? `si no respondes, te insisto por ${c.join(' y luego por ')}` : 'te aviso solo aquí'; };
-const modeNote = () => `<button data-act="goto" data-a="cf-mode" class="pl-mode">Modo ${cfg.mode==='delego'?'Delego':'Elijo yo'}<span>Cambiar</span></button>`;
 const after = p => yr().find(x=>x!==p && phase(x)==='later' && occ(x)>occ(p));
 
 /* tarjeta de la fecha: la misma ficha de la sincronización, ahora protagonista */
@@ -805,43 +863,118 @@ async function runThink(p){
   if(!live()) return;
   st=Flip.getState('#thS .th'); out2.forEach(e=>e.remove()); d.its.forEach(h=>S.appendChild(S.querySelector(`[data-h="${h}"]`))); S.className='th-s s3'; Flip.from(st,{duration:.65,ease:'power3.inOut',absolute:true});
   await wait(1.2); if(!live()) return;
-  const sel=cfg.mode==='delego'?`#thS [data-h="${items(p)[ypick[p.n]||0].h}"]`:'#thS .th';
-  const fs=Flip.getState(sel);
+  const scene=cfg.mode==='elijo'&&SCENES[p.n];
+  const fs=scene?null:Flip.getState(cfg.mode==='delego'?`#thS [data-h="${items(p)[ypick[p.n]||0].h}"]`:'#thS .th');
   thought[p.n]=true;
   $('plLeft').innerHTML=leftFinal(p);
-  const tg=[...$('plLeft').querySelectorAll('[data-flip-id]')];
-  Flip.from(fs,{targets:tg,duration:.7,ease:'power3.inOut',scale:false});
+  if(scene) mountScene(p,true);
+  else Flip.from(fs,{targets:[...$('plLeft').querySelectorAll('[data-flip-id]')],duration:.7,ease:'power3.inOut',scale:false});
   gsap.from('#plLeft [data-rise]',{y:14,opacity:0,duration:.5,stagger:.06,delay:.25,ease:'power3.out',clearProps:'all'});
 }
 
-const howBox = (p,open) => `<details class="pl-how" data-rise ${open?'open':''}><summary>Cómo lo pensé</summary><ol class="th-l">${thinkData(p).lines.map(t=>`<li><i></i><span>${t}</span></li>`).join('')}</ol></details>`;
-
+const finePrint = p => `Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Nada se compra sin tu aprobación.`;
+/* lo que hizo el sistema, siempre a la vista */
+function funnel(p){
+  const d=thinkData(p), b=BUDGET[p.n];
+  const st=[['1',b?'invitación leída':'fecha en tu calendario'],[d.all.length,'regalos revisados'],[d.pool.length,b?'dentro del tope':'van con lo que sé'],['3','finalistas'],['1','elegida para ti']];
+  return `<ol class="fn" data-rise aria-label="Cómo lo pensé">${st.map(([n,l])=>`<li><b class="num">${n}</b><span>${l}</span></li>`).join('')}</ol>`;
+}
 function leftFinal(p){
   const its=items(p), cur=chosen(p), minP=Math.min(...its.map(o=>o.p));
-  const fine=`<p class="pl-fine" data-rise>Nada se compra sin tu aprobación; ${channels()}.</p>`;
   if(cfg.mode==='elijo'){
+    if(SCENES[p.n]) return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas. Míralas en su lugar.</h1>${sceneHtml(p)}<div id="scFicha" class="sc-f" data-rise>${sceneFicha(p)}</div>`;
     const note=(o,i)=>OPT[o.h]||(i===0?'Mi favorita para esta fecha.':o.p===minP?'La más económica de las tres.':'La más distinta de las tres.');
     return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas para ${esc(p.n)}.</h1>
     <div class="pl-3">${its.map((o,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${(ypick[p.n]||0)===i}" class="pc3"><span class="pc3-ph" data-flip-id="${o.h}">${img(o.u,'')}</span><span class="pc3-b"><b>${esc(o.t)}</b><span class="num">${clp(o.p)}</span><small>${note(o,i)}</small></span></button>`).join('')}</div>
-    <div class="flex flex-wrap items-center gap-3 pt-5" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(cur.p)}</button>${modeNote()}</div>
-    ${fine}${howBox(p)}`;
+    <div class="pt-6" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(cur.p)}</button><p class="pl-fine">${finePrint(p)}</p></div>`;
   }
   return `<h1 class="pl-h" data-rise>Ya lo tengo: este es para ${esc(p.n)}.</h1>
   <div class="pl-pick">
     <div class="pl-ph" data-flip-id="${cur.h}">${img(cur.u,'')}</div>
-    <div class="flex min-w-0 flex-col">
+    <div class="pl-info">
       <p class="pl-v" data-rise>${esc(cur.v)}</p>
       <h2 class="pl-t" data-rise>${esc(cur.t)}</h2>
-      <p class="num mt-1 text-[17px] font-semibold" data-rise>${clp(cur.p)}</p>
-      <p class="mt-3 text-[15.5px] leading-snug" data-rise>Lo elegí porque ${whyOf(p)}</p>
-      <div class="mt-auto pt-5" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo</button>
-      <p class="pl-fine">Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}.</p></div>
+      <p class="num mt-2 text-[18px] font-semibold" data-rise>${clp(cur.p)}</p>
+      <p class="mt-4 text-[16px] leading-[1.4]" data-rise>Lo elegí porque ${whyOf(p)}</p>
+      <div class="mt-auto pt-6" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta pl-cta-w">Comprar y dejar listo</button><p class="pl-fine">${finePrint(p)}</p></div>
     </div>
   </div>
-  <div class="pl-ask" data-rise><span>¿Otra idea?</span>${[['eco','Más económica'],['orig','Más original'],['util','Más útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}">${l}</button>`).join('')}<em id="yreply" aria-live="polite"></em></div>
-  <div class="flex flex-wrap items-center justify-between gap-3" data-rise>${howBox(p)}${modeNote()}</div>
-  ${fine}`;
+  <div class="pl-foot" data-rise>${funnel(p)}
+    <div class="pl-ask"><span>¿Otra idea?</span>${[['eco','Más económica'],['orig','Más original'],['util','Más útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}">${l}</button>`).join('')}<em id="yreply" aria-live="polite"></em></div></div>`;
 }
+
+/* Elijo yo: una escena para explorar, cada finalista en su contexto */
+const poly = (w,h,pts) => `polygon(evenodd,${pts.map(([x,y])=>`${(x/w*100).toFixed(1)}% ${(y/h*100).toFixed(1)}%`).join(',')})`;
+const SCENES = {'Amigo secreto':[
+  {h:'libreta-picaflor-1',cx:700,x:505,y:172,w:400,r:-3,chip:'En su escritorio',cap:'Su escritorio, lunes 9 a.m.',
+   clip:poly(600,450,[[132,122],[292,103],[305,123],[478,133],[558,372],[300,360],[105,382],[103,353],[44,352],[107,190],[110,128]])},
+  {h:'tazon-alerce',cx:1500,x:1375,y:188,w:250,r:2,chip:'En el café de las 11',cap:'El café de las 11',
+   clip:poly(600,811,[[188,232],[330,222],[472,228],[472,480],[445,605],[330,622],[212,606],[198,545],[130,545],[80,525],[45,460],[40,380],[70,310],[130,280],[188,283],[188,322],[130,318],[85,375],[85,455],[125,505],[195,517],[188,322],[188,283]])},
+  {h:'tabla-tolten',cx:2300,x:2072,y:178,w:440,r:-2,chip:'En la once de fin de año',cap:'La once de fin de año',
+   clip:poly(600,383,[[72,85],[175,82],[190,70],[208,72],[215,90],[255,93],[440,100],[500,125],[520,175],[510,215],[470,240],[340,255],[338,272],[270,318],[235,322],[220,300],[190,262],[188,300],[180,355],[170,355],[152,310],[152,235],[130,265],[125,262],[135,252],[72,250],[42,220],[42,150]])},
+]};
+const SCENE_SVG = `<svg class="sc-art" viewBox="0 0 3000 600" preserveAspectRatio="none" aria-hidden="true">
+<defs><filter id="rough" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter></defs>
+<rect width="3000" height="600" fill="#fbf7ee"/>
+<rect y="508" width="3000" height="92" fill="#efe6d4"/>
+<g filter="url(#rough)">
+<path d="M60 535l70 45M240 530l70 50M420 530l70 50M600 530l70 50M780 530l70 50M960 530l70 50M1140 530l70 50M1320 530l70 50M1500 530l70 50M1680 530l70 50M1860 530l70 50M2040 530l70 50M2220 530l70 50M2400 530l70 50M2580 530l70 50M2760 530l70 50" stroke="#fbf7ee" stroke-width="26" fill="none" stroke-linecap="round"/>
+<path d="M-10 62C260 120 420 10 690 58S1120 120 1400 52 1800 16 2060 74 2610 110 3010 40" stroke="#e5553c" stroke-width="5" fill="none" stroke-linecap="round"/>
+<!-- escritorio -->
+<rect x="470" y="60" width="370" height="250" fill="#cfe5f2"/><path d="M470 310l90-130 60 70 75-120 145 180Z" fill="#8ea8c4"/><path d="M695 130l-30 48 24-12 20 16 18-14Z" fill="#fff"/><circle cx="780" cy="110" r="28" fill="#ffe36b"/>
+<rect x="470" y="60" width="370" height="250" fill="none" stroke="#0e1014" stroke-width="5"/><path d="M655 60v250" stroke="#0e1014" stroke-width="4"/>
+<rect x="340" y="424" width="730" height="24" fill="#c98f5e"/><path d="M385 448l-16 90M1025 448l16 90" stroke="#8f5f38" stroke-width="16" stroke-linecap="round"/>
+<path d="M395 424V300c0-50 50-70 90-50" fill="none" stroke="#0e1014" stroke-width="7" stroke-linecap="round"/><path d="M452 232l74 34-24 44-70-40Z" fill="#ffd84d" stroke="#0e1014" stroke-width="4"/>
+<path d="M360 424h70" stroke="#0e1014" stroke-width="8" stroke-linecap="round"/>
+<path d="M935 424l-8-72h86l-8 72Z" fill="#ff7a4a"/><path d="M968 352c-34-34-44-76-22-108 26 16 34 58 24 108Zm2 0c8-52 34-82 66-84 6 36-22 72-66 84Z" fill="#4faa6d"/>
+<rect x="890" y="120" width="96" height="92" fill="#fff06a" transform="rotate(5 938 166)"/><path d="M908 150h56M908 170h44" stroke="#0e1014" stroke-width="3"/>
+<path d="M270 190l16 42 44 4-34 28 12 44-38-24-38 24 12-44-34-28 44-4Z" fill="#f48fc0"/>
+<!-- planta de paso -->
+<path d="M1120 508l-12-70h70l-12 70Z" fill="#8f5f38"/><path d="M1143 440c-74-20-96-96-58-160 8-70 104-78 120-14 44 56 18 158-62 174Z" fill="#6fbf73"/>
+<!-- cocina -->
+<rect x="1220" y="438" width="620" height="82" fill="#8fbfa8"/><rect x="1200" y="424" width="660" height="20" fill="#f4e3c6" stroke="#0e1014" stroke-width="4"/><path d="M1425 444v76M1635 444v76" stroke="#0e1014" stroke-width="4"/><circle cx="1405" cy="480" r="5" fill="#0e1014"/><circle cx="1655" cy="480" r="5" fill="#0e1014"/>
+<rect x="1240" y="178" width="280" height="12" fill="#c98f5e"/><rect x="1270" y="118" width="50" height="60" fill="#f7c9d8" stroke="#0e1014" stroke-width="4"/><rect x="1340" y="96" width="60" height="82" fill="#cfe5f2" stroke="#0e1014" stroke-width="4"/><circle cx="1458" cy="142" r="34" fill="#ffd84d" stroke="#0e1014" stroke-width="4"/>
+<rect x="1680" y="248" width="124" height="176" rx="12" fill="#26282e"/><rect x="1702" y="340" width="80" height="62" fill="#3a3d45"/><circle cx="1776" cy="280" r="11" fill="#e5553c"/><rect x="1712" y="272" width="36" height="16" fill="#8fbfa8"/>
+<path d="M1490 170c-18-20 18-34 0-56M1530 180c-18-20 18-34 0-56" stroke="#aab2bf" stroke-width="5" fill="none" stroke-linecap="round"/>
+<ellipse cx="1290" cy="416" rx="58" ry="10" fill="#fff" stroke="#0e1014" stroke-width="4"/><circle cx="1275" cy="400" r="17" fill="#d8a15c"/><circle cx="1305" cy="402" r="17" fill="#c98f5e"/>
+<!-- planta de paso -->
+<path d="M1945 508l-12-70h70l-12 70Z" fill="#ff7a4a"/><path d="M1968 440c-60-24-74-90-40-140 12-60 92-58 104 0 34 54 2 124-64 140Z" fill="#4faa6d"/>
+<!-- once de fin de año -->
+<path d="M2040 92l36 62 34-46 36 60 36-52 36 58 36-52 36 58 36-52 36 58 36-50" fill="none" stroke="#0e1014" stroke-width="3"/><path d="M2076 154l-22 34 42 2ZM2146 168l-22 34 42 2ZM2218 174l-22 34 42 2ZM2290 180l-22 34 42 2ZM2362 186l-22 34 42 2ZM2434 192l-22 34 42 2Z" fill="#ffd84d"/><path d="M2110 108l-20 32 40 2ZM2182 116l-20 32 40 2ZM2254 122l-20 32 40 2ZM2326 128l-20 32 40 2ZM2398 134l-20 32 40 2Z" fill="#f48fc0"/>
+<rect x="2000" y="424" width="680" height="24" fill="#fff" stroke="#0e1014" stroke-width="4"/><path d="M2000 448h680l-14 42H2014Z" fill="#f7c9d8" stroke="#0e1014" stroke-width="4"/><path d="M2040 490l-12 40M2640 490l12 40" stroke="#8f5f38" stroke-width="14" stroke-linecap="round"/>
+<rect x="2590" y="298" width="36" height="126" rx="8" fill="#3f7d57" stroke="#0e1014" stroke-width="4"/><rect x="2599" y="262" width="18" height="44" fill="#3f7d57" stroke="#0e1014" stroke-width="4"/>
+<path d="M2530 424c0-46 8-58 8-58h-40s8 12 8 58Z" fill="#fff" stroke="#0e1014" stroke-width="4"/>
+<g fill="#7c5cc4"><circle cx="2030" cy="400" r="13"/><circle cx="2056" cy="400" r="13"/><circle cx="2043" cy="380" r="13"/></g>
+<path d="M2840 190l16 42 44 4-34 28 12 44-38-24-38 24 12-44-34-28 44-4Z" fill="#9db4e8"/>
+</g></svg>`;
+const BOW = `<svg class="st-bow" viewBox="0 0 80 50" aria-hidden="true"><path d="M40 25C22 2 4 2 4 20s18 18 36 5Zm0 0c18-23 36-23 36-5s-18 18-36 5Z" fill="#e5553c" stroke="#0e1014" stroke-width="2.500"/><circle cx="40" cy="25" r="6" fill="#ff8a5c" stroke="#0e1014" stroke-width="2.500"/></svg>`;
+
+function sceneHtml(p){
+  const s=SCENES[p.n], its=items(p), cur=ypick[p.n]||0;
+  return `<div id="scStage" class="sc" role="group" aria-label="Las tres finalistas en su contexto"><div id="scPano" class="sc-p">${SCENE_SVG}
+    ${s.map((z,i)=>`<button class="st" data-act="pick" data-pick="${i}" aria-pressed="${i===cur}" aria-label="${esc(its[i].t)}, ${clp(its[i].p)}. ${z.chip}" style="left:${z.x/30}%;top:${z.y/6}%;width:${z.w/30}%;--r:${z.r}deg"><span class="st-cut"><img src="${its[i].u}" alt="" style="clip-path:${z.clip}"></span><span class="st-dot" aria-hidden="true">+</span>${BOW}<span class="st-tag num" aria-hidden="true">${clp(its[i].p)}</span></button>`).join('')}
+  </div><p id="scCap" class="sc-cap">${s[cur].cap}</p></div>
+  <div class="sc-nav" role="group" aria-label="Elegir escena">${s.map((z,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${i===cur}">${z.chip}</button>`).join('')}</div>`;
+}
+const sceneFicha = p => { const o=chosen(p); return `<div class="min-w-0"><p class="pl-v">${esc(o.v)}</p><h2 class="pl-t pl-t-sm">${esc(o.t)}</h2><p class="mt-1 text-[14px] leading-snug text-[#39414e]">${OPT[o.h]||''}</p></div><div class="shrink-0"><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(o.p)}</button><p class="pl-fine lg:text-right">${finePrint(p)}</p></div>`; };
+function scenePos(p,i){ const st=$('scStage'), pa=$('scPano'); return st.clientWidth/2 - SCENES[p.n][i].cx/3000*pa.offsetWidth; }
+function sceneGo(p,i){
+  ypick[p.n]=i;
+  gsap.to('#scPano',{x:scenePos(p,i),duration:REDUCE?0:.8,ease:'power3.inOut',overwrite:true});
+  document.querySelectorAll('#scStage .st,.sc-nav button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.pick===i));
+  $('scCap').textContent=SCENES[p.n][i].cap; $('scFicha').innerHTML=sceneFicha(p);
+  if(!REDUCE){ gsap.fromTo('#scStage .st[aria-pressed=true] .st-bow',{scale:0,rotation:-30},{scale:1,rotation:0,duration:.55,delay:.45,ease:'back.out(2.4)'}); gsap.from('#scCap',{y:6,opacity:0,duration:.4,clearProps:'all'}); gsap.from('#scFicha > *',{y:8,opacity:0,duration:.4,stagger:.05,clearProps:'all'}); }
+}
+function mountScene(p,anim){
+  const st=$('scStage'); if(!st) return;
+  gsap.set('#scPano',{x:scenePos(p,ypick[p.n]||0)});
+  let sx=null,bx=0,moved=false;
+  st.onpointerdown=e=>{ sx=e.clientX; bx=gsap.getProperty('#scPano','x'); moved=false; };
+  st.onpointermove=e=>{ if(sx===null) return; const dx=e.clientX-sx; if(!moved&&Math.abs(dx)>6){ moved=true; st.setPointerCapture(e.pointerId); st.classList.add('drag'); } if(moved) gsap.set('#scPano',{x:bx+dx}); };
+  st.onpointerup=st.onpointercancel=()=>{ if(sx===null) return; sx=null; st.classList.remove('drag'); if(!moved) return; const x=gsap.getProperty('#scPano','x'); let best=0,d=1e9; SCENES[p.n].forEach((_,i)=>{ const q=Math.abs(scenePos(p,i)-x); if(q<d){ d=q; best=i; } }); sceneGo(p,best); };
+  if(anim&&!REDUCE){ gsap.from('#scStage .st',{y:-46,opacity:0,rotation:8,duration:.7,stagger:.12,delay:.15,ease:'back.out(1.6)',clearProps:'y,opacity,rotation'}); }
+}
+addEventListener('resize',()=>{ if($('scStage')&&yfocus) gsap.set('#scPano',{x:scenePos(yfocus,ypick[yfocus.n]||0)}); });
 
 function leftOther(p){
   const ph=phase(p), back=p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver a lo de hoy</button>';
@@ -865,6 +998,7 @@ function viewPlanner(){
   if(now && REDUCE) thought[p.n]=true;
   $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l">${!now?leftOther(p):think?leftThinking(p):(p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver a lo de hoy</button>')+leftFinal(p)}</div><aside class="pl-r">${ticket(p)}</aside></div>`;
   if(think && !hold) runThink(p);
+  if(!think && now) mountScene(p,false);
 }
 
 /* Personas: el sistema las encontró y las va conociendo */
@@ -936,7 +1070,7 @@ $('year').addEventListener('click',e=>{
   else if(a==='pop'){ const k=b.dataset.pop, el=k==='bell'?$('popBell'):$('popUser'), was=el.classList.contains('hidden'); closePops(); if(was){ el.classList.remove('hidden'); b.setAttribute('aria-expanded','true'); if(k==='bell'){ bellSeen=true; $('apBellDot').style.display='none'; } if(!REDUCE) gsap.from(el,{y:-6,opacity:0,duration:.2,clearProps:'all'}); } }
   else if(a==='goto'){ setTab('config',false); $(b.dataset.a).scrollIntoView({block:'start'}); }
   else if(a==='logout'){ closeYear(); }
-  else if(a==='pick'){ ypick[yfocus.n]=+b.dataset.pick; render(); }
+  else if(a==='pick'){ if($('scStage')) sceneGo(yfocus,+b.dataset.pick); else { ypick[yfocus.n]=+b.dataset.pick; render(); } }
   else if(a==='ask'){
     const q=yfocus, arr=items(q).map((o,i)=>({o,i})), k=b.dataset.k, pk=k==='eco'?[...arr].sort((x,y)=>x.o.p-y.o.p)[0]:k==='orig'?arr[2]:arr[1];
     $('yreply').textContent='Lo estoy pensando…';
