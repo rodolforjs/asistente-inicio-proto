@@ -45,8 +45,8 @@ button{cursor:pointer}
 .card .art{position:relative;overflow:hidden}
 .card .art svg{position:absolute;inset:0;width:100%;height:100%}
 .card .art::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.25;mix-blend-mode:overlay}
-.card .art::before{display:none;content:"";position:absolute;top:10px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#0e1014;box-shadow:inset 0 2px 3px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.45);z-index:2}
-.card .d{position:absolute;left:14px;bottom:2px;font-family:'Newsreader',serif;font-weight:500;font-size:56px;line-height:1;letter-spacing:-.05em;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.2)}
+.card .art::before{content:"";position:absolute;top:10px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#0e1014;box-shadow:inset 0 2px 3px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.45);z-index:2}
+.card .d{position:absolute;left:14px;bottom:2px;font-family:'Newsreader',serif;font-weight:500;font-size:64px;line-height:1;letter-spacing:-.05em;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.2)}
 .card .mo{position:absolute;right:12px;top:10px;font-size:10.5px;font-weight:600;letter-spacing:.2em;color:rgba(255,255,255,.95)}
 .card .sheen{position:absolute;inset:0;pointer-events:none;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.22),transparent 60%);opacity:0;transition:opacity .25s}
 .card:hover .sheen{opacity:1}
@@ -205,19 +205,19 @@ const MES = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','
 $('months').innerHTML = MES.map(m=>`<span>${m}</span>`).join('');
 
 const PEOPLE = [
-  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, y:30, k:'cumple',  h:128, st:'Lista'},
-  {n:'Andrés',      o:'Cumpleaños',    m:3,  d:2,  y:72, k:'cumple',  h:128, st:'Confirmar', g:'#6fe0cd,#14897a'},
-  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, k:'cumple',  h:128, st:'Elegir', doubt:true, g:'#ffb4c8,#ff4f86'},
-  {n:'Papá',        o:'Día del Padre', m:5,  d:21, y:62, k:'padre',   h:128, st:'Lista'},
-  {n:'Abuela Rosa', o:'Cumpleaños',    m:7,  d:3,  y:30, k:'cumple',  h:128, st:'Elegir', g:'#ffe07a,#ff9a2e'},
-  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, y:78, k:'boda',    h:128, st:'Elegir'},
-  {n:'Pareja',      o:'Aniversario',   m:8,  d:12, y:40, k:'amor',    h:128, st:'Lista'},
-  {n:'Tío Jorge',   o:'Cumpleaños',    m:9,  d:9,  y:70, k:'cumple',  h:128, st:'Elegir', g:'#c9b6ff,#6a4be0'},
-  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  y:26, k:'bebe',    h:128, st:'Lista'},
-  {n:'Amigo secreto',o:'Oficina',      m:11, d:18, y:62, k:'oficina', h:128, st:'Confirmar'},
-  {n:'Navidad',     o:'Familia',       m:11, d:24, y:28, k:'navidad', h:128, st:'Elegir'},
+  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, y:30, k:'cumple',  h:150, st:'Lista'},
+  {n:'Andrés',      o:'Cumpleaños',    m:3,  d:2,  y:72, k:'cumple',  h:150, st:'Confirmar', g:'#6fe0cd,#14897a'},
+  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, k:'cumple',  h:150, st:'Elegir', doubt:true, g:'#ffb4c8,#ff4f86'},
+  {n:'Papá',        o:'Día del Padre', m:5,  d:21, y:62, k:'padre',   h:150, st:'Lista'},
+  {n:'Abuela Rosa', o:'Cumpleaños',    m:7,  d:3,  y:30, k:'cumple',  h:150, st:'Elegir', g:'#ffe07a,#ff9a2e'},
+  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, y:78, k:'boda',    h:150, st:'Elegir'},
+  {n:'Pareja',      o:'Aniversario',   m:8,  d:12, y:40, k:'amor',    h:150, st:'Lista'},
+  {n:'Tío Jorge',   o:'Cumpleaños',    m:9,  d:9,  y:70, k:'cumple',  h:150, st:'Elegir', g:'#c9b6ff,#6a4be0'},
+  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  y:26, k:'bebe',    h:150, st:'Lista'},
+  {n:'Amigo secreto',o:'Oficina',      m:11, d:18, y:62, k:'oficina', h:150, st:'Confirmar'},
+  {n:'Navidad',     o:'Familia',       m:11, d:24, y:28, k:'navidad', h:150, st:'Elegir'},
 ];
-const NEW = {n:'Familia Soto', o:'Bautizo', m:7, d:22, k:'bebe', h:128, st:'Confirmar'};
+const NEW = {n:'Familia Soto', o:'Bautizo', m:7, d:22, k:'bebe', h:150, st:'Confirmar'};
 const TOTAL = 214;
 const xPct = (m,d) => (m + d/31) / 12 * 100;
 const daysTo = (m,d) => { const n=new Date(); const t=new Date(n.getFullYear(),m,d); if(t<n) t.setFullYear(n.getFullYear()+1); return Math.ceil((t-n)/864e5); };
@@ -327,27 +327,56 @@ function intro(){
 /* ---------- Sincronización ---------- */
 function art(k, seed){
   let s = seed*97+13; const r = () => (s = (s*16807)%2147483647)/2147483647;
-  const I='#0e1014', sw='stroke="#0e1014" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"';
-  let bg='';
-  for(let i=0;i<9;i++){ const x=r()*110,y=r()*128,rr=2+r()*5; bg+= i%3? `<circle cx="${x}" cy="${y}" r="${rr}" fill="#fff" opacity="${.18+r()*.3}"/>` : `<rect x="${x}" y="${y}" width="${rr*2}" height="${rr*.8}" rx="1.5" fill="#fff" opacity=".45" transform="rotate(${r()*180} ${x} ${y})"/>`; }
-  const G={
-  cumple:`<rect x="6" y="88" width="88" height="7" rx="3.5" fill="#fff" ${sw}/><rect x="14" y="54" width="72" height="36" rx="7" fill="#fff" ${sw}/><path d="M14 62q9 13 18 0t18 0 18 0 18 0V56q0-12-12-12H26q-12 0-12 12Z" fill="#ffd84d" ${sw}/><rect x="31" y="26" width="6" height="18" rx="2" fill="#3b82f6" ${sw}/><rect x="47" y="22" width="6" height="22" rx="2" fill="#ff5924" ${sw}/><rect x="63" y="26" width="6" height="18" rx="2" fill="#22a06b" ${sw}/>${[34,50,66].map((x,i)=>`<path d="M${x} ${i==1?10:14}q-6 7 0 10q6-3 0-10Z" fill="#ffd84d" ${sw}/>`).join('')}<circle cx="26" cy="77" r="3.2" fill="#ff5924"/><circle cx="50" cy="80" r="3.2" fill="#3b82f6"/><circle cx="74" cy="77" r="3.2" fill="#ff5924"/>`,
-  bebe:`<path d="M40 16q10-12 20 0v10H40Z" fill="#fff" ${sw}/><rect x="32" y="26" width="36" height="11" rx="4" fill="#ffd84d" ${sw}/><rect x="30" y="37" width="40" height="58" rx="12" fill="#fff" ${sw}/><path d="M30 64h40v19q0 12-12 12H42q-12 0-12-12Z" fill="#bcd3ff" ${sw}/><path d="M30 50h11M30 62h11M30 74h11" ${sw} fill="none"/><path d="M84 26l2.6 5.6 6 .7-4.5 4 1.3 6-5.4-3-5.4 3 1.3-6-4.5-4 6-.7Z" fill="#fff" ${sw}/><path d="M12 48a9 9 0 1 0 0 .1" fill="#fff" opacity="0"/><circle cx="10" cy="40" r="3" fill="#fff"/>`,
-  navidad:`<rect x="43" y="84" width="14" height="12" rx="2" fill="#a66a3f" ${sw}/><polygon points="50,24 74,50 26,50" fill="#8fe0b3" ${sw}/><polygon points="50,38 80,68 20,68" fill="#6fd09f" ${sw}/><polygon points="50,54 86,86 14,86" fill="#4fbf88" ${sw}/><path d="M50 6l3.8 8 8.7 1-6.4 6 1.7 8.6L50 25.2l-7.8 4.4 1.7-8.6-6.4-6 8.7-1Z" fill="#ffd84d" ${sw}/><circle cx="42" cy="48" r="3.6" fill="#ff5924" ${sw}/><circle cx="60" cy="64" r="3.6" fill="#fff" ${sw}/><circle cx="38" cy="78" r="3.6" fill="#ffd84d" ${sw}/><circle cx="64" cy="80" r="3.6" fill="#ff5924" ${sw}/>`,
-  amor:`<path d="M42 90C8 64 12 26 34 26c8 0 14 6 14 12 0-6 6-12 14-12 22 0 26 38-8 64Z" fill="#fff" ${sw}/><path d="M72 62C54 49 56 30 67 30c4 0 7 3 7 6 0-3 3-6 7-6 11 0 13 19-9 32Z" fill="#ff5924" ${sw} transform="translate(8 -12) rotate(12 70 50)"/><path d="M26 40q4-8 10-5" fill="none" stroke="#ffb4c8" stroke-width="3" stroke-linecap="round"/>`,
-  boda:`<circle cx="36" cy="64" r="24" fill="none" stroke="#0e1014" stroke-width="11"/><circle cx="36" cy="64" r="24" fill="none" stroke="#ffd84d" stroke-width="6"/><circle cx="64" cy="64" r="24" fill="none" stroke="#0e1014" stroke-width="11"/><circle cx="64" cy="64" r="24" fill="none" stroke="#fff" stroke-width="6"/><polygon points="64,18 76,30 64,44 52,30" fill="#cfe8ff" ${sw}/><path d="M52 30h24M64 18l-5 12 5 14 5-14Z" fill="none" stroke="#0e1014" stroke-width="1.6" stroke-linejoin="round"/>`,
-  oficina:`<rect x="20" y="52" width="60" height="42" rx="5" fill="#fff" ${sw}/><rect x="13" y="38" width="74" height="17" rx="5" fill="#ffd84d" ${sw}/><rect x="44" y="38" width="12" height="56" fill="#ff5924" ${sw}/><path d="M50 38C34 38 30 20 40 20c8 0 10 12 10 18Zm0 0c16 0 20-18 10-18-8 0-10 12-10 18Z" fill="#ff5924" ${sw}/><circle cx="82" cy="22" r="13" fill="#fff" ${sw}/><text x="82" y="28.5" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="17" fill="#0e1014">?</text>`,
-  padre:`<polygon points="42,12 58,12 62,30 38,30" fill="#ff5924" ${sw}/><polygon points="38,30 62,30 72,86 50,98 28,86" fill="#fff" ${sw}/><path d="M34 46l32-10M32 62l38-12M32 78l40-12" stroke="#2c44d6" stroke-width="5" stroke-linecap="round" opacity=".85"/><path d="M38 30h24" ${sw}/>`
-  };
-  return `<svg viewBox="0 0 200 128" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><g>${bg}</g><g transform="translate(100 14) scale(.98)">${G[k]||''}</g></svg>`;
+  const W=200,H=150; let g='';
+  const soft=(x,y,rad,o)=>`<circle cx="${x}" cy="${y}" r="${rad}" fill="#fff" opacity="${o}"/>`;
+  const line=(d,o=.55,w=1.6)=>`<path d="${d}" fill="none" stroke="#fff" stroke-width="${w}" stroke-linecap="round" opacity="${o}"/>`;
+  if(k==='cumple'){
+    g+=soft(150,40,62,.12)+soft(172,118,40,.14);
+    for(let i=0;i<22;i++){ const x=r()*W,y=r()*H,rr=2.5+r()*6.5; g+= i%3? `<circle cx="${x}" cy="${y}" r="${rr}" fill="#fff" opacity="${.22+r()*.5}"/>` : `<rect x="${x}" y="${y}" width="${rr*2.2}" height="${rr*.8}" rx="2" fill="#fff" opacity=".7" transform="rotate(${r()*180} ${x} ${y})"/>`; }
+    g+=line('M118 14c18 24-8 40 12 62s-6 40 14 60',.5)+line('M150 6c14 20-6 34 8 54',.4);
+  }
+  if(k==='bebe'){
+    g+=soft(150,150,96,.1);
+    g+=[84,64,46,30].map((rad,i)=>`<path d="M${150-rad} 150 a${rad} ${rad} 0 0 1 ${rad*2} 0" fill="none" stroke="#fff" stroke-width="${i%2?5:9}" stroke-linecap="round" opacity="${.38+i*.16}"/>`).join('');
+    for(let i=0;i<5;i++) g+=soft(112+r()*80,12+r()*58,1.6+r()*2.6,.75);
+    g+=`<path d="M176 34l2.4 5.2 5.6.6-4.2 3.8 1.2 5.6-5-2.8-5 2.8 1.2-5.6-4.2-3.8 5.6-.6Z" fill="#fff" opacity=".85"/>`;
+  }
+  if(k==='navidad'){
+    g+=soft(150,52,34,.13)+soft(150,52,18,.2);
+    for(let i=0;i<18;i++){ const a=i/18*Math.PI*2, L=i%2?96:128; g+=`<line x1="${150+Math.cos(a)*44}" y1="${52+Math.sin(a)*44}" x2="${150+Math.cos(a)*L}" y2="${52+Math.sin(a)*L}" stroke="#fff" stroke-width="${i%2?1.4:2}" opacity="${i%2?.25:.4}"/>`; }
+    g+=`<circle cx="150" cy="52" r="9" fill="#fff" opacity=".95"/>`;
+    for(let i=0;i<16;i++) g+=soft(r()*W,r()*H,1.2+r()*2.4,.5);
+  }
+  if(k==='amor'){
+    g+=`<circle cx="118" cy="70" r="50" fill="#fff" opacity=".42"/><circle cx="156" cy="70" r="50" fill="#ff5924" opacity=".38" style="mix-blend-mode:multiply"/>`;
+    g+=`<circle cx="137" cy="70" r="64" fill="none" stroke="#fff" stroke-width="1.4" opacity=".5"/><circle cx="137" cy="70" r="80" fill="none" stroke="#fff" stroke-width="1" opacity=".3"/>`;
+    for(let i=0;i<7;i++) g+=soft(100+r()*96,8+r()*134,1.6+r()*3,.6);
+  }
+  if(k==='boda'){
+    g+=soft(140,70,70,.1);
+    g+=`<circle cx="120" cy="74" r="40" fill="none" stroke="#fff" stroke-width="9" opacity=".92"/><circle cx="158" cy="74" r="40" fill="none" stroke="#fff" stroke-width="9" opacity=".55"/><circle cx="120" cy="74" r="32" fill="none" stroke="#fff" stroke-width="1.2" opacity=".6"/><circle cx="158" cy="74" r="32" fill="none" stroke="#fff" stroke-width="1.2" opacity=".4"/>`;
+    g+=`<path d="M139 24l5 9 9 4-9 4-5 9-5-9-9-4 9-4Z" fill="#fff"/>`;
+    for(let i=0;i<8;i++) g+=soft(96+r()*100,r()*H,1.2+r()*2,.6);
+  }
+  if(k==='oficina'){
+    for(let i=0;i<6;i++) g+=`<rect x="${92+i*13}" y="${14+i*12}" width="84" height="84" rx="10" fill="none" stroke="#fff" stroke-width="${i%2?1.6:2.6}" opacity="${.9-i*.13}" transform="rotate(${i*8} 150 60)"/>`;
+    g+=soft(176,120,3,.8)+soft(120,128,2.2,.6)+soft(100,40,2.6,.5);
+  }
+  if(k==='padre'){
+    for(let i=0;i<11;i++){ const hh=(i%4+1)*30+(i%3)*8; g+=`<rect x="${14+i*17}" y="${150-hh}" width="11" height="${hh}" rx="5.5" fill="#fff" opacity="${.18+i%4*.17}"/>`; }
+    g+=line('M0 120C40 96 70 124 110 90s60-30 90-46',.55,2);
+    g+=soft(176,40,5,.9);
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${g}</svg>`;
 }
 function cardEl(p, extra='', seed=1){
   const c = document.createElement('div');
   c.className = `card k-${p.k} relative overflow-hidden rounded-3xl bg-ink text-white ring-1 ring-black/10 shadow-[0_30px_40px_-22px_rgba(15,23,42,.55),0_2px_6px_rgba(15,23,42,.18),inset_0_1px_0_rgba(255,255,255,.12)] ${extra}`;
   c.innerHTML = `<div class="art" style="height:${p.h}px${p.g?`;background:linear-gradient(150deg,${p.g})`:''}">${art(p.k,seed)}<span class="mo">${MES[p.m]}</span><span class="d">${p.d}</span></div>
-    <div class="p-3.5">
+    <div class="p-4">
       <div class="flex items-start justify-between gap-2"><div class="min-w-0"><b class="block truncate text-[15px] font-semibold leading-tight">${p.n}</b><p class="mt-0.5 text-[10.5px] font-semibold uppercase tracking-[.14em] text-white/55">${p.o}</p></div>
         <span class="shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ring-1 ${CHIP[p.st]}">${p.st}</span></div>
+      <div class="mt-3.5 flex items-center justify-between border-t border-white/10 pt-3 text-[11.5px] text-white/55"><span>Aviso 10 días antes</span><span class="num">en ${daysTo(p.m,p.d)} días</span></div>
     </div><i class="sheen"></i>`;
   c.addEventListener('pointermove',e=>{ if(REDUCE) return; const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
     c.style.setProperty('--mx',x*100+'%'); c.style.setProperty('--my',y*100+'%');
@@ -412,7 +441,7 @@ async function runSync(){
   say('Armando las fichas',.5);
   const box = $('people'); box.innerHTML='';
   const rows = 2, NC = Math.ceil(PEOPLE.length/rows);
-  box.className='relative mt-9 grid gap-3.5'; box.style.cssText=`grid-template-rows:repeat(${rows},auto);grid-auto-flow:column;grid-auto-columns:minmax(${innerWidth>700?190:160}px,1fr);overflow-x:auto;padding-bottom:6px`;
+  box.className='relative mt-9 grid shrink-0'; box.style.cssText=`grid-template-rows:repeat(${rows},auto);grid-auto-flow:column;grid-auto-columns:${innerWidth>700?236:200}px;column-gap:20px;row-gap:20px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 22px`;
   const cards = [];
   PEOPLE.forEach((p,i)=>{ const c = cardEl(p, p.doubt?'ask-card':'', i+1); c._k=p.m*40+p.d;
     if(p.doubt) c.lastElementChild.previousElementSibling.insertAdjacentHTML('beforeend','<div class="ask mt-3 flex items-center gap-2 text-xs"><span>¿Es tu hermana?</span><button data-a="si" class="rounded-full bg-white px-3 py-1 font-semibold text-black">Sí</button><button data-a="no" class="rounded-full px-3 py-1 font-semibold text-white ring-1 ring-white/40">No</button></div>');
@@ -452,7 +481,7 @@ async function runSync(){
   if($('sync').style.display==='none') return;
   const t = $('toast'); $('ttxt').textContent='Detecté un bautizo nuevo en tu calendario · 22 ago';
   gsap.fromTo(t,{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:'back.out(2)'});
-  const nc = cardEl(NEW,'',20); nc.querySelector('.art').insertAdjacentHTML('beforeend','<span class="new">Nuevo</span>');
+  const nc = cardEl(NEW,'ring-2 ring-brand',20); nc.querySelector('.art').insertAdjacentHTML('beforeend','<span class="new">Nuevo</span>');
   const nxt=cards.find(c=>c._k>(NEW.m*40+NEW.d)); const st2=Flip.getState(cards); box.insertBefore(nc,nxt||null); Flip.from(st2,{duration:.6,ease:'power3.inOut',absolute:false});
   gsap.from(nc,{y:-120,opacity:0,rotation:-6,scale:.8,duration:.9,ease:'back.out(1.6)'});
   await wait(2.4); gsap.to(t,{opacity:0,y:-10,duration:.4});
