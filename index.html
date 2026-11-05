@@ -195,30 +195,27 @@ button{cursor:pointer}
   <div class="relative mx-auto max-w-[1360px] px-6 pb-20 lg:px-14">
     <header class="flex items-center justify-between py-5">
       <button id="ylogo" class="font-serif text-[26px] font-medium tracking-[-0.04em]">Cuenta conmigo<span class="text-brand">.</span></button>
-      <div id="ymode" class="relative inline-flex rounded-full bg-white p-1 text-[13px] font-semibold shadow-sm ring-1 ring-mist" role="group" aria-label="Cómo quieres que actúe">
-        <i id="ymk" class="absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-black"></i>
-        <button data-m="delego" class="relative z-10 rounded-full px-4 py-1.5 text-white">Delego</button>
-        <button data-m="elijo" class="relative z-10 rounded-full px-4 py-1.5">Elijo yo</button>
-      </div>
+      <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-gray-600 shadow-sm ring-1 ring-mist"><i class="size-2 rounded-full bg-emerald-500"></i>Google Calendar conectado</span>
     </header>
     <div class="grid items-end gap-6 pt-6 lg:grid-cols-[1fr_auto]">
       <div>
-        <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-slate2"><span class="h-px w-9 bg-steel"></span>Mi año · nov 2026 – oct 2027</p>
-        <h1 class="font-serif text-[clamp(38px,4.6vw,66px)] font-normal leading-[.96] tracking-[-0.055em]">Hola, Rodolfo.<br><span id="yh2" class="text-brand italic"></span></h1>
+        <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-slate2"><span class="h-px w-9 bg-steel"></span>Mi año de regalos · nov 2026 – oct 2027</p>
+        <h1 class="font-serif text-[clamp(38px,4.6vw,66px)] font-normal leading-[.96] tracking-[-0.055em]">Hola, Rodolfo.<br><span id="yh2" class="block text-[.72em] text-brand italic"></span></h1>
       </div>
       <div id="ystats" class="flex gap-3"></div>
     </div>
     <div class="mt-10 grid gap-6 lg:grid-cols-12">
       <div id="yHero" class="lg:col-span-7 [&>article]:h-full"></div>
-      <aside class="flex flex-col gap-5 lg:col-span-5"><div id="yPend"></div><div id="yDone"></div></aside>
+      <aside class="flex flex-col gap-5 lg:col-span-5"><div id="yLearn"></div><div id="yNext"></div></aside>
     </div>
     <div class="mt-12">
       <div class="mb-4 flex flex-wrap items-end justify-between gap-3"><h2 class="font-serif text-[34px] font-normal tracking-[-0.04em]">Tu año, mes a mes</h2>
-        <p class="flex items-center gap-4 text-xs font-medium text-slate2"><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-emerald-500"></i>Lista</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-brand"></i>Por decidir</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-steel"></i>Por confirmar</span></p></div>
+        <p class="flex items-center gap-4 text-xs font-medium text-slate2"><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-brand"></i>Toca decidir</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full border border-dashed border-steel"></i>Te aviso a tiempo</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-emerald-500"></i>Comprado</span></p></div>
       <div id="yTl" class="relative overflow-x-auto rounded-[28px] bg-white p-5 shadow-[0_40px_60px_-40px_rgba(15,23,42,.35)] ring-1 ring-mist"></div>
     </div>
   </div>
 </section>
+
 <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-[400] -translate-x-1/2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white opacity-0 shadow-2xl"><span class="mr-2 inline-block size-2 rounded-full bg-brand"></span><span id="ttxt"></span></div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -235,23 +232,23 @@ const MES = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','
 $('months').innerHTML = MES.map(m=>`<span>${m}</span>`).join('');
 
 const PEOPLE = [
-  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, y:30, k:'cumple',  h:150, st:'Lista'},
-  {n:'Andrés',      o:'Cumpleaños',    m:3,  d:2,  y:72, k:'cumple',  h:150, st:'Confirmar', g:'#6fe0cd,#14897a'},
-  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, k:'cumple',  h:150, st:'Elegir', doubt:true, g:'#ffb4c8,#ff4f86'},
-  {n:'Papá',        o:'Día del Padre', m:5,  d:21, y:62, k:'padre',   h:150, st:'Lista'},
-  {n:'Abuela Rosa', o:'Cumpleaños',    m:7,  d:3,  y:30, k:'cumple',  h:150, st:'Elegir', g:'#ffe07a,#ff9a2e'},
-  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, y:78, k:'boda',    h:150, st:'Elegir'},
-  {n:'Pareja',      o:'Aniversario',   m:8,  d:12, y:40, k:'amor',    h:150, st:'Lista'},
-  {n:'Tío Jorge',   o:'Cumpleaños',    m:9,  d:9,  y:70, k:'cumple',  h:150, st:'Elegir', g:'#c9b6ff,#6a4be0'},
-  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  y:26, k:'bebe',    h:150, st:'Lista'},
-  {n:'Amigo secreto',o:'Oficina',      m:11, d:18, y:62, k:'oficina', h:150, st:'Confirmar'},
-  {n:'Navidad',     o:'Familia',       m:11, d:24, y:28, k:'navidad', h:150, st:'Elegir'},
+  {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, y:30, k:'cumple',  h:150, st:'Te aviso'},
+  {n:'Andrés',      o:'Cumpleaños',    m:3,  d:2,  y:72, k:'cumple',  h:150, st:'Te aviso', g:'#6fe0cd,#14897a'},
+  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, k:'cumple',  h:150, st:'Falta un dato', doubt:true, g:'#ffb4c8,#ff4f86'},
+  {n:'Papá',        o:'Día del Padre', m:5,  d:21, y:62, k:'padre',   h:150, st:'Te aviso'},
+  {n:'Abuela Rosa', o:'Cumpleaños',    m:7,  d:3,  y:30, k:'cumple',  h:150, st:'Te aviso', g:'#ffe07a,#ff9a2e'},
+  {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, y:78, k:'boda',    h:150, st:'Te aviso'},
+  {n:'Pareja',      o:'Aniversario',   m:8,  d:12, y:40, k:'amor',    h:150, st:'Te aviso'},
+  {n:'Tío Jorge',   o:'Cumpleaños',    m:9,  d:9,  y:70, k:'cumple',  h:150, st:'Te aviso', g:'#c9b6ff,#6a4be0'},
+  {n:'Emilia',      o:'Nacimiento',    m:10, d:5,  y:26, k:'bebe',    h:150, st:'Comprado'},
+  {n:'Amigo secreto',o:'Oficina',      m:10, d:18, y:62, k:'oficina', h:150, st:'Propuesta'},
+  {n:'Navidad',     o:'Familia',       m:11, d:24, y:28, k:'navidad', h:150, st:'Te aviso'},
 ];
-const NEW = {n:'Familia Soto', o:'Bautizo', m:7, d:22, k:'bebe', h:150, st:'Confirmar'};
+const NEW = {n:'Familia Soto', o:'Bautizo', m:7, d:22, k:'bebe', h:150, st:'Te aviso'};
 const TOTAL = 214;
 const xPct = (m,d) => (m + d/31) / 12 * 100;
 const daysTo = (m,d) => { const n=new Date(); const t=new Date(n.getFullYear(),m,d); if(t<n) t.setFullYear(n.getFullYear()+1); return Math.ceil((t-n)/864e5); };
-const CHIP = {Lista:'bg-emerald-400/15 text-emerald-300 ring-emerald-400/30',Elegir:'bg-orange-400/15 text-orange-300 ring-orange-400/30',Confirmar:'bg-white/10 text-white/70 ring-white/20'};
+const CHIP = {'Te aviso':'bg-white/10 text-white/75 ring-white/20','Propuesta':'bg-orange-400/15 text-orange-300 ring-orange-400/30','Comprado':'bg-emerald-400/15 text-emerald-300 ring-emerald-400/30','Falta un dato':'bg-white/10 text-white/70 ring-white/20'};
 
 /* ---------- Hero: escena estilo iOS ---------- */
 const fls = () => [...document.querySelectorAll('.fl')];
@@ -505,7 +502,7 @@ async function runSync(){
   gsap.fromTo(dc,{x:-5},{x:5,duration:.06,repeat:7,yoyo:true,ease:'sine.inOut',onComplete:()=>gsap.set(dc,{x:0})});
   $('ping').style.display='none'; $('pdot').className='relative inline-flex size-2.5 rounded-full bg-emerald-500';
   say('Listo · conectado con Google Calendar',.9);
-  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length-1} fechas</span> seguras y <span class="text-brand">1</span> por confirmar.`;
+  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>. Te aviso con tiempo antes de cada una y tengo <span class="text-brand">1 duda</span>.`;
   gsap.from('#summary',{opacity:0,y:14,duration:.5});
   gsap.to('#enter',{opacity:1,pointerEvents:'auto',duration:.5});
 
@@ -525,122 +522,162 @@ async function runSync(){
   await wait(2.4); gsap.to(t,{opacity:0,y:-10,duration:.4});
 }
 
-/* ---------- Mi año: lo próximo (A) + el año mes a mes (B) ---------- */
-const TODAY = new Date(2026,10,4);
+/* ---------- Mi año: el asistente se acerca a cada fecha (A) + el año mes a mes (B) ---------- */
+const TODAY = new Date(2026,10,4), AVISO = 14;               // demo fija: 4 nov 2026; aviso 14 días antes (a probar en el piloto)
+const PRODS = {"mama-cual-es-tu-historia":["Mamá ¿Cuál es tu Historia?","MamaMia",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306"],"vela-vasija-pukara-esencia-andina":["Vela Vasija Pukara – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.52.24_1_600x.jpg?v=1791211998"],"mielero-en-ceramica-gres":["Mielero en cerámica gres","TallerColor",24990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Ewpp1SmFbK_600x.jpg?v=1622843066"],"libreta-picaflor-1":["Libreta Picaflor","Cocó Obach",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936"],"tazon-alerce":["Tazón Alerce","GARUGA",7590,"https://cdn.shopify.com/s/files/1/1481/4916/products/tKFvLH5YUh_600x.jpg?v=1749502459"],"tabla-tolten":["Tabla Toltén","ULMMO ORIGEN",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-08-06at15.45.48_1_600x.jpg?v=1754509629"],"mochila-zorro-culpeo":["Mochila ZORRO CULPEO","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Captura_de_Pantalla_2019-11-18_a_la_s_09.06.33_600x.png?v=1749502616"],"botella-termica-oceano":["Botella Térmica / Océano","hued hued",14990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-08-25at15.44.06_5_600x.jpg?v=1787687597"],"mochila-hongos-de-chile":["Mochila Hongos De Chile","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/36dyXgfqHn_600x.jpg?v=1749502248"],"libro-de-las-preguntas-de-neruda":["Libro De Las Preguntas De Neruda","Ediciones Liebre",28750,"https://cdn.shopify.com/s/files/1/1481/4916/files/KKxLjr5jf6_600x.jpg?v=1714769404"],"vela-anillo-de-fuego-esencia-andina":["Vela Anillo de Fuego – Onas-Selk'nam","ESENCIA ANDINA",18990,"https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634"],"diario-de-gratitud":["Diario de Gratitud","LAFANTINA",22990,"https://cdn.shopify.com/s/files/1/1481/4916/files/HvqaAJrWOY_600x.png?v=1744055312"],"mug-termico-ilustrado-papelucosas":["Mug Térmico Ilustrado PAPELUCOSAS","Herencia Colchagua",27990,"https://cdn.shopify.com/s/files/1/1481/4916/products/JUv4OH4diw_600x.jpg?v=1701118558"],"botella-bandurria":["Botella Bandurria","GARUGA",15990,"https://cdn.shopify.com/s/files/1/1481/4916/products/y1HkNdlPxP_600x.jpg?v=1749502261"],"libro-santiago-y-sus-cumbres-copia":["Libro Santiago y sus cumbres - Segunda Edición","FBT FineArt Photography",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/hf_20260826_201432_0ac48f4a-c0e8-4609-a11b-4dbb979884f8copy_600x.jpg?v=1791400905"],"bufanda-alpaca-unisex-chocolate":["Bufanda alpaca unisex Chocolate","ULMMO ORIGEN",49990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-06-03at13.05.27_1_600x.jpg?v=1749491586"],"pack-3-mermeladas-gourmet":["Pack 3 Mermeladas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/AX11vEKQnm_600x.jpg?v=1701682759"],"vela-vasija-likan-esencia-andina":["Vela Vasija Likan – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.54.31_600x.jpg?v=1791212171"],"vasos-gallo-agranda-o-450-ml-set-de-6":["Vasos Gallo Agranda’o 450 ml – Set de 6","Vaso de Gallo",29900,"https://cdn.shopify.com/s/files/1/1481/4916/files/CapturadePantalla2026-01-20ala_s_15.39.40_600x.png?v=1768934392"],"tabla-de-piedra-ribete":["Tabla de Piedra Ribete","Kuyen Diseño",32990,"https://cdn.shopify.com/s/files/1/1481/4916/products/2VkRwsY3N8_600x.jpg?v=1684182866"],"set-de-platos-circulares":["Set de Platos Circulares","Taller Masarte",42900,"https://cdn.shopify.com/s/files/1/1481/4916/files/O9kVn8J2fM_600x.jpg?v=1725467173"],"libro-wander":["Libro Wander","TERE GOTT",15990,"https://cdn.shopify.com/s/files/1/1481/4916/files/Disenosintitulo_5_600x.webp?v=1785431345"],"tabla-de-vidrio-loco":["Tabla de vidrio Picoroco","Andes1",13990,"https://cdn.shopify.com/s/files/1/1481/4916/products/bTWDOePFbi_600x.jpg?v=1606236283"],"pack-3-salsas-gourmet":["Pack 3 Salsas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/jMDsVgDEr6_600x.jpg?v=1701683544"],"dulce-de-leche-tradicional-450grs":["Dulce de Leche Tradicional 450grs.","Fundo Requingua",7490,"https://cdn.shopify.com/s/files/1/1481/4916/products/4UyzMKfer0_600x.jpg?v=1625680551"],"libro-tu-primer-ano":["Libro \"Tu Primer Año\"","LAFANTINA",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/w04HX6mkQu_600x.png?v=1741029832"],"tarjetas-para-fotos-mes-circus":["Tarjetas Meses Bebé \"Circus\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/files/NlD33171lZ_600x.jpg?v=1715712423"],"tarjetas-para-fotos-hitos-festa-menta":["Tarjetas Hitos Bebé \"Festa Menta\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/products/jkVO2C0kdz_600x.jpg?v=1663691157"],"individual-feria-navidena":["Individual Feria Navideña","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/ZREiu0ChXI_600x.jpg?v=1731423791"],"individual-feliz-navidad":["Individual Feliz Navidad","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/OSSRhX0LFH_600x.jpg?v=1762873802"]};
 const GRAD = {cumple:'#ff8a5c,#ff4a14',navidad:'#3f9b72,#0f4a35',amor:'#ffb4c8,#a58bff',boda:'#ffe07a,#ff8f5a',bebe:'#b9d8ff,#c4b3ff',oficina:'#e2ea8a,#3f9e7c',padre:'#7fa6ff,#2c44d6'};
+/* principal + 2 alternativas (fotos reales del catálogo) + por qué lo elegí */
 const GIFT = {
- 'Mamá':['Set de té de autor',24990,'le gusta el té y la cerámica.',[['Chal de alpaca',29990],['Maceta de cerámica',18990]]],
- 'Andrés':['Mochila impermeable',34990,'va en bici a todos lados.',[['Parlante portátil',29990],['Botella térmica',16990]]],
- 'Carla':['Libro y vela aromática',19990,'lee antes de dormir.',[['Set de cuadernos',14990],['Planta en maceta',12990]]],
- 'Papá':['Mug térmico y café de especialidad',22990,'toma café todas las mañanas.',[['Delantal de cuero',26990],['Libro de asados',17990]]],
- 'Abuela Rosa':['Manta de lana',27990,'siempre tiene frío en invierno.',[['Pantuflas de lana',15990],['Caja de té',11990]]],
- 'Sofi y Nico':['Set de copas de cristal',39990,'están armando su casa.',[['Tabla de cocina',24990],['Plantas para el hogar',19990]]],
- 'Pareja':['Cena para dos y flores',45000,'es su lugar favorito.',[['Escapada de fin de semana',89000],['Clase de cocina para dos',38000]]],
- 'Tío Jorge':['Tabla de quesos',26990,'recibe a todos en su casa.',[['Vino de cepa antigua',21990],['Set de parrilla',24990]]],
- 'Emilia':['Set de recién nacido',21990,'lo necesitan las primeras semanas.',[['Manta de algodón',14990],['Móvil de cuna',18990]]],
- 'Amigo secreto':['Chocolates artesanales',12990,'queda dentro del tope de $15.000.',[['Taza y té',9990],['Agenda 2027',13990]]],
- 'Navidad':['Canasta navideña',32990,'es para compartir en la cena familiar.',[['Pan de pascua y espumante',19990],['Juego de mesa familiar',24990]]],
- 'Familia Soto':['Set de bautizo',23990,'es un recuerdo para el día.',[['Álbum de fotos',14990],['Medalla grabada',17990]]],
+ 'Mamá':[['mama-cual-es-tu-historia','vela-vasija-pukara-esencia-andina','mielero-en-ceramica-gres'],'le gusta leer y guardar las historias de la familia.'],
+ 'Andrés':[['mochila-zorro-culpeo','botella-termica-oceano','mochila-hongos-de-chile'],'anda en bici a todos lados.'],
+ 'Carla':[['libro-de-las-preguntas-de-neruda','vela-anillo-de-fuego-esencia-andina','diario-de-gratitud'],'lee antes de dormir.'],
+ 'Papá':[['mug-termico-ilustrado-papelucosas','botella-bandurria','libro-santiago-y-sus-cumbres-copia'],'toma café todas las mañanas.'],
+ 'Abuela Rosa':[['bufanda-alpaca-unisex-chocolate','pack-3-mermeladas-gourmet','vela-vasija-likan-esencia-andina'],'siempre tiene frío en invierno.'],
+ 'Sofi y Nico':[['vasos-gallo-agranda-o-450-ml-set-de-6','tabla-de-piedra-ribete','set-de-platos-circulares'],'están armando su casa.'],
+ 'Pareja':[['vela-vasija-likan-esencia-andina','libro-wander','tabla-de-vidrio-loco'],'les gusta quedarse en casa.'],
+ 'Tío Jorge':[['tabla-de-piedra-ribete','pack-3-salsas-gourmet','dulce-de-leche-tradicional-450grs'],'recibe a todos en su casa.'],
+ 'Emilia':[['libro-tu-primer-ano','tarjetas-para-fotos-mes-circus','tarjetas-para-fotos-hitos-festa-menta'],'sirve para guardar el primer año.'],
+ 'Amigo secreto':[['libreta-picaflor-1','tazon-alerce','tabla-tolten'],'queda dentro del tope del sorteo ($15.000).'],
+ 'Navidad':[['pack-3-mermeladas-gourmet','individual-feria-navidena','dulce-de-leche-tradicional-450grs'],'es para compartir en la cena familiar.'],
+ 'Familia Soto':[['tarjetas-para-fotos-hitos-festa-menta','libro-tu-primer-ano','tarjetas-para-fotos-mes-circus'],'es un recuerdo para el día del bautizo.'],
 };
-const YEAR = [...PEOPLE.map(p=>({...p})), {...NEW}]; YEAR.find(p=>p.n==='Amigo secreto').st='Elegir';
+/* lo que sé de cada persona (se enriquece con tus respuestas) */
+const PROF = {'Mamá':['Mamá','Le gusta leer'],'Andrés':['Hermano','Anda en bici'],'Carla':['Leer antes de dormir'],'Papá':['Papá','Toma café'],'Abuela Rosa':['Abuela','Siempre con frío'],'Sofi y Nico':['Amigos','Casa nueva'],'Pareja':['Pareja','Planes en casa'],'Tío Jorge':['Tío','Recibe en casa'],'Emilia':['Sobrina','Primer año'],'Amigo secreto':['Oficina','Tope $15.000'],'Navidad':['Familia','Cena familiar'],'Familia Soto':['Familia']};
+const QUESTIONS = [
+ {n:'Carla',q:'¿Es tu hermana?',a:['Sí','No'],fact:a=>a==='Sí'?'Es tu hermana':'No es tu hermana'},
+ {n:'Mamá',q:'¿Hay algo que definitivamente no le guste?',a:['Perfumes','Ropa','Decoración','Nada en especial'],fact:a=>a==='Nada en especial'?'Abierta a todo':'No le gusta: '+a.toLowerCase()},
+ {n:'Andrés',q:'¿Cómo es su estilo de vida?',a:['Deportivo','Casero','Viajero'],fact:a=>'Estilo '+a.toLowerCase()},
+ {n:'Papá',q:'¿Le gustó el regalo del Día del Padre?',a:['Sí, mucho','Más o menos','No'],fact:a=>'Regalo anterior: '+a.toLowerCase()},
+];
+const YEAR = [...PEOPLE.map(p=>({...p})), {...NEW}];
+YEAR.find(p=>p.n==='Emilia').bought=true;
+const learned = {}, ymodes = {Pareja:'elijo'}, ypick = {}, yasked = {};
 const clp = n => '$'+n.toLocaleString('es-CL');
 const occ = p => { const t=new Date(TODAY.getFullYear(),p.m,p.d); if(t<TODAY) t.setFullYear(t.getFullYear()+1); return t; };
 const dleft = p => Math.round((occ(p)-TODAY)/864e5);
 const fdate = d => d.getDate()+' '+MES[d.getMonth()].toLowerCase();
-const arrive = p => { const d=new Date(occ(p)); d.setDate(d.getDate()-3); return d; };
+const addD = (d,n) => { const x=new Date(d); x.setDate(x.getDate()+n); return x; };
+const avisoD = p => addD(occ(p),-AVISO);
 const grad = p => p.g || GRAD[p.k];
-const isOk = p => p.st==='Lista';
+const phase = p => p.bought ? 'bought' : dleft(p)<=AVISO ? 'now' : 'later';
 const byDate = (a,b) => occ(a)-occ(b);
-let ymode='delego', yfocus=null, yall=false, yopts=false, ypick={};
-const gift = p => { const g=GIFT[p.n]; const pk=ypick[p.n]; return pk? {n:pk[0],price:pk[1],why:g[2]} : {n:g[0],price:g[1],why:g[2]}; };
+const prod = h => { const x=PRODS[h]; return {h,t:x[0],v:x[1],p:x[2],u:x[3]}; };
+const items = p => GIFT[p.n][0].map(prod);
+const chosen = p => items(p)[ypick[p.n]||0];
+const facts = p => [...(PROF[p.n]||[]), ...(learned[p.n]||[])];
+const mode = p => ymodes[p.n]||'delego';
+let yfocus=null, yseeIdeas=false;
+const img = (u,cls='') => `<img src="${u}" alt="" class="${cls}" loading="eager" onerror="this.remove()">`;
 const countTo = (el,v) => { const o={v:+el.textContent||0}; gsap.to(o,{v,duration:.7,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)}); };
 
 function yStats(){
-  const ok=YEAR.filter(isOk).length, pend=YEAR.length-ok, nx=[...YEAR].filter(p=>!isOk(p)).sort(byDate)[0];
-  $('yh2').textContent = pend? `Yo me encargo, tú decides ${pend===1?'1 cosa':pend+' cosas'}.` : 'Todo resuelto. No necesitas decidir nada.';
-  $('ystats').innerHTML = [['Resueltas',ok,''],['Por decidir',pend,'text-brand'],['Próxima fecha',nx?fdate(occ(nx)):'—','']].map(([l,v,c],i)=>
-    `<div class="rounded-2xl ${i===1?'bg-black text-white':'bg-white ring-1 ring-mist'} px-5 py-3 shadow-[0_18px_30px_-18px_rgba(15,23,42,.3)]"><p class="text-[11px] font-semibold uppercase tracking-[.14em] ${i===1?'text-white/60':'text-slate2'}">${l}</p><b class="num block font-serif text-[38px] font-medium leading-none tracking-[-0.05em] ${i===1?'text-brand':c}">${v}</b></div>`).join('');
+  const now=YEAR.filter(p=>phase(p)==='now').length, nx=YEAR.filter(p=>phase(p)==='later').sort(byDate)[0];
+  $('yh2').textContent = now? `Hoy toca ${now===1?'1 decisión':now+' decisiones'}. El resto lo voy preparando.` : 'Hoy no me necesitas. Te aviso cuando se acerque la próxima.';
+  $('ystats').innerHTML = [['Fechas en tu año',YEAR.length,0],['Toca decidir',now,1],['Mi próximo aviso',nx?fdate(avisoD(nx)):'—',0]].map(([l,v,k])=>
+    `<div class="rounded-2xl ${k?'bg-black text-white':'bg-white ring-1 ring-mist'} px-5 py-3 shadow-[0_18px_30px_-18px_rgba(15,23,42,.3)]"><p class="text-[11px] font-semibold uppercase tracking-[.14em] ${k?'text-white/60':'text-slate2'}">${l}</p><b class="num block font-serif text-[38px] font-medium leading-none tracking-[-0.05em] ${k?'text-brand':''}">${v}</b></div>`).join('');
 }
 
+const STEPS=['Te aviso','Te propongo','Tú decides','Compro y despacho','Llega','¿Le gustó?'];
+const stepper = cur => `<ol class="mt-auto flex items-start pt-6">${STEPS.map((t,i)=>`<li class="relative flex-1 text-center"><i class="absolute left-0 right-0 top-[7px] h-0.5 ${i<=cur?'bg-black':'bg-mist'}" style="${i===0?'left:50%':i===STEPS.length-1?'right:50%':''}"></i><span class="relative mx-auto block size-4 rounded-full ${i<cur?'bg-black':i===cur?'bg-brand ring-4 ring-brand/20':'bg-mist'}"></span><span class="mt-2 block px-0.5 text-[10.5px] font-semibold leading-tight ${i<=cur?'text-black':'text-steel'}">${t}</span></li>`).join('')}</ol>`;
+const seg = p => `<div class="mt-4 inline-flex rounded-full bg-fog p-1 text-[12.5px] font-semibold ring-1 ring-mist" role="group" aria-label="Cómo quieres participar en este regalo">${[['delego','Delego'],['elijo','Elijo yo']].map(([m,l])=>`<button data-mode="${m}" class="rounded-full px-3.5 py-1.5 transition ${mode(p)===m?'bg-black text-white shadow':'text-slate2 hover:text-black'}">${l}</button>`).join('')}</div>`;
+const photoPanel = (pr,tag) => `<div class="relative min-h-[300px] overflow-hidden bg-fog">${img(pr.u,'absolute inset-0 size-full object-cover')}<span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[.12em] shadow-sm backdrop-blur">${tag}</span></div>`;
+const artPanel = p => `<div class="card k-${p.k} hero-art relative min-h-[300px]"><div class="art" style="height:100%;min-height:300px;background:linear-gradient(150deg,${grad(p)})">${art(p.k,7,'meet')}<span class="mo">${MES[p.m]}</span><span class="d">${p.d}</span></div></div>`;
+
 function yHero(anim=true){
-  const p=yfocus, g=gift(p), ok=isOk(p), dl=dleft(p), opts=GIFT[p.n][3];
-  const steps=['Detecté la fecha','Te dejé la propuesta','Tú apruebas','Compro y despacho','Llega'], cur=ok?3:2;
-  const note = ymode==='delego' ? `Si no dices nada, lo compro yo el ${fdate(new Date(arrive(p).getTime()-4*864e5))}.` : 'No compro nada sin tu visto bueno.';
-  $('yHero').innerHTML = `<article class="grid h-full overflow-hidden rounded-[32px] bg-white shadow-[0_50px_70px_-44px_rgba(15,23,42,.45),0_2px_0_#fff_inset] ring-1 ring-mist md:grid-cols-[.82fr_1.18fr]">
-    <div class="card k-${p.k} hero-art relative min-h-[280px]"><div class="art" style="height:100%;min-height:280px;background:linear-gradient(150deg,${grad(p)})">${art(p.k,7,'meet')}<span class="mo">${MES[p.m]}</span><span class="d">${p.d}</span></div></div>
-    <div class="flex flex-col p-7">
-      <p class="text-xs font-semibold uppercase tracking-[.16em] text-slate2">${yfocus===[...YEAR].filter(x=>!isOk(x)).sort(byDate)[0]?'Lo próximo':'Ahora miramos'} · en ${dl} días</p>
-      <h2 class="mt-2 font-serif text-[44px] font-normal leading-none tracking-[-0.05em]">${p.n}</h2>
-      <p class="mt-1.5 text-sm font-medium text-slate2">${p.o} · ${fdate(occ(p))}</p>
-      <div class="mt-5 rounded-2xl bg-fog p-4 ring-1 ring-mist">
-        <p class="text-[11px] font-semibold uppercase tracking-[.14em] text-slate2">${ok?'Regalo aprobado':'Mi propuesta'}</p>
-        <div class="mt-1 flex items-baseline justify-between gap-3"><b class="text-[19px] font-semibold leading-tight tracking-tight">${g.n}</b><span class="num text-[17px] font-semibold">${clp(g.price)}</span></div>
-        <p class="mt-1 text-[13px] leading-snug text-slate2">Lo elegí porque ${g.why} Llega el ${fdate(arrive(p))}.</p>
-      </div>
-      <div class="mt-4 flex flex-wrap items-center gap-2.5">
-        ${ok? `<span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-5 py-3 text-[14px] font-semibold text-emerald-700 ring-1 ring-emerald-500/25"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Aprobado · lo despacho yo</span><button id="ynext" class="rounded-full px-4 py-3 text-[14px] font-semibold text-slate2 transition hover:text-black">Ver lo siguiente →</button>`
-        : `<button id="yok" class="rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand">Aprobar</button><button id="yopt" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">${yopts?'Ocultar opciones':'Ver 2 opciones más'}</button>`}
-      </div>
-      ${ok?'':`<p class="mt-2.5 text-xs text-slate2">${note}</p>`}
-      <div id="yopts" class="${yopts&&!ok?'':'hidden'} mt-3 grid grid-cols-2 gap-2.5">${opts.map((o,i)=>`<button data-i="${i}" class="rounded-2xl bg-white p-3 text-left ring-1 ring-mist transition hover:-translate-y-0.5 hover:ring-black"><b class="block text-[13.5px] font-semibold leading-tight">${o[0]}</b><span class="num mt-1 block text-[12.5px] text-slate2">${clp(o[1])}</span><span class="mt-2 block text-[12px] font-semibold text-brand">Elegir este →</span></button>`).join('')}</div>
-      <ol class="mt-auto flex items-start pt-6">${steps.map((t,i)=>`<li class="relative flex-1 text-center"><i class="absolute left-0 right-0 top-[7px] h-0.5 ${i<=cur?'bg-black':'bg-mist'}" style="${i===0?'left:50%':i===steps.length-1?'right:50%':''}"></i><span class="relative mx-auto block size-4 rounded-full ${i<cur?'bg-black':i===cur?'bg-brand ring-4 ring-brand/20':'bg-mist'}"></span><span class="mt-2 block px-0.5 text-[10.5px] font-semibold leading-tight ${i<=cur?'text-black':'text-steel'}">${t}</span></li>`).join('')}</ol>
-    </div></article>`;
-  if($('yok')) $('yok').onclick = () => yResolve(p);
-  if($('yopt')) $('yopt').onclick = () => { yopts=!yopts; yHero(false); gsap.from('#yopts > *',{y:10,opacity:0,duration:.4,stagger:.07,ease:'power3.out'}); };
-  if($('ynext')) $('ynext').onclick = () => { const n=[...YEAR].filter(x=>!isOk(x)).sort(byDate)[0]; if(n) ySetFocus(n); };
-  document.querySelectorAll('#yopts [data-i]').forEach(b=>b.onclick=()=>{ ypick[p.n]=opts[+b.dataset.i]; yopts=false; yHero(); });
+  const p=yfocus, ph=phase(p), dl=dleft(p), its=items(p), cur=chosen(p), why=GIFT[p.n][1];
+  const head = lbl => `<p class="text-xs font-semibold uppercase tracking-[.16em] ${ph==='now'?'text-brand':'text-slate2'}">${lbl}</p><h2 class="mt-2 font-serif text-[44px] font-normal leading-none tracking-[-0.05em]">${p.n}</h2><p class="mt-1.5 text-sm font-medium text-slate2">${p.o} · ${fdate(occ(p))} · en ${dl} ${dl===1?'día':'días'}</p>`;
+  let left, right;
+  if(ph==='now'){
+    left = photoPanel(cur,'Mi propuesta');
+    const deadline = fdate(addD(occ(p),-7));
+    right = `${head('Toca decidir')}${seg(p)}
+      ${mode(p)==='delego' ? `<div class="mt-4 rounded-2xl bg-fog p-4 ring-1 ring-mist"><p class="text-[10.5px] font-semibold uppercase tracking-[.14em] text-slate2">${cur.v}</p><div class="mt-1 flex items-baseline justify-between gap-3"><b class="text-[19px] font-semibold leading-tight tracking-tight">${cur.t}</b><span class="num text-[17px] font-semibold">${clp(cur.p)}</span></div><p class="mt-1 text-[13px] leading-snug text-slate2">Lo elegí porque ${why}</p></div>`
+      : `<div class="mt-4 grid grid-cols-3 gap-2.5">${its.map((o,i)=>`<button data-pick="${i}" class="overflow-hidden rounded-2xl bg-white text-left ring-1 transition hover:-translate-y-0.5 ${(ypick[p.n]||0)===i?'ring-2 ring-black':'ring-mist'}"><span class="relative block aspect-square bg-fog">${img(o.u,'absolute inset-0 size-full object-cover')}</span><span class="block p-2 leading-tight"><b class="line-clamp-2 text-[11.5px] font-semibold">${o.t}</b><span class="num mt-0.5 block text-[11.5px] text-slate2">${clp(o.p)}</span></span></button>`).join('')}</div>`}
+      <div class="mt-4 flex flex-wrap items-center gap-2.5"><button id="yok" class="rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand">Aprobar${mode(p)==='elijo'?' este':''}</button>${mode(p)==='delego'?'<button id="ychg" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">Cambiar</button>':''}</div>
+      <p class="mt-2.5 text-xs leading-snug text-slate2">Apruébalo antes del ${deadline} para que llegue a tiempo. Nada se compra sin tu aprobación; si no me respondes, te insisto por WhatsApp y luego por correo.</p>
+      <div class="mt-3 flex flex-wrap items-center gap-2 text-xs"><span class="font-semibold text-slate2">Pídeme:</span>${[['eco','Algo más económico'],['orig','Algo más original'],['util','Algo más útil']].map(([k,l])=>`<button data-ask="${k}" class="rounded-full px-3 py-1 font-semibold ring-1 ring-mist transition hover:bg-fog">${l}</button>`).join('')}</div>
+      <p id="yreply" class="mt-2 min-h-[18px] text-[12.5px] font-medium text-black"></p>
+      ${stepper(2)}`;
+  } else if(ph==='later'){
+    left = artPanel(p);
+    const k=facts(p).length, falta=Math.max(0,4-k);
+    right = `${head('Todavía falta')}
+      <div class="mt-4 flex items-center gap-3 rounded-2xl bg-fog p-4 ring-1 ring-mist"><span class="grid size-11 shrink-0 place-items-center rounded-full bg-black text-white"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg></span><div class="leading-tight"><p class="text-[11px] font-semibold uppercase tracking-[.14em] text-slate2">Te aviso el</p><p class="font-serif text-[30px] font-medium tracking-[-0.04em]">${fdate(avisoD(p))}</p></div><p class="ml-auto max-w-[150px] text-right text-xs leading-snug text-slate2">Con la propuesta lista y tiempo para recibirla.</p></div>
+      <p class="mt-4 text-[11px] font-semibold uppercase tracking-[.14em] text-slate2">Lo que sé de ${p.n}</p>
+      <div class="mt-2 flex flex-wrap gap-1.5">${facts(p).map(f=>`<span class="rounded-full bg-fog px-3 py-1 text-[12.5px] font-medium ring-1 ring-mist">${f}</span>`).join('')}${falta?`<span class="rounded-full border border-dashed border-steel px-3 py-1 text-[12.5px] text-slate2">+ ${falta} por aprender</span>`:''}</div>
+      ${seg(p)}
+      <div class="mt-4"><button id="yideas" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">${yseeIdeas?'Ocultar ideas':'Adelantarme unas ideas'}</button></div>
+      <div id="yid" class="${yseeIdeas?'':'hidden'} mt-3"><div class="grid grid-cols-3 gap-2.5">${its.map(o=>`<div class="overflow-hidden rounded-2xl bg-white ring-1 ring-mist"><span class="relative block aspect-square bg-fog">${img(o.u,'absolute inset-0 size-full object-cover')}</span><span class="block p-2 leading-tight"><b class="line-clamp-2 text-[11.5px] font-semibold">${o.t}</b><span class="num mt-0.5 block text-[11.5px] text-slate2">${clp(o.p)}</span></span></div>`).join('')}</div><p class="mt-2 text-xs text-slate2">Son ideas por ahora. La propuesta que te dejo para aprobar llega el ${fdate(avisoD(p))}.</p></div>
+      ${stepper(0)}`;
+  } else {
+    left = photoPanel(cur,'Comprado');
+    right = `${head('Ya está en camino')}
+      <div class="mt-4 rounded-2xl bg-fog p-4 ring-1 ring-mist"><p class="text-[10.5px] font-semibold uppercase tracking-[.14em] text-slate2">${cur.v}</p><div class="mt-1 flex items-baseline justify-between gap-3"><b class="text-[19px] font-semibold leading-tight tracking-tight">${cur.t}</b><span class="num text-[17px] font-semibold">${clp(cur.p)}</span></div><p class="mt-1 text-[13px] leading-snug text-slate2">Llega ${dl<=1?'mañana':'el '+fdate(addD(occ(p),-3))}, envuelto y con tarjeta.</p></div>
+      <p class="mt-4 text-[13px] leading-snug text-slate2">Cuando llegue te pregunto si le gustó. Con eso aprendo qué regalarle la próxima vez.</p>
+      ${stepper(3)}`;
+  }
+  $('yHero').innerHTML = `<article class="grid h-full overflow-hidden rounded-[32px] bg-white shadow-[0_50px_70px_-44px_rgba(15,23,42,.45),0_2px_0_#fff_inset] ring-1 ring-mist md:grid-cols-[.8fr_1.2fr]">${left}<div class="flex flex-col p-7">${right}</div></article>`;
+  const R=$('yHero');
+  R.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{ ymodes[p.n]=b.dataset.mode; yHero(false); gsap.from('#yHero article > div:last-child > *:nth-child(n+4)',{y:10,opacity:0,duration:.4,stagger:.05,ease:'power3.out'}); });
+  R.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{ ypick[p.n]=+b.dataset.pick; yHero(false); });
+  if($('yok')) $('yok').onclick=()=>yBuy(p);
+  if($('ychg')) $('ychg').onclick=()=>{ ypick[p.n]=((ypick[p.n]||0)+1)%3; yHero(false); const im=R.querySelector('article > div:first-child img'); gsap.from(im,{opacity:0,scale:1.06,duration:.5}); $('yreply').textContent='Listo, te muestro otra opción.'; };
+  R.querySelectorAll('[data-ask]').forEach(b=>b.onclick=()=>{
+    const arr=items(p).map((o,i)=>({o,i})), k=b.dataset.ask;
+    const pick = k==='eco'? [...arr].sort((a,b)=>a.o.p-b.o.p)[0] : k==='orig'? arr[2] : arr[1];
+    ypick[p.n]=pick.i; yHero(false);
+    $('yreply').textContent = k==='eco'?`Listo. Este es el más económico: ${clp(pick.o.p)}.`: k==='orig'?'Listo. Este es menos común y más de autor.':'Listo. Este se usa todos los días.';
+    gsap.from('#yHero article > div:first-child img',{opacity:0,scale:1.06,duration:.5});
+  });
+  if($('yideas')) $('yideas').onclick=()=>{ yseeIdeas=!yseeIdeas; yHero(false); if(yseeIdeas) gsap.from('#yid > *',{y:12,opacity:0,duration:.45,stagger:.06,ease:'power3.out'}); };
   if(anim) gsap.fromTo('#yHero article > div:last-child > *',{y:14,opacity:0},{y:0,opacity:1,duration:.5,stagger:.05,ease:'power3.out'});
 }
 
-function yPend(){
-  const list=[...YEAR].filter(p=>!isOk(p)).sort(byDate), shown=yall?list:list.slice(0,4);
-  $('yPend').innerHTML = `<div class="rounded-[28px] bg-white p-5 shadow-[0_40px_60px_-44px_rgba(15,23,42,.35)] ring-1 ring-mist">
-    <div class="mb-2 flex items-center justify-between"><h3 class="text-[15px] font-semibold">Necesito de ti</h3><span class="rounded-full bg-brand/10 px-2.5 py-0.5 text-xs font-semibold text-brand">${list.length}</span></div>
-    ${list.length? `<ul>${shown.map(p=>`<li><button data-n="${p.n}" class="group flex w-full items-center gap-3 rounded-2xl px-2 py-2.5 text-left transition hover:bg-fog ${p===yfocus?'bg-fog':''}">
-      <span class="grid size-11 shrink-0 place-items-center rounded-xl text-white shadow-sm" style="background:linear-gradient(150deg,${grad(p)})"><b class="font-serif text-[20px] font-medium leading-none">${p.d}</b></span>
-      <span class="min-w-0 flex-1 leading-tight"><b class="block truncate text-[14.5px] font-semibold">${p.n}</b><span class="text-xs text-slate2">${p.o} · en ${dleft(p)} días</span>
-        ${p.doubt?`<span class="mt-1.5 flex items-center gap-1.5 text-xs"><i class="not-italic text-black/70">¿Es tu hermana?</i><span data-q="si" class="rounded-full bg-black px-2.5 py-0.5 font-semibold text-white">Sí</span><span data-q="no" class="rounded-full px-2.5 py-0.5 font-semibold ring-1 ring-black/20">No</span></span>`:''}</span>
-      <span class="text-slate2 transition group-hover:translate-x-0.5 group-hover:text-black">→</span></button></li>`).join('')}</ul>
-      ${list.length>4?`<button id="yall" class="mt-1 w-full rounded-xl py-2 text-xs font-semibold text-slate2 hover:text-black">${yall?'Ver menos':`Ver ${list.length-4} más`}</button>`:''}` : '<p class="py-6 text-center text-sm text-slate2">No me falta nada de ti. Te aviso cuando haya algo nuevo.</p>'}
-  </div>`;
-  document.querySelectorAll('#yPend [data-n]').forEach(b=>b.onclick=e=>{
-    const q=e.target.closest('[data-q]'); const p=YEAR.find(x=>x.n===b.dataset.n);
-    if(q){ e.stopPropagation(); p.doubt=false; yPend(); gsap.from(`#yPend [data-n="${p.n}"]`,{scale:.97,duration:.5,ease:'elastic.out(1,.5)'}); ytoast(q.dataset.q==='si'?'Anotado: es tu hermana. Voy aprendiendo.':'Anotado: no es tu hermana.'); return; }
-    ySetFocus(p); });
-  if($('yall')) $('yall').onclick=()=>{ yall=!yall; yPend(); };
+function yLearn(){
+  const qs=QUESTIONS.filter(q=>!yasked[q.n]).slice(0,3), k=Object.keys(yasked).length;
+  $('yLearn').innerHTML = `<div class="rounded-[28px] bg-white p-5 shadow-[0_40px_60px_-44px_rgba(15,23,42,.35)] ring-1 ring-mist"><div class="mb-1 flex items-center justify-between"><h3 class="text-[15px] font-semibold">Ayúdame a conocerlos</h3><span class="text-xs font-medium text-slate2">${k} respondidas</span></div><p class="mb-3 text-xs text-slate2">Cada respuesta me ayuda a elegir mejor cuando se acerque la fecha.</p>
+  ${qs.length? qs.map(q=>`<div class="mb-3 rounded-2xl bg-fog p-3.5 last:mb-0" data-q="${q.n}"><p class="text-[11px] font-semibold uppercase tracking-[.12em] text-slate2">${q.n}</p><p class="mt-0.5 text-[14.5px] font-semibold leading-tight">${q.q}</p><div class="mt-2.5 flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-a="${a}" class="rounded-full bg-white px-3 py-1.5 text-[12.5px] font-semibold ring-1 ring-mist transition hover:bg-black hover:text-white hover:ring-black">${a}</button>`).join('')}</div></div>`).join('') : '<p class="py-5 text-center text-sm text-slate2">Por ahora no me falta nada. Voy a preguntarte cuando llegue un regalo.</p>'}</div>`;
+  document.querySelectorAll('#yLearn [data-q]').forEach(box=>box.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{
+    const q=QUESTIONS.find(x=>x.n===box.dataset.q), p=YEAR.find(x=>x.n===q.n);
+    yasked[q.n]=1; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a));
+    ytoast(`Anotado. Ya sé algo más de ${q.n}.`);
+    gsap.to(box,{opacity:0,height:0,margin:0,padding:0,duration:.35,onComplete:()=>{ yLearn(); if(yfocus===p){ yHero(false); } yTl(); }});
+  }));
 }
 
-function yDone(){
-  const list=YEAR.filter(isOk).sort(byDate);
-  $('yDone').innerHTML = `<div class="rounded-[28px] bg-white/70 p-5 ring-1 ring-mist"><h3 class="mb-2 text-[15px] font-semibold">Ya resuelto</h3><ul class="divide-y divide-mist">${list.slice(0,4).map(p=>{ const a=arrive(p), past=a<TODAY; return `<li class="flex items-center gap-3 py-2.5"><span class="grid size-7 shrink-0 place-items-center rounded-full bg-emerald-500/15 text-emerald-600"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="min-w-0 flex-1 leading-tight"><b class="block truncate text-[14px] font-semibold">${p.n}</b><span class="text-xs text-slate2">${gift(p).n} · ${past?'llegó':'llega'} el ${fdate(a)}</span></span></li>`; }).join('')}</ul>${list.length>4?`<p class="pt-2 text-xs text-slate2">y ${list.length-4} más en tu año</p>`:''}</div>`;
+function yNext(){
+  const list=[...YEAR].sort(byDate).slice(0,5);
+  const pill = p => { const ph=phase(p); return ph==='now'?'<span class="rounded-full bg-brand px-2.5 py-1 text-[11px] font-semibold text-white">Toca decidir</span>': ph==='bought'?'<span class="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">Comprado</span>':`<span class="rounded-full px-2.5 py-1 text-[11px] font-semibold text-slate2 ring-1 ring-mist">Aviso ${fdate(avisoD(p))}</span>`; };
+  $('yNext').innerHTML = `<div class="rounded-[28px] bg-white/70 p-5 ring-1 ring-mist"><h3 class="mb-2 text-[15px] font-semibold">Lo que se viene</h3><ul>${list.map(p=>`<li><button data-n="${p.n}" class="group flex w-full items-center gap-3 rounded-2xl px-2 py-2 text-left transition hover:bg-fog ${p===yfocus?'bg-fog':''}"><span class="grid size-10 shrink-0 place-items-center rounded-xl text-white shadow-sm" style="background:linear-gradient(150deg,${grad(p)})"><b class="font-serif text-[18px] font-medium leading-none">${p.d}</b></span><span class="min-w-0 flex-1 leading-tight"><b class="block truncate text-[14px] font-semibold">${p.n}</b><span class="text-xs text-slate2">${p.o} · ${fdate(occ(p))}</span></span>${pill(p)}</button></li>`).join('')}</ul></div>`;
+  document.querySelectorAll('#yNext [data-n]').forEach(b=>b.onclick=()=>ySetFocus(YEAR.find(x=>x.n===b.dataset.n)));
 }
 
 function yTl(){
   const cur=TODAY.getMonth(), cols=Array.from({length:12},(_,i)=>({m:(cur+i)%12,y:TODAY.getFullYear()+((cur+i)>11?1:0),ps:[]}));
   YEAR.forEach(p=>{ const o=occ(p), c=cols.find(c=>c.m===o.getMonth()&&c.y===o.getFullYear()); c&&c.ps.push(p); });
   cols.forEach(c=>c.ps.sort(byDate));
-  const dot = p => isOk(p)?'bg-emerald-500':p.st==='Elegir'?'bg-brand':'bg-steel';
+  const st = p => { const ph=phase(p); return ph==='now'?['ring-2 ring-brand bg-white','bg-brand','Toca decidir']: ph==='bought'?['ring-1 ring-emerald-500/40 bg-emerald-50','bg-emerald-500','Comprado']:['ring-1 ring-dashed ring-mist bg-white','border border-dashed border-steel bg-white','Aviso '+fdate(avisoD(p))]; };
   $('yTl').innerHTML = `<div class="relative grid min-w-[1560px] grid-cols-12 gap-x-2">
     <i class="pointer-events-none absolute bottom-0 top-0 z-0 w-px bg-brand" style="left:calc((100% / 12) * ${(TODAY.getDate()-1)/30})"><b class="absolute -top-1 left-1 z-20 rounded-full bg-brand px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[.1em] text-white">Hoy</b></i>
     ${cols.map((c,i)=>`<div class="min-h-[170px] ${i?'border-l border-mist pl-2':''}"><p class="mb-3 pt-6 text-[11px] font-semibold tracking-[.14em] text-slate2">${MES[c.m]}${c.m===0?` <span class="text-steel">${c.y}</span>`:''}</p>
-      <div class="flex flex-col gap-2">${c.ps.length? c.ps.map(p=>`<button data-n="${p.n}" class="ytc group relative z-[1] rounded-xl p-1.5 text-left ring-1 transition hover:-translate-y-0.5 hover:shadow-md ${p===yfocus?'bg-fog ring-black':'bg-white ring-mist'}"><span class="flex h-9 items-center justify-between rounded-lg px-2.5 text-white" style="background:linear-gradient(150deg,${grad(p)})"><b class="font-serif text-[19px] font-medium leading-none">${p.d}</b><i class="size-2 rounded-full ring-2 ring-white ${dot(p)}"></i></span><span class="mt-1.5 block px-0.5 leading-tight"><b class="block truncate text-[12.5px] font-semibold">${p.n}</b><span class="block truncate text-[10.5px] text-slate2">${p.o}</span></span></button>`).join('') : '<p class="text-xs text-steel">Sin fechas</p>'}</div></div>`).join('')}</div>`;
+      <div class="flex flex-col gap-2">${c.ps.length? c.ps.map(p=>{ const [cls,dot,lab]=st(p); return `<button data-n="${p.n}" class="ytc group relative z-[1] rounded-xl p-1.5 text-left transition hover:-translate-y-0.5 hover:shadow-md ${cls} ${p===yfocus?'outline outline-2 outline-black':''}" style="${phase(p)==='later'?'border:1px dashed #c4cad5':''}"><span class="flex h-9 items-center justify-between rounded-lg px-2.5 text-white" style="background:linear-gradient(150deg,${grad(p)})"><b class="font-serif text-[19px] font-medium leading-none">${p.d}</b><i class="size-2 rounded-full ring-2 ring-white ${dot}"></i></span><span class="mt-1.5 block px-0.5 leading-tight"><b class="block truncate text-[12.5px] font-semibold">${p.n}</b><span class="block truncate text-[10.5px] text-slate2">${lab}</span></span></button>`; }).join('') : '<p class="text-xs text-steel">Sin fechas</p>'}</div></div>`).join('')}</div>`;
   document.querySelectorAll('#yTl [data-n]').forEach(b=>b.onclick=()=>{ ySetFocus(YEAR.find(x=>x.n===b.dataset.n)); $('year').scrollTo({top:0,behavior:'smooth'}); });
 }
 
-function ySetFocus(p){ yfocus=p; yopts=false; yHero(); yPend(); yTl(); }
+function ySetFocus(p){ yfocus=p; yseeIdeas=false; yHero(); yNext(); yTl(); }
 function ytoast(t){ $('ttxt').textContent=t; const el=$('toast'); gsap.killTweensOf(el); gsap.fromTo(el,{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:'back.out(2)'}); gsap.to(el,{opacity:0,y:-10,duration:.4,delay:2.4}); }
-function yResolve(p){
-  p.st='Lista'; p.doubt=false;
-  ytoast(`Listo. Me encargo del regalo de ${p.n}.`);
-  yStats(); yHero(false); yPend(); yDone(); yTl();
+function yBuy(p){
+  p.bought=true;
+  ytoast(`Listo. Compro el regalo de ${p.n} y te aviso cuando salga.`);
+  yStats(); yHero(false); yNext(); yTl();
   gsap.fromTo('#yHero article',{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.5)'});
   gsap.from('#yHero ol li:nth-child(4) span:first-of-type',{scale:0,duration:.5,ease:'back.out(3)'});
 }
 
 function openYear(){
-  const y=$('year'); yall=false; yopts=false;
-  yfocus=[...YEAR].filter(p=>!isOk(p)).sort(byDate)[0] || YEAR.sort(byDate)[0];
-  yStats(); yHero(false); yPend(); yDone(); yTl(); yMode(ymode,false);
+  const y=$('year'); yseeIdeas=false;
+  yfocus=YEAR.filter(p=>phase(p)==='now').sort(byDate)[0] || YEAR.filter(p=>phase(p)==='later').sort(byDate)[0];
+  yStats(); yHero(false); yLearn(); yNext(); yTl();
   y.style.display='block'; y.scrollTop=0;
   gsap.fromTo(y,{opacity:0},{opacity:1,duration:.4,onComplete:()=>{ $('sync').style.display='none'; }});
   const tl=gsap.timeline({defaults:{ease:'expo.out'}});
@@ -648,14 +685,11 @@ function openYear(){
     .from('#year h1',{y:28,opacity:0,duration:.9},'-=.4')
     .from('#ystats > *',{y:20,opacity:0,duration:.7,stagger:.08},'-=.7')
     .from('#yHero article',{y:40,opacity:0,duration:.9},'-=.5')
-    .from('#yPend > div, #yDone > div',{y:30,opacity:0,duration:.8,stagger:.1},'-=.7')
+    .from('#yLearn > div, #yNext > div',{y:30,opacity:0,duration:.8,stagger:.1},'-=.7')
     .from('#yTl',{y:40,opacity:0,duration:.9},'-=.5')
     .from('#yTl .ytc',{scale:.6,opacity:0,duration:.6,stagger:{each:.04,from:'start'},ease:'back.out(2)'},'-=.6');
 }
 function closeYear(){ $('year').style.display='none'; }
-function yMode(m,anim=true){ ymode=m; gsap.to('#ymk',{x:m==='delego'?0:$('ymode').querySelectorAll('button')[1].offsetLeft-4,duration:anim?.45:0,ease:'back.out(1.6)'});
-  document.querySelectorAll('#ymode button').forEach(b=>b.classList.toggle('text-white',b.dataset.m===m)); if(yfocus&&$('yHero').firstChild) yHero(false); }
-document.querySelectorAll('#ymode button').forEach(b=>b.onclick=()=>yMode(b.dataset.m));
 $('ylogo').onclick=closeYear;
 
 function closeSync(){ $('sync').style.display='none'; }
