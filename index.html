@@ -71,7 +71,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .ap-tabs em{font-style:normal;display:grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#ff5924;color:#fff;font-size:11px;font-weight:700}
 @media(max-width:767px){
   .ap-top{grid-template-columns:1fr auto;background:#f5f7f9;-webkit-backdrop-filter:none;backdrop-filter:none}
-  .ap-tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;justify-content:space-around;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 -1px 0 #e5eaf2}
+  .ap-tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;justify-content:space-around;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);box-shadow:0 -1px 0 #e5eaf2}
   .ap-tabs button{flex:1;flex-direction:column;gap:2px;padding:6px 2px;font-size:10.5px;border-radius:12px}
   .ap-tabs button svg{display:block}
   .ap-tabs button[aria-current]{background:none;box-shadow:none}
@@ -82,58 +82,146 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .ap-pop{position:absolute;right:0;top:calc(100% + 8px);z-index:50;max-width:calc(100vw - 32px);border-radius:16px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 24px 40px -18px rgba(15,23,42,.3)}
 .ap-mi{display:flex;width:100%;align-items:center;border-radius:10px;padding:8px 10px;text-align:left;font-size:14px;font-weight:500;transition:background .12s}
 .ap-mi:hover{background:#f5f7f9}
-.ap-card{display:grid;height:100%;overflow:hidden;border-radius:24px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
-@media(min-width:768px){.ap-card{grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:376px}}
-.ap-ph{position:relative;min-height:240px;overflow:hidden;background:#f5f7f9}
-.ap-tag{position:absolute;left:12px;top:12px;border-radius:999px;background:rgba(255,255,255,.92);padding:4px 10px;font-size:12px;font-weight:600}
-.hero-art .art::before{display:none}
 .ap-seg{display:inline-flex;border-radius:999px;background:#f5f7f9;padding:3px;font-size:12.5px;font-weight:600;white-space:nowrap}
 .ap-seg button{border-radius:999px;padding:4px 11px;color:#5f6b7d;transition:color .15s,background .15s}
 .ap-seg button:hover{color:#0e1014}
 .ap-seg button[aria-pressed=true]{background:#0e1014;color:#fff}
-.ap-steps{display:flex;flex-direction:column}
-.ap-steps li{position:relative;display:flex;align-items:flex-start;gap:10px;padding-bottom:7px;font-size:14px;line-height:18px}
-.ap-steps li:last-child{padding-bottom:0}
-.ap-steps li:not(:last-child)::before{content:"";position:absolute;left:8px;top:18px;bottom:0;width:1px;background:#d5dbe5}
-.ap-steps i{flex:none;display:grid;place-items:center;width:17px;height:17px;border-radius:50%;margin-top:.5px;background:#fff;box-shadow:inset 0 0 0 1px #c4cad5}
-.ap-steps [data-s=done] i{background:#0e1014;box-shadow:none}
-.ap-steps [data-s=done]{color:#5f6b7d}
-.ap-steps [data-s=now] i{background:#ff5924;box-shadow:0 0 0 4px rgba(255,89,36,.18)}
-.ap-steps [data-s=now]{font-weight:600}
-.ap-steps [data-s=todo]{color:#5f6b7d}
-.ap-band{display:flex;min-height:178px;overflow:hidden;border-radius:20px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
-.bm{position:relative;flex:1 1 0;min-width:0;overflow:hidden;padding:10px 8px 10px 10px;border-left:1px solid #e5eaf2;transition:flex-grow .5s cubic-bezier(.2,.8,.2,1),background .3s}
-.bm:first-child{border-left:0}
-.bm[data-far="0"]{background:#fff}
-.bm[data-far="1"],.bm[data-far="2"],.bm[data-far="3"]{background:#fbfcfd}
-.mo-l{position:relative;margin-bottom:6px;font-size:11.5px;font-weight:600;letter-spacing:.08em;white-space:nowrap}
-.dt{display:flex;width:100%;min-width:0;align-items:center;gap:8px;border-radius:10px;padding:3px;text-align:left;transition:background .15s}
-.dt:hover{background:#f5f7f9}
-.dt[aria-current]{background:#f5f7f9;box-shadow:inset 0 0 0 1.5px #0e1014}
-.dt-n{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-family:'Newsreader',serif;font-size:15px;box-shadow:inset 0 0 0 1px #aab2bf;background:#fff}
-.dt[data-ph=now] .dt-n{background:#ff5924;color:#fff;box-shadow:none}
-.dt[data-ph=bought] .dt-n{background:#10b981;color:#fff;box-shadow:none}
-.dt-t{min-width:0;line-height:1.15}
-.dt-t b,.dt-t small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.dt-t b{font-size:13.5px;font-weight:600}
-.dt-t small{font-size:11.5px;color:#5f6b7d}
-.bm[data-lv=dot] .dt{flex-direction:column;align-items:flex-start;gap:1px;padding:1px 3px}
-.bm[data-lv=dot] .dt-t{width:100%}
-.bm[data-lv=dot] .dt-t b{font-size:11px;font-weight:500}
-.bm[data-lv=dot] .dt-t small{display:none}
-.ap-masonry{columns:1;column-gap:16px}
-@media(min-width:768px){.ap-masonry{columns:2}}
-@media(min-width:1200px){.ap-masonry{columns:3}}
-.ap-pc{display:block;width:100%;break-inside:avoid;margin-bottom:16px;border-radius:20px;background:#fff;padding:18px;text-align:left;box-shadow:0 0 0 1px #e5eaf2}
-.ap-add{display:flex;flex-direction:column;gap:6px;background:transparent;box-shadow:none;border:1.5px dashed #c4cad5;transition:border-color .15s,background .15s}
-.ap-add:hover{border-color:#0e1014;background:#fff}
-.ap-f{display:block;font-size:12.5px;font-weight:500;color:#5f6b7d}
 .ap-i{display:block;width:100%;margin-top:4px;border-radius:10px;background:#fff;padding:9px 11px;font-size:14px;font-weight:400;color:#0e1014;box-shadow:inset 0 0 0 1px #d5dbe5}
 .ap-sw{position:relative;display:block;width:40px;height:24px;border-radius:12px;background:#d5dbe5;transition:background .18s}
 .ap-sw::after{content:"";position:absolute;left:2px;top:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.3);transition:transform .18s}
 .ap-sw[aria-checked=true]{background:#0e1014}
 .ap-sw[aria-checked=true]::after{transform:translateX(16px)}
-@media(prefers-reduced-motion:reduce){.bm,.ap-sw,.ap-sw::after{transition:none}}
+/* notificación de entrada */
+#apNotif{position:fixed;left:50%;top:34px;z-index:60;display:none;width:min(400px,calc(100vw - 32px));margin-left:calc(min(400px,calc(100vw - 32px))/-2);gap:12px;align-items:flex-start;border-radius:22px;background:rgba(255,255,255,.92);padding:14px 16px;text-align:left;box-shadow:0 0 0 1px rgba(15,23,42,.05),0 30px 50px -20px rgba(15,23,42,.35);cursor:pointer}
+/* planner */
+.pl{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,410px);gap:48px;align-items:stretch;min-height:calc(100vh - 84px);padding-bottom:20px}
+.pl-l{display:flex;min-width:0;flex-direction:column;padding-top:12px}
+.pl-r{min-width:0}
+.pl-h{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3vw,42px);line-height:1.05;letter-spacing:-.028em}
+.pl-h-lg{font-size:clamp(36px,4.4vw,62px)}
+.pl-lead{margin-top:14px;max-width:560px;font-size:17px;line-height:1.4;color:#39414e}
+.pl-empty{max-width:640px;padding-top:12vh}
+.pl-dots{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.pl-dots i{width:6px;height:6px;border-radius:50%;background:#ff5924;animation:pld 1s infinite ease-in-out}
+.pl-dots i:nth-child(2){animation-delay:.15s}.pl-dots i:nth-child(3){animation-delay:.3s}
+@keyframes pld{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+.th-l{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.th-l li{display:flex;gap:10px;font-size:14.5px;line-height:1.35;color:#39414e}
+.th-l li i{flex:none;width:6px;height:6px;margin-top:7px;border-radius:50%;background:#0e1014}
+.th-l li:last-child{color:#0e1014;font-weight:500}
+.th-s{display:grid;gap:8px;margin-top:20px}
+.th-s.s30{grid-template-columns:repeat(10,minmax(0,1fr))}
+.th-s.s8{grid-template-columns:repeat(4,minmax(0,1fr));max-width:520px}
+.th-s.s3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:640px}
+.th{display:block;aspect-ratio:1;overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
+.th img,.pl-ph img,.pc3-ph img,.pl-idea img{display:block;width:100%;height:100%;object-fit:cover}
+.pl-pick{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:18px;flex:1;min-height:280px;max-height:420px}
+.pl-ph{position:relative;overflow:hidden;border-radius:22px;background:#fff;box-shadow:0 0 0 1px #e5eaf2;min-height:240px}
+.pl-v{font-size:13px;color:#5f6b7d}
+.pl-t{margin-top:2px;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.04;letter-spacing:-.025em}
+.pl-cta{border-radius:999px;background:#0e1014;padding:15px 26px;font-size:15px;font-weight:600;color:#fff;transition:background .15s,transform .15s}
+.pl-cta:hover{background:#ff5924;transform:translateY(-1px)}
+.pl-sec{border-radius:999px;background:rgba(14,16,20,.06);padding:12px 20px;font-size:14px;font-weight:600;transition:background .15s}
+.pl-sec:hover{background:rgba(14,16,20,.1)}
+.pl-back{align-self:flex-start;margin-bottom:12px;border-radius:999px;background:rgba(14,16,20,.06);padding:5px 12px;font-size:12.5px;font-weight:600;transition:background .15s}
+.pl-back:hover{background:rgba(14,16,20,.1)}
+.pl-fine{margin-top:9px;font-size:12.5px;line-height:1.35;color:#5f6b7d}
+.pl-ask{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:16px;font-size:13px}
+.pl-ask>span{color:#5f6b7d;margin-right:2px}
+.pl-ask button{border-radius:999px;background:#fff;padding:6px 12px;font-weight:600;box-shadow:0 0 0 1px #e5eaf2;transition:background .15s,color .15s}
+.pl-ask button:hover{background:#0e1014;color:#fff}
+.pl-ask em{font-style:normal;margin-left:4px;font-weight:500}
+.pl-how{margin-top:12px;font-size:13px}
+.pl-how summary{cursor:pointer;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
+.pl-mode{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;color:#5f6b7d}
+.pl-mode span{font-weight:600;color:#0e1014;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
+.pl-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.pc3{display:flex;min-width:0;flex-direction:column;overflow:hidden;border-radius:20px;background:#fff;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:transform .18s,box-shadow .18s}
+.pc3:hover{transform:translateY(-3px)}
+.pc3[aria-pressed=true]{box-shadow:0 0 0 2.5px #0e1014}
+.pc3-ph{display:block;aspect-ratio:1;overflow:hidden;background:#f5f7f9}
+.pc3-b{display:flex;flex-direction:column;gap:2px;padding:12px 13px 14px}
+.pc3-b b{font-family:'Newsreader',serif;font-weight:400;font-size:19px;line-height:1.1;letter-spacing:-.015em}
+.pc3-b span{font-size:13.5px;font-weight:600}
+.pc3-b small{margin-top:3px;font-size:12.5px;line-height:1.3;color:#5f6b7d}
+.pl-idea{display:grid;grid-template-columns:repeat(3,minmax(0,150px));gap:10px;margin-top:10px}
+.pl-idea span{display:block;aspect-ratio:1;overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
+/* tarjeta de la fecha */
+.tk{display:flex;height:100%;max-height:680px;min-height:520px;flex-direction:column;overflow:hidden;border-radius:30px;background:#0e1014;color:#fff;box-shadow:0 44px 60px -34px rgba(15,23,42,.6)}
+.tk-art{position:relative;flex:1;min-height:250px;overflow:hidden}
+.tk-art>svg{position:absolute;inset:0;width:100%;height:100%}
+.tk-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tk-art::before{content:"";position:absolute;top:14px;left:50%;z-index:2;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#0e1014;box-shadow:inset 0 2px 3px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.45)}
+.tk-mo{position:absolute;right:18px;top:16px;z-index:2;font-size:13px;font-weight:600;letter-spacing:.2em;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.tk-d{position:absolute;left:20px;bottom:-4px;z-index:2;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(120px,12vw,168px);line-height:1;letter-spacing:-.05em;text-shadow:0 4px 24px rgba(0,0,0,.22)}
+.tk-art:has(.tk-ph)::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(14,16,20,.3),rgba(14,16,20,0) 30%,rgba(14,16,20,.05) 50%,rgba(14,16,20,.62))}
+.tk-stamp{position:absolute;right:18px;bottom:20px;z-index:2;border-radius:999px;background:#10b981;padding:7px 15px;font-size:14px;font-weight:700}
+.tk-b{padding:20px 22px 18px}
+.tk-b h2{min-width:0;font-family:'Newsreader',serif;font-weight:400;font-size:32px;line-height:1.05;letter-spacing:-.025em}
+.tk-when{flex:none;font-size:14px;font-weight:600;color:#ff8a5c}
+.tk-o{margin-top:2px;font-size:13.5px;color:rgba(255,255,255,.62)}
+.tk-t{margin-top:14px;font-size:14px;font-weight:500}
+.tk-t i{display:block;height:3px;margin:8px 0;border-radius:2px;background:rgba(255,255,255,.16);overflow:hidden}
+.tk-t i b{display:block;height:100%;background:#ff5924}
+.tk-s{margin-top:3px;font-size:12.5px;font-weight:400;line-height:1.3;color:rgba(255,255,255,.62)}
+.tk-ok{color:#5be3b4}
+.tk-next{display:block;width:100%;margin-top:14px;border-top:1px solid rgba(255,255,255,.14);padding-top:11px;text-align:left;font-size:13px;color:rgba(255,255,255,.82);transition:color .15s}
+.tk-next span{margin-right:8px;color:rgba(255,255,255,.55)}
+.tk-next:hover{color:#fff}
+/* personas */
+.pp-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:10px 0 18px}
+.pp-q{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin-bottom:18px;border-radius:18px;background:#0e1014;padding:13px 16px 13px 20px;font-size:15px;color:#fff}
+.pp-q p span{color:rgba(255,255,255,.65)}
+.pp-q button{border-radius:999px;background:rgba(255,255,255,.12);padding:6px 13px;font-size:13px;font-weight:600;transition:background .15s,color .15s}
+.pp-q button:hover{background:#fff;color:#0e1014}
+.pp-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media(min-width:768px){.pp-g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1200px){.pp-g{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pp-c{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;border-radius:24px;background:#dfe4ec;text-align:left;color:#fff;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.pp-c:hover{transform:translateY(-4px);box-shadow:0 30px 40px -24px rgba(15,23,42,.55)}
+.pp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.pp-c:hover .pp-img{transform:scale(1.05)}
+.pp-sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,20,.18) 0%,rgba(14,16,20,0) 26%,rgba(14,16,20,.28) 48%,rgba(14,16,20,.92) 100%)}
+.pp-top{position:absolute;left:12px;right:12px;top:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.pp-date{display:flex;flex-direction:column;align-items:center;min-width:48px;border-radius:14px;background:#fff;padding:5px 8px 6px;font-size:10px;font-weight:600;letter-spacing:.1em;color:#0e1014}
+.pp-date b{font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1;letter-spacing:-.03em}
+.pp-st{white-space:nowrap;border-radius:999px;padding:5px 10px;font-size:11.5px;font-weight:700}
+.pp-now{background:#ff5924}.pp-ok{background:#10b981}
+.pp-b{position:absolute;left:16px;right:16px;bottom:15px;display:flex;flex-direction:column}
+.pp-b b{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.2vw,30px);line-height:1.05;letter-spacing:-.025em}
+.pp-b small{font-size:12.5px;color:rgba(255,255,255,.72)}
+.pp-b em{margin-top:7px;font-style:normal;font-size:13px;line-height:1.3}
+.pp-idea{margin-top:3px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:12px;color:rgba(255,255,255,.72)}
+/* configuración */
+.cf-m{display:block;border-radius:20px;background:#fff;padding:18px 18px 18px 46px;position:relative;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}
+.cf-m[aria-pressed=true]{box-shadow:0 0 0 2.5px #0e1014}
+.cf-m i{position:absolute;left:18px;top:21px;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #afb5c1}
+.cf-m[aria-pressed=true] i{box-shadow:inset 0 0 0 5.5px #0e1014}
+.cf-m b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1.1;letter-spacing:-.02em}
+.cf-m span{display:block;margin-top:4px;font-size:13.5px;line-height:1.35;color:#5f6b7d}
+@media(max-width:1023px){
+  .pl{grid-template-columns:minmax(0,1fr);gap:22px;min-height:0}
+  .pl-r{order:-1}
+  .tk{height:auto;min-height:0;max-height:none}
+  .tk-art{flex:none;height:210px;min-height:0}
+  .tk-d{font-size:110px}
+  .th-s.s30{grid-template-columns:repeat(6,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .pl-pick{grid-template-columns:minmax(0,1fr);max-height:none}
+  .pl-ph{aspect-ratio:4/3}
+  .pl-3{grid-template-columns:minmax(0,1fr)}
+  .pc3{flex-direction:row}
+  .pc3-ph{width:112px;flex:none}
+  .tk-art{height:130px}
+  .tk-d{font-size:84px}
+  .tk-s,.tk-next{display:none}
+  .tk-b{padding:14px 18px}
+  .pp-b em,.pp-idea,.pp-b small{display:none}
+  .pp-b{left:12px;right:12px;bottom:11px}
+  .pp-date{min-width:42px}
+}
+@media(prefers-reduced-motion:reduce){.ap-sw,.ap-sw::after,.pp-c,.pp-img{transition:none}.pl-dots i{animation:none}}
 .ask-card{box-shadow:0 0 0 2px #ff5924,0 0 0 6px rgba(255,89,36,.18),0 30px 40px -22px rgba(15,23,42,.55)!important}
 .card .new{position:absolute;left:12px;top:9px;background:#fff;color:#0e1014;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:99px;z-index:3}
 .hero-art .art::before{display:none}
@@ -263,10 +351,10 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 
   <div class="sticky bottom-0 -mx-6 mt-auto flex flex-wrap items-center justify-between gap-4 bg-gradient-to-t from-fog via-fog/95 to-transparent px-6 pb-5 pt-8 lg:-mx-14 lg:px-14">
     <p id="summary" class="font-serif text-[clamp(24px,3vw,38px)] font-normal tracking-[-0.04em]"></p>
-    <div class="flex items-center gap-5"><button id="enter" class="rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold text-white opacity-0 shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand" style="pointer-events:none">Ver mi año →</button></div>
+    <div class="flex items-center gap-5"><button id="enter" class="rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold text-white opacity-0 shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand" style="pointer-events:none">Ver mi planner →</button></div>
   </div>
 </section>
-<!-- Mi año -->
+<!-- Mi planner -->
 <section id="year" class="fixed inset-0 z-[160] hidden overflow-auto bg-fog">
   <header class="ap-top">
     <button data-act="home" class="font-serif text-[23px] font-medium tracking-[-0.03em] justify-self-start">Cuenta conmigo<span class="text-brand">.</span></button>
@@ -279,7 +367,8 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
       <div id="popUser" class="ap-pop hidden w-[260px]"></div>
     </div>
   </header>
-  <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-10"></main>
+  <button id="apNotif" aria-label="Abrir la notificación"></button>
+  <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
 </section>
 
 <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-[400] -translate-x-1/2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white opacity-0 shadow-2xl"><span class="mr-2 inline-block size-2 rounded-full bg-brand"></span><span id="ttxt"></span></div>
@@ -588,7 +677,7 @@ async function runSync(){
   await wait(2.4); gsap.to(t,{opacity:0,y:-10,duration:.4});
 }
 
-/* ---------- Mi año: el asistente se acerca a cada fecha (A) + el año mes a mes (B) ---------- */
+/* ---------- Datos del planner ---------- */
 const TODAY = new Date(2026,10,4); let AVISO = 14;               // demo fija: 4 nov 2026; aviso 14 días antes (a probar en el piloto)
 const PRODS = {"mama-cual-es-tu-historia":["Mamá ¿Cuál es tu Historia?","MamaMia",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306"],"vela-vasija-pukara-esencia-andina":["Vela Vasija Pukara – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.52.24_1_600x.jpg?v=1791211998"],"mielero-en-ceramica-gres":["Mielero en cerámica gres","TallerColor",24990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Ewpp1SmFbK_600x.jpg?v=1622843066"],"libreta-picaflor-1":["Libreta Picaflor","Cocó Obach",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936"],"tazon-alerce":["Tazón Alerce","GARUGA",7590,"https://cdn.shopify.com/s/files/1/1481/4916/products/tKFvLH5YUh_600x.jpg?v=1749502459"],"tabla-tolten":["Tabla Toltén","ULMMO ORIGEN",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-08-06at15.45.48_1_600x.jpg?v=1754509629"],"mochila-zorro-culpeo":["Mochila ZORRO CULPEO","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Captura_de_Pantalla_2019-11-18_a_la_s_09.06.33_600x.png?v=1749502616"],"botella-termica-oceano":["Botella Térmica / Océano","hued hued",14990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-08-25at15.44.06_5_600x.jpg?v=1787687597"],"mochila-hongos-de-chile":["Mochila Hongos De Chile","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/36dyXgfqHn_600x.jpg?v=1749502248"],"libro-de-las-preguntas-de-neruda":["Libro De Las Preguntas De Neruda","Ediciones Liebre",28750,"https://cdn.shopify.com/s/files/1/1481/4916/files/KKxLjr5jf6_600x.jpg?v=1714769404"],"vela-anillo-de-fuego-esencia-andina":["Vela Anillo de Fuego – Onas-Selk'nam","ESENCIA ANDINA",18990,"https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634"],"diario-de-gratitud":["Diario de Gratitud","LAFANTINA",22990,"https://cdn.shopify.com/s/files/1/1481/4916/files/HvqaAJrWOY_600x.png?v=1744055312"],"mug-termico-ilustrado-papelucosas":["Mug Térmico Ilustrado PAPELUCOSAS","Herencia Colchagua",27990,"https://cdn.shopify.com/s/files/1/1481/4916/products/JUv4OH4diw_600x.jpg?v=1701118558"],"botella-bandurria":["Botella Bandurria","GARUGA",15990,"https://cdn.shopify.com/s/files/1/1481/4916/products/y1HkNdlPxP_600x.jpg?v=1749502261"],"libro-santiago-y-sus-cumbres-copia":["Libro Santiago y sus cumbres - Segunda Edición","FBT FineArt Photography",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/hf_20260826_201432_0ac48f4a-c0e8-4609-a11b-4dbb979884f8copy_600x.jpg?v=1791400905"],"bufanda-alpaca-unisex-chocolate":["Bufanda alpaca unisex Chocolate","ULMMO ORIGEN",49990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-06-03at13.05.27_1_600x.jpg?v=1749491586"],"pack-3-mermeladas-gourmet":["Pack 3 Mermeladas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/AX11vEKQnm_600x.jpg?v=1701682759"],"vela-vasija-likan-esencia-andina":["Vela Vasija Likan – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.54.31_600x.jpg?v=1791212171"],"vasos-gallo-agranda-o-450-ml-set-de-6":["Vasos Gallo Agranda’o 450 ml – Set de 6","Vaso de Gallo",29900,"https://cdn.shopify.com/s/files/1/1481/4916/files/CapturadePantalla2026-01-20ala_s_15.39.40_600x.png?v=1768934392"],"tabla-de-piedra-ribete":["Tabla de Piedra Ribete","Kuyen Diseño",32990,"https://cdn.shopify.com/s/files/1/1481/4916/products/2VkRwsY3N8_600x.jpg?v=1684182866"],"set-de-platos-circulares":["Set de Platos Circulares","Taller Masarte",42900,"https://cdn.shopify.com/s/files/1/1481/4916/files/O9kVn8J2fM_600x.jpg?v=1725467173"],"libro-wander":["Libro Wander","TERE GOTT",15990,"https://cdn.shopify.com/s/files/1/1481/4916/files/Disenosintitulo_5_600x.webp?v=1785431345"],"tabla-de-vidrio-loco":["Tabla de vidrio Picoroco","Andes1",13990,"https://cdn.shopify.com/s/files/1/1481/4916/products/bTWDOePFbi_600x.jpg?v=1606236283"],"pack-3-salsas-gourmet":["Pack 3 Salsas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/jMDsVgDEr6_600x.jpg?v=1701683544"],"dulce-de-leche-tradicional-450grs":["Dulce de Leche Tradicional 450grs.","Fundo Requingua",7490,"https://cdn.shopify.com/s/files/1/1481/4916/products/4UyzMKfer0_600x.jpg?v=1625680551"],"libro-tu-primer-ano":["Libro \"Tu Primer Año\"","LAFANTINA",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/w04HX6mkQu_600x.png?v=1741029832"],"tarjetas-para-fotos-mes-circus":["Tarjetas Meses Bebé \"Circus\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/files/NlD33171lZ_600x.jpg?v=1715712423"],"tarjetas-para-fotos-hitos-festa-menta":["Tarjetas Hitos Bebé \"Festa Menta\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/products/jkVO2C0kdz_600x.jpg?v=1663691157"],"individual-feria-navidena":["Individual Feria Navideña","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/ZREiu0ChXI_600x.jpg?v=1731423791"],"individual-feliz-navidad":["Individual Feliz Navidad","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/OSSRhX0LFH_600x.jpg?v=1762873802"]};
 const GRAD = {cumple:'#ff8a5c,#ff4a14',navidad:'#3f9b72,#0f4a35',amor:'#ffb4c8,#a58bff',boda:'#ffe07a,#ff8f5a',bebe:'#b9d8ff,#c4b3ff',oficina:'#e2ea8a,#3f9e7c',padre:'#7fa6ff,#2c44d6'};
@@ -603,7 +692,7 @@ const GIFT = {
  'Pareja':[['vela-vasija-likan-esencia-andina','libro-wander','tabla-de-vidrio-loco'],'les gusta quedarse en casa.'],
  'Tío Jorge':[['tabla-de-piedra-ribete','pack-3-salsas-gourmet','dulce-de-leche-tradicional-450grs'],'recibe a todos en su casa.'],
  'Emilia':[['libro-tu-primer-ano','tarjetas-para-fotos-mes-circus','tarjetas-para-fotos-hitos-festa-menta'],'sirve para guardar el primer año.'],
- 'Amigo secreto':[['libreta-picaflor-1','tazon-alerce','tabla-tolten'],'queda dentro del tope del sorteo ($15.000).'],
+ 'Amigo secreto':[['libreta-picaflor-1','tazon-alerce','tabla-tolten'],'queda dentro del tope, se ve cuidada y le sirve a cualquiera en la oficina.'],
  'Navidad':[['pack-3-mermeladas-gourmet','individual-feria-navidena','dulce-de-leche-tradicional-450grs'],'es para compartir en la cena familiar.'],
  'Familia Soto':[['tarjetas-para-fotos-hitos-festa-menta','libro-tu-primer-ano','tarjetas-para-fotos-mes-circus'],'es un recuerdo para el día del bautizo.'],
 };
@@ -617,7 +706,7 @@ const QUESTIONS = [
 ];
 const YEAR = [...PEOPLE.map(p=>({...p})), {...NEW}];
 YEAR.find(p=>p.n==='Emilia').bought=true;
-const learned = {}, ymodes = {Pareja:'elijo'}, ypick = {}, yasked = {};
+const learned = {}, ypick = {}, yasked = {};
 const clp = n => '$'+n.toLocaleString('es-CL');
 const occ = p => { const t=new Date(TODAY.getFullYear(),p.m,p.d); if(t<TODAY) t.setFullYear(t.getFullYear()+1); return t; };
 const dleft = p => Math.round((occ(p)-TODAY)/864e5);
@@ -628,204 +717,186 @@ const grad = p => p.g || GRAD[p.k];
 const phase = p => p.bought ? 'bought' : dleft(p)<=AVISO ? 'now' : 'later';
 const byDate = (a,b) => occ(a)-occ(b);
 const prod = h => { const x=PRODS[h]; return {h,t:x[0],v:x[1],p:x[2],u:x[3]}; };
-const GIFT_NEW = [['diario-de-gratitud','vela-vasija-likan-esencia-andina','pack-3-mermeladas-gourmet'],'es un buen comienzo mientras te conozco.'];
-const items = p => (GIFT[p.n]||GIFT_NEW)[0].map(prod);
+const items = p => GIFT[p.n][0].map(prod);
 const chosen = p => items(p)[ypick[p.n]||0];
 const facts = p => [...(PROF[p.n]||[]), ...(learned[p.n]||[])];
-const mode = p => ymodes[p.n]||cfg.mode;
 let yfocus=null, yseeIdeas=false;
 const img = (u,cls='') => `<img src="${u}" alt="" class="${cls}" loading="eager" onerror="this.remove()">`;
 const countTo = (el,v) => { const o={v:+el.textContent||0}; gsap.to(o,{v,duration:.7,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)}); };
 
-/* ---------- App: Mi año, Personas, Regalos, Configuración ---------- */
+/* ---------- App: Mi planner, Personas, Configuración ---------- */
 const ICONS = {
-  ano:'<path d="M4 7h16M8 3v4M16 3v4M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/>',
+  planner:'<path d="M12 3v2M12 19v2M3 12h2M19 12h2M6 6l1.500 1.500M16.500 16.500 18 18M6 18l1.500-1.500M16.500 7.500 18 6"/><circle cx="12" cy="12" r="3.500"/>',
   personas:'<circle cx="9" cy="8" r="3.5"/><path d="M3 20c.5-4 3-6 6-6s5.500 2 6 6M16 5a3.500 3.500 0 0 1 0 6.500M18 14.500c1.700.8 2.700 2.700 3 5.500"/>',
-  regalos:'<path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.500S9 7 12 7ZM12 7c2-4 6-4 6-1.500S15 7 12 7Z"/>',
   config:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'
 };
-const TABS = [['ano','Mi año'],['personas','Personas'],['regalos','Regalos'],['config','Configuración']];
-const HIST = [
-  {n:'Papá',o:'Día del Padre 2026',h:'botella-bandurria'},
-  {n:'Mamá',o:'Cumpleaños 2026',h:'vela-vasija-pukara-esencia-andina',res:'Le encantó'},
-  {n:'Navidad',o:'Navidad 2025',h:'pack-3-mermeladas-gourmet',res:'Le gustó a todos'},
-];
+const TABS = [['planner','Mi planner'],['personas','Personas'],['config','Configuración']];
 const CAL_OF = {'Amigo secreto':'Trabajo','Mamá':'Familia','Papá':'Familia','Abuela Rosa':'Familia','Navidad':'Familia','Tío Jorge':'Familia','Emilia':'Familia','Familia Soto':'Familia'};
-const KIND = {Cumpleaños:'cumple',Aniversario:'amor',Matrimonio:'boda',Nacimiento:'bebe',Otro:'oficina'};
+const BUDGET = {'Amigo secreto':15000};
+const READ = {'Amigo secreto':'Leí la invitación de tu calendario: sorteo de la oficina, tope de $15.000.'};
+const OPT = {'libreta-picaflor-1':'Mi favorita. Se ve cuidada y le sirve a cualquiera.','tazon-alerce':'La más económica, y se usa todos los días en la oficina.','tabla-tolten':'La más distinta, si quieres sorprender.'};
 const cfg = {name:'Rodolfo Rojas',mode:'delego',cals:{Personal:true,Familia:true,Trabajo:true},wa:true,mail:true,wrap:true,addr:'Av. Providencia 1234, depto. 56, Santiago'};
-let tab='ano', lens=0, adding=false, autoFocus=true, bellSeen=false;
+let tab='planner', autoFocus=true, bellSeen=false, thinkRun=0, hold=false, doubtDone=false;
+const thought={};
 
 const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const calOf = p => p.cal || CAL_OF[p.n] || 'Personal';
+const calOf = p => CAL_OF[p.n] || 'Personal';
 const yr = () => YEAR.filter(p=>cfg.cals[calOf(p)]).sort(byDate);
 const idx = p => YEAR.indexOf(p);
-const firstName = () => cfg.name.trim().split(/\s+/)[0] || 'Hola';
+const firstName = () => cfg.name.trim().split(/\s+/)[0] || '';
+const initial = () => (cfg.name.trim()[0]||'R').toUpperCase();
 const defaultFocus = () => { const v=yr(); return v.find(p=>phase(p)==='now') || v.find(p=>phase(p)==='later') || v[0] || null; };
 const arrival = p => dleft(p)<=3 ? 'mañana' : 'el '+fdate(addD(occ(p),-3));
 const days = n => n===0?'hoy':n===1?'mañana':`en ${n} días`;
-const channels = () => { const c=[cfg.wa&&'WhatsApp',cfg.mail&&'correo'].filter(Boolean); return c.length? `si no me respondes, te insisto por ${c.join(' y luego por ')}` : 'te aviso solo aquí en la app'; };
-const pendingQ = p => QUESTIONS.find(q=>q.n===p.n && !yasked[q.n]);
-const monthIdx = p => { const o=occ(p); return (o.getFullYear()-TODAY.getFullYear())*12 + o.getMonth()-TODAY.getMonth(); };
-const stLabel = p => { const ph=phase(p); return ph==='now'?'Toca decidir':ph==='bought'?'Comprado':'Aviso '+fdate(avisoD(p)); };
+const whyOf = p => GIFT[p.n][1];
+const channels = () => { const c=[cfg.wa&&'WhatsApp',cfg.mail&&'correo'].filter(Boolean); return c.length? `si no respondes, te insisto por ${c.join(' y luego por ')}` : 'te aviso solo aquí'; };
+const modeNote = () => `<button data-act="goto" data-a="cf-mode" class="pl-mode">Modo ${cfg.mode==='delego'?'Delego':'Elijo yo'}<span>Cambiar</span></button>`;
+const after = p => yr().find(x=>x!==p && phase(x)==='later' && occ(x)>occ(p));
 
-const qBox = q => `<div class="rounded-2xl bg-fog p-3.5"><p class="text-[14px] font-semibold leading-snug">${q.q}</p><div class="mt-2.5 flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}" class="rounded-full bg-white px-3 py-1.5 text-[12.5px] font-semibold ring-1 ring-mist transition hover:bg-black hover:text-white hover:ring-black">${a}</button>`).join('')}</div></div>`;
-const chips = p => { const f=facts(p).filter(x=>x!==p.n), falta=Math.max(0,4-f.length);
-  return `<div class="flex flex-wrap gap-1.5">${f.map(x=>`<span class="rounded-full bg-fog px-3 py-1 text-[12.5px] font-medium">${esc(x)}</span>`).join('')}${falta?`<span class="rounded-full border border-dashed border-steel px-3 py-1 text-[12.5px] text-[#5f6b7d]">Voy a saber más</span>`:''}</div>`; };
-const seg = (p) => `<div class="ap-seg" role="group" aria-label="Cómo quieres participar en este regalo">${[['delego','Delego'],['elijo','Elijo yo']].map(([m,l])=>`<button data-act="mode" data-m="${m}" data-i="${idx(p)}" aria-pressed="${mode(p)===m}">${l}</button>`).join('')}</div>`;
-const miniProd = (o,i,sel,act) => `<button ${act?`data-act="pick" data-pick="${i}"`:'tabindex="-1"'} class="min-w-0 overflow-hidden rounded-xl bg-white text-left ring-1 transition ${act?'hover:-translate-y-0.5':'cursor-default'} ${sel?'ring-2 ring-black':'ring-mist'}"><span class="relative block aspect-square bg-fog">${img(o.u,'absolute inset-0 size-full object-cover')}</span><span class="block p-2 leading-tight"><b class="line-clamp-2 text-[11.5px] font-semibold">${esc(o.t)}</b><span class="num mt-0.5 block text-[11.5px] text-[#5f6b7d]">${clp(o.p)}</span></span></button>`;
-
-/* lo que el asistente ya hizo y lo que falta: es el centro del planner */
-function steps(p){
-  const ph=phase(p), av=avisoD(p), src = p.n==='Amigo secreto' ? 'Leí el tope de $15.000 en la invitación' : p.manual ? 'Agregaste esta fecha tú' : `Encontré ${p.o==='Familia'?'la fecha':'“'+p.o.toLowerCase()+'”'} en tu calendario`;
-  const avisoT = av<=TODAY ? (+av===+TODAY?`Te avisé hoy, con ${AVISO} días de margen`:`Te avisé con ${AVISO} días de margen`) : `Te aviso el ${fdate(av)}, con ${AVISO} días de margen`;
-  if(ph==='now') return [['done',src],['done',avisoT],['done',`Preparé 3 opciones del catálogo`],['now',`Falta tu aprobación, antes del ${fdate(addD(occ(p),-7))}`],['todo',`Compro y despacho: llega ${arrival(p)}`],['todo','Te pregunto si le gustó']];
-  if(ph==='bought') return [['done',src],['done','Preparé 3 opciones y aprobaste una'],['done','Lo compré'],['now',`Va en camino: llega ${arrival(p)}`],['todo','Te pregunto si le gustó']];
-  return [['done',src],['done',`Empecé a anotar lo que sé de ${esc(p.n)}`],['now',avisoT],['todo','Te dejo una propuesta lista para aprobar'],['todo','Compro y despacho cuando apruebes']];
-}
-const stepsHtml = p => `<ol class="ap-steps">${steps(p).map(([s,t])=>`<li data-s="${s}"><i aria-hidden="true">${s==='done'?'<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2.500 6.500 2.500 2.500 4.500-5.500"/></svg>':''}</i><span>${t}</span></li>`).join('')}</ol>`;
-
-function greeting(){
-  const v=yr(), now=v.filter(p=>phase(p)==='now').length, nx=v.find(p=>phase(p)==='later'), way=v.find(p=>phase(p)==='bought');
-  const head = now? `Hoy solo necesito ${now===1?'una cosa':now+' cosas'} de ti.` : 'Hoy no me necesitas.';
-  const sub = [way&&`El regalo de ${esc(way.n)} va en camino.`, !now&&nx&&`Te aviso el ${fdate(avisoD(nx))}, con la propuesta de ${esc(nx.n)} lista.`].filter(Boolean).join(' ');
-  return `<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 pb-3 pt-5 lg:pt-1"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal leading-tight tracking-[-0.025em]">Hola, ${esc(firstName())}. ${head}</h1>${sub?`<p class="text-[13.5px] text-[#5f6b7d]">${sub}</p>`:''}</div>`;
+/* tarjeta de la fecha: la misma ficha de la sincronización, ahora protagonista */
+function ticket(p){
+  if(!p) return '';
+  const o=occ(p), ph=phase(p), cur=chosen(p), nx=after(p), dead=addD(o,-7), left=Math.max(0,Math.round((dead-TODAY)/864e5)), span=Math.max(1,AVISO-7), pct=Math.min(100,Math.max(6,(1-left/span)*100));
+  const rows = ph==='now'
+    ? `<div class="tk-t"><p>${left?`Tienes ${left} ${left===1?'día':'días'} para decidir`:'Hoy es el último día para decidir'}</p><i><b style="width:${pct}%"></b></i><p class="tk-s">Si decides antes del ${fdate(dead)}, llega ${arrival(p)}</p></div>`
+    : ph==='bought'
+    ? `<div class="tk-t"><p class="tk-ok">Resuelto · llega ${arrival(p)}</p><p class="tk-s">${esc(cur.t)}</p></div>`
+    : `<div class="tk-t"><p>Te aviso el ${fdate(avisoD(p))}</p><p class="tk-s">Con el regalo pensado y tiempo para que llegue</p></div>`;
+  return `<article id="apTicket" class="tk" data-flip-id="tk">
+    <div class="tk-art" style="background:linear-gradient(150deg,${grad(p)})">${ph==='bought'?img(cur.u,'tk-ph'):art(p.k,7,'meet')}
+      <span class="tk-mo">${MES[o.getMonth()]}</span><b class="tk-d num">${o.getDate()}</b>${ph==='bought'?'<span class="tk-stamp">Listo</span>':''}</div>
+    <div class="tk-b"><div class="flex items-baseline justify-between gap-3"><h2>${esc(p.n)}</h2><span class="tk-when">${days(dleft(p))}</span></div><p class="tk-o">${esc(p.o)}</p>${rows}
+      ${nx?`<button data-act="focus" data-i="${idx(nx)}" class="tk-next"><span>Después</span>${esc(nx.n)} · ${fdate(occ(nx))}</button>`:''}</div>
+  </article>`;
 }
 
-function heroCard(p){
-  const ph=phase(p), its=items(p), cur=chosen(p), why=(GIFT[p.n]||GIFT_NEW)[1];
-  if(ph==='now'){
-    const el=mode(p)==='elijo';
-    return `<article class="ap-card">
-      <div class="ap-ph">${img(cur.u,'absolute inset-0 size-full object-cover')}<span class="ap-tag">${el?'Tu elección':'Mi propuesta'}</span></div>
-      <div class="flex min-w-0 flex-col p-6">
-        <div class="flex items-center justify-between gap-3"><p class="text-[13px] font-semibold">${el?'Elige una de las tres':'Te propongo esto'}</p>${seg(p)}</div>
-        ${el?`<div class="mt-4 grid grid-cols-3 gap-2.5">${its.map((o,i)=>miniProd(o,i,(ypick[p.n]||0)===i,true)).join('')}</div>`
-        :`<div class="mt-5"><h3 class="font-serif text-[clamp(26px,2.5vw,34px)] font-normal leading-[1.05] tracking-[-0.025em]">${esc(cur.t)}</h3><p class="num mt-2 text-[14px] text-[#5f6b7d]">${esc(cur.v)} · <b class="font-semibold text-black">${clp(cur.p)}</b></p><p class="mt-3 text-[15px] leading-snug">Lo elegí porque ${why}</p></div>`}
-        <div class="mt-auto pt-5">
-          <div class="flex flex-wrap items-center gap-2"><button data-act="ok" data-i="${idx(p)}" class="rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white transition hover:bg-brand">Aprobar y comprar</button>${el?'':'<button data-act="other" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">Ver otra</button>'}</div>
-          <p id="yreply" class="mt-2 min-h-[18px] text-[12.5px] font-medium" aria-live="polite"></p>
-          ${el?'':`<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]"><span class="text-[#5f6b7d]">Pídeme algo más</span>${[['eco','económico'],['orig','original'],['util','útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}" class="font-semibold underline decoration-steel underline-offset-[3px] transition hover:text-brand hover:decoration-brand">${l}</button>`).join('')}</div>`}
-          <p class="mt-3 border-t border-mist pt-3 text-[12px] leading-snug text-[#5f6b7d]">Nada se compra sin tu aprobación; ${channels()}.</p>
-        </div>
-      </div></article>`;
+/* lo que pensó: se usa para la animación y para releerlo después */
+function thinkData(p){
+  const all=Object.keys(PRODS), its=GIFT[p.n][0], b=BUDGET[p.n];
+  const pool = b ? all.filter(h=>PRODS[h][2]<=b) : [...its,...all.filter(h=>!its.includes(h)).filter((_,i)=>i%4===0).slice(0,5)];
+  return {all,pool,its,lines:[
+    READ[p.n] || `Vi “${p.o==='Familia'?p.n:p.o.toLowerCase()+' de '+p.n}” en tu calendario, ${fdate(occ(p))}.`,
+    `Revisé ${all.length} regalos del catálogo.`,
+    b ? `Saqué ${all.length-pool.length} que pasaban del tope. Quedan ${pool.length}.` : `Saqué ${all.length-pool.length} que no van con lo que sé. Quedan ${pool.length}.`,
+    b ? `De esos, dejé fuera comida y cosas navideñas. Quedan 3 para alguien de la oficina.` : `Me quedé con 3 porque ${whyOf(p)}`,
+  ]};
+}
+const thumb = h => `<span class="th" data-h="${h}" data-flip-id="${h}">${img(PRODS[h][3],'')}</span>`;
+
+function leftThinking(p){ return `<h1 class="pl-h">Pensando en ${esc(p.n)}<span class="pl-dots"><i></i><i></i><i></i></span></h1><ol id="thL" class="th-l" aria-live="polite"></ol><div id="thS" class="th-s s30"></div>`; }
+
+async function runThink(p){
+  const run=++thinkRun, d=thinkData(p), L=$('thL'), S=$('thS'), live=()=>run===thinkRun&&$('thS');
+  const say = t => { const li=document.createElement('li'); li.innerHTML=`<i></i><span>${t}</span>`; L.appendChild(li); gsap.from(li,{y:8,opacity:0,duration:.35,ease:'power3.out',clearProps:'all'}); };
+  say(d.lines[0]); await wait(.9); if(!live()) return;
+  say(d.lines[1]);
+  S.innerHTML=d.all.map(thumb).join('');
+  gsap.from('#thS .th',{scale:.6,opacity:0,duration:.35,stagger:.018,ease:'back.out(1.6)'});
+  await wait(1.25); if(!live()) return;
+  say(d.lines[2]);
+  const out1=[...S.children].filter(e=>!d.pool.includes(e.dataset.h));
+  await new Promise(r=>gsap.to(out1,{opacity:.08,scale:.8,duration:.4,stagger:.008,onComplete:r}));
+  if(!live()) return;
+  let st=Flip.getState('#thS .th'); out1.forEach(e=>e.remove()); S.className='th-s s8'; Flip.from(st,{duration:.6,ease:'power3.inOut',absolute:true});
+  await wait(1.15); if(!live()) return;
+  say(d.lines[3]);
+  const out2=[...S.children].filter(e=>!d.its.includes(e.dataset.h));
+  await new Promise(r=>gsap.to(out2,{opacity:0,scale:.8,duration:.3,onComplete:r}));
+  if(!live()) return;
+  st=Flip.getState('#thS .th'); out2.forEach(e=>e.remove()); d.its.forEach(h=>S.appendChild(S.querySelector(`[data-h="${h}"]`))); S.className='th-s s3'; Flip.from(st,{duration:.65,ease:'power3.inOut',absolute:true});
+  await wait(1.2); if(!live()) return;
+  const sel=cfg.mode==='delego'?`#thS [data-h="${items(p)[ypick[p.n]||0].h}"]`:'#thS .th';
+  const fs=Flip.getState(sel);
+  thought[p.n]=true;
+  $('plLeft').innerHTML=leftFinal(p);
+  const tg=[...$('plLeft').querySelectorAll('[data-flip-id]')];
+  Flip.from(fs,{targets:tg,duration:.7,ease:'power3.inOut',scale:false});
+  gsap.from('#plLeft [data-rise]',{y:14,opacity:0,duration:.5,stagger:.06,delay:.25,ease:'power3.out',clearProps:'all'});
+}
+
+const howBox = (p,open) => `<details class="pl-how" data-rise ${open?'open':''}><summary>Cómo lo pensé</summary><ol class="th-l">${thinkData(p).lines.map(t=>`<li><i></i><span>${t}</span></li>`).join('')}</ol></details>`;
+
+function leftFinal(p){
+  const its=items(p), cur=chosen(p), minP=Math.min(...its.map(o=>o.p));
+  const fine=`<p class="pl-fine" data-rise>Nada se compra sin tu aprobación; ${channels()}.</p>`;
+  if(cfg.mode==='elijo'){
+    const note=(o,i)=>OPT[o.h]||(i===0?'Mi favorita para esta fecha.':o.p===minP?'La más económica de las tres.':'La más distinta de las tres.');
+    return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas para ${esc(p.n)}.</h1>
+    <div class="pl-3">${its.map((o,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${(ypick[p.n]||0)===i}" class="pc3"><span class="pc3-ph" data-flip-id="${o.h}">${img(o.u,'')}</span><span class="pc3-b"><b>${esc(o.t)}</b><span class="num">${clp(o.p)}</span><small>${note(o,i)}</small></span></button>`).join('')}</div>
+    <div class="flex flex-wrap items-center gap-3 pt-5" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(cur.p)}</button>${modeNote()}</div>
+    ${fine}${howBox(p)}`;
   }
-  if(ph==='bought'){
-    const nx=yr().find(x=>phase(x)!=='bought');
-    return `<article class="ap-card">
-      <div class="ap-ph">${img(cur.u,'absolute inset-0 size-full object-cover')}<span class="ap-tag">Comprado</span></div>
-      <div class="flex min-w-0 flex-col p-6"><p class="text-[13px] font-semibold text-emerald-700">Listo, ya está resuelto</p>
-        <h3 class="mt-4 font-serif text-[clamp(26px,2.5vw,34px)] font-normal leading-[1.05] tracking-[-0.025em]">${esc(cur.t)}</h3><p class="num mt-2 text-[14px] text-[#5f6b7d]">${esc(cur.v)} · <b class="font-semibold text-black">${clp(cur.p)}</b></p>
-        <p class="mt-3 text-[15px] leading-snug">Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Cuando llegue te pregunto si le gustó, y con eso elijo mejor la próxima vez.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-2 pt-5">${nx?`<button data-act="focus" data-i="${idx(nx)}" class="rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white transition hover:bg-brand">Lo siguiente: ${esc(nx.n)}</button>`:''}${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">Cancelar compra</button>`:''}</div>
-      </div></article>`;
-  }
-  const q=pendingQ(p);
-  return `<article class="ap-card">
-    <div class="ap-ph hero-art"><div class="card k-${p.k} absolute inset-0"><div class="art" style="height:100%;background:linear-gradient(150deg,${grad(p)})">${art(p.k,7,'meet')}</div></div></div>
-    <div class="flex min-w-0 flex-col p-6">
-      <div class="flex items-center justify-between gap-3"><p class="text-[13px] font-semibold">Todavía no tienes que hacer nada</p>${seg(p)}</div>
-      <p class="mt-5 text-[12.5px] font-medium text-[#5f6b7d]">Lo que sé de ${esc(p.n)}</p><div class="mt-2">${chips(p)}</div>
-      ${q?`<div class="mt-4">${qBox(q)}</div>`:''}
-      <div class="mt-auto pt-5"><button data-act="ideas" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">${yseeIdeas?'Ocultar ideas':'Adelantarme unas ideas'}</button>
-      ${yseeIdeas?`<div id="yid" class="mt-3 grid grid-cols-3 gap-2.5">${its.map((o,i)=>miniProd(o,i,false,false)).join('')}</div>`:''}</div>
-    </div></article>`;
-}
-
-function hero(p){
-  if(!p) return `<div class="rounded-[24px] bg-white p-10 text-center ring-1 ring-mist"><p class="font-serif text-[30px] tracking-[-0.025em]">Ahora no leo ningún calendario</p><p class="mt-2 text-sm text-[#5f6b7d]">Activa uno para que vuelva a seguir tus fechas.</p><button data-act="tab" data-t="config" class="mt-5 rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white">Ir a Configuración</button></div>`;
-  const ph=phase(p), o=occ(p), dl=dleft(p), isDef=p===defaultFocus();
-  const eyebrow = ph==='now'?'<i class="size-2 rounded-full bg-brand"></i>Toca decidir': ph==='bought'?'<i class="size-2 rounded-full bg-emerald-500"></i>Resuelto':'<i class="size-2 rounded-full border border-[#5f6b7d]"></i>Más adelante';
-  return `<div class="grid items-stretch gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)] lg:gap-10">
-    <div id="apLeft" class="flex min-w-0 flex-col">
-      <div class="flex min-h-[28px] items-center justify-between gap-3"><p class="flex items-center gap-2 text-[13px] font-semibold">${eyebrow}</p>${isDef?'':'<button data-act="back" class="rounded-full bg-black/[.06] px-3 py-1 text-[12.5px] font-semibold transition hover:bg-black/10">← Volver a lo de hoy</button>'}</div>
-      <div class="mt-1 flex items-end gap-3 font-serif leading-none"><b class="num text-[clamp(88px,8vw,118px)] font-normal tracking-[-0.04em]">${o.getDate()}</b><span class="pb-[.28em] text-[clamp(30px,3vw,42px)] tracking-[-0.02em]">${MES[o.getMonth()].toLowerCase()}<span class="block text-[14px] font-sans font-medium tracking-normal text-[#5f6b7d] mt-1">${days(dl)}</span></span></div>
-      <h2 class="mt-2 font-serif text-[clamp(30px,3vw,40px)] font-normal leading-none tracking-[-0.025em]">${esc(p.n)}</h2>
-      <p class="mt-1.5 text-[14px] text-[#5f6b7d]">${esc(p.o)}${p.approx?' · fecha aproximada':''}</p>
-      <div class="mt-4">${stepsHtml(p)}</div>
+  return `<h1 class="pl-h" data-rise>Ya lo tengo: este es para ${esc(p.n)}.</h1>
+  <div class="pl-pick">
+    <div class="pl-ph" data-flip-id="${cur.h}">${img(cur.u,'')}</div>
+    <div class="flex min-w-0 flex-col">
+      <p class="pl-v" data-rise>${esc(cur.v)}</p>
+      <h2 class="pl-t" data-rise>${esc(cur.t)}</h2>
+      <p class="num mt-1 text-[17px] font-semibold" data-rise>${clp(cur.p)}</p>
+      <p class="mt-3 text-[15.5px] leading-snug" data-rise>Lo elegí porque ${whyOf(p)}</p>
+      <div class="mt-auto pt-5" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo</button>
+      <p class="pl-fine">Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}.</p></div>
     </div>
-    <div class="min-w-0">${heroCard(p)}</div>
-  </div>`;
+  </div>
+  <div class="pl-ask" data-rise><span>¿Otra idea?</span>${[['eco','Más económica'],['orig','Más original'],['util','Más útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}">${l}</button>`).join('')}<em id="yreply" aria-live="polite"></em></div>
+  <div class="flex flex-wrap items-center justify-between gap-3" data-rise>${howBox(p)}${modeNote()}</div>
+  ${fine}`;
 }
 
-/* la lupa: 12 meses sin scroll, el mes en foco se acerca */
-const W = d => d===0?5:d===1?2.6:d===2?1.3:1;
-function setLens(i){ lens=i; document.querySelectorAll('.bm').forEach((c,j)=>{ const d=Math.abs(j-i); c.style.flexGrow=W(d); c.dataset.lv=d<=1?'full':'dot'; c.dataset.far=Math.min(d,3); }); }
-const lensHome = () => { const f=yfocus; return f?Math.min(11,monthIdx(f)):0; };
-function band(){
-  const cols=Array.from({length:12},(_,i)=>{ const a=new Date(TODAY.getFullYear(),TODAY.getMonth()+i,1); return {m:a.getMonth(),y:a.getFullYear(),ps:[]}; });
-  yr().forEach(p=>{ const c=cols[monthIdx(p)]; c&&c.ps.push(p); });
-  const n=yr().length;
-  return `<section aria-label="Tu año" class="mt-5 hidden md:block">
-    <div class="mb-2.5 flex flex-wrap items-baseline justify-between gap-x-4"><h2 class="text-[13px] font-semibold">Lo que se viene <span class="font-normal text-[#5f6b7d]">· tengo ${n} ${n===1?'fecha':'fechas'} en tu año, pasa por un mes para acercarlo</span></h2>
-    <p class="flex items-center gap-3.5 text-[12px] text-[#5f6b7d]"><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-brand"></i>Toca decidir</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full border border-[#5f6b7d]"></i>Te aviso a tiempo</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-emerald-500"></i>Comprado</span></p></div>
-    <div id="apBand" class="ap-band">${cols.map((c,i)=>`<div class="bm" data-m="${i}" style="flex-grow:${W(Math.abs(i-lens))}" data-lv="${Math.abs(i-lens)<=1?'full':'dot'}" data-far="${Math.min(Math.abs(i-lens),3)}">
-            <p class="mo-l">${MES[c.m]}${c.m===0?` <span class="text-[#5f6b7d]">${String(c.y).slice(2)}</span>`:''}${i===0?` <span class="font-medium tracking-normal text-brand">· hoy ${TODAY.getDate()}</span>`:''}</p>
-      <div class="flex flex-col gap-1">${c.ps.sort(byDate).map(p=>`<button class="dt" data-act="focus" data-i="${idx(p)}" data-ph="${phase(p)}" aria-label="${esc(p.n)}, ${esc(p.o)}, ${fdate(occ(p))}. ${stLabel(p)}" ${p===yfocus?'aria-current="true"':''}><span class="dt-n num">${p.approx?'~':''}${p.d}</span><span class="dt-t"><b>${esc(p.n)}</b><small>${stLabel(p)}</small></span></button>`).join('')}</div></div>`).join('')}</div></section>`;
-}
-/* en el teléfono la misma idea: la tipografía baja con la distancia */
-function nextList(){
-  const list=yr().filter(p=>p!==yfocus), S=['text-[26px]','text-[21px]','text-[18px]'];
-  return `<section aria-label="Lo que se viene" class="mt-8 md:hidden"><h2 class="mb-2 text-[13px] font-semibold">Lo que se viene</h2><ul class="divide-y divide-mist">${list.map((p,i)=>`<li><button data-act="focus" data-i="${idx(p)}" class="flex w-full items-baseline gap-3 py-2.5 text-left"><span class="num w-[74px] shrink-0 font-serif ${S[i]||'text-[16px]'} tracking-[-0.02em]">${p.d} ${MES[p.m].toLowerCase()}</span><span class="min-w-0 flex-1 truncate font-serif ${S[i]||'text-[16px]'} tracking-[-0.02em]">${esc(p.n)}</span><span class="shrink-0 text-[11.5px] ${phase(p)==='now'?'font-semibold text-brand':'text-[#5f6b7d]'}">${stLabel(p)}</span></button></li>`).join('')}</ul></section>`;
+function leftOther(p){
+  const ph=phase(p), back=p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver a lo de hoy</button>';
+  if(ph==='bought'){
+    const nx=after(p);
+    return `${back}<h1 class="pl-h pl-h-lg">Listo. Ya no tienes que pensar en esto.</h1><p class="pl-lead">Compré ${esc(chosen(p).t)}. Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Cuando llegue te pregunto si le gustó, y con eso elijo mejor la próxima vez.</p>
+    <div class="mt-6 flex flex-wrap items-center gap-2">${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="pl-sec">Cancelar compra</button>`:''}</div>
+    ${nx?`<p class="pl-lead mt-8 border-t border-mist pt-6">Sigo con ${esc(nx.n)}. Te aviso el ${fdate(avisoD(nx))}.</p>`:''}`;
+  }
+  const its=items(p), f=facts(p).filter(x=>x!==p.n&&x!==p.o);
+  return `${back}<h1 class="pl-h pl-h-lg">${p===defaultFocus()?`Hoy no te necesito, ${esc(firstName())}.`:`${esc(p.n)} todavía no te necesita.`}</h1>
+    <p class="pl-lead">Te aviso el ${fdate(avisoD(p))}. Mientras, voy pensando${f.length?` con lo que ya sé: ${f.map(x=>esc(x).toLowerCase()).join(', ')}`:''}.</p>
+    <p class="mt-7 text-[13px] font-semibold">Lo que voy barajando</p><div class="pl-idea">${its.map(o=>`<span>${img(o.u,'')}</span>`).join('')}</div>`;
 }
 
-function viewAno(){
+function viewPlanner(){
   if(autoFocus || !yfocus || !yr().includes(yfocus)) yfocus=defaultFocus();
-  const target=lensHome(), m=$('apMain');
-  m.innerHTML = greeting()+`<div id="apHero">${hero(yfocus)}</div>`+band()+nextList();
-  requestAnimationFrame(()=>requestAnimationFrame(()=>setLens(target)));
+  const p=yfocus; thinkRun++;
+  if(!p){ $('apMain').innerHTML=`<div class="pl-empty"><h1 class="pl-h pl-h-lg">Ahora no leo ningún calendario.</h1><p class="pl-lead">Activa uno y vuelvo a seguir tus fechas.</p><button data-act="tab" data-t="config" class="pl-cta mt-5">Ir a Configuración</button></div>`; return; }
+  const now=phase(p)==='now', think=now && !thought[p.n] && !REDUCE;
+  if(now && REDUCE) thought[p.n]=true;
+  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l">${!now?leftOther(p):think?leftThinking(p):(p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver a lo de hoy</button>')+leftFinal(p)}</div><aside class="pl-r">${ticket(p)}</aside></div>`;
+  if(think && !hold) runThink(p);
 }
 
-/* Personas */
+/* Personas: el sistema las encontró y las va conociendo */
 function viewPersonas(){
-  const v=yr(), pq=QUESTIONS.filter(q=>!yasked[q.n]).length;
-  const form = adding ? `<form id="apAdd" class="ap-pc space-y-3"><h3 class="font-serif text-[24px] tracking-[-0.025em]">Nueva fecha</h3>
-      <label class="ap-f">Para quién<input name="n" required maxlength="24" placeholder="Nombre" class="ap-i"></label>
-      <label class="ap-f">Ocasión<select name="o" class="ap-i">${Object.keys(KIND).map(o=>`<option>${o}</option>`).join('')}</select></label>
-      <div class="grid grid-cols-2 gap-2"><label class="ap-f">Día<input name="d" type="number" min="1" max="31" required value="15" class="ap-i"></label><label class="ap-f">Mes<select name="m" class="ap-i">${MES.map((x,i)=>`<option value="${i}">${x[0]+x.slice(1).toLowerCase()}</option>`).join('')}</select></label></div>
-      <label class="flex items-center gap-2 text-[13px]"><input name="ap" type="checkbox" class="size-4 accent-black">No sé el día exacto, dejo uno aproximado</label>
-      <div class="flex gap-2 pt-1"><button class="rounded-full bg-black px-5 py-2.5 text-[13.5px] font-semibold text-white">Guardar</button><button type="button" data-act="adding" class="rounded-full bg-black/[.06] px-5 py-2.5 text-[13.5px] font-semibold">Cancelar</button></div></form>`
-    : `<button data-act="adding" class="ap-pc ap-add"><span class="text-[26px] leading-none">+</span><b class="font-serif text-[22px] font-normal tracking-[-0.02em]">Agregar una fecha</b><span class="text-[13px] text-[#5f6b7d]">La que no esté en tu calendario.</span></button>`;
-  $('apMain').innerHTML = `<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 pb-6 pt-5 lg:pt-3"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal tracking-[-0.025em]">Las personas de tu año</h1><p class="text-[13.5px] text-[#5f6b7d]">${pq? `Tengo ${pq===1?'una pregunta':pq+' preguntas'}. Cada respuesta me ayuda a elegir mejor.`:'Por ahora no me falta nada. Te pregunto cuando llegue un regalo.'}</p></div>
-  <div class="ap-masonry">${form}${[...v].sort((a,b)=>(pendingQ(b)?1:0)-(pendingQ(a)?1:0)).map(p=>{ const q=pendingQ(p); return `<article class="ap-pc">
-    <div class="flex items-center gap-3"><span class="grid size-11 shrink-0 place-items-center rounded-full font-serif text-[20px] text-white" style="background:linear-gradient(150deg,${grad(p)})">${esc(p.n[0])}</span><div class="min-w-0 leading-tight"><h3 class="truncate font-serif text-[23px] font-normal tracking-[-0.02em]">${esc(p.n)}</h3><p class="mt-0.5 text-[12.5px] text-[#5f6b7d]">${esc(p.o)} · ${p.approx?'cerca del ':''}${fdate(occ(p))}</p></div></div>
-    <div class="mt-3.5">${chips(p)}</div>${q?`<div class="mt-3">${qBox(q)}</div>`:''}
-    <div class="mt-3.5 flex items-center justify-between gap-2">${seg(p)}<button data-act="focus" data-i="${idx(p)}" class="text-[12.5px] font-semibold underline decoration-steel underline-offset-[3px] transition hover:text-brand hover:decoration-brand">Ver en mi año</button></div></article>`; }).join('')}</div>`;
-  const f=$('apAdd'); if(f){ f.elements.n.focus(); f.onsubmit=e=>{ e.preventDefault(); const d=new FormData(f), o=d.get('o'), np={n:d.get('n').trim(),o,m:+d.get('m'),d:Math.min(+d.get('d'),28),k:KIND[o],h:150,manual:true,cal:'Personal',approx:!!d.get('ap')}; if(!np.n) return; if(YEAR.some(x=>x.n===np.n)) np.n+=' ('+o.toLowerCase()+')'; YEAR.push(np); adding=false; ytoast(`Anotado. Te aviso el ${fdate(avisoD(np))}.`); render(); }; }
-}
-
-/* Regalos */
-function viewRegalos(){
-  const v=yr(), now=v.filter(p=>phase(p)==='now'), way=v.filter(p=>phase(p)==='bought');
-  const tile = (u,top,sub,extra='') => `<article class="min-w-0"><div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white ring-1 ring-mist">${img(u,'absolute inset-0 size-full object-cover')}</div><p class="mt-2 truncate text-[14px] font-semibold">${top}</p><p class="truncate text-[12.5px] text-[#5f6b7d]">${sub}</p>${extra}</article>`;
-  const sec = (t,body) => `<section><h2 class="mb-3 font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2>${body}</section>`;
-  const grid = s => `<div class="grid grid-cols-2 gap-x-4 gap-y-6">${s}</div>`, gridH = s => `<div class="grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-3 xl:grid-cols-4">${s}</div>`;
-  const empty = t => `<p class="rounded-2xl bg-white/60 p-5 text-[14px] text-[#5f6b7d] ring-1 ring-mist">${t}</p>`;
-  $('apMain').innerHTML = `<div class="pb-6 pt-5 lg:pt-3"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal tracking-[-0.025em]">Tus regalos</h1></div>`
-   + `<div class="grid gap-x-8 gap-y-9 lg:grid-cols-2">` + sec('Por aprobar', now.length? grid(now.map(p=>{const c=chosen(p); return tile(c.u,`${esc(p.n)} · ${clp(c.p)}`,`Antes del ${fdate(addD(occ(p),-7))}`,`<button data-act="focus" data-i="${idx(p)}" class="mt-2 rounded-full bg-black px-4 py-2 text-[12.5px] font-semibold text-white transition hover:bg-brand">Ver propuesta</button>`);}).join('')) : empty('Nada por ahora. Te aviso cuando haya algo que aprobar.'))
-   + sec('En camino', way.length? grid(way.map(p=>{const c=chosen(p); return tile(c.u,esc(p.n),`${esc(c.t)} · llega ${arrival(p)}`);}).join('')) : empty('Ningún regalo en camino.')) + `</div>`
-   + `<div class="mt-9">` + sec('Ya regalados', gridH(HIST.map(h=>{ const x=prod(h.h), q=QUESTIONS.find(q=>q.n===h.n && q.q.includes('Día del Padre') && !yasked[q.n]), done=learned[h.n]?.find(f=>f.startsWith('Regalo anterior'));
-       return tile(x.u,esc(h.n),`${esc(x.t)} · ${h.o}`, h.res?`<p class="mt-1.5 text-[12.5px] font-medium">${h.res}</p>` : q?`<div class="mt-2">${qBox(q)}</div>` : done?`<p class="mt-1.5 text-[12.5px] font-medium">Anotado para la próxima</p>`:''); }).join(''))) + `</div>`;
+  const v=yr(), q=!doubtDone && QUESTIONS.find(x=>!yasked[x.n] && v.some(p=>p.n===x.n));
+  const says = p => { const f=facts(p).filter(x=>x!==p.n&&x!==p.o); return f.length?f.join(' · '):'Todavía estoy aprendiendo'; };
+  $('apMain').innerHTML=`<header class="pp-h"><h1 class="pl-h">Las ${v.length} personas y fechas que sigo por ti.</h1><p class="text-[14px] text-[#5f6b7d]">Las encontré en tu calendario y las voy conociendo con cada regalo.</p></header>
+  ${q?`<div class="pp-q" data-qbox><p><span>Una duda sobre ${esc(q.n)}.</span> ${q.q}</p><div class="flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}">${a}</button>`).join('')}</div></div>`:''}
+  <div class="pp-g">${v.map(p=>{ const c=chosen(p), ph=phase(p); return `<button data-act="focus" data-i="${idx(p)}" class="pp-c" aria-label="${esc(p.n)}, ${esc(p.o)}, ${fdate(occ(p))}">
+    ${img(c.u,'pp-img')}<span class="pp-sh"></span>
+    <span class="pp-top"><span class="pp-date num"><b>${p.d}</b>${MES[p.m]}</span>${ph==='now'?'<span class="pp-st pp-now">Regalo listo</span>':ph==='bought'?'<span class="pp-st pp-ok">Resuelto</span>':''}</span>
+    <span class="pp-b"><b>${esc(p.n)}</b><small>${esc(p.o)}</small><em>${esc(says(p))}</em><span class="pp-idea">${ph==='bought'?'Compré':'Mi idea'}: ${esc(c.t)}</span></span>
+  </button>`; }).join('')}</div>`;
 }
 
 /* Configuración */
 const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
 function viewConfig(){
   const row=(t,s,ctl)=>`<div class="flex items-center justify-between gap-4 py-3.5"><div class="min-w-0"><p class="text-[14.5px] font-medium">${t}</p>${s?`<p class="mt-0.5 text-[12.5px] leading-snug text-[#5f6b7d]">${s}</p>`:''}</div><div class="shrink-0">${ctl}</div></div>`;
-  const box=(id,t,s,body)=>`<section id="${id}" class="scroll-mt-20 border-t border-mist py-7 first:border-0 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><div class="mb-3 lg:mb-0"><h2 class="font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2><p class="mt-1 text-[13px] leading-snug text-[#5f6b7d]">${s}</p></div><div class="divide-y divide-mist rounded-2xl bg-white px-5 ring-1 ring-mist">${body}</div></section>`;
+  const box=(id,t,s,body,plain)=>`<section id="${id}" class="scroll-mt-20 border-t border-mist py-7 first:border-0 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><div class="mb-3 lg:mb-0"><h2 class="font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2><p class="mt-1 text-[13px] leading-snug text-[#5f6b7d]">${s}</p></div><div class="${plain?'':'divide-y divide-mist rounded-2xl bg-white px-5 ring-1 ring-mist'}">${body}</div></section>`;
   const opts=(act,cur,list,lab)=>`<div class="ap-seg" role="group" aria-label="${lab}">${list.map(([v,l])=>`<button data-act="${act}" data-v="${v}" aria-pressed="${String(cur)===String(v)}">${l}</button>`).join('')}</div>`;
   const count=c=>{const k=YEAR.filter(p=>calOf(p)===c).length; return `${k} ${k===1?'fecha':'fechas'}`;};
-  $('apMain').innerHTML = `<div class="pb-2 pt-5 lg:pt-3"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal tracking-[-0.025em]">Configuración</h1></div>
-  <div class="mx-auto max-w-[1040px]">`
-  + box('cf-cal','Calendarios','Lo que leo para saber tus fechas. Si aparece algo nuevo, lo agrego solo.',
+  const modeCard=(v,t,s)=>`<button data-act="defmode" data-v="${v}" aria-pressed="${cfg.mode===v}" class="cf-m"><i></i><b>${t}</b><span>${s}</span></button>`;
+  $('apMain').innerHTML=`<header class="pp-h"><h1 class="pl-h">Configuración</h1></header><div class="mx-auto max-w-[1040px]">`
+  + box('cf-mode','Cómo participas','Vale para todos tus regalos.',`<div class="grid gap-3 sm:grid-cols-2">${modeCard('delego','Delego','Yo pienso y te dejo un regalo listo. Tú solo apruebas.')}${modeCard('elijo','Elijo yo','Yo pienso y te dejo 3 finalistas. Tú eliges.')}</div>`,true)
+  + box('cf-cal','Calendarios','De aquí saco tus fechas. Si aparece algo nuevo, lo agrego solo.',
      `<div class="flex items-center gap-3 py-3.5"><i class="size-2 rounded-full bg-emerald-500"></i><p class="flex-1 text-[14.5px] font-medium">Google Calendar</p><span class="text-[12.5px] text-[#5f6b7d]">Leído hace 5 min</span></div>`
-     + Object.keys(cfg.cals).map(c=>row(c,count(c),sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c))).join('')
-     + row('Apple Calendar y Outlook','Próximamente','<span class="text-[12.5px] text-[#5f6b7d]">—</span>'))
+     + Object.keys(cfg.cals).map(c=>row(c,count(c),sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c))).join(''))
   + box('cf-av','Avisos','Cuándo aparezco y por dónde te insisto.',
-     row('Avisarme antes de cada fecha','Cambia el aviso de todas tus fechas en Mi año.',opts('aviso',AVISO,[[7,'7'],[14,'14'],[21,'21'],[30,'30']],'Días de aviso')+'<span class="ml-2 text-[12.5px] text-[#5f6b7d]">días</span>')
-     + row('WhatsApp','Si no respondo en la app.',sw('wa',cfg.wa,'Insistir por WhatsApp'))
-     + row('Correo','Si tampoco respondo por WhatsApp.',sw('mail',cfg.mail,'Insistir por correo')))
-  + box('cf-mode','Cómo participas','Lo que uso por defecto. Puedes cambiarlo por persona.',
-     row('Por defecto','Delego: te traigo una propuesta. Elijo yo: te traigo tres.',opts('defmode',cfg.mode,[['delego','Delego'],['elijo','Elijo yo']],'Modo por defecto')))
+     row('Avisarme antes de cada fecha','',opts('aviso',AVISO,[[7,'7'],[14,'14'],[21,'21'],[30,'30']],'Días de aviso')+'<span class="ml-2 text-[12.5px] text-[#5f6b7d]">días</span>')
+     + row('WhatsApp','Si no respondes en la app.',sw('wa',cfg.wa,'Insistir por WhatsApp'))
+     + row('Correo','Si tampoco respondes por WhatsApp.',sw('mail',cfg.mail,'Insistir por correo')))
   + box('cf-env','Envío','Adónde mando los regalos.',
      `<label class="block py-3.5"><span class="text-[14.5px] font-medium">Dirección</span><input id="cfAddr" value="${esc(cfg.addr)}" class="ap-i mt-1.5"></label>`
      + row('Envolver y agregar tarjeta','',sw('wrap',cfg.wrap,'Envolver y agregar tarjeta')))
@@ -837,22 +908,21 @@ function viewConfig(){
 }
 
 function renderChrome(){
-  const pq=QUESTIONS.filter(q=>!yasked[q.n] && YEAR.some(p=>p.n===q.n)).length, now=yr().filter(p=>phase(p)==='now').length;
-  const badge={ano:now,personas:pq,regalos:0,config:0};
-  $('apTabs').innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${badge[k]?`<em class="num">${badge[k]}</em>`:''}</button>`).join('');
-  $('apAv').textContent=(cfg.name.trim()[0]||'R').toUpperCase();
+  const now=yr().filter(p=>phase(p)==='now').length;
+  $('apTabs').innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${k==='planner'&&now?`<em class="num">${now}</em>`:''}</button>`).join('');
+  $('apAv').textContent=initial();
   $('apBellDot').style.display=bellSeen?'none':'';
-  $('popUser').innerHTML=`<div class="flex items-center gap-3 border-b border-mist p-3.5"><span class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">${(cfg.name.trim()[0]||'R').toUpperCase()}</span><div class="min-w-0 leading-tight"><p class="truncate text-[14px] font-semibold">${esc(cfg.name)}</p><p class="mt-0.5 text-[12px] text-[#5f6b7d]">Google Calendar conectado</p></div></div>
-  <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-cal','Calendarios'],['cf-av','Avisos'],['cf-env','Envío'],['','Configuración']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
+  $('popUser').innerHTML=`<div class="flex items-center gap-3 border-b border-mist p-3.5"><span class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">${initial()}</span><div class="min-w-0 leading-tight"><p class="truncate text-[14px] font-semibold">${esc(cfg.name)}</p><p class="mt-0.5 text-[12px] text-[#5f6b7d]">Google Calendar conectado</p></div></div>
+  <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-mode','Cómo participas'],['cf-cal','Calendarios'],['cf-av','Avisos'],['cf-env','Envío']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
   const nw=YEAR.find(p=>p.n==='Familia Soto'), am=YEAR.find(p=>p.n==='Amigo secreto'), em=YEAR.find(p=>p.n==='Emilia');
-  $('popBell').innerHTML=`<p class="px-4 pb-1 pt-3.5 text-[13px] font-semibold">Lo último que hice</p><div class="p-1.5">${[[am,'Preparé la propuesta de Amigo secreto','Hoy'],[nw,'Vi un bautizo nuevo en tu calendario','Familia Soto · 22 ago. Ya lo agregué a tu año'],[em,'Despaché el regalo de Emilia','Llega mañana']].map(([p,t,s])=>`<button data-act="focus" data-i="${idx(p)}" class="ap-mi !block"><span class="block text-[13.5px] font-medium leading-snug">${t}</span><span class="block text-[12px] leading-snug text-[#5f6b7d]">${s}</span></button>`).join('')}</div>`;
+  $('popBell').innerHTML=`<p class="px-4 pb-1 pt-3.5 text-[13px] font-semibold">Lo último que hice</p><div class="p-1.5">${[[am,'Pensé el regalo de Amigo secreto','Hoy'],[nw,'Vi un bautizo nuevo en tu calendario','Familia Soto · 22 ago. Ya lo estoy siguiendo'],[em,'Despaché el regalo de Emilia','Llega mañana']].map(([p,t,s])=>`<button data-act="focus" data-i="${idx(p)}" class="ap-mi !block"><span class="block text-[13.5px] font-medium leading-snug">${t}</span><span class="block text-[12px] leading-snug text-[#5f6b7d]">${s}</span></button>`).join('')}</div>`;
 }
-function render(){ renderChrome(); ({ano:viewAno,personas:viewPersonas,regalos:viewRegalos,config:viewConfig})[tab](); }
+function render(){ renderChrome(); ({planner:viewPlanner,personas:viewPersonas,config:viewConfig})[tab](); }
 function closePops(){ ['popBell','popUser'].forEach(i=>$(i).classList.add('hidden')); ['apBell','apAv'].forEach(i=>$(i).setAttribute('aria-expanded','false')); }
-function setTab(t,anim=true){ tab=t; closePops(); history.replaceState(null,'',t==='ano'?'#mi-ano':'#'+t); render(); $('year').scrollTop=0; if(anim&&!REDUCE) gsap.from('#apMain > *',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); }
-function focusOn(p){ yfocus=p; autoFocus=(p===defaultFocus()); yseeIdeas=false; tab==='ano'?render():setTab('ano',false); $('year').scrollTo({top:0,behavior:REDUCE?'auto':'smooth'}); if(!REDUCE) gsap.from('#apLeft > *, #apHero article',{y:10,opacity:0,duration:.4,stagger:.03,ease:'power3.out',clearProps:'all'}); }
+function setTab(t,anim=true){ thinkRun++; tab=t; closePops(); history.replaceState(null,'',t==='planner'?'#planner':'#'+t); render(); $('year').scrollTop=0; if(anim&&!REDUCE&&t!=='planner') gsap.from('#apMain > *',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); }
+function focusOn(p){ yfocus=p; autoFocus=(p===defaultFocus()); tab==='planner'?render():setTab('planner',false); $('year').scrollTo({top:0}); if(!REDUCE) gsap.from('#apTicket',{y:14,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
 function ytoast(t){ $('ttxt').textContent=t; const el=$('toast'); gsap.killTweensOf(el); gsap.fromTo(el,{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:'back.out(2)'}); gsap.to(el,{opacity:0,y:-10,duration:.4,delay:2.4}); }
-const flashPhoto = () => { if(!REDUCE) gsap.from('#apHero .ap-ph img',{opacity:0,scale:1.05,duration:.45,clearProps:'all'}); };
+const flashPhoto = () => { if(!REDUCE) gsap.from('.pl-ph img',{opacity:0,scale:1.05,duration:.45,clearProps:'all'}); };
 
 $('year').addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');
@@ -860,38 +930,54 @@ $('year').addEventListener('click',e=>{
   if(!b) return;
   const a=b.dataset.act, p=b.dataset.i!==undefined?YEAR[+b.dataset.i]:yfocus;
   if(a==='tab') setTab(b.dataset.t);
-  else if(a==='home'){ autoFocus=true; setTab('ano'); }
+  else if(a==='home'){ autoFocus=true; setTab('planner'); }
   else if(a==='focus'){ closePops(); focusOn(p); }
-  else if(a==='back'){ autoFocus=true; yseeIdeas=false; render(); }
+  else if(a==='back'){ autoFocus=true; render(); }
   else if(a==='pop'){ const k=b.dataset.pop, el=k==='bell'?$('popBell'):$('popUser'), was=el.classList.contains('hidden'); closePops(); if(was){ el.classList.remove('hidden'); b.setAttribute('aria-expanded','true'); if(k==='bell'){ bellSeen=true; $('apBellDot').style.display='none'; } if(!REDUCE) gsap.from(el,{y:-6,opacity:0,duration:.2,clearProps:'all'}); } }
-  else if(a==='goto'){ setTab('config',false); if(b.dataset.a) $(b.dataset.a).scrollIntoView({block:'start'}); }
+  else if(a==='goto'){ setTab('config',false); $(b.dataset.a).scrollIntoView({block:'start'}); }
   else if(a==='logout'){ closeYear(); }
-  else if(a==='mode'){ ymodes[p.n]=b.dataset.m; render(); }
-  else if(a==='pick'){ ypick[yfocus.n]=+b.dataset.pick; render(); flashPhoto(); }
-  else if(a==='other'){ ypick[yfocus.n]=((ypick[yfocus.n]||0)+1)%3; render(); flashPhoto(); $('yreply').textContent='Listo, te muestro otra opción.'; }
-  else if(a==='ask'){ const arr=items(yfocus).map((o,i)=>({o,i})), k=b.dataset.k, pk=k==='eco'?[...arr].sort((x,y)=>x.o.p-y.o.p)[0]:k==='orig'?arr[2]:arr[1]; ypick[yfocus.n]=pk.i; render(); flashPhoto(); $('yreply').textContent=k==='eco'?`Este es el más económico: ${clp(pk.o.p)}.`:k==='orig'?'Este es menos común y más de autor.':'Este se usa todos los días.'; }
-  else if(a==='ok'){ p.bought=true; p.justBought=true; yfocus=p; autoFocus=false; ytoast(`Listo. Compro el regalo de ${p.n} y te aviso cuando salga.`); render(); if(!REDUCE) gsap.fromTo('#apHero article',{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.5)',clearProps:'all'}); }
-  else if(a==='undo'){ p.bought=false; p.justBought=false; ytoast('Listo, cancelé la compra.'); render(); }
-  else if(a==='ideas'){ yseeIdeas=!yseeIdeas; render(); }
-  else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); ytoast(`Anotado. Ya sé algo más de ${q.n}.`); render(); }
-  else if(a==='adding'){ adding=!adding; render(); }
+  else if(a==='pick'){ ypick[yfocus.n]=+b.dataset.pick; render(); }
+  else if(a==='ask'){
+    const q=yfocus, arr=items(q).map((o,i)=>({o,i})), k=b.dataset.k, pk=k==='eco'?[...arr].sort((x,y)=>x.o.p-y.o.p)[0]:k==='orig'?arr[2]:arr[1];
+    $('yreply').textContent='Lo estoy pensando…';
+    gsap.delayedCall(REDUCE?0:.7,()=>{ if(yfocus!==q||tab!=='planner'||!$('yreply')) return; ypick[q.n]=pk.i; render(); flashPhoto(); $('yreply').textContent=k==='eco'?`Esta es la más económica: ${clp(pk.o.p)}.`:k==='orig'?'Esta es menos común y más de autor.':'Esta se usa todos los días.'; });
+  }
+  else if(a==='ok'){ p.bought=true; p.justBought=true; yfocus=p; autoFocus=false; ytoast(`Listo. Compro el regalo de ${p.n}.`); render(); if(!REDUCE){ gsap.fromTo('#apTicket',{scale:.97},{scale:1,duration:.7,ease:'elastic.out(1,.5)',clearProps:'all'}); gsap.from('.tk-stamp',{scale:2.2,opacity:0,rotation:-14,duration:.5,delay:.1,ease:'back.out(2)'}); } }
+  else if(a==='undo'){ p.bought=false; p.justBought=false; ytoast('Listo, cancelé la compra.'); autoFocus=true; render(); }
+  else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; doubtDone=true; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); ytoast(`Gracias. Por ahora no te pregunto más.`); render(); }
   else if(a==='sw'){ const k=b.dataset.k; if(k.startsWith('cal:')) cfg.cals[k.slice(4)]=!cfg.cals[k.slice(4)]; else cfg[k]=!cfg[k]; render(); }
   else if(a==='aviso'){ AVISO=+b.dataset.v; autoFocus=true; render(); ytoast(`Te aviso ${AVISO} días antes de cada fecha.`); }
-  else if(a==='defmode'){ cfg.mode=b.dataset.v; render(); }
+  else if(a==='defmode'){ cfg.mode=b.dataset.v; render(); ytoast(cfg.mode==='delego'?'Te dejo un regalo listo cada vez.':'Te dejo 3 finalistas cada vez.'); }
 });
-$('year').addEventListener('mouseover',e=>{ const c=e.target.closest('.bm'); if(c&&+c.dataset.m!==lens) setLens(+c.dataset.m); });
-$('year').addEventListener('mouseout',e=>{ const bd=e.target.closest('#apBand'); if(bd&&!bd.contains(e.relatedTarget)) setLens(lensHome()); });
-$('year').addEventListener('focusin',e=>{ const c=e.target.closest('.bm'); if(c&&+c.dataset.m!==lens) setLens(+c.dataset.m); });
 
-function openYear(t='ano'){
-  const y=$('year'); yseeIdeas=false; autoFocus=true; yfocus=defaultFocus(); lens=lensHome();
-  document.body.classList.add('in-app');
-  y.style.display='block';
-  setTab(t,false); y.scrollTop=0;
-  gsap.fromTo(y,{opacity:0},{opacity:1,duration:.4,onComplete:()=>{ $('sync').style.display='none'; }});
-  if(!REDUCE) gsap.from('#apMain > *',{y:18,opacity:0,duration:.7,stagger:.08,ease:'expo.out',clearProps:'all'});
+/* la notificación se abre y se convierte en la tarjeta de la fecha */
+async function arrive(){
+  const p=defaultFocus(), n=$('apNotif');
+  n.innerHTML=`<span class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span class="min-w-0 flex-1"><span class="flex justify-between gap-3 text-[12px] text-[#5f6b7d]"><span>Cuenta conmigo</span><span>ahora</span></span><b class="mt-0.5 block text-[15px] font-semibold leading-snug">${esc(p.n)} es ${days(dleft(p))}</b><span class="block text-[14px] leading-snug">Ya pensé en algo. Tócame y te muestro.</span></span>`;
+  n.style.display='flex'; document.querySelector('.ap-top').style.opacity=0;
+  gsap.fromTo(n,{y:-90,opacity:0},{y:0,opacity:1,duration:.65,ease:'back.out(1.5)'});
+  await new Promise(r=>{ let done=false; const go=()=>{ if(!done){ done=true; call.kill(); r(); } }; n.onclick=go; const call=gsap.delayedCall(3.5,go); });
+  const st=Flip.getState(n);
+  hold=true; render(); hold=false;
+  n.style.display='none';
+  const tk=$('apTicket'); gsap.set('#plLeft',{opacity:0}); gsap.set('#apTicket > *',{opacity:0});
+  gsap.to('.ap-top',{opacity:1,duration:.5,delay:.3,clearProps:'opacity'});
+  await new Promise(r=>Flip.from(st,{targets:tk,duration:.75,ease:'power3.inOut',scale:false,onComplete:r}));
+  gsap.to('#apTicket > *',{opacity:1,duration:.4,stagger:.08,clearProps:'opacity'});
+  gsap.to('#plLeft',{opacity:1,duration:.3,clearProps:'opacity'});
+  if(tab==='planner'&&yfocus===p&&!thought[p.n]) runThink(p);
 }
-function closeYear(){ $('year').style.display='none'; document.body.classList.remove('in-app'); history.replaceState(null,'',location.pathname); }
+
+function openYear(t='planner'){
+  const y=$('year'); autoFocus=true; yfocus=defaultFocus();
+  document.body.classList.add('in-app');
+  y.style.display='block'; tab=t; closePops();
+  history.replaceState(null,'',t==='planner'?'#planner':'#'+t);
+  gsap.fromTo(y,{opacity:0},{opacity:1,duration:.4,onComplete:()=>{ $('sync').style.display='none'; }});
+  if(t==='planner' && !REDUCE && yfocus && phase(yfocus)==='now' && !thought[yfocus.n]){ renderChrome(); $('apMain').innerHTML=''; arrive(); return; }
+  setTab(t,false);
+}
+function closeYear(){ thinkRun++; $('year').style.display='none'; document.body.classList.remove('in-app'); history.replaceState(null,'',location.pathname); }
 
 function closeSync(){ $('sync').style.display='none'; }
 ['connect','navgo'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
@@ -899,7 +985,7 @@ $('enter').onclick = () => openYear();
 addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('year').style.display==='block') closePops(); else closeSync(); } });
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
-const DEEP = {'#mi-ano':'ano','#personas':'personas','#regalos':'regalos','#config':'config'}[location.hash];
+const DEEP = {'#planner':'planner','#mi-ano':'planner','#personas':'personas','#regalos':'planner','#config':'config'}[location.hash];
 if(DEEP) openYear(DEEP);
 let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(fit,100); });
 </script>
