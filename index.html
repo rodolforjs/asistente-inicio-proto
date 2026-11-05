@@ -57,6 +57,83 @@ button{cursor:pointer}
 .k-bebe .art{background:linear-gradient(150deg,#b9d8ff,#c4b3ff)}
 .k-oficina .art{background:linear-gradient(150deg,#e2ea8a,#3f9e7c)}
 .k-padre .art{background:linear-gradient(150deg,#7fa6ff,#2c44d6)}
+/* app */
+body.in-app::after{display:none}
+body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw - 24px)}
+@media(max-width:767px){body.in-app #toast{bottom:84px;white-space:normal;width:max-content}}
+.ap-top{position:sticky;top:0;z-index:30;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:12px 20px;background:rgba(245,247,249,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+@media(min-width:1024px){.ap-top{padding:12px max(40px,calc((100vw - 1360px)/2 + 40px))}}
+.ap-tabs{display:flex;gap:2px}
+.ap-tabs button{position:relative;display:flex;align-items:center;gap:7px;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;color:#5f6b7d;transition:color .15s,background .15s}
+.ap-tabs button svg{display:none}
+.ap-tabs button:hover{color:#0e1014}
+.ap-tabs button[aria-current]{background:#fff;color:#0e1014;font-weight:600;box-shadow:0 0 0 1px #e5eaf2}
+.ap-tabs em{font-style:normal;display:grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#ff5924;color:#fff;font-size:11px;font-weight:700}
+@media(max-width:767px){
+  .ap-top{grid-template-columns:1fr auto;background:#f5f7f9;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .ap-tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;justify-content:space-around;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 -1px 0 #e5eaf2}
+  .ap-tabs button{flex:1;flex-direction:column;gap:2px;padding:6px 2px;font-size:10.5px;border-radius:12px}
+  .ap-tabs button svg{display:block}
+  .ap-tabs button[aria-current]{background:none;box-shadow:none}
+  .ap-tabs em{position:absolute;top:0;left:calc(50% + 6px)}
+}
+.ap-ic{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;color:#0e1014;transition:background .15s}
+.ap-ic:hover{background:rgba(14,16,20,.06)}
+.ap-pop{position:absolute;right:0;top:calc(100% + 8px);z-index:50;max-width:calc(100vw - 32px);border-radius:16px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 24px 40px -18px rgba(15,23,42,.3)}
+.ap-mi{display:flex;width:100%;align-items:center;border-radius:10px;padding:8px 10px;text-align:left;font-size:14px;font-weight:500;transition:background .12s}
+.ap-mi:hover{background:#f5f7f9}
+.ap-card{display:grid;height:100%;overflow:hidden;border-radius:24px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
+@media(min-width:768px){.ap-card{grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:376px}}
+.ap-ph{position:relative;min-height:240px;overflow:hidden;background:#f5f7f9}
+.ap-tag{position:absolute;left:12px;top:12px;border-radius:999px;background:rgba(255,255,255,.92);padding:4px 10px;font-size:12px;font-weight:600}
+.hero-art .art::before{display:none}
+.ap-seg{display:inline-flex;border-radius:999px;background:#f5f7f9;padding:3px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.ap-seg button{border-radius:999px;padding:4px 11px;color:#5f6b7d;transition:color .15s,background .15s}
+.ap-seg button:hover{color:#0e1014}
+.ap-seg button[aria-pressed=true]{background:#0e1014;color:#fff}
+.ap-steps{display:flex;flex-direction:column}
+.ap-steps li{position:relative;display:flex;align-items:flex-start;gap:10px;padding-bottom:7px;font-size:14px;line-height:18px}
+.ap-steps li:last-child{padding-bottom:0}
+.ap-steps li:not(:last-child)::before{content:"";position:absolute;left:8px;top:18px;bottom:0;width:1px;background:#d5dbe5}
+.ap-steps i{flex:none;display:grid;place-items:center;width:17px;height:17px;border-radius:50%;margin-top:.5px;background:#fff;box-shadow:inset 0 0 0 1px #c4cad5}
+.ap-steps [data-s=done] i{background:#0e1014;box-shadow:none}
+.ap-steps [data-s=done]{color:#5f6b7d}
+.ap-steps [data-s=now] i{background:#ff5924;box-shadow:0 0 0 4px rgba(255,89,36,.18)}
+.ap-steps [data-s=now]{font-weight:600}
+.ap-steps [data-s=todo]{color:#5f6b7d}
+.ap-band{display:flex;min-height:178px;overflow:hidden;border-radius:20px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
+.bm{position:relative;flex:1 1 0;min-width:0;overflow:hidden;padding:10px 8px 10px 10px;border-left:1px solid #e5eaf2;transition:flex-grow .5s cubic-bezier(.2,.8,.2,1),background .3s}
+.bm:first-child{border-left:0}
+.bm[data-far="0"]{background:#fff}
+.bm[data-far="1"],.bm[data-far="2"],.bm[data-far="3"]{background:#fbfcfd}
+.mo-l{position:relative;margin-bottom:6px;font-size:11.5px;font-weight:600;letter-spacing:.08em;white-space:nowrap}
+.dt{display:flex;width:100%;min-width:0;align-items:center;gap:8px;border-radius:10px;padding:3px;text-align:left;transition:background .15s}
+.dt:hover{background:#f5f7f9}
+.dt[aria-current]{background:#f5f7f9;box-shadow:inset 0 0 0 1.5px #0e1014}
+.dt-n{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-family:'Newsreader',serif;font-size:15px;box-shadow:inset 0 0 0 1px #aab2bf;background:#fff}
+.dt[data-ph=now] .dt-n{background:#ff5924;color:#fff;box-shadow:none}
+.dt[data-ph=bought] .dt-n{background:#10b981;color:#fff;box-shadow:none}
+.dt-t{min-width:0;line-height:1.15}
+.dt-t b,.dt-t small{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.dt-t b{font-size:13.5px;font-weight:600}
+.dt-t small{font-size:11.5px;color:#5f6b7d}
+.bm[data-lv=dot] .dt{flex-direction:column;align-items:flex-start;gap:1px;padding:1px 3px}
+.bm[data-lv=dot] .dt-t{width:100%}
+.bm[data-lv=dot] .dt-t b{font-size:11px;font-weight:500}
+.bm[data-lv=dot] .dt-t small{display:none}
+.ap-masonry{columns:1;column-gap:16px}
+@media(min-width:768px){.ap-masonry{columns:2}}
+@media(min-width:1200px){.ap-masonry{columns:3}}
+.ap-pc{display:block;width:100%;break-inside:avoid;margin-bottom:16px;border-radius:20px;background:#fff;padding:18px;text-align:left;box-shadow:0 0 0 1px #e5eaf2}
+.ap-add{display:flex;flex-direction:column;gap:6px;background:transparent;box-shadow:none;border:1.5px dashed #c4cad5;transition:border-color .15s,background .15s}
+.ap-add:hover{border-color:#0e1014;background:#fff}
+.ap-f{display:block;font-size:12.5px;font-weight:500;color:#5f6b7d}
+.ap-i{display:block;width:100%;margin-top:4px;border-radius:10px;background:#fff;padding:9px 11px;font-size:14px;font-weight:400;color:#0e1014;box-shadow:inset 0 0 0 1px #d5dbe5}
+.ap-sw{position:relative;display:block;width:40px;height:24px;border-radius:12px;background:#d5dbe5;transition:background .18s}
+.ap-sw::after{content:"";position:absolute;left:2px;top:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.3);transition:transform .18s}
+.ap-sw[aria-checked=true]{background:#0e1014}
+.ap-sw[aria-checked=true]::after{transform:translateX(16px)}
+@media(prefers-reduced-motion:reduce){.bm,.ap-sw,.ap-sw::after{transition:none}}
 .ask-card{box-shadow:0 0 0 2px #ff5924,0 0 0 6px rgba(255,89,36,.18),0 30px 40px -22px rgba(15,23,42,.55)!important}
 .card .new{position:absolute;left:12px;top:9px;background:#fff;color:#0e1014;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:99px;z-index:3}
 .hero-art .art::before{display:none}
@@ -191,29 +268,18 @@ button{cursor:pointer}
 </section>
 <!-- Mi año -->
 <section id="year" class="fixed inset-0 z-[160] hidden overflow-auto bg-fog">
-  <div class="pointer-events-none fixed inset-x-0 top-0 h-[55%] bg-[radial-gradient(1000px_380px_at_50%_-5%,#fff,transparent_70%)]"></div>
-  <div class="relative mx-auto max-w-[1360px] px-6 pb-20 lg:px-14">
-    <header class="flex items-center justify-between py-5">
-      <button id="ylogo" class="font-serif text-[26px] font-medium tracking-[-0.04em]">Cuenta conmigo<span class="text-brand">.</span></button>
-      <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-gray-600 shadow-sm ring-1 ring-mist"><i class="size-2 rounded-full bg-emerald-500"></i>Google Calendar conectado</span>
-    </header>
-    <div class="grid items-end gap-6 pt-6 lg:grid-cols-[1fr_auto]">
-      <div>
-        <p class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-slate2"><span class="h-px w-9 bg-steel"></span>Mi año de regalos · nov 2026 – oct 2027</p>
-        <h1 class="font-serif text-[clamp(38px,4.6vw,66px)] font-normal leading-[.96] tracking-[-0.055em]">Hola, Rodolfo.<br><span id="yh2" class="block text-[.72em] text-brand italic"></span></h1>
-      </div>
-      <div id="ystats" class="flex gap-3"></div>
+  <header class="ap-top">
+    <button data-act="home" class="font-serif text-[23px] font-medium tracking-[-0.03em] justify-self-start">Cuenta conmigo<span class="text-brand">.</span></button>
+    <nav id="apTabs" class="ap-tabs" aria-label="Secciones"></nav>
+    <div class="relative flex items-center justify-self-end gap-2">
+      <span class="mr-2 hidden items-center gap-2 text-xs font-medium text-[#5f6b7d] xl:inline-flex"><i class="size-1.5 rounded-full bg-emerald-500"></i>Calendario leído hace 5 min</span>
+      <button id="apBell" data-act="pop" data-pop="bell" aria-label="Novedades" aria-expanded="false" class="ap-ic relative"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg><i id="apBellDot" class="absolute right-2 top-2 size-2 rounded-full bg-brand ring-2 ring-fog"></i></button>
+      <button id="apAv" data-act="pop" data-pop="user" aria-label="Menú de tu cuenta" aria-expanded="false" class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white transition hover:bg-brand"></button>
+      <div id="popBell" class="ap-pop hidden w-[340px]"></div>
+      <div id="popUser" class="ap-pop hidden w-[260px]"></div>
     </div>
-    <div class="mt-10 grid gap-6 lg:grid-cols-12">
-      <div id="yHero" class="lg:col-span-7 [&>article]:h-full"></div>
-      <aside class="flex flex-col gap-5 lg:col-span-5"><div id="yLearn"></div><div id="yNext"></div></aside>
-    </div>
-    <div class="mt-12">
-      <div class="mb-4 flex flex-wrap items-end justify-between gap-3"><h2 class="font-serif text-[34px] font-normal tracking-[-0.04em]">Tu año, mes a mes</h2>
-        <p class="flex items-center gap-4 text-xs font-medium text-slate2"><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-brand"></i>Toca decidir</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full border border-dashed border-steel"></i>Te aviso a tiempo</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-emerald-500"></i>Comprado</span></p></div>
-      <div id="yTl" class="relative overflow-x-auto rounded-[28px] bg-white p-5 shadow-[0_40px_60px_-40px_rgba(15,23,42,.35)] ring-1 ring-mist"></div>
-    </div>
-  </div>
+  </header>
+  <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-10"></main>
 </section>
 
 <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-[400] -translate-x-1/2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white opacity-0 shadow-2xl"><span class="mr-2 inline-block size-2 rounded-full bg-brand"></span><span id="ttxt"></span></div>
@@ -523,7 +589,7 @@ async function runSync(){
 }
 
 /* ---------- Mi año: el asistente se acerca a cada fecha (A) + el año mes a mes (B) ---------- */
-const TODAY = new Date(2026,10,4), AVISO = 14;               // demo fija: 4 nov 2026; aviso 14 días antes (a probar en el piloto)
+const TODAY = new Date(2026,10,4); let AVISO = 14;               // demo fija: 4 nov 2026; aviso 14 días antes (a probar en el piloto)
 const PRODS = {"mama-cual-es-tu-historia":["Mamá ¿Cuál es tu Historia?","MamaMia",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306"],"vela-vasija-pukara-esencia-andina":["Vela Vasija Pukara – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.52.24_1_600x.jpg?v=1791211998"],"mielero-en-ceramica-gres":["Mielero en cerámica gres","TallerColor",24990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Ewpp1SmFbK_600x.jpg?v=1622843066"],"libreta-picaflor-1":["Libreta Picaflor","Cocó Obach",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936"],"tazon-alerce":["Tazón Alerce","GARUGA",7590,"https://cdn.shopify.com/s/files/1/1481/4916/products/tKFvLH5YUh_600x.jpg?v=1749502459"],"tabla-tolten":["Tabla Toltén","ULMMO ORIGEN",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-08-06at15.45.48_1_600x.jpg?v=1754509629"],"mochila-zorro-culpeo":["Mochila ZORRO CULPEO","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Captura_de_Pantalla_2019-11-18_a_la_s_09.06.33_600x.png?v=1749502616"],"botella-termica-oceano":["Botella Térmica / Océano","hued hued",14990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-08-25at15.44.06_5_600x.jpg?v=1787687597"],"mochila-hongos-de-chile":["Mochila Hongos De Chile","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/36dyXgfqHn_600x.jpg?v=1749502248"],"libro-de-las-preguntas-de-neruda":["Libro De Las Preguntas De Neruda","Ediciones Liebre",28750,"https://cdn.shopify.com/s/files/1/1481/4916/files/KKxLjr5jf6_600x.jpg?v=1714769404"],"vela-anillo-de-fuego-esencia-andina":["Vela Anillo de Fuego – Onas-Selk'nam","ESENCIA ANDINA",18990,"https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634"],"diario-de-gratitud":["Diario de Gratitud","LAFANTINA",22990,"https://cdn.shopify.com/s/files/1/1481/4916/files/HvqaAJrWOY_600x.png?v=1744055312"],"mug-termico-ilustrado-papelucosas":["Mug Térmico Ilustrado PAPELUCOSAS","Herencia Colchagua",27990,"https://cdn.shopify.com/s/files/1/1481/4916/products/JUv4OH4diw_600x.jpg?v=1701118558"],"botella-bandurria":["Botella Bandurria","GARUGA",15990,"https://cdn.shopify.com/s/files/1/1481/4916/products/y1HkNdlPxP_600x.jpg?v=1749502261"],"libro-santiago-y-sus-cumbres-copia":["Libro Santiago y sus cumbres - Segunda Edición","FBT FineArt Photography",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/hf_20260826_201432_0ac48f4a-c0e8-4609-a11b-4dbb979884f8copy_600x.jpg?v=1791400905"],"bufanda-alpaca-unisex-chocolate":["Bufanda alpaca unisex Chocolate","ULMMO ORIGEN",49990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-06-03at13.05.27_1_600x.jpg?v=1749491586"],"pack-3-mermeladas-gourmet":["Pack 3 Mermeladas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/AX11vEKQnm_600x.jpg?v=1701682759"],"vela-vasija-likan-esencia-andina":["Vela Vasija Likan – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.54.31_600x.jpg?v=1791212171"],"vasos-gallo-agranda-o-450-ml-set-de-6":["Vasos Gallo Agranda’o 450 ml – Set de 6","Vaso de Gallo",29900,"https://cdn.shopify.com/s/files/1/1481/4916/files/CapturadePantalla2026-01-20ala_s_15.39.40_600x.png?v=1768934392"],"tabla-de-piedra-ribete":["Tabla de Piedra Ribete","Kuyen Diseño",32990,"https://cdn.shopify.com/s/files/1/1481/4916/products/2VkRwsY3N8_600x.jpg?v=1684182866"],"set-de-platos-circulares":["Set de Platos Circulares","Taller Masarte",42900,"https://cdn.shopify.com/s/files/1/1481/4916/files/O9kVn8J2fM_600x.jpg?v=1725467173"],"libro-wander":["Libro Wander","TERE GOTT",15990,"https://cdn.shopify.com/s/files/1/1481/4916/files/Disenosintitulo_5_600x.webp?v=1785431345"],"tabla-de-vidrio-loco":["Tabla de vidrio Picoroco","Andes1",13990,"https://cdn.shopify.com/s/files/1/1481/4916/products/bTWDOePFbi_600x.jpg?v=1606236283"],"pack-3-salsas-gourmet":["Pack 3 Salsas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/jMDsVgDEr6_600x.jpg?v=1701683544"],"dulce-de-leche-tradicional-450grs":["Dulce de Leche Tradicional 450grs.","Fundo Requingua",7490,"https://cdn.shopify.com/s/files/1/1481/4916/products/4UyzMKfer0_600x.jpg?v=1625680551"],"libro-tu-primer-ano":["Libro \"Tu Primer Año\"","LAFANTINA",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/w04HX6mkQu_600x.png?v=1741029832"],"tarjetas-para-fotos-mes-circus":["Tarjetas Meses Bebé \"Circus\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/files/NlD33171lZ_600x.jpg?v=1715712423"],"tarjetas-para-fotos-hitos-festa-menta":["Tarjetas Hitos Bebé \"Festa Menta\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/products/jkVO2C0kdz_600x.jpg?v=1663691157"],"individual-feria-navidena":["Individual Feria Navideña","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/ZREiu0ChXI_600x.jpg?v=1731423791"],"individual-feliz-navidad":["Individual Feliz Navidad","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/OSSRhX0LFH_600x.jpg?v=1762873802"]};
 const GRAD = {cumple:'#ff8a5c,#ff4a14',navidad:'#3f9b72,#0f4a35',amor:'#ffb4c8,#a58bff',boda:'#ffe07a,#ff8f5a',bebe:'#b9d8ff,#c4b3ff',oficina:'#e2ea8a,#3f9e7c',padre:'#7fa6ff,#2c44d6'};
 /* principal + 2 alternativas (fotos reales del catálogo) + por qué lo elegí */
@@ -562,142 +628,279 @@ const grad = p => p.g || GRAD[p.k];
 const phase = p => p.bought ? 'bought' : dleft(p)<=AVISO ? 'now' : 'later';
 const byDate = (a,b) => occ(a)-occ(b);
 const prod = h => { const x=PRODS[h]; return {h,t:x[0],v:x[1],p:x[2],u:x[3]}; };
-const items = p => GIFT[p.n][0].map(prod);
+const GIFT_NEW = [['diario-de-gratitud','vela-vasija-likan-esencia-andina','pack-3-mermeladas-gourmet'],'es un buen comienzo mientras te conozco.'];
+const items = p => (GIFT[p.n]||GIFT_NEW)[0].map(prod);
 const chosen = p => items(p)[ypick[p.n]||0];
 const facts = p => [...(PROF[p.n]||[]), ...(learned[p.n]||[])];
-const mode = p => ymodes[p.n]||'delego';
+const mode = p => ymodes[p.n]||cfg.mode;
 let yfocus=null, yseeIdeas=false;
 const img = (u,cls='') => `<img src="${u}" alt="" class="${cls}" loading="eager" onerror="this.remove()">`;
 const countTo = (el,v) => { const o={v:+el.textContent||0}; gsap.to(o,{v,duration:.7,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)}); };
 
-function yStats(){
-  const now=YEAR.filter(p=>phase(p)==='now').length, nx=YEAR.filter(p=>phase(p)==='later').sort(byDate)[0];
-  $('yh2').textContent = now? `Hoy toca ${now===1?'1 decisión':now+' decisiones'}. El resto lo voy preparando.` : 'Hoy no me necesitas. Te aviso cuando se acerque la próxima.';
-  $('ystats').innerHTML = [['Fechas en tu año',YEAR.length,0],['Toca decidir',now,1],['Mi próximo aviso',nx?fdate(avisoD(nx)):'—',0]].map(([l,v,k])=>
-    `<div class="rounded-2xl ${k?'bg-black text-white':'bg-white ring-1 ring-mist'} px-5 py-3 shadow-[0_18px_30px_-18px_rgba(15,23,42,.3)]"><p class="text-[11px] font-semibold uppercase tracking-[.14em] ${k?'text-white/60':'text-slate2'}">${l}</p><b class="num block font-serif text-[38px] font-medium leading-none tracking-[-0.05em] ${k?'text-brand':''}">${v}</b></div>`).join('');
+/* ---------- App: Mi año, Personas, Regalos, Configuración ---------- */
+const ICONS = {
+  ano:'<path d="M4 7h16M8 3v4M16 3v4M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/>',
+  personas:'<circle cx="9" cy="8" r="3.5"/><path d="M3 20c.5-4 3-6 6-6s5.500 2 6 6M16 5a3.500 3.500 0 0 1 0 6.500M18 14.500c1.700.8 2.700 2.700 3 5.500"/>',
+  regalos:'<path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.500S9 7 12 7ZM12 7c2-4 6-4 6-1.500S15 7 12 7Z"/>',
+  config:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'
+};
+const TABS = [['ano','Mi año'],['personas','Personas'],['regalos','Regalos'],['config','Configuración']];
+const HIST = [
+  {n:'Papá',o:'Día del Padre 2026',h:'botella-bandurria'},
+  {n:'Mamá',o:'Cumpleaños 2026',h:'vela-vasija-pukara-esencia-andina',res:'Le encantó'},
+  {n:'Navidad',o:'Navidad 2025',h:'pack-3-mermeladas-gourmet',res:'Le gustó a todos'},
+];
+const CAL_OF = {'Amigo secreto':'Trabajo','Mamá':'Familia','Papá':'Familia','Abuela Rosa':'Familia','Navidad':'Familia','Tío Jorge':'Familia','Emilia':'Familia','Familia Soto':'Familia'};
+const KIND = {Cumpleaños:'cumple',Aniversario:'amor',Matrimonio:'boda',Nacimiento:'bebe',Otro:'oficina'};
+const cfg = {name:'Rodolfo Rojas',mode:'delego',cals:{Personal:true,Familia:true,Trabajo:true},wa:true,mail:true,wrap:true,addr:'Av. Providencia 1234, depto. 56, Santiago'};
+let tab='ano', lens=0, adding=false, autoFocus=true, bellSeen=false;
+
+const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const calOf = p => p.cal || CAL_OF[p.n] || 'Personal';
+const yr = () => YEAR.filter(p=>cfg.cals[calOf(p)]).sort(byDate);
+const idx = p => YEAR.indexOf(p);
+const firstName = () => cfg.name.trim().split(/\s+/)[0] || 'Hola';
+const defaultFocus = () => { const v=yr(); return v.find(p=>phase(p)==='now') || v.find(p=>phase(p)==='later') || v[0] || null; };
+const arrival = p => dleft(p)<=3 ? 'mañana' : 'el '+fdate(addD(occ(p),-3));
+const days = n => n===0?'hoy':n===1?'mañana':`en ${n} días`;
+const channels = () => { const c=[cfg.wa&&'WhatsApp',cfg.mail&&'correo'].filter(Boolean); return c.length? `si no me respondes, te insisto por ${c.join(' y luego por ')}` : 'te aviso solo aquí en la app'; };
+const pendingQ = p => QUESTIONS.find(q=>q.n===p.n && !yasked[q.n]);
+const monthIdx = p => { const o=occ(p); return (o.getFullYear()-TODAY.getFullYear())*12 + o.getMonth()-TODAY.getMonth(); };
+const stLabel = p => { const ph=phase(p); return ph==='now'?'Toca decidir':ph==='bought'?'Comprado':'Aviso '+fdate(avisoD(p)); };
+
+const qBox = q => `<div class="rounded-2xl bg-fog p-3.5"><p class="text-[14px] font-semibold leading-snug">${q.q}</p><div class="mt-2.5 flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}" class="rounded-full bg-white px-3 py-1.5 text-[12.5px] font-semibold ring-1 ring-mist transition hover:bg-black hover:text-white hover:ring-black">${a}</button>`).join('')}</div></div>`;
+const chips = p => { const f=facts(p).filter(x=>x!==p.n), falta=Math.max(0,4-f.length);
+  return `<div class="flex flex-wrap gap-1.5">${f.map(x=>`<span class="rounded-full bg-fog px-3 py-1 text-[12.5px] font-medium">${esc(x)}</span>`).join('')}${falta?`<span class="rounded-full border border-dashed border-steel px-3 py-1 text-[12.5px] text-[#5f6b7d]">Voy a saber más</span>`:''}</div>`; };
+const seg = (p) => `<div class="ap-seg" role="group" aria-label="Cómo quieres participar en este regalo">${[['delego','Delego'],['elijo','Elijo yo']].map(([m,l])=>`<button data-act="mode" data-m="${m}" data-i="${idx(p)}" aria-pressed="${mode(p)===m}">${l}</button>`).join('')}</div>`;
+const miniProd = (o,i,sel,act) => `<button ${act?`data-act="pick" data-pick="${i}"`:'tabindex="-1"'} class="min-w-0 overflow-hidden rounded-xl bg-white text-left ring-1 transition ${act?'hover:-translate-y-0.5':'cursor-default'} ${sel?'ring-2 ring-black':'ring-mist'}"><span class="relative block aspect-square bg-fog">${img(o.u,'absolute inset-0 size-full object-cover')}</span><span class="block p-2 leading-tight"><b class="line-clamp-2 text-[11.5px] font-semibold">${esc(o.t)}</b><span class="num mt-0.5 block text-[11.5px] text-[#5f6b7d]">${clp(o.p)}</span></span></button>`;
+
+/* lo que el asistente ya hizo y lo que falta: es el centro del planner */
+function steps(p){
+  const ph=phase(p), av=avisoD(p), src = p.n==='Amigo secreto' ? 'Leí el tope de $15.000 en la invitación' : p.manual ? 'Agregaste esta fecha tú' : `Encontré ${p.o==='Familia'?'la fecha':'“'+p.o.toLowerCase()+'”'} en tu calendario`;
+  const avisoT = av<=TODAY ? (+av===+TODAY?`Te avisé hoy, con ${AVISO} días de margen`:`Te avisé con ${AVISO} días de margen`) : `Te aviso el ${fdate(av)}, con ${AVISO} días de margen`;
+  if(ph==='now') return [['done',src],['done',avisoT],['done',`Preparé 3 opciones del catálogo`],['now',`Falta tu aprobación, antes del ${fdate(addD(occ(p),-7))}`],['todo',`Compro y despacho: llega ${arrival(p)}`],['todo','Te pregunto si le gustó']];
+  if(ph==='bought') return [['done',src],['done','Preparé 3 opciones y aprobaste una'],['done','Lo compré'],['now',`Va en camino: llega ${arrival(p)}`],['todo','Te pregunto si le gustó']];
+  return [['done',src],['done',`Empecé a anotar lo que sé de ${esc(p.n)}`],['now',avisoT],['todo','Te dejo una propuesta lista para aprobar'],['todo','Compro y despacho cuando apruebes']];
+}
+const stepsHtml = p => `<ol class="ap-steps">${steps(p).map(([s,t])=>`<li data-s="${s}"><i aria-hidden="true">${s==='done'?'<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2.500 6.500 2.500 2.500 4.500-5.500"/></svg>':''}</i><span>${t}</span></li>`).join('')}</ol>`;
+
+function greeting(){
+  const v=yr(), now=v.filter(p=>phase(p)==='now').length, nx=v.find(p=>phase(p)==='later'), way=v.find(p=>phase(p)==='bought');
+  const head = now? `Hoy solo necesito ${now===1?'una cosa':now+' cosas'} de ti.` : 'Hoy no me necesitas.';
+  const sub = [way&&`El regalo de ${esc(way.n)} va en camino.`, !now&&nx&&`Te aviso el ${fdate(avisoD(nx))}, con la propuesta de ${esc(nx.n)} lista.`].filter(Boolean).join(' ');
+  return `<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 pb-3 pt-5 lg:pt-1"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal leading-tight tracking-[-0.025em]">Hola, ${esc(firstName())}. ${head}</h1>${sub?`<p class="text-[13.5px] text-[#5f6b7d]">${sub}</p>`:''}</div>`;
 }
 
-const STEPS=['Te aviso','Te propongo','Tú decides','Compro y despacho','Llega','¿Le gustó?'];
-const stepper = cur => `<ol class="mt-auto flex items-start pt-6">${STEPS.map((t,i)=>`<li class="relative flex-1 text-center"><i class="absolute left-0 right-0 top-[7px] h-0.5 ${i<=cur?'bg-black':'bg-mist'}" style="${i===0?'left:50%':i===STEPS.length-1?'right:50%':''}"></i><span class="relative mx-auto block size-4 rounded-full ${i<cur?'bg-black':i===cur?'bg-brand ring-4 ring-brand/20':'bg-mist'}"></span><span class="mt-2 block px-0.5 text-[10.5px] font-semibold leading-tight ${i<=cur?'text-black':'text-steel'}">${t}</span></li>`).join('')}</ol>`;
-const seg = p => `<div class="mt-4 inline-flex rounded-full bg-fog p-1 text-[12.5px] font-semibold ring-1 ring-mist" role="group" aria-label="Cómo quieres participar en este regalo">${[['delego','Delego'],['elijo','Elijo yo']].map(([m,l])=>`<button data-mode="${m}" class="rounded-full px-3.5 py-1.5 transition ${mode(p)===m?'bg-black text-white shadow':'text-slate2 hover:text-black'}">${l}</button>`).join('')}</div>`;
-const photoPanel = (pr,tag) => `<div class="relative min-h-[300px] overflow-hidden bg-fog">${img(pr.u,'absolute inset-0 size-full object-cover')}<span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[.12em] shadow-sm backdrop-blur">${tag}</span></div>`;
-const artPanel = p => `<div class="card k-${p.k} hero-art relative min-h-[300px]"><div class="art" style="height:100%;min-height:300px;background:linear-gradient(150deg,${grad(p)})">${art(p.k,7,'meet')}<span class="mo">${MES[p.m]}</span><span class="d">${p.d}</span></div></div>`;
-
-function yHero(anim=true){
-  const p=yfocus, ph=phase(p), dl=dleft(p), its=items(p), cur=chosen(p), why=GIFT[p.n][1];
-  const head = lbl => `<p class="text-xs font-semibold uppercase tracking-[.16em] ${ph==='now'?'text-brand':'text-slate2'}">${lbl}</p><h2 class="mt-2 font-serif text-[44px] font-normal leading-none tracking-[-0.05em]">${p.n}</h2><p class="mt-1.5 text-sm font-medium text-slate2">${p.o} · ${fdate(occ(p))} · en ${dl} ${dl===1?'día':'días'}</p>`;
-  let left, right;
+function heroCard(p){
+  const ph=phase(p), its=items(p), cur=chosen(p), why=(GIFT[p.n]||GIFT_NEW)[1];
   if(ph==='now'){
-    left = photoPanel(cur,'Mi propuesta');
-    const deadline = fdate(addD(occ(p),-7));
-    right = `${head('Toca decidir')}${seg(p)}
-      ${mode(p)==='delego' ? `<div class="mt-4 rounded-2xl bg-fog p-4 ring-1 ring-mist"><p class="text-[10.5px] font-semibold uppercase tracking-[.14em] text-slate2">${cur.v}</p><div class="mt-1 flex items-baseline justify-between gap-3"><b class="text-[19px] font-semibold leading-tight tracking-tight">${cur.t}</b><span class="num text-[17px] font-semibold">${clp(cur.p)}</span></div><p class="mt-1 text-[13px] leading-snug text-slate2">Lo elegí porque ${why}</p></div>`
-      : `<div class="mt-4 grid grid-cols-3 gap-2.5">${its.map((o,i)=>`<button data-pick="${i}" class="overflow-hidden rounded-2xl bg-white text-left ring-1 transition hover:-translate-y-0.5 ${(ypick[p.n]||0)===i?'ring-2 ring-black':'ring-mist'}"><span class="relative block aspect-square bg-fog">${img(o.u,'absolute inset-0 size-full object-cover')}</span><span class="block p-2 leading-tight"><b class="line-clamp-2 text-[11.5px] font-semibold">${o.t}</b><span class="num mt-0.5 block text-[11.5px] text-slate2">${clp(o.p)}</span></span></button>`).join('')}</div>`}
-      <div class="mt-4 flex flex-wrap items-center gap-2.5"><button id="yok" class="rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand">Aprobar${mode(p)==='elijo'?' este':''}</button>${mode(p)==='delego'?'<button id="ychg" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">Cambiar</button>':''}</div>
-      <p class="mt-2.5 text-xs leading-snug text-slate2">Apruébalo antes del ${deadline} para que llegue a tiempo. Nada se compra sin tu aprobación; si no me respondes, te insisto por WhatsApp y luego por correo.</p>
-      <div class="mt-3 flex flex-wrap items-center gap-2 text-xs"><span class="font-semibold text-slate2">Pídeme:</span>${[['eco','Algo más económico'],['orig','Algo más original'],['util','Algo más útil']].map(([k,l])=>`<button data-ask="${k}" class="rounded-full px-3 py-1 font-semibold ring-1 ring-mist transition hover:bg-fog">${l}</button>`).join('')}</div>
-      <p id="yreply" class="mt-2 min-h-[18px] text-[12.5px] font-medium text-black"></p>
-      ${stepper(2)}`;
-  } else if(ph==='later'){
-    left = artPanel(p);
-    const k=facts(p).length, falta=Math.max(0,4-k);
-    right = `${head('Todavía falta')}
-      <div class="mt-4 flex items-center gap-3 rounded-2xl bg-fog p-4 ring-1 ring-mist"><span class="grid size-11 shrink-0 place-items-center rounded-full bg-black text-white"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg></span><div class="leading-tight"><p class="text-[11px] font-semibold uppercase tracking-[.14em] text-slate2">Te aviso el</p><p class="font-serif text-[30px] font-medium tracking-[-0.04em]">${fdate(avisoD(p))}</p></div><p class="ml-auto max-w-[150px] text-right text-xs leading-snug text-slate2">Con la propuesta lista y tiempo para recibirla.</p></div>
-      <p class="mt-4 text-[11px] font-semibold uppercase tracking-[.14em] text-slate2">Lo que sé de ${p.n}</p>
-      <div class="mt-2 flex flex-wrap gap-1.5">${facts(p).map(f=>`<span class="rounded-full bg-fog px-3 py-1 text-[12.5px] font-medium ring-1 ring-mist">${f}</span>`).join('')}${falta?`<span class="rounded-full border border-dashed border-steel px-3 py-1 text-[12.5px] text-slate2">+ ${falta} por aprender</span>`:''}</div>
-      ${seg(p)}
-      <div class="mt-4"><button id="yideas" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">${yseeIdeas?'Ocultar ideas':'Adelantarme unas ideas'}</button></div>
-      <div id="yid" class="${yseeIdeas?'':'hidden'} mt-3"><div class="grid grid-cols-3 gap-2.5">${its.map(o=>`<div class="overflow-hidden rounded-2xl bg-white ring-1 ring-mist"><span class="relative block aspect-square bg-fog">${img(o.u,'absolute inset-0 size-full object-cover')}</span><span class="block p-2 leading-tight"><b class="line-clamp-2 text-[11.5px] font-semibold">${o.t}</b><span class="num mt-0.5 block text-[11.5px] text-slate2">${clp(o.p)}</span></span></div>`).join('')}</div><p class="mt-2 text-xs text-slate2">Son ideas por ahora. La propuesta que te dejo para aprobar llega el ${fdate(avisoD(p))}.</p></div>
-      ${stepper(0)}`;
-  } else {
-    left = photoPanel(cur,'Comprado');
-    right = `${head('Ya está en camino')}
-      <div class="mt-4 rounded-2xl bg-fog p-4 ring-1 ring-mist"><p class="text-[10.5px] font-semibold uppercase tracking-[.14em] text-slate2">${cur.v}</p><div class="mt-1 flex items-baseline justify-between gap-3"><b class="text-[19px] font-semibold leading-tight tracking-tight">${cur.t}</b><span class="num text-[17px] font-semibold">${clp(cur.p)}</span></div><p class="mt-1 text-[13px] leading-snug text-slate2">Llega ${dl<=1?'mañana':'el '+fdate(addD(occ(p),-3))}, envuelto y con tarjeta.</p></div>
-      <p class="mt-4 text-[13px] leading-snug text-slate2">Cuando llegue te pregunto si le gustó. Con eso aprendo qué regalarle la próxima vez.</p>
-      ${stepper(3)}`;
+    const el=mode(p)==='elijo';
+    return `<article class="ap-card">
+      <div class="ap-ph">${img(cur.u,'absolute inset-0 size-full object-cover')}<span class="ap-tag">${el?'Tu elección':'Mi propuesta'}</span></div>
+      <div class="flex min-w-0 flex-col p-6">
+        <div class="flex items-center justify-between gap-3"><p class="text-[13px] font-semibold">${el?'Elige una de las tres':'Te propongo esto'}</p>${seg(p)}</div>
+        ${el?`<div class="mt-4 grid grid-cols-3 gap-2.5">${its.map((o,i)=>miniProd(o,i,(ypick[p.n]||0)===i,true)).join('')}</div>`
+        :`<div class="mt-5"><h3 class="font-serif text-[clamp(26px,2.5vw,34px)] font-normal leading-[1.05] tracking-[-0.025em]">${esc(cur.t)}</h3><p class="num mt-2 text-[14px] text-[#5f6b7d]">${esc(cur.v)} · <b class="font-semibold text-black">${clp(cur.p)}</b></p><p class="mt-3 text-[15px] leading-snug">Lo elegí porque ${why}</p></div>`}
+        <div class="mt-auto pt-5">
+          <div class="flex flex-wrap items-center gap-2"><button data-act="ok" data-i="${idx(p)}" class="rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white transition hover:bg-brand">Aprobar y comprar</button>${el?'':'<button data-act="other" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">Ver otra</button>'}</div>
+          <p id="yreply" class="mt-2 min-h-[18px] text-[12.5px] font-medium" aria-live="polite"></p>
+          ${el?'':`<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px]"><span class="text-[#5f6b7d]">Pídeme algo más</span>${[['eco','económico'],['orig','original'],['util','útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}" class="font-semibold underline decoration-steel underline-offset-[3px] transition hover:text-brand hover:decoration-brand">${l}</button>`).join('')}</div>`}
+          <p class="mt-3 border-t border-mist pt-3 text-[12px] leading-snug text-[#5f6b7d]">Nada se compra sin tu aprobación; ${channels()}.</p>
+        </div>
+      </div></article>`;
   }
-  $('yHero').innerHTML = `<article class="grid h-full overflow-hidden rounded-[32px] bg-white shadow-[0_50px_70px_-44px_rgba(15,23,42,.45),0_2px_0_#fff_inset] ring-1 ring-mist md:grid-cols-[.8fr_1.2fr]">${left}<div class="flex flex-col p-7">${right}</div></article>`;
-  const R=$('yHero');
-  R.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{ ymodes[p.n]=b.dataset.mode; yHero(false); gsap.from('#yHero article > div:last-child > *:nth-child(n+4)',{y:10,opacity:0,duration:.4,stagger:.05,ease:'power3.out'}); });
-  R.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{ ypick[p.n]=+b.dataset.pick; yHero(false); });
-  if($('yok')) $('yok').onclick=()=>yBuy(p);
-  if($('ychg')) $('ychg').onclick=()=>{ ypick[p.n]=((ypick[p.n]||0)+1)%3; yHero(false); const im=R.querySelector('article > div:first-child img'); gsap.from(im,{opacity:0,scale:1.06,duration:.5}); $('yreply').textContent='Listo, te muestro otra opción.'; };
-  R.querySelectorAll('[data-ask]').forEach(b=>b.onclick=()=>{
-    const arr=items(p).map((o,i)=>({o,i})), k=b.dataset.ask;
-    const pick = k==='eco'? [...arr].sort((a,b)=>a.o.p-b.o.p)[0] : k==='orig'? arr[2] : arr[1];
-    ypick[p.n]=pick.i; yHero(false);
-    $('yreply').textContent = k==='eco'?`Listo. Este es el más económico: ${clp(pick.o.p)}.`: k==='orig'?'Listo. Este es menos común y más de autor.':'Listo. Este se usa todos los días.';
-    gsap.from('#yHero article > div:first-child img',{opacity:0,scale:1.06,duration:.5});
-  });
-  if($('yideas')) $('yideas').onclick=()=>{ yseeIdeas=!yseeIdeas; yHero(false); if(yseeIdeas) gsap.from('#yid > *',{y:12,opacity:0,duration:.45,stagger:.06,ease:'power3.out'}); };
-  if(anim) gsap.fromTo('#yHero article > div:last-child > *',{y:14,opacity:0},{y:0,opacity:1,duration:.5,stagger:.05,ease:'power3.out'});
+  if(ph==='bought'){
+    const nx=yr().find(x=>phase(x)!=='bought');
+    return `<article class="ap-card">
+      <div class="ap-ph">${img(cur.u,'absolute inset-0 size-full object-cover')}<span class="ap-tag">Comprado</span></div>
+      <div class="flex min-w-0 flex-col p-6"><p class="text-[13px] font-semibold text-emerald-700">Listo, ya está resuelto</p>
+        <h3 class="mt-4 font-serif text-[clamp(26px,2.5vw,34px)] font-normal leading-[1.05] tracking-[-0.025em]">${esc(cur.t)}</h3><p class="num mt-2 text-[14px] text-[#5f6b7d]">${esc(cur.v)} · <b class="font-semibold text-black">${clp(cur.p)}</b></p>
+        <p class="mt-3 text-[15px] leading-snug">Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Cuando llegue te pregunto si le gustó, y con eso elijo mejor la próxima vez.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-2 pt-5">${nx?`<button data-act="focus" data-i="${idx(nx)}" class="rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white transition hover:bg-brand">Lo siguiente: ${esc(nx.n)}</button>`:''}${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">Cancelar compra</button>`:''}</div>
+      </div></article>`;
+  }
+  const q=pendingQ(p);
+  return `<article class="ap-card">
+    <div class="ap-ph hero-art"><div class="card k-${p.k} absolute inset-0"><div class="art" style="height:100%;background:linear-gradient(150deg,${grad(p)})">${art(p.k,7,'meet')}</div></div></div>
+    <div class="flex min-w-0 flex-col p-6">
+      <div class="flex items-center justify-between gap-3"><p class="text-[13px] font-semibold">Todavía no tienes que hacer nada</p>${seg(p)}</div>
+      <p class="mt-5 text-[12.5px] font-medium text-[#5f6b7d]">Lo que sé de ${esc(p.n)}</p><div class="mt-2">${chips(p)}</div>
+      ${q?`<div class="mt-4">${qBox(q)}</div>`:''}
+      <div class="mt-auto pt-5"><button data-act="ideas" class="rounded-full bg-black/[.06] px-5 py-3 text-[14px] font-semibold transition hover:bg-black/10">${yseeIdeas?'Ocultar ideas':'Adelantarme unas ideas'}</button>
+      ${yseeIdeas?`<div id="yid" class="mt-3 grid grid-cols-3 gap-2.5">${its.map((o,i)=>miniProd(o,i,false,false)).join('')}</div>`:''}</div>
+    </div></article>`;
 }
 
-function yLearn(){
-  const qs=QUESTIONS.filter(q=>!yasked[q.n]).slice(0,3), k=Object.keys(yasked).length;
-  $('yLearn').innerHTML = `<div class="rounded-[28px] bg-white p-5 shadow-[0_40px_60px_-44px_rgba(15,23,42,.35)] ring-1 ring-mist"><div class="mb-1 flex items-center justify-between"><h3 class="text-[15px] font-semibold">Ayúdame a conocerlos</h3><span class="text-xs font-medium text-slate2">${k} respondidas</span></div><p class="mb-3 text-xs text-slate2">Cada respuesta me ayuda a elegir mejor cuando se acerque la fecha.</p>
-  ${qs.length? qs.map(q=>`<div class="mb-3 rounded-2xl bg-fog p-3.5 last:mb-0" data-q="${q.n}"><p class="text-[11px] font-semibold uppercase tracking-[.12em] text-slate2">${q.n}</p><p class="mt-0.5 text-[14.5px] font-semibold leading-tight">${q.q}</p><div class="mt-2.5 flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-a="${a}" class="rounded-full bg-white px-3 py-1.5 text-[12.5px] font-semibold ring-1 ring-mist transition hover:bg-black hover:text-white hover:ring-black">${a}</button>`).join('')}</div></div>`).join('') : '<p class="py-5 text-center text-sm text-slate2">Por ahora no me falta nada. Voy a preguntarte cuando llegue un regalo.</p>'}</div>`;
-  document.querySelectorAll('#yLearn [data-q]').forEach(box=>box.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{
-    const q=QUESTIONS.find(x=>x.n===box.dataset.q), p=YEAR.find(x=>x.n===q.n);
-    yasked[q.n]=1; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a));
-    ytoast(`Anotado. Ya sé algo más de ${q.n}.`);
-    gsap.to(box,{opacity:0,height:0,margin:0,padding:0,duration:.35,onComplete:()=>{ yLearn(); if(yfocus===p){ yHero(false); } yTl(); }});
-  }));
+function hero(p){
+  if(!p) return `<div class="rounded-[24px] bg-white p-10 text-center ring-1 ring-mist"><p class="font-serif text-[30px] tracking-[-0.025em]">Ahora no leo ningún calendario</p><p class="mt-2 text-sm text-[#5f6b7d]">Activa uno para que vuelva a seguir tus fechas.</p><button data-act="tab" data-t="config" class="mt-5 rounded-full bg-black px-6 py-3 text-[14px] font-semibold text-white">Ir a Configuración</button></div>`;
+  const ph=phase(p), o=occ(p), dl=dleft(p), isDef=p===defaultFocus();
+  const eyebrow = ph==='now'?'<i class="size-2 rounded-full bg-brand"></i>Toca decidir': ph==='bought'?'<i class="size-2 rounded-full bg-emerald-500"></i>Resuelto':'<i class="size-2 rounded-full border border-[#5f6b7d]"></i>Más adelante';
+  return `<div class="grid items-stretch gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)] lg:gap-10">
+    <div id="apLeft" class="flex min-w-0 flex-col">
+      <div class="flex min-h-[28px] items-center justify-between gap-3"><p class="flex items-center gap-2 text-[13px] font-semibold">${eyebrow}</p>${isDef?'':'<button data-act="back" class="rounded-full bg-black/[.06] px-3 py-1 text-[12.5px] font-semibold transition hover:bg-black/10">← Volver a lo de hoy</button>'}</div>
+      <div class="mt-1 flex items-end gap-3 font-serif leading-none"><b class="num text-[clamp(88px,8vw,118px)] font-normal tracking-[-0.04em]">${o.getDate()}</b><span class="pb-[.28em] text-[clamp(30px,3vw,42px)] tracking-[-0.02em]">${MES[o.getMonth()].toLowerCase()}<span class="block text-[14px] font-sans font-medium tracking-normal text-[#5f6b7d] mt-1">${days(dl)}</span></span></div>
+      <h2 class="mt-2 font-serif text-[clamp(30px,3vw,40px)] font-normal leading-none tracking-[-0.025em]">${esc(p.n)}</h2>
+      <p class="mt-1.5 text-[14px] text-[#5f6b7d]">${esc(p.o)}${p.approx?' · fecha aproximada':''}</p>
+      <div class="mt-4">${stepsHtml(p)}</div>
+    </div>
+    <div class="min-w-0">${heroCard(p)}</div>
+  </div>`;
 }
 
-function yNext(){
-  const list=[...YEAR].sort(byDate).slice(0,5);
-  const pill = p => { const ph=phase(p); return ph==='now'?'<span class="rounded-full bg-brand px-2.5 py-1 text-[11px] font-semibold text-white">Toca decidir</span>': ph==='bought'?'<span class="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">Comprado</span>':`<span class="rounded-full px-2.5 py-1 text-[11px] font-semibold text-slate2 ring-1 ring-mist">Aviso ${fdate(avisoD(p))}</span>`; };
-  $('yNext').innerHTML = `<div class="rounded-[28px] bg-white/70 p-5 ring-1 ring-mist"><h3 class="mb-2 text-[15px] font-semibold">Lo que se viene</h3><ul>${list.map(p=>`<li><button data-n="${p.n}" class="group flex w-full items-center gap-3 rounded-2xl px-2 py-2 text-left transition hover:bg-fog ${p===yfocus?'bg-fog':''}"><span class="grid size-10 shrink-0 place-items-center rounded-xl text-white shadow-sm" style="background:linear-gradient(150deg,${grad(p)})"><b class="font-serif text-[18px] font-medium leading-none">${p.d}</b></span><span class="min-w-0 flex-1 leading-tight"><b class="block truncate text-[14px] font-semibold">${p.n}</b><span class="text-xs text-slate2">${p.o} · ${fdate(occ(p))}</span></span>${pill(p)}</button></li>`).join('')}</ul></div>`;
-  document.querySelectorAll('#yNext [data-n]').forEach(b=>b.onclick=()=>ySetFocus(YEAR.find(x=>x.n===b.dataset.n)));
+/* la lupa: 12 meses sin scroll, el mes en foco se acerca */
+const W = d => d===0?5:d===1?2.6:d===2?1.3:1;
+function setLens(i){ lens=i; document.querySelectorAll('.bm').forEach((c,j)=>{ const d=Math.abs(j-i); c.style.flexGrow=W(d); c.dataset.lv=d<=1?'full':'dot'; c.dataset.far=Math.min(d,3); }); }
+const lensHome = () => { const f=yfocus; return f?Math.min(11,monthIdx(f)):0; };
+function band(){
+  const cols=Array.from({length:12},(_,i)=>{ const a=new Date(TODAY.getFullYear(),TODAY.getMonth()+i,1); return {m:a.getMonth(),y:a.getFullYear(),ps:[]}; });
+  yr().forEach(p=>{ const c=cols[monthIdx(p)]; c&&c.ps.push(p); });
+  const n=yr().length;
+  return `<section aria-label="Tu año" class="mt-5 hidden md:block">
+    <div class="mb-2.5 flex flex-wrap items-baseline justify-between gap-x-4"><h2 class="text-[13px] font-semibold">Lo que se viene <span class="font-normal text-[#5f6b7d]">· tengo ${n} ${n===1?'fecha':'fechas'} en tu año, pasa por un mes para acercarlo</span></h2>
+    <p class="flex items-center gap-3.5 text-[12px] text-[#5f6b7d]"><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-brand"></i>Toca decidir</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full border border-[#5f6b7d]"></i>Te aviso a tiempo</span><span class="flex items-center gap-1.5"><i class="size-2 rounded-full bg-emerald-500"></i>Comprado</span></p></div>
+    <div id="apBand" class="ap-band">${cols.map((c,i)=>`<div class="bm" data-m="${i}" style="flex-grow:${W(Math.abs(i-lens))}" data-lv="${Math.abs(i-lens)<=1?'full':'dot'}" data-far="${Math.min(Math.abs(i-lens),3)}">
+            <p class="mo-l">${MES[c.m]}${c.m===0?` <span class="text-[#5f6b7d]">${String(c.y).slice(2)}</span>`:''}${i===0?` <span class="font-medium tracking-normal text-brand">· hoy ${TODAY.getDate()}</span>`:''}</p>
+      <div class="flex flex-col gap-1">${c.ps.sort(byDate).map(p=>`<button class="dt" data-act="focus" data-i="${idx(p)}" data-ph="${phase(p)}" aria-label="${esc(p.n)}, ${esc(p.o)}, ${fdate(occ(p))}. ${stLabel(p)}" ${p===yfocus?'aria-current="true"':''}><span class="dt-n num">${p.approx?'~':''}${p.d}</span><span class="dt-t"><b>${esc(p.n)}</b><small>${stLabel(p)}</small></span></button>`).join('')}</div></div>`).join('')}</div></section>`;
+}
+/* en el teléfono la misma idea: la tipografía baja con la distancia */
+function nextList(){
+  const list=yr().filter(p=>p!==yfocus), S=['text-[26px]','text-[21px]','text-[18px]'];
+  return `<section aria-label="Lo que se viene" class="mt-8 md:hidden"><h2 class="mb-2 text-[13px] font-semibold">Lo que se viene</h2><ul class="divide-y divide-mist">${list.map((p,i)=>`<li><button data-act="focus" data-i="${idx(p)}" class="flex w-full items-baseline gap-3 py-2.5 text-left"><span class="num w-[74px] shrink-0 font-serif ${S[i]||'text-[16px]'} tracking-[-0.02em]">${p.d} ${MES[p.m].toLowerCase()}</span><span class="min-w-0 flex-1 truncate font-serif ${S[i]||'text-[16px]'} tracking-[-0.02em]">${esc(p.n)}</span><span class="shrink-0 text-[11.5px] ${phase(p)==='now'?'font-semibold text-brand':'text-[#5f6b7d]'}">${stLabel(p)}</span></button></li>`).join('')}</ul></section>`;
 }
 
-function yTl(){
-  const cur=TODAY.getMonth(), cols=Array.from({length:12},(_,i)=>({m:(cur+i)%12,y:TODAY.getFullYear()+((cur+i)>11?1:0),ps:[]}));
-  YEAR.forEach(p=>{ const o=occ(p), c=cols.find(c=>c.m===o.getMonth()&&c.y===o.getFullYear()); c&&c.ps.push(p); });
-  cols.forEach(c=>c.ps.sort(byDate));
-  const st = p => { const ph=phase(p); return ph==='now'?['ring-2 ring-brand bg-white','bg-brand','Toca decidir']: ph==='bought'?['ring-1 ring-emerald-500/40 bg-emerald-50','bg-emerald-500','Comprado']:['ring-1 ring-dashed ring-mist bg-white','border border-dashed border-steel bg-white','Aviso '+fdate(avisoD(p))]; };
-  $('yTl').innerHTML = `<div class="relative grid min-w-[1560px] grid-cols-12 gap-x-2">
-    <i class="pointer-events-none absolute bottom-0 top-0 z-0 w-px bg-brand" style="left:calc((100% / 12) * ${(TODAY.getDate()-1)/30})"><b class="absolute -top-1 left-1 z-20 rounded-full bg-brand px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[.1em] text-white">Hoy</b></i>
-    ${cols.map((c,i)=>`<div class="min-h-[170px] ${i?'border-l border-mist pl-2':''}"><p class="mb-3 pt-6 text-[11px] font-semibold tracking-[.14em] text-slate2">${MES[c.m]}${c.m===0?` <span class="text-steel">${c.y}</span>`:''}</p>
-      <div class="flex flex-col gap-2">${c.ps.length? c.ps.map(p=>{ const [cls,dot,lab]=st(p); return `<button data-n="${p.n}" class="ytc group relative z-[1] rounded-xl p-1.5 text-left transition hover:-translate-y-0.5 hover:shadow-md ${cls} ${p===yfocus?'outline outline-2 outline-black':''}" style="${phase(p)==='later'?'border:1px dashed #c4cad5':''}"><span class="flex h-9 items-center justify-between rounded-lg px-2.5 text-white" style="background:linear-gradient(150deg,${grad(p)})"><b class="font-serif text-[19px] font-medium leading-none">${p.d}</b><i class="size-2 rounded-full ring-2 ring-white ${dot}"></i></span><span class="mt-1.5 block px-0.5 leading-tight"><b class="block truncate text-[12.5px] font-semibold">${p.n}</b><span class="block truncate text-[10.5px] text-slate2">${lab}</span></span></button>`; }).join('') : '<p class="text-xs text-steel">Sin fechas</p>'}</div></div>`).join('')}</div>`;
-  document.querySelectorAll('#yTl [data-n]').forEach(b=>b.onclick=()=>{ ySetFocus(YEAR.find(x=>x.n===b.dataset.n)); $('year').scrollTo({top:0,behavior:'smooth'}); });
+function viewAno(){
+  if(autoFocus || !yfocus || !yr().includes(yfocus)) yfocus=defaultFocus();
+  const target=lensHome(), m=$('apMain');
+  m.innerHTML = greeting()+`<div id="apHero">${hero(yfocus)}</div>`+band()+nextList();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>setLens(target)));
 }
 
-function ySetFocus(p){ yfocus=p; yseeIdeas=false; yHero(); yNext(); yTl(); }
+/* Personas */
+function viewPersonas(){
+  const v=yr(), pq=QUESTIONS.filter(q=>!yasked[q.n]).length;
+  const form = adding ? `<form id="apAdd" class="ap-pc space-y-3"><h3 class="font-serif text-[24px] tracking-[-0.025em]">Nueva fecha</h3>
+      <label class="ap-f">Para quién<input name="n" required maxlength="24" placeholder="Nombre" class="ap-i"></label>
+      <label class="ap-f">Ocasión<select name="o" class="ap-i">${Object.keys(KIND).map(o=>`<option>${o}</option>`).join('')}</select></label>
+      <div class="grid grid-cols-2 gap-2"><label class="ap-f">Día<input name="d" type="number" min="1" max="31" required value="15" class="ap-i"></label><label class="ap-f">Mes<select name="m" class="ap-i">${MES.map((x,i)=>`<option value="${i}">${x[0]+x.slice(1).toLowerCase()}</option>`).join('')}</select></label></div>
+      <label class="flex items-center gap-2 text-[13px]"><input name="ap" type="checkbox" class="size-4 accent-black">No sé el día exacto, dejo uno aproximado</label>
+      <div class="flex gap-2 pt-1"><button class="rounded-full bg-black px-5 py-2.5 text-[13.5px] font-semibold text-white">Guardar</button><button type="button" data-act="adding" class="rounded-full bg-black/[.06] px-5 py-2.5 text-[13.5px] font-semibold">Cancelar</button></div></form>`
+    : `<button data-act="adding" class="ap-pc ap-add"><span class="text-[26px] leading-none">+</span><b class="font-serif text-[22px] font-normal tracking-[-0.02em]">Agregar una fecha</b><span class="text-[13px] text-[#5f6b7d]">La que no esté en tu calendario.</span></button>`;
+  $('apMain').innerHTML = `<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 pb-6 pt-5 lg:pt-3"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal tracking-[-0.025em]">Las personas de tu año</h1><p class="text-[13.5px] text-[#5f6b7d]">${pq? `Tengo ${pq===1?'una pregunta':pq+' preguntas'}. Cada respuesta me ayuda a elegir mejor.`:'Por ahora no me falta nada. Te pregunto cuando llegue un regalo.'}</p></div>
+  <div class="ap-masonry">${form}${[...v].sort((a,b)=>(pendingQ(b)?1:0)-(pendingQ(a)?1:0)).map(p=>{ const q=pendingQ(p); return `<article class="ap-pc">
+    <div class="flex items-center gap-3"><span class="grid size-11 shrink-0 place-items-center rounded-full font-serif text-[20px] text-white" style="background:linear-gradient(150deg,${grad(p)})">${esc(p.n[0])}</span><div class="min-w-0 leading-tight"><h3 class="truncate font-serif text-[23px] font-normal tracking-[-0.02em]">${esc(p.n)}</h3><p class="mt-0.5 text-[12.5px] text-[#5f6b7d]">${esc(p.o)} · ${p.approx?'cerca del ':''}${fdate(occ(p))}</p></div></div>
+    <div class="mt-3.5">${chips(p)}</div>${q?`<div class="mt-3">${qBox(q)}</div>`:''}
+    <div class="mt-3.5 flex items-center justify-between gap-2">${seg(p)}<button data-act="focus" data-i="${idx(p)}" class="text-[12.5px] font-semibold underline decoration-steel underline-offset-[3px] transition hover:text-brand hover:decoration-brand">Ver en mi año</button></div></article>`; }).join('')}</div>`;
+  const f=$('apAdd'); if(f){ f.elements.n.focus(); f.onsubmit=e=>{ e.preventDefault(); const d=new FormData(f), o=d.get('o'), np={n:d.get('n').trim(),o,m:+d.get('m'),d:Math.min(+d.get('d'),28),k:KIND[o],h:150,manual:true,cal:'Personal',approx:!!d.get('ap')}; if(!np.n) return; if(YEAR.some(x=>x.n===np.n)) np.n+=' ('+o.toLowerCase()+')'; YEAR.push(np); adding=false; ytoast(`Anotado. Te aviso el ${fdate(avisoD(np))}.`); render(); }; }
+}
+
+/* Regalos */
+function viewRegalos(){
+  const v=yr(), now=v.filter(p=>phase(p)==='now'), way=v.filter(p=>phase(p)==='bought');
+  const tile = (u,top,sub,extra='') => `<article class="min-w-0"><div class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white ring-1 ring-mist">${img(u,'absolute inset-0 size-full object-cover')}</div><p class="mt-2 truncate text-[14px] font-semibold">${top}</p><p class="truncate text-[12.5px] text-[#5f6b7d]">${sub}</p>${extra}</article>`;
+  const sec = (t,body) => `<section><h2 class="mb-3 font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2>${body}</section>`;
+  const grid = s => `<div class="grid grid-cols-2 gap-x-4 gap-y-6">${s}</div>`, gridH = s => `<div class="grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-3 xl:grid-cols-4">${s}</div>`;
+  const empty = t => `<p class="rounded-2xl bg-white/60 p-5 text-[14px] text-[#5f6b7d] ring-1 ring-mist">${t}</p>`;
+  $('apMain').innerHTML = `<div class="pb-6 pt-5 lg:pt-3"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal tracking-[-0.025em]">Tus regalos</h1></div>`
+   + `<div class="grid gap-x-8 gap-y-9 lg:grid-cols-2">` + sec('Por aprobar', now.length? grid(now.map(p=>{const c=chosen(p); return tile(c.u,`${esc(p.n)} · ${clp(c.p)}`,`Antes del ${fdate(addD(occ(p),-7))}`,`<button data-act="focus" data-i="${idx(p)}" class="mt-2 rounded-full bg-black px-4 py-2 text-[12.5px] font-semibold text-white transition hover:bg-brand">Ver propuesta</button>`);}).join('')) : empty('Nada por ahora. Te aviso cuando haya algo que aprobar.'))
+   + sec('En camino', way.length? grid(way.map(p=>{const c=chosen(p); return tile(c.u,esc(p.n),`${esc(c.t)} · llega ${arrival(p)}`);}).join('')) : empty('Ningún regalo en camino.')) + `</div>`
+   + `<div class="mt-9">` + sec('Ya regalados', gridH(HIST.map(h=>{ const x=prod(h.h), q=QUESTIONS.find(q=>q.n===h.n && q.q.includes('Día del Padre') && !yasked[q.n]), done=learned[h.n]?.find(f=>f.startsWith('Regalo anterior'));
+       return tile(x.u,esc(h.n),`${esc(x.t)} · ${h.o}`, h.res?`<p class="mt-1.5 text-[12.5px] font-medium">${h.res}</p>` : q?`<div class="mt-2">${qBox(q)}</div>` : done?`<p class="mt-1.5 text-[12.5px] font-medium">Anotado para la próxima</p>`:''); }).join(''))) + `</div>`;
+}
+
+/* Configuración */
+const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
+function viewConfig(){
+  const row=(t,s,ctl)=>`<div class="flex items-center justify-between gap-4 py-3.5"><div class="min-w-0"><p class="text-[14.5px] font-medium">${t}</p>${s?`<p class="mt-0.5 text-[12.5px] leading-snug text-[#5f6b7d]">${s}</p>`:''}</div><div class="shrink-0">${ctl}</div></div>`;
+  const box=(id,t,s,body)=>`<section id="${id}" class="scroll-mt-20 border-t border-mist py-7 first:border-0 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><div class="mb-3 lg:mb-0"><h2 class="font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2><p class="mt-1 text-[13px] leading-snug text-[#5f6b7d]">${s}</p></div><div class="divide-y divide-mist rounded-2xl bg-white px-5 ring-1 ring-mist">${body}</div></section>`;
+  const opts=(act,cur,list,lab)=>`<div class="ap-seg" role="group" aria-label="${lab}">${list.map(([v,l])=>`<button data-act="${act}" data-v="${v}" aria-pressed="${String(cur)===String(v)}">${l}</button>`).join('')}</div>`;
+  const count=c=>{const k=YEAR.filter(p=>calOf(p)===c).length; return `${k} ${k===1?'fecha':'fechas'}`;};
+  $('apMain').innerHTML = `<div class="pb-2 pt-5 lg:pt-3"><h1 class="font-serif text-[clamp(25px,2.4vw,33px)] font-normal tracking-[-0.025em]">Configuración</h1></div>
+  <div class="mx-auto max-w-[1040px]">`
+  + box('cf-cal','Calendarios','Lo que leo para saber tus fechas. Si aparece algo nuevo, lo agrego solo.',
+     `<div class="flex items-center gap-3 py-3.5"><i class="size-2 rounded-full bg-emerald-500"></i><p class="flex-1 text-[14.5px] font-medium">Google Calendar</p><span class="text-[12.5px] text-[#5f6b7d]">Leído hace 5 min</span></div>`
+     + Object.keys(cfg.cals).map(c=>row(c,count(c),sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c))).join('')
+     + row('Apple Calendar y Outlook','Próximamente','<span class="text-[12.5px] text-[#5f6b7d]">—</span>'))
+  + box('cf-av','Avisos','Cuándo aparezco y por dónde te insisto.',
+     row('Avisarme antes de cada fecha','Cambia el aviso de todas tus fechas en Mi año.',opts('aviso',AVISO,[[7,'7'],[14,'14'],[21,'21'],[30,'30']],'Días de aviso')+'<span class="ml-2 text-[12.5px] text-[#5f6b7d]">días</span>')
+     + row('WhatsApp','Si no respondo en la app.',sw('wa',cfg.wa,'Insistir por WhatsApp'))
+     + row('Correo','Si tampoco respondo por WhatsApp.',sw('mail',cfg.mail,'Insistir por correo')))
+  + box('cf-mode','Cómo participas','Lo que uso por defecto. Puedes cambiarlo por persona.',
+     row('Por defecto','Delego: te traigo una propuesta. Elijo yo: te traigo tres.',opts('defmode',cfg.mode,[['delego','Delego'],['elijo','Elijo yo']],'Modo por defecto')))
+  + box('cf-env','Envío','Adónde mando los regalos.',
+     `<label class="block py-3.5"><span class="text-[14.5px] font-medium">Dirección</span><input id="cfAddr" value="${esc(cfg.addr)}" class="ap-i mt-1.5"></label>`
+     + row('Envolver y agregar tarjeta','',sw('wrap',cfg.wrap,'Envolver y agregar tarjeta')))
+  + box('cf-acc','Mi perfil','Tu nombre en la app.',
+     `<label class="block py-3.5"><span class="text-[14.5px] font-medium">Nombre</span><input id="cfName" value="${esc(cfg.name)}" class="ap-i mt-1.5"></label>`)
+  + `</div>`;
+  $('cfAddr').onchange=e=>{ cfg.addr=e.target.value; ytoast('Dirección guardada.'); };
+  $('cfName').onchange=e=>{ cfg.name=e.target.value||cfg.name; renderChrome(); ytoast('Nombre guardado.'); };
+}
+
+function renderChrome(){
+  const pq=QUESTIONS.filter(q=>!yasked[q.n] && YEAR.some(p=>p.n===q.n)).length, now=yr().filter(p=>phase(p)==='now').length;
+  const badge={ano:now,personas:pq,regalos:0,config:0};
+  $('apTabs').innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${badge[k]?`<em class="num">${badge[k]}</em>`:''}</button>`).join('');
+  $('apAv').textContent=(cfg.name.trim()[0]||'R').toUpperCase();
+  $('apBellDot').style.display=bellSeen?'none':'';
+  $('popUser').innerHTML=`<div class="flex items-center gap-3 border-b border-mist p-3.5"><span class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">${(cfg.name.trim()[0]||'R').toUpperCase()}</span><div class="min-w-0 leading-tight"><p class="truncate text-[14px] font-semibold">${esc(cfg.name)}</p><p class="mt-0.5 text-[12px] text-[#5f6b7d]">Google Calendar conectado</p></div></div>
+  <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-cal','Calendarios'],['cf-av','Avisos'],['cf-env','Envío'],['','Configuración']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
+  const nw=YEAR.find(p=>p.n==='Familia Soto'), am=YEAR.find(p=>p.n==='Amigo secreto'), em=YEAR.find(p=>p.n==='Emilia');
+  $('popBell').innerHTML=`<p class="px-4 pb-1 pt-3.5 text-[13px] font-semibold">Lo último que hice</p><div class="p-1.5">${[[am,'Preparé la propuesta de Amigo secreto','Hoy'],[nw,'Vi un bautizo nuevo en tu calendario','Familia Soto · 22 ago. Ya lo agregué a tu año'],[em,'Despaché el regalo de Emilia','Llega mañana']].map(([p,t,s])=>`<button data-act="focus" data-i="${idx(p)}" class="ap-mi !block"><span class="block text-[13.5px] font-medium leading-snug">${t}</span><span class="block text-[12px] leading-snug text-[#5f6b7d]">${s}</span></button>`).join('')}</div>`;
+}
+function render(){ renderChrome(); ({ano:viewAno,personas:viewPersonas,regalos:viewRegalos,config:viewConfig})[tab](); }
+function closePops(){ ['popBell','popUser'].forEach(i=>$(i).classList.add('hidden')); ['apBell','apAv'].forEach(i=>$(i).setAttribute('aria-expanded','false')); }
+function setTab(t,anim=true){ tab=t; closePops(); history.replaceState(null,'',t==='ano'?'#mi-ano':'#'+t); render(); $('year').scrollTop=0; if(anim&&!REDUCE) gsap.from('#apMain > *',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); }
+function focusOn(p){ yfocus=p; autoFocus=(p===defaultFocus()); yseeIdeas=false; tab==='ano'?render():setTab('ano',false); $('year').scrollTo({top:0,behavior:REDUCE?'auto':'smooth'}); if(!REDUCE) gsap.from('#apLeft > *, #apHero article',{y:10,opacity:0,duration:.4,stagger:.03,ease:'power3.out',clearProps:'all'}); }
 function ytoast(t){ $('ttxt').textContent=t; const el=$('toast'); gsap.killTweensOf(el); gsap.fromTo(el,{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:'back.out(2)'}); gsap.to(el,{opacity:0,y:-10,duration:.4,delay:2.4}); }
-function yBuy(p){
-  p.bought=true;
-  ytoast(`Listo. Compro el regalo de ${p.n} y te aviso cuando salga.`);
-  yStats(); yHero(false); yNext(); yTl();
-  gsap.fromTo('#yHero article',{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.5)'});
-  gsap.from('#yHero ol li:nth-child(4) span:first-of-type',{scale:0,duration:.5,ease:'back.out(3)'});
-}
+const flashPhoto = () => { if(!REDUCE) gsap.from('#apHero .ap-ph img',{opacity:0,scale:1.05,duration:.45,clearProps:'all'}); };
 
-function openYear(){
-  const y=$('year'); yseeIdeas=false;
-  yfocus=YEAR.filter(p=>phase(p)==='now').sort(byDate)[0] || YEAR.filter(p=>phase(p)==='later').sort(byDate)[0];
-  yStats(); yHero(false); yLearn(); yNext(); yTl();
-  y.style.display='block'; y.scrollTop=0;
+$('year').addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');
+  if(!e.target.closest('.ap-pop') && !(b&&b.dataset.act==='pop')) closePops();
+  if(!b) return;
+  const a=b.dataset.act, p=b.dataset.i!==undefined?YEAR[+b.dataset.i]:yfocus;
+  if(a==='tab') setTab(b.dataset.t);
+  else if(a==='home'){ autoFocus=true; setTab('ano'); }
+  else if(a==='focus'){ closePops(); focusOn(p); }
+  else if(a==='back'){ autoFocus=true; yseeIdeas=false; render(); }
+  else if(a==='pop'){ const k=b.dataset.pop, el=k==='bell'?$('popBell'):$('popUser'), was=el.classList.contains('hidden'); closePops(); if(was){ el.classList.remove('hidden'); b.setAttribute('aria-expanded','true'); if(k==='bell'){ bellSeen=true; $('apBellDot').style.display='none'; } if(!REDUCE) gsap.from(el,{y:-6,opacity:0,duration:.2,clearProps:'all'}); } }
+  else if(a==='goto'){ setTab('config',false); if(b.dataset.a) $(b.dataset.a).scrollIntoView({block:'start'}); }
+  else if(a==='logout'){ closeYear(); }
+  else if(a==='mode'){ ymodes[p.n]=b.dataset.m; render(); }
+  else if(a==='pick'){ ypick[yfocus.n]=+b.dataset.pick; render(); flashPhoto(); }
+  else if(a==='other'){ ypick[yfocus.n]=((ypick[yfocus.n]||0)+1)%3; render(); flashPhoto(); $('yreply').textContent='Listo, te muestro otra opción.'; }
+  else if(a==='ask'){ const arr=items(yfocus).map((o,i)=>({o,i})), k=b.dataset.k, pk=k==='eco'?[...arr].sort((x,y)=>x.o.p-y.o.p)[0]:k==='orig'?arr[2]:arr[1]; ypick[yfocus.n]=pk.i; render(); flashPhoto(); $('yreply').textContent=k==='eco'?`Este es el más económico: ${clp(pk.o.p)}.`:k==='orig'?'Este es menos común y más de autor.':'Este se usa todos los días.'; }
+  else if(a==='ok'){ p.bought=true; p.justBought=true; yfocus=p; autoFocus=false; ytoast(`Listo. Compro el regalo de ${p.n} y te aviso cuando salga.`); render(); if(!REDUCE) gsap.fromTo('#apHero article',{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.5)',clearProps:'all'}); }
+  else if(a==='undo'){ p.bought=false; p.justBought=false; ytoast('Listo, cancelé la compra.'); render(); }
+  else if(a==='ideas'){ yseeIdeas=!yseeIdeas; render(); }
+  else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); ytoast(`Anotado. Ya sé algo más de ${q.n}.`); render(); }
+  else if(a==='adding'){ adding=!adding; render(); }
+  else if(a==='sw'){ const k=b.dataset.k; if(k.startsWith('cal:')) cfg.cals[k.slice(4)]=!cfg.cals[k.slice(4)]; else cfg[k]=!cfg[k]; render(); }
+  else if(a==='aviso'){ AVISO=+b.dataset.v; autoFocus=true; render(); ytoast(`Te aviso ${AVISO} días antes de cada fecha.`); }
+  else if(a==='defmode'){ cfg.mode=b.dataset.v; render(); }
+});
+$('year').addEventListener('mouseover',e=>{ const c=e.target.closest('.bm'); if(c&&+c.dataset.m!==lens) setLens(+c.dataset.m); });
+$('year').addEventListener('mouseout',e=>{ const bd=e.target.closest('#apBand'); if(bd&&!bd.contains(e.relatedTarget)) setLens(lensHome()); });
+$('year').addEventListener('focusin',e=>{ const c=e.target.closest('.bm'); if(c&&+c.dataset.m!==lens) setLens(+c.dataset.m); });
+
+function openYear(t='ano'){
+  const y=$('year'); yseeIdeas=false; autoFocus=true; yfocus=defaultFocus(); lens=lensHome();
+  document.body.classList.add('in-app');
+  y.style.display='block';
+  setTab(t,false); y.scrollTop=0;
   gsap.fromTo(y,{opacity:0},{opacity:1,duration:.4,onComplete:()=>{ $('sync').style.display='none'; }});
-  const tl=gsap.timeline({defaults:{ease:'expo.out'}});
-  tl.from('#year header',{y:-20,opacity:0,duration:.6})
-    .from('#year h1',{y:28,opacity:0,duration:.9},'-=.4')
-    .from('#ystats > *',{y:20,opacity:0,duration:.7,stagger:.08},'-=.7')
-    .from('#yHero article',{y:40,opacity:0,duration:.9},'-=.5')
-    .from('#yLearn > div, #yNext > div',{y:30,opacity:0,duration:.8,stagger:.1},'-=.7')
-    .from('#yTl',{y:40,opacity:0,duration:.9},'-=.5')
-    .from('#yTl .ytc',{scale:.6,opacity:0,duration:.6,stagger:{each:.04,from:'start'},ease:'back.out(2)'},'-=.6');
+  if(!REDUCE) gsap.from('#apMain > *',{y:18,opacity:0,duration:.7,stagger:.08,ease:'expo.out',clearProps:'all'});
 }
-function closeYear(){ $('year').style.display='none'; }
-$('ylogo').onclick=closeYear;
+function closeYear(){ $('year').style.display='none'; document.body.classList.remove('in-app'); history.replaceState(null,'',location.pathname); }
 
 function closeSync(){ $('sync').style.display='none'; }
 ['connect','navgo'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
-$('enter').onclick = openYear;
-addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('year').style.display==='block') closeYear(); else closeSync(); } });
+$('enter').onclick = () => openYear();
+addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('year').style.display==='block') closePops(); else closeSync(); } });
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
+const DEEP = {'#mi-ano':'ano','#personas':'personas','#regalos':'regalos','#config':'config'}[location.hash];
+if(DEEP) openYear(DEEP);
 let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(fit,100); });
 </script>
 </body>
