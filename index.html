@@ -169,7 +169,6 @@ button{cursor:pointer}
         <span class="relative flex size-2.5"><span id="ping" class="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-60"></span><span id="pdot" class="relative inline-flex size-2.5 rounded-full bg-brand"></span></span>
         <span id="stxt">Conectando con Google Calendar</span>
       </div>
-      <button id="skip" class="mt-3 block text-xs text-slate2 underline underline-offset-4 hover:text-black">Saltar animación</button>
     </div>
     <div class="flex gap-3">
       <div class="rounded-2xl bg-white px-5 py-3 shadow-[0_18px_30px_-18px_rgba(15,23,42,.3)] ring-1 ring-mist"><p class="text-[11px] font-semibold uppercase tracking-[.14em] text-slate2">Eventos leídos</p><b id="cRead" class="num block font-serif text-5xl font-medium leading-none tracking-[-0.05em]">0</b></div>
@@ -185,8 +184,7 @@ button{cursor:pointer}
 
   <div class="sticky bottom-0 -mx-6 mt-auto flex flex-wrap items-center justify-between gap-4 bg-gradient-to-t from-fog via-fog/95 to-transparent px-6 pb-5 pt-8 lg:-mx-14 lg:px-14">
     <p id="summary" class="font-serif text-[clamp(24px,3vw,38px)] font-normal tracking-[-0.04em]"></p>
-    <div class="flex items-center gap-5"><button id="again" class="text-xs text-slate2 underline underline-offset-4 hover:text-black">Repetir</button>
-      <button id="enter" class="rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold text-white opacity-0 shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand" style="pointer-events:none">Ver mi año →</button></div>
+    <div class="flex items-center gap-5"><button id="enter" class="rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold text-white opacity-0 shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand" style="pointer-events:none">Ver mi año →</button></div>
   </div>
 </section>
 <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-[400] -translate-x-1/2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white opacity-0 shadow-2xl"><span class="mr-2 inline-block size-2 rounded-full bg-brand"></span><span id="ttxt"></span></div>
@@ -496,9 +494,7 @@ async function runSync(){
 }
 function closeSync(){ $('sync').style.display='none'; }
 ['connect','navgo'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
-$('again').onclick = runSync;
 $('enter').onclick = closeSync;
-$('skip').onclick = () => { gsap.globalTimeline.timeScale(30); setTimeout(()=>gsap.globalTimeline.timeScale(1),700); };
 addEventListener('keydown',e=>{ if(e.key==='Escape') closeSync(); });
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
