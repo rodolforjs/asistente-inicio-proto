@@ -166,28 +166,6 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .tk-next:hover{color:#fff}
 /* personas */
 .pp-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:10px 0 18px}
-.pp-q{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin-bottom:18px;border-radius:18px;background:#0e1014;padding:13px 16px 13px 20px;font-size:15px;color:#fff}
-.pp-q p span{color:rgba(255,255,255,.65)}
-.pp-q button{border-radius:999px;background:rgba(255,255,255,.12);padding:6px 13px;font-size:13px;font-weight:600;transition:background .15s,color .15s}
-.pp-q button:hover{background:#fff;color:#0e1014}
-.pp-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-@media(min-width:768px){.pp-g{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(min-width:1200px){.pp-g{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.pp-c{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;border-radius:24px;background:#dfe4ec;text-align:left;color:#fff;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
-.pp-c:hover{transform:translateY(-4px);box-shadow:0 30px 40px -24px rgba(15,23,42,.55)}
-.pp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.pp-c:hover .pp-img{transform:scale(1.05)}
-.pp-sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,20,.18) 0%,rgba(14,16,20,0) 26%,rgba(14,16,20,.28) 48%,rgba(14,16,20,.92) 100%)}
-.pp-top{position:absolute;left:12px;right:12px;top:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.pp-date{display:flex;flex-direction:column;align-items:center;min-width:48px;border-radius:14px;background:#fff;padding:5px 8px 6px;font-size:10px;font-weight:600;letter-spacing:.1em;color:#0e1014}
-.pp-date b{font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1;letter-spacing:-.03em}
-.pp-st{white-space:nowrap;border-radius:999px;padding:5px 10px;font-size:11.5px;font-weight:700}
-.pp-now{background:#ff5924}.pp-ok{background:#10b981}
-.pp-b{position:absolute;left:16px;right:16px;bottom:15px;display:flex;flex-direction:column}
-.pp-b b{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.2vw,30px);line-height:1.05;letter-spacing:-.025em}
-.pp-b small{font-size:12.5px;color:rgba(255,255,255,.72)}
-.pp-b em{margin-top:7px;font-style:normal;font-size:13px;line-height:1.3}
-.pp-idea{margin-top:3px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:12px;color:rgba(255,255,255,.72)}
 /* configuración */
 .cf-m{display:block;border-radius:20px;background:#fff;padding:18px 18px 18px 46px;position:relative;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}
 .cf-m[aria-pressed=true]{box-shadow:0 0 0 2.5px #0e1014}
@@ -213,11 +191,8 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
   .tk-d{font-size:84px}
   .tk-s,.tk-next{display:none}
   .tk-b{padding:14px 18px}
-  .pp-b em,.pp-idea,.pp-b small{display:none}
-  .pp-b{left:12px;right:12px;bottom:11px}
-  .pp-date{min-width:42px}
 }
-@media(prefers-reduced-motion:reduce){.ap-sw,.ap-sw::after,.pp-c,.pp-img{transition:none}.pl-dots i{animation:none}}
+@media(prefers-reduced-motion:reduce){.ap-sw,.ap-sw::after,.pl-dots i{animation:none}}
 /* Delego: con volumen */
 .pl{gap:56px}
 .pl-l{padding-top:20px}
@@ -282,6 +257,200 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
   .sc-f .shrink-0,.sc-f .pl-cta{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.st-dot{animation:none}.st-cut{transition:none}}
+/* vivo */
+#apMain{position:relative;z-index:1}
+#apWave{position:fixed;left:0;right:0;bottom:0;width:100%;height:230px;z-index:0;pointer-events:none}
+.ap-live{display:none;align-items:center;gap:8px;font-size:12px;font-weight:500;color:#5f6b7d;margin-right:6px}
+@media(min-width:1180px){.ap-live{display:inline-flex}}
+.ap-live>span:last-child{display:inline-block;white-space:nowrap}
+.lb{display:inline-flex;align-items:center;gap:2px;height:14px}
+.lb i{display:block;width:2px;height:100%;border-radius:1px;background:#ff5924;transform:scaleY(.3);animation:lb 1.5s infinite ease-in-out}
+.lb i:nth-child(2){animation-delay:.2s}.lb i:nth-child(3){animation-delay:.4s}.lb i:nth-child(4){animation-delay:.6s}
+.busy .lb i{animation-duration:.6s}
+@keyframes lb{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.live-dot{display:inline-block;flex:none;width:8px;height:8px;border-radius:50%;background:#ff5924;animation:ld 2.2s infinite}
+@keyframes ld{0%{box-shadow:0 0 0 0 rgba(255,89,36,.45)}70%,100%{box-shadow:0 0 0 8px rgba(255,89,36,0)}}
+#apAv{position:relative}
+#apAv::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(255,89,36,.5);animation:avr 3.4s infinite ease-out}
+@keyframes avr{0%{transform:scale(.92);opacity:.9}70%,100%{transform:scale(1.22);opacity:0}}
+/* tarjeta */
+.tk{max-height:none;min-height:0}
+.tk-art{flex:1 1 224px;min-height:190px;background-size:170% 170%;animation:tkg 11s ease-in-out infinite alternate}
+@keyframes tkg{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+.tk-art::before{display:none}
+.tk-art>svg{left:26%;width:74%}
+.tk-d{display:flex;align-items:flex-end;gap:9px;left:20px;bottom:10px;font-size:112px;letter-spacing:-.045em}
+.tk-d small{padding-bottom:13px;font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;line-height:1.25;letter-spacing:.14em;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.tk-wave{position:absolute;left:24px;top:22px;z-index:2;width:14px;height:14px;border-radius:50%;background:#fff}
+.tk-wave i{position:absolute;inset:0;border-radius:50%;border:1.5px solid #fff;animation:tkw 3s infinite ease-out}
+.tk-wave i:nth-child(2){animation-delay:1s}.tk-wave i:nth-child(3){animation-delay:2s}
+@keyframes tkw{0%{transform:scale(1);opacity:.85}100%{transform:scale(4.2);opacity:0}}
+.tk-b{display:flex;flex:1;flex-direction:column;padding:18px 22px 16px}
+.tk-h{margin:14px 0 8px;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.55)}
+.tk-r{display:flex;flex-direction:column;gap:9px}
+.tk-r li{display:flex;align-items:center;gap:10px;font-size:13.5px;line-height:1.25}
+.tk-r small{display:block;font-size:11px;color:rgba(255,255,255,.55)}
+.src{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#eef1f6;color:#0e1014}
+.src-cal{background:#dbe7ff;color:#2c44d6}.src-mail{background:#ffe2d6;color:#c63f12}.src-con{background:#d8f1e6;color:#14704f}.src-gift{background:#fff0b8;color:#8a6500}.src-you{background:#eadfff;color:#6a4be0}
+.tk .tk-t{margin-top:15px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px}
+.tk-t i{margin:8px 0 0}
+.tk-next{margin-top:11px;padding-top:0;border:0}
+/* detalle en propuesta */
+.pl-ph{display:block;width:100%;cursor:zoom-in}
+.pl-ph::after{content:"Ver detalle";position:absolute;left:14px;bottom:14px;border-radius:999px;background:rgba(255,255,255,.94);padding:6px 12px;font-size:12.5px;font-weight:600;box-shadow:0 2px 10px rgba(15,23,42,.18);transition:transform .15s}
+.pl-ph:hover::after{transform:translateY(-2px)}
+.pl-ph img{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.pl-ph:hover img{transform:scale(1.04)}
+.pl-link{margin-top:6px;align-self:flex-start;font-size:13px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
+/* ficha */
+#apSheet{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:24px}
+#apSheet.hidden{display:none}
+.sh-bd{position:absolute;inset:0;background:rgba(14,16,20,.48);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.sh-w{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);width:min(1060px,100%);height:min(720px,calc(100vh - 48px));overflow:hidden;border-radius:28px;background:#fff;box-shadow:0 50px 80px -30px rgba(0,0,0,.5)}
+.sh-x{position:absolute;right:14px;top:14px;z-index:3;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#fff;font-size:22px;line-height:1;box-shadow:0 2px 10px rgba(15,23,42,.2)}
+.sh-g{display:flex;min-height:0;flex-direction:column;background:#f5f7f9}
+.sh-main{flex:1;min-height:0;overflow:hidden}
+.sh-main img{display:block;width:100%;height:100%;object-fit:contain}
+.sh-th{display:flex;gap:8px;padding:10px;overflow-x:auto}
+.sh-th button{flex:none;width:60px;height:60px;overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
+.sh-th button[aria-pressed=true]{box-shadow:0 0 0 2.5px #0e1014}
+.sh-th img{width:100%;height:100%;object-fit:cover}
+.sh-b{min-height:0;overflow:auto;padding:30px 30px 26px}
+.sh-why{display:flex;gap:11px;align-items:center;margin-top:16px;border-radius:16px;background:#f5f7f9;padding:11px 13px;font-size:14px;line-height:1.35}
+.sh-why .sh-pt{flex:none;width:44px;height:44px;border-radius:50%}
+.sh-cta{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sh-s{margin-top:22px;border-top:1px solid #e5eaf2;padding-top:15px;font-size:14px;line-height:1.45}
+.sh-s h3{margin-bottom:6px;font-size:13px;font-weight:700}
+.sh-s p+p{margin-top:6px}
+.sh-dl{display:flex;flex-direction:column;gap:6px;margin-bottom:7px}
+.sh-dl dt{font-weight:500}.sh-dl dd{font-size:13px;color:#5f6b7d}
+.sh-ext{display:inline-block;margin-top:18px;font-size:13px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
+/* compra */
+.pl-co{align-items:start}
+.pl-co .pl-r{position:sticky;top:68px}
+.pl-co .pl-h{margin-bottom:4px}
+.co-c{margin-top:18px;border-radius:24px;background:#fff;padding:20px 22px 22px;box-shadow:0 0 0 1px rgba(229,234,242,.9),0 22px 36px -30px rgba(15,23,42,.35)}
+.co-c header{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:0 10px;margin-bottom:14px}
+.co-c header p{grid-column:2;margin-top:2px;font-size:13.5px;line-height:1.35;color:#5f6b7d}
+.co-c h2{font-family:'Newsreader',serif;font-weight:400;font-size:23px;line-height:1.1;letter-spacing:-.02em}
+.co-n{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#0e1014;font-size:12px;font-weight:700;color:#fff}
+.co-g{display:flex;flex-direction:column;gap:8px}
+.co-o{position:relative;display:flex;align-items:center;gap:12px;width:100%;border-radius:14px;padding:12px 14px;text-align:left;box-shadow:inset 0 0 0 1px #e5eaf2;transition:box-shadow .15s,background .15s}
+.co-o:hover{background:#fafbfc}
+.co-o[aria-pressed=true]{box-shadow:inset 0 0 0 2px #0e1014}
+.co-o i{flex:none;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #afb5c1}
+.co-o[aria-pressed=true] i{box-shadow:inset 0 0 0 5.5px #0e1014}
+.co-o b{display:block;font-size:14.5px;font-weight:600}
+.co-o small{display:block;margin-top:1px;font-size:12.5px;line-height:1.3;color:#5f6b7d}
+.co-o em{margin-left:auto;flex:none;font-style:normal;font-size:13.5px;font-weight:600}
+.co-pk{display:flex;gap:18px;align-items:flex-start}
+.co-bx{flex:none;width:150px;border-radius:18px;background:#f8f3ea;padding:12px}
+.bx{display:block;width:100%}
+.co-m{display:block;margin-top:12px;font-size:13px;font-weight:600}
+.co-m em{font-style:normal;font-weight:400;color:#5f6b7d}
+.co-m textarea{display:block;width:100%;margin-top:5px;resize:none;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:400;line-height:1.35;box-shadow:inset 0 0 0 1px #d5dbe5}
+.co-m small{display:block;margin-top:3px;text-align:right;font-weight:400;font-size:11.5px;color:#5f6b7d}
+.rc-h{position:relative;flex:none;height:118px;background-size:170% 170%;animation:tkg 11s ease-in-out infinite alternate}
+.rc-d{position:absolute;color:#fff;font-family:'Newsreader',serif;left:20px;bottom:6px;font-size:76px;line-height:1;text-shadow:0 4px 24px rgba(0,0,0,.2)}
+.rc-d small{padding-bottom:9px}
+.rc-p{display:flex;align-items:center;gap:11px;width:100%;margin-top:12px;border-radius:14px;background:rgba(255,255,255,.08);padding:8px;text-align:left;transition:background .15s}
+.rc-p:hover{background:rgba(255,255,255,.14)}
+.rc-p>span:first-child{flex:none;width:52px;height:52px;overflow:hidden;border-radius:10px;background:#fff}
+.rc-p img{width:100%;height:100%;object-fit:cover}
+.rc-p b{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:14px;font-weight:600}
+.rc-p small{display:block;font-size:12px;color:rgba(255,255,255,.6)}
+.rc-t{margin-top:14px}
+.rc-l{display:flex;justify-content:space-between;gap:12px;padding:4px 0;font-size:13.5px;color:rgba(255,255,255,.75)}
+.rc-tot{margin-top:7px;border-top:1px solid rgba(255,255,255,.16);padding-top:11px;font-size:17px;font-weight:600;color:#fff}
+.rc-ok{margin-top:9px;font-size:12px;line-height:1.3;color:#5be3b4}
+.rc-cta{width:100%;background:#ff5924;box-shadow:none}
+.rc-cta:hover{background:#fff;color:#0e1014}
+.rc-cta[disabled]{cursor:progress;background:rgba(255,255,255,.14);color:#fff;transform:none}
+.rc-f{margin-top:9px;text-align:center;font-size:11.5px;line-height:1.3;color:rgba(255,255,255,.5)}
+/* seguimiento */
+.od{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0;margin-top:20px;overflow:hidden;border-radius:26px;background:#fff;box-shadow:0 0 0 1px rgba(229,234,242,.9),0 34px 50px -34px rgba(15,23,42,.38)}
+.od-l{padding:24px 26px}
+.od-r{border-left:1px solid #e5eaf2;background:#fbfaf6;padding:22px 24px}
+.od-bx{width:136px;height:112px;margin-bottom:12px;overflow:hidden;border-radius:14px}
+.od-bx img{width:100%;height:100%;object-fit:cover}
+.od-no{font-size:12px;color:#5f6b7d}
+.od-t{margin-top:3px;font-size:13px;line-height:1.35;color:#5f6b7d}
+.od-msg{margin-top:12px;font-family:'Caveat',cursive;font-size:21px;line-height:1.15}
+.tr{display:flex;flex-direction:column}
+.tr li{position:relative;display:flex;gap:12px;padding-bottom:15px}
+.tr li:last-child{padding-bottom:0}
+.tr li:not(:last-child)::before{content:"";position:absolute;left:8px;top:18px;bottom:-1px;width:1.5px;background:#e5eaf2}
+.tr li[data-s=done]:not(:last-child)::before{background:#0e1014}
+.tr i{position:relative;flex:none;width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1.5px #c4cad5}
+.tr [data-s=done] i{background:#0e1014;box-shadow:none}
+.tr [data-s=done] i::after{content:"";position:absolute;left:6px;top:3.5px;width:5px;height:8px;border:solid #fff;border-width:0 1.8px 1.8px 0;transform:rotate(42deg)}
+.tr [data-s=now] i{background:#ff5924;box-shadow:none;animation:ld 2s infinite}
+.tr b{display:block;font-size:14.5px;font-weight:500;line-height:17px}
+.tr [data-s=now] b{font-weight:700}
+.tr [data-s=todo] b{color:#5f6b7d}
+.tr small{display:block;margin-top:1px;font-size:12.5px;color:#5f6b7d}
+/* personas */
+.pp-hh{align-items:flex-end;justify-content:space-between;padding-bottom:20px}
+.pp-s{display:flex;align-items:center;gap:8px;width:260px;border-radius:999px;background:#fff;padding:9px 15px;color:#5f6b7d;box-shadow:0 0 0 1px #e5eaf2}
+.pp-s input{width:100%;background:none;font-size:14px;color:#0e1014;outline:none}
+.pp{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:28px;align-items:start}
+.pe-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
+.pe{position:relative;display:block;width:100%;overflow:hidden;border-radius:22px;background:#fff;text-align:left;box-shadow:0 0 0 1px rgba(229,234,242,.9);transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s}
+.pe:hover{transform:translateY(-3px);box-shadow:0 0 0 1px #e5eaf2,0 22px 30px -22px rgba(15,23,42,.5)}
+.pe[aria-pressed=true]{box-shadow:0 0 0 2.5px #0e1014}
+.pt{display:block;width:100%;height:auto}
+.pe .pt{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.pe:hover .pt{transform:scale(1.05)}
+.pe-q{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ff5924;font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:#fff;animation:ld 2.2s infinite}
+.pe-b{display:block;padding:11px 13px 13px}
+.pe-b b{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.02em}
+.pe-b small{display:block;font-size:12.5px;color:#5f6b7d}
+.pe-k{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11.5px;color:#5f6b7d;white-space:nowrap}
+.pe-p{flex:1;height:3px;overflow:hidden;border-radius:2px;background:#e5eaf2}
+.pe-p em{display:block;height:100%;background:#ff5924}
+.pp-sub{margin:26px 0 12px;font-size:13px;font-weight:600}
+.pn{scroll-margin-top:70px;position:sticky;top:68px;max-height:calc(100vh - 84px);overflow:auto;border-radius:26px;background:#fff;padding:22px;box-shadow:0 0 0 1px rgba(229,234,242,.9),0 34px 50px -34px rgba(15,23,42,.38)}
+.pn-h{display:flex;align-items:center;gap:14px}
+.pn-pt{flex:none;width:84px;height:84px;border-radius:24px}
+.pn-h h2{font-family:'Newsreader',serif;font-weight:400;font-size:32px;line-height:1.05;letter-spacing:-.025em}
+.pn-h p{font-size:13.5px;color:#5f6b7d}
+.pn-d{margin-top:2px;font-size:12.5px!important;color:#0e1014!important;font-weight:500}
+.pn-q{margin-top:14px;border-radius:16px;background:#0e1014;padding:13px 14px;font-size:14px;color:#fff}
+.pn-q p{display:flex;align-items:center;gap:9px;margin-bottom:9px;line-height:1.3}
+.pn-q button{border-radius:999px;background:rgba(255,255,255,.14);padding:5px 12px;font-size:12.5px;font-weight:600;transition:background .15s,color .15s}
+.pn-q button:hover{background:#fff;color:#0e1014}
+.pn-t{margin:18px 0 8px;font-size:12.5px;font-weight:600;color:#5f6b7d}
+.pn-l{display:flex;flex-direction:column;gap:9px}
+.pn-l li{display:flex;align-items:center;gap:10px;font-size:14.5px;line-height:1.25}
+.pn-l small{display:block;font-size:11.5px;color:#5f6b7d}
+.pn-l button{flex:none;width:24px;height:24px;border-radius:50%;font-size:16px;line-height:1;color:#aab2bf;opacity:0;transition:opacity .15s,background .15s,color .15s}
+.pn-l li:hover button,.pn-l button:focus-visible{opacity:1}
+.pn-l button:hover{background:#f5f7f9;color:#0e1014}
+.pn-a{display:flex;gap:6px;margin-top:11px;border-radius:999px;background:#f5f7f9;padding:4px 4px 4px 14px}
+.pn-a input{min-width:0;flex:1;background:none;font-size:13.5px;outline:none}
+.pn-a button{flex:none;width:30px;height:30px;border-radius:50%;background:#0e1014;font-size:17px;line-height:1;color:#fff}
+.pn-g{display:flex;align-items:center;gap:12px;width:100%;border-radius:16px;padding:8px;text-align:left;box-shadow:inset 0 0 0 1px #e5eaf2;transition:background .15s}
+.pn-g:hover{background:#fafbfc}
+.pn-g>span:first-child{flex:none;width:56px;height:56px;overflow:hidden;border-radius:11px;background:#f5f7f9}
+.pn-g img{width:100%;height:100%;object-fit:cover}
+.pn-g b{display:block;font-size:14px;font-weight:600;line-height:1.2}
+.pn-g small{display:block;margin-top:2px;font-size:12px;color:#5f6b7d}
+.pl-idea button{display:block;aspect-ratio:1;overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 0 0 1px #e5eaf2;transition:transform .18s}
+.pl-idea button:hover{transform:translateY(-3px)}
+@media(max-width:1100px){.pp{grid-template-columns:minmax(0,1fr)}.pn{position:static;max-height:none}}
+@media(max-width:1023px){.sh-w{grid-template-columns:minmax(0,1fr);grid-template-rows:none;height:auto;max-height:calc(100vh - 48px);overflow:auto}.sh-main{height:320px;flex:none}.sh-b{overflow:visible}.pl-co .pl-r{position:static;order:1}.tk-art{flex:none;height:190px}}
+@media(max-width:560px){
+  #apSheet{padding:0;place-items:end stretch}
+  .sh-w{max-height:92vh;border-radius:24px 24px 0 0}.sh-main{height:260px}.sh-b{padding:22px 20px 26px}
+  .tk-art{flex:none;min-height:0;height:132px}.tk-d{font-size:76px;bottom:6px}.tk-d small{padding-bottom:8px}
+  .tk-r li:nth-child(n+3){display:none}
+  .pe-g{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pp-hh{align-items:stretch;flex-direction:column}.pp-s{width:100%}
+  .co-pk{flex-direction:column}.co-bx{width:120px}
+  .od{grid-template-columns:minmax(0,1fr)}.od-r{border-left:0;border-top:1px solid #e5eaf2}
+  .pn-l button{opacity:1}
+}
+@media(prefers-reduced-motion:reduce){.tk-art,.rc-h,.lb i,.live-dot,.tk-wave i,#apAv::after,.pe-q,.tr [data-s=now] i{animation:none}}
 .ask-card{box-shadow:0 0 0 2px #ff5924,0 0 0 6px rgba(255,89,36,.18),0 30px 40px -22px rgba(15,23,42,.55)!important}
 .card .new{position:absolute;left:12px;top:9px;background:#fff;color:#0e1014;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:99px;z-index:3}
 .hero-art .art::before{display:none}
@@ -420,13 +589,15 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
     <button data-act="home" class="font-serif text-[23px] font-medium tracking-[-0.03em] justify-self-start">Cuenta conmigo<span class="text-brand">.</span></button>
     <nav id="apTabs" class="ap-tabs" aria-label="Secciones"></nav>
     <div class="relative flex items-center justify-self-end gap-2">
-      <span class="mr-2 hidden items-center gap-2 text-xs font-medium text-[#5f6b7d] xl:inline-flex"><i class="size-1.5 rounded-full bg-emerald-500"></i>Calendario leído hace 5 min</span>
+      <span id="apLive" class="ap-live" aria-live="off"><span class="lb" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="apLiveT">Calendario al día</span></span>
       <button id="apBell" data-act="pop" data-pop="bell" aria-label="Novedades" aria-expanded="false" class="ap-ic relative"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg><i id="apBellDot" class="absolute right-2 top-2 size-2 rounded-full bg-brand ring-2 ring-fog"></i></button>
       <button id="apAv" data-act="pop" data-pop="user" aria-label="Menú de tu cuenta" aria-expanded="false" class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white transition hover:bg-brand"></button>
       <div id="popBell" class="ap-pop hidden w-[340px]"></div>
       <div id="popUser" class="ap-pop hidden w-[260px]"></div>
     </div>
   </header>
+  <canvas id="apWave" aria-hidden="true"></canvas>
+  <div id="apSheet" class="hidden"></div>
   <button id="apNotif" aria-label="Abrir la notificación"></button>
   <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
 </section>
@@ -756,8 +927,6 @@ const GIFT = {
  'Navidad':[['pack-3-mermeladas-gourmet','individual-feria-navidena','dulce-de-leche-tradicional-450grs'],'es para compartir en la cena familiar.'],
  'Familia Soto':[['tarjetas-para-fotos-hitos-festa-menta','libro-tu-primer-ano','tarjetas-para-fotos-mes-circus'],'es un recuerdo para el día del bautizo.'],
 };
-/* lo que sé de cada persona (se enriquece con tus respuestas) */
-const PROF = {'Mamá':['Mamá','Le gusta leer'],'Andrés':['Hermano','Anda en bici'],'Carla':['Leer antes de dormir'],'Papá':['Papá','Toma café'],'Abuela Rosa':['Abuela','Siempre con frío'],'Sofi y Nico':['Amigos','Casa nueva'],'Pareja':['Pareja','Planes en casa'],'Tío Jorge':['Tío','Recibe en casa'],'Emilia':['Sobrina','Primer año'],'Amigo secreto':['Oficina','Tope $15.000'],'Navidad':['Familia','Cena familiar'],'Familia Soto':['Familia']};
 const QUESTIONS = [
  {n:'Carla',q:'¿Es tu hermana?',a:['Sí','No'],fact:a=>a==='Sí'?'Es tu hermana':'No es tu hermana'},
  {n:'Mamá',q:'¿Hay algo que definitivamente no le guste?',a:['Perfumes','Ropa','Decoración','Nada en especial'],fact:a=>a==='Nada en especial'?'Abierta a todo':'No le gusta: '+a.toLowerCase()},
@@ -779,10 +948,96 @@ const byDate = (a,b) => occ(a)-occ(b);
 const prod = h => { const x=PRODS[h]; return {h,t:x[0],v:x[1],p:x[2],u:x[3]}; };
 const items = p => GIFT[p.n][0].map(prod);
 const chosen = p => items(p)[ypick[p.n]||0];
-const facts = p => [...(PROF[p.n]||[]), ...(learned[p.n]||[])];
 let yfocus=null, yseeIdeas=false;
 const img = (u,cls='') => `<img src="${u}" alt="" class="${cls}" loading="eager" onerror="this.remove()">`;
 const countTo = (el,v) => { const o={v:+el.textContent||0}; gsap.to(o,{v,duration:.7,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)}); };
+
+const PINFO = {"mama-cual-es-tu-historia":{"d":["¿Cuál es tu historia?” es un libro de recuerdos con más de 200 preguntas guiadas para que mamá, papá, abuela o abuelo compartan su vida, experiencias, aprendizajes y momentos importantes. Un regalo significativo que permite guardar sus historias, consejos y recuerdos en un lugar especial para toda la familia.","Este diario guarda la historia de tu familia, sus recuerdos y su esencia para siempre.","Edición tapa dura","200+ preguntas guiadas","Fácil de completar","Conversaciones únicas","Un legado para tu familia"],"x":[],"ty":"Libros"},"vela-vasija-pukara-esencia-andina":{"d":["Vasija globular en café rojizo, con un rostro de dientes marcados y asas laterales.","Memoria de la tierra, esencia del desierto. Sus rostros y siluetas evocan antiguas vasijas, huellas de una cultura ancestral donde la tierra guarda historias y la luz les da nueva vida.","Medidas: 13 cm de alto.","Material: 100% cera de soya con pigmentos orgánicos.","Elaborada artesanalmente por Esencia Andina, en Chillán. Al ser un producto hecho a mano, los colores pueden presentar leves variaciones de intensidad respecto a las fotos."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.52.24_2.jpg?v=1791211998","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.52.24.jpg?v=1791211998","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.49.34_9a7e39c7-5bd6-4a75-94cf-7171aa270214.jpg?v=1791211998","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.49.33_5e45d41c-0f48-445e-a87e-f8f68ed20d12.jpg?v=1791211998"],"ty":"VELAS"},"mielero-en-ceramica-gres":{"d":["Pote para la miel en cerámica (con paleta de madera)"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/la43IlXRNs.jpg?v=1639067478","https://cdn.shopify.com/s/files/1/1481/4916/products/oGmXTudzaX.jpg?v=1622843066","https://cdn.shopify.com/s/files/1/1481/4916/products/jCjS502iPe.jpg?v=1692377907"],"ty":"Miel"},"libreta-picaflor-1":{"d":["Libretas ilustradas que buscan propagar la flora y fauna chilena y así generar conciencia de las especies que tenemos y su conservación. En su primera hoja podrás encontrar la descripción de cada especie.","Libreta para dibujar o escribir con hojas blancas.","Dimensiones 18 cm x 24 cm"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/YsgCw0w9MO.jpg?v=1742827936","https://cdn.shopify.com/s/files/1/1481/4916/files/GGrftLh7gR.jpg?v=1742827936","https://cdn.shopify.com/s/files/1/1481/4916/files/hPUemTT4NF.jpg?v=1742827936","https://cdn.shopify.com/s/files/1/1481/4916/files/lIHz2Ilhfo.jpg?v=1742827936"],"ty":"cuaderno"},"tazon-alerce":{"d":[],"x":[],"ty":"Tazas"},"tabla-tolten":{"d":["TABLA , MEDIDAS 28X10 CM"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-08-06at15.45.48.jpg?v=1754509629","https://cdn.shopify.com/s/files/1/1481/4916/files/Capturadepantalla2025-08-22ala_s_9.07.18a.m..png?v=1755873252"],"ty":"Tabla de cocina"},"mochila-zorro-culpeo":{"d":["Mochila 100% algodón con terminación de cuero.","Tamaño 36 x 48 cm.","Estampado en serigrafía digital con ilustraciones a lápiz grafito de la ilustradora nacional Magdalena Armstrong.","Producto hecho en Chile.","GARUGA","Uno protege lo que ama y ama lo que conoce"],"x":[],"ty":"Mochilas ilustradas"},"botella-termica-oceano":{"d":["Lleva contigo una parte de la naturaleza autóctona de Chile, con nuestras botellas térmicas de acero inoxidable de 500ml con ilustraciones exclusivas realizadas a mano por Hued hued. Estas botellas son ideales tanto para el día a día, como para llevarlos de camping o alguno de tus paseos favoritos a la montaña, al bosque, al río, o al desierto. Son 12 diseños para coleccionar: Flora Nativa, Loicas, Reino Fungi, Aves Rapaces, Felinos, Bosques del Sur, Fauna de Chile, Picaflores , Flores Silvestre"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-08-25at15.44.07.jpg?v=1787687597","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-08-25at15.44.06_4.jpg?v=1787687597"],"ty":""},"mochila-hongos-de-chile":{"d":[],"x":[],"ty":"Mochilas ilustradas"},"libro-de-las-preguntas-de-neruda":{"d":["Mejor libro ilustrado según New York Times.","Versión ilustrada de 70 preguntas de Pablo Neruda, cuidadosamente entrelazadas por tema e ilustraciones a toda página. Una invitación para grandes y pequeños lectores a maravillarnos con el mundo natural e innumerables misterios. Las ilustraciones de Paloma Valdivia revelan la geografía de sus poemas, dando vida a escenas de constelaciones expansivas, olas danzantes y raíces entrelazadas.","Esta edición contiene seis magníficos pliegos desplegables y brillo en la portada."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/0PIArTwkyN.jpg?v=1714769404","https://cdn.shopify.com/s/files/1/1481/4916/files/GtkquMpF0k.jpg?v=1714769404","https://cdn.shopify.com/s/files/1/1481/4916/files/wpo5QIvTb6.jpg?v=1714769404","https://cdn.shopify.com/s/files/1/1481/4916/files/qxdwGEz2Gl.jpg?v=1723665501"],"ty":"Libros"},"vela-anillo-de-fuego-esencia-andina":{"d":["Vela Anillo de Fuego, de formas geométricas y contrastes de color.","Memoria del sur, espíritu de la tierra. Sus formas geométricas y contrastes de color evocan las pinturas corporales y los símbolos ceremoniales del pueblo selk'nam, habitantes ancestrales de Tierra del Fuego. Una inspiración en la memoria de una cultura que encuentra en la luz una nueva forma de expresión. Tierra, identidad y luz.","Medidas: 15,5 cm de alto.","Material: 100% cera de soya con pigmentos orgánicos."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at12.00.39_3_c0c87e6a-40be-4e9c-a9bc-397d94378bda.png?v=1791212724","https://cdn.shopify.com/s/files/1/1481/4916/files/CC26ED82-5CAA-4A31-9E9B-CC795D39D8DC.jpg?v=1791212634","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at12.00.39_1_87128845-cf97-400a-b97e-8edb9eeafb05.jpg?v=1791212690","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at12.00.39_2_a0ebb46a-23da-445a-94de-710f6366c355.jpg?v=1791212552"],"ty":"VELAS"},"diario-de-gratitud":{"d":["Empieza hoy a transformar tu rutina y tu forma de ver el mundo.","¡Lo bueno ya está en ti, solo hay que escribirlo!","Y te tomará 10 minutos.","Este diario de gratitud es tu espacio para pausar, respirar y reconectar contigo, todo en dos pasos, al iniciar y al terminar cada día.","En medio del caos, te ayudará a enfocarte en lo bueno, cultivar pensamientos positivos y transformar tu bienestar mental y físico, desde el agradecimiento diario.","Empieza hoy tu camino hacia una vida más plena, consciente y feliz."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/aePsasC2Rx.png?v=1744055313","https://cdn.shopify.com/s/files/1/1481/4916/files/7DAfLvyoxU.png?v=1744055313"],"ty":"Agendas"},"mug-termico-ilustrado-papelucosas":{"d":["Papelucosas trae para ti y para tus seres queridos, productos ilustrados con mejor amigo de la infancia: Papelucho, en honor a la ilustradora chilena Yolanda Huneeus, quien dibujó al querido personaje.","Disponible en dos modelos de ilustraciones exclusivas.","Este un mug que permite mantener tus líquidos calientes o fríos por mucho más tiempo .Hasta 8 horas calientes y 12 horas fríos.","Viene en una preciosa caja de presentación, ideal para regalos esta navidad!","Elige la ilustración que más te guste!","Variantes:"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/zl92hVXSE5.jpg?v=1701118558","https://cdn.shopify.com/s/files/1/1481/4916/products/byloyCxRmK.jpg?v=1701118842"],"ty":"Tazones"},"botella-bandurria":{"d":[],"x":[],"ty":"Botellas térmicas"},"libro-santiago-y-sus-cumbres-copia":{"d":["Panorámicas renovadas. 100% imágenes nuevas. Vistas que nunca antes había mostrado. La segunda edición de Santiago y sus cumbres te invita a redescubrir, desde más rincones de la ciudad, la cordillera que siempre has tenido al frente.","Beneficios:","Te ayuda a identificar cumbres y paisajes de la región con mapas e infografías claras.","Motiva a conocer y recorrer a través de impresionantes fotografías.","Fomenta el respeto y la apreciación del entorno cordillerano."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/hf_20260919_115651_a2c62622-acc9-4885-8c76-3d408f209b32_1_copy_1.jpg?v=1791400866","https://cdn.shopify.com/s/files/1/1481/4916/files/hf_20260920_113307_2b54c11b-fe99-4dd6-b957-bc90e5aba36e_1_copy_1.jpg?v=1791400866"],"ty":"libros"},"bufanda-alpaca-unisex-chocolate":{"d":["Bufanda 100% alpaca hecha a telar y de suave textura. Siente la calidad de esta pieza, la cual se convertirá en tu accesorio preferido. La alpaca es naturalmente hipoalergénica, por lo que es una excelente opción para personas con piel sensible o alergias.Medidas: 185 x 30 cm. aprox. más los flecosColores naturales."],"x":[],"ty":""},"pack-3-mermeladas-gourmet":{"d":["Caja con 3 de nuestras exquisitas mermeladas gourmet Wenüy","Contiene:","- 1 Mermelada de Ají Verde","- 1 Mermelada de Pimentón","- 1 Mermelada de Cebolla al Vino Tinto","Este pack es ideal para regalar una linda experiencia!"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/kNvxtcmc3L.jpg?v=1701682759","https://cdn.shopify.com/s/files/1/1481/4916/products/UkUtJ4kFHV.jpg?v=1701682759","https://cdn.shopify.com/s/files/1/1481/4916/products/yzXKzOq61d.jpg?v=1701682759"],"ty":"Mermeladas"},"vela-vasija-likan-esencia-andina":{"d":["Vasija globular en tono arena claro, con un rostro sutil en el cuello.","Memoria de la tierra, esencia del desierto. Sus rostros y siluetas evocan antiguas vasijas, huellas de una cultura ancestral donde la tierra guarda historias y la luz les da nueva vida.","Medidas: 11 cm de alto.","Material: 100% cera de soya con pigmentos orgánicos.","Elaborada artesanalmente por Esencia Andina, en Chillán. Al ser un producto hecho a mano, los colores pueden presentar leves variaciones de intensidad respecto a las fotos."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.54.31_1.jpg?v=1791212171","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.55.39.jpg?v=1791212171","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.54.32.jpg?v=1791212171","https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.54.32_1.jpg?v=1791212171"],"ty":"VELAS"},"vasos-gallo-agranda-o-450-ml-set-de-6":{"d":["El clásico chileno, ahora en versión grande.","Set de 6 vasos Gallo Agranda’o de 450 ml ofrece una fusión perfecta entre historia, diseño y funcionalidad. Fabricados en vidrio reciclado grueso, estos vasos con relieve de gallo y diseño de malla tipo gallinero evocan la cristalería chilena de los años 50.","Ideales para jugos, bebidas frías, cócteles o agua con estilo. Su formato amplio los hace cómodos y versátiles, sin perder el encanto del diseño patrimonial.","👉🏻Viene en un pack de 6 Unidades"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/Gallo450ML6.jpg?v=1768934392","https://cdn.shopify.com/s/files/1/1481/4916/files/Gallo450ML3.jpg?v=1768934392","https://cdn.shopify.com/s/files/1/1481/4916/files/Gallo450ML1.jpg?v=1768934392","https://cdn.shopify.com/s/files/1/1481/4916/files/vasodegallocaja.png?v=1768934392"],"ty":"Vasos"},"tabla-de-piedra-ribete":{"d":["Comparte un asado o picoteo en familia con esta asombrosa tabla con ribete de forma triángular. El ribete entrega la terminación perfecta para mantener la salsa o jugo en su lugar.","Tamaño: 38cm x 30cm","*Piedra de río hechas a mano por artesanos chilenos. Tono gris granito.","**Las piedras son piezas únicas hechas a mano, las imágenes publicadas son meramente referenciales en cuanto a tamaño, forma y color.","Instrucciones de curado de la piedra con aceite:"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/1WrEtwD4Si.jpg?v=1684182866","https://cdn.shopify.com/s/files/1/1481/4916/products/SZCIqPIqUZ.jpg?v=1684182866"],"ty":"Tablas"},"set-de-platos-circulares":{"d":["Descripción: Este set de platos circulares es ideal para servir aperitivos, tapas y porciones para picar en cualquier reunión social. El set incluye tres platos de diferentes tamaños (chico, mediano y grande), perfectos para presentar una variedad de opciones en tu mesa.","Características del Set:","Medidas:","Plato Chico: 16 cm de diámetro x 2 cm de alto.","Plato Mediano: 19 cm de diámetro x 2 cm de alto.","Plato Grande: 21 cm de diámetro x 2 cm de alto.","Material: Cerámica gres.","Peso total: 0.880 kg."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/H2qOVx6ije.jpg?v=1725467172","https://cdn.shopify.com/s/files/1/1481/4916/files/pATEjvj7G4.jpg?v=1725467173","https://cdn.shopify.com/s/files/1/1481/4916/files/0xEjmMzB3U.jpg?v=1725467172","https://cdn.shopify.com/s/files/1/1481/4916/files/bGWOd8YUry.jpg?v=1725467172"],"ty":"Platos de cerámica"},"libro-wander":{"d":["Nuevo libro formato pocket: WANDER. Un Coloring Book inspirado en la magia de Chile, sus paisajes, su flora, su fauna y todas esas tradiciones que hacen único a nuestro país. Un viaje ilustrado que te llevará de norte a sur, descubriendo cada rincón mientras le das vida con tus colores."],"x":[],"ty":"Libro"},"tabla-de-vidrio-loco":{"d":["Tabla de vidrio Picoroco","Picoroco: Crustáceo que vive adherido a las rocas y que no puede desplazarse. Su carne es muy apreciada y es uno de los ingredientes del tradicional curanto chileno. Si bien el Picoroco se da a lo largo de toda la costa chilena, los mayores desembarques se dan en las localidades de Calbuco, Carelmapu y Puerto Montt.Incluye: 1 tabla. No incluye cuchillo ni otros elementos de decoración.Material: Vidrio templado con topes de silicona.Tamaño: 30x40 cm"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/G3tfjuFzmx.jpg?v=1606236283","https://cdn.shopify.com/s/files/1/1481/4916/products/s5YFbOz4TM.jpg?v=1606236283"],"ty":"Accesorios para Cocinar"},"pack-3-salsas-gourmet":{"d":["Llévate las más ricas salsas gourmet Wenüy en este triple pack ideal para regalar!","Contiene:","- 1 conserva de tomates secos de 130 grs.","- 1 salsa de ají verde de 130 grs.","- 1 salsa de merkén de 130 grs."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/Myvuo2BSVe.jpg?v=1701683544","https://cdn.shopify.com/s/files/1/1481/4916/products/titEOdBnt4.jpg?v=1701683545","https://cdn.shopify.com/s/files/1/1481/4916/products/jJ1nR8qTgj.jpg?v=1701683545"],"ty":"Untables de aperitivo"},"dulce-de-leche-tradicional-450grs":{"d":[">",">Sin Saborizantes",">Sin Colorantes",">Bajo en Colesterol",">Bajo en Sodio"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/qdf2pQ7BAc.jpg?v=1625680551"],"ty":"Manjar"},"libro-tu-primer-ano":{"d":["Atesora cada minuto de la llegada de tu bebé con nuestro libro \"Tu Primer Año\".","En formato libreta, con mas de 30 páginas, en papel de algodón de alto gramaje, para que puedas escribir y pegar todos los recuerdos lindos de su primer año de vida!Cuenta con registro para los hitos importantes, detalles mes a mes, páginas para fotos, hasta su primer cumpleaños.","Hecho con tintas de conservación libres de ácidos y doble espiral, en papel de 250 grs.","Medidas: 20x20 cms."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/ktdnOWfrqD.png?v=1741029832","https://cdn.shopify.com/s/files/1/1481/4916/files/xBn7Z8n0jj.png?v=1741029832","https://cdn.shopify.com/s/files/1/1481/4916/files/yVrRkYB3qs.png?v=1741029832","https://cdn.shopify.com/s/files/1/1481/4916/files/BryTLyRsYc.png?v=1741029832"],"ty":"Libros"},"tarjetas-para-fotos-mes-circus":{"d":["12 tarjetas para registrar en fotografías el primer año de vida de tus peques, mes a mes.","Hechas en papel satinado de 350 grs, con tintas de conservación libres de ácidos.","Medidas: 9X13 cms.","Producto hecho a mano, demora 2 días en impresión y producción."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/cgNJ2vS8Nh.jpg?v=1715712423","https://cdn.shopify.com/s/files/1/1481/4916/files/eVFDbvJhJ4.jpg?v=1715712423","https://cdn.shopify.com/s/files/1/1481/4916/files/ljgTetF4OC.jpg?v=1715712423"],"ty":"Accesorios de Bebe"},"tarjetas-para-fotos-hitos-festa-menta":{"d":["12 tarjetas para registrar en fotografías esos hitos importantes del desarrollo de tus peques.","Hechas en papel satinado de 350 grs, con tintas de conservación libres de ácidos.","Medidas: 9X13 cms.","Producto hecho a mano, demora 2 días en impresión y producción."],"x":["https://cdn.shopify.com/s/files/1/1481/4916/products/1T7K21wMoO.jpg?v=1663691157","https://cdn.shopify.com/s/files/1/1481/4916/products/VdVthBQ7WU.jpg?v=1663691157","https://cdn.shopify.com/s/files/1/1481/4916/products/e7Y6JLSD1h.jpg?v=1663691157"],"ty":"Tarjetas"},"individual-feria-navidena":{"d":["44×33 cmBond 140 grs12 unidades"],"x":[],"ty":"Individual"},"individual-feliz-navidad":{"d":["Formato: 32,5×32,5 cmPapel: Bond 140 grs12 unidades"],"x":["https://cdn.shopify.com/s/files/1/1481/4916/files/hExZxSlxrd.jpg?v=1762873801"],"ty":"Individual"}};
+/* ---------- Conocimiento del asistente ---------- */
+const WD = ['dom','lun','mar','mié','jue','vie','sáb'];
+const addBD = (d,n) => { const x=new Date(d); while(n>0){ x.setDate(x.getDate()+1); if(x.getDay()%6) n--; } return x; };
+const lastOrder = p => { const lim=addD(occ(p),-1); let d=new Date(lim); while(addBD(d,4)>lim) d=addD(d,-1); return d; };
+const etaRange = from => { const a=addBD(from,3), b=addBD(from,4); return a.getMonth()===b.getMonth()?`entre el ${a.getDate()} y el ${fdate(b)}`:`entre el ${fdate(a)} y el ${fdate(b)}`; };
+const SRC_L = {cal:'Calendario',mail:'Correo',con:'Contactos',gift:'Regalos',you:'Tú'};
+const REL = {'Mamá':'Tu mamá','Andrés':'Tu hermano','Carla':'Por confirmar','Papá':'Tu papá','Abuela Rosa':'Tu abuela','Sofi y Nico':'Tus amigos','Pareja':'Tu pareja','Tío Jorge':'Tu tío','Emilia':'Tu sobrina','Familia Soto':'Familia','Amigo secreto':'Oficina','Navidad':'Familia'};
+const LEARN = {
+ 'Mamá':[['Le gusta leer antes de dormir','mail'],['Guarda las historias de la familia','mail'],['Una vela del año pasado le encantó','gift']],
+ 'Andrés':[['Anda en bici a todos lados','cal'],['Ya tiene botella, le falta mochila','mail']],
+ 'Carla':[['Lee antes de dormir','mail'],['Es tu contacto más frecuente de mayo','con']],
+ 'Papá':[['Toma café todas las mañanas','mail'],['Le regalaste una botella en junio','gift']],
+ 'Abuela Rosa':[['Siempre tiene frío en invierno','mail'],['Prefiere regalos para la casa','gift']],
+ 'Sofi y Nico':[['Se casan el 22 de agosto','cal'],['Están armando su casa','mail']],
+ 'Pareja':[['Les gusta quedarse en casa','cal'],['Aniversario el 12 de septiembre','cal']],
+ 'Tío Jorge':[['Recibe a todos en su casa','cal'],['Le gusta cocinar para muchos','mail']],
+ 'Emilia':[['Es tu sobrina','con'],['Está en su primer año','cal']],
+ 'Familia Soto':[['Bautizo el 22 de agosto','cal'],['Tienen una guagua recién nacida','mail']],
+ 'Amigo secreto':[['Tope de $15.000','mail'],['Es anónimo, sin tu nombre','mail'],['Se entrega en la oficina','cal']],
+ 'Navidad':[['Cena familiar el 24','cal'],['Son 8 personas a la mesa','mail']],
+};
+const removedFact = {};
+const knows = p => [...(LEARN[p.n]||[]).filter(f=>!removedFact[p.n+'|'+f[0]]), ...(learned[p.n]||[]).map(t=>[t,'you'])];
+const facts = p => knows(p).map(f=>f[0]);
+const conn = {gmail:true,contacts:true};
+function rescued(p){
+  const o=occ(p), when=`${WD[o.getDay()]} ${fdate(o)}`, k=knows(p), rows=[];
+  if(p.n==='Amigo secreto'){ rows.push(['cal','Calendario',`Sorteo de la oficina, ${when}, 13:00`]); if(conn.gmail) rows.push(['mail','Correo','Tope de $15.000, avisó Recursos Humanos']); if(conn.contacts) rows.push(['con','Contactos','14 compañeros en el sorteo']); return rows; }
+  rows.push(['cal','Calendario',`${p.o==='Familia'?p.n:p.o}, ${when}`]);
+  const m=k.find(f=>f[1]==='mail'); if(conn.gmail&&m) rows.push(['mail','Correo',m[0]]);
+  if(conn.contacts&&REL[p.n]&&REL[p.n]!=='Por confirmar') rows.push(['con','Contactos',REL[p.n]]);
+  return rows;
+}
+const SRC_ICON = {
+ cal:'<rect x="4" y="5" width="16" height="15" rx="2.500"/><path d="M4 10h16M8 3v4M16 3v4"/>',
+ mail:'<rect x="3.500" y="6" width="17" height="13" rx="2.500"/><path d="m4 8 8 6 8-6"/>',
+ con:'<circle cx="12" cy="9" r="3.500"/><path d="M5 20c.8-4 3.500-6 7-6s6.200 2 7 6"/>',
+ gift:'<path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.500S9 7 12 7ZM12 7c2-4 6-4 6-1.500S15 7 12 7Z"/>',
+ you:'<path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/>'
+};
+const srcI = k => `<i class="src src-${k}" title="${SRC_L[k]}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SRC_ICON[k]}</svg></i>`;
+
+/* ---------- Retratos: dibujados, cada persona distinta ---------- */
+function face(x,y,s,o){
+  const {skin='#f2c9a5',hair='#2e241f',top='#e5553c',st='short'}=o;
+  const H={
+   short:`<path d="M36 56c-2-22 10-33 24-33s26 11 24 33c-5-11-13-16-24-16s-19 5-24 16Z" fill="${hair}"/>`,
+   curly:`<g fill="${hair}"><circle cx="40" cy="42" r="10"/><circle cx="50" cy="31" r="11"/><circle cx="65" cy="29" r="12"/><circle cx="78" cy="38" r="11"/><circle cx="84" cy="52" r="8"/><circle cx="36" cy="55" r="7"/></g>`,
+   long:`<path d="M60 40c-12 0-20 7-23 17 7-3 15-6 23-17Zm0 0c6 9 15 14 23 17-2-10-11-17-23-17Z" fill="${hair}"/>`,
+   bun:`<circle cx="60" cy="20" r="10" fill="${hair}"/><path d="M37 54c-1-20 10-30 23-30s24 10 23 30c-6-10-13-15-23-15s-17 5-23 15Z" fill="${hair}"/>`,
+   bob:`<path d="M60 38c-10 2-18 8-23 18 10 0 18-6 23-18Zm0 0c5 11 13 17 23 18-4-10-13-16-23-18Z" fill="${hair}"/>`,
+   bald:`<path d="M36 58c-3-5-2-11 1-14l3 12ZM84 58c3-5 2-11-1-14l-3 12Z" fill="${hair}"/>`,
+   baby:`<path d="M60 32c-4-8 4-12 8-8" fill="none" stroke="${hair}" stroke-width="3.500" stroke-linecap="round"/>`,
+   helmet:`<path d="M32 50c2-20 15-29 28-29s26 9 28 29Z" fill="${o.hat||'#2c44d6'}"/><path d="M44 28l-3 15M60 22v17M76 28l3 15" stroke="#fff" stroke-width="3"/><path d="M38 56c0 10 4 16 8 20M82 56c0 10-4 16-8 20" fill="none" stroke="#0e1014" stroke-width="2"/>`,
+   hat:`<path d="M26 44c14-6 54-6 68 0-6 5-62 5-68 0Z" fill="${o.hat||'#3f7d57'}"/><path d="M40 42c0-16 10-22 20-22s20 6 20 22Z" fill="${o.hat||'#3f7d57'}"/>`,
+  };
+  const back = st==='long'?`<path d="M32 56c0-24 13-34 28-34s28 10 28 34v42H32Z" fill="${hair}"/>`:st==='bob'?`<path d="M33 54c0-22 13-32 27-32s27 10 27 32v24H33Z" fill="${hair}"/>`:'';
+  return `<g transform="translate(${x} ${y}) scale(${s})">${back}
+   <path d="M16 124c3-23 20-34 44-34s41 11 44 34Z" fill="${top}"/><rect x="51" y="74" width="18" height="22" rx="8" fill="${skin}"/>
+   <ellipse cx="60" cy="58" rx="24" ry="26" fill="${skin}"/>${H[st]||''}
+   <circle cx="51" cy="58" r="2.400" fill="#0e1014"/><circle cx="69" cy="58" r="2.400" fill="#0e1014"/>
+   <path d="M53 ${o.sm||71}c4 4 10 4 14 0" fill="none" stroke="#0e1014" stroke-width="2" stroke-linecap="round"/>
+   ${o.beard?`<path d="M37 62c0 18 10 26 23 26s23-8 23-26c-4 7-8 8-13 7-6-2-14-2-20 0-5 1-9 0-13-7Z" fill="${o.beard}"/><path d="M53 71c4 3 10 3 14 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`:''}
+   ${o.mus?`<path d="M48 67c5-3 9-3 12 0 3-3 7-3 12 0-5 4-9 3-12 1-3 2-7 3-12-1Z" fill="${o.mus}"/>`:''}
+   ${o.gl?`<g fill="none" stroke="${o.gl}" stroke-width="2.200"><circle cx="50" cy="58" r="7.500"/><circle cx="70" cy="58" r="7.500"/><path d="M57.500 58h5"/></g>`:''}
+   ${o.ear?`<circle cx="35.500" cy="66" r="2.800" fill="${o.ear}"/><circle cx="84.500" cy="66" r="2.800" fill="${o.ear}"/>`:''}
+   ${o.scarf?`<path d="M38 90c12 8 32 8 44 0l5 9c-16 9-38 9-54 0Z" fill="${o.scarf}"/>`:''}
+  </g>`;
+}
+const PORT = {
+ 'Mamá':{bg:'#ffd9a8',d:()=>face(0,0,1,{st:'curly',hair:'#5a3524',skin:'#eebd96',top:'#3f7d57',ear:'#ff5924'})},
+ 'Andrés':{bg:'#bfe6dc',d:()=>face(0,0,1,{st:'helmet',skin:'#f2c9a5',top:'#14897a',hat:'#ff5924'})},
+ 'Carla':{bg:'#ffc4d6',d:()=>face(0,0,1,{st:'long',hair:'#23252b',skin:'#d9a27c',top:'#ffffff',gl:'#0e1014'})},
+ 'Papá':{bg:'#c5d4ff',d:()=>face(0,0,1,{st:'short',hair:'#7a7f88',skin:'#eebd96',top:'#2c44d6',mus:'#7a7f88',gl:'#0e1014'})},
+ 'Abuela Rosa':{bg:'#ffe99b',d:()=>face(0,0,1,{st:'bun',hair:'#e4e6ea',skin:'#f4d3b6',top:'#a58bff',gl:'#a25a2c',scarf:'#ff7a4a'})},
+ 'Sofi y Nico':{bg:'#ffd0b8',d:()=>face(-18,10,.84,{st:'bob',hair:'#a44a25',top:'#fff'})+face(46,4,.9,{st:'short',hair:'#20242a',skin:'#c98f66',top:'#0e1014',beard:'#20242a'})},
+ 'Pareja':{bg:'#dccbff',d:()=>face(0,0,1,{st:'short',hair:'#7a3f24',skin:'#e7b48c',top:'#ff5924'})+'<path d="M92 26c-8-7-14 1-10 6l10 9 10-9c4-5-2-13-10-6Z" fill="#e5553c"/>'},
+ 'Tío Jorge':{bg:'#d9e7a8',d:()=>face(0,0,1,{st:'hat',skin:'#e7b48c',top:'#a25a2c',beard:'#ece7dd',hat:'#3f7d57'})},
+ 'Emilia':{bg:'#cfe5ff',d:()=>face(10,16,.82,{st:'baby',hair:'#7a3f24',skin:'#fbdcc4',top:'#fff06a',sm:70})},
+ 'Familia Soto':{bg:'#e2d6f7',d:()=>face(-26,16,.74,{st:'long',hair:'#3a2a20',top:'#14897a'})+face(50,8,.8,{st:'short',hair:'#3a2a20',skin:'#d9a27c',top:'#2c44d6'})+face(21,58,.5,{st:'baby',skin:'#fbdcc4',top:'#fff'})},
+ 'Amigo secreto':{bg:'#e2ea8a',d:()=>'<path d="M16 124c3-23 20-34 44-34s41 11 44 34Z" fill="#0e1014"/><ellipse cx="60" cy="56" rx="25" ry="27" fill="#0e1014"/><text x="60" y="70" text-anchor="middle" font-family="Newsreader,serif" font-size="40" fill="#e2ea8a">?</text>'},
+ 'Navidad':{bg:'#bfe3cd',d:()=>'<path d="M60 12 24 62h16L18 96h84L80 62h16Z" fill="#0f4a35"/><rect x="52" y="96" width="16" height="16" fill="#a25a2c"/><g fill="#ff5924"><circle cx="48" cy="60" r="4"/><circle cx="72" cy="74" r="4"/><circle cx="44" cy="84" r="4"/></g><path d="M60 3l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z" fill="#ffd84d"/>'},
+};
+const portrait = (n,cls='') => { const x=PORT[n]; return `<svg class="pt ${cls}" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" fill="${x?x.bg:'#e5eaf2'}"/>${x?x.d():''}</svg>`; };
+const SHARED = ['Amigo secreto','Navidad'];
 
 /* ---------- App: Mi planner, Personas, Configuración ---------- */
 const ICONS = {
@@ -795,7 +1050,7 @@ const CAL_OF = {'Amigo secreto':'Trabajo','Mamá':'Familia','Papá':'Familia','A
 const BUDGET = {'Amigo secreto':15000};
 const READ = {'Amigo secreto':'Leí la invitación de tu calendario: sorteo de la oficina, tope de $15.000.'};
 const OPT = {'libreta-picaflor-1':'Mi favorita. Se ve cuidada y le sirve a cualquiera.','tazon-alerce':'La más económica, y se usa todos los días en la oficina.','tabla-tolten':'La más distinta, si quieres sorprender.'};
-const cfg = {name:'Rodolfo Rojas',mode:'delego',cals:{Personal:true,Familia:true,Trabajo:true},wa:true,mail:true,wrap:true,addr:'Av. Providencia 1234, depto. 56, Santiago'};
+const cfg = {name:'Rodolfo Rojas',mode:'delego',pay:'card',cals:{Personal:true,Familia:true,Trabajo:true},wa:true,mail:true,wrap:true,addr:'Av. Providencia 1234, depto. 56, Santiago'};
 let tab='planner', autoFocus=true, bellSeen=false, thinkRun=0, hold=false, doubtDone=false;
 const thought={};
 
@@ -806,27 +1061,113 @@ const idx = p => YEAR.indexOf(p);
 const firstName = () => cfg.name.trim().split(/\s+/)[0] || '';
 const initial = () => (cfg.name.trim()[0]||'R').toUpperCase();
 const defaultFocus = () => { const v=yr(); return v.find(p=>phase(p)==='now') || v.find(p=>phase(p)==='later') || v[0] || null; };
-const arrival = p => dleft(p)<=3 ? 'mañana' : 'el '+fdate(addD(occ(p),-3));
+const arrival = p => dleft(p)<=1 ? 'mañana' : etaRange(TODAY);
 const days = n => n===0?'hoy':n===1?'mañana':`en ${n} días`;
 const whyOf = p => GIFT[p.n][1];
 const after = p => yr().find(x=>x!==p && phase(x)==='later' && occ(x)>occ(p));
 
-/* tarjeta de la fecha: la misma ficha de la sincronización, ahora protagonista */
+/* ---------- Tarjeta de la fecha ---------- */
+let tkTweens=[];
 function ticket(p){
   if(!p) return '';
-  const o=occ(p), ph=phase(p), cur=chosen(p), nx=after(p), dead=addD(o,-7), left=Math.max(0,Math.round((dead-TODAY)/864e5)), span=Math.max(1,AVISO-7), pct=Math.min(100,Math.max(6,(1-left/span)*100));
+  const o=occ(p), ph=phase(p), cur=chosen(p), nx=after(p), dead=lastOrder(p), left=Math.max(0,Math.round((dead-TODAY)/864e5)), span=Math.max(1,Math.round((dead-avisoD(p))/864e5)), pct=Math.min(100,Math.max(6,(1-left/span)*100));
   const rows = ph==='now'
-    ? `<div class="tk-t"><p>${left?`Tienes ${left} ${left===1?'día':'días'} para decidir`:'Hoy es el último día para decidir'}</p><i><b style="width:${pct}%"></b></i><p class="tk-s">Si decides antes del ${fdate(dead)}, llega ${arrival(p)}</p></div>`
+    ? `<div class="tk-t"><div class="flex items-baseline justify-between gap-3"><p>${left?`Te quedan ${left} ${left===1?'día':'días'} para decidir`:'Hoy es el último día para decidir'}</p><span class="tk-s">hasta el ${fdate(dead)}</span></div><i><b style="width:${pct}%"></b></i></div>`
     : ph==='bought'
     ? `<div class="tk-t"><p class="tk-ok">Resuelto · llega ${arrival(p)}</p><p class="tk-s">${esc(cur.t)}</p></div>`
     : `<div class="tk-t"><p>Te aviso el ${fdate(avisoD(p))}</p><p class="tk-s">Con el regalo pensado y tiempo para que llegue</p></div>`;
   return `<article id="apTicket" class="tk" data-flip-id="tk">
-    <div class="tk-art" style="background:linear-gradient(150deg,${grad(p)})">${ph==='bought'?img(cur.u,'tk-ph'):art(p.k,7,'meet')}
-      <span class="tk-mo">${MES[o.getMonth()]}</span><b class="tk-d num">${o.getDate()}</b>${ph==='bought'?'<span class="tk-stamp">Listo</span>':''}</div>
-    <div class="tk-b"><div class="flex items-baseline justify-between gap-3"><h2>${esc(p.n)}</h2><span class="tk-when">${days(dleft(p))}</span></div><p class="tk-o">${esc(p.o)}</p>${rows}
+    <div class="tk-art" style="background-image:linear-gradient(150deg,${grad(p)})">${ph==='bought'?img(cur.u,'tk-ph'):art(p.k,7,'meet')}
+      <span class="tk-wave" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="tk-d num">${o.getDate()}<small>${MES[o.getMonth()]}<br>${WD[o.getDay()]}</small></span>${ph==='bought'?'<span class="tk-stamp">Listo</span>':''}</div>
+    <div class="tk-b"><div class="flex items-baseline justify-between gap-3"><h2>${esc(p.n)}</h2><span class="tk-when">${days(dleft(p))}</span></div>
+      <p class="tk-h">Lo que rescaté</p>
+      <ul class="tk-r">${rescued(p).map(([k,l,t])=>`<li>${srcI(k)}<span><small>${l}</small>${esc(t)}</span></li>`).join('')}</ul>
+      ${rows}
       ${nx?`<button data-act="focus" data-i="${idx(nx)}" class="tk-next"><span>Después</span>${esc(nx.n)} · ${fdate(occ(nx))}</button>`:''}</div>
   </article>`;
 }
+function animateTicket(){
+  tkTweens.forEach(t=>t.kill()); tkTweens=[];
+  if(REDUCE) return;
+  const svg=document.querySelector('#apTicket .tk-art > svg'); if(!svg) return;
+  const R=(a,b)=>a+Math.random()*(b-a), main=document.createElementNS('http://www.w3.org/2000/svg','g'), small=[];
+  [...svg.children].forEach(el=>{ if(el.tagName==='defs') return; let b; try{ b=el.getBBox(); }catch(e){ return; } if(b.width*b.height<140) small.push(el); else main.appendChild(el); });
+  svg.appendChild(main); small.forEach(el=>svg.appendChild(el));
+  tkTweens.push(gsap.to(main,{y:-5,rotation:1.4,transformOrigin:'50% 80%',duration:2.6,repeat:-1,yoyo:true,ease:'sine.inOut'}));
+  small.forEach(el=>tkTweens.push(gsap.to(el,{y:R(-14,-5),x:R(-6,6),rotation:R(-40,40),transformOrigin:'50% 50%',duration:R(2.2,4.2),delay:R(0,1.2),repeat:-1,yoyo:true,ease:'sine.inOut'})));
+}
+
+/* ---------- Ficha de producto: nuestra UI, información de Creado ---------- */
+let sheetFrom=null, sheetImg=0, sheetH=null;
+const prodImgs = h => [PRODS[h][3],...((PINFO[h]||{}).x||[]).map(u=>u)];
+function openSheet(h){ sheetH=h; sheetImg=0; sheetFrom=document.activeElement; renderSheet(); const s=$('apSheet'); s.classList.remove('hidden'); document.body.classList.add('sheet'); s.querySelector('.sh-x').focus(); if(!REDUCE){ gsap.from('.sh-w',{y:26,opacity:0,duration:.4,ease:'power3.out',clearProps:'all'}); gsap.from('.sh-bd',{opacity:0,duration:.25,clearProps:'all'}); } }
+function closeSheet(){ const s=$('apSheet'); if(s.classList.contains('hidden')) return; s.classList.add('hidden'); sheetFrom&&sheetFrom.isConnected&&sheetFrom.focus(); }
+function renderSheet(){
+  const h=sheetH, x=prod(h), p=yfocus, inf=PINFO[h]||{d:[]}, imgs=prodImgs(h), its=p?items(p):[], i=its.findIndex(o=>o.h===h), isCur=p&&chosen(p).h===h, canBuy=p&&phase(p)==='now'&&i>=0;
+  $('apSheet').innerHTML=`<div class="sh-bd" data-act="sheetx"></div><div class="sh-w" role="dialog" aria-modal="true" aria-label="${esc(x.t)}">
+   <button class="sh-x" data-act="sheetx" aria-label="Cerrar">×</button>
+   <div class="sh-g"><div class="sh-main"><img src="${imgs[sheetImg].replace('_600x','_1200x')}" alt="${esc(x.t)}"></div>${imgs.length>1?`<div class="sh-th">${imgs.map((u,n)=>`<button data-act="shimg" data-n="${n}" aria-pressed="${n===sheetImg}" aria-label="Foto ${n+1} de ${imgs.length}"><img src="${u}" alt=""></button>`).join('')}</div>`:''}</div>
+   <div class="sh-b">
+     <p class="pl-v">${esc(x.v)}${inf.ty?` · ${esc(inf.ty)}`:''}</p><h2 class="pl-t">${esc(x.t)}</h2><p class="num mt-2 text-[20px] font-semibold">${clp(x.p)}</p>
+     ${canBuy?`<div class="sh-why">${portrait(p.n,'sh-pt')}<p><b>Para ${esc(p.n)}.</b> ${OPT[h]||('Lo elegí porque '+whyOf(p))}</p></div>`:''}
+     ${canBuy?`<div class="sh-cta"><button data-act="ok" data-i="${idx(p)}" data-pick="${i}" class="pl-cta pl-cta-w">Comprar y dejar listo</button>${isCur?'':`<button data-act="shpick" data-pick="${i}" class="pl-sec">Dejarla como mi elección</button>`}</div>`:''}
+     <section class="sh-s"><h3>Sobre el producto</h3>${inf.d&&inf.d.length?inf.d.map(t=>`<p>${esc(t)}</p>`).join(''):`<p class="text-[#5f6b7d]">Creado en Chile no publica una descripción de este producto.</p>`}</section>
+     <section class="sh-s"><h3>Despacho</h3><dl class="sh-dl"><div><dt>Región Metropolitana</dt><dd>3 a 4 días hábiles · $3.900</dd></div><div><dt>Otras regiones</dt><dd>6 a 12 días hábiles · desde $5.990</dd></div><div><dt>Retiro</dt><dd>Casa Creado, Vitacura · te aviso cuando esté listo</dd></div></dl><p class="text-[12.5px] text-[#5f6b7d]">Despacho sin costo en compras sobre $60.000.</p></section>
+     <section class="sh-s"><h3>Cambios y devoluciones</h3><p>Cambios hasta 90 días después de la compra, con boleta y sin uso. Si llega dañado, se avisa en las primeras 48 horas.</p></section>
+     <a class="sh-ext" href="https://creadoenchile.cl/products/${h}" target="_blank" rel="noopener">Ver en Creado en Chile ↗</a>
+   </div></div>`;
+}
+
+/* ---------- Compra ---------- */
+let co=null;
+const ADDR_OFICINA='Av. Apoquindo 3400, Las Condes';
+const MSG={'Amigo secreto':'Que esta te acompañe en lo que venga. Feliz fin de año. Tu amigo secreto.','Navidad':'Para la mesa de esta Navidad, con cariño.'};
+function startCo(p){ co={p,ship:p.n==='Amigo secreto'?'oficina':'casa',wrap:cfg.wrap,msg:MSG[p.n]||`Para ${p.n}, con cariño. Elegido pensando en ti.`,pay:cfg.pay,paying:false}; }
+const shipCost = () => co.ship==='retiro'||chosen(co.p).p>=60000?0:3900;
+const coTotal = () => chosen(co.p).p+(co.wrap?1000:0)+shipCost();
+const BOX=(on)=>`<svg class="bx" viewBox="0 0 160 130" aria-hidden="true"><ellipse cx="80" cy="118" rx="62" ry="7" fill="#0e1014" opacity=".12"/><path d="M28 54h104v58a6 6 0 0 1-6 6H34a6 6 0 0 1-6-6Z" fill="${on?'#d9b48a':'#e5eaf2'}"/><path d="M20 36h120v20H20Z" fill="${on?'#c79f72':'#d5dbe5'}"/>${on?`<path class="bx-r" d="M72 36h16v82H72Z" fill="#ff5924"/><path class="bx-r" d="M20 42h120v9H20Z" fill="#ff5924"/><path class="bx-b" d="M80 36c-20-26-42-20-36-6s22 12 36 6Zm0 0c20-26 42-20 36-6s-22 12-36 6Z" fill="#ff5924" stroke="#0e1014" stroke-width="2"/><g class="bx-t"><path d="M112 74l28-8 8 26-28 8Z" fill="#fff" stroke="#0e1014" stroke-width="1.500"/><path d="M122 80l14-4M125 87l14-4" stroke="#0e1014" stroke-width="1.500"/></g>`:''}</svg>`;
+function coHtml(){
+  const p=co.p, x=chosen(p), opt=(act,v,cur,t,s,c)=>`<button data-act="${act}" data-v="${v}" aria-pressed="${cur===v}" class="co-o"><i></i><span class="min-w-0"><b>${t}</b><small>${s}</small></span>${c?`<em class="num">${c}</em>`:''}</button>`;
+  const nm=p.n==='Amigo secreto'?'Lo mando a la oficina para que lo tengas el día del sorteo. Va sin tu nombre.':`Lo mando a tu casa. Si prefieres, te lo dejo donde me digas.`;
+  return `<button data-act="coback" class="pl-back">← Volver a la propuesta</button><h1 class="pl-h">Te lo dejé casi listo. Solo revisa y paga.</h1>
+  <section class="co-c"><header><span class="co-n">1</span><h2>Entrega</h2><p>${nm}</p></header><div class="co-g">
+    ${opt('coship','oficina',co.ship,'Oficina',esc(ADDR_OFICINA)+' · llega '+etaRange(TODAY),'$3.900')}
+    ${opt('coship','casa',co.ship,'Mi casa',esc(cfg.addr)+' · llega '+etaRange(TODAY),'$3.900')}
+    ${opt('coship','retiro',co.ship,'Retiro en Casa Creado','Luis Carrera 1817, Vitacura · te aviso por correo cuando esté listo','$0')}
+  </div></section>
+  <section class="co-c"><header><span class="co-n">2</span><h2>Empaque y tarjeta</h2><p>Se envuelve para regalo y va una tarjeta con tu mensaje.</p></header>
+    <div class="co-pk"><div class="co-bx" id="coBox">${BOX(co.wrap)}</div><div class="min-w-0 flex-1"><div class="co-g">
+      ${opt('cowrap','1',co.wrap?'1':'0','Para regalo','Envuelto, con cinta y tarjeta','$1.000')}
+      ${opt('cowrap','0',co.wrap?'1':'0','Sin envolver','Llega en su empaque original','$0')}
+    </div>${co.wrap?`<label class="co-m"><span>Mensaje de la tarjeta <em>lo escribí por ti, cámbialo si quieres</em></span><textarea id="coMsg" maxlength="140" rows="2">${esc(co.msg)}</textarea><small id="coMc" class="num">${co.msg.length}/140</small></label>`:''}</div></div></section>
+  <section class="co-c"><header><span class="co-n">3</span><h2>Pago</h2></header><div class="co-g">
+    ${opt('copay','card',co.pay,'Visa terminada en 4242','Tu tarjeta guardada')}
+    ${opt('copay','transfer',co.pay,'Transferencia','Te dejo los datos por correo al confirmar')}
+  </div></section>`;
+}
+function receipt(){
+  const p=co.p, x=chosen(p), o=occ(p), ship=shipCost(), T=coTotal(), line=(a,b)=>`<div class="rc-l"><dt>${a}</dt><dd class="num">${b}</dd></div>`;
+  return `<aside id="apTicket" class="tk rc"><div class="rc-h" style="background-image:linear-gradient(150deg,${grad(p)})"><span class="tk-d rc-d num">${o.getDate()}<small>${MES[o.getMonth()]}<br>${WD[o.getDay()]}</small></span></div>
+   <div class="tk-b flex flex-1 flex-col"><h2>${esc(p.n)}</h2>
+    <button data-act="sheet" data-h="${x.h}" class="rc-p"><span>${img(x.u,'')}</span><span class="min-w-0"><b>${esc(x.t)}</b><small>${esc(x.v)} · Ver detalle</small></span></button>
+    <dl class="rc-t">${line('Regalo',clp(x.p))}${co.wrap?line('Para regalo',clp(1000)):''}${line(co.ship==='retiro'?'Retiro':'Despacho RM',ship?clp(ship):'$0')}<div class="rc-l rc-tot"><dt>Total</dt><dd class="num" id="rcTot">${clp(T)}</dd></div></dl>
+    ${p.n==='Amigo secreto'?`<p class="rc-ok">El regalo cuesta ${clp(x.p)}: queda dentro del tope de $15.000.</p>`:''}
+    <div class="mt-auto pt-4"><button data-act="pay" class="pl-cta rc-cta" ${co.paying?'disabled':''}>${co.paying?'Confirmando con tu banco…':co.pay==='card'?`Pagar ${clp(T)}`:`Confirmar por ${clp(T)}`}</button>
+    <p class="rc-f">Cambios hasta 90 días con boleta. Compra hecha en Creado en Chile.</p></div></div></aside>`;
+}
+function orderSteps(p){
+  const od=p.order||{}, wrap=od.wrap, reti=od.ship==='retiro', tr=od.pay==='transfer', em=p.n==='Emilia';
+  return [
+   [tr&&!em?'now':'done',tr?'Esperando tu transferencia':'Pago confirmado',tr?'Te dejé los datos en tu correo':(em?'2 nov':'Hoy')],
+   [em?'done':tr?'todo':'now','Creado en Chile prepara tu pedido',em?'3 nov':'Revisan stock y lo reservan'],
+   [em?'done':'todo',wrap?'Lo envuelven y escriben tu tarjeta':'Lo dejan listo para enviar',em?'3 nov':''],
+   [em?'now':'todo',reti?'Te aviso que puedes retirarlo':'En camino',em?'Con el transportista':reti?'Por correo, tienes 45 días':''],
+   ['todo',reti?'Lo retiras en Vitacura':'Entregado',em?'Mañana':reti?'':etaRange(TODAY)],
+   ['todo','Te pregunto si le gustó',em?'':fdate(addD(occ(p),1))],
+  ];
+}
+const trackerHtml = p => `<ol class="tr">${orderSteps(p).map(([s,t,d])=>`<li data-s="${s}"><i></i><span><b>${t}</b>${d?`<small>${d}</small>`:''}</span></li>`).join('')}</ol>`;
 
 /* lo que pensó: se usa para la animación y para releerlo después */
 function thinkData(p){
@@ -844,7 +1185,7 @@ const thumb = h => `<span class="th" data-h="${h}" data-flip-id="${h}">${img(PRO
 function leftThinking(p){ return `<h1 class="pl-h">Pensando en ${esc(p.n)}<span class="pl-dots"><i></i><i></i><i></i></span></h1><ol id="thL" class="th-l" aria-live="polite"></ol><div id="thS" class="th-s s30"></div>`; }
 
 async function runThink(p){
-  const run=++thinkRun, d=thinkData(p), L=$('thL'), S=$('thS'), live=()=>run===thinkRun&&$('thS');
+  setLive(`Pensando en ${p.n}`,true); const run=++thinkRun, d=thinkData(p), L=$('thL'), S=$('thS'), live=()=>run===thinkRun&&$('thS');
   const say = t => { const li=document.createElement('li'); li.innerHTML=`<i></i><span>${t}</span>`; L.appendChild(li); gsap.from(li,{y:8,opacity:0,duration:.35,ease:'power3.out',clearProps:'all'}); };
   say(d.lines[0]); await wait(.9); if(!live()) return;
   say(d.lines[1]);
@@ -865,14 +1206,14 @@ async function runThink(p){
   await wait(1.2); if(!live()) return;
   const scene=cfg.mode==='elijo'&&SCENES[p.n];
   const fs=scene?null:Flip.getState(cfg.mode==='delego'?`#thS [data-h="${items(p)[ypick[p.n]||0].h}"]`:'#thS .th');
-  thought[p.n]=true;
+  thought[p.n]=true; setLive('Calendario al día');
   $('plLeft').innerHTML=leftFinal(p);
   if(scene) mountScene(p,true);
   else Flip.from(fs,{targets:[...$('plLeft').querySelectorAll('[data-flip-id]')],duration:.7,ease:'power3.inOut',scale:false});
   gsap.from('#plLeft [data-rise]',{y:14,opacity:0,duration:.5,stagger:.06,delay:.25,ease:'power3.out',clearProps:'all'});
 }
 
-const finePrint = p => `Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Nada se compra sin tu aprobación.`;
+const finePrint = p => `Si compras hoy, llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Nada se compra sin tu aprobación.`;
 /* lo que hizo el sistema, siempre a la vista */
 function funnel(p){
   const d=thinkData(p), b=BUDGET[p.n];
@@ -890,7 +1231,7 @@ function leftFinal(p){
   }
   return `<h1 class="pl-h" data-rise>Ya lo tengo: este es para ${esc(p.n)}.</h1>
   <div class="pl-pick">
-    <div class="pl-ph" data-flip-id="${cur.h}">${img(cur.u,'')}</div>
+    <button class="pl-ph" data-act="sheet" data-h="${cur.h}" data-flip-id="${cur.h}" aria-label="Ver detalle de ${esc(cur.t)}">${img(cur.u,'')}</button>
     <div class="pl-info">
       <p class="pl-v" data-rise>${esc(cur.v)}</p>
       <h2 class="pl-t" data-rise>${esc(cur.t)}</h2>
@@ -956,7 +1297,7 @@ function sceneHtml(p){
   </div><p id="scCap" class="sc-cap">${s[cur].cap}</p></div>
   <div class="sc-nav" role="group" aria-label="Elegir escena">${s.map((z,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${i===cur}">${z.chip}</button>`).join('')}</div>`;
 }
-const sceneFicha = p => { const o=chosen(p); return `<div class="min-w-0"><p class="pl-v">${esc(o.v)}</p><h2 class="pl-t pl-t-sm">${esc(o.t)}</h2><p class="mt-1 text-[14px] leading-snug text-[#39414e]">${OPT[o.h]||''}</p></div><div class="shrink-0"><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(o.p)}</button><p class="pl-fine lg:text-right">${finePrint(p)}</p></div>`; };
+const sceneFicha = p => { const o=chosen(p); return `<div class="min-w-0"><p class="pl-v">${esc(o.v)}</p><h2 class="pl-t pl-t-sm">${esc(o.t)}</h2><p class="mt-1 text-[14px] leading-snug text-[#39414e]">${OPT[o.h]||''}</p><button data-act="sheet" data-h="${o.h}" class="pl-link">Ver detalle</button></div><div class="shrink-0"><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(o.p)}</button><p class="pl-fine lg:text-right">${finePrint(p)}</p></div>`; };
 function scenePos(p,i){ const st=$('scStage'), pa=$('scPano'); return st.clientWidth/2 - SCENES[p.n][i].cx/3000*pa.offsetWidth; }
 function sceneGo(p,i){
   ypick[p.n]=i;
@@ -979,40 +1320,61 @@ addEventListener('resize',()=>{ if($('scStage')&&yfocus) gsap.set('#scPano',{x:s
 function leftOther(p){
   const ph=phase(p), back=p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver a lo de hoy</button>';
   if(ph==='bought'){
-    const nx=after(p);
-    return `${back}<h1 class="pl-h pl-h-lg">Listo. Ya no tienes que pensar en esto.</h1><p class="pl-lead">Compré ${esc(chosen(p).t)}. Llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Cuando llegue te pregunto si le gustó, y con eso elijo mejor la próxima vez.</p>
-    <div class="mt-6 flex flex-wrap items-center gap-2">${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="pl-sec">Cancelar compra</button>`:''}</div>
-    ${nx?`<p class="pl-lead mt-8 border-t border-mist pt-6">Sigo con ${esc(nx.n)}. Te aviso el ${fdate(avisoD(nx))}.</p>`:''}`;
+    const nx=after(p), x=chosen(p), od=p.order||(p.order={no:'CC-48107',ship:'casa',wrap:true,pay:'card',msg:'Bienvenida a la familia, Emilia.'}), place=od.ship==='retiro'?'Casa Creado, Vitacura':od.ship==='oficina'?ADDR_OFICINA:cfg.addr;
+    return `${back}<h1 class="pl-h">Listo. Ya no tienes que pensar en esto.</h1>
+    <div class="od"><div class="od-l">${trackerHtml(p)}</div>
+      <div class="od-r"><div class="od-bx">${od.wrap?BOX(true):img(x.u,'')}</div><p class="od-no num">Pedido ${od.no}</p><p class="text-[15px] font-semibold leading-snug">${esc(x.t)}</p><p class="od-t">${esc(place)}</p>${od.wrap&&od.msg?`<p class="od-msg">“${esc(od.msg)}”</p>`:''}</div></div>
+    <div class="mt-5 flex flex-wrap items-center justify-between gap-3"><p class="text-[14px] text-[#39414e]">${nx?`Yo sigo con ${esc(nx.n)}. Te aviso el ${fdate(avisoD(nx))}.`:'Yo sigo atento a tu calendario.'}</p>${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="pl-sec">Cancelar compra</button>`:''}</div>`;
   }
-  const its=items(p), f=facts(p).filter(x=>x!==p.n&&x!==p.o);
+  const its=items(p), f=facts(p).filter(x=>x!==p.o);
   return `${back}<h1 class="pl-h pl-h-lg">${p===defaultFocus()?`Hoy no te necesito, ${esc(firstName())}.`:`${esc(p.n)} todavía no te necesita.`}</h1>
     <p class="pl-lead">Te aviso el ${fdate(avisoD(p))}. Mientras, voy pensando${f.length?` con lo que ya sé: ${f.map(x=>esc(x).toLowerCase()).join(', ')}`:''}.</p>
-    <p class="mt-7 text-[13px] font-semibold">Lo que voy barajando</p><div class="pl-idea">${its.map(o=>`<span>${img(o.u,'')}</span>`).join('')}</div>`;
+    <p class="mt-7 text-[13px] font-semibold">Lo que voy barajando</p><div class="pl-idea">${its.map(o=>`<button data-act="sheet" data-h="${o.h}" aria-label="Ver ${esc(o.t)}">${img(o.u,'')}</button>`).join('')}</div>`;
 }
 
 function viewPlanner(){
   if(autoFocus || !yfocus || !yr().includes(yfocus)) yfocus=defaultFocus();
   const p=yfocus; thinkRun++;
   if(!p){ $('apMain').innerHTML=`<div class="pl-empty"><h1 class="pl-h pl-h-lg">Ahora no leo ningún calendario.</h1><p class="pl-lead">Activa uno y vuelvo a seguir tus fechas.</p><button data-act="tab" data-t="config" class="pl-cta mt-5">Ir a Configuración</button></div>`; return; }
+  if(co&&co.p===p&&phase(p)==='now'){ $('apMain').innerHTML=`<div class="pl pl-co"><div id="plLeft" class="pl-l">${coHtml()}</div><div class="pl-r">${receipt()}</div></div>`; bindCo(); return; }
   const now=phase(p)==='now', think=now && !thought[p.n] && !REDUCE;
   if(now && REDUCE) thought[p.n]=true;
   $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l">${!now?leftOther(p):think?leftThinking(p):(p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver a lo de hoy</button>')+leftFinal(p)}</div><aside class="pl-r">${ticket(p)}</aside></div>`;
+  animateTicket();
   if(think && !hold) runThink(p);
   if(!think && now) mountScene(p,false);
 }
+function bindCo(){ const m=$('coMsg'); if(m) m.oninput=()=>{ co.msg=m.value; $('coMc').textContent=m.value.length+'/140'; }; }
 
-/* Personas: el sistema las encontró y las va conociendo */
-function viewPersonas(){
-  const v=yr(), q=!doubtDone && QUESTIONS.find(x=>!yasked[x.n] && v.some(p=>p.n===x.n));
-  const says = p => { const f=facts(p).filter(x=>x!==p.n&&x!==p.o); return f.length?f.join(' · '):'Todavía estoy aprendiendo'; };
-  $('apMain').innerHTML=`<header class="pp-h"><h1 class="pl-h">Las ${v.length} personas y fechas que sigo por ti.</h1><p class="text-[14px] text-[#5f6b7d]">Las encontré en tu calendario y las voy conociendo con cada regalo.</p></header>
-  ${q?`<div class="pp-q" data-qbox><p><span>Una duda sobre ${esc(q.n)}.</span> ${q.q}</p><div class="flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}">${a}</button>`).join('')}</div></div>`:''}
-  <div class="pp-g">${v.map(p=>{ const c=chosen(p), ph=phase(p); return `<button data-act="focus" data-i="${idx(p)}" class="pp-c" aria-label="${esc(p.n)}, ${esc(p.o)}, ${fdate(occ(p))}">
-    ${img(c.u,'pp-img')}<span class="pp-sh"></span>
-    <span class="pp-top"><span class="pp-date num"><b>${p.d}</b>${MES[p.m]}</span>${ph==='now'?'<span class="pp-st pp-now">Regalo listo</span>':ph==='bought'?'<span class="pp-st pp-ok">Resuelto</span>':''}</span>
-    <span class="pp-b"><b>${esc(p.n)}</b><small>${esc(p.o)}</small><em>${esc(says(p))}</em><span class="pp-idea">${ph==='bought'?'Compré':'Mi idea'}: ${esc(c.t)}</span></span>
-  </button>`; }).join('')}</div>`;
+/* ---------- Centro de personas ---------- */
+let personSel=null, personQ='';
+function personTile(p){
+  const k=knows(p).length, q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]);
+  return `<button data-act="person" data-i="${idx(p)}" data-name="${esc(p.n.toLowerCase())}" aria-pressed="${p===personSel}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}<span class="pe-b"><b>${esc(p.n)}</b><small>${esc(REL[p.n]||p.o)}</small><span class="pe-k"><span class="pe-p"><em style="width:${Math.min(100,k*25)}%"></em></span>${k} ${k===1?'cosa':'cosas'}</span></span></button>`;
 }
+function personPanel(p){
+  const k=knows(p), q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]), c=chosen(p), ph=phase(p), lbl=ph==='bought'?'Compré':ph==='now'?'Regalo listo para aprobar':'Mi idea hasta ahora';
+  return `<div class="pn-h">${portrait(p.n,'pn-pt')}<div class="min-w-0"><h2>${esc(p.n)}</h2><p>${esc(REL[p.n]||p.o)}</p><p class="pn-d">${esc(p.o)} · ${fdate(occ(p))} · ${days(dleft(p))}</p></div></div>
+  ${q?`<div class="pn-q"><p><span class="live-dot"></span>Una duda: ${q.q}</p><div class="flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}">${a}</button>`).join('')}</div></div>`:''}
+  <h3 class="pn-t">Lo que he aprendido</h3>
+  <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}<small>${SRC_L[s]}</small></span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li class="text-[#5f6b7d]">Todavía estoy aprendiendo.</li>'}</ul>
+  <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
+  <h3 class="pn-t">${lbl}</h3>
+  <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
+  <button data-act="focus" data-i="${idx(p)}" class="pl-sec mt-4 w-full">Ver en mi planner</button>`;
+}
+function viewPersonas(){
+  const v=yr(), ppl=v.filter(p=>!SHARED.includes(p.n)).sort((a,b)=>a.n.localeCompare(b.n,'es')), sh=v.filter(p=>SHARED.includes(p.n)), tot=ppl.reduce((n,p)=>n+knows(p).length,0);
+  if(!personSel||!v.includes(personSel)) personSel=[...v].filter(p=>!SHARED.includes(p.n)&&phase(p)==='later').sort(byDate)[0]||v[0];
+  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Tu gente.</h1><p class="mt-1 flex items-center gap-2 text-[14px] text-[#5f6b7d]"><span class="live-dot"></span>He aprendido ${tot} cosas de ${ppl.length} personas, y sigo aprendiendo.</p></div>
+    <label class="pp-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="ppQ" value="${esc(personQ)}" placeholder="Buscar por nombre" aria-label="Buscar por nombre"></label></header>
+  <div class="pp"><div class="min-w-0"><div id="ppG" class="pe-g">${ppl.map(personTile).join('')}</div>
+    ${sh.length?`<h2 class="pp-sub">También sigo estas fechas</h2><div class="pe-g pe-g2">${sh.map(personTile).join('')}</div>`:''}</div>
+    <aside id="ppPanel" class="pn">${personPanel(personSel)}</aside></div>`;
+  const qi=$('ppQ'); const filt=()=>{ personQ=qi.value; const s=personQ.trim().toLowerCase(); document.querySelectorAll('.pe').forEach(b=>b.style.display=b.dataset.name.includes(s)?'':'none'); }; qi.oninput=filt; filt();
+  bindPanel();
+}
+function bindPanel(){ const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault(); const t=$('pnFact').value.trim(); if(!t) return; (learned[personSel.n]=learned[personSel.n]||[]).push(t); ytoast(`Anotado. Lo uso para el próximo regalo de ${personSel.n}.`); render(); }; }
 
 /* Configuración */
 const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
@@ -1024,16 +1386,19 @@ function viewConfig(){
   const modeCard=(v,t,s)=>`<button data-act="defmode" data-v="${v}" aria-pressed="${cfg.mode===v}" class="cf-m"><i></i><b>${t}</b><span>${s}</span></button>`;
   $('apMain').innerHTML=`<header class="pp-h"><h1 class="pl-h">Configuración</h1></header><div class="mx-auto max-w-[1040px]">`
   + box('cf-mode','Cómo participas','Vale para todos tus regalos.',`<div class="grid gap-3 sm:grid-cols-2">${modeCard('delego','Delego','Yo pienso y te dejo un regalo listo. Tú solo apruebas.')}${modeCard('elijo','Elijo yo','Yo pienso y te dejo 3 finalistas. Tú eliges.')}</div>`,true)
-  + box('cf-cal','Calendarios','De aquí saco tus fechas. Si aparece algo nuevo, lo agrego solo.',
+  + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Si aparece algo nuevo, lo agrego solo.',
      `<div class="flex items-center gap-3 py-3.5"><i class="size-2 rounded-full bg-emerald-500"></i><p class="flex-1 text-[14.5px] font-medium">Google Calendar</p><span class="text-[12.5px] text-[#5f6b7d]">Leído hace 5 min</span></div>`
-     + Object.keys(cfg.cals).map(c=>row(c,count(c),sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c))).join(''))
+     + Object.keys(cfg.cals).map(c=>row(c,count(c),sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c))).join('')
+     + row('Correo','Invitaciones, confirmaciones y lo que me sirva para elegir.',sw('conn:gmail',conn.gmail,'Leer el correo'))
+     + row('Contactos','Quién es quién en tu vida.',sw('conn:contacts',conn.contacts,'Leer los contactos')))
   + box('cf-av','Avisos','Cuándo aparezco y por dónde te insisto.',
      row('Avisarme antes de cada fecha','',opts('aviso',AVISO,[[7,'7'],[14,'14'],[21,'21'],[30,'30']],'Días de aviso')+'<span class="ml-2 text-[12.5px] text-[#5f6b7d]">días</span>')
      + row('WhatsApp','Si no respondes en la app.',sw('wa',cfg.wa,'Insistir por WhatsApp'))
      + row('Correo','Si tampoco respondes por WhatsApp.',sw('mail',cfg.mail,'Insistir por correo')))
   + box('cf-env','Envío','Adónde mando los regalos.',
      `<label class="block py-3.5"><span class="text-[14.5px] font-medium">Dirección</span><input id="cfAddr" value="${esc(cfg.addr)}" class="ap-i mt-1.5"></label>`
-     + row('Envolver y agregar tarjeta','',sw('wrap',cfg.wrap,'Envolver y agregar tarjeta')))
+     + row('Para regalo por defecto','Envuelto y con tarjeta, $1.000. Lo hace Creado en Santiago, Ñuñoa, La Reina, Vitacura, Las Condes, Lo Barnechea y Providencia.',sw('wrap',cfg.wrap,'Para regalo por defecto')))
+  + box('cf-pay','Pago','Lo que uso cuando apruebas.',`<div class="py-3.5"><div class="co-g">${[['card','Visa terminada en 4242','Tu tarjeta guardada'],['transfer','Transferencia','Te dejo los datos por correo']].map(([v,t,s])=>`<button data-act="cfpay" data-v="${v}" aria-pressed="${cfg.pay===v}" class="co-o"><i></i><span><b>${t}</b><small>${s}</small></span></button>`).join('')}</div></div>`)
   + box('cf-acc','Mi perfil','Tu nombre en la app.',
      `<label class="block py-3.5"><span class="text-[14.5px] font-medium">Nombre</span><input id="cfName" value="${esc(cfg.name)}" class="ap-i mt-1.5"></label>`)
   + `</div>`;
@@ -1041,19 +1406,40 @@ function viewConfig(){
   $('cfName').onchange=e=>{ cfg.name=e.target.value||cfg.name; renderChrome(); ytoast('Nombre guardado.'); };
 }
 
+/* ---------- El asistente está vivo: ondas y estado ---------- */
+const wave={e:.22}; let waveOn=false, liveI=0, liveLock=false;
+const LIVE=['Leyendo tu calendario','Revisando tu correo','Aprendiendo de Mamá','Mirando stock de Navidad','Calendario al día','Pensando en Andrés'];
+function setLive(t,busy){ const el=$('apLiveT'); if(!el) return; liveLock=!!busy; el.textContent=t; if(!REDUCE) gsap.fromTo(el,{y:6,opacity:0},{y:0,opacity:1,duration:.35}); gsap.to(wave,{e:busy?1:.22,duration:busy?.7:1.6,ease:'sine.inOut'}); $('apLive').classList.toggle('busy',!!busy); }
+function waveLoop(){
+  const c=$('apWave'); if(!c) return; const x=c.getContext('2d'); let t=0;
+  const draw=()=>{
+    const y=$('year'); if(y.style.display!=='block'){ waveOn=false; return; }
+    const W=c.clientWidth,H=c.clientHeight,dp=Math.min(devicePixelRatio||1,2); if(c.width!==W*dp||c.height!==H*dp){ c.width=W*dp; c.height=H*dp; }
+    x.setTransform(dp,0,0,dp,0,0); x.clearRect(0,0,W,H);
+    [['rgba(255,89,36,',.34,.0031,1.1,.62],['rgba(116,130,151,',.22,.0044,-.8,.7],['rgba(255,89,36,',.14,.0058,.6,.8],['rgba(116,130,151,',.12,.0024,.5,.54]].forEach(([col,al,f,sp,base],n)=>{
+      x.beginPath();
+      for(let i=0;i<=W;i+=6){ const yy=H*base+Math.sin(i*f+t*sp+n*1.7)*(10+26*wave.e)+Math.sin(i*f*2.3-t*sp*.7+n)*(4+12*wave.e); i?x.lineTo(i,yy):x.moveTo(i,yy); }
+      x.strokeStyle=col+(al*(.65+wave.e*.8))+')'; x.lineWidth=1.4; x.stroke();
+    });
+    t+=.012+.03*wave.e; if(!REDUCE) requestAnimationFrame(draw); else waveOn=false;
+  };
+  if(!waveOn){ waveOn=true; draw(); }
+}
+setInterval(()=>{ if($('year').style.display==='block'&&!liveLock&&!document.hidden&&tab!==null){ liveI=(liveI+1)%LIVE.length; setLive(LIVE[liveI]); } },5200);
+
 function renderChrome(){
   const now=yr().filter(p=>phase(p)==='now').length;
   $('apTabs').innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${k==='planner'&&now?`<em class="num">${now}</em>`:''}</button>`).join('');
   $('apAv').textContent=initial();
   $('apBellDot').style.display=bellSeen?'none':'';
   $('popUser').innerHTML=`<div class="flex items-center gap-3 border-b border-mist p-3.5"><span class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">${initial()}</span><div class="min-w-0 leading-tight"><p class="truncate text-[14px] font-semibold">${esc(cfg.name)}</p><p class="mt-0.5 text-[12px] text-[#5f6b7d]">Google Calendar conectado</p></div></div>
-  <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-mode','Cómo participas'],['cf-cal','Calendarios'],['cf-av','Avisos'],['cf-env','Envío']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
+  <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-mode','Cómo participas'],['cf-cal','Conectores'],['cf-av','Avisos'],['cf-env','Envío'],['cf-pay','Pago']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
   const nw=YEAR.find(p=>p.n==='Familia Soto'), am=YEAR.find(p=>p.n==='Amigo secreto'), em=YEAR.find(p=>p.n==='Emilia');
   $('popBell').innerHTML=`<p class="px-4 pb-1 pt-3.5 text-[13px] font-semibold">Lo último que hice</p><div class="p-1.5">${[[am,'Pensé el regalo de Amigo secreto','Hoy'],[nw,'Vi un bautizo nuevo en tu calendario','Familia Soto · 22 ago. Ya lo estoy siguiendo'],[em,'Despaché el regalo de Emilia','Llega mañana']].map(([p,t,s])=>`<button data-act="focus" data-i="${idx(p)}" class="ap-mi !block"><span class="block text-[13.5px] font-medium leading-snug">${t}</span><span class="block text-[12px] leading-snug text-[#5f6b7d]">${s}</span></button>`).join('')}</div>`;
 }
 function render(){ renderChrome(); ({planner:viewPlanner,personas:viewPersonas,config:viewConfig})[tab](); }
 function closePops(){ ['popBell','popUser'].forEach(i=>$(i).classList.add('hidden')); ['apBell','apAv'].forEach(i=>$(i).setAttribute('aria-expanded','false')); }
-function setTab(t,anim=true){ thinkRun++; tab=t; closePops(); history.replaceState(null,'',t==='planner'?'#planner':'#'+t); render(); $('year').scrollTop=0; if(anim&&!REDUCE&&t!=='planner') gsap.from('#apMain > *',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); }
+function setTab(t,anim=true){ if(liveLock&&!co) setLive('Calendario al día'); thinkRun++; tab=t; closePops(); history.replaceState(null,'',t==='planner'?'#planner':'#'+t); render(); $('year').scrollTop=0; if(anim&&!REDUCE&&t!=='planner') gsap.from('#apMain > *',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); }
 function focusOn(p){ yfocus=p; autoFocus=(p===defaultFocus()); tab==='planner'?render():setTab('planner',false); $('year').scrollTo({top:0}); if(!REDUCE) gsap.from('#apTicket',{y:14,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
 function ytoast(t){ $('ttxt').textContent=t; const el=$('toast'); gsap.killTweensOf(el); gsap.fromTo(el,{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:'back.out(2)'}); gsap.to(el,{opacity:0,y:-10,duration:.4,delay:2.4}); }
 const flashPhoto = () => { if(!REDUCE) gsap.from('.pl-ph img',{opacity:0,scale:1.05,duration:.45,clearProps:'all'}); };
@@ -1070,20 +1456,42 @@ $('year').addEventListener('click',e=>{
   else if(a==='pop'){ const k=b.dataset.pop, el=k==='bell'?$('popBell'):$('popUser'), was=el.classList.contains('hidden'); closePops(); if(was){ el.classList.remove('hidden'); b.setAttribute('aria-expanded','true'); if(k==='bell'){ bellSeen=true; $('apBellDot').style.display='none'; } if(!REDUCE) gsap.from(el,{y:-6,opacity:0,duration:.2,clearProps:'all'}); } }
   else if(a==='goto'){ setTab('config',false); $(b.dataset.a).scrollIntoView({block:'start'}); }
   else if(a==='logout'){ closeYear(); }
-  else if(a==='pick'){ if($('scStage')) sceneGo(yfocus,+b.dataset.pick); else { ypick[yfocus.n]=+b.dataset.pick; render(); } }
+  else if(a==='pick'){ if(b.classList.contains('st')&&b.getAttribute('aria-pressed')==='true') openSheet(chosen(yfocus).h); else if($('scStage')) sceneGo(yfocus,+b.dataset.pick); else { ypick[yfocus.n]=+b.dataset.pick; render(); } }
+  else if(a==='sheet'){ openSheet(b.dataset.h); }
+  else if(a==='sheetx'){ closeSheet(); }
+  else if(a==='shimg'){ sheetImg=+b.dataset.n; renderSheet(); }
+  else if(a==='shpick'){ ypick[yfocus.n]=+b.dataset.pick; closeSheet(); render(); ytoast('Listo, la dejo como tu elección.'); }
+  else if(a==='coback'){ co=null; render(); }
+  else if(a==='coship'){ co.ship=b.dataset.v; render(); }
+  else if(a==='cowrap'){ co.wrap=b.dataset.v==='1'; render(); if(co.wrap&&!REDUCE){ gsap.from('#coBox .bx-r',{scaleX:0,transformOrigin:'50% 50%',duration:.4,stagger:.1}); gsap.from('#coBox .bx-b',{scale:0,transformOrigin:'50% 100%',duration:.5,delay:.3,ease:'back.out(2.4)'}); gsap.from('#coBox .bx-t',{y:-10,opacity:0,duration:.4,delay:.5}); } }
+  else if(a==='copay'){ co.pay=b.dataset.v; render(); }
+  else if(a==='pay'){ pay(); }
+  else if(a==='person'){ personSel=p; document.querySelectorAll('.pe').forEach(e=>e.setAttribute('aria-pressed',YEAR[+e.dataset.i]===p)); $('ppPanel').innerHTML=personPanel(p); bindPanel(); if(innerWidth<=1100) $('ppPanel').scrollIntoView({block:'start',behavior:REDUCE?'auto':'smooth'}); if(!REDUCE) gsap.from('#ppPanel > *',{y:8,opacity:0,duration:.3,stagger:.03,clearProps:'all'}); }
+  else if(a==='forget'){ const f=b.dataset.f; if(b.dataset.s==='you') learned[p.n]=(learned[p.n]||[]).filter(x=>x!==f); else removedFact[p.n+'|'+f]=1; ytoast('Listo, lo olvido.'); render(); }
   else if(a==='ask'){
     const q=yfocus, arr=items(q).map((o,i)=>({o,i})), k=b.dataset.k, pk=k==='eco'?[...arr].sort((x,y)=>x.o.p-y.o.p)[0]:k==='orig'?arr[2]:arr[1];
     $('yreply').textContent='Lo estoy pensando…';
     gsap.delayedCall(REDUCE?0:.7,()=>{ if(yfocus!==q||tab!=='planner'||!$('yreply')) return; ypick[q.n]=pk.i; render(); flashPhoto(); $('yreply').textContent=k==='eco'?`Esta es la más económica: ${clp(pk.o.p)}.`:k==='orig'?'Esta es menos común y más de autor.':'Esta se usa todos los días.'; });
   }
-  else if(a==='ok'){ p.bought=true; p.justBought=true; yfocus=p; autoFocus=false; ytoast(`Listo. Compro el regalo de ${p.n}.`); render(); if(!REDUCE){ gsap.fromTo('#apTicket',{scale:.97},{scale:1,duration:.7,ease:'elastic.out(1,.5)',clearProps:'all'}); gsap.from('.tk-stamp',{scale:2.2,opacity:0,rotation:-14,duration:.5,delay:.1,ease:'back.out(2)'}); } }
-  else if(a==='undo'){ p.bought=false; p.justBought=false; ytoast('Listo, cancelé la compra.'); autoFocus=true; render(); }
-  else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; doubtDone=true; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); ytoast(`Gracias. Por ahora no te pregunto más.`); render(); }
-  else if(a==='sw'){ const k=b.dataset.k; if(k.startsWith('cal:')) cfg.cals[k.slice(4)]=!cfg.cals[k.slice(4)]; else cfg[k]=!cfg[k]; render(); }
+  else if(a==='ok'){ if(b.dataset.pick!==undefined) ypick[p.n]=+b.dataset.pick; closeSheet(); yfocus=p; autoFocus=false; startCo(p); render(); $('year').scrollTop=0; if(!REDUCE) gsap.from('#plLeft > *',{y:12,opacity:0,duration:.4,stagger:.05,ease:'power3.out',clearProps:'all'}); }
+  else if(a==='undo'){ p.bought=false; p.justBought=false; p.order=null; co=null; ytoast('Listo, cancelé la compra.'); autoFocus=true; render(); }
+  else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; doubtDone=true; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); if(q.n==='Carla') REL.Carla=b.dataset.a==='Sí'?'Tu hermana':'Tu cercana'; ytoast(`Anotado. Ya sé algo más de ${q.n}.`); render(); }
+  else if(a==='sw'){ const k=b.dataset.k; if(k.startsWith('cal:')) cfg.cals[k.slice(4)]=!cfg.cals[k.slice(4)]; else if(k.startsWith('conn:')) conn[k.slice(5)]=!conn[k.slice(5)]; else cfg[k]=!cfg[k]; render(); }
   else if(a==='aviso'){ AVISO=+b.dataset.v; autoFocus=true; render(); ytoast(`Te aviso ${AVISO} días antes de cada fecha.`); }
+  else if(a==='cfpay'){ cfg.pay=b.dataset.v; render(); }
   else if(a==='defmode'){ cfg.mode=b.dataset.v; render(); ytoast(cfg.mode==='delego'?'Te dejo un regalo listo cada vez.':'Te dejo 3 finalistas cada vez.'); }
 });
 
+async function pay(){
+  const c=co, p=c.p; c.paying=true; render(); setLive('Confirmando tu pago',true);
+  await wait(REDUCE?0:1.5);
+  setLive('Calendario al día');
+  if(co!==c) return;
+  p.order={no:'CC-'+(48200+idx(p)*7),ship:c.ship,wrap:c.wrap,pay:c.pay,msg:c.wrap?c.msg:''};
+  p.bought=true; p.justBought=true; co=null; yfocus=p; autoFocus=false;
+  ytoast(c.pay==='transfer'?'Listo. Te dejé los datos de transferencia en tu correo.':`Listo. Compré el regalo de ${p.n}.`); render(); $('year').scrollTop=0;
+  if(!REDUCE){ gsap.fromTo('#apTicket',{scale:.97},{scale:1,duration:.7,ease:'elastic.out(1,.5)',clearProps:'all'}); gsap.from('.tk-stamp',{scale:2.2,opacity:0,rotation:-14,duration:.5,delay:.1,ease:'back.out(2)'}); gsap.from('.tr li',{x:-10,opacity:0,duration:.4,stagger:.07,delay:.2,clearProps:'all'}); }
+}
 /* la notificación se abre y se convierte en la tarjeta de la fecha */
 async function arrive(){
   const p=defaultFocus(), n=$('apNotif');
@@ -1098,14 +1506,14 @@ async function arrive(){
   gsap.to('.ap-top',{opacity:1,duration:.5,delay:.3,clearProps:'opacity'});
   await new Promise(r=>Flip.from(st,{targets:tk,duration:.75,ease:'power3.inOut',scale:false,onComplete:r}));
   gsap.to('#apTicket > *',{opacity:1,duration:.4,stagger:.08,clearProps:'opacity'});
-  gsap.to('#plLeft',{opacity:1,duration:.3,clearProps:'opacity'});
+  gsap.to('#plLeft',{opacity:1,duration:.3,clearProps:'opacity'}); animateTicket();
   if(tab==='planner'&&yfocus===p&&!thought[p.n]) runThink(p);
 }
 
 function openYear(t='planner'){
   const y=$('year'); autoFocus=true; yfocus=defaultFocus();
   document.body.classList.add('in-app');
-  y.style.display='block'; tab=t; closePops();
+  y.style.display='block'; waveLoop(); tab=t; closePops();
   history.replaceState(null,'',t==='planner'?'#planner':'#'+t);
   gsap.fromTo(y,{opacity:0},{opacity:1,duration:.4,onComplete:()=>{ $('sync').style.display='none'; }});
   if(t==='planner' && !REDUCE && yfocus && phase(yfocus)==='now' && !thought[yfocus.n]){ renderChrome(); $('apMain').innerHTML=''; arrive(); return; }
@@ -1116,7 +1524,7 @@ function closeYear(){ thinkRun++; $('year').style.display='none'; document.body.
 function closeSync(){ $('sync').style.display='none'; }
 ['connect','navgo'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
 $('enter').onclick = () => openYear();
-addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('year').style.display==='block') closePops(); else closeSync(); } });
+addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('year').style.display==='block'){ closeSheet(); closePops(); } else closeSync(); } });
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
 const DEEP = {'#planner':'planner','#mi-ano':'planner','#personas':'personas','#regalos':'planner','#config':'config'}[location.hash];
