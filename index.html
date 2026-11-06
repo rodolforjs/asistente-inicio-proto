@@ -1359,7 +1359,7 @@ const ADDR_OFICINA='Av. Apoquindo 3400, Las Condes';
 const MSG={'Amigo secreto':'Que esta te acompañe en lo que venga. Feliz fin de año. Tu amigo secreto.','Navidad':'Para la mesa de esta Navidad, con cariño.'};
 function startCo(p){ co={p,ship:p.n==='Amigo secreto'?'oficina':'casa',wrap:cfg.wrap,msg:MSG[p.n]||`Para ${p.n}, con cariño. Elegido pensando en ti.`,pay:cfg.pay,paying:false}; }
 const shipCost = () => co.ship==='retiro'||chosen(co.p).p>=60000?0:3900;
-const coTotal = () => chosen(co.p).p+(co.wrap?1000:0)+shipCost();
+const coTotal = () => chosen(co.p).p+shipCost();
 const BOX=(on)=>`<svg class="bx" viewBox="0 0 160 130" aria-hidden="true"><ellipse cx="80" cy="118" rx="62" ry="7" fill="#0e1014" opacity=".12"/><path d="M28 54h104v58a6 6 0 0 1-6 6H34a6 6 0 0 1-6-6Z" fill="${on?'#d9b48a':'#e5eaf2'}"/><path d="M20 36h120v20H20Z" fill="${on?'#c79f72':'#d5dbe5'}"/>${on?`<path class="bx-r" d="M72 36h16v82H72Z" fill="#ff5924"/><path class="bx-r" d="M20 42h120v9H20Z" fill="#ff5924"/><path class="bx-b" d="M80 36c-20-26-42-20-36-6s22 12 36 6Zm0 0c20-26 42-20 36-6s-22 12-36 6Z" fill="#ff5924" stroke="#0e1014" stroke-width="2"/><g class="bx-t"><path d="M112 74l28-8 8 26-28 8Z" fill="#fff" stroke="#0e1014" stroke-width="1.500"/><path d="M122 80l14-4M125 87l14-4" stroke="#0e1014" stroke-width="1.500"/></g>`:''}</svg>`;
 function coHtml(){
   const p=co.p, x=chosen(p), opt=(act,v,cur,t,s,c)=>`<button data-act="${act}" data-v="${v}" aria-pressed="${cur===v}" class="co-o"><i></i><span class="min-w-0"><b>${t}</b><small>${s}</small></span>${c?`<em class="num">${c}</em>`:''}</button>`;
@@ -1372,8 +1372,8 @@ function coHtml(){
   </div></section>
   <section class="co-c"><header><span class="co-n">2</span><h2>Empaque y tarjeta</h2><p>Se envuelve para regalo y va una tarjeta con tu mensaje.</p></header>
     <div class="co-pk"><div class="co-bx" id="coBox">${BOX(co.wrap)}</div><div class="min-w-0 flex-1"><div class="co-g">
-      ${opt('cowrap','1',co.wrap?'1':'0','Para regalo','Envuelto, con cinta y tarjeta','$1.000')}
-      ${opt('cowrap','0',co.wrap?'1':'0','Sin envolver','Llega en su empaque original','$0')}
+      ${opt('cowrap','1',co.wrap?'1':'0','Para regalo','Envuelto, con cinta y tarjeta','Incluido')}
+      ${opt('cowrap','0',co.wrap?'1':'0','Sin envolver','Llega en su empaque original')}
     </div>${co.wrap?`<label class="co-m"><span>Mensaje de la tarjeta <em>lo escribí por ti, cámbialo si quieres</em></span><textarea id="coMsg" maxlength="140" rows="2">${esc(co.msg)}</textarea><small id="coMc" class="num">${co.msg.length}/140</small></label>`:''}</div></div></section>
   <section class="co-c"><header><span class="co-n">3</span><h2>Pago</h2></header><div class="co-g">
     ${opt('copay','card',co.pay,'Visa terminada en 4242','Tu tarjeta guardada')}
@@ -1385,7 +1385,7 @@ function receipt(){
   return `<aside id="apTicket" class="tk rc"><div class="rc-h" style="background-image:linear-gradient(150deg,${grad(p)})"><span class="tk-d rc-d num">${o.getDate()}<small>${MES[o.getMonth()]}<br>${WD[o.getDay()]}</small></span></div>
    <div class="tk-b flex flex-1 flex-col"><h2>${esc(p.n)}</h2>
     <button data-act="sheet" data-h="${x.h}" class="rc-p"><span>${img(x.u,'')}</span><span class="min-w-0"><b>${esc(x.t)}</b><small>${esc(x.v)} · Ver detalle</small></span></button>
-    <dl class="rc-t">${line('Regalo',clp(x.p))}${co.wrap?line('Para regalo',clp(1000)):''}${line(co.ship==='retiro'?'Retiro':'Despacho RM',ship?clp(ship):'$0')}<div class="rc-l rc-tot"><dt>Total</dt><dd class="num" id="rcTot">${clp(T)}</dd></div></dl>
+    <dl class="rc-t">${line('Regalo',clp(x.p))}${co.wrap?line('Para regalo','Incluido'):''}${line(co.ship==='retiro'?'Retiro':'Despacho RM',ship?clp(ship):'$0')}<div class="rc-l rc-tot"><dt>Total</dt><dd class="num" id="rcTot">${clp(T)}</dd></div></dl>
     ${p.n==='Amigo secreto'?`<p class="rc-ok">El regalo cuesta ${clp(x.p)}: queda dentro del tope de $15.000.</p>`:''}
     <div class="mt-auto pt-4"><button data-act="pay" class="pl-cta rc-cta" ${co.paying?'disabled':''}>${co.paying?'Confirmando con tu banco…':co.pay==='card'?`Pagar ${clp(T)}`:`Confirmar por ${clp(T)}`}</button>
     <p class="rc-f">Cambios hasta 90 días con boleta. Compra hecha en Creado en Chile.</p></div></div></aside>`;
@@ -1631,7 +1631,7 @@ function viewConfig(){
      + row('Correo','Si tampoco respondes por WhatsApp.',sw('mail',cfg.mail,'Insistir por correo')))
   + box('cf-env','Envío','Adónde mando los regalos.',
      `<label class="block py-3.5"><span class="text-[14.5px] font-medium">Dirección</span><input id="cfAddr" value="${esc(cfg.addr)}" class="ap-i mt-1.5"></label>`
-     + row('Para regalo por defecto','Envuelto y con tarjeta, $1.000. Lo hace Creado en Santiago, Ñuñoa, La Reina, Vitacura, Las Condes, Lo Barnechea y Providencia.',sw('wrap',cfg.wrap,'Para regalo por defecto')))
+     + row('Para regalo por defecto','Envuelto y con tarjeta, incluido en cada compra.',sw('wrap',cfg.wrap,'Para regalo por defecto')))
   + box('cf-pay','Pago','Lo que uso cuando apruebas.',`<div class="py-3.5"><div class="co-g">${[['card','Visa terminada en 4242','Tu tarjeta guardada'],['transfer','Transferencia','Te dejo los datos por correo']].map(([v,t,s])=>`<button data-act="cfpay" data-v="${v}" aria-pressed="${cfg.pay===v}" class="co-o"><i></i><span><b>${t}</b><small>${s}</small></span></button>`).join('')}</div></div>`)
   + box('cf-acc','Mi perfil','Tu nombre en la app.',
      `<label class="block py-3.5"><span class="text-[14.5px] font-medium">Nombre</span><input id="cfName" value="${esc(cfg.name)}" class="ap-i mt-1.5"></label>`)
