@@ -257,22 +257,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
   .sc-f .shrink-0,.sc-f .pl-cta{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.st-dot{animation:none}.st-cut{transition:none}}
-/* vivo */
 #apMain{position:relative;z-index:1}
-#apWave{position:fixed;left:0;right:0;bottom:0;width:100%;height:230px;z-index:0;pointer-events:none}
-.ap-live{display:none;align-items:center;gap:8px;font-size:12px;font-weight:500;color:#5f6b7d;margin-right:6px}
-@media(min-width:1180px){.ap-live{display:inline-flex}}
-.ap-live>span:last-child{display:inline-block;white-space:nowrap}
-.lb{display:inline-flex;align-items:center;gap:2px;height:14px}
-.lb i{display:block;width:2px;height:100%;border-radius:1px;background:#ff5924;transform:scaleY(.3);animation:lb 1.5s infinite ease-in-out}
-.lb i:nth-child(2){animation-delay:.2s}.lb i:nth-child(3){animation-delay:.4s}.lb i:nth-child(4){animation-delay:.6s}
-.busy .lb i{animation-duration:.6s}
-@keyframes lb{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
-.live-dot{display:inline-block;flex:none;width:8px;height:8px;border-radius:50%;background:#ff5924;animation:ld 2.2s infinite}
-@keyframes ld{0%{box-shadow:0 0 0 0 rgba(255,89,36,.45)}70%,100%{box-shadow:0 0 0 8px rgba(255,89,36,0)}}
-#apAv{position:relative}
-#apAv::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(255,89,36,.5);animation:avr 3.4s infinite ease-out}
-@keyframes avr{0%{transform:scale(.92);opacity:.9}70%,100%{transform:scale(1.22);opacity:0}}
 /* tarjeta */
 .tk{max-height:none;min-height:0}
 .tk-art{flex:1 1 224px;min-height:190px;background-size:170% 170%;animation:tkg 11s ease-in-out infinite alternate}
@@ -389,68 +374,80 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .tr [data-s=now] b{font-weight:700}
 .tr [data-s=todo] b{color:#5f6b7d}
 .tr small{display:block;margin-top:1px;font-size:12.5px;color:#5f6b7d}
-/* personas */
-.pp-hh{align-items:flex-end;justify-content:space-between;padding-bottom:20px}
-.pp-s{display:flex;align-items:center;gap:8px;width:260px;border-radius:999px;background:#fff;padding:9px 15px;color:#5f6b7d;box-shadow:0 0 0 1px #e5eaf2}
-.pp-s input{width:100%;background:none;font-size:14px;color:#0e1014;outline:none}
-.pp{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:28px;align-items:start}
-.pe-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
-.pe{position:relative;display:block;width:100%;overflow:hidden;border-radius:22px;background:#fff;text-align:left;box-shadow:0 0 0 1px rgba(229,234,242,.9);transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s}
-.pe:hover{transform:translateY(-3px);box-shadow:0 0 0 1px #e5eaf2,0 22px 30px -22px rgba(15,23,42,.5)}
-.pe[aria-pressed=true]{box-shadow:0 0 0 2.5px #0e1014}
-.pt{display:block;width:100%;height:auto}
-.pe .pt{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.pe:hover .pt{transform:scale(1.05)}
-.pe-q{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ff5924;font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:#fff;animation:ld 2.2s infinite}
-.pe-b{display:block;padding:11px 13px 13px}
-.pe-b b{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.02em}
-.pe-b small{display:block;font-size:12.5px;color:#5f6b7d}
-.pe-k{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11.5px;color:#5f6b7d;white-space:nowrap}
-.pe-p{flex:1;height:3px;overflow:hidden;border-radius:2px;background:#e5eaf2}
-.pe-p em{display:block;height:100%;background:#ff5924}
-.pp-sub{margin:26px 0 12px;font-size:13px;font-weight:600}
-.pn{scroll-margin-top:70px;position:sticky;top:68px;max-height:calc(100vh - 84px);overflow:auto;border-radius:26px;background:#fff;padding:22px;box-shadow:0 0 0 1px rgba(229,234,242,.9),0 34px 50px -34px rgba(15,23,42,.38)}
-.pn-h{display:flex;align-items:center;gap:14px}
-.pn-pt{flex:none;width:84px;height:84px;border-radius:24px}
-.pn-h h2{font-family:'Newsreader',serif;font-weight:400;font-size:32px;line-height:1.05;letter-spacing:-.025em}
-.pn-h p{font-size:13.5px;color:#5f6b7d}
-.pn-d{margin-top:2px;font-size:12.5px!important;color:#0e1014!important;font-weight:500}
-.pn-q{margin-top:14px;border-radius:16px;background:#0e1014;padding:13px 14px;font-size:14px;color:#fff}
-.pn-q p{display:flex;align-items:center;gap:9px;margin-bottom:9px;line-height:1.3}
+.pn-l{display:flex;flex-direction:column}
+.pn-l li{display:flex;align-items:center}
+.pn-l button{flex:none;width:24px;height:24px;border-radius:50%;font-size:16px;line-height:1;opacity:0;transition:opacity .15s,background .15s}
+.pn-l li:hover button,.pn-l button:focus-visible{opacity:1}
+.pn-a{display:flex;gap:6px;border-radius:999px;padding:4px 4px 4px 14px}
+.pn-a input{min-width:0;flex:1;background:none;font-size:13.5px;outline:none}
+.pn-a button{flex:none;border-radius:50%;font-size:17px;line-height:1;color:#fff}
+.pn-g{display:flex;align-items:center;gap:10px;text-align:left}
+.pn-g>span:first-child{flex:none;overflow:hidden;background:#f5f7f9}
+.pn-g img{width:100%;height:100%;object-fit:cover}
 .pn-q button{border-radius:999px;background:rgba(255,255,255,.14);padding:5px 12px;font-size:12.5px;font-weight:600;transition:background .15s,color .15s}
 .pn-q button:hover{background:#fff;color:#0e1014}
-.pn-t{margin:18px 0 8px;font-size:12.5px;font-weight:600;color:#5f6b7d}
-.pn-l{display:flex;flex-direction:column;gap:9px}
-.pn-l li{display:flex;align-items:center;gap:10px;font-size:14.5px;line-height:1.25}
-.pn-l small{display:block;font-size:11.5px;color:#5f6b7d}
-.pn-l button{flex:none;width:24px;height:24px;border-radius:50%;font-size:16px;line-height:1;color:#aab2bf;opacity:0;transition:opacity .15s,background .15s,color .15s}
-.pn-l li:hover button,.pn-l button:focus-visible{opacity:1}
-.pn-l button:hover{background:#f5f7f9;color:#0e1014}
-.pn-a{display:flex;gap:6px;margin-top:11px;border-radius:999px;background:#f5f7f9;padding:4px 4px 4px 14px}
-.pn-a input{min-width:0;flex:1;background:none;font-size:13.5px;outline:none}
-.pn-a button{flex:none;width:30px;height:30px;border-radius:50%;background:#0e1014;font-size:17px;line-height:1;color:#fff}
-.pn-g{display:flex;align-items:center;gap:12px;width:100%;border-radius:16px;padding:8px;text-align:left;box-shadow:inset 0 0 0 1px #e5eaf2;transition:background .15s}
-.pn-g:hover{background:#fafbfc}
-.pn-g>span:first-child{flex:none;width:56px;height:56px;overflow:hidden;border-radius:11px;background:#f5f7f9}
-.pn-g img{width:100%;height:100%;object-fit:cover}
-.pn-g b{display:block;font-size:14px;font-weight:600;line-height:1.2}
-.pn-g small{display:block;margin-top:2px;font-size:12px;color:#5f6b7d}
 .pl-idea button{display:block;aspect-ratio:1;overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 0 0 1px #e5eaf2;transition:transform .18s}
 .pl-idea button:hover{transform:translateY(-3px)}
-@media(max-width:1100px){.pp{grid-template-columns:minmax(0,1fr)}.pn{position:static;max-height:none}}
 @media(max-width:1023px){.sh-w{grid-template-columns:minmax(0,1fr);grid-template-rows:none;height:auto;max-height:calc(100vh - 48px);overflow:auto}.sh-main{height:320px;flex:none}.sh-b{overflow:visible}.pl-co .pl-r{position:static;order:1}.tk-art{flex:none;height:190px}}
 @media(max-width:560px){
   #apSheet{padding:0;place-items:end stretch}
   .sh-w{max-height:92vh;border-radius:24px 24px 0 0}.sh-main{height:260px}.sh-b{padding:22px 20px 26px}
   .tk-art{flex:none;min-height:0;height:132px}.tk-d{font-size:76px;bottom:6px}.tk-d small{padding-bottom:8px}
   .tk-r li:nth-child(n+3){display:none}
-  .pe-g{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pp-hh{align-items:stretch;flex-direction:column}.pp-s{width:100%}
   .co-pk{flex-direction:column}.co-bx{width:120px}
   .od{grid-template-columns:minmax(0,1fr)}.od-r{border-left:0;border-top:1px solid #e5eaf2}
-  .pn-l button{opacity:1}
 }
-@media(prefers-reduced-motion:reduce){.tk-art,.rc-h,.lb i,.live-dot,.tk-wave i,#apAv::after,.pe-q,.tr [data-s=now] i{animation:none}}
+@media(prefers-reduced-motion:reduce){.tk-art,.rc-h,.tk-wave i,.tr [data-s=now] i{animation:none}}
+/* onda viva */
+.ap-live{display:inline-flex;align-items:center;gap:9px;height:36px;margin-right:6px;border-radius:999px;background:#0e1014;padding:0 8px;font-size:12.5px;font-weight:500;color:#fff;box-shadow:0 8px 16px -8px rgba(14,16,20,.55);transition:box-shadow .3s}
+.ap-live.busy{box-shadow:0 0 0 3px rgba(255,89,36,.28),0 8px 18px -6px rgba(255,89,36,.6)}
+#apOrb{display:block;flex:none;width:52px;height:28px;transition:width .4s cubic-bezier(.2,.8,.2,1)}
+.busy #apOrb{width:76px}
+.ap-live>span{display:none;padding-right:7px;white-space:nowrap}
+@media(min-width:1180px){.ap-live>span{display:inline-block}}
+.bl{transform-box:fill-box;transform-origin:center;animation:blink 5.200s infinite}
+.pe:nth-child(3n) .bl{animation-delay:1.400s}.pe:nth-child(3n+1) .bl{animation-delay:3.100s}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+/* tu gente */
+.pg{display:grid;grid-template-columns:minmax(330px,392px) minmax(0,1fr);gap:32px;align-items:start;padding:10px 0 22px}
+.pg-l{position:sticky;top:68px}
+.pg-h{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(52px,5.4vw,78px);line-height:.95;letter-spacing:-.04em}
+.pg-s{margin-top:9px;font-size:14.5px;line-height:1.35;color:#39414e}
+.pe-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.pe{position:relative;display:block;aspect-ratio:1;overflow:hidden;border-radius:9px;text-align:left;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.pt{display:block;width:100%;height:auto}
+.pe .pt{transition:transform .35s cubic-bezier(.3,1.5,.5,1);transform-origin:50% 100%}
+.pe:hover{z-index:2;transform:scale(1.03) rotate(-1deg)}
+.pe:hover .pt{transform:translateY(-6px) scale(1.05)}
+.pe::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 0 #1f2421;transition:box-shadow .15s}
+.pe[aria-pressed=true]::after{box-shadow:inset 0 0 0 4px #1f2421}
+.pe-n{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;border-radius:7px;background:#1f2421;padding:3px 9px;font-size:13.5px;font-weight:600;color:#fff}
+.pe-q{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#ff5924;font-family:'Newsreader',serif;font-style:normal;font-size:17px;color:#fff;box-shadow:0 0 0 2.5px #1f2421;animation:none}
+.pn{position:static;max-height:none;overflow:visible;margin-top:14px;border-radius:0;background:none;padding:0;box-shadow:none}
+.pn-c{border-radius:16px;background:var(--pc);padding:16px 18px 15px;color:#1f2421;box-shadow:0 0 0 2.5px #1f2421}
+.pn-c h2{font-family:'Newsreader',serif;font-weight:500;font-size:34px;line-height:1;letter-spacing:-.03em}
+.pn-r{margin-top:3px;font-size:13px}
+.pn-d{margin-top:7px;font-size:13px}
+.pn-d b{margin-right:5px;border-radius:6px;background:#1f2421;padding:2px 7px;font-weight:600;color:#fff}
+.pn-c h3{margin:13px 0 7px;font-size:12px;font-weight:700;letter-spacing:.02em}
+.pn-c .src{width:24px;height:24px;border-radius:7px;background:#fff;color:#1f2421;box-shadow:0 0 0 1.5px #1f2421}
+.pn-c .pn-l{gap:6px}
+.pn-c .pn-l li{font-size:14px;gap:9px;line-height:1.2}
+.pn-c .pn-l button{color:#1f2421}
+.pn-c .pn-l button:hover{background:rgba(31,36,33,.12);color:#1f2421}
+.pn-q{margin-top:11px;border-radius:12px;background:#1f2421;padding:11px 12px;font-size:13.5px;color:#fff}
+.pn-q p{display:block;margin-bottom:8px}
+.pn-c .pn-a{margin-top:10px;background:#fff;box-shadow:0 0 0 1.5px #1f2421}
+.pn-c .pn-a button{width:26px;height:26px;background:#1f2421}
+.pn-f{display:flex;gap:8px;margin-top:9px}
+.pn-f .pn-g{flex:1;min-width:0;border-radius:14px;background:#fff;padding:6px;box-shadow:0 0 0 2.5px #1f2421}
+.pn-f .pn-g>span:first-child{width:42px;height:42px;border-radius:9px}
+.pn-f .pn-g small{display:block;margin:0;font-size:11px;color:#5f6b7d}
+.pn-f .pn-g b{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px}
+.pn-go{flex:none;align-self:stretch;padding:0 15px;font-size:13px;box-shadow:none}
+@media(max-width:1100px){.pg{grid-template-columns:minmax(0,1fr);gap:0}.pg-l{display:contents}.pe-g{order:1;margin-top:16px;grid-template-columns:repeat(3,minmax(0,1fr))}.pn{order:2;margin-top:16px;scroll-margin-top:70px}}
+@media(max-width:560px){.pe-g{grid-template-columns:repeat(2,minmax(0,1fr))}.pn-c .pn-l button{opacity:1}.pn-f{flex-direction:column}.pn-go{padding:12px 15px}}
+@media(prefers-reduced-motion:reduce){.bl{animation:none}.pe,.pe .pt{transition:none}}
 .ask-card{box-shadow:0 0 0 2px #ff5924,0 0 0 6px rgba(255,89,36,.18),0 30px 40px -22px rgba(15,23,42,.55)!important}
 .card .new{position:absolute;left:12px;top:9px;background:#fff;color:#0e1014;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:99px;z-index:3}
 .hero-art .art::before{display:none}
@@ -589,14 +586,13 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
     <button data-act="home" class="font-serif text-[23px] font-medium tracking-[-0.03em] justify-self-start">Cuenta conmigo<span class="text-brand">.</span></button>
     <nav id="apTabs" class="ap-tabs" aria-label="Secciones"></nav>
     <div class="relative flex items-center justify-self-end gap-2">
-      <span id="apLive" class="ap-live" aria-live="off"><span class="lb" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="apLiveT">Calendario al día</span></span>
+      <span id="apLive" class="ap-live" aria-live="off"><canvas id="apOrb" aria-hidden="true"></canvas><span id="apLiveT">Calendario al día</span></span>
       <button id="apBell" data-act="pop" data-pop="bell" aria-label="Novedades" aria-expanded="false" class="ap-ic relative"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg><i id="apBellDot" class="absolute right-2 top-2 size-2 rounded-full bg-brand ring-2 ring-fog"></i></button>
       <button id="apAv" data-act="pop" data-pop="user" aria-label="Menú de tu cuenta" aria-expanded="false" class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white transition hover:bg-brand"></button>
       <div id="popBell" class="ap-pop hidden w-[340px]"></div>
       <div id="popUser" class="ap-pop hidden w-[260px]"></div>
     </div>
   </header>
-  <canvas id="apWave" aria-hidden="true"></canvas>
   <div id="apSheet" class="hidden"></div>
   <button id="apNotif" aria-label="Abrir la notificación"></button>
   <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
@@ -963,7 +959,7 @@ const REL = {'Mamá':'Tu mamá','Andrés':'Tu hermano','Carla':'Por confirmar','
 const LEARN = {
  'Mamá':[['Le gusta leer antes de dormir','mail'],['Guarda las historias de la familia','mail'],['Una vela del año pasado le encantó','gift']],
  'Andrés':[['Anda en bici a todos lados','cal'],['Ya tiene botella, le falta mochila','mail']],
- 'Carla':[['Lee antes de dormir','mail'],['Es tu contacto más frecuente de mayo','con']],
+ 'Carla':[['Lee antes de dormir','mail'],['Le escribes seguido','con']],
  'Papá':[['Toma café todas las mañanas','mail'],['Le regalaste una botella en junio','gift']],
  'Abuela Rosa':[['Siempre tiene frío en invierno','mail'],['Prefiere regalos para la casa','gift']],
  'Sofi y Nico':[['Se casan el 22 de agosto','cal'],['Están armando su casa','mail']],
@@ -995,48 +991,60 @@ const SRC_ICON = {
 };
 const srcI = k => `<i class="src src-${k}" title="${SRC_L[k]}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SRC_ICON[k]}</svg></i>`;
 
-/* ---------- Retratos: dibujados, cada persona distinta ---------- */
-function face(x,y,s,o){
-  const {skin='#f2c9a5',hair='#2e241f',top='#e5553c',st='short'}=o;
-  const H={
-   short:`<path d="M36 56c-2-22 10-33 24-33s26 11 24 33c-5-11-13-16-24-16s-19 5-24 16Z" fill="${hair}"/>`,
-   curly:`<g fill="${hair}"><circle cx="40" cy="42" r="10"/><circle cx="50" cy="31" r="11"/><circle cx="65" cy="29" r="12"/><circle cx="78" cy="38" r="11"/><circle cx="84" cy="52" r="8"/><circle cx="36" cy="55" r="7"/></g>`,
-   long:`<path d="M60 40c-12 0-20 7-23 17 7-3 15-6 23-17Zm0 0c6 9 15 14 23 17-2-10-11-17-23-17Z" fill="${hair}"/>`,
-   bun:`<circle cx="60" cy="20" r="10" fill="${hair}"/><path d="M37 54c-1-20 10-30 23-30s24 10 23 30c-6-10-13-15-23-15s-17 5-23 15Z" fill="${hair}"/>`,
-   bob:`<path d="M60 38c-10 2-18 8-23 18 10 0 18-6 23-18Zm0 0c5 11 13 17 23 18-4-10-13-16-23-18Z" fill="${hair}"/>`,
-   bald:`<path d="M36 58c-3-5-2-11 1-14l3 12ZM84 58c3-5 2-11-1-14l-3 12Z" fill="${hair}"/>`,
-   baby:`<path d="M60 32c-4-8 4-12 8-8" fill="none" stroke="${hair}" stroke-width="3.500" stroke-linecap="round"/>`,
-   helmet:`<path d="M32 50c2-20 15-29 28-29s26 9 28 29Z" fill="${o.hat||'#2c44d6'}"/><path d="M44 28l-3 15M60 22v17M76 28l3 15" stroke="#fff" stroke-width="3"/><path d="M38 56c0 10 4 16 8 20M82 56c0 10-4 16-8 20" fill="none" stroke="#0e1014" stroke-width="2"/>`,
-   hat:`<path d="M26 44c14-6 54-6 68 0-6 5-62 5-68 0Z" fill="${o.hat||'#3f7d57'}"/><path d="M40 42c0-16 10-22 20-22s20 6 20 22Z" fill="${o.hat||'#3f7d57'}"/>`,
-  };
-  const back = st==='long'?`<path d="M32 56c0-24 13-34 28-34s28 10 28 34v42H32Z" fill="${hair}"/>`:st==='bob'?`<path d="M33 54c0-22 13-32 27-32s27 10 27 32v24H33Z" fill="${hair}"/>`:'';
-  return `<g transform="translate(${x} ${y}) scale(${s})">${back}
-   <path d="M16 124c3-23 20-34 44-34s41 11 44 34Z" fill="${top}"/><rect x="51" y="74" width="18" height="22" rx="8" fill="${skin}"/>
-   <ellipse cx="60" cy="58" rx="24" ry="26" fill="${skin}"/>${H[st]||''}
-   <circle cx="51" cy="58" r="2.400" fill="#0e1014"/><circle cx="69" cy="58" r="2.400" fill="#0e1014"/>
-   <path d="M53 ${o.sm||71}c4 4 10 4 14 0" fill="none" stroke="#0e1014" stroke-width="2" stroke-linecap="round"/>
-   ${o.beard?`<path d="M37 62c0 18 10 26 23 26s23-8 23-26c-4 7-8 8-13 7-6-2-14-2-20 0-5 1-9 0-13-7Z" fill="${o.beard}"/><path d="M53 71c4 3 10 3 14 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`:''}
-   ${o.mus?`<path d="M48 67c5-3 9-3 12 0 3-3 7-3 12 0-5 4-9 3-12 1-3 2-7 3-12-1Z" fill="${o.mus}"/>`:''}
-   ${o.gl?`<g fill="none" stroke="${o.gl}" stroke-width="2.200"><circle cx="50" cy="58" r="7.500"/><circle cx="70" cy="58" r="7.500"/><path d="M57.500 58h5"/></g>`:''}
-   ${o.ear?`<circle cx="35.500" cy="66" r="2.800" fill="${o.ear}"/><circle cx="84.500" cy="66" r="2.800" fill="${o.ear}"/>`:''}
-   ${o.scarf?`<path d="M38 90c12 8 32 8 44 0l5 9c-16 9-38 9-54 0Z" fill="${o.scarf}"/>`:''}
-  </g>`;
-}
+/* ---------- Personajes: uno por persona, nacen de lo que el sistema sabe ---------- */
+const INK='#1f2421', C={coral:'#ee7a50',green:'#8dc67f',yellow:'#f8ee6a',white:'#fffdf8',pink:'#f3b3a8',blue:'#a9c8f5',lilac:'#cdb8f2'};
+const eye=(x,y,r=4)=>`<ellipse class="bl" cx="${x}" cy="${y}" rx="${r}" ry="${r*1.35}" fill="${INK}" stroke="none"/>`;
 const PORT = {
- 'Mamá':{bg:'#ffd9a8',d:()=>face(0,0,1,{st:'curly',hair:'#5a3524',skin:'#eebd96',top:'#3f7d57',ear:'#ff5924'})},
- 'Andrés':{bg:'#bfe6dc',d:()=>face(0,0,1,{st:'helmet',skin:'#f2c9a5',top:'#14897a',hat:'#ff5924'})},
- 'Carla':{bg:'#ffc4d6',d:()=>face(0,0,1,{st:'long',hair:'#23252b',skin:'#d9a27c',top:'#ffffff',gl:'#0e1014'})},
- 'Papá':{bg:'#c5d4ff',d:()=>face(0,0,1,{st:'short',hair:'#7a7f88',skin:'#eebd96',top:'#2c44d6',mus:'#7a7f88',gl:'#0e1014'})},
- 'Abuela Rosa':{bg:'#ffe99b',d:()=>face(0,0,1,{st:'bun',hair:'#e4e6ea',skin:'#f4d3b6',top:'#a58bff',gl:'#a25a2c',scarf:'#ff7a4a'})},
- 'Sofi y Nico':{bg:'#ffd0b8',d:()=>face(-18,10,.84,{st:'bob',hair:'#a44a25',top:'#fff'})+face(46,4,.9,{st:'short',hair:'#20242a',skin:'#c98f66',top:'#0e1014',beard:'#20242a'})},
- 'Pareja':{bg:'#dccbff',d:()=>face(0,0,1,{st:'short',hair:'#7a3f24',skin:'#e7b48c',top:'#ff5924'})+'<path d="M92 26c-8-7-14 1-10 6l10 9 10-9c4-5-2-13-10-6Z" fill="#e5553c"/>'},
- 'Tío Jorge':{bg:'#d9e7a8',d:()=>face(0,0,1,{st:'hat',skin:'#e7b48c',top:'#a25a2c',beard:'#ece7dd',hat:'#3f7d57'})},
- 'Emilia':{bg:'#cfe5ff',d:()=>face(10,16,.82,{st:'baby',hair:'#7a3f24',skin:'#fbdcc4',top:'#fff06a',sm:70})},
- 'Familia Soto':{bg:'#e2d6f7',d:()=>face(-26,16,.74,{st:'long',hair:'#3a2a20',top:'#14897a'})+face(50,8,.8,{st:'short',hair:'#3a2a20',skin:'#d9a27c',top:'#2c44d6'})+face(21,58,.5,{st:'baby',skin:'#fbdcc4',top:'#fff'})},
- 'Amigo secreto':{bg:'#e2ea8a',d:()=>'<path d="M16 124c3-23 20-34 44-34s41 11 44 34Z" fill="#0e1014"/><ellipse cx="60" cy="56" rx="25" ry="27" fill="#0e1014"/><text x="60" y="70" text-anchor="middle" font-family="Newsreader,serif" font-size="40" fill="#e2ea8a">?</text>'},
- 'Navidad':{bg:'#bfe3cd',d:()=>'<path d="M60 12 24 62h16L18 96h84L80 62h16Z" fill="#0f4a35"/><rect x="52" y="96" width="16" height="16" fill="#a25a2c"/><g fill="#ff5924"><circle cx="48" cy="60" r="4"/><circle cx="72" cy="74" r="4"/><circle cx="44" cy="84" r="4"/></g><path d="M60 3l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z" fill="#ffd84d"/>'},
+ 'Abuela Rosa':{bg:C.pink,d:`<path d="M42 210c2-46 26-78 58-78s56 32 58 78Z" fill="${C.white}"/>
+   <circle cx="100" cy="30" r="17" fill="${C.white}"/><ellipse cx="100" cy="88" rx="46" ry="50" fill="${C.white}"/><path d="M56 78c10-30 78-30 88 0-20-14-68-14-88 0Z" fill="${C.lilac}"/>
+   <circle cx="82" cy="92" r="13" fill="${C.yellow}"/><circle cx="118" cy="92" r="13" fill="${C.yellow}"/><path d="M95 92h10"/>${eye(82,92)}${eye(118,92)}<path d="M92 116c5 5 11 5 16 0" fill="none"/>
+   <path d="M44 132c30 20 82 20 112 0l10 26c-40 22-92 22-132 0Z" fill="${C.coral}"/><path d="M128 150l6 56 26-8-12-54Z" fill="${C.coral}"/><path d="M136 168l16-5M140 184l16-5"/>`},
+ 'Andrés':{bg:C.green,d:`<circle class="wh" cx="52" cy="166" r="26" fill="${C.white}"/><circle class="wh" cx="150" cy="166" r="26" fill="${C.white}"/><path class="wh" d="M52 140v52M26 166h52" /><path class="wh" d="M150 140v52M124 166h52"/>
+   <path d="M52 166l38-48h46l14 48M90 118l16 48h44M136 118l-6-16h20" fill="none"/>
+   <path d="M76 124c-4-28 6-56 28-56s34 24 30 56c-18 10-40 10-58 0Z" fill="${C.yellow}"/><path class="wv" d="M122 90c14 6 22 10 28 12" fill="none"/>
+   <ellipse cx="108" cy="50" rx="31" ry="30" fill="${C.white}"/>${eye(100,52)}${eye(120,52)}<path d="M104 66c5 4 10 4 14 0" fill="none"/>
+   <path d="M74 44c2-30 66-34 70-2-22-8-48-8-70 2Z" fill="${C.coral}"/><path d="M92 25l-4 12M110 21v12M128 25l3 12"/>`},
+ 'Carla':{bg:C.yellow,d:`<path d="M44 210c-6-90 4-180 56-180s62 90 56 180Z" fill="${INK}"/><ellipse cx="100" cy="88" rx="38" ry="42" fill="${C.pink}"/>
+   ${eye(86,86)}${eye(114,86)}<path d="M72 68c8-5 16-5 22 0M106 68c8-5 16-5 22 0" fill="none"/>
+   <path d="M36 112l64 14 64-14v72l-64 16-64-16Z" fill="${C.white}"/><path d="M100 126v74"/><path d="M50 132l34 8M50 148l34 8M116 140l34-8M116 156l34-8"/>
+   <circle cx="38" cy="152" r="10" fill="${C.pink}"/><circle cx="162" cy="152" r="10" fill="${C.pink}"/>`},
+ 'Emilia':{bg:C.white,d:`<path d="M58 210c0-30 18-52 42-52s42 22 42 52Z" fill="${C.yellow}"/><circle cx="100" cy="100" r="60" fill="${C.pink}"/>
+   <path d="M100 40c-12-22 16-34 22-16 3 10-10 12-12 4" fill="none"/>${eye(78,98,5)}${eye(122,98,5)}
+   <circle cx="100" cy="124" r="11" fill="${C.coral}"/><circle cx="100" cy="124" r="3" fill="${INK}" stroke="none"/><path d="M60 118c6 4 12 4 16 0M124 118c6 4 12 4 16 0" fill="none" stroke-width="3"/>
+   <path class="wv" d="M144 172c12-8 18-20 20-30" fill="none"/><circle class="wv" cx="166" cy="134" r="9" fill="${C.pink}"/>`},
+ 'Familia Soto':{bg:C.coral,d:`<path d="M6 210c0-52 12-104 50-104s50 52 50 104Z" fill="${C.yellow}"/><path d="M94 210c0-58 12-120 50-120s50 62 50 120Z" fill="${C.white}"/>
+   ${eye(44,132)}${eye(68,132)}<path d="M48 148c5 4 11 4 16 0" fill="none"/>${eye(132,118)}${eye(156,118)}<path d="M136 134c5 4 11 4 16 0" fill="none"/>
+   <path d="M24 112c8-24 54-24 62 0-20-10-42-10-62 0ZM112 96c8-24 54-24 62 0-20-10-42-10-62 0Z" fill="${INK}"/>
+   <path d="M64 210c0-34 16-54 36-54s36 20 36 54Z" fill="${C.pink}"/><circle cx="100" cy="146" r="28" fill="${C.pink}"/>${eye(90,146,3.200)}${eye(110,146,3.200)}<path d="M95 158c3 3 7 3 10 0M100 118c-5-10 7-14 9-7" fill="none"/>`},
+ 'Mamá':{bg:C.lilac,d:`<path d="M48 210c2-44 24-72 52-72s50 28 52 72Z" fill="${C.green}"/>
+   <path d="M44 110c-26-8-26-46 2-52-4-28 36-42 52-22 16-20 56-6 52 22 28 6 28 44 2 52-4 14-104 14-108 0Z" fill="${C.yellow}"/><ellipse cx="100" cy="104" rx="36" ry="38" fill="${C.white}"/>
+   ${eye(86,102)}${eye(114,102)}<path d="M90 122c6 6 14 6 20 0" fill="none"/><circle cx="62" cy="122" r="6" fill="${C.coral}"/><circle cx="138" cy="122" r="6" fill="${C.coral}"/>
+   <path d="M64 176l36 10 36-10v30H64Z" fill="${C.white}"/><path d="M100 186v20"/>`},
+ 'Papá':{bg:C.white,d:`<path d="M34 210c0-52 28-92 66-92s66 40 66 92Z" fill="${C.coral}"/><ellipse cx="96" cy="78" rx="44" ry="48" fill="${C.yellow}"/>
+   <path d="M52 66c0-44 88-44 88 0-14-16-30-20-44-20s-30 4-44 20Z" fill="${INK}"/>${eye(80,76)}${eye(112,76)}
+   <path d="M66 100c10-12 22-12 30-2 8-10 20-10 30 2-12 8-22 4-30-2-8 6-18 10-30 2Z" fill="${INK}"/>
+   <path class="wv" d="M140 146l12 16 22-12" fill="none"/><path d="M136 162h46v36a8 8 0 0 1-8 8h-30a8 8 0 0 1-8-8Z" fill="${C.white}"/><path d="M182 172c12 0 12 22 0 22" fill="none"/>
+   <path class="st1" d="M150 148c-6-8 6-12 0-20M168 148c-6-8 6-12 0-20" fill="none" stroke-width="3.500"/>`},
+ 'Pareja':{bg:C.yellow,d:`<path d="M26 210c0-72 10-138 46-138s46 66 46 138Z" fill="${C.coral}"/><path d="M84 210c0-72 10-138 46-138s46 66 46 138Z" fill="${C.pink}"/>
+   ${eye(58,108)}${eye(80,108)}<path d="M62 124c5 4 10 4 14 0" fill="none"/>${eye(122,108)}${eye(144,108)}<path d="M126 124c5 4 10 4 14 0" fill="none"/>
+   <path d="M38 168c20 18 44 18 62 2 18 16 42 16 62-2" fill="none"/>
+   <path class="ht" d="M100 58C84 40 66 52 74 68c4 8 16 16 26 24 10-8 22-16 26-24 8-16-10-28-26-10Z" fill="${C.white}"/>`},
+ 'Sofi y Nico':{bg:C.blue,d:`<path d="M12 210c0-60 16-112 46-112s46 52 46 112Z" fill="${C.white}"/><path d="M96 210c0-60 16-112 46-112s46 52 46 112Z" fill="${INK}"/>
+   <path d="M20 130C4 90 22 56 58 56s54 34 38 74c-10-34-66-34-76 0Z" fill="${C.white}"/><circle cx="58" cy="60" r="12" fill="${C.yellow}"/>
+   ${eye(46,124)}${eye(70,124)}<path d="M50 140c5 4 11 4 16 0" fill="none"/><ellipse cx="142" cy="114" rx="30" ry="32" fill="${C.green}"/>${eye(131,112)}${eye(153,112)}<path d="M136 128c4 4 8 4 12 0" fill="none"/>
+   <path d="M118 88V38h48v50Z" fill="${INK}"/><path d="M104 90h76" stroke-width="7"/><path d="M118 74h48" stroke="${C.coral}" stroke-width="6"/><path d="M128 158l14 8 14-8v16l-14-8-14 8Z" fill="${C.coral}"/>`},
+ 'Tío Jorge':{bg:C.green,d:`<path d="M34 210c0-44 28-74 66-74s66 30 66 74Z" fill="${C.white}"/><path d="M96 146v64"/>
+   <ellipse cx="96" cy="100" rx="42" ry="42" fill="${C.pink}"/><path d="M58 70c-24-6-24-36 2-38 4-24 58-26 66-2 26 0 28 32 6 40Z" fill="${C.white}"/><path d="M60 70h72"/>
+   ${eye(82,98)}${eye(110,98)}<path d="M60 118c8 30 64 30 72 0-10 6-22 2-36-4-14 6-26 10-36 4Z" fill="${INK}"/>
+   <path class="wv" d="M150 150c10-14 16-28 18-44" fill="none"/><path class="wv" d="M156 84h26v26h-26Z" fill="${C.yellow}"/>`},
+ 'Amigo secreto':{bg:C.coral,d:`<path d="M30 210c0-90 26-178 70-178s70 88 70 178Z" fill="${INK}"/><ellipse cx="100" cy="96" rx="34" ry="38" fill="${C.yellow}"/>
+   <path d="M66 90h68v8c0 10-8 16-16 16-9 0-14-6-18-12-4 6-9 12-18 12-8 0-16-6-16-16Z" fill="${INK}"/><path d="M90 122c6 4 14 4 20 0" fill="none"/>
+   <path class="gf" d="M66 150h68v52H66Z" fill="${C.white}"/><path class="gf" d="M100 150v52M66 172h68"/><path class="gf" d="M100 150c-12-16-26-10-20-2 4 4 12 4 20 2Zm0 0c12-16 26-10 20-2-4 4-12 4-20 2Z" fill="${C.pink}"/>`},
+ 'Navidad':{bg:C.white,d:`<path d="M100 18 54 76h20l-36 48h26l-36 50h144l-36-50h26l-36-48h20Z" fill="${C.green}"/><path d="M84 174v30M116 174v30"/>
+   ${eye(84,116,5)}${eye(116,116,5)}<path d="M90 136c6 6 14 6 20 0" fill="none"/><circle class="ht" cx="66" cy="152" r="7" fill="${C.coral}"/><circle class="ht" cx="136" cy="152" r="7" fill="${C.yellow}"/><circle class="ht" cx="100" cy="72" r="7" fill="${C.coral}"/>
+   <path class="ht" d="M100 2l5 11 12 2-9 8 2 12-10-6-10 6 2-12-9-8 12-2Z" fill="${C.yellow}"/>`},
 };
-const portrait = (n,cls='') => { const x=PORT[n]; return `<svg class="pt ${cls}" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" fill="${x?x.bg:'#e5eaf2'}"/>${x?x.d():''}</svg>`; };
+const portrait = (n,cls='') => { const x=PORT[n]; return `<svg class="pt ${cls}" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="${x?x.bg:'#e5eaf2'}"/><g fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">${x?x.d:''}</g></svg>`; };
 const SHARED = ['Amigo secreto','Navidad'];
 
 /* ---------- App: Mi planner, Personas, Configuración ---------- */
@@ -1346,35 +1354,30 @@ function viewPlanner(){
 }
 function bindCo(){ const m=$('coMsg'); if(m) m.oninput=()=>{ co.msg=m.value; $('coMc').textContent=m.value.length+'/140'; }; }
 
-/* ---------- Centro de personas ---------- */
-let personSel=null, personQ='';
+/* ---------- Tu gente: mosaico de personajes ---------- */
+let personSel=null;
 function personTile(p){
-  const k=knows(p).length, q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]);
-  return `<button data-act="person" data-i="${idx(p)}" data-name="${esc(p.n.toLowerCase())}" aria-pressed="${p===personSel}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}<span class="pe-b"><b>${esc(p.n)}</b><small>${esc(REL[p.n]||p.o)}</small><span class="pe-k"><span class="pe-p"><em style="width:${Math.min(100,k*25)}%"></em></span>${k} ${k===1?'cosa':'cosas'}</span></span></button>`;
+  const q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]);
+  return `<button data-act="person" data-i="${idx(p)}" aria-pressed="${p===personSel}" aria-label="${esc(p.n)}, ${esc(REL[p.n]||p.o)}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}<span class="pe-n">${esc(p.n)}</span></button>`;
 }
 function personPanel(p){
-  const k=knows(p), q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]), c=chosen(p), ph=phase(p), lbl=ph==='bought'?'Compré':ph==='now'?'Regalo listo para aprobar':'Mi idea hasta ahora';
-  return `<div class="pn-h">${portrait(p.n,'pn-pt')}<div class="min-w-0"><h2>${esc(p.n)}</h2><p>${esc(REL[p.n]||p.o)}</p><p class="pn-d">${esc(p.o)} · ${fdate(occ(p))} · ${days(dleft(p))}</p></div></div>
-  ${q?`<div class="pn-q"><p><span class="live-dot"></span>Una duda: ${q.q}</p><div class="flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}">${a}</button>`).join('')}</div></div>`:''}
-  <h3 class="pn-t">Lo que he aprendido</h3>
-  <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}<small>${SRC_L[s]}</small></span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li class="text-[#5f6b7d]">Todavía estoy aprendiendo.</li>'}</ul>
-  <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
-  <h3 class="pn-t">${lbl}</h3>
-  <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
-  <button data-act="focus" data-i="${idx(p)}" class="pl-sec mt-4 w-full">Ver en mi planner</button>`;
+  const k=knows(p), q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]), c=chosen(p), ph=phase(p), lbl=ph==='bought'?'Compré':ph==='now'?'Regalo listo':'Mi idea', bg=(PORT[p.n]||{}).bg||'#fff';
+  return `<div class="pn-c" style="--pc:${bg}"><h2>${esc(p.n)}</h2><p class="pn-r">${esc(REL[p.n]||p.o)} · ${esc(p.o)}</p><p class="pn-d num"><b>${occ(p).getDate()} ${MES[occ(p).getMonth()].toLowerCase()}</b> ${days(dleft(p))}</p>
+   ${q?`<div class="pn-q"><p>${q.q}</p><div class="flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}">${a}</button>`).join('')}</div></div>`:''}
+   <h3>Lo que aprendí</h3>
+   <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}</span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li>Todavía estoy aprendiendo.</li>'}</ul>
+   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo más" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form></div>
+  <div class="pn-f"><button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0"><small>${lbl}</small><b>${esc(c.t)}</b></span></button><button data-act="focus" data-i="${idx(p)}" class="pl-cta pn-go" aria-label="Ver ${esc(p.n)} en mi planner">Ver en mi planner</button></div>`;
 }
 function viewPersonas(){
   const v=yr(), ppl=v.filter(p=>!SHARED.includes(p.n)).sort((a,b)=>a.n.localeCompare(b.n,'es')), sh=v.filter(p=>SHARED.includes(p.n)), tot=ppl.reduce((n,p)=>n+knows(p).length,0);
   if(!personSel||!v.includes(personSel)) personSel=[...v].filter(p=>!SHARED.includes(p.n)&&phase(p)==='later').sort(byDate)[0]||v[0];
-  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Tu gente.</h1><p class="mt-1 flex items-center gap-2 text-[14px] text-[#5f6b7d]"><span class="live-dot"></span>He aprendido ${tot} cosas de ${ppl.length} personas, y sigo aprendiendo.</p></div>
-    <label class="pp-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="ppQ" value="${esc(personQ)}" placeholder="Buscar por nombre" aria-label="Buscar por nombre"></label></header>
-  <div class="pp"><div class="min-w-0"><div id="ppG" class="pe-g">${ppl.map(personTile).join('')}</div>
-    ${sh.length?`<h2 class="pp-sub">También sigo estas fechas</h2><div class="pe-g pe-g2">${sh.map(personTile).join('')}</div>`:''}</div>
-    <aside id="ppPanel" class="pn">${personPanel(personSel)}</aside></div>`;
-  const qi=$('ppQ'); const filt=()=>{ personQ=qi.value; const s=personQ.trim().toLowerCase(); document.querySelectorAll('.pe').forEach(b=>b.style.display=b.dataset.name.includes(s)?'':'none'); }; qi.oninput=filt; filt();
+  $('apMain').innerHTML=`<div class="pg"><div class="pg-l"><h1 class="pg-h">Tu gente.</h1><p class="pg-s">${ppl.length} personas, ${tot} cosas aprendidas. Las encontré yo y las sigo conociendo.</p><aside id="ppPanel" class="pn">${personPanel(personSel)}</aside></div>
+   <div id="ppG" class="pe-g">${[...ppl,...sh].map(personTile).join('')}</div></div>`;
   bindPanel();
+  if(!REDUCE) gsap.from('#ppG .pe',{scale:.9,opacity:0,duration:.45,stagger:{each:.035,from:'random'},ease:'back.out(1.5)',clearProps:'all'});
 }
-function bindPanel(){ const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault(); const t=$('pnFact').value.trim(); if(!t) return; (learned[personSel.n]=learned[personSel.n]||[]).push(t); ytoast(`Anotado. Lo uso para el próximo regalo de ${personSel.n}.`); render(); }; }
+function bindPanel(){ const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault(); const t=$('pnFact').value.trim(); if(!t) return; (learned[personSel.n]=learned[personSel.n]||[]).push(t); ytoast(`Anotado. Lo uso para el próximo regalo de ${personSel.n}.`); $('ppPanel').innerHTML=personPanel(personSel); bindPanel(); }; }
 
 /* Configuración */
 const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
@@ -1406,26 +1409,29 @@ function viewConfig(){
   $('cfName').onchange=e=>{ cfg.name=e.target.value||cfg.name; renderChrome(); ytoast('Nombre guardado.'); };
 }
 
-/* ---------- El asistente está vivo: ondas y estado ---------- */
-const wave={e:.22}; let waveOn=false, liveI=0, liveLock=false;
+/* ---------- El asistente está vivo: una onda chica y llamativa ---------- */
+const wave={e:.34}; let waveOn=false, liveI=0, liveLock=false;
 const LIVE=['Leyendo tu calendario','Revisando tu correo','Aprendiendo de Mamá','Mirando stock de Navidad','Calendario al día','Pensando en Andrés'];
-function setLive(t,busy){ const el=$('apLiveT'); if(!el) return; liveLock=!!busy; el.textContent=t; if(!REDUCE) gsap.fromTo(el,{y:6,opacity:0},{y:0,opacity:1,duration:.35}); gsap.to(wave,{e:busy?1:.22,duration:busy?.7:1.6,ease:'sine.inOut'}); $('apLive').classList.toggle('busy',!!busy); }
+function setLive(t,busy){ const el=$('apLiveT'); if(!el) return; liveLock=!!busy; el.textContent=t; if(!REDUCE) gsap.fromTo(el,{y:6,opacity:0},{y:0,opacity:1,duration:.35}); gsap.to(wave,{e:busy?1:.34,duration:busy?.6:1.4,ease:'sine.inOut'}); $('apLive').classList.toggle('busy',!!busy); }
 function waveLoop(){
-  const c=$('apWave'); if(!c) return; const x=c.getContext('2d'); let t=0;
+  const c=$('apOrb'); if(!c) return; const x=c.getContext('2d'); let t=0;
+  const COL=[['#ff5924',.0],['#ff3d8b',1.3],['#ffd23d',2.4],['#27d9a6',3.6],['#5b7cff',4.7]];
   const draw=()=>{
-    const y=$('year'); if(y.style.display!=='block'){ waveOn=false; return; }
+    if($('year').style.display!=='block'){ waveOn=false; return; }
     const W=c.clientWidth,H=c.clientHeight,dp=Math.min(devicePixelRatio||1,2); if(c.width!==W*dp||c.height!==H*dp){ c.width=W*dp; c.height=H*dp; }
-    x.setTransform(dp,0,0,dp,0,0); x.clearRect(0,0,W,H);
-    [['rgba(255,89,36,',.34,.0031,1.1,.62],['rgba(116,130,151,',.22,.0044,-.8,.7],['rgba(255,89,36,',.14,.0058,.6,.8],['rgba(116,130,151,',.12,.0024,.5,.54]].forEach(([col,al,f,sp,base],n)=>{
-      x.beginPath();
-      for(let i=0;i<=W;i+=6){ const yy=H*base+Math.sin(i*f+t*sp+n*1.7)*(10+26*wave.e)+Math.sin(i*f*2.3-t*sp*.7+n)*(4+12*wave.e); i?x.lineTo(i,yy):x.moveTo(i,yy); }
-      x.strokeStyle=col+(al*(.65+wave.e*.8))+')'; x.lineWidth=1.4; x.stroke();
+    x.setTransform(dp,0,0,dp,0,0); x.clearRect(0,0,W,H); x.globalCompositeOperation='lighter';
+    COL.forEach(([col,ph],n)=>{
+      const A=H*.5*(.62+.38*wave.e)*(.7+.3*Math.sin(t*1.3+ph)), f=(.8+n*.2)*Math.PI*2/W, sp=1.5+n*.22;
+      const y=(i,s)=>{ const v=Math.pow(Math.sin(Math.PI*i/W),1.5); return H/2+s*A*v*Math.abs(Math.sin(i*f+t*sp+ph))+s*.5; };
+      x.beginPath(); for(let i=0;i<=W;i+=1.500) i?x.lineTo(i,y(i,-1)):x.moveTo(i,y(i,-1)); for(let i=W;i>=0;i-=1.500) x.lineTo(i,y(i,1)); x.closePath();
+      x.fillStyle=col; x.globalAlpha=.62; x.fill();
     });
-    t+=.012+.03*wave.e; if(!REDUCE) requestAnimationFrame(draw); else waveOn=false;
+    x.globalAlpha=1; x.globalCompositeOperation='source-over';
+    t+=.018+.05*wave.e; if(!REDUCE) requestAnimationFrame(draw); else waveOn=false;
   };
   if(!waveOn){ waveOn=true; draw(); }
 }
-setInterval(()=>{ if($('year').style.display==='block'&&!liveLock&&!document.hidden&&tab!==null){ liveI=(liveI+1)%LIVE.length; setLive(LIVE[liveI]); } },5200);
+setInterval(()=>{ const y=$('year'); if(y&&y.style.display==='block'&&!liveLock&&!document.hidden){ liveI=(liveI+1)%LIVE.length; setLive(LIVE[liveI]); } },5200);
 
 function renderChrome(){
   const now=yr().filter(p=>phase(p)==='now').length;
@@ -1466,7 +1472,7 @@ $('year').addEventListener('click',e=>{
   else if(a==='cowrap'){ co.wrap=b.dataset.v==='1'; render(); if(co.wrap&&!REDUCE){ gsap.from('#coBox .bx-r',{scaleX:0,transformOrigin:'50% 50%',duration:.4,stagger:.1}); gsap.from('#coBox .bx-b',{scale:0,transformOrigin:'50% 100%',duration:.5,delay:.3,ease:'back.out(2.4)'}); gsap.from('#coBox .bx-t',{y:-10,opacity:0,duration:.4,delay:.5}); } }
   else if(a==='copay'){ co.pay=b.dataset.v; render(); }
   else if(a==='pay'){ pay(); }
-  else if(a==='person'){ personSel=p; document.querySelectorAll('.pe').forEach(e=>e.setAttribute('aria-pressed',YEAR[+e.dataset.i]===p)); $('ppPanel').innerHTML=personPanel(p); bindPanel(); if(innerWidth<=1100) $('ppPanel').scrollIntoView({block:'start',behavior:REDUCE?'auto':'smooth'}); if(!REDUCE) gsap.from('#ppPanel > *',{y:8,opacity:0,duration:.3,stagger:.03,clearProps:'all'}); }
+  else if(a==='person'){ personSel=p; document.querySelectorAll('.pe').forEach(e=>e.setAttribute('aria-pressed',YEAR[+e.dataset.i]===p)); if(!REDUCE) gsap.fromTo(b.querySelector('.pt'),{y:0,rotation:0},{keyframes:[{y:-14,rotation:-3,duration:.16,ease:'power2.out'},{y:0,rotation:2,duration:.22,ease:'bounce.out'},{rotation:0,duration:.12}],transformOrigin:'50% 100%',clearProps:'transform'}); $('ppPanel').innerHTML=personPanel(p); bindPanel(); if(innerWidth<=1100) $('ppPanel').scrollIntoView({block:'start',behavior:REDUCE?'auto':'smooth'}); if(!REDUCE) gsap.from('#ppPanel > *',{y:8,opacity:0,duration:.3,stagger:.03,clearProps:'all'}); }
   else if(a==='forget'){ const f=b.dataset.f; if(b.dataset.s==='you') learned[p.n]=(learned[p.n]||[]).filter(x=>x!==f); else removedFact[p.n+'|'+f]=1; ytoast('Listo, lo olvido.'); render(); }
   else if(a==='ask'){
     const q=yfocus, arr=items(q).map((o,i)=>({o,i})), k=b.dataset.k, pk=k==='eco'?[...arr].sort((x,y)=>x.o.p-y.o.p)[0]:k==='orig'?arr[2]:arr[1];
