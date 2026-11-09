@@ -466,26 +466,23 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
   <!-- navbar -->
   <nav class="relative z-20 flex items-center justify-between px-6 py-5 lg:px-14">
     <span class="font-serif text-[26px] font-medium tracking-[-0.04em]">Cuenta conmigo<span class="text-brand">.</span></span>
-    <button id="navgo" class="rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_-8px_rgba(0,0,0,.6),inset_0_1px_0_rgba(255,255,255,.2)] transition hover:bg-brand">Conectar calendario</button>
   </nav>
 
   <!-- hero único -->
   <section class="relative z-10 grid min-h-0 items-center px-6 pb-10 lg:grid-cols-[1.05fr_1fr] lg:px-14 max-lg:grid-rows-[auto_1fr]">
     <div class="max-w-[660px]">
-      <p id="eyebrow" class="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[.16em] text-slate2"><span class="h-px w-9 bg-steel"></span>Tu asistente de regalos</p>
       <h1 id="h1" class="font-serif font-normal leading-[.86] tracking-[-0.06em] text-black" style="font-size:min(11vw,20vh)">
         <span class="block overflow-hidden pb-[.08em] pt-[.1em] -mt-[.1em]"><span id="w1" class="block">Regalos</span></span>
         <span class="block overflow-hidden pb-[.12em] pt-[.04em]"><span class="relative inline-block"><em id="w2" class="block italic text-brand">resueltos.</em>
           <svg viewBox="0 0 300 20" preserveAspectRatio="none" class="absolute -bottom-[.02em] left-0 h-[.2em] w-full overflow-visible" aria-hidden="true"><path id="ul" d="M4 12 C 60 2, 110 18, 160 9 S 250 4, 296 11" fill="none" stroke="#ff5924" stroke-width="5" stroke-linecap="round"/></svg></span></span>
       </h1>
-      <p id="sub" class="mt-7 max-w-[480px] text-xl leading-relaxed text-gray-600">Conecta tu calendario y <span class="font-semibold text-black">yo me acuerdo por ti</span>: a quién le regalas, cuándo, y te dejo la propuesta lista antes de la fecha.</p>
+      <p id="sub" class="mt-7 max-w-[480px] text-xl leading-relaxed text-gray-600">Yo leo tu calendario, detecto cada fecha importante y elijo el regalo justo para cada persona, con semanas de anticipación. <span class="font-semibold text-black">Tú solo apruebas.</span></p>
       <div id="ctaw" class="mt-9 inline-block drop-shadow-[0_14px_16px_rgba(15,23,42,.3)]">
         <button id="connect" class="ticket inline-flex items-center gap-3 bg-black px-9 py-[19px] text-[17px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand">
           <svg class="size-[22px]" viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 9.5h18M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           Conectar Google Calendar
         </button>
       </div>
-      <p id="micro" class="mt-6 max-w-[420px] text-xs leading-relaxed text-slate2">Después te sigo avisando yo, con tiempo para elegir y recibir.</p>
     </div>
     <div id="garland" class="relative h-full min-h-[300px] overflow-visible">
       <div id="canvas" class="absolute left-1/2 top-1/2" style="width:720px;height:640px;margin:-320px 0 0 -360px">
@@ -721,11 +718,10 @@ function intro(){
   const s1 = SplitText.create('#w1',{type:'chars'}), s2 = SplitText.create('#w2',{type:'chars'}); window.__chars=[...s1.chars,...s2.chars];
   const tl = gsap.timeline({defaults:{ease:'expo.out'}});
   tl.from('nav',{y:-24,opacity:0,duration:.7})
-    .from('#eyebrow',{opacity:0,x:-16,duration:.6},'-=.4')
     .from(s1.chars,{yPercent:115,rotate:8,duration:1,stagger:.035},'-=.3')
     .from(s2.chars,{yPercent:115,rotate:-8,duration:1,stagger:.035},'-=.85')
     .from('#ul',{drawSVG:0,duration:.8,ease:'power2.inOut'},'-=.5')
-    .from(['#sub','#ctaw','#micro'],{opacity:0,y:18,duration:.7,stagger:.09},'-=.7')
+    .from(['#sub','#ctaw'],{opacity:0,y:18,duration:.7,stagger:.09},'-=.7')
     .from('#phone',{y:90,opacity:0,scale:.94,duration:1.2,ease:'expo.out'},'-=1.2')
     .from(fls(),{scale:.55,opacity:0,y:'+=40',duration:1,stagger:{each:.09,from:'random'},ease:'back.out(1.8)',clearProps:'scale,opacity',onComplete(){float();initHover();}},'-=.8')
     .add(notifs,'-=.6');
@@ -1527,7 +1523,7 @@ function openYear(t='planner'){
 function closeYear(){ thinkRun++; $('year').style.display='none'; document.body.classList.remove('in-app'); history.replaceState(null,'',location.pathname); }
 
 function closeSync(){ $('sync').style.display='none'; }
-['connect','navgo'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
+['connect'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();runSync();}));
 $('enter').onclick = () => openYear();
 addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('year').style.display==='block'){ closeSheet(); closePops(); } else closeSync(); } });
 
