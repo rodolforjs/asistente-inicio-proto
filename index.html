@@ -432,7 +432,8 @@ body.in-app .ob-kb{display:flex}
 .mr-sg{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-top:20px}.mr-sg i{height:4px;border-radius:2px;background:#e5eaf2}.mr-sg i[data-s=done]{background:#0e1014}.mr-sg i[data-s=now]{background:#ff5924}
 .mr-m{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;margin-top:18px;border-top:1px solid #eef1f5;padding-top:14px}
 .mr-m dt{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9aa3b2}.mr-m dd{margin-top:3px;font-size:13px;line-height:1.35;color:#39414e}
-.mr-bt{align-self:flex-start;margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:4px}
+.mr-ac{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:16px}.mr-cx{font-size:12.5px;font-weight:600;color:#9aa3b2}.mr-cx:hover{color:#c63f12}.mr-ok{margin-top:auto;padding-top:16px;font-size:13px;font-weight:500;color:#0b6b48}.mr-pill.ok{background:#d8f5e9;color:#0b6b48}.mr-pill.ok i{background:#10b981;animation:none}
+.mr-bt{align-self:flex-start;padding-top:0;font-size:14px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:4px}
 .mr-bt:hover{text-decoration-color:#0e1014}
 @media(max-width:620px){.mr{grid-template-columns:minmax(0,1fr)}.mr-ph{height:200px}.mr-g{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:1023px){.dh,.dt{grid-template-columns:minmax(0,1fr)}.dt::before{display:none}.dt li{margin-bottom:8px}}
@@ -592,6 +593,16 @@ body.in-app .ob-kb{display:flex}
 .pn-q p{display:flex;align-items:center;gap:9px;margin-bottom:9px;line-height:1.3}
 .pn-q button{border-radius:999px;background:rgba(255,255,255,.14);padding:5px 12px;font-size:12.5px;font-weight:600;transition:background .15s,color .15s}
 .pn-q button:hover{background:#fff;color:#0e1014}
+.ap-pop:has(.ac-h){width:380px!important;padding:0}
+.ac-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 8px}.ac-h p{font-size:14px;font-weight:600}.ac-h p b{margin-left:4px;border-radius:999px;background:#ff5924;padding:1px 7px;font-size:11.5px;color:#fff}
+.ac-h button{font-size:12px;font-weight:600;color:#5f6b7d}.ac-h button:hover{color:#0e1014}
+.ac-l{max-height:400px;overflow:auto;padding:0 6px 6px}.ac-g{padding:10px 10px 4px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9aa3b2}
+.ac-i{display:flex;align-items:flex-start;gap:11px;width:100%;border-radius:14px;padding:9px 10px;text-align:left;transition:background .15s}.ac-i:hover{background:#f5f7f9}
+.ac-ic{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
+.ac-i b{display:block;font-size:13.5px;font-weight:600;line-height:1.3}.ac-i small{display:block;margin-top:1px;font-size:12px;line-height:1.35;color:#5f6b7d}
+.ac-u{flex:none;width:8px;height:8px;margin-top:6px;border-radius:50%;background:#ff5924}
+.ac-f{border-top:1px solid #eef1f5;padding:6px}.ac-f button{width:100%;border-radius:12px;padding:9px;font-size:12.5px;font-weight:600;color:#5f6b7d}.ac-f button:hover{background:#f5f7f9;color:#0e1014}
+.pn-hint{margin-top:7px;font-size:12px;color:#748297}
 .pn-t{margin:18px 0 8px;font-size:12.5px;font-weight:600;color:#5f6b7d}
 .pn-l{display:flex;flex-direction:column;gap:9px}
 .pn-l li{display:flex;align-items:center;gap:10px;font-size:14.5px;line-height:1.25}
@@ -780,7 +791,7 @@ body.in-app .ob-kb{display:flex}
       <span id="apLive" class="ap-live" aria-live="off"><canvas id="apOrb" aria-hidden="true"></canvas><span id="apLiveT">Calendario al día</span></span>
       <button id="apBell" data-act="pop" data-pop="bell" aria-label="Novedades" aria-expanded="false" class="ap-ic relative"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg><i id="apBellDot" class="absolute right-2 top-2 size-2 rounded-full bg-brand ring-2 ring-fog"></i></button>
       <button id="apAv" data-act="pop" data-pop="user" aria-label="Menú de tu cuenta" aria-expanded="false" class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white transition hover:bg-brand"></button>
-      <div id="popBell" class="ap-pop hidden w-[340px]"></div>
+      <div id="popBell" class="ap-pop hidden"></div>
       <div id="popUser" class="ap-pop hidden w-[260px]"></div>
     </div>
   </header>
@@ -1245,12 +1256,13 @@ const ICONS = {
   regalos:'<path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-3-5-3-5-1s3 1 5 1zm0 0c2-3 5-3 5-1s-3 1-5 1z"/>',
   config:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'
 };
-const TABS = [['planner','Mi planner'],['regalos','Mis regalos'],['personas','Personas'],['config','Configuración']];
+const TABS = [['planner','Mi planner'],['regalos','Pedidos'],['personas','Personas'],['config','Configuración']];
 const CAL_OF = {'Amigo secreto':'Trabajo','Mamá':'Familia','Papá':'Familia','Abuela Rosa':'Familia','Navidad':'Familia','Tío Jorge':'Familia','Emilia':'Familia','Familia Soto':'Familia'};
 const BUDGET = {'Amigo secreto':15000};
 const READ = {'Amigo secreto':'Leí la invitación de tu calendario: sorteo de la oficina, tope de $15.000.'};
 const OPT = {'libreta-picaflor-1':'Mi favorita. Se ve cuidada y le sirve a cualquiera.','tazon-alerce':'La más económica, y se usa todos los días en la oficina.','tabla-tolten':'La más distinta, si quieres sorprender.'};
 const cfg = {name:'Rodolfo Rojas',mode:'delego',pay:'card',cals:{Personal:true,Familia:true,Trabajo:true},wa:true,mail:true,wrap:true,addr:'Av. Providencia 1234, depto. 56, Santiago'};
+let pedido=null, mrTab='curso', routeQuiet=false, actId=10;
 let tab='planner', dash=false, autoFocus=true, bellSeen=false, thinkRun=0, hold=false, doubtDone=false;
 const thought={};
 
@@ -1541,13 +1553,7 @@ addEventListener('resize',()=>{ if($('scStage')&&yfocus) gsap.set('#scPano',{x:s
 
 function leftOther(p){
   const ph=phase(p), back=autoFocus&&p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver al inicio</button>';
-  if(ph==='bought'){
-    const nx=after(p), x=chosen(p), od=p.order||(p.order={no:'CC-48107',ship:'directo',wrap:true,pay:'card',msg:'Bienvenida a la familia, Emilia.'}), place=destOf(p,od.ship);
-    return `${back}<h1 class="pl-h">Listo. Ya no tienes que pensar en esto.</h1>
-    <div class="od"><div class="od-l">${trackerHtml(p)}</div>
-      <div class="od-r"><div class="od-bx">${od.wrap?BOX(true):img(x.u,'')}</div><p class="od-no num">Pedido ${od.no}</p><p class="text-[15px] font-semibold leading-snug">${esc(x.t)}</p><p class="od-t">${esc(place)}</p>${od.wrap&&od.msg?`<p class="od-msg">“${esc(od.msg)}”</p>`:''}</div></div>
-    <div class="mt-5 flex flex-wrap items-center justify-between gap-3"><p class="text-[14px] text-[#39414e]">${nx?`Yo sigo con ${esc(nx.n)}. Te aviso el ${fdate(avisoD(nx))}.`:'Yo sigo atento a tu calendario.'}</p>${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="pl-sec">Cancelar compra</button>`:''}</div>`;
-  }
+  if(ph==='bought') return `${back}<h1 class="pl-h">Así va tu pedido.</h1>${orderBlock(p)}`;
   const its=items(p), f=facts(p).filter(x=>x!==p.o);
   return `${back}<h1 class="pl-h pl-h-lg">${p===defaultFocus()?`Hoy no te necesito, ${esc(firstName())}.`:`${esc(p.n)} todavía no te necesita.`}</h1>
     <p class="pl-lead">Te aviso el ${fdate(avisoD(p))}. Mientras, voy pensando${f.length?` con lo que ya sé: ${f.map(x=>esc(x).toLowerCase()).join(', ')}`:''}.</p>
@@ -1557,6 +1563,7 @@ function leftOther(p){
 function viewPlanner(){
   if(autoFocus || !yfocus || !yr().includes(yfocus)) yfocus=defaultFocus();
   thinkRun++;
+  if(!dash&&yfocus&&phase(yfocus)==='bought'&&!co){ tab='regalos'; pedido=yfocus; render(); return; }
   if(dash&&yfocus&&!co){ yfocus=defaultFocus(); viewHome(); return; }
   const p=yfocus;
   if(!p){ $('apMain').innerHTML=`<div class="pl-empty"><h1 class="pl-h pl-h-lg">Ahora no leo ningún calendario.</h1><p class="pl-lead">Activa uno y vuelvo a seguir tus fechas.</p><button data-act="tab" data-t="config" class="pl-cta mt-5">Ir a Configuración</button></div>`; return; }
@@ -1586,19 +1593,43 @@ function viewHome(){
     <aside class="pl-r">${ticket(yfocus)}</aside></div>`;
   animateTicket();
 }
+const DELIVERED=[
+  {n:'Mamá',o:'Cumpleaños',d:new Date(2026,2,14),h:'mama-cual-es-tu-historia',no:'CC-46920',a:'Los Aromos 455, Ñuñoa',on:'Entregado el 12 mar'},
+  {n:'Papá',o:'Día del Padre',d:new Date(2026,5,21),h:'botella-termica-oceano',no:'CC-47311',a:'Los Aromos 455, Ñuñoa',on:'Entregado el 18 jun'}
+];
+function orderBlock(p){
+  const nx=after(p), x=chosen(p), od=ensureOrder(p), place=destOf(p,od.ship);
+  return `<div class="od"><div class="od-l">${trackerHtml(p)}</div>
+      <div class="od-r"><div class="od-bx">${od.wrap?BOX(true):img(x.u,'')}</div><p class="od-no num">Pedido ${od.no}</p><p class="text-[15px] font-semibold leading-snug">${esc(x.t)}</p><p class="od-t">${esc(place)}</p>${od.wrap&&od.msg?`<p class="od-msg">“${esc(od.msg)}”</p>`:''}</div></div>
+    <div class="mt-5 flex flex-wrap items-center justify-between gap-3"><p class="text-[14px] text-[#39414e]">${nx?`Yo sigo con ${esc(nx.n)}. Te aviso el ${fdate(avisoD(nx))}.`:'Yo sigo atento a tu calendario.'}</p>${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="pl-sec">Cancelar compra</button>`:''}</div>`;
+}
+function viewPedido(p){
+  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l"><button data-act="pedlist" class="pl-back">← Todos los pedidos</button><h1 class="pl-h">${p.justBought?'Listo. Ya no tienes que pensar en esto.':`Así va tu pedido para ${esc(p.n)}.`}</h1>${orderBlock(p)}</div><aside class="pl-r">${ticket(p)}</aside></div>`;
+  animateTicket();
+}
 function viewRegalos(){
-  const done=yr().filter(p=>phase(p)==='bought');
-  const card=p=>{ ensureOrder(p); const x=chosen(p), od=p.order, st=orderSteps(p), cur=st.findIndex(a=>a[0]==='now'), c2=cur<0?st.length-1:cur, fin=st.every(a=>a[0]==='done'),
-      segs=st.map((a,i)=>`<i data-s="${i<c2?'done':i===c2?(fin?'done':'now'):'todo'}"></i>`).join('');
+  if(pedido&&phase(pedido)==='bought'){ viewPedido(pedido); return; } pedido=null;
+  const cur=yr().filter(p=>phase(p)==='bought');
+  const segs=(c2,fin)=>Array.from({length:6},(_,i)=>`<i data-s="${fin||i<c2?'done':i===c2?'now':'todo'}"></i>`).join('');
+  const card=p=>{ ensureOrder(p); const x=chosen(p), od=p.order, st=orderSteps(p), c0=st.findIndex(a=>a[0]==='now'), c2=c0<0?st.length-1:c0, fin=st.every(a=>a[0]==='done');
     return `<article class="mr"><div class="mr-ph">${img(x.u,'')}</div><div class="mr-b">
       <div class="mr-top"><span class="mr-pill"><i></i>${esc(st[c2][1])}</span><span class="mr-eta">${esc(st[c2][2]||'')}</span></div>
       <p class="mr-o">${esc(p.o)} · ${fdate(occ(p))}</p><h2>${esc(p.n)}</h2>
       <p class="mr-t"><span>${esc(x.t)}</span><b class="num">${clp(x.p)}</b></p>
-      <div class="mr-sg" role="img" aria-label="Paso ${c2+1} de ${st.length}">${segs}</div>
+      <div class="mr-sg" role="img" aria-label="Paso ${c2+1} de ${st.length}">${segs(c2,fin)}</div>
       <dl class="mr-m"><div><dt>Entrega</dt><dd>${esc(destOf(p,od.ship))}</dd></div><div><dt>Pedido</dt><dd class="num">${od.no}</dd></div></dl>
-      <button data-act="focus" data-i="${idx(p)}" class="mr-bt">Ver seguimiento <span aria-hidden="true">→</span></button></div></article>`; };
-  $('apMain').innerHTML=`<header class="pp-h"><div><h1 class="pl-h">Mis regalos.</h1><p class="mt-1 text-[14px] text-[#5f6b7d]">Todo lo que compré por ti y en qué va cada uno.</p></div></header>
-  ${done.length?`<div class="mr-g">${done.map(card).join('')}</div>`:`<div class="pl-empty"><p class="pl-lead">Todavía no hay regalos comprados. Cuando apruebes uno, lo sigo desde aquí hasta que llegue.</p></div>`}`;
+      <div class="mr-ac"><button data-act="pedido" data-i="${idx(p)}" class="mr-bt">Ver seguimiento <span aria-hidden="true">→</span></button>${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="mr-cx">Cancelar compra</button>`:''}</div></div></article>`; };
+  const dcard=o=>{ const pr=PRODS[o.h]; return `<article class="mr"><div class="mr-ph"><img src="${pr[3]}" alt="" loading="lazy"></div><div class="mr-b">
+      <div class="mr-top"><span class="mr-pill ok"><i></i>Entregado</span><span class="mr-eta">${esc(o.on)}</span></div>
+      <p class="mr-o">${esc(o.o)} · ${fdate(o.d)}</p><h2>${esc(o.n)}</h2>
+      <p class="mr-t"><span>${esc(pr[0])}</span><b class="num">${clp(pr[2])}</b></p>
+      <div class="mr-sg" role="img" aria-label="Pedido entregado">${segs(6,true)}</div>
+      <dl class="mr-m"><div><dt>Entrega</dt><dd>${esc(o.a)}</dd></div><div><dt>Pedido</dt><dd class="num">${o.no}</dd></div></dl>
+      <p class="mr-ok">Llegó a tiempo para la fecha.</p></div></article>`; };
+  const list=mrTab==='curso'?cur:DELIVERED, empty=mrTab==='curso'?'No tienes pedidos en curso. Cuando apruebes un regalo, lo sigo desde aquí hasta que llegue.':'Aquí quedan los regalos que ya llegaron.';
+  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Pedidos.</h1><p class="mt-1 text-[14px] text-[#5f6b7d]">Todo lo que compré por ti y en qué va cada uno.</p></div>
+    <div class="ap-seg" role="group" aria-label="Estado de los pedidos"><button data-act="mrtab" data-v="curso" aria-pressed="${mrTab==='curso'}">En curso · ${cur.length}</button><button data-act="mrtab" data-v="entregados" aria-pressed="${mrTab==='entregados'}">Entregados · ${DELIVERED.length}</button></div></header>
+  ${list.length?`<div class="mr-g">${list.map(mrTab==='curso'?card:dcard).join('')}</div>`:`<div class="pl-empty"><p class="pl-lead">${empty}</p></div>`}`;
 }
 function bindCo(){ const m=$('coMsg'); if(m) m.oninput=()=>{ co.msg=m.value; $('coMc').textContent=m.value.length+'/140'; }; }
 
@@ -1615,6 +1646,9 @@ function personPanel(p){
   <h3 class="pn-t">Lo que he aprendido</h3>
   <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}<small>${SRC_L[s]}</small></span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li class="text-[#5f6b7d]">Todavía estoy aprendiendo.</li>'}</ul>
   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
+  <h3 class="pn-t">${SHARED.includes(p.n)?'Lugar de entrega':'Dónde le llegan los regalos'}</h3>
+  <form id="pnAddr" class="pn-a"><input id="pnAd" value="${esc(ADDR[p.n]||'')}" placeholder="${SHARED.includes(p.n)?'Dirección del lugar':'Agregar dirección'}" aria-label="Dirección de ${esc(p.n)}"><button aria-label="Guardar dirección">✓</button></form>
+  <p class="pn-hint">${ADDR[p.n]?'La uso al comprar. La puedes cambiar en cada compra.':'Sin dirección todavía. Te la pido cuando toque comprar.'}</p>
   <h3 class="pn-t">${lbl}</h3>
   <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
   <button data-act="focus" data-i="${idx(p)}" class="pl-sec mt-4 w-full">Ver en mi planner</button>`;
@@ -1630,7 +1664,7 @@ function viewPersonas(){
   const qi=$('ppQ'); const filt=()=>{ personQ=qi.value; const s=personQ.trim().toLowerCase(); document.querySelectorAll('.pe').forEach(b=>b.style.display=b.dataset.name.includes(s)?'':'none'); }; qi.oninput=filt; filt();
   bindPanel();
 }
-function bindPanel(){ const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault(); const t=$('pnFact').value.trim(); if(!t) return; (learned[personSel.n]=learned[personSel.n]||[]).push(t); ytoast(`Anotado. Lo uso para el próximo regalo de ${personSel.n}.`); render(); }; }
+function bindPanel(){ const fa=$('pnAddr'); if(fa) fa.onsubmit=e=>{ e.preventDefault(); const v=$('pnAd').value.trim(); if(v) ADDR[personSel.n]=v; else delete ADDR[personSel.n]; ytoast(v?`Guardé la dirección de ${personSel.n}.`:'Quité la dirección.'); $('ppPanel').innerHTML=personPanel(personSel); bindPanel(); }; const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault(); const t=$('pnFact').value.trim(); if(!t) return; (learned[personSel.n]=learned[personSel.n]||[]).push(t); ytoast(`Anotado. Lo uso para el próximo regalo de ${personSel.n}.`); render(); }; }
 
 /* Configuración */
 const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
@@ -1658,7 +1692,7 @@ function cxClose(){ $('cxm').classList.remove('on'); }
 async function cxConnect(k){
   const row=document.querySelector(`.cxm-i[data-k="${k}"]`), btn=row&&row.querySelector('button'); if(!btn||CX[k]||btn.dataset.busy) return;
   btn.dataset.busy='1'; btn.innerHTML='<span class="oc-sp"></span>Conectando';
-  await wait(REDUCE?0:1.1); cxSet(k,true); cxModal();
+  await wait(REDUCE?0:1.1); cxSet(k,true); addAct({k:'conn',t:`Conecté ${CONNS.find(c=>c.k===k).t}`,s:'Solo leo, nunca escribo',unread:false}); cxModal();
   const t=CONNS.find(c=>c.k===k); ytoast(`Listo, conecté ${t.t}.`);
   if(tab==='config') viewConfig();
 }
@@ -1711,20 +1745,58 @@ function waveLoop(){
 }
 setInterval(()=>{ const y=$('year'); if(y&&y.style.display==='block'&&!liveLock&&!document.hidden){ liveI=(liveI+1)%LIVE.length; setLive(LIVE[liveI]); } },5200);
 
+
+/* ---------- Bandeja de actividad ---------- */
+const ACT=[
+  {id:1,k:'think',t:'Pensé el regalo de Amigo secreto',s:'Tope de $15.000 · 3 finalistas',day:0,n:'Amigo secreto',unread:true},
+  {id:2,k:'new',t:'Vi un bautizo nuevo en tu calendario',s:'Familia Soto · 22 ago. Ya lo estoy siguiendo',day:0,n:'Familia Soto',unread:true},
+  {id:3,k:'ship',t:'Despaché el regalo de Emilia',s:'Llega mañana',day:1,n:'Emilia',unread:false},
+  {id:4,k:'read',t:'Leí tu calendario',s:'20 fechas de regalo encontradas',day:3,unread:false},
+  {id:5,k:'learn',t:'Aprendí algo de Mamá',s:'Le gustan los libros de recuerdos',day:4,n:'Mamá',unread:false},
+  {id:6,k:'conn',t:'Conecté Gmail',s:'Para leer invitaciones y topes',day:6,unread:false}
+];
+const ACT_I={think:['#ff5924','M12 3l1.800 5.200L19 10l-5.200 1.800L12 17l-1.800-5.200L5 10l5.200-1.800Z'],new:['#2c44d6','M4 6h16v14H4zM8 3v4M16 3v4M12 11v6M9 14h6'],ship:['#8a6500','M3 8l9-5 9 5v8l-9 5-9-5ZM3 8l9 5 9-5M12 13v8'],read:['#2c44d6','M4 6h16v14H4zM8 3v4M16 3v4M4 11h16'],learn:['#14704f','M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21c.6-4 3.500-6 8-6s7.400 2 8 6'],conn:['#6a4be0','M9 7V3M15 7V3M7 7h10v4a5 5 0 0 1-10 0ZM12 16v5'],buy:['#0b6b48','M5 12l4 4 10-10'],cancel:['#c63f12','M6 6l12 12M18 6 6 18']};
+const addAct=o=>{ ACT.unshift({id:++actId,day:0,unread:true,...o}); };
+const unreadN=()=>ACT.filter(a=>a.unread).length;
+function bellHtml(){
+  const g=[['Hoy',a=>a.day===0],['Ayer',a=>a.day===1],['Esta semana',a=>a.day>=2]], n=unreadN();
+  return `<div class="ac-h"><p>Actividad${n?` <b class="num">${n}</b>`:''}</p>${n?`<button data-act="actread">Marcar todo como leído</button>`:''}</div><div class="ac-l">${g.map(([t,f])=>{ const l=ACT.filter(f); return l.length?`<p class="ac-g">${t}</p>${l.map(a=>{ const [c,d]=ACT_I[a.k]||ACT_I.read; return `<button data-act="actgo" data-id="${a.id}" class="ac-i"><span class="ac-ic" style="--c:${c}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg></span><span class="min-w-0 flex-1"><b>${esc(a.t)}</b><small>${esc(a.s||'')}</small></span>${a.unread?'<i class="ac-u" aria-label="Sin leer"></i>':''}</button>`; }).join('')}`:''; }).join('')}</div><div class="ac-f"><button data-act="goto" data-a="cf-av">Cómo te aviso</button></div>`;
+}
 function renderChrome(){
   const now=yr().filter(p=>phase(p)==='now').length;
   $('apTabs').innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${k==='planner'&&now?`<em class="num">${now}</em>`:''}</button>`).join('');
   $('apAv').textContent=initial();
-  $('apBellDot').style.display=bellSeen?'none':'';
+  $('apBellDot').style.display=unreadN()?'':'none';
   $('popUser').innerHTML=`<div class="flex items-center gap-3 border-b border-mist p-3.5"><span class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">${initial()}</span><div class="min-w-0 leading-tight"><p class="truncate text-[14px] font-semibold">${esc(cfg.name)}</p><p class="mt-0.5 text-[12px] text-[#5f6b7d]">Google Calendar conectado</p></div></div>
   <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-mode','Cómo participas'],['cf-cal','Conectores'],['cf-av','Avisos'],['cf-env','Envío'],['cf-pay','Pago']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
-  const nw=YEAR.find(p=>p.n==='Familia Soto'), am=YEAR.find(p=>p.n==='Amigo secreto'), em=YEAR.find(p=>p.n==='Emilia');
-  $('popBell').innerHTML=`<p class="px-4 pb-1 pt-3.5 text-[13px] font-semibold">Lo último que hice</p><div class="p-1.5">${[[am,'Pensé el regalo de Amigo secreto','Hoy'],[nw,'Vi un bautizo nuevo en tu calendario','Familia Soto · 22 ago. Ya lo estoy siguiendo'],[em,'Despaché el regalo de Emilia','Llega mañana']].map(([p,t,s])=>`<button data-act="focus" data-i="${idx(p)}" class="ap-mi !block"><span class="block text-[13.5px] font-medium leading-snug">${t}</span><span class="block text-[12px] leading-snug text-[#5f6b7d]">${s}</span></button>`).join('')}</div>`;
+  $('popBell').innerHTML=bellHtml();
 }
-function render(){ renderChrome(); ({planner:viewPlanner,regalos:viewRegalos,personas:viewPersonas,config:viewConfig})[tab](); }
+function render(){ renderChrome(); ({planner:viewPlanner,regalos:viewRegalos,personas:viewPersonas,config:viewConfig})[tab](); syncHash(); }
+/* ---------- Rutas: cada pantalla tiene su dirección ---------- */
+const slug = n => n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const bySlug = x => YEAR.find(p=>slug(p.n)===x);
+function hashOf(){
+  if(tab==='planner'){ if(dash||!yfocus) return '#planner'; return '#fecha/'+slug(yfocus.n)+(co&&co.p===yfocus?'/compra':''); }
+  if(tab==='regalos') return pedido?'#pedidos/'+slug(pedido.n):'#pedidos';
+  return '#'+tab;
+}
+function syncHash(){ if(routeQuiet) return; const h=hashOf(); if(location.hash!==h) history.pushState(null,'',h); }
+function applyHash(h){
+  const m=String(h||'').replace(/^#/,'').split('/'); routeQuiet=true;
+  try{
+    if(m[0]==='fecha'&&bySlug(m[1])){ const q=bySlug(m[1]); tab='planner'; dash=false; yfocus=q; autoFocus=false; co=null; pedido=null; if(m[2]==='compra'&&phase(q)==='now') startCo(q); }
+    else if(m[0]==='pedidos'||m[0]==='regalos'){ tab='regalos'; const q=bySlug(m[1]||''); pedido=q&&phase(q)==='bought'?q:null; co=null; }
+    else if(m[0]==='personas'){ tab='personas'; co=null; }
+    else if(m[0]==='config'){ tab='config'; co=null; }
+    else { tab='planner'; dash=true; co=null; }
+    render();
+  } finally { routeQuiet=false; syncHash(); }
+}
+addEventListener('popstate',()=>{ if($('year').style.display!=='block') return; thinkRun++; closeSheet(); closePops(); applyHash(location.hash); $('year').scrollTop=0; });
+
 function closePops(){ ['popBell','popUser'].forEach(i=>$(i).classList.add('hidden')); ['apBell','apAv'].forEach(i=>$(i).setAttribute('aria-expanded','false')); }
-function setTab(t,anim=true){ if(liveLock&&!co) setLive('Calendario al día'); thinkRun++; tab=t; closePops(); history.replaceState(null,'',t==='planner'?'#planner':'#'+t); render(); $('year').scrollTop=0; if(anim&&!REDUCE&&t!=='planner') gsap.from('#apMain > *',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); }
-function focusOn(p){ dash=false; yfocus=p; autoFocus=(p===defaultFocus()); tab==='planner'?render():setTab('planner',false); $('year').scrollTo({top:0}); if(!REDUCE) gsap.from('#apTicket',{y:14,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
+function setTab(t,anim=true){ if(liveLock&&!co) setLive('Calendario al día'); thinkRun++; tab=t; if(t==='regalos') pedido=null; closePops(); render(); $('year').scrollTop=0; if(anim&&!REDUCE&&t!=='planner') gsap.from('#apMain > *',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); }
+function focusOn(p){ dash=false; yfocus=p; if(phase(p)==='bought'){ tab='regalos'; pedido=p; render(); $('year').scrollTo({top:0}); return; } autoFocus=(p===defaultFocus()); tab==='planner'?render():setTab('planner',false); $('year').scrollTo({top:0}); if(!REDUCE) gsap.from('#apTicket',{y:14,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
 function ytoast(t){ $('ttxt').textContent=t; const el=$('toast'); gsap.killTweensOf(el); gsap.fromTo(el,{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:'back.out(2)'}); gsap.to(el,{opacity:0,y:-10,duration:.4,delay:2.4}); }
 const flashPhoto = () => { if(!REDUCE) gsap.from('.pl-ph img',{opacity:0,scale:1.05,duration:.45,clearProps:'all'}); };
 
@@ -1737,8 +1809,13 @@ $('year').addEventListener('click',e=>{
   else if(a==='home'){ autoFocus=true; dash=true; setTab('planner'); }
   else if(a==='flow'){ const q=YEAR[+b.dataset.i]; dash=false; yfocus=q; autoFocus=false; if(phase(q)==='now') thought[q.n]=false; render(); $('year').scrollTo({top:0}); }
   else if(a==='focus'){ closePops(); focusOn(p); }
+  else if(a==='pedido'){ pedido=p; render(); $('year').scrollTo({top:0}); }
+  else if(a==='pedlist'){ pedido=null; render(); }
+  else if(a==='mrtab'){ mrTab=b.dataset.v; render(); }
   else if(a==='back'){ autoFocus=true; dash=true; render(); }
-  else if(a==='pop'){ const k=b.dataset.pop, el=k==='bell'?$('popBell'):$('popUser'), was=el.classList.contains('hidden'); closePops(); if(was){ el.classList.remove('hidden'); b.setAttribute('aria-expanded','true'); if(k==='bell'){ bellSeen=true; $('apBellDot').style.display='none'; } if(!REDUCE) gsap.from(el,{y:-6,opacity:0,duration:.2,clearProps:'all'}); } }
+  else if(a==='pop'){ const k=b.dataset.pop, el=k==='bell'?$('popBell'):$('popUser'), was=el.classList.contains('hidden'); closePops(); if(was){ el.classList.remove('hidden'); b.setAttribute('aria-expanded','true'); if(!REDUCE) gsap.from(el,{y:-6,opacity:0,duration:.2,clearProps:'all'}); } }
+  else if(a==='actread'){ ACT.forEach(x=>x.unread=false); $('popBell').innerHTML=bellHtml(); $('apBellDot').style.display='none'; }
+  else if(a==='actgo'){ const it=ACT.find(x=>x.id===+b.dataset.id); if(it) it.unread=false; closePops(); const q=it&&it.n&&YEAR.find(x=>x.n===it.n); if(q) focusOn(q); else if(it&&it.k==='conn'){ setTab('config',false); $('cf-cal').scrollIntoView({block:'start'}); } else renderChrome(); }
   else if(a==='goto'){ setTab('config',false); $(b.dataset.a).scrollIntoView({block:'start'}); }
   else if(a==='logout'){ closeYear(); }
   else if(a==='pick'){ if(b.classList.contains('st')&&b.getAttribute('aria-pressed')==='true') openSheet(chosen(yfocus).h); else if($('scStage')) sceneGo(yfocus,+b.dataset.pick); else { ypick[yfocus.n]=+b.dataset.pick; render(); } }
@@ -1767,7 +1844,7 @@ $('year').addEventListener('click',e=>{
     gsap.delayedCall(REDUCE?0:.7,()=>{ if(yfocus!==q||tab!=='planner'||!$('yreply')) return; ypick[q.n]=pk.i; render(); flashPhoto(); $('yreply').textContent=k==='eco'?`Esta es la más económica: ${clp(pk.o.p)}.`:k==='orig'?'Esta es menos común y más de autor.':'Esta se usa todos los días.'; });
   }
   else if(a==='ok'){ if(b.dataset.pick!==undefined) ypick[p.n]=+b.dataset.pick; closeSheet(); yfocus=p; autoFocus=false; startCo(p); render(); $('year').scrollTop=0; if(!REDUCE) gsap.from('#plLeft > *',{y:12,opacity:0,duration:.4,stagger:.05,ease:'power3.out',clearProps:'all'}); }
-  else if(a==='undo'){ p.bought=false; p.justBought=false; p.order=null; co=null; ytoast('Listo, cancelé la compra.'); autoFocus=true; render(); }
+  else if(a==='undo'){ p.bought=false; p.justBought=false; p.order=null; co=null; pedido=null; tab='planner'; dash=false; yfocus=p; autoFocus=false; addAct({k:'cancel',t:`Cancelé la compra de ${p.n}`,s:'Vuelve a quedar para tu aprobación',n:p.n,unread:false}); ytoast('Listo, cancelé la compra.'); render(); }
   else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; doubtDone=true; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); if(q.n==='Carla') REL.Carla=b.dataset.a==='Sí'?'Tu hermana':'Alguien cercano'; ytoast(`Anotado. Ya sé algo más de ${q.n}.`); render(); }
   else if(a==='sw'){ const k=b.dataset.k; if(k.startsWith('cal:')) cfg.cals[k.slice(4)]=!cfg.cals[k.slice(4)]; else if(k.startsWith('conn:')) conn[k.slice(5)]=!conn[k.slice(5)]; else cfg[k]=!cfg[k]; render(); }
   else if(a==='aviso'){ AVISO=+b.dataset.v; autoFocus=true; render(); ytoast(`Te aviso ${AVISO} días antes de cada fecha.`); }
@@ -1781,13 +1858,13 @@ async function pay(){
   setLive('Calendario al día');
   if(co!==c) return;
   p.order={no:'CC-'+(48200+idx(p)*7),ship:c.ship,wrap:c.wrap,pay:c.pay,msg:c.wrap?c.msg:''};
-  p.bought=true; p.justBought=true; co=null; yfocus=p; autoFocus=false;
+  p.bought=true; p.justBought=true; co=null; yfocus=p; autoFocus=false; addAct({k:'buy',t:`Compré el regalo de ${p.n}`,s:`${chosen(p).t} · llega ${arrival(p)}`,n:p.n,unread:false});
   ytoast(c.pay==='transfer'?'Listo. Te dejé los datos de transferencia en tu correo.':`Listo. Compré el regalo de ${p.n}.`); render(); $('year').scrollTop=0;
   if(!REDUCE){ gsap.fromTo('#apTicket',{scale:.97},{scale:1,duration:.7,ease:'elastic.out(1,.5)',clearProps:'all'}); gsap.from('.tk-stamp',{scale:2.2,opacity:0,rotation:-14,duration:.5,delay:.1,ease:'back.out(2)'}); gsap.from('.tr li',{x:-10,opacity:0,duration:.4,stagger:.07,delay:.2,clearProps:'all'}); }
 }
 /* la notificación se abre y se convierte en la tarjeta de la fecha */
 async function arrive(){
-  dash=false; const p=defaultFocus(), n=$('apNotif');
+  dash=false; const p=defaultFocus(), n=$('apNotif'); { const i=ACT.findIndex(x=>x.k==='think'&&x.n===p.n); const it=i>=0?ACT.splice(i,1)[0]:{k:'think',t:`Pensé el regalo de ${p.n}`,s:'Tope de $15.000 · 3 finalistas',n:p.n}; it.day=0; it.unread=true; ACT.unshift({...it,id:++actId}); }
   n.innerHTML=`<span class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span class="min-w-0 flex-1"><span class="flex justify-between gap-3 text-[12px] text-[#5f6b7d]"><span>Cuenta conmigo</span><span>ahora</span></span><b class="mt-0.5 block text-[15px] font-semibold leading-snug">${esc(p.n)} es ${days(dleft(p))}</b><span class="block text-[14px] leading-snug">Ya pensé en algo. Tócame y te muestro.</span></span>`;
   n.style.display='flex'; document.querySelector('.ap-top').style.opacity=0;
   gsap.fromTo(n,{y:-90,opacity:0},{y:0,opacity:1,duration:.65,ease:'back.out(1.5)'});
@@ -1806,8 +1883,8 @@ async function arrive(){
 function openYear(t='planner'){
   const y=$('year'); autoFocus=true; yfocus=defaultFocus();
   document.body.classList.add('in-app');
-  y.style.display='block'; waveLoop(); tab=t; closePops();
-  history.replaceState(null,'',t==='planner'?'#planner':'#'+t);
+  y.style.display='block'; waveLoop(); tab=t; pedido=null; closePops(); dash=(t==='planner');
+  history.replaceState(null,'',hashOf());
   gsap.fromTo(y,{opacity:0},{opacity:1,duration:.4,onComplete:()=>{ $('sync').style.display='none'; }});
   if(t==='planner') dash=true;
   setTab(t,false);
@@ -1968,8 +2045,8 @@ $('enter').onclick = () => openYear();
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('cxm').classList.contains('on')){ cxClose(); return; } if(e.key==='Escape'&&$('ob').classList.contains('on')){ closeOb(); return; } if(e.key==='Escape'){ if($('year').style.display==='block'){ closeSheet(); closePops(); } else closeSync(); } });
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
-const DEEP = {'#planner':'planner','#mi-ano':'planner','#personas':'personas','#regalos':'regalos','#config':'config'}[location.hash];
-if(DEEP) openYear(DEEP);
+const DEEP = (h=>{ const k=h.replace(/^#/,'').split('/')[0]; return {planner:'planner','mi-ano':'planner',fecha:'planner',personas:'personas',regalos:'regalos',pedidos:'regalos',config:'config'}[k]; })(location.hash);
+if(DEEP){ const h0=location.hash; openYear(DEEP); if(/^#(fecha|pedidos)\//.test(h0)) applyHash(h0); }
 let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(fit,100); });
 </script>
 </body>
