@@ -330,6 +330,16 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .oc-sp{display:inline-block;width:11px;height:11px;margin-right:7px;vertical-align:-1px;border-radius:50%;border:2px solid #afb5c1;border-top-color:#0e1014;animation:ocs .7s linear infinite}
 @keyframes ocs{to{transform:rotate(360deg)}}
 .ob-ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.ob-ch li{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#fff;padding:7px 13px 7px 11px;font-size:12.5px;font-weight:500;color:#4b5565;box-shadow:0 0 0 1px #e5eaf2}
+.ob-at{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.ob-ah{margin-top:4px;font-family:'Newsreader',serif;font-weight:400;font-size:25px;line-height:1.1;letter-spacing:-.02em}
+.ob-tm2{flex:none;border-radius:999px;background:#f1f3f6;padding:5px 11px;font-size:12px;font-weight:600;color:#39414e}
+.ob-mt{margin-top:18px}.ob-mb{height:8px;border-radius:4px;background:#e5eaf2;overflow:hidden}.ob-mb i{display:block;height:100%;border-radius:4px;background:#0e1014}
+.ob-mt p{display:flex;justify-content:space-between;margin-top:7px;font-size:12px;color:#5f6b7d}.ob-mt b{font-weight:600}
+.ob-bh{display:grid;gap:8px;margin-top:16px}.ob-bh li{display:flex;align-items:center;gap:11px;font-size:14px;color:#39414e}
+.ob-bh i{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#f1f3f6;color:#0e1014}
+.ob-fi{position:relative;display:block;border-radius:16px;transition:box-shadow .25s,transform .25s}.ob-fi img{border-radius:16px}
+.ob-fi i{position:absolute;right:6px;top:6px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#0e1014;opacity:0;transform:scale(.4);transition:opacity .2s,transform .35s cubic-bezier(.3,1.6,.5,1)}
+.ob-fi.on{box-shadow:0 0 0 2.5px #0e1014;transform:translateY(-3px)}.ob-fi.on i{opacity:1;transform:scale(1)}
 .ob-sy{padding:24px}
 .ob-tm{position:relative;display:grid;gap:18px;padding-left:34px}
 .ob-ln{position:absolute;left:10px;top:22px;bottom:50px;width:2px;background:#eef1f5;border-radius:1px;overflow:hidden}.ob-ln i{display:block;height:100%;transform-origin:top;background:linear-gradient(#ff5924,#10b981)}
@@ -1795,13 +1805,31 @@ function obStory(){
   tl.to(bar,{scaleX:1,duration:1.3,ease:'power2.out'},4.6);
   tl.to(rows,{opacity:0,y:-12,duration:.5,stagger:.06,ease:'power2.in'},"+=2.6");
 }
+const OB_ATT={
+  delego:{h:'Me adelanto y lo resuelvo.',yo:90,ti:'≈ 10 segundos por regalo',rows:[['Elijo y reservo el regalo','M5 12l4 4 10-10'],['Te aviso solo cuando está listo','M4 11h16v9H4zM3 7h18v4H3zM12 7v13'],['Te pregunto únicamente si dudo','M9 9a3 3 0 1 1 4 2.800c-1 .6-1 1.200-1 2.200M12 18h.01']]},
+  elijo:{h:'Te acompaño en cada decisión.',yo:55,ti:'≈ 2 minutos por regalo',rows:[['Reviso cientos y te dejo 3 finalistas','M4 6h16M7 12h10M10 18h4'],['Te las muestro cada una en su lugar','M3 12s3.500-7 9-7 9 7 9 7-3.500 7-9 7-9-7-9-7Zm9 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z'],['Compro cuando tú decides','M5 12l4 4 10-10']]}
+};
 function obMode(anim=true){
   const M=$('ovM'); if(!M) return;
-  const del=cfg.mode==='delego';
-  M.innerHTML=del
-   ? `<p class="ov-cap" style="margin-top:0">Delego</p><div class="ov-1"><img src="${OB_IMG('libreta-picaflor-1')}" alt=""><div><h4>Libreta Picaflor</h4><small>Ya está elegida para el sorteo de la oficina.</small><span class="ov-ok">Aprobar</span></div></div><p class="ob-n" style="margin-top:16px">Yo pienso y dejo un regalo listo. Tú solo apruebas.</p>`
-   : `<p class="ov-cap" style="margin-top:0">Elijo yo</p><div class="ov-3">${['libreta-picaflor-1','tazon-alerce','tabla-tolten'].map(h=>`<img src="${OB_IMG(h)}" alt="">`).join('')}</div><p class="ob-n" style="margin-top:16px">Te dejo 3 finalistas y tú eliges con calma.</p>`;
-  if(anim&&!REDUCE) gsap.from('#ovM > *, #ovM .ov-1 > *, #ovM .ov-3 > *',{y:14,opacity:0,scale:.96,duration:.5,stagger:.06,ease:'power3.out',clearProps:'all'});
+  if(ob.tl){ ob.tl.kill(); ob.tl=null; }
+  const m=cfg.mode, A=OB_ATT[m], from=ob.prevYo==null?A.yo:ob.prevYo; ob.prevYo=A.yo;
+  const ex = m==='delego'
+   ? `<div class="ov-1"><img src="${OB_IMG('libreta-picaflor-1')}" alt=""><div><h4>Libreta Picaflor</h4><small>Ya está elegida para el sorteo de la oficina.</small><span class="ov-ok" id="obOk">Aprobar</span></div></div>`
+   : `<div class="ov-3" id="ob3">${['libreta-picaflor-1','tazon-alerce','tabla-tolten'].map(h=>`<span class="ob-fi"><img src="${OB_IMG(h)}" alt=""><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i></span>`).join('')}</div>`;
+  M.innerHTML=`<div class="ob-at"><div><p class="ov-cap" style="margin:0">${m==='delego'?'Delego':'Elijo yo'}</p><h3 class="ob-ah">${A.h}</h3></div><span class="ob-tm2">${A.ti}</span></div>
+  <div class="ob-mt" aria-label="Quién hace qué"><div class="ob-mb"><i id="obMy" style="width:${from}%"></i></div><p><b>Yo <span id="obMyN">${from}</span>%</b><b>Tú <span id="obMtN">${100-from}</span>%</b></p></div>
+  <ul class="ob-bh">${A.rows.map(([t,d])=>`<li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg></i>${t}</li>`).join('')}</ul>
+  <p class="ov-cap" style="margin:18px 0 10px">Así se ve</p>${ex}`;
+  const n={v:from}; gsap.to(n,{v:A.yo,duration:REDUCE?0:.8,ease:'power3.inOut',onUpdate(){ const v=Math.round(n.v); $('obMy').style.width=n.v+'%'; $('obMyN').textContent=v; $('obMtN').textContent=100-v; }});
+  if(REDUCE) return;
+  if(anim) gsap.from('#ovM .ob-at, #ovM .ob-bh li, #ovM .ov-1, #ovM .ov-3 > *',{y:14,opacity:0,duration:.5,stagger:.07,ease:'power3.out',clearProps:'all'});
+  const tl=gsap.timeline({repeat:-1,repeatDelay:1.2,delay:.9}); ob.tl=tl;
+  if(m==='delego'){
+    tl.to('#obOk',{scale:.9,duration:.12,yoyo:true,repeat:1}).call(()=>{ const o=$('obOk'); if(o){ o.textContent='✓ Aprobado'; o.style.background='#10b981'; } }).to({}, {duration:2.2}).call(()=>{ const o=$('obOk'); if(o){ o.textContent='Aprobar'; o.style.background=''; } });
+  } else {
+    const f=[...M.querySelectorAll('.ob-fi')];
+    f.forEach((x,i)=>{ tl.call(()=>f.forEach((y,j)=>y.classList.toggle('on',j===i))).from(x,{y:-4,duration:.3,ease:'power2.out'},'<').to({}, {duration:1.1}); });
+  }
 }
 function obView(){
   const L=$('obL'), i=ob.step;
@@ -1849,7 +1877,7 @@ async function obGo(d){
   else { gsap.set([L,R],{clearProps:'all'}); }
 }
 function startOb(){
-  ob.step=0; Object.keys(ob.conn).forEach(k=>ob.conn[k]=false);
+  ob.step=0; ob.prevYo=null; Object.keys(ob.conn).forEach(k=>ob.conn[k]=false);
   const el=$('ob'); el.classList.add('on'); el.scrollTop=0; obProg(0); obView();
   if(!REDUCE){ gsap.fromTo(el,{opacity:0},{opacity:1,duration:.4}); gsap.from('#obL [data-in]',{y:26,opacity:0,filter:'blur(8px)',duration:.7,stagger:.07,delay:.1,ease:'power3.out',clearProps:'all'}); gsap.from('#obR',{opacity:0,y:30,scale:.96,duration:.8,delay:.25,ease:'power3.out',clearProps:'all'}); }
 }
