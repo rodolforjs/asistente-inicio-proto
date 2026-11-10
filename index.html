@@ -417,6 +417,8 @@ body.in-app .ob-kb{display:flex}
 .dh-ub{display:block;height:4px;margin:8px 6px 0;border-radius:2px;background:rgba(255,255,255,.16);overflow:hidden}.dh-ub b{display:block;height:100%;background:#ff5924}
 .dh-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:calc(100% - 12px);margin:12px 6px 0;border-radius:999px;background:#ff5924;padding:12px 18px;font-size:14.5px;font-weight:600;color:#fff;transition:transform .15s,background .15s}.dh-cta:hover{background:#ff7447;transform:translateY(-1px)}
 .pl-urg{color:#c63f12}
+.pl-sp{display:inline-flex;align-items:center;gap:7px;margin-bottom:10px;border-radius:999px;background:#fff;padding:5px 12px 5px 10px;font-size:12.5px;font-weight:600;color:#39414e;box-shadow:0 0 0 1px #e5eaf2}
+.pl-sp i{width:8px;height:8px;border-radius:50%;background:#10b981}.pl-sp[data-s=soon] i{background:#f5a623}.pl-sp[data-s=hot]{background:#fff0ea;color:#c63f12;box-shadow:0 0 0 1px #ffd2c2}.pl-sp[data-s=hot] i{background:#ff5924;animation:stp 1.6s infinite}
 .tk-dl-r{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 .tk-dl-n{display:flex;align-items:center;gap:10px}.tk-dl-n b{font-family:'Newsreader',serif;font-weight:400;font-size:44px;line-height:.9;letter-spacing:-.03em}.tk-dl-n span{font-size:12.5px;line-height:1.25;color:rgba(255,255,255,.66)}
 .tk-dl-d{text-align:right}.tk-dl-d small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}.tk-dl-d b{font-size:15px;font-weight:600}
@@ -1613,8 +1615,12 @@ function viewHome(){
   const more=later.length>3?`<p class="dh-m">y ${later.length-3} fechas más que sigo</p>`:'';
   const order=p=>{ ensureOrder(p); const x=chosen(p), st=orderSteps(p), c=st.find(a=>a[0]==='now')||st[st.length-1]; return `<button data-act="pedido" data-i="${idx(p)}" class="dh-o"><span class="dh-th">${img(x.u,'')}</span><span class="min-w-0"><b>${esc(x.t)}</b><small>Para ${esc(p.n)} · ${esc(c[1])}</small></span><em>${esc(c[2]||'')}</em></button>`; };
   const h1=hot?`${nm}, hay que resolver ${who(hot)} ya.`:now.length?`${now.length===1?'Tienes un regalo':'Tienes '+now.length+' regalos'} por decidir, ${nm}.`:`Todo en orden, ${nm}.`;
-  const lead=hot?`${dl(hot)} para pedirlo y que llegue a tiempo. Ya lo dejé pensado: solo falta tu decisión.`:'Esto es lo que viene. Yo voy un paso adelante y te aviso a tiempo.';
-  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l"><h1 class="pl-h ${hot?'pl-urg':''}">${h1}</h1>
+  const st=hot?['hot','Urgente']:now.length?['soon','Se viene una fecha']:['ok','Todo al día'];
+  const n0=nx[0], n1=now[0];
+  const lead=hot?`${dl(hot)} para pedirlo y que llegue a tiempo. Ya lo dejé pensado: solo falta tu decisión.`
+    :n1?`${who(n1)[0].toUpperCase()+who(n1).slice(1)} es ${days(dleft(n1))}. Tienes ${ordLeft(n1)} días para decidir y ya lo dejé pensado.`
+    :n0?`Por ahora estamos bien. Lo próximo es ${esc(n0.n)} el ${fdate(occ(n0))}, y te aviso el ${fdate(avisoD(n0))}.`:'Por ahora no hay nada pendiente. Sigo atento a tu calendario.';
+  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l"><p class="pl-sp" data-s="${st[0]}"><i></i>${st[1]}</p><h1 class="pl-h ${hot?'pl-urg':''}">${h1}</h1>
     <p class="pl-lead">${lead}</p>
     <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
       ${col('Para regalar pronto',now.length,hot?'Esto no puede esperar':'Ya lo pensé, falta tu decisión',now.map(nowItem).join(''),'dh-hot'+(hot?' dh-urg':''))}</div>
