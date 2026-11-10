@@ -395,7 +395,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 body.in-app .ob-kb{display:flex}
 @media(max-width:900px){.ob-w{grid-template-columns:minmax(0,1fr);gap:28px;padding:8px 20px 40px}.ob-r{display:none}.ob-h{padding:18px 20px}.ob-kb{display:none!important}}
 /* inicio */
-.dh{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.dh{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
 .dh-k{display:flex;flex-direction:column;border-radius:22px;background:#fff;padding:16px;box-shadow:0 0 0 1px #e5eaf2}
 .dh-k header{display:flex;align-items:baseline;justify-content:space-between}
 .dh-k h3{font-family:'Newsreader',serif;font-weight:400;font-size:21px;letter-spacing:-.015em}
@@ -409,6 +409,8 @@ body.in-app .ob-kb{display:flex}
 .dh-av{position:relative;flex:none;width:40px;height:40px;overflow:hidden;border-radius:12px}
 .dh-av .pt{display:block;width:100%;height:100%}
 .dh-e,.dh-m{font-size:12.5px;color:#8b95a5;padding:4px 6px}
+.dh-pd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:18px;background:#fff;padding:12px 16px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}.dh-pd:hover{box-shadow:0 0 0 1.5px #0e1014}
+.dh-pdi{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#f1f3f6}.dh-pd b{display:block;font-size:14px;font-weight:600}.dh-pd small{display:block;font-size:12px;color:#5f6b7d}.dh-pd em{margin-left:auto;font-style:normal;font-size:16px}
 .dh-h{margin-top:22px;font-size:13px;font-weight:600}
 .dt{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:10px;position:relative}
 .dt::before{content:"";position:absolute;left:0;right:0;top:5px;height:2px;background:#dde3ec}
@@ -1587,7 +1589,8 @@ function viewHome(){
     <p class="pl-lead">Esto es lo que viene. Yo voy un paso adelante y te aviso a tiempo.</p>
     <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
       ${col('Listo para ti',now.length,'Ya lo pensé, falta tu OK',now.map(chip).join(''),'dh-hot')}
-      ${col('Comprado',done.length,'Lo sigo hasta que llegue',done.map(chip).join(''))}</div>
+</div>
+    ${done.length?`<button data-act="tab" data-t="regalos" class="dh-pd"><span class="dh-pdi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5ZM3 8l9 5 9-5M12 13v8"/></svg></span><span><b>${done.length} ${done.length===1?'pedido en curso':'pedidos en curso'}</b><small>Míralos con su historial en Pedidos</small></span><em aria-hidden="true">→</em></button>`:''}
     <h2 class="dh-h">Lo que se viene</h2>
     <ol class="dt">${nx.map(p=>`<li><button data-act="flow" data-i="${idx(p)}"><i></i><b class="num">${fdate(occ(p))}</b><span>${esc(p.n)}</span><small>Te aviso el ${fdate(avisoD(p))}</small></button></li>`).join('')}</ol></div>
     <aside class="pl-r">${ticket(yfocus)}</aside></div>`;
