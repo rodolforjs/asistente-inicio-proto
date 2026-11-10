@@ -329,6 +329,15 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .oc[data-on=true] button{background:#d8f5e9;color:#0b6b48;pointer-events:none}
 .oc-sp{display:inline-block;width:11px;height:11px;margin-right:7px;vertical-align:-1px;border-radius:50%;border:2px solid #afb5c1;border-top-color:#0e1014;animation:ocs .7s linear infinite}
 @keyframes ocs{to{transform:rotate(360deg)}}
+.ob-ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.ob-ch li{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#fff;padding:7px 13px 7px 11px;font-size:12.5px;font-weight:500;color:#4b5565;box-shadow:0 0 0 1px #e5eaf2}
+.ob-sy{padding:24px}
+.ob-tm{position:relative;display:grid;gap:18px;padding-left:34px}
+.ob-ln{position:absolute;left:10px;top:22px;bottom:50px;width:2px;background:#eef1f5;border-radius:1px;overflow:hidden}.ob-ln i{display:block;height:100%;transform-origin:top;background:linear-gradient(#ff5924,#10b981)}
+.ob-ro{position:relative}.ob-ro::before{content:"";position:absolute;left:-30px;top:22px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2.5px #0e1014,0 0 0 4px #fff}
+.ob-dt{display:block;margin-bottom:6px;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9aa3b2}.ob-dt b{font-size:13px;color:#0e1014}
+.ob-pr img{flex:none;width:64px;height:64px;border-radius:14px;object-fit:cover;background:#fff}
+.ob-ap{display:inline-block;margin-top:8px;border-radius:999px;background:#0e1014;padding:6px 14px;font-size:12.5px;font-weight:600;color:#fff;transition:background .25s}.ob-ap.ok{background:#10b981}
+.ob-bar{display:block;height:4px;margin-top:10px;border-radius:2px;background:#e5eaf2;overflow:hidden}.ob-bar i{display:block;height:100%;transform-origin:left;background:#10b981}
 .ob-n{margin-top:12px;font-size:12.5px;color:#748297}
 .ob-r{position:relative;min-height:440px}
 .ov{border-radius:30px;background:#fff;padding:22px;box-shadow:0 0 0 1px #e5eaf2,0 40px 60px -36px rgba(15,23,42,.45)}
@@ -1756,14 +1765,35 @@ const OB_IMG=h=>PRODS[h][3];
 function obProg(i){ $('obSteps').innerHTML=Array.from({length:OB_STEPS},(_,k)=>`<li><b></b></li>`).join(''); [...$('obSteps').children].forEach((li,k)=>{ li.firstChild.style.width=k<i?'100%':'0%'; }); gsap.to($('obSteps').children[i].firstChild,{width:'100%',duration:REDUCE?0:.6,ease:'power3.out'}); }
 function obPreview(){
   const R=$('obR'), nm=(cfg.name||'').trim().split(/\s+/)[0]||'tú';
+  if(ob.tl){ ob.tl.kill(); ob.tl=null; }
   if(ob.step===0){
-    R.innerHTML=`<div class="ov"><p class="ov-cap">Así te voy a hablar</p><div class="ov-n"><span class="ov-ap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><div><p>Cuenta conmigo · ahora</p><b id="ovT">${esc(nm)}, ya tengo pensado tu primer regalo.</b></div></div>
-    <p class="ov-cap">Y así te lo llevo</p><div class="ov-n"><span class="ov-ap" style="background:#0e1014"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.600A4 4 0 0 1 19 11c0 5.600-7 10-7 10Z"/></svg></span><div><p>Entrega</p><b id="ovA">${esc((cfg.addr||'').trim()||'A la dirección que me digas')}</b></div></div></div>`;
+    const ad=(cfg.addr||'').trim()||'la dirección que me digas';
+    R.innerHTML=`<div class="ov ob-sy"><p class="ov-cap" style="margin-top:0">Así te acompaño, <span id="ovN">${esc(nm)}</span></p>
+    <div class="ob-tm"><span class="ob-ln"><i></i></span>
+      <div class="ob-ro" data-d="14"><span class="ob-dt"><b>14</b> días antes</span><div class="ov-n"><span class="ov-ap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><div><p>Cuenta conmigo · ahora</p><b><span id="ovT">${esc(nm)}</span>, el cumpleaños de Mamá es pronto. Ya lo estoy pensando.</b></div></div></div>
+      <div class="ob-ro" data-d="10"><span class="ob-dt"><b>10</b> días antes</span><div class="ov-n ob-pr"><img src="${OB_IMG('mama-cual-es-tu-historia')}" alt=""><div><p>Te dejé la propuesta</p><b>Mamá ¿Cuál es tu Historia?</b><span class="ob-ap" id="obAp">Aprobar</span></div></div></div>
+      <div class="ob-ro" data-d="3"><span class="ob-dt"><b>3</b> días antes</span><div class="ov-n"><span class="ov-ap" style="background:#10b981"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.400-7-10a7 7 0 0 1 14 0c0 5.600-7 10-7 10Z"/><circle cx="12" cy="11" r="2.500"/></svg></span><div><p>Llega a tiempo</p><b>Entregado en <span id="ovA">${esc(ad)}</span></b><span class="ob-bar"><i></i></span></div></div></div>
+    </div></div>`;
+    obStory();
   } else if(ob.step===1){
     R.innerHTML=`<div class="ov" id="ovM"></div>`; obMode(false);
   } else {
     R.innerHTML=`<div class="ov"><p class="ov-cap" style="margin-top:0">Con esto podré</p>${OB_CONN.map(c=>`<div class="ov-li" data-k="${c.k}" data-on="${ob.conn[c.k]}"><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i><span>${c.ov}</span></div>`).join('')}</div>`;
   }
+}
+function obStory(){
+  const R=$('obR'), rows=[...R.querySelectorAll('.ob-ro')]; if(!rows.length) return;
+  if(REDUCE){ return; }
+  const ap=$('obAp'), bar=R.querySelector('.ob-bar i'), ln=R.querySelector('.ob-ln i');
+  const tl=gsap.timeline({repeat:-1,repeatDelay:.4}); ob.tl=tl;
+  tl.set(rows,{opacity:0,y:26,scale:.96}).set(ln,{scaleY:0}).set(bar,{scaleX:0}).call(()=>{ ap.classList.remove('ok'); ap.textContent='Aprobar'; });
+  rows.forEach((r,i)=>{
+    tl.to(r,{opacity:1,y:0,scale:1,duration:.75,ease:'back.out(1.4)'},i*1.9+.2);
+    tl.to(ln,{scaleY:(i+1)/3,duration:.9,ease:'power2.inOut'},i*1.9+.1);
+  });
+  tl.to(ap,{scale:.9,duration:.12,yoyo:true,repeat:1,ease:'power1.inOut'},2.9).call(()=>{ ap.classList.add('ok'); ap.textContent='✓ Aprobado'; },null,3.02);
+  tl.to(bar,{scaleX:1,duration:1.3,ease:'power2.out'},4.6);
+  tl.to(rows,{opacity:0,y:-12,duration:.5,stagger:.06,ease:'power2.in'},"+=2.6");
 }
 function obMode(anim=true){
   const M=$('ovM'); if(!M) return;
@@ -1778,6 +1808,7 @@ function obView(){
   if(i===0) L.innerHTML=`<p class="ob-k" data-in>Paso 1 de 3 · Tú</p><h1 class="ob-t" data-in>Empecemos por <em>conocernos</em>.</h1><p class="ob-p" data-in>Con tu nombre te hablo como corresponde, y con tu dirección te dejo los regalos listos para recibirlos.</p>
     <div class="ob-f" data-in><label><span>¿Cómo te llamo?</span><input id="obName" class="ob-i" value="${esc(cfg.name==='Rodolfo Rojas'?'Rodolfo':cfg.name)}" autocomplete="given-name" placeholder="Tu nombre"></label>
     <label><span>¿Dónde te llegan los regalos?</span><input id="obAddr" class="ob-i" value="${esc(cfg.addr)}" autocomplete="street-address" placeholder="Calle, número, comuna"><small>Lo puedes cambiar en cada compra.</small></label></div>
+    <ul class="ob-ch" data-in><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Toma 2 minutos</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Solo lectura</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Lo cambias cuando quieras</li></ul>
     <div class="ob-a" data-in><button id="obNext" class="ob-b">Continuar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>`;
   else if(i===1) L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 3 · Cómo participas</p><h1 class="ob-t" data-in>¿Cuánto quieres <em>involucrarte</em>?</h1><p class="ob-p" data-in>Es un ajuste general y lo cambias cuando quieras en Configuración.</p>
     <div class="ob-m" data-in><button class="ob-mc" data-m="delego" aria-pressed="${cfg.mode==='delego'}"><i></i><b>Delego</b><span>Yo pienso y te dejo un regalo listo. Tú solo apruebas.</span></button><button class="ob-mc" data-m="elijo" aria-pressed="${cfg.mode==='elijo'}"><i></i><b>Elijo yo</b><span>Yo pienso y te dejo 3 finalistas. Tú eliges.</span></button></div>
@@ -1793,8 +1824,8 @@ function obBind(){
   if(nx) nx.onclick=()=>obGo(1);
   if(bk) bk.onclick=()=>obGo(-1);
   const nm=$('obName'), ad=$('obAddr');
-  if(nm){ nm.oninput=()=>{ cfg.name=nm.value.trim()||'Rodolfo'; const t=$('ovT'); if(t) t.textContent=((nm.value.trim().split(/\s+/)[0])||'Tú')+', ya tengo pensado tu primer regalo.'; }; nm.focus(); nm.onkeydown=e=>{ if(e.key==='Enter') ad.focus(); }; }
-  if(ad){ ad.oninput=()=>{ cfg.addr=ad.value; const a=$('ovA'); if(a) a.textContent=ad.value.trim()||'A la dirección que me digas'; }; ad.onkeydown=e=>{ if(e.key==='Enter') obGo(1); }; }
+  if(nm){ nm.oninput=()=>{ cfg.name=nm.value.trim()||'Rodolfo'; const f=(nm.value.trim().split(/\s+/)[0])||'Tú'; ['ovT','ovN'].forEach(i=>{ const t=$(i); if(t) t.textContent=f; }); }; nm.focus(); nm.onkeydown=e=>{ if(e.key==='Enter') ad.focus(); }; }
+  if(ad){ ad.oninput=()=>{ cfg.addr=ad.value; const a=$('ovA'); if(a) a.textContent=ad.value.trim()||'la dirección que me digas'; }; ad.onkeydown=e=>{ if(e.key==='Enter') obGo(1); }; }
   document.querySelectorAll('.ob-mc').forEach(b=>b.onclick=()=>{ cfg.mode=b.dataset.m; document.querySelectorAll('.ob-mc').forEach(x=>x.setAttribute('aria-pressed',x===b)); if(!REDUCE) gsap.fromTo(b,{scale:.98},{scale:1,duration:.5,ease:'elastic.out(1,.5)'}); obMode(true); });
   document.querySelectorAll('.oc button').forEach(b=>b.onclick=()=>obConnect(b.dataset.c));
 }
@@ -1822,7 +1853,7 @@ function startOb(){
   const el=$('ob'); el.classList.add('on'); el.scrollTop=0; obProg(0); obView();
   if(!REDUCE){ gsap.fromTo(el,{opacity:0},{opacity:1,duration:.4}); gsap.from('#obL [data-in]',{y:26,opacity:0,filter:'blur(8px)',duration:.7,stagger:.07,delay:.1,ease:'power3.out',clearProps:'all'}); gsap.from('#obR',{opacity:0,y:30,scale:.96,duration:.8,delay:.25,ease:'power3.out',clearProps:'all'}); }
 }
-function closeOb(){ $('ob').classList.remove('on'); }
+function closeOb(){ if(ob.tl){ ob.tl.kill(); ob.tl=null; } $('ob').classList.remove('on'); }
 async function obFinish(){
   const el=$('ob'); if(!REDUCE) await new Promise(r=>gsap.to(el,{opacity:0,duration:.35,onComplete:r}));
   closeOb(); gsap.set(el,{clearProps:'all'}); runSync();
