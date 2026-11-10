@@ -276,7 +276,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 /* planner: alto fijo al viewport, igual en todas las fechas */
 @media(min-width:1024px){
   .pl:not(.pl-co){height:calc(100dvh - 84px);min-height:540px;max-height:760px}
-  .pl:not(.pl-co) .pl-l{min-height:0;overflow-y:auto}
+  .pl:not(.pl-co) .pl-l{min-height:0;overflow-y:auto;margin:0 -12px -20px;padding-inline:12px;padding-bottom:20px}
   .pl:not(.pl-co) .pl-pick{flex:1 1 0;min-height:200px}
   .pl:not(.pl-co) .pl-foot{flex:none}
   .pl:not(.pl-co) .sc{flex:1 1 0;height:auto;min-height:240px}
@@ -393,6 +393,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .ob-kb{position:fixed;left:18px;bottom:16px;z-index:170;display:none;align-items:center;gap:8px;border-radius:999px;background:rgba(14,16,20,.88);padding:7px 14px 7px 8px;font-size:12px;font-weight:500;color:#fff;backdrop-filter:blur(8px)}
 .ob-kb kbd{display:grid;place-items:center;min-width:22px;height:22px;border-radius:7px;background:#fff;font:700 12px Inter,sans-serif;color:#0e1014}
 body.in-app .ob-kb{display:flex}
+.ob-kbs{position:fixed;left:18px;bottom:16px;z-index:170;display:flex;gap:8px}.ob-kb{position:static!important}
 @media(max-width:900px){.ob-w{grid-template-columns:minmax(0,1fr);gap:28px;padding:8px 20px 40px}.ob-r{display:none}.ob-h{padding:18px 20px}.ob-kb{display:none!important}}
 /* inicio */
 .dh{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
@@ -409,6 +410,21 @@ body.in-app .ob-kb{display:flex}
 .dh-av{position:relative;flex:none;width:40px;height:40px;overflow:hidden;border-radius:12px}
 .dh-av .pt{display:block;width:100%;height:100%}
 .dh-e,.dh-m{font-size:12.5px;color:#8b95a5;padding:4px 6px}
+.dh-urg{box-shadow:0 0 0 2px #ff5924,0 24px 40px -24px rgba(255,89,36,.55)!important}
+.dh-urg>p{color:#ff9a78!important;font-weight:600}
+.dh-n.u{margin-top:2px;border-radius:16px;background:rgba(255,255,255,.07);padding:10px 10px 12px}
+.dh-ul{margin-top:10px;padding:0 6px;font-size:13px;color:rgba(255,255,255,.8)}.dh-ul b{color:#ff9a78}
+.dh-ub{display:block;height:4px;margin:8px 6px 0;border-radius:2px;background:rgba(255,255,255,.16);overflow:hidden}.dh-ub b{display:block;height:100%;background:#ff5924}
+.dh-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:calc(100% - 12px);margin:12px 6px 0;border-radius:999px;background:#ff5924;padding:12px 18px;font-size:14.5px;font-weight:600;color:#fff;transition:transform .15s,background .15s}.dh-cta:hover{background:#ff7447;transform:translateY(-1px)}
+.pl-urg{color:#c63f12}
+.tk-urg p{color:#ff9a78!important;font-weight:600}.tk-urg i b{background:#ff5924!important;animation:stp 1.6s infinite}
+.dh-or{margin-top:12px;border-radius:22px;background:#fff;padding:14px 8px 8px;box-shadow:0 0 0 1px #e5eaf2}
+.dh-or header{display:flex;align-items:center;justify-content:space-between;padding:0 12px 6px}.dh-or h3{font-family:'Newsreader',serif;font-weight:400;font-size:19px;letter-spacing:-.01em}
+.dh-or header button{font-size:12.5px;font-weight:600;color:#5f6b7d}.dh-or header button:hover{color:#0e1014}
+.dh-o{display:flex;align-items:center;gap:12px;width:100%;border-radius:14px;padding:8px 10px;text-align:left;transition:background .15s}.dh-o:hover{background:#f5f7f9}
+.dh-th{flex:none;display:block;width:44px;height:44px;overflow:hidden;border-radius:12px;background:#f1f3f6;box-shadow:0 0 0 1px #e5eaf2}.dh-th img{display:block;width:100%;height:100%;object-fit:cover}
+.dh-o b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:600}.dh-o small{display:block;margin-top:1px;font-size:12.5px;color:#5f6b7d}
+.dh-o em{margin-left:auto;flex:none;border-radius:999px;background:#f1f3f6;padding:4px 10px;font-style:normal;font-size:12px;font-weight:500;color:#39414e}
 .dh-pd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:18px;background:#fff;padding:12px 16px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}.dh-pd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .dh-pdi{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#f1f3f6}.dh-pd b{display:block;font-size:14px;font-weight:600}.dh-pd small{display:block;font-size:12px;color:#5f6b7d}.dh-pd em{margin-left:auto;font-style:normal;font-size:16px}
 .dh-h{margin-top:22px;font-size:13px;font-weight:600}
@@ -803,7 +819,7 @@ body.in-app .ob-kb{display:flex}
   <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
 </section>
 
-<button id="obKb" class="ob-kb" aria-label="Simular la notificación"><kbd>N</kbd>Simular notificación</button>
+<div class="ob-kbs"><button id="obKb" class="ob-kb" aria-label="Simular la notificación"><kbd>N</kbd>Simular notificación</button><button id="obKu" class="ob-kb" aria-label="Simular el último día"><kbd>U</kbd>Último día</button></div>
 <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-[400] -translate-x-1/2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white opacity-0 shadow-2xl"><span class="mr-2 inline-block size-2 rounded-full bg-brand"></span><span id="ttxt"></span></div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -1110,7 +1126,7 @@ async function runSync(){
 }
 
 /* ---------- Datos del planner ---------- */
-const TODAY = new Date(2026,10,4); let AVISO = 14;               // demo fija: 4 nov 2026; aviso 14 días antes (a probar en el piloto)
+let TODAY = new Date(2026,10,4); let AVISO = 14;               // demo fija: 4 nov 2026; aviso 14 días antes (a probar en el piloto)
 const PRODS = {"mama-cual-es-tu-historia":["Mamá ¿Cuál es tu Historia?","MamaMia",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306"],"vela-vasija-pukara-esencia-andina":["Vela Vasija Pukara – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.52.24_1_600x.jpg?v=1791211998"],"mielero-en-ceramica-gres":["Mielero en cerámica gres","TallerColor",24990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Ewpp1SmFbK_600x.jpg?v=1622843066"],"libreta-picaflor-1":["Libreta Picaflor","Cocó Obach",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936"],"tazon-alerce":["Tazón Alerce","GARUGA",7590,"https://cdn.shopify.com/s/files/1/1481/4916/products/tKFvLH5YUh_600x.jpg?v=1749502459"],"tabla-tolten":["Tabla Toltén","ULMMO ORIGEN",11990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-08-06at15.45.48_1_600x.jpg?v=1754509629"],"mochila-zorro-culpeo":["Mochila ZORRO CULPEO","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/Captura_de_Pantalla_2019-11-18_a_la_s_09.06.33_600x.png?v=1749502616"],"botella-termica-oceano":["Botella Térmica / Océano","hued hued",14990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-08-25at15.44.06_5_600x.jpg?v=1787687597"],"mochila-hongos-de-chile":["Mochila Hongos De Chile","GARUGA",17990,"https://cdn.shopify.com/s/files/1/1481/4916/products/36dyXgfqHn_600x.jpg?v=1749502248"],"libro-de-las-preguntas-de-neruda":["Libro De Las Preguntas De Neruda","Ediciones Liebre",28750,"https://cdn.shopify.com/s/files/1/1481/4916/files/KKxLjr5jf6_600x.jpg?v=1714769404"],"vela-anillo-de-fuego-esencia-andina":["Vela Anillo de Fuego – Onas-Selk'nam","ESENCIA ANDINA",18990,"https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634"],"diario-de-gratitud":["Diario de Gratitud","LAFANTINA",22990,"https://cdn.shopify.com/s/files/1/1481/4916/files/HvqaAJrWOY_600x.png?v=1744055312"],"mug-termico-ilustrado-papelucosas":["Mug Térmico Ilustrado PAPELUCOSAS","Herencia Colchagua",27990,"https://cdn.shopify.com/s/files/1/1481/4916/products/JUv4OH4diw_600x.jpg?v=1701118558"],"botella-bandurria":["Botella Bandurria","GARUGA",15990,"https://cdn.shopify.com/s/files/1/1481/4916/products/y1HkNdlPxP_600x.jpg?v=1749502261"],"libro-santiago-y-sus-cumbres-copia":["Libro Santiago y sus cumbres - Segunda Edición","FBT FineArt Photography",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/hf_20260826_201432_0ac48f4a-c0e8-4609-a11b-4dbb979884f8copy_600x.jpg?v=1791400905"],"bufanda-alpaca-unisex-chocolate":["Bufanda alpaca unisex Chocolate","ULMMO ORIGEN",49990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-06-03at13.05.27_1_600x.jpg?v=1749491586"],"pack-3-mermeladas-gourmet":["Pack 3 Mermeladas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/AX11vEKQnm_600x.jpg?v=1701682759"],"vela-vasija-likan-esencia-andina":["Vela Vasija Likan – Atacameñas","ESENCIA ANDINA",34990,"https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2026-10-05at11.54.31_600x.jpg?v=1791212171"],"vasos-gallo-agranda-o-450-ml-set-de-6":["Vasos Gallo Agranda’o 450 ml – Set de 6","Vaso de Gallo",29900,"https://cdn.shopify.com/s/files/1/1481/4916/files/CapturadePantalla2026-01-20ala_s_15.39.40_600x.png?v=1768934392"],"tabla-de-piedra-ribete":["Tabla de Piedra Ribete","Kuyen Diseño",32990,"https://cdn.shopify.com/s/files/1/1481/4916/products/2VkRwsY3N8_600x.jpg?v=1684182866"],"set-de-platos-circulares":["Set de Platos Circulares","Taller Masarte",42900,"https://cdn.shopify.com/s/files/1/1481/4916/files/O9kVn8J2fM_600x.jpg?v=1725467173"],"libro-wander":["Libro Wander","TERE GOTT",15990,"https://cdn.shopify.com/s/files/1/1481/4916/files/Disenosintitulo_5_600x.webp?v=1785431345"],"tabla-de-vidrio-loco":["Tabla de vidrio Picoroco","Andes1",13990,"https://cdn.shopify.com/s/files/1/1481/4916/products/bTWDOePFbi_600x.jpg?v=1606236283"],"pack-3-salsas-gourmet":["Pack 3 Salsas Gourmet","Wenuy Gourmet",20990,"https://cdn.shopify.com/s/files/1/1481/4916/products/jMDsVgDEr6_600x.jpg?v=1701683544"],"dulce-de-leche-tradicional-450grs":["Dulce de Leche Tradicional 450grs.","Fundo Requingua",7490,"https://cdn.shopify.com/s/files/1/1481/4916/products/4UyzMKfer0_600x.jpg?v=1625680551"],"libro-tu-primer-ano":["Libro \"Tu Primer Año\"","LAFANTINA",29990,"https://cdn.shopify.com/s/files/1/1481/4916/files/w04HX6mkQu_600x.png?v=1741029832"],"tarjetas-para-fotos-mes-circus":["Tarjetas Meses Bebé \"Circus\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/files/NlD33171lZ_600x.jpg?v=1715712423"],"tarjetas-para-fotos-hitos-festa-menta":["Tarjetas Hitos Bebé \"Festa Menta\"","LAFANTINA",17490,"https://cdn.shopify.com/s/files/1/1481/4916/products/jkVO2C0kdz_600x.jpg?v=1663691157"],"individual-feria-navidena":["Individual Feria Navideña","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/ZREiu0ChXI_600x.jpg?v=1731423791"],"individual-feliz-navidad":["Individual Feliz Navidad","PAPERWORKS",11490,"https://cdn.shopify.com/s/files/1/1481/4916/files/OSSRhX0LFH_600x.jpg?v=1762873802"]};
 const GRAD = {cumple:'#ff8a5c,#ff4a14',navidad:'#3f9b72,#0f4a35',amor:'#ffb4c8,#a58bff',boda:'#ffe07a,#ff8f5a',bebe:'#b9d8ff,#c4b3ff',oficina:'#e2ea8a,#3f9e7c',padre:'#7fa6ff,#2c44d6'};
 /* principal + 2 alternativas (fotos reales del catálogo) + por qué lo elegí */
@@ -1157,6 +1173,7 @@ const PINFO = {"mama-cual-es-tu-historia":{"d":["¿Cuál es tu historia?” es u
 /* ---------- Conocimiento del asistente ---------- */
 const WD = ['dom','lun','mar','mié','jue','vie','sáb'];
 const addBD = (d,n) => { const x=new Date(d); while(n>0){ x.setDate(x.getDate()+1); if(x.getDay()%6) n--; } return x; };
+const ordLeft = p => Math.max(0,Math.round((lastOrder(p)-TODAY)/864e5));
 const lastOrder = p => { const lim=addD(occ(p),-1); let d=new Date(lim); while(addBD(d,4)>lim) d=addD(d,-1); return d; };
 const etaRange = from => { const a=addBD(from,3), b=addBD(from,4); return a.getMonth()===b.getMonth()?`entre el ${a.getDate()} y el ${fdate(b)}`:`entre el ${fdate(a)} y el ${fdate(b)}`; };
 const SRC_L = {cal:'Calendario',mail:'Correo',con:'Contactos',gift:'Regalos',you:'Tú'};
@@ -1286,7 +1303,7 @@ function ticket(p){
   if(!p) return '';
   const o=occ(p), ph=phase(p), cur=chosen(p), nx=after(p), dead=lastOrder(p), left=Math.max(0,Math.round((dead-TODAY)/864e5)), span=Math.max(1,Math.round((dead-avisoD(p))/864e5)), pct=Math.min(100,Math.max(6,(1-left/span)*100));
   const rows = ph==='now'
-    ? `<div class="tk-t"><div class="flex items-baseline justify-between gap-3"><p>${left?`Te quedan ${left} ${left===1?'día':'días'} para decidir`:'Hoy es el último día para decidir'}</p><span class="tk-s">hasta el ${fdate(dead)}</span></div><i><b style="width:${pct}%"></b></i></div>`
+    ? `<div class="tk-t ${left<=3?'tk-urg':''}"><div class="flex items-baseline justify-between gap-3"><p>${left<=3?(left?`Quedan ${left} ${left===1?'día':'días'}: decide ya para que llegue a tiempo`:'Último día: decide hoy para que llegue a tiempo'):`Te quedan ${left} días para decidir`}</p><span class="tk-s">hasta el ${fdate(dead)}</span></div><i><b style="width:${pct}%"></b></i></div>`
     : ph==='bought'
     ? `<div class="tk-t"><p class="tk-ok">Resuelto · llega ${arrival(p)}</p><p class="tk-s">${esc(cur.t)}</p></div>`
     : `<div class="tk-t"><p>Te aviso el ${fdate(avisoD(p))}</p><p class="tk-s">Con el regalo pensado y tiempo para que llegue</p></div>`;
@@ -1582,15 +1599,21 @@ function viewPlanner(){
 const ensureOrder = p => p.order||(p.order={no:'CC-48107',ship:'directo',wrap:true,pay:'card',msg:'Bienvenida a la familia, Emilia.'});
 const chip = p => `<button data-act="flow" data-i="${idx(p)}" class="dh-c"><span class="dh-av" style="background:${(PORT[p.n]||{}).bg||'#e5eaf2'}">${portrait(p.n)}</span><span class="min-w-0"><b>${esc(p.n)}</b><small>${esc(p.o)} · ${fdate(occ(p))}</small></span></button>`;
 function viewHome(){
-  const v=yr(), now=v.filter(p=>phase(p)==='now'), later=v.filter(p=>phase(p)==='later').sort(byDate), done=v.filter(p=>phase(p)==='bought'), nx=later.slice(0,5);
+  const v=yr(), now=v.filter(p=>phase(p)==='now').sort((x,y)=>ordLeft(x)-ordLeft(y)), later=v.filter(p=>phase(p)==='later').sort(byDate), done=v.filter(p=>phase(p)==='bought'), nx=later.slice(0,5);
+  const hot=now.find(p=>ordLeft(p)<=3), nm=esc(firstName()), who=p=>p.n==='Amigo secreto'?'el Amigo secreto':'el regalo de '+esc(p.n);
+  const dl=p=>{ const l=ordLeft(p); return l===0?'Hoy es el último día':`Quedan ${l} ${l===1?'día':'días'}`; };
   const col=(t,n,sub,body,cls='')=>`<section class="dh-k ${cls}"><header><h3>${t}</h3><span class="num">${n}</span></header><p>${sub}</p><div class="dh-l">${body||'<p class="dh-e">Nada por ahora</p>'}</div></section>`;
+  const nowItem=p=>{ const u=ordLeft(p)<=3, span=Math.max(1,Math.round((lastOrder(p)-avisoD(p))/864e5)), pct=Math.min(100,Math.max(8,(1-ordLeft(p)/span)*100));
+    return u?`<div class="dh-n u">${chip(p)}<p class="dh-ul"><b>${dl(p)}</b> para decidir · hasta el ${fdate(lastOrder(p))}</p><i class="dh-ub"><b style="width:${pct}%"></b></i><button data-act="flow" data-i="${idx(p)}" class="dh-cta">Resolver ahora <span aria-hidden="true">→</span></button></div>`:chip(p); };
   const more=later.length>3?`<p class="dh-m">y ${later.length-3} fechas más que sigo</p>`:'';
-  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l"><h1 class="pl-h">${now.length?`Hay ${now.length===1?'un regalo':now.length+' regalos'} que ver contigo, ${esc(firstName())}.`:`Todo en orden, ${esc(firstName())}.`}</h1>
-    <p class="pl-lead">Esto es lo que viene. Yo voy un paso adelante y te aviso a tiempo.</p>
+  const order=p=>{ ensureOrder(p); const x=chosen(p), st=orderSteps(p), c=st.find(a=>a[0]==='now')||st[st.length-1]; return `<button data-act="pedido" data-i="${idx(p)}" class="dh-o"><span class="dh-th">${img(x.u,'')}</span><span class="min-w-0"><b>${esc(x.t)}</b><small>Para ${esc(p.n)} · ${esc(c[1])}</small></span><em>${esc(c[2]||'')}</em></button>`; };
+  const h1=hot?`${nm}, hay que resolver ${who(hot)} ya.`:now.length?`${now.length===1?'Tienes un regalo':'Tienes '+now.length+' regalos'} por decidir, ${nm}.`:`Todo en orden, ${nm}.`;
+  const lead=hot?`${dl(hot)} para pedirlo y que llegue a tiempo. Ya lo dejé pensado: solo falta tu decisión.`:'Esto es lo que viene. Yo voy un paso adelante y te aviso a tiempo.';
+  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l"><h1 class="pl-h ${hot?'pl-urg':''}">${h1}</h1>
+    <p class="pl-lead">${lead}</p>
     <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
-      ${col('Listo para ti',now.length,'Ya lo pensé, falta tu OK',now.map(chip).join(''),'dh-hot')}
-</div>
-    ${done.length?`<button data-act="tab" data-t="regalos" class="dh-pd"><span class="dh-pdi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5ZM3 8l9 5 9-5M12 13v8"/></svg></span><span><b>${done.length} ${done.length===1?'pedido en curso':'pedidos en curso'}</b><small>Míralos con su historial en Pedidos</small></span><em aria-hidden="true">→</em></button>`:''}
+      ${col('Para regalar pronto',now.length,hot?'Esto no puede esperar':'Ya lo pensé, falta tu decisión',now.map(nowItem).join(''),'dh-hot'+(hot?' dh-urg':''))}</div>
+    ${done.length?`<section class="dh-or"><header><h3>Pedidos en curso</h3><button data-act="tab" data-t="regalos">Ver todos <span aria-hidden="true">→</span></button></header>${done.slice(0,2).map(order).join('')}</section>`:''}
     <h2 class="dh-h">Lo que se viene</h2>
     <ol class="dt">${nx.map(p=>`<li><button data-act="flow" data-i="${idx(p)}"><i></i><b class="num">${fdate(occ(p))}</b><span>${esc(p.n)}</span><small>Te aviso el ${fdate(avisoD(p))}</small></button></li>`).join('')}</ol></div>
     <aside class="pl-r">${ticket(yfocus)}</aside></div>`;
@@ -2040,7 +2063,9 @@ function simulateNotif(){
   renderChrome(); $('apMain').innerHTML=''; history.replaceState(null,'','#planner'); $('year').scrollTop=0; arrive();
 }
 $('obKb').onclick=simulateNotif;
-addEventListener('keydown',e=>{ if(e.metaKey||e.ctrlKey||e.altKey) return; const t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA') return; if(e.key==='n'||e.key==='N'){ if($('apNotif').style.display==='flex') return; simulateNotif(); } });
+function simulateUrgent(){ if($('year').style.display!=='block') return; TODAY=new Date(2026,10,TODAY.getDate()===4?9:4); AVISO=14; ytoast(TODAY.getDate()===9?'Simulando: faltan 2 días para decidir.':'Volví al día normal.'); co=null; render(); }
+$('obKu').onclick=simulateUrgent;
+addEventListener('keydown',e=>{ if(e.metaKey||e.ctrlKey||e.altKey) return; const t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA') return; if(e.key==='u'||e.key==='U'){ simulateUrgent(); return; } if(e.key==='n'||e.key==='N'){ if($('apNotif').style.display==='flex') return; simulateNotif(); } });
 
 function closeSync(){ $('sync').style.display='none'; }
 ['connect'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();startOb();}));
