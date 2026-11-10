@@ -1683,9 +1683,6 @@ function personPanel(p){
   <h3 class="pn-t">Lo que he aprendido</h3>
   <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}<small>${SRC_L[s]}</small></span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li class="text-[#5f6b7d]">Todavía estoy aprendiendo.</li>'}</ul>
   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
-  <h3 class="pn-t">${SHARED.includes(p.n)?'Lugar de entrega':'Dónde le llegan los regalos'}</h3>
-  <form id="pnAddr" class="pn-a"><input id="pnAd" value="${esc(ADDR[p.n]||'')}" placeholder="${SHARED.includes(p.n)?'Dirección del lugar':'Agregar dirección'}" aria-label="Dirección de ${esc(p.n)}"><button aria-label="Guardar dirección">✓</button></form>
-  <p class="pn-hint">${ADDR[p.n]?'La uso al comprar. La puedes cambiar en cada compra.':'Sin dirección todavía. Te la pido cuando toque comprar.'}</p>
   <h3 class="pn-t">${lbl}</h3>
   <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
   <button data-act="focus" data-i="${idx(p)}" class="pl-sec mt-4 w-full">Ver en mi planner</button>`;
@@ -1701,7 +1698,7 @@ function viewPersonas(){
   const qi=$('ppQ'); const filt=()=>{ personQ=qi.value; const s=personQ.trim().toLowerCase(); document.querySelectorAll('.pe').forEach(b=>b.style.display=b.dataset.name.includes(s)?'':'none'); }; qi.oninput=filt; filt();
   bindPanel();
 }
-function bindPanel(){ const fa=$('pnAddr'); if(fa) fa.onsubmit=e=>{ e.preventDefault(); const v=$('pnAd').value.trim(); if(v) ADDR[personSel.n]=v; else delete ADDR[personSel.n]; ytoast(v?`Guardé la dirección de ${personSel.n}.`:'Quité la dirección.'); $('ppPanel').innerHTML=personPanel(personSel); bindPanel(); }; const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault(); const t=$('pnFact').value.trim(); if(!t) return; (learned[personSel.n]=learned[personSel.n]||[]).push(t); ytoast(`Anotado. Lo uso para el próximo regalo de ${personSel.n}.`); render(); }; }
+function bindPanel(){ const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault(); const t=$('pnFact').value.trim(); if(!t) return; (learned[personSel.n]=learned[personSel.n]||[]).push(t); ytoast(`Anotado. Lo uso para el próximo regalo de ${personSel.n}.`); render(); }; }
 
 /* Configuración */
 const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
