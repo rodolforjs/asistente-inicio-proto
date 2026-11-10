@@ -366,15 +366,23 @@ body.in-app .ob-kb{display:flex}
 .dt b{font-size:13px;font-weight:600}.dt span{font-size:13.5px}.dt small{font-size:11.5px;color:#5f6b7d}
 .dt button:hover span{text-decoration:underline}
 /* mis regalos */
-.mr-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-.mr{display:flex;overflow:hidden;border-radius:26px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 24px 40px -32px rgba(15,23,42,.4)}
-.mr-ph{flex:none;width:36%;background:#f1f3f6}.mr-ph img{display:block;width:100%;height:100%;object-fit:cover}
-.mr-b{display:flex;min-width:0;flex:1;flex-direction:column;padding:18px 20px}
-.mr-o{font-size:12px;color:#5f6b7d}.mr-b h2{font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.05;letter-spacing:-.02em}
-.mr-t{margin-top:2px;font-size:13.5px;color:#39414e}
-.mr-s{margin-top:14px}.mr-s b{display:block;font-size:14px}.mr-s small{font-size:12.5px;color:#5f6b7d}
-.mr-bar{height:4px;margin-top:8px;border-radius:2px;background:#e8ecf2;overflow:hidden}.mr-bar i{display:block;height:100%;background:#ff5924}
-.mr-d{margin-top:10px;font-size:12px;color:#5f6b7d}.mr-bt{align-self:flex-start;margin-top:auto}
+.mr-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:18px}
+.mr{display:grid;grid-template-columns:200px minmax(0,1fr);overflow:hidden;border-radius:28px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 26px 44px -34px rgba(15,23,42,.45)}
+.mr-ph{display:grid;place-items:center;background:#f1f3f6;padding:18px}.mr-ph img{display:block;width:100%;height:100%;max-height:230px;object-fit:contain;mix-blend-mode:multiply}
+.mr-b{display:flex;min-width:0;flex-direction:column;padding:22px 24px 20px}
+.mr-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mr-pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#fff0ea;padding:5px 12px 5px 10px;font-size:12.5px;font-weight:600;color:#c63f12}
+.mr-pill i{width:7px;height:7px;border-radius:50%;background:#ff5924;animation:stp 2s infinite}
+.mr-eta{font-size:12.5px;color:#748297}
+.mr-o{margin-top:18px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#748297}
+.mr-b h2{margin-top:4px;font-family:'Newsreader',serif;font-weight:400;font-size:36px;line-height:1.02;letter-spacing:-.025em}
+.mr-t{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:8px;font-size:14.5px;color:#39414e}.mr-t b{flex:none;font-weight:600;color:#0e1014}
+.mr-sg{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-top:20px}.mr-sg i{height:4px;border-radius:2px;background:#e5eaf2}.mr-sg i[data-s=done]{background:#0e1014}.mr-sg i[data-s=now]{background:#ff5924}
+.mr-m{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;margin-top:18px;border-top:1px solid #eef1f5;padding-top:14px}
+.mr-m dt{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9aa3b2}.mr-m dd{margin-top:3px;font-size:13px;line-height:1.35;color:#39414e}
+.mr-bt{align-self:flex-start;margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:4px}
+.mr-bt:hover{text-decoration-color:#0e1014}
+@media(max-width:620px){.mr{grid-template-columns:minmax(0,1fr)}.mr-ph{height:200px}.mr-g{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:1023px){.dh,.dt{grid-template-columns:minmax(0,1fr)}.dt::before{display:none}.dt li{margin-bottom:8px}}
 #apMain{position:relative;z-index:1}
 /* tarjeta */
@@ -415,16 +423,19 @@ body.in-app .ob-kb{display:flex}
 .sh-th button{flex:none;width:60px;height:60px;overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
 .sh-th button[aria-pressed=true]{box-shadow:0 0 0 2.5px #0e1014}
 .sh-th img{width:100%;height:100%;object-fit:cover}
-.sh-b{min-height:0;overflow:auto;padding:30px 30px 26px}
-.sh-why{display:flex;gap:11px;align-items:center;margin-top:16px;border-radius:16px;background:#f5f7f9;padding:11px 13px;font-size:14px;line-height:1.35}
+.sh-b{min-height:0;overflow:auto;padding:44px 36px 30px}
+.sh-b .pl-v{margin-bottom:10px;font-size:13px;font-weight:500;letter-spacing:.02em}
+.sh-b .pl-t{margin:0 0 16px;font-size:clamp(34px,3.4vw,44px);line-height:1.06}
+.sh-pr{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.sh-why{display:flex;gap:12px;align-items:center;margin-top:24px;border-radius:16px;background:#f5f7f9;padding:11px 13px;font-size:14px;line-height:1.35}
 .sh-why .sh-pt{flex:none;width:44px;height:44px;border-radius:50%}
-.sh-cta{display:flex;flex-direction:column;gap:8px;margin-top:14px}
-.sh-s{margin-top:22px;border-top:1px solid #e5eaf2;padding-top:15px;font-size:14px;line-height:1.45}
-.sh-s h3{margin-bottom:6px;font-size:13px;font-weight:700}
-.sh-s p+p{margin-top:6px}
+.sh-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.sh-s{margin-top:28px;border-top:1px solid #e5eaf2;padding-top:20px;font-size:14.5px;line-height:1.55}
+.sh-s h3{margin-bottom:10px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#748297}
+.sh-s p+p{margin-top:10px}
 .sh-dl{display:flex;flex-direction:column;gap:6px;margin-bottom:7px}
 .sh-dl dt{font-weight:500}.sh-dl dd{font-size:13px;color:#5f6b7d}
-.sh-ext{display:inline-block;margin-top:18px;font-size:13px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
+.sh-ext{display:inline-block;margin-top:26px;font-size:13px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:3px}
 /* compra */
 .pl-co{align-items:start}
 .pl-co .pl-r{position:sticky;top:68px}
@@ -1248,7 +1259,7 @@ function renderSheet(){
    <button class="sh-x" data-act="sheetx" aria-label="Cerrar">×</button>
    <div class="sh-g"><div class="sh-main"><img src="${imgs[sheetImg].replace('_600x','_1200x')}" alt="${esc(x.t)}"></div>${imgs.length>1?`<div class="sh-th">${imgs.map((u,n)=>`<button data-act="shimg" data-n="${n}" aria-pressed="${n===sheetImg}" aria-label="Foto ${n+1} de ${imgs.length}"><img src="${u}" alt=""></button>`).join('')}</div>`:''}</div>
    <div class="sh-b">
-     <p class="pl-v">${esc(x.v)}${inf.ty?` · ${esc(inf.ty)}`:''}</p><h2 class="pl-t">${esc(x.t)}</h2><p class="num mt-2 text-[20px] font-semibold">${clp(x.p)}</p>
+     <p class="pl-v">${esc(x.v)}${inf.ty?` · ${esc(inf.ty)}`:''}</p><h2 class="pl-t">${esc(x.t)}</h2><p class="num sh-pr">${clp(x.p)}</p>
      ${canBuy?`<div class="sh-why">${portrait(p.n,'sh-pt')}<p><b>Para ${esc(p.n)}.</b> ${OPT[h]||('Lo elegí porque '+whyOf(p))}</p></div>`:''}
      ${canBuy?`<div class="sh-cta"><button data-act="ok" data-i="${idx(p)}" data-pick="${i}" class="pl-cta pl-cta-w">Comprar y dejar listo</button>${isCur?'':`<button data-act="shpick" data-pick="${i}" class="pl-sec">Dejarla como mi elección</button>`}</div>`:''}
      <section class="sh-s"><h3>Sobre el producto</h3>${inf.d&&inf.d.length?inf.d.map(t=>`<p>${esc(t)}</p>`).join(''):`<p>${esc(descFor(h))}</p>`}</section>
@@ -1521,10 +1532,15 @@ function viewHome(){
 }
 function viewRegalos(){
   const done=yr().filter(p=>phase(p)==='bought');
-  const card=p=>{ ensureOrder(p); const x=chosen(p), od=p.order, st=orderSteps(p), cur=st.findIndex(a=>a[0]==='now'), cur2=cur<0?st.length-1:cur, pct=Math.round((st.filter(a=>a[0]==='done').length+(cur>=0?.5:0))/st.length*100);
-    return `<article class="mr"><div class="mr-ph">${img(x.u,'')}</div><div class="mr-b"><p class="mr-o">${esc(p.o)} · ${fdate(occ(p))}</p><h2>${esc(p.n)}</h2><p class="mr-t">${esc(x.t)} · ${clp(x.p)}</p>
-      <div class="mr-s"><b>${esc(st[cur2][1])}</b><small>${esc(st[cur2][2]||'')}</small></div><div class="mr-bar"><i style="width:${pct}%"></i></div>
-      <p class="mr-d">${esc(destOf(p,od.ship))} · Pedido ${od.no}</p><button data-act="focus" data-i="${idx(p)}" class="pl-sec mr-bt">Ver seguimiento</button></div></article>`; };
+  const card=p=>{ ensureOrder(p); const x=chosen(p), od=p.order, st=orderSteps(p), cur=st.findIndex(a=>a[0]==='now'), c2=cur<0?st.length-1:cur, fin=st.every(a=>a[0]==='done'),
+      segs=st.map((a,i)=>`<i data-s="${i<c2?'done':i===c2?(fin?'done':'now'):'todo'}"></i>`).join('');
+    return `<article class="mr"><div class="mr-ph">${img(x.u,'')}</div><div class="mr-b">
+      <div class="mr-top"><span class="mr-pill"><i></i>${esc(st[c2][1])}</span><span class="mr-eta">${esc(st[c2][2]||'')}</span></div>
+      <p class="mr-o">${esc(p.o)} · ${fdate(occ(p))}</p><h2>${esc(p.n)}</h2>
+      <p class="mr-t"><span>${esc(x.t)}</span><b class="num">${clp(x.p)}</b></p>
+      <div class="mr-sg" role="img" aria-label="Paso ${c2+1} de ${st.length}">${segs}</div>
+      <dl class="mr-m"><div><dt>Entrega</dt><dd>${esc(destOf(p,od.ship))}</dd></div><div><dt>Pedido</dt><dd class="num">${od.no}</dd></div></dl>
+      <button data-act="focus" data-i="${idx(p)}" class="mr-bt">Ver seguimiento <span aria-hidden="true">→</span></button></div></article>`; };
   $('apMain').innerHTML=`<header class="pp-h"><div><h1 class="pl-h">Mis regalos.</h1><p class="mt-1 text-[14px] text-[#5f6b7d]">Todo lo que compré por ti y en qué va cada uno.</p></div></header>
   ${done.length?`<div class="mr-g">${done.map(card).join('')}</div>`:`<div class="pl-empty"><p class="pl-lead">Todavía no hay regalos comprados. Cuando apruebes uno, lo sigo desde aquí hasta que llegue.</p></div>`}`;
 }
