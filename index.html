@@ -1625,7 +1625,7 @@ function viewHome(){
     <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
       ${col('Para regalar pronto',now.length,hot?'Esto no puede esperar':'Ya lo pensé, falta tu decisión',now.map(nowItem).join(''),'dh-hot'+(hot?' dh-urg':''))}</div>
     ${done.length?`<section class="dh-or"><header><h3>Pedidos en curso</h3><button data-act="tab" data-t="regalos">Ver todos <span aria-hidden="true">→</span></button></header>${done.slice(0,2).map(order).join('')}</section>`:''}
-    <h2 class="dh-h">Lo que se viene</h2>
+    <h2 class="dh-h">Línea de tiempo</h2>
     <ol class="dt">${nx.map(p=>`<li><button data-act="flow" data-i="${idx(p)}"><i></i><b class="num">${fdate(occ(p))}</b><span>${esc(p.n)}</span><small>Te aviso el ${fdate(avisoD(p))}</small></button></li>`).join('')}</ol></div>
     <aside class="pl-r">${ticket(yfocus)}</aside></div>`;
   animateTicket();
