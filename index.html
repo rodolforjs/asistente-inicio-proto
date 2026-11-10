@@ -1321,7 +1321,7 @@ function ticket(p){
       <p class="tk-h">Lo que rescaté</p>
       <ul class="tk-r">${rescued(p).map(([k,l,t])=>`<li>${srcI(k)}<span><small>${l}</small>${esc(t)}</span></li>`).join('')}</ul>
       ${rows}
-      ${nx?`<button data-act="focus" data-i="${idx(nx)}" class="tk-next"><span>Después</span>${esc(nx.n)} · ${fdate(occ(nx))}</button>`:''}</div>
+    </div>
   </article>`;
 }
 function animateTicket(){
