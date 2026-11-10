@@ -329,6 +329,28 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .oc[data-on=true] button{background:#d8f5e9;color:#0b6b48;pointer-events:none}
 .oc-sp{display:inline-block;width:11px;height:11px;margin-right:7px;vertical-align:-1px;border-radius:50%;border:2px solid #afb5c1;border-top-color:#0e1014;animation:ocs .7s linear infinite}
 @keyframes ocs{to{transform:rotate(360deg)}}
+.cx-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;font-size:14px;color:#5f6b7d}.cx-top b{color:#0e1014}
+.cx-add{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#0e1014;padding:9px 16px;font-size:13.5px;font-weight:600;color:#fff;transition:background .15s}.cx-add:hover{background:#ff5924}
+.cx-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+.cx-c{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-content:start;border-radius:22px;background:#fff;padding:18px;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .2s,transform .2s}.cx-c:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #d5dbe5,0 20px 30px -24px rgba(15,23,42,.4)}
+.cx-lg{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:#f5f7f9}.cx-lg img{width:30px;height:30px;object-fit:contain}.cx-lg b{font-size:18px}
+.cx-c h3{font-size:15.5px;font-weight:600}.cx-st{display:flex;align-items:center;gap:6px;margin-top:2px;font-size:12.5px;font-weight:500;color:#0b6b48}.cx-st i{width:7px;height:7px;border-radius:50%;background:#10b981}
+.cx-d{margin-top:6px;font-size:13px;line-height:1.4;color:#5f6b7d}
+.cx-off{position:absolute;right:14px;top:14px;font-size:12px;font-weight:600;color:#9aa3b2;opacity:0;transition:opacity .15s,color .15s}.cx-c:hover .cx-off,.cx-off:focus-visible{opacity:1}.cx-off:hover{color:#c63f12}
+.cx-new{display:flex;min-height:132px;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:22px;background:transparent;padding:18px;text-align:center;box-shadow:inset 0 0 0 1.5px #d5dbe5;transition:box-shadow .2s,background .2s}
+.cx-new:hover{background:#fff;box-shadow:inset 0 0 0 1.5px #0e1014}.cx-new>span{display:grid;place-items:center;width:36px;height:36px;margin-bottom:4px;border-radius:50%;background:#eef1f5}.cx-new b{font-size:14.5px}.cx-new small{font-size:12.5px;color:#748297}
+.cx-cal{margin-top:14px;border-radius:22px;background:#fff;padding:16px 20px 6px;box-shadow:0 0 0 1px #e5eaf2}.cx-ct{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#748297}
+#cxm{position:fixed;inset:0;z-index:300;display:none;place-items:center;padding:24px}#cxm.on{display:grid}
+.cxm-bd{position:absolute;inset:0;background:rgba(14,16,20,.48);backdrop-filter:blur(5px)}
+.cxm-w{position:relative;display:flex;width:min(640px,100%);max-height:min(680px,calc(100vh - 48px));flex-direction:column;overflow:hidden;border-radius:28px;background:#fff;padding:26px 26px 0;box-shadow:0 50px 80px -30px rgba(0,0,0,.5)}
+.cxm-w header{padding-right:44px}.cxm-w h2{font-family:'Newsreader',serif;font-weight:400;font-size:30px;letter-spacing:-.02em}.cxm-w header p{margin-top:4px;font-size:13.5px;line-height:1.4;color:#5f6b7d}
+.cxm-s{display:flex;align-items:center;gap:9px;margin-top:18px;border-radius:14px;background:#f5f7f9;padding:11px 14px;color:#748297}.cxm-s input{flex:1;background:transparent;font-size:14.5px;color:#0e1014}.cxm-s input:focus{outline:none}
+.cxm-ch{display:flex;gap:6px;margin-top:12px;padding:2px 2px 6px;overflow-x:auto;scrollbar-width:none}.cxm-ch button{flex:none;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:#4b5565;box-shadow:inset 0 0 0 1px #e5eaf2}.cxm-ch button[aria-pressed=true]{background:#0e1014;color:#fff;box-shadow:none}
+.cxm-l{flex:1;min-height:0;margin:14px -26px 0;overflow:auto;border-top:1px solid #eef1f5;padding:6px 26px 20px}
+.cxm-i{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #f1f3f6}.cxm-i:last-child{border:0}
+.cxm-i b{font-size:14.5px;font-weight:600}.cxm-i small{display:block;margin-top:2px;font-size:12.5px;line-height:1.35;color:#5f6b7d}
+.cxm-i button{min-width:108px;border-radius:999px;background:#0e1014;padding:9px 16px;font-size:13px;font-weight:600;color:#fff}.cxm-i button:hover{background:#ff5924}.cxm-i button[data-on=true]{background:#d8f5e9;color:#0b6b48;pointer-events:none}
+.cxm-e{padding:28px 0;text-align:center;font-size:14px;color:#748297}
 .ob-ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.ob-ch li{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#fff;padding:7px 13px 7px 11px;font-size:12.5px;font-weight:500;color:#4b5565;box-shadow:0 0 0 1px #e5eaf2}
 .ob-at{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
 .ob-ah{margin-top:4px;font-family:'Newsreader',serif;font-weight:400;font-size:25px;line-height:1.1;letter-spacing:-.02em}
@@ -763,6 +785,7 @@ body.in-app .ob-kb{display:flex}
     </div>
   </header>
   <div id="apSheet" class="hidden"></div>
+  <div id="cxm"></div>
   <button id="apNotif" aria-label="Abrir la notificación"></button>
   <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
 </section>
@@ -1611,6 +1634,35 @@ function bindPanel(){ const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault
 
 /* Configuración */
 const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
+
+const cxLogo=c=>`<span class="cx-lg"><img src="${c.img}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${c.t[0]}'}))"></span>`;
+function cxHtml(count){
+  const on=CONNS.filter(c=>CX[c.k]);
+  const cal=CX.cal?`<div class="cx-cal"><p class="cx-ct">Calendarios que leo</p><div class="divide-y divide-mist">${Object.keys(cfg.cals).map(c=>`<div class="flex items-center justify-between gap-4 py-3"><div><p class="text-[14px] font-medium">${c}</p><p class="text-[12.5px] text-[#5f6b7d]">${count(c)}</p></div>${sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c)}</div>`).join('')}</div></div>`:'';
+  return `<div class="cx-top"><p><b class="num">${on.length}</b> ${on.length===1?'conectado':'conectados'} · ${CONNS.length-on.length} por conectar</p><button data-act="cxadd" class="cx-add"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar conector</button></div>
+  <div class="cx-g">${on.map(c=>`<article class="cx-c">${cxLogo(c)}<div class="min-w-0"><h3>${c.t}</h3><p class="cx-st"><i></i>Conectado${c.k==='cal'?' · leído hace 5 min':''}</p><p class="cx-d">${c.s}</p></div><button data-act="cxoff" data-k="${c.k}" class="cx-off" aria-label="Desconectar ${c.t}">Desconectar</button></article>`).join('')}
+   <button data-act="cxadd" class="cx-new"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><b>Agregar conector</b><small>Calendarios, correo, ideas y más</small></button></div>${cal}`;
+}
+let cxQ='', cxCat='Todos';
+function cxModal(){
+  const M=$('cxm'), cats=['Todos',...new Set(CONNS.map(c=>c.cat))], q=cxQ.trim().toLowerCase();
+  const list=CONNS.filter(c=>(cxCat==='Todos'||c.cat===cxCat)&&(!q||(c.t+' '+c.s+' '+c.cat).toLowerCase().includes(q)));
+  M.innerHTML=`<div class="cxm-bd" data-act="cxclose"></div><div class="cxm-w" role="dialog" aria-modal="true" aria-label="Agregar conector"><header><div><h2>Agregar conector</h2><p>Elige de dónde quieres que aprenda. Solo leo, y puedes desconectar cuando quieras.</p></div><button data-act="cxclose" class="sh-x" aria-label="Cerrar">×</button></header>
+   <label class="cxm-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="cxQ" value="${esc(cxQ)}" placeholder="Buscar conectores" aria-label="Buscar conectores"></label>
+   <div class="cxm-ch">${cats.map(c=>`<button data-act="cxcat" data-c="${c}" aria-pressed="${c===cxCat}">${c}</button>`).join('')}</div>
+   <div class="cxm-l">${list.map(c=>`<div class="cxm-i" data-k="${c.k}">${cxLogo(c)}<div class="min-w-0"><b>${c.t}</b><small>${c.s}</small></div><button data-act="cxon" data-k="${c.k}" ${CX[c.k]?'data-on="true"':''}>${CX[c.k]?'✓ Conectado':'Conectar'}</button></div>`).join('')||'<p class="cxm-e">No encontré nada con esa búsqueda.</p>'}</div></div>`;
+  const i=$('cxQ'); if(i){ i.oninput=()=>{ cxQ=i.value; const pos=i.selectionStart; cxModal(); const n=$('cxQ'); n.focus(); n.setSelectionRange(pos,pos); }; }
+}
+function cxOpen(){ cxQ=''; cxCat='Todos'; cxModal(); const M=$('cxm'); M.classList.add('on'); if(!REDUCE){ gsap.from('.cxm-w',{y:26,opacity:0,duration:.4,ease:'power3.out',clearProps:'all'}); gsap.from('.cxm-bd',{opacity:0,duration:.25,clearProps:'all'}); } const i=$('cxQ'); if(i) i.focus(); }
+function cxClose(){ $('cxm').classList.remove('on'); }
+async function cxConnect(k){
+  const row=document.querySelector(`.cxm-i[data-k="${k}"]`), btn=row&&row.querySelector('button'); if(!btn||CX[k]||btn.dataset.busy) return;
+  btn.dataset.busy='1'; btn.innerHTML='<span class="oc-sp"></span>Conectando';
+  await wait(REDUCE?0:1.1); cxSet(k,true); cxModal();
+  const t=CONNS.find(c=>c.k===k); ytoast(`Listo, conecté ${t.t}.`);
+  if(tab==='config') viewConfig();
+}
+function cxDisconnect(k){ const t=CONNS.find(c=>c.k===k); cxSet(k,false); ytoast(`Desconecté ${t.t}. Dejo de leer sus datos.`); viewConfig(); }
 function viewConfig(){
   const row=(t,s,ctl)=>`<div class="flex items-center justify-between gap-4 py-3.5"><div class="min-w-0"><p class="text-[14.5px] font-medium">${t}</p>${s?`<p class="mt-0.5 text-[12.5px] leading-snug text-[#5f6b7d]">${s}</p>`:''}</div><div class="shrink-0">${ctl}</div></div>`;
   const box=(id,t,s,body,plain)=>`<section id="${id}" class="scroll-mt-20 border-t border-mist py-7 first:border-0 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><div class="mb-3 lg:mb-0"><h2 class="font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2><p class="mt-1 text-[13px] leading-snug text-[#5f6b7d]">${s}</p></div><div class="${plain?'':'divide-y divide-mist rounded-2xl bg-white px-5 ring-1 ring-mist'}">${body}</div></section>`;
@@ -1619,11 +1671,7 @@ function viewConfig(){
   const modeCard=(v,t,s)=>`<button data-act="defmode" data-v="${v}" aria-pressed="${cfg.mode===v}" class="cf-m"><i></i><b>${t}</b><span>${s}</span></button>`;
   $('apMain').innerHTML=`<header class="pp-h"><h1 class="pl-h">Configuración</h1></header><div class="mx-auto max-w-[1040px]">`
   + box('cf-mode','Cómo participas','Vale para todos tus regalos.',`<div class="grid gap-3 sm:grid-cols-2">${modeCard('delego','Delego','Yo pienso y te dejo un regalo listo. Tú solo apruebas.')}${modeCard('elijo','Elijo yo','Yo pienso y te dejo 3 finalistas. Tú eliges.')}</div>`,true)
-  + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Si aparece algo nuevo, lo agrego solo.',
-     `<div class="flex items-center gap-3 py-3.5"><i class="size-2 rounded-full bg-emerald-500"></i><p class="flex-1 text-[14.5px] font-medium">Google Calendar</p><span class="text-[12.5px] text-[#5f6b7d]">Leído hace 5 min</span></div>`
-     + Object.keys(cfg.cals).map(c=>row(c,count(c),sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c))).join('')
-     + row('Correo','Invitaciones, confirmaciones y lo que me sirva para elegir.',sw('conn:gmail',conn.gmail,'Leer el correo'))
-     + row('Contactos','Quién es quién en tu vida.',sw('conn:contacts',conn.contacts,'Leer los contactos')))
+  + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Solo leo; nunca escribo ni envío nada por ti.',cxHtml(count),true)
   + box('cf-av','Avisos','Cuándo aparezco y por dónde te insisto.',
      row('Avisarme antes de cada fecha','',opts('aviso',AVISO,[[7,'7'],[14,'14'],[21,'21'],[30,'30']],'Días de aviso')+'<span class="ml-2 text-[12.5px] text-[#5f6b7d]">días</span>')
      + row('WhatsApp','Si no respondes en la app.',sw('wa',cfg.wa,'Insistir por WhatsApp'))
@@ -1698,6 +1746,11 @@ $('year').addEventListener('click',e=>{
   else if(a==='sheetx'){ closeSheet(); }
   else if(a==='shimg'){ sheetImg=+b.dataset.n; renderSheet(); }
   else if(a==='shpick'){ ypick[yfocus.n]=+b.dataset.pick; closeSheet(); render(); ytoast('Listo, la dejo como tu elección.'); }
+  else if(a==='cxadd'){ cxOpen(); }
+  else if(a==='cxclose'){ cxClose(); }
+  else if(a==='cxcat'){ cxCat=b.dataset.c; cxModal(); }
+  else if(a==='cxon'){ cxConnect(b.dataset.k); }
+  else if(a==='cxoff'){ cxDisconnect(b.dataset.k); }
   else if(a==='coback'){ co=null; render(); }
   else if(a==='coship'){ co.ship=b.dataset.v; co.edit=null; render(); }
   else if(a==='coedit'){ co.edit=b.dataset.v; render(); const i=$('coAddr'); if(i){ i.focus(); i.select(); } }
@@ -1764,12 +1817,23 @@ function closeYear(){ thinkRun++; $('year').style.display='none'; document.body.
 
 /* ---------- Onboarding ---------- */
 const OB_STEPS=3, GLOGO=n=>`https://www.gstatic.com/images/branding/product/2x/${n}_48dp.png`;
-const OB_CONN=[
-  {k:'cal',t:'Google Calendar',img:GLOGO('calendar_2020q4'),s:'De aquí saco tus fechas: cumpleaños, aniversarios, el sorteo de la oficina.',tag:'Recomendado',ov:'Fechas importantes y recordatorios'},
-  {k:'gmail',t:'Gmail',img:GLOGO('gmail_2020q4'),s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes, plazos y detalles de cada evento'},
-  {k:'contacts',t:'Google Contactos',img:GLOGO('contacts_2022'),s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'A quién le regalas y cómo se conocen'},
-  {k:'wa',t:'WhatsApp',img:'https://cdn.simpleicons.org/whatsapp/25D366',s:'Te insisto por aquí si no ves la notificación.',ov:'Avisos si se te pasa responder'}
+const SI=(slug,c)=>`https://cdn.simpleicons.org/${slug}/${c}`;
+const CONNS=[
+  {k:'cal',core:1,t:'Google Calendar',img:GLOGO('calendar_2020q4'),cat:'Calendario',s:'De aquí saco tus fechas: cumpleaños, aniversarios, el sorteo de la oficina.',tag:'Recomendado',ov:'Fechas importantes y recordatorios'},
+  {k:'gmail',core:1,t:'Gmail',img:GLOGO('gmail_2020q4'),cat:'Correo',s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes, plazos y detalles de cada evento'},
+  {k:'contacts',core:1,t:'Google Contactos',img:GLOGO('contacts_2022'),cat:'Contactos',s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'A quién le regalas y cómo se conocen'},
+  {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Te insisto por aquí si no ves la notificación.',ov:'Avisos si se te pasa responder'},
+  {k:'icloud',t:'Calendario de Apple',img:SI('icloud','3693F3'),cat:'Calendario',s:'Las fechas de tu calendario de iCloud.'},
+  {k:'drive',t:'Google Drive',img:GLOGO('drive_2020q4'),cat:'Productividad',s:'Tus listas y planillas de regalos.'},
+  {k:'notion',t:'Notion',img:SI('notion','000000'),cat:'Productividad',s:'Tus notas y listas de deseos.'},
+  {k:'facebook',t:'Facebook',img:SI('facebook','0866FF'),cat:'Contactos',s:'Los cumpleaños de tus amigos.'},
+  {k:'instagram',t:'Instagram',img:SI('instagram','E4405F'),cat:'Ideas y gustos',s:'Gustos e intereses de cada persona, solo lo que es público.'},
+  {k:'pinterest',t:'Pinterest',img:SI('pinterest','E60023'),cat:'Ideas y gustos',s:'Los tableros con ideas que ya guardaste.'},
+  {k:'spotify',t:'Spotify',img:SI('spotify','1DB954'),cat:'Ideas y gustos',s:'El estilo musical de quienes comparten sus listas contigo.'}
 ];
+const OB_CONN=CONNS.filter(c=>c.core);
+const CX={cal:true,gmail:true,contacts:true,wa:true};
+function cxSet(k,on){ CX[k]=on; if(k==='gmail') conn.gmail=on; if(k==='contacts') conn.contacts=on; if(k==='wa') cfg.wa=on; }
 const ob={step:0,conn:{cal:false,gmail:false,contacts:false,wa:false},busy:{}};
 const OB_IMG=h=>PRODS[h][3];
 function obProg(i){ $('obSteps').innerHTML=Array.from({length:OB_STEPS},(_,k)=>`<li><b></b></li>`).join(''); [...$('obSteps').children].forEach((li,k)=>{ li.firstChild.style.width=k<i?'100%':'0%'; }); gsap.to($('obSteps').children[i].firstChild,{width:'100%',duration:REDUCE?0:.6,ease:'power3.out'}); }
@@ -1884,7 +1948,7 @@ function startOb(){
 function closeOb(){ if(ob.tl){ ob.tl.kill(); ob.tl=null; } $('ob').classList.remove('on'); }
 async function obFinish(){
   const el=$('ob'); if(!REDUCE) await new Promise(r=>gsap.to(el,{opacity:0,duration:.35,onComplete:r}));
-  closeOb(); gsap.set(el,{clearProps:'all'}); runSync();
+  Object.keys(ob.conn).forEach(k=>cxSet(k,!!ob.conn[k])); closeOb(); gsap.set(el,{clearProps:'all'}); runSync();
 }
 $('obX').onclick=closeOb;
 /* atajo: simular la notificación */
@@ -1901,7 +1965,7 @@ addEventListener('keydown',e=>{ if(e.metaKey||e.ctrlKey||e.altKey) return; const
 function closeSync(){ $('sync').style.display='none'; }
 ['connect'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();startOb();}));
 $('enter').onclick = () => openYear();
-addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('ob').classList.contains('on')){ closeOb(); return; } if(e.key==='Escape'){ if($('year').style.display==='block'){ closeSheet(); closePops(); } else closeSync(); } });
+addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('cxm').classList.contains('on')){ cxClose(); return; } if(e.key==='Escape'&&$('ob').classList.contains('on')){ closeOb(); return; } if(e.key==='Escape'){ if($('year').style.display==='block'){ closeSheet(); closePops(); } else closeSync(); } });
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
 const DEEP = {'#planner':'planner','#mi-ano':'planner','#personas':'personas','#regalos':'regalos','#config':'config'}[location.hash];
