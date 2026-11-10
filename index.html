@@ -417,7 +417,12 @@ body.in-app .ob-kb{display:flex}
 .dh-ub{display:block;height:4px;margin:8px 6px 0;border-radius:2px;background:rgba(255,255,255,.16);overflow:hidden}.dh-ub b{display:block;height:100%;background:#ff5924}
 .dh-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:calc(100% - 12px);margin:12px 6px 0;border-radius:999px;background:#ff5924;padding:12px 18px;font-size:14.5px;font-weight:600;color:#fff;transition:transform .15s,background .15s}.dh-cta:hover{background:#ff7447;transform:translateY(-1px)}
 .pl-urg{color:#c63f12}
-.tk-urg p{color:#ff9a78!important;font-weight:600}.tk-urg i b{background:#ff5924!important;animation:stp 1.6s infinite}
+.tk-dl-r{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.tk-dl-n{display:flex;align-items:center;gap:10px}.tk-dl-n b{font-family:'Newsreader',serif;font-weight:400;font-size:44px;line-height:.9;letter-spacing:-.03em}.tk-dl-n span{font-size:12.5px;line-height:1.25;color:rgba(255,255,255,.66)}
+.tk-dl-d{text-align:right}.tk-dl-d small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}.tk-dl-d b{font-size:15px;font-weight:600}
+.tk-dl i{margin-top:12px!important}
+.tk-dl-m{margin-top:8px;font-size:12.5px;font-weight:600}
+.tk-urg .tk-dl-n b,.tk-urg .tk-dl-m{color:#ff9a78}.tk-urg i b{background:#ff5924!important;animation:stp 1.6s infinite}
 .dh-or{margin-top:12px;border-radius:22px;background:#fff;padding:14px 8px 8px;box-shadow:0 0 0 1px #e5eaf2}
 .dh-or header{display:flex;align-items:center;justify-content:space-between;padding:0 12px 6px}.dh-or h3{font-family:'Newsreader',serif;font-weight:400;font-size:19px;letter-spacing:-.01em}
 .dh-or header button{font-size:12.5px;font-weight:600;color:#5f6b7d}.dh-or header button:hover{color:#0e1014}
@@ -1303,7 +1308,7 @@ function ticket(p){
   if(!p) return '';
   const o=occ(p), ph=phase(p), cur=chosen(p), nx=after(p), dead=lastOrder(p), left=Math.max(0,Math.round((dead-TODAY)/864e5)), span=Math.max(1,Math.round((dead-avisoD(p))/864e5)), pct=Math.min(100,Math.max(6,(1-left/span)*100));
   const rows = ph==='now'
-    ? `<div class="tk-t ${left<=3?'tk-urg':''}"><div class="flex items-baseline justify-between gap-3"><p>${left<=3?(left?`Quedan ${left} ${left===1?'día':'días'}: decide ya para que llegue a tiempo`:'Último día: decide hoy para que llegue a tiempo'):`Te quedan ${left} días para decidir`}</p><span class="tk-s">hasta el ${fdate(dead)}</span></div><i><b style="width:${pct}%"></b></i></div>`
+    ? `<div class="tk-t tk-dl ${left<=3?'tk-urg':''}"><div class="tk-dl-r"><div class="tk-dl-n"><b class="num">${left?left:'Hoy'}</b><span>${left?(left===1?'día':'días'):'último día'}<br>para decidir</span></div><div class="tk-dl-d"><small>Límite</small><b>${fdate(dead)}</b></div></div><i><b style="width:${pct}%"></b></i>${left<=3?'<p class="tk-dl-m">Si decides ahora, llega a tiempo.</p>':''}</div>`
     : ph==='bought'
     ? `<div class="tk-t"><p class="tk-ok">Resuelto · llega ${arrival(p)}</p><p class="tk-s">${esc(cur.t)}</p></div>`
     : `<div class="tk-t"><p>Te aviso el ${fdate(avisoD(p))}</p><p class="tk-s">Con el regalo pensado y tiempo para que llegue</p></div>`;
