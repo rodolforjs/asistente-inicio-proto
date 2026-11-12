@@ -193,7 +193,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
   .tk-b{padding:14px 18px}
 }
 @media(prefers-reduced-motion:reduce){.ap-sw,.ap-sw::after,.pl-dots i{animation:none}}
-/* Delego: con volumen */
+/* Regalo elegido: con volumen */
 .pl{gap:56px}
 .pl-l{padding-top:20px}
 .pl-r{padding-top:8px;padding-bottom:4px}
@@ -215,7 +215,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .fn li:last-child{margin-right:0;padding-right:0}
 .fn li:last-child b{color:#ff5924}
 .fn li:last-child span{color:#0e1014;font-weight:600}
-/* Elijo yo: escena */
+/* Finalistas en escena */
 .sc{position:relative;flex:none;height:clamp(300px,calc(100vh - 306px),540px);margin-top:20px;overflow:hidden;border-radius:28px;background:#e6e2db;box-shadow:0 0 0 1px rgba(229,234,242,.9),0 34px 50px -34px rgba(15,23,42,.38);cursor:grab;touch-action:pan-y;user-select:none}
 .sc.drag{cursor:grabbing}
 .sc-p{position:absolute;left:0;top:0;height:100%;aspect-ratio:5/1;will-change:transform}
@@ -486,6 +486,23 @@ body.in-app .ob-kb{display:flex}
 .tk-r li{display:flex;align-items:center;gap:10px;font-size:13.5px;line-height:1.25}
 .tk-r small{display:block;font-size:11px;color:rgba(255,255,255,.55)}
 .src{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#eef1f6;color:#0e1014}
+.src-lg{background:#fff;box-shadow:0 0 0 1px #e5eaf2}.src-lg img{width:16px;height:16px;object-fit:contain}
+.pl-src{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;font-size:12.5px;color:#5f6b7d}
+.pl-src span{display:inline-flex;align-items:center;gap:5px;border-radius:999px;background:#fff;padding:3px 10px 3px 4px;box-shadow:0 0 0 1px #e5eaf2;color:#0e1014;font-weight:500}
+.pl-src img{width:16px;height:16px;object-fit:contain}
+.pl-ask .pl-more{background:#0e1014;color:#fff;box-shadow:none}.pl-ask .pl-more:hover{background:#ff5924}
+.pl-alt{display:block;margin:12px auto 0;font-size:13px;font-weight:600;color:#5f6b7d;text-decoration:underline;text-underline-offset:3px}.pl-alt:hover{color:#0e1014}
+.pn-by{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:#5f6b7d}
+.pn-by span{display:inline-flex;align-items:center;gap:5px;border-radius:999px;background:#f5f7f9;padding:3px 9px 3px 4px;font-weight:500;color:#0e1014}
+.pn-by img{width:15px;height:15px;object-fit:contain}
+.pn-cx{display:flex;align-items:center;gap:12px;margin-top:14px;border-radius:16px;background:#fff;padding:12px 14px;box-shadow:0 0 0 1px #e5eaf2;font-size:13.5px;line-height:1.3}
+.pn-cx img{width:24px;height:24px;flex:none;object-fit:contain}
+.pn-cx small{display:block;margin-top:2px;font-size:12px;color:#5f6b7d}
+.pn-cx button{flex:none;margin-left:auto;border-radius:999px;background:#0e1014;color:#fff;padding:6px 12px;font-size:12.5px;font-weight:600}.pn-cx button:hover{background:#ff5924}
+.pn-q small{display:block;margin:-4px 0 9px;font-size:12px;color:rgba(255,255,255,.6)}
+.cx-y{margin-top:8px;font-size:12.5px;font-weight:600;color:#0e1014}
+.me-x{font-size:12px;font-weight:600;color:#9aa3b2}.me-x:hover{color:#c63f12}
+.ov-f{display:block;margin-top:2px;font-size:12.5px;font-weight:500;color:#ff5924}.ov-f:empty{display:none}
 .src-cal{background:#dbe7ff;color:#2c44d6}.src-mail{background:#ffe2d6;color:#c63f12}.src-con{background:#d8f1e6;color:#14704f}.src-gift{background:#fff0b8;color:#8a6500}.src-you{background:#eadfff;color:#6a4be0}
 .tk .tk-t{margin-top:15px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px}
 .tk-t i{margin:8px 0 0}
@@ -749,7 +766,7 @@ body.in-app .ob-kb{display:flex}
         </div>
 
         <!-- regalo propuesto -->
-        <div class="fl glass rounded-[26px] p-3.5" data-d="1.8" data-s="gift" data-bt="Elijo por ti" data-b1="Según sus gustos y tu presupuesto" data-b2="Si no te convence, te muestro 2 más." style="left:-26px;top:396px;width:262px">
+        <div class="fl glass rounded-[26px] p-3.5" data-d="1.8" data-s="gift" data-bt="Lo dejo listo" data-b1="Según sus gustos y tu presupuesto" data-b2="Si no te convence, te muestro 2 más." style="left:-26px;top:396px;width:262px">
           <div class="flex gap-3">
             <div class="relative size-[74px] shrink-0 overflow-hidden rounded-[18px] bg-[#f6d9e4]"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306" alt="" class="absolute inset-0 size-full origin-bottom scale-[1.14] object-cover object-bottom"></div>
             <div class="min-w-0 leading-tight"><span class="tag" style="background:#22a06b">Te propongo</span><p class="mt-1.5 text-[15px] font-semibold">Mamá ¿Cuál es tu Historia?</p><p class="mt-0.5 text-[12.5px] text-slate2">$29.990 · llega el 12 mar</p></div>
@@ -854,7 +871,7 @@ $('months').innerHTML = MES.map(m=>`<span>${m}</span>`).join('');
 const PEOPLE = [
   {n:'Mamá',        o:'Cumpleaños',    m:2,  d:14, y:30, k:'cumple',  h:150, st:'Te aviso'},
   {n:'Andrés',      o:'Cumpleaños',    m:3,  d:2,  y:72, k:'cumple',  h:150, st:'Te aviso', g:'#6fe0cd,#14897a'},
-  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, k:'cumple',  h:150, st:'Falta un dato', doubt:true, g:'#ffb4c8,#ff4f86'},
+  {n:'Carla',       o:'Cumpleaños',    m:4,  d:19, y:22, k:'cumple',  h:150, st:'Te aviso', g:'#ffb4c8,#ff4f86'},
   {n:'Papá',        o:'Día del Padre', m:5,  d:21, y:62, k:'padre',   h:150, st:'Te aviso'},
   {n:'Abuela Rosa', o:'Cumpleaños',    m:7,  d:3,  y:30, k:'cumple',  h:150, st:'Te aviso', g:'#ffe07a,#ff9a2e'},
   {n:'Sofi y Nico', o:'Matrimonio',    m:7,  d:22, y:78, k:'boda',    h:150, st:'Te aviso'},
@@ -1097,8 +1114,7 @@ async function runSync(){
   const rows = 2, NC = Math.ceil(PEOPLE.length/rows);
   box.className='relative mt-9 grid shrink-0'; box.style.cssText=`grid-template-rows:repeat(${rows},auto);grid-auto-flow:column;grid-auto-columns:${innerWidth>700?236:200}px;column-gap:20px;row-gap:20px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 22px`;
   const cards = [];
-  PEOPLE.forEach((p,i)=>{ const c = cardEl(p, p.doubt?'ask-card':'', i+1); c._k=p.m*40+p.d;
-    if(p.doubt) c.lastElementChild.previousElementSibling.insertAdjacentHTML('beforeend','<div class="ask mt-3 flex items-center gap-2 text-xs"><span>¿Es tu hermana?</span><button data-a="si" class="rounded-full bg-white px-3 py-1 font-semibold text-black">Sí</button><button data-a="no" class="rounded-full px-3 py-1 font-semibold text-white ring-1 ring-white/40">No</button></div>');
+  PEOPLE.forEach((p,i)=>{ const c = cardEl(p, '', i+1); c._k=p.m*40+p.d;
     box.appendChild(c); cards.push(c); });
   const hits = dots.filter(d=>d.hit);
   gsap.set(cards,{opacity:0});
@@ -1117,19 +1133,13 @@ async function runSync(){
   Flip.from(state,{duration:.7,ease:'power3.inOut',absolute:false});
   gsap.to(hits.map(d=>d.core),{scale:1.4,duration:.5});
 
-  const dc = box.querySelector('.ask')?.closest('.card');
-  gsap.fromTo(dc,{x:-5},{x:5,duration:.06,repeat:7,yoyo:true,ease:'sine.inOut',onComplete:()=>gsap.set(dc,{x:0})});
   $('ping').style.display='none'; $('pdot').className='relative inline-flex size-2.5 rounded-full bg-emerald-500';
   say('Listo · conectado con Google Calendar',.9);
-  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>. Te aviso con tiempo antes de cada una y tengo <span class="text-brand">1 duda</span>.`;
+  const xs=[conn.contacts&&['tus contactos','quién es quién'],conn.gmail&&['tus correos','qué le gusta a cada uno']].filter(Boolean);
+  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>.${xs.length?` Las crucé con ${xs.map(x=>x[0]).join(' y ')}: ya sé ${xs.map(x=>x[1]).join(' y ')}.`:' Te aviso con tiempo antes de cada una.'}`;
   gsap.from('#summary',{opacity:0,y:14,duration:.5});
   gsap.to('#enter',{opacity:1,pointerEvents:'auto',duration:.5});
 
-  dc.querySelectorAll('button').forEach(b=>b.onclick=()=>{
-    dc.classList.remove('ask-card'); gsap.killTweensOf(dc,'boxShadow'); dc.style.boxShadow=''; dc.querySelector('.ask').remove();
-    $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>. Voy aprendiendo con cada una.`;
-    gsap.fromTo(dc,{scale:1.06},{scale:1,duration:.5,ease:'elastic.out(1,.5)'});
-  });
 
   await wait(2.4);
   if($('sync').style.display==='none') return;
@@ -1161,10 +1171,7 @@ const GIFT = {
  'Familia Soto':[['tarjetas-para-fotos-hitos-festa-menta','libro-tu-primer-ano','tarjetas-para-fotos-mes-circus'],'es un recuerdo para el día del bautizo.'],
 };
 const QUESTIONS = [
- {n:'Carla',q:'¿Es tu hermana?',a:['Sí','No'],fact:a=>a==='Sí'?'Es tu hermana':'No es tu hermana'},
- {n:'Mamá',q:'¿Hay algo que definitivamente no le guste?',a:['Perfumes','Ropa','Decoración','Nada en especial'],fact:a=>a==='Nada en especial'?'Abierta a todo':'No le gusta: '+a.toLowerCase()},
- {n:'Andrés',q:'¿Cómo es su estilo de vida?',a:['Deportivo','Casero','Viajero'],fact:a=>'Estilo '+a.toLowerCase()},
- {n:'Papá',q:'¿Le gustó el regalo del Día del Padre?',a:['Sí, mucho','Más o menos','No'],fact:a=>'Regalo anterior: '+a.toLowerCase()},
+ {n:'Papá',q:'¿Le gustó la botella que le regalaste en junio?',why:'Esto no lo sabe ningún conector. Con tu respuesta afino el próximo.',a:['Sí, mucho','Más o menos','No'],fact:a=>'La botella de junio: '+(a==='Sí, mucho'?'le encantó':a==='No'?'no le gustó':'más o menos')},
 ];
 const YEAR = [...PEOPLE.map(p=>({...p})), {...NEW}];
 YEAR.find(p=>p.n==='Emilia').bought=true;
@@ -1192,12 +1199,13 @@ const addBD = (d,n) => { const x=new Date(d); while(n>0){ x.setDate(x.getDate()+
 const ordLeft = p => Math.max(0,Math.round((lastOrder(p)-TODAY)/864e5));
 const lastOrder = p => { const lim=addD(occ(p),-1); let d=new Date(lim); while(addBD(d,4)>lim) d=addD(d,-1); return d; };
 const etaRange = from => { const a=addBD(from,3), b=addBD(from,4); return a.getMonth()===b.getMonth()?`entre el ${a.getDate()} y el ${fdate(b)}`:`entre el ${fdate(a)} y el ${fdate(b)}`; };
-const SRC_L = {cal:'Calendario',mail:'Correo',con:'Contactos',gift:'Regalos',you:'Tú'};
-const REL = {'Mamá':'Tu mamá','Andrés':'Tu hermano','Carla':'Por confirmar','Papá':'Tu papá','Abuela Rosa':'Tu abuela','Sofi y Nico':'Tus amigos','Pareja':'Tu pareja','Tío Jorge':'Tu tío','Emilia':'Tu sobrina','Familia Soto':'Familia','Amigo secreto':'Oficina','Navidad':'Familia'};
+const SRC_L = {cal:'Google Calendar',mail:'Gmail',con:'Google Contactos',gift:'Tus pedidos',you:'Me lo contaste',instagram:'Instagram',pinterest:'Pinterest',spotify:'Spotify'};
+const SRC2CX = {mail:'gmail',con:'contacts'};
+const REL = {'Mamá':'Tu mamá','Andrés':'Tu hermano','Carla':'Tu hermana','Papá':'Tu papá','Abuela Rosa':'Tu abuela','Sofi y Nico':'Tus amigos','Pareja':'Tu pareja','Tío Jorge':'Tu tío','Emilia':'Tu sobrina','Familia Soto':'Familia','Amigo secreto':'Oficina','Navidad':'Familia'};
 const LEARN = {
  'Mamá':[['Le gusta leer antes de dormir','mail'],['Guarda las historias de la familia','mail'],['Una vela del año pasado le encantó','gift']],
- 'Andrés':[['Anda en bici a todos lados','cal'],['Ya tiene botella, le falta mochila','mail']],
- 'Carla':[['Lee antes de dormir','mail'],['Le escribes seguido','con']],
+ 'Andrés':[['Es tu hermano','con'],['Anda en bici a todos lados','cal'],['Ya tiene botella, le falta mochila','mail']],
+ 'Carla':[['Es tu hermana','con'],['Lee antes de dormir','mail'],['Le escribes seguido','con']],
  'Papá':[['Toma café todas las mañanas','mail'],['Le regalaste una botella en junio','gift']],
  'Abuela Rosa':[['Siempre tiene frío en invierno','mail'],['Prefiere regalos para la casa','gift']],
  'Sofi y Nico':[['Se casan el 22 de agosto','cal'],['Están armando su casa','mail']],
@@ -1208,8 +1216,20 @@ const LEARN = {
  'Amigo secreto':[['Tope de $15.000','mail'],['Es anónimo, sin tu nombre','mail'],['Se entrega en la oficina','cal']],
  'Navidad':[['Cena familiar el 24','cal'],['Son 8 personas a la mesa','mail']],
 };
+/* lo que un conector más me diría de cada persona */
+const HINT = {
+ 'Andrés':['instagram','Por sus fotos públicas sabría qué deporte hace.','Sale a pedalear al cerro los domingos'],
+ 'Mamá':['pinterest','Sus tableros me dirían qué le gusta para la casa.','Guarda ideas de cerámica y plantas'],
+ 'Carla':['spotify','Sus listas compartidas me dirían qué escucha.','Escucha podcasts de libros'],
+ 'Pareja':['spotify','Sus listas compartidas me dirían qué escuchan juntos.','Tienen una lista para cocinar'],
+ 'Sofi y Nico':['pinterest','Sus tableros me dirían cómo quieren su casa.','Arman su casa en tonos tierra'],
+};
 const removedFact = {};
-const knows = p => [...(LEARN[p.n]||[]).filter(f=>!removedFact[p.n+'|'+f[0]]), ...(learned[p.n]||[]).map(t=>[t,'you'])];
+const knows = p => { const h=HINT[p.n], viaCx=h&&CX[h[0]]&&!removedFact[p.n+'|'+h[2]]?[[h[2],h[0]]]:[]; return [...(LEARN[p.n]||[]).filter(f=>!removedFact[p.n+'|'+f[0]]), ...viaCx, ...(learned[p.n]||[]).map(t=>[t,'you'])]; };
+const cxOf = k => CONNS.find(c=>c.k===(SRC2CX[k]||k));
+/* conectores que me enseñaron algo de esta persona */
+const srcsOf = p => [...new Set(knows(p).map(f=>f[1]))].map(cxOf).filter(Boolean);
+const srcChips = list => list.map(c=>`<span><img src="${c.img}" alt="">${c.t}</span>`).join('');
 const facts = p => knows(p).map(f=>f[0]);
 const conn = {gmail:true,contacts:true};
 function rescued(p){
@@ -1227,7 +1247,7 @@ const SRC_ICON = {
  gift:'<path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.500S9 7 12 7ZM12 7c2-4 6-4 6-1.500S15 7 12 7Z"/>',
  you:'<path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/>'
 };
-const srcI = k => `<i class="src src-${k}" title="${SRC_L[k]}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SRC_ICON[k]}</svg></i>`;
+const srcI = k => !SRC_ICON[k]&&cxOf(k) ? `<i class="src src-lg" title="${SRC_L[k]}"><img src="${cxOf(k).img}" alt=""></i>` : `<i class="src src-${k}" title="${SRC_L[k]}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SRC_ICON[k]}</svg></i>`;
 
 /* ---------- Personajes: uno por persona, nacen de lo que el sistema sabe ---------- */
 const INK='#22291f', C={coral:'#ee7a50',coralD:'#e5683e',coralL:'#ee7a50',green:'#8dc67f',greenD:'#73b267',greenL:'#8dc67f',yellow:'#f8ee6a',yellowD:'#e8dc52',yellowL:'#f8ee6a',white:'#fffdf8',pink:'#f3b3a8',pinkD:'#ef9c8e',pinkL:'#f3b3a8'};
@@ -1296,7 +1316,9 @@ const CAL_OF = {'Amigo secreto':'Trabajo','Mamá':'Familia','Papá':'Familia','A
 const BUDGET = {'Amigo secreto':15000};
 const READ = {'Amigo secreto':'Leí la invitación de tu calendario: sorteo de la oficina, tope de $15.000.'};
 const OPT = {'libreta-picaflor-1':'Mi favorita. Se ve cuidada y le sirve a cualquiera.','tazon-alerce':'La más económica, y se usa todos los días en la oficina.','tabla-tolten':'La más distinta, si quieres sorprender.'};
-const cfg = {name:'Rodolfo Rojas',mode:'delego',pay:'card',cals:{Personal:true,Familia:true,Trabajo:true},wa:true,mail:true,wrap:true,addr:'Av. Providencia 1234, depto. 56, Santiago'};
+const cfg = {name:'Rodolfo Rojas',likesOpts:false,pay:'card',cals:{Personal:true,Familia:true,Trabajo:true},wa:true,mail:true,wrap:true,addr:'Av. Providencia 1234, depto. 56, Santiago'};
+const optOpen = {}; let optSeen = 1;            // ya comparó una vez antes (demo)
+const showOpts = p => optOpen[p.n]!==undefined ? optOpen[p.n] : cfg.likesOpts;
 let pedido=null, mrTab='curso', routeQuiet=false, actId=10;
 let tab='planner', dash=false, autoFocus=true, bellSeen=false, thinkRun=0, hold=false, doubtDone=false;
 const thought={};
@@ -1436,10 +1458,11 @@ function thinkData(p){
   return {all,pool,its,lines:[
     READ[p.n] || `Vi “${p.o==='Familia'?p.n:p.o.toLowerCase()+' de '+p.n}” en tu calendario, ${fdate(occ(p))}.`,
     `Revisé ${all.length} regalos del catálogo.`,
-    b ? `Saqué ${all.length-pool.length} que pasaban del tope. Quedan ${pool.length}.` : `Saqué ${all.length-pool.length} que no van con lo que sé. Quedan ${pool.length}.`,
+    b ? `Gmail me dio el tope: saqué ${all.length-pool.length} que pasaban de ${clp(b)}. Quedan ${pool.length}.` : `Crucé lo que me ${srcsTxt(p)}: saqué ${all.length-pool.length} que no van con ${p.n}. Quedan ${pool.length}.`,
     b ? `De esos, dejé fuera comida y cosas navideñas. Quedan 3 para alguien de la oficina.` : `Me quedé con 3 porque ${whyOf(p)}`,
   ]};
 }
+function srcsTxt(p){ const n=srcsOf(p).filter(c=>c.k!=='cal').map(c=>c.t.replace('Google ','')); return n.length?`${n.length>1?'contaron':'contó'} ${n.length>1?n.slice(0,-1).join(', ')+' y '+n.at(-1):n[0]}`:'contó tu calendario'; }
 const thumb = h => `<span class="th" data-h="${h}" data-flip-id="${h}">${img(PRODS[h][3],'')}</span>`;
 
 function leftThinking(p){ return `<h1 class="pl-h">Pensando en ${esc(p.n)}<span class="pl-dots"><i></i><i></i><i></i></span></h1><ol id="thL" class="th-l" aria-live="polite"></ol><div id="thS" class="th-s s30"></div>`; }
@@ -1464,8 +1487,8 @@ async function runThink(p){
   if(!live()) return;
   st=Flip.getState('#thS .th'); out2.forEach(e=>e.remove()); d.its.forEach(h=>S.appendChild(S.querySelector(`[data-h="${h}"]`))); S.className='th-s s3'; Flip.from(st,{duration:.65,ease:'power3.inOut',absolute:true});
   await wait(1.2); if(!live()) return;
-  const scene=cfg.mode==='elijo'&&SCENES[p.n];
-  const fs=scene?null:Flip.getState(cfg.mode==='delego'?`#thS [data-h="${items(p)[ypick[p.n]||0].h}"]`:'#thS .th');
+  const scene=showOpts(p)&&SCENES[p.n];
+  const fs=scene?null:Flip.getState(!showOpts(p)?`#thS [data-h="${items(p)[ypick[p.n]||0].h}"]`:'#thS .th');
   thought[p.n]=true; setLive('Calendario al día');
   $('plLeft').innerHTML=leftFinal(p);
   if(scene) mountScene(p,true);
@@ -1477,17 +1500,18 @@ const finePrint = p => `Si compras hoy, llega ${arrival(p)}${cfg.wrap?', envuelt
 /* lo que hizo el sistema, siempre a la vista */
 function funnel(p){
   const d=thinkData(p), b=BUDGET[p.n];
-  const st=[['1',b?'invitación leída':'fecha en tu calendario'],[d.all.length,'regalos revisados'],[d.pool.length,b?'dentro del tope':'van con lo que sé'],['3','finalistas'],['1','elegida para ti']];
+  const st=[['1',b?'invitación leída':'fecha en tu calendario'],[d.all.length,'regalos revisados'],[d.pool.length,b?'dentro del tope':'van con tus conectores'],['3','finalistas'],['1','elegida para ti']];
   return `<ol class="fn" data-rise aria-label="Cómo lo pensé">${st.map(([n,l])=>`<li><b class="num">${n}</b><span>${l}</span></li>`).join('')}</ol>`;
 }
 function leftFinal(p){
   const its=items(p), cur=chosen(p), minP=Math.min(...its.map(o=>o.p));
-  if(cfg.mode==='elijo'){
-    if(SCENES[p.n]) return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas. Míralas en su lugar.</h1>${sceneHtml(p)}<div id="scFicha" class="sc-f" data-rise>${sceneFicha(p)}</div>`;
+  const alt=`<button data-act="opts" data-v="0" class="pl-alt" data-rise>Mejor elige tú por mí</button>`;
+  if(showOpts(p)){
+    if(SCENES[p.n]) return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas. Míralas en su lugar.</h1>${sceneHtml(p)}<div id="scFicha" class="sc-f" data-rise>${sceneFicha(p)}</div>${alt}`;
     const note=(o,i)=>OPT[o.h]||(i===0?'Mi favorita para esta fecha.':o.p===minP?'La más económica de las tres.':'La más distinta de las tres.');
     return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas para ${esc(p.n)}.</h1>
     <div class="pl-3">${its.map((o,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${(ypick[p.n]||0)===i}" class="pc3"><span class="pc3-ph" data-flip-id="${o.h}">${img(o.u,'')}</span><span class="pc3-b"><b>${esc(o.t)}</b><span class="num">${clp(o.p)}</span><small>${note(o,i)}</small></span></button>`).join('')}</div>
-    <div class="pt-6" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(cur.p)}</button><p class="pl-fine">${finePrint(p)}</p></div>`;
+    <div class="pt-6" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(cur.p)}</button><p class="pl-fine">${finePrint(p)}</p></div>${alt}`;
   }
   return `<h1 class="pl-h" data-rise>Ya lo tengo: este es para ${esc(p.n)}.</h1>
   <div class="pl-pick">
@@ -1497,14 +1521,15 @@ function leftFinal(p){
       <h2 class="pl-t" data-rise>${esc(cur.t)}</h2>
       <p class="num mt-2 text-[18px] font-semibold" data-rise>${clp(cur.p)}</p>
       <p class="mt-4 text-[16px] leading-[1.4]" data-rise>Lo elegí porque ${whyOf(p)}</p>
+      ${srcsOf(p).length?`<p class="pl-src" data-rise>Lo sé por ${srcChips(srcsOf(p))}</p>`:''}
       <div class="mt-auto pt-6" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta pl-cta-w">Comprar y dejar listo</button><p class="pl-fine">${finePrint(p)}</p></div>
     </div>
   </div>
   <div class="pl-foot" data-rise>${funnel(p)}
-    <div class="pl-ask"><span>¿Otra idea?</span>${[['eco','Más económica'],['orig','Más original'],['util','Más útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}">${l}</button>`).join('')}<em id="yreply" aria-live="polite"></em></div></div>`;
+    <div class="pl-ask"><span>¿Otra idea?</span><button data-act="opts" data-v="1" class="pl-more">${SCENES[p.n]?'Ver las 3 en la oficina':'Ver las 3 finalistas'}</button>${[['eco','Más económica'],['orig','Más original'],['util','Más útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}">${l}</button>`).join('')}<em id="yreply" aria-live="polite"></em></div></div>`;
 }
 
-/* Elijo yo: una escena para explorar, cada finalista en su contexto */
+/* Finalistas en escena: cada una en su contexto */
 const poly = (w,h,pts) => `polygon(evenodd,${pts.map(([x,y])=>`${(x/w*100).toFixed(1)}% ${(y/h*100).toFixed(1)}%`).join(',')})`;
 const SCENES = {'Amigo secreto':[
   {h:'libreta-picaflor-1',cx:700,x:505,y:172,w:400,r:-3,chip:'En su escritorio',cap:'Su escritorio, lunes 9 a.m.',
@@ -1687,9 +1712,11 @@ function personTile(p){
 function personPanel(p){
   const k=knows(p), q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]), c=chosen(p), ph=phase(p), lbl=ph==='bought'?'Compré':ph==='now'?'Regalo listo para aprobar':'Mi idea hasta ahora';
   return `<div class="pn-h">${portrait(p.n,'pn-pt')}<div class="min-w-0"><h2>${esc(p.n)}</h2><p>${esc(REL[p.n]||p.o)}</p><p class="pn-d">${esc(p.o)} · ${fdate(occ(p))} · ${days(dleft(p))}</p></div></div>
-  ${q?`<div class="pn-q"><p><span class="live-dot"></span>Una duda: ${q.q}</p><div class="flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}">${a}</button>`).join('')}</div></div>`:''}
+  ${srcsOf(p).length?`<p class="pn-by">Lo sé por ${srcChips(srcsOf(p))}</p>`:''}
+  ${q?`<div class="pn-q"><p><span class="live-dot"></span>${q.q}</p><small>${q.why}</small><div class="flex flex-wrap gap-1.5">${q.a.map(a=>`<button data-act="ans" data-q="${esc(q.n)}" data-a="${esc(a)}">${a}</button>`).join('')}</div></div>`:''}
   <h3 class="pn-t">Lo que he aprendido</h3>
   <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}<small>${SRC_L[s]}</small></span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li class="text-[#5f6b7d]">Todavía estoy aprendiendo.</li>'}</ul>
+  ${(()=>{ const h=HINT[p.n], c=h&&cxOf(h[0]); return c&&!CX[h[0]]?`<div class="pn-cx"><img src="${c.img}" alt=""><span class="min-w-0">Conecta ${c.t} y sabré más de ${esc(p.n)}.<small>${h[1]}</small></span><button data-act="pncx" data-k="${c.k}">Conectar</button></div>`:''; })()}
   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
   <h3 class="pn-t">${lbl}</h3>
   <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
@@ -1698,7 +1725,7 @@ function personPanel(p){
 function viewPersonas(){
   const v=yr(), ppl=v.filter(p=>!SHARED.includes(p.n)).sort((a,b)=>a.n.localeCompare(b.n,'es')), sh=v.filter(p=>SHARED.includes(p.n)), tot=ppl.reduce((n,p)=>n+knows(p).length,0);
   if(!personSel||!v.includes(personSel)) personSel=[...v].filter(p=>!SHARED.includes(p.n)&&phase(p)==='later').sort(byDate)[0]||v[0];
-  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Tu gente.</h1><p class="mt-1 flex items-center gap-2 text-[14px] text-[#5f6b7d]"><span class="live-dot"></span>He aprendido ${tot} cosas de ${ppl.length} personas, y sigo aprendiendo.</p></div>
+  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Tu gente.</h1><p class="mt-1 flex items-center gap-2 text-[14px] text-[#5f6b7d]"><span class="live-dot"></span>He aprendido ${tot} cosas de ${ppl.length} personas con ${CONNS.filter(c=>CX[c.k]&&c.k!=='wa').length} conectores, y sigo aprendiendo.</p></div>
     <label class="pp-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="ppQ" value="${esc(personQ)}" placeholder="Buscar por nombre" aria-label="Buscar por nombre"></label></header>
   <div class="pp"><div class="min-w-0"><div id="ppG" class="pe-g">${ppl.map(personTile).join('')}</div>
     ${sh.length?`<h2 class="pp-sub">También sigo estas fechas</h2><div class="pe-g pe-g2">${sh.map(personTile).join('')}</div>`:''}</div>
@@ -1712,11 +1739,17 @@ function bindPanel(){ const f=$('pnAdd'); if(f) f.onsubmit=e=>{ e.preventDefault
 const sw = (key,on,label) => `<button role="switch" aria-checked="${on}" aria-label="${label}" data-act="sw" data-k="${key}" class="ap-sw"></button>`;
 
 const cxLogo=c=>`<span class="cx-lg"><img src="${c.img}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${c.t[0]}'}))"></span>`;
+function cxGives(k){
+  if(k==='cal') return `Me dio ${YEAR.length} fechas`;
+  if(k==='wa') return 'Respondiste 3 avisos por aquí';
+  const ps=YEAR.filter(p=>knows(p).some(f=>(SRC2CX[f[1]]||f[1])===k)), n=ps.reduce((t,p)=>t+knows(p).filter(f=>(SRC2CX[f[1]]||f[1])===k).length,0);
+  return n?`Me enseñó ${n} ${n===1?'cosa':'cosas'} de ${ps.length} ${ps.length===1?'persona':'personas'}`:'Recién conectado: estoy leyendo';
+}
 function cxHtml(count){
   const on=CONNS.filter(c=>CX[c.k]);
   const cal=CX.cal?`<div class="cx-cal"><p class="cx-ct">Calendarios que leo</p><div class="divide-y divide-mist">${Object.keys(cfg.cals).map(c=>`<div class="flex items-center justify-between gap-4 py-3"><div><p class="text-[14px] font-medium">${c}</p><p class="text-[12.5px] text-[#5f6b7d]">${count(c)}</p></div>${sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c)}</div>`).join('')}</div></div>`:'';
   return `<div class="cx-top"><p><b class="num">${on.length}</b> ${on.length===1?'conectado':'conectados'} · ${CONNS.length-on.length} por conectar</p><button data-act="cxadd" class="cx-add"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar conector</button></div>
-  <div class="cx-g">${on.map(c=>`<article class="cx-c">${cxLogo(c)}<div class="min-w-0"><h3>${c.t}</h3><p class="cx-st"><i></i>Conectado${c.k==='cal'?' · leído hace 5 min':''}</p><p class="cx-d">${c.s}</p></div><button data-act="cxoff" data-k="${c.k}" class="cx-off" aria-label="Desconectar ${c.t}">Desconectar</button></article>`).join('')}
+  <div class="cx-g">${on.map(c=>`<article class="cx-c">${cxLogo(c)}<div class="min-w-0"><h3>${c.t}</h3><p class="cx-st"><i></i>Conectado${c.k==='cal'?' · leído hace 5 min':''}</p><p class="cx-d">${c.s}</p><p class="cx-y">${cxGives(c.k)}</p></div><button data-act="cxoff" data-k="${c.k}" class="cx-off" aria-label="Desconectar ${c.t}">Desconectar</button></article>`).join('')}
    <button data-act="cxadd" class="cx-new"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><b>Agregar conector</b><small>Calendarios, correo, ideas y más</small></button></div>${cal}`;
 }
 let cxQ='', cxCat='Todos';
@@ -1739,15 +1772,21 @@ async function cxConnect(k){
   if(tab==='config') viewConfig();
 }
 function cxDisconnect(k){ const t=CONNS.find(c=>c.k===k); cxSet(k,false); ytoast(`Desconecté ${t.t}. Dejo de leer sus datos.`); viewConfig(); }
+const habOff = {};
+const HABITS = () => [
+  cfg.likesOpts ? ['opts','Te gusta comparar antes de decidir','Por eso te muestro 3 finalistas de entrada.'] : ['opts','Prefieres que elija por ti','Te dejo un regalo listo. Si quieres comparar, ves las 3 finalistas.'],
+  ['fam','Apruebas rápido lo de la familia','En 4 de 5 fechas aprobaste en menos de un minuto.'],
+  ['amb','Para amigos gastas entre $15.000 y $25.000','Busco primero en ese rango.'],
+];
 function viewConfig(){
   const row=(t,s,ctl)=>`<div class="flex items-center justify-between gap-4 py-3.5"><div class="min-w-0"><p class="text-[14.5px] font-medium">${t}</p>${s?`<p class="mt-0.5 text-[12.5px] leading-snug text-[#5f6b7d]">${s}</p>`:''}</div><div class="shrink-0">${ctl}</div></div>`;
   const box=(id,t,s,body,plain)=>`<section id="${id}" class="scroll-mt-20 border-t border-mist py-7 first:border-0 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><div class="mb-3 lg:mb-0"><h2 class="font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2><p class="mt-1 text-[13px] leading-snug text-[#5f6b7d]">${s}</p></div><div class="${plain?'':'divide-y divide-mist rounded-2xl bg-white px-5 ring-1 ring-mist'}">${body}</div></section>`;
   const opts=(act,cur,list,lab)=>`<div class="ap-seg" role="group" aria-label="${lab}">${list.map(([v,l])=>`<button data-act="${act}" data-v="${v}" aria-pressed="${String(cur)===String(v)}">${l}</button>`).join('')}</div>`;
   const count=c=>{const k=YEAR.filter(p=>calOf(p)===c).length; return `${k} ${k===1?'fecha':'fechas'}`;};
-  const modeCard=(v,t,s)=>`<button data-act="defmode" data-v="${v}" aria-pressed="${cfg.mode===v}" class="cf-m"><i></i><b>${t}</b><span>${s}</span></button>`;
+  const hab=HABITS().filter(([k])=>!habOff[k]);
   $('apMain').innerHTML=`<header class="pp-h"><h1 class="pl-h">Configuración</h1></header><div class="mx-auto max-w-[1040px]">`
-  + box('cf-mode','Cómo participas','Vale para todos tus regalos.',`<div class="grid gap-3 sm:grid-cols-2">${modeCard('delego','Delego','Yo pienso y te dejo un regalo listo. Tú solo apruebas.')}${modeCard('elijo','Elijo yo','Yo pienso y te dejo 3 finalistas. Tú eliges.')}</div>`,true)
-  + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Solo leo; nunca escribo ni envío nada por ti.',cxHtml(count),true)
+  + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Mientras más conectes, menos te pregunto. Solo leo; nunca escribo ni envío nada por ti.',cxHtml(count),true)
+  + box('cf-me','Lo que he notado de ti','Lo aprendo de cómo usas la app, sin que me lo digas. Si algo no calza, olvídalo.',hab.map(([k,t,d])=>row(t,d,`<button data-act="forgethab" data-k="${k}" class="me-x">Olvidar</button>`)).join('')||row('Todavía estoy aprendiendo','Con cada regalo te conozco un poco más.',''))
   + box('cf-av','Avisos','Cuándo aparezco y por dónde te insisto.',
      row('Avisarme antes de cada fecha','',opts('aviso',AVISO,[[7,'7'],[14,'14'],[21,'21'],[30,'30']],'Días de aviso')+'<span class="ml-2 text-[12.5px] text-[#5f6b7d]">días</span>')
      + row('WhatsApp','Si no respondes en la app.',sw('wa',cfg.wa,'Insistir por WhatsApp'))
@@ -1794,7 +1833,8 @@ const ACT=[
   {id:2,k:'new',t:'Vi un bautizo nuevo en tu calendario',s:'Familia Soto · 22 ago. Ya lo estoy siguiendo',day:0,n:'Familia Soto',unread:true},
   {id:3,k:'ship',t:'Despaché el regalo de Emilia',s:'Llega mañana',day:1,n:'Emilia',unread:false},
   {id:4,k:'read',t:'Leí tu calendario',s:'20 fechas de regalo encontradas',day:3,unread:false},
-  {id:5,k:'learn',t:'Aprendí algo de Mamá',s:'Le gustan los libros de recuerdos',day:4,n:'Mamá',unread:false},
+  {id:5,k:'learn',t:'Aprendí algo de Mamá',s:'Gmail: le gustan los libros de recuerdos',day:4,n:'Mamá',unread:false},
+  {id:7,k:'learn',t:'Supe que Carla es tu hermana',s:'Lo vi en Google Contactos, sin preguntarte',day:3,n:'Carla',unread:false},
   {id:6,k:'conn',t:'Conecté Gmail',s:'Para leer invitaciones y topes',day:6,unread:false}
 ];
 const ACT_I={think:['#ff5924','M12 3l1.800 5.200L19 10l-5.200 1.800L12 17l-1.800-5.200L5 10l5.200-1.800Z'],new:['#2c44d6','M4 6h16v14H4zM8 3v4M16 3v4M12 11v6M9 14h6'],ship:['#8a6500','M3 8l9-5 9 5v8l-9 5-9-5ZM3 8l9 5 9-5M12 13v8'],read:['#2c44d6','M4 6h16v14H4zM8 3v4M16 3v4M4 11h16'],learn:['#14704f','M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21c.6-4 3.500-6 8-6s7.400 2 8 6'],conn:['#6a4be0','M9 7V3M15 7V3M7 7h10v4a5 5 0 0 1-10 0ZM12 16v5'],buy:['#0b6b48','M5 12l4 4 10-10'],cancel:['#c63f12','M6 6l12 12M18 6 6 18']};
@@ -1810,7 +1850,7 @@ function renderChrome(){
   $('apAv').textContent=initial();
   $('apBellDot').style.display=unreadN()?'':'none';
   $('popUser').innerHTML=`<div class="flex items-center gap-3 border-b border-mist p-3.5"><span class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">${initial()}</span><div class="min-w-0 leading-tight"><p class="truncate text-[14px] font-semibold">${esc(cfg.name)}</p><p class="mt-0.5 text-[12px] text-[#5f6b7d]">Google Calendar conectado</p></div></div>
-  <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-mode','Cómo participas'],['cf-cal','Conectores'],['cf-av','Avisos'],['cf-env','Envío'],['cf-pay','Pago']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
+  <div class="p-1.5">${[['cf-acc','Mi perfil'],['cf-cal','Conectores'],['cf-me','Lo que he notado de ti'],['cf-av','Avisos'],['cf-env','Envío'],['cf-pay','Pago']].map(([a,l])=>`<button data-act="goto" data-a="${a}" class="ap-mi">${l}</button>`).join('')}</div><div class="border-t border-mist p-1.5"><button data-act="logout" class="ap-mi">Cerrar sesión</button></div>`;
   $('popBell').innerHTML=bellHtml();
 }
 function render(){ renderChrome(); ({planner:viewPlanner,regalos:viewRegalos,personas:viewPersonas,config:viewConfig})[tab](); syncHash(); }
@@ -1887,11 +1927,16 @@ $('year').addEventListener('click',e=>{
   }
   else if(a==='ok'){ if(b.dataset.pick!==undefined) ypick[p.n]=+b.dataset.pick; closeSheet(); yfocus=p; autoFocus=false; startCo(p); render(); $('year').scrollTop=0; if(!REDUCE) gsap.from('#plLeft > *',{y:12,opacity:0,duration:.4,stagger:.05,ease:'power3.out',clearProps:'all'}); }
   else if(a==='undo'){ p.bought=false; p.justBought=false; p.order=null; co=null; pedido=null; tab='planner'; dash=false; yfocus=p; autoFocus=false; addAct({k:'cancel',t:`Cancelé la compra de ${p.n}`,s:'Vuelve a quedar para tu aprobación',n:p.n,unread:false}); ytoast('Listo, cancelé la compra.'); render(); }
-  else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; doubtDone=true; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); if(q.n==='Carla') REL.Carla=b.dataset.a==='Sí'?'Tu hermana':'Alguien cercano'; ytoast(`Anotado. Ya sé algo más de ${q.n}.`); render(); }
+  else if(a==='pncx'){ const k=b.dataset.k, c=cxOf(k); b.innerHTML='<span class="oc-sp"></span>Conectando'; b.disabled=true;
+    gsap.delayedCall(REDUCE?0:1.1,()=>{ cxSet(k,true); const ps=YEAR.filter(x=>HINT[x.n]&&HINT[x.n][0]===k); addAct({k:'conn',t:`Conecté ${c.t}`,s:`Ya sé algo más de ${ps.map(x=>x.n).join(' y ')}`,unread:false}); ytoast(`Listo. ${c.t} me contó algo nuevo de ${personSel.n}.`); render(); if(!REDUCE) gsap.from('.pn-l li:has(.src-lg)',{x:-10,opacity:0,duration:.5,ease:'back.out(2)',clearProps:'all'}); }); }
+  else if(a==='opts'){ const on=b.dataset.v==='1', q=yfocus; optOpen[q.n]=on;
+    if(on&&!cfg.likesOpts&&++optSeen>=2){ cfg.likesOpts=true; addAct({k:'learn',t:'Aprendí algo de ti',s:'Te gusta comparar antes de decidir. Te muestro 3 de entrada.',unread:false}); gsap.delayedCall(.2,()=>ytoast('Es la segunda vez que prefieres comparar. Desde ahora te muestro las 3 de entrada.')); }
+    render(); if(!REDUCE){ gsap.from('#plLeft [data-rise]',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); if(on&&SCENES[q.n]) gsap.from('#scStage .st',{y:-46,opacity:0,rotation:8,duration:.7,stagger:.12,delay:.1,ease:'back.out(1.6)',clearProps:'y,opacity,rotation'}); } }
+  else if(a==='forgethab'){ const k=b.dataset.k; if(k==='opts'){ cfg.likesOpts=false; optSeen=0; Object.keys(optOpen).forEach(n=>delete optOpen[n]); } else habOff[k]=true; ytoast('Listo, lo olvidé.'); render(); }
+  else if(a==='ans'){ const q=QUESTIONS.find(x=>x.n===b.dataset.q); yasked[q.n]=1; doubtDone=true; (learned[q.n]=learned[q.n]||[]).push(q.fact(b.dataset.a)); ytoast(`Anotado. Ya sé algo más de ${q.n}.`); render(); }
   else if(a==='sw'){ const k=b.dataset.k; if(k.startsWith('cal:')) cfg.cals[k.slice(4)]=!cfg.cals[k.slice(4)]; else if(k.startsWith('conn:')) conn[k.slice(5)]=!conn[k.slice(5)]; else cfg[k]=!cfg[k]; render(); }
   else if(a==='aviso'){ AVISO=+b.dataset.v; autoFocus=true; render(); ytoast(`Te aviso ${AVISO} días antes de cada fecha.`); }
   else if(a==='cfpay'){ cfg.pay=b.dataset.v; render(); }
-  else if(a==='defmode'){ cfg.mode=b.dataset.v; render(); ytoast(cfg.mode==='delego'?'Te dejo un regalo listo cada vez.':'Te dejo 3 finalistas cada vez.'); }
 });
 
 async function pay(){
@@ -1935,13 +1980,13 @@ function closeYear(){ thinkRun++; $('year').style.display='none'; document.body.
 
 
 /* ---------- Onboarding ---------- */
-const OB_STEPS=3, GLOGO=n=>`https://www.gstatic.com/images/branding/product/2x/${n}_48dp.png`;
+const OB_STEPS=2, GLOGO=n=>`https://www.gstatic.com/images/branding/product/2x/${n}_48dp.png`;
 const SI=(slug,c)=>`https://cdn.simpleicons.org/${slug}/${c}`;
 const CONNS=[
-  {k:'cal',core:1,t:'Google Calendar',img:GLOGO('calendar_2020q4'),cat:'Calendario',s:'De aquí saco tus fechas: cumpleaños, aniversarios, el sorteo de la oficina.',tag:'Recomendado',ov:'Fechas importantes y recordatorios'},
-  {k:'gmail',core:1,t:'Gmail',img:GLOGO('gmail_2020q4'),cat:'Correo',s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes, plazos y detalles de cada evento'},
-  {k:'contacts',core:1,t:'Google Contactos',img:GLOGO('contacts_2022'),cat:'Contactos',s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'A quién le regalas y cómo se conocen'},
-  {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Te insisto por aquí si no ves la notificación.',ov:'Avisos si se te pasa responder'},
+  {k:'cal',core:1,t:'Google Calendar',img:GLOGO('calendar_2020q4'),cat:'Calendario',s:'De aquí saco tus fechas: cumpleaños, aniversarios, el sorteo de la oficina.',tag:'Recomendado',ov:'Fechas importantes y recordatorios',found:'Encontré 11 fechas: cumpleaños, un matrimonio y el amigo secreto.'},
+  {k:'gmail',core:1,t:'Gmail',img:GLOGO('gmail_2020q4'),cat:'Correo',s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes, plazos y detalles de cada evento',found:'Leí el tope de $15.000 del amigo secreto y 9 detalles de tu gente.'},
+  {k:'contacts',core:1,t:'Google Contactos',img:GLOGO('contacts_2022'),cat:'Contactos',s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'A quién le regalas y cómo se conocen',found:'Ya sé quién es quién: Carla es tu hermana, Andrés tu hermano.'},
+  {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Te insisto por aquí si no ves la notificación.',ov:'Avisos si se te pasa responder',found:'Si se te pasa un aviso, te escribo por aquí.'},
   {k:'icloud',t:'Calendario de Apple',img:SI('icloud','3693F3'),cat:'Calendario',s:'Las fechas de tu calendario de iCloud.'},
   {k:'drive',t:'Google Drive',img:GLOGO('drive_2020q4'),cat:'Productividad',s:'Tus listas y planillas de regalos.'},
   {k:'notion',t:'Notion',img:SI('notion','000000'),cat:'Productividad',s:'Tus notas y listas de deseos.'},
@@ -1968,10 +2013,8 @@ function obPreview(){
       <div class="ob-ro" data-d="3"><span class="ob-dt"><b>3</b> días antes</span><div class="ov-n"><span class="ov-ap" style="background:#10b981"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.400-7-10a7 7 0 0 1 14 0c0 5.600-7 10-7 10Z"/><circle cx="12" cy="11" r="2.500"/></svg></span><div><p>Llega a tiempo</p><b>Entregado en <span id="ovA">${esc(ad)}</span></b><span class="ob-bar"><i></i></span></div></div></div>
     </div></div>`;
     obStory();
-  } else if(ob.step===1){
-    R.innerHTML=`<div class="ov" id="ovM"></div>`; obMode(false);
   } else {
-    R.innerHTML=`<div class="ov"><p class="ov-cap" style="margin-top:0">Con esto podré</p>${OB_CONN.map(c=>`<div class="ov-li" data-k="${c.k}" data-on="${ob.conn[c.k]}"><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i><span>${c.ov}</span></div>`).join('')}</div>`;
+    R.innerHTML=`<div class="ov"><p class="ov-cap" style="margin-top:0">Lo que voy encontrando</p>${OB_CONN.map(c=>`<div class="ov-li" data-k="${c.k}" data-on="${ob.conn[c.k]}"><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i><span>${c.ov}<small class="ov-f">${ob.conn[c.k]?c.found:''}</small></span></div>`).join('')}<p class="mt-4 text-[12.5px] leading-snug text-[#748297]">Mientras más conectes, menos te pregunto.</p></div>`;
   }
 }
 function obStory(){
@@ -1988,43 +2031,14 @@ function obStory(){
   tl.to(bar,{scaleX:1,duration:1.3,ease:'power2.out'},4.6);
   tl.to(rows,{opacity:0,y:-12,duration:.5,stagger:.06,ease:'power2.in'},"+=2.6");
 }
-const OB_ATT={
-  delego:{h:'Me adelanto y lo resuelvo.',yo:90,ti:'≈ 10 segundos por regalo',rows:[['Elijo y reservo el regalo','M5 12l4 4 10-10'],['Te aviso solo cuando está listo','M4 11h16v9H4zM3 7h18v4H3zM12 7v13'],['Te pregunto únicamente si dudo','M9 9a3 3 0 1 1 4 2.800c-1 .6-1 1.200-1 2.200M12 18h.01']]},
-  elijo:{h:'Te acompaño en cada decisión.',yo:55,ti:'≈ 2 minutos por regalo',rows:[['Reviso cientos y te dejo 3 finalistas','M4 6h16M7 12h10M10 18h4'],['Te las muestro cada una en su lugar','M3 12s3.500-7 9-7 9 7 9 7-3.500 7-9 7-9-7-9-7Zm9 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z'],['Compro cuando tú decides','M5 12l4 4 10-10']]}
-};
-function obMode(anim=true){
-  const M=$('ovM'); if(!M) return;
-  if(ob.tl){ ob.tl.kill(); ob.tl=null; }
-  const m=cfg.mode, A=OB_ATT[m], from=ob.prevYo==null?A.yo:ob.prevYo; ob.prevYo=A.yo;
-  const ex = m==='delego'
-   ? `<div class="ov-1"><img src="${OB_IMG('libreta-picaflor-1')}" alt=""><div><h4>Libreta Picaflor</h4><small>Ya está elegida para el sorteo de la oficina.</small><span class="ov-ok" id="obOk">Aprobar</span></div></div>`
-   : `<div class="ov-3" id="ob3">${['libreta-picaflor-1','tazon-alerce','tabla-tolten'].map(h=>`<span class="ob-fi"><img src="${OB_IMG(h)}" alt=""><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i></span>`).join('')}</div>`;
-  M.innerHTML=`<div class="ob-at"><div><p class="ov-cap" style="margin:0">${m==='delego'?'Delego':'Elijo yo'}</p><h3 class="ob-ah">${A.h}</h3></div><span class="ob-tm2">${A.ti}</span></div>
-  <div class="ob-mt" aria-label="Quién hace qué"><div class="ob-mb"><i id="obMy" style="width:${from}%"></i></div><p><b>Yo <span id="obMyN">${from}</span>%</b><b>Tú <span id="obMtN">${100-from}</span>%</b></p></div>
-  <ul class="ob-bh">${A.rows.map(([t,d])=>`<li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg></i>${t}</li>`).join('')}</ul>
-  <p class="ov-cap" style="margin:18px 0 10px">Así se ve</p>${ex}`;
-  const n={v:from}; gsap.to(n,{v:A.yo,duration:REDUCE?0:.8,ease:'power3.inOut',onUpdate(){ const v=Math.round(n.v); $('obMy').style.width=n.v+'%'; $('obMyN').textContent=v; $('obMtN').textContent=100-v; }});
-  if(REDUCE) return;
-  if(anim) gsap.from('#ovM .ob-at, #ovM .ob-bh li, #ovM .ov-1, #ovM .ov-3 > *',{y:14,opacity:0,duration:.5,stagger:.07,ease:'power3.out',clearProps:'all'});
-  const tl=gsap.timeline({repeat:-1,repeatDelay:1.2,delay:.9}); ob.tl=tl;
-  if(m==='delego'){
-    tl.to('#obOk',{scale:.9,duration:.12,yoyo:true,repeat:1}).call(()=>{ const o=$('obOk'); if(o){ o.textContent='✓ Aprobado'; o.style.background='#10b981'; } }).to({}, {duration:2.2}).call(()=>{ const o=$('obOk'); if(o){ o.textContent='Aprobar'; o.style.background=''; } });
-  } else {
-    const f=[...M.querySelectorAll('.ob-fi')];
-    f.forEach((x,i)=>{ tl.call(()=>f.forEach((y,j)=>y.classList.toggle('on',j===i))).from(x,{y:-4,duration:.3,ease:'power2.out'},'<').to({}, {duration:1.1}); });
-  }
-}
 function obView(){
   const L=$('obL'), i=ob.step;
-  if(i===0) L.innerHTML=`<p class="ob-k" data-in>Paso 1 de 3 · Tú</p><h1 class="ob-t" data-in>Empecemos por <em>conocernos</em>.</h1><p class="ob-p" data-in>Con tu nombre te hablo como corresponde, y con tu dirección te dejo los regalos listos para recibirlos.</p>
+  if(i===0) L.innerHTML=`<p class="ob-k" data-in>Paso 1 de 2 · Tú</p><h1 class="ob-t" data-in>Empecemos por <em>conocernos</em>.</h1><p class="ob-p" data-in>Con tu nombre te hablo como corresponde, y con tu dirección te dejo los regalos listos para recibirlos.</p>
     <div class="ob-f" data-in><label><span>¿Cómo te llamo?</span><input id="obName" class="ob-i" value="${esc(cfg.name==='Rodolfo Rojas'?'Rodolfo':cfg.name)}" autocomplete="given-name" placeholder="Tu nombre"></label>
     <label><span>¿Dónde te llegan los regalos?</span><input id="obAddr" class="ob-i" value="${esc(cfg.addr)}" autocomplete="street-address" placeholder="Calle, número, comuna"><small>Lo puedes cambiar en cada compra.</small></label></div>
-    <ul class="ob-ch" data-in><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Toma 2 minutos</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Solo lectura</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Lo cambias cuando quieras</li></ul>
+    <ul class="ob-ch" data-in><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Toma 1 minuto</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Solo lectura</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Lo cambias cuando quieras</li></ul>
     <div class="ob-a" data-in><button id="obNext" class="ob-b">Continuar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>`;
-  else if(i===1) L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 3 · Cómo participas</p><h1 class="ob-t" data-in>¿Cuánto quieres <em>involucrarte</em>?</h1><p class="ob-p" data-in>Es un ajuste general y lo cambias cuando quieras en Configuración.</p>
-    <div class="ob-m" data-in><button class="ob-mc" data-m="delego" aria-pressed="${cfg.mode==='delego'}"><i></i><b>Delego</b><span>Yo pienso y te dejo un regalo listo. Tú solo apruebas.</span></button><button class="ob-mc" data-m="elijo" aria-pressed="${cfg.mode==='elijo'}"><i></i><b>Elijo yo</b><span>Yo pienso y te dejo 3 finalistas. Tú eliges.</span></button></div>
-    <div class="ob-a" data-in><button id="obNext" class="ob-b">Continuar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button id="obBack" class="ob-bk">Atrás</button></div>`;
-  else L.innerHTML=`<p class="ob-k" data-in>Paso 3 de 3 · Conectores</p><h1 class="ob-t" data-in>Dame <em>con qué</em> acompañarte.</h1><p class="ob-p" data-in>Solo leo. Nunca escribo ni envío nada sin que tú me lo pidas.</p>
+  else L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 2 · Conectores</p><h1 class="ob-t" data-in>Dame <em>con qué</em> acompañarte.</h1><p class="ob-p" data-in>De aquí aprendo sin preguntarte. Solo leo: nunca escribo ni envío nada sin que me lo pidas.</p>
     <div class="ob-c" data-in>${OB_CONN.map(c=>`<div class="oc" data-k="${c.k}" data-on="${ob.conn[c.k]}"><span class="oc-lg"><img src="${c.img}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${c.t[0]}'}))"></span><div class="min-w-0"><b>${c.t}${c.tag?`<em>${c.tag}</em>`:''}</b><small>${c.s}</small></div><button data-c="${c.k}">${ob.conn[c.k]?'✓ Conectado':'Conectar'}</button></div>`).join('')}</div>
     <p class="ob-n" id="obNote" data-in>Conecta al menos el calendario para que pueda empezar.</p>
     <div class="ob-a" data-in><button id="obNext" class="ob-b" ${ob.conn.cal?'':'disabled'}>Analizar mi calendario <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button id="obBack" class="ob-bk">Atrás</button></div>`;
@@ -2037,7 +2051,6 @@ function obBind(){
   const nm=$('obName'), ad=$('obAddr');
   if(nm){ nm.oninput=()=>{ cfg.name=nm.value.trim()||'Rodolfo'; const f=(nm.value.trim().split(/\s+/)[0])||'Tú'; ['ovT','ovN'].forEach(i=>{ const t=$(i); if(t) t.textContent=f; }); }; nm.focus(); nm.onkeydown=e=>{ if(e.key==='Enter') ad.focus(); }; }
   if(ad){ ad.oninput=()=>{ cfg.addr=ad.value; const a=$('ovA'); if(a) a.textContent=ad.value.trim()||'la dirección que me digas'; }; ad.onkeydown=e=>{ if(e.key==='Enter') obGo(1); }; }
-  document.querySelectorAll('.ob-mc').forEach(b=>b.onclick=()=>{ cfg.mode=b.dataset.m; document.querySelectorAll('.ob-mc').forEach(x=>x.setAttribute('aria-pressed',x===b)); if(!REDUCE) gsap.fromTo(b,{scale:.98},{scale:1,duration:.5,ease:'elastic.out(1,.5)'}); obMode(true); });
   document.querySelectorAll('.oc button').forEach(b=>b.onclick=()=>obConnect(b.dataset.c));
 }
 async function obConnect(k){
@@ -2046,7 +2059,7 @@ async function obConnect(k){
   await wait(REDUCE?0:1.1);
   ob.busy[k]=false; ob.conn[k]=true; row.dataset.s=''; row.dataset.on='true'; btn.textContent='✓ Conectado';
   if(k==='gmail') conn.gmail=true; if(k==='contacts') conn.contacts=true; if(k==='wa') cfg.wa=true;
-  const li=document.querySelector(`.ov-li[data-k="${k}"]`); if(li) li.dataset.on='true';
+  const li=document.querySelector(`.ov-li[data-k="${k}"]`); if(li){ li.dataset.on='true'; const f=li.querySelector('.ov-f'); f.textContent=OB_CONN.find(c=>c.k===k).found; if(!REDUCE) gsap.from(f,{y:-6,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
   if(!REDUCE){ gsap.fromTo(row,{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.45)'}); gsap.fromTo(li,{x:-8},{x:0,duration:.5,ease:'back.out(2)'}); }
   if(ob.conn.cal){ $('obNext').disabled=false; $('obNote').textContent='Con el calendario ya puedo empezar. Lo demás me ayuda a acertar más.'; }
 }
@@ -2060,7 +2073,7 @@ async function obGo(d){
   else { gsap.set([L,R],{clearProps:'all'}); }
 }
 function startOb(){
-  ob.step=0; ob.prevYo=null; Object.keys(ob.conn).forEach(k=>ob.conn[k]=false);
+  ob.step=0; Object.keys(ob.conn).forEach(k=>ob.conn[k]=false);
   const el=$('ob'); el.classList.add('on'); el.scrollTop=0; obProg(0); obView();
   if(!REDUCE){ gsap.fromTo(el,{opacity:0},{opacity:1,duration:.4}); gsap.from('#obL [data-in]',{y:26,opacity:0,filter:'blur(8px)',duration:.7,stagger:.07,delay:.1,ease:'power3.out',clearProps:'all'}); gsap.from('#obR',{opacity:0,y:30,scale:.96,duration:.8,delay:.25,ease:'power3.out',clearProps:'all'}); }
 }
