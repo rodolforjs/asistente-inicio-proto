@@ -688,8 +688,7 @@ body.in-app .ob-kb{display:flex}
 .pe:hover .pt{transform:scale(1.05)}
 .pe-q{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ff5924;font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:#fff;animation:ld 2.2s infinite}
 .pe-b{display:block;padding:11px 13px 13px}
-.pe-cx{position:absolute;left:12px;top:12px;display:flex;padding-left:6px}
-.pe-cx img{width:24px;height:24px;margin-left:-6px;border-radius:50%;background:#fff;padding:4px;object-fit:contain;box-shadow:0 0 0 2px #fff,0 2px 6px rgba(15,23,42,.18)}
+
 .pe-b b{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.02em}
 .pe-b small{display:block;font-size:12.5px;color:#5f6b7d}
 .pe-k{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11.5px;color:#5f6b7d;white-space:nowrap}
@@ -1845,7 +1844,7 @@ function bindCo(){ const m=$('coMsg'); if(m) m.oninput=()=>{ co.msg=m.value; $('
 let personSel=null, personQ='';
 function personTile(p){
   const k=knows(p).length, q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]);
-  return `<button data-act="person" data-i="${idx(p)}" data-name="${esc(p.n.toLowerCase())}" aria-pressed="${p===personSel}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}${srcsOf(p).length?`<span class="pe-cx" title="Lo sé por ${srcsOf(p).map(c=>c.t).join(', ')}">${srcsOf(p).slice(0,4).map(c=>`<img src="${c.img}" alt="">`).join('')}</span>`:''}<span class="pe-b"><b>${esc(p.n)}</b><small>${esc(REL[p.n]||p.o)}</small><span class="pe-k"><span class="pe-p"><em style="width:${Math.min(100,k*25)}%"></em></span>${k} ${k===1?'cosa':'cosas'}</span></span></button>`;
+  return `<button data-act="person" data-i="${idx(p)}" data-name="${esc(p.n.toLowerCase())}" aria-pressed="${p===personSel}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}<span class="pe-b"><b>${esc(p.n)}</b><small>${esc(REL[p.n]||p.o)}</small><span class="pe-k"><span class="pe-p"><em style="width:${Math.min(100,k*25)}%"></em></span>${k} ${k===1?'cosa':'cosas'}</span></span></button>`;
 }
 function personPanel(p){
   const k=knows(p), q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]), c=chosen(p), ph=phase(p), lbl=ph==='bought'?'Compré':ph==='now'?'Regalo listo para aprobar':'Mi idea hasta ahora';
