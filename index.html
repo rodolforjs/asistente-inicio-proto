@@ -514,14 +514,14 @@ body.nf-on .nf{display:grid}
 .nf-lk{font-size:13.5px;font-weight:600;color:#5f6b7d;text-decoration:underline;text-underline-offset:3px}.nf-lk:hover{color:#0e1014}
 @media(max-width:560px){.nf{place-items:end center;padding:0}.nf-c{border-radius:28px 28px 0 0;padding:24px 20px 28px}.nf-h{font-size:32px}}
 .nf-2{width:min(860px,100%);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:0;padding:0}
-.nf-in{padding:28px 28px 24px}
+.nf-in{display:flex;flex-direction:column;padding:28px 28px 24px}
 .nf-lb{display:block;margin:16px 0 7px;font-size:12.5px;font-weight:600;color:#39414e}.nf-lb small{font-weight:500;color:#9aa3b2}
 label.nf-lb input{display:block;width:100%;height:46px;margin-top:7px;border:0;border-radius:14px;background:#f5f7f9;padding:0 14px;font-size:16px;font-weight:500;color:#0e1014;outline:0;box-shadow:inset 0 0 0 1px #e5eaf2}
 label.nf-lb input:focus,.nf-dt2 input:focus,.nf-dt2 select:focus{background:#fff;box-shadow:inset 0 0 0 1.5px #0e1014}
 .nf-ch{display:flex;flex-wrap:wrap;gap:6px}.nf-ch button{height:34px;border-radius:999px;background:#f5f7f9;padding:0 13px;font-size:13px;font-weight:600;color:#5f6b7d;box-shadow:inset 0 0 0 1px #e5eaf2;transition:background .15s,color .15s}
 .nf-ch button:hover{color:#0e1014}.nf-ch button[aria-pressed=true]{background:#0e1014;color:#fff;box-shadow:none}
 .nf-dt2{display:flex;gap:6px;border-radius:14px}.nf-dt2 input,.nf-dt2 select{height:44px;border:0;border-radius:12px;background:#f5f7f9;padding:0 12px;font-size:15px;outline:0;box-shadow:inset 0 0 0 1px #e5eaf2}.nf-dt2 input{width:84px}.nf-dt2 select{flex:1}
-.nf-2 .nf-ok{width:100%;margin-top:22px}
+.nf-2 .nf-ok{width:100%;flex:none;margin-top:auto}.nf-more{margin-bottom:24px}
 .nf-err{min-height:18px;margin-top:6px;font-size:12.5px;font-weight:600;color:#c63f12}
 .nf-ai{position:relative;display:flex;flex-direction:column;border-radius:0 30px 30px 0;background:radial-gradient(120% 60% at 100% 0%,#2a2236,transparent 60%),#0e1014;color:#fff;padding:28px 22px 22px}
 .nf-ak{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:rgba(255,255,255,.75)}
@@ -538,6 +538,29 @@ label.nf-lb input:focus,.nf-dt2 input:focus,.nf-dt2 select:focus{background:#fff
 .nf-sum{margin-top:auto;padding-top:16px}.nf-sum p{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ff8a5c}
 .nf-sum ul{display:flex;flex-direction:column;gap:6px;margin-top:8px}.nf-sum li{display:flex;align-items:center;gap:8px;font-size:13.5px}.nf-sum img{width:16px;height:16px;object-fit:contain}
 @media(max-width:760px){.nf-2{grid-template-columns:1fr}.nf-ai{border-radius:0;padding:20px}.nf-in{padding:24px 20px 8px}}
+.nf-name{display:block;width:100%;height:58px;margin-top:18px;border:0;border-radius:16px;background:#f5f7f9;padding:0 18px;font-family:'Newsreader',serif;font-size:26px;letter-spacing:-.01em;color:#0e1014;outline:0;box-shadow:inset 0 0 0 1px #e5eaf2}
+.nf-name:focus{background:#fff;box-shadow:inset 0 0 0 1.5px #0e1014}.nf-name::placeholder{color:#aab2bf}
+.nf-row .nf-dt2 input,.nf-row .nf-dt2 select{height:50px;font-size:16px;font-weight:500}
+.nf-more{margin-top:18px;border-top:1px solid #eef1f5;padding-top:12px}
+.nf-more summary{display:flex;align-items:center;gap:6px;cursor:pointer;list-style:none;font-size:13px;font-weight:600;color:#5f6b7d}.nf-more summary::-webkit-details-marker{display:none}
+.nf-more summary::before{content:"+";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#f5f7f9;font-size:14px;transition:transform .2s}
+.nf-more[open] summary::before{transform:rotate(45deg)}.nf-more summary small{font-weight:500;color:#9aa3b2}.nf-more summary:hover{color:#0e1014}
+.nf-more .nf-lb:first-of-type{margin-top:12px}
+.nf-viz{position:relative;height:270px;margin:6px -6px 0;display:grid;place-items:center;overflow:hidden}
+.nf-ring{position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);border:1px dashed rgba(255,255,255,.14)}
+.nf-orbit{position:absolute;left:50%;top:50%;width:0;height:0;animation:fabspin 26s linear infinite}
+.nf-sat{position:absolute;left:0;top:0;width:0;height:0}
+.nf-sat img{position:absolute;left:-16px;top:-16px;width:32px;height:32px;max-width:none;padding:6px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 0 0 4px rgba(255,255,255,.06),0 6px 14px rgba(0,0,0,.4);animation:fabspin 26s linear infinite reverse}
+.nf-core{position:relative;z-index:2;display:grid;place-items:center;width:78px;height:78px;border-radius:50%;background:conic-gradient(#ff5924,#ff3d8b,#ffd23d,#27d9a6,#5b7cff,#ff5924);box-shadow:0 0 60px 10px rgba(255,89,36,.25);animation:nfbr 2.6s ease-in-out infinite}
+.nf-core::after{content:"";position:absolute;inset:5px;border-radius:50%;background:#14161b}
+.nf-core span{position:relative;z-index:1;font-family:'Newsreader',serif;font-size:32px;line-height:1;color:#fff}
+@keyframes nfbr{0%,100%{box-shadow:0 0 40px 6px rgba(255,89,36,.18)}50%{box-shadow:0 0 70px 16px rgba(91,124,255,.28)}}
+.nf-pt{position:absolute;z-index:1;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px rgba(255,138,92,.8);pointer-events:none}
+.nf-st{display:flex;align-items:center;justify-content:center;gap:2px;margin-top:-6px;font-size:13px;font-weight:600;color:rgba(255,255,255,.75)}
+.nf-st .pl-dots i{background:rgba(255,255,255,.7)}
+.nf-ai .nf-l2{margin-top:14px}.nf-ai .nf-l2 li{padding:8px 10px}.nf-ai .nf-l2 img{width:26px;height:26px;padding:5px}
+@media(prefers-reduced-motion:reduce){.nf-orbit,.nf-sat img,.nf-core{animation:none}}
+@media(max-width:760px){.nf-viz{height:200px}.nf-ring:last-of-type{display:none}}
 .dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
 .dy-mn{padding-bottom:2px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#aab2bf}
 .dy-mn.is-cur{color:#ff5924}
@@ -2315,23 +2338,41 @@ function nfOpen(m,d){
   document.body.classList.add('nf-on'); nfView(); setTimeout(()=>{ const i=$('nfN'); if(i) i.focus(); },50);
   if(!REDUCE) gsap.from('#nf .nf-c',{y:24,scale:.97,opacity:0,duration:.45,ease:'power3.out'});
 }
-function nfClose(){ nfRun++; clearTimeout(nfT); nf=null; document.body.classList.remove('nf-on'); }
+function nfClose(){ nfRun++; clearTimeout(nfT); clearInterval(nfPI); clearInterval(nfSI); nf=null; document.body.classList.remove('nf-on'); }
 const chips=(name,list,cur)=>`<div class="nf-ch" role="radiogroup">${list.map(v=>`<button type="button" data-nfc="${name}" data-v="${v}" aria-pressed="${cur===v}">${v}</button>`).join('')}</div>`;
 function nfView(){
-  const r=nf, lg=CONNS.filter(c=>CX[c.k]&&c.k!=='spotify');
+  const r=nf, lg=CONNS.filter(c=>CX[c.k]&&c.k!=='spotify'), R=[64,92,118];
   $('nf').innerHTML=`<div class="nf-c nf-2"><button class="nf-x" data-nf="x" aria-label="Cerrar">×</button>
    <form id="nfF" class="nf-in" novalidate>
     <p class="nf-k">Nueva fecha</p><h2 class="nf-h">¿A quién le regalas?</h2>
-    <label class="nf-lb">Nombre<input id="nfN" maxlength="24" autocomplete="off" placeholder="Ej. Pato" value="${esc(r.n)}"></label>
+    <input id="nfN" class="nf-name" maxlength="24" autocomplete="off" placeholder="Nombre o apodo" aria-label="Nombre o apodo" value="${esc(r.n)}">
+    <div class="nf-row"><div><p class="nf-lb">Fecha</p><span class="nf-dt2"><input id="nfD" type="number" min="1" max="31" placeholder="Día" value="${r.date?r.date.d:''}" aria-label="Día"><select id="nfM" aria-label="Mes"><option value="">Mes</option>${MES.map((m,i)=>`<option value="${i}" ${r.date&&r.date.m===i?'selected':''}>${m.charAt(0)+m.slice(1).toLowerCase()}</option>`).join('')}</select></span></div></div>
     <p class="nf-lb">¿Qué celebran?</p>${chips('o',['Cumpleaños','Aniversario','Otra'],r.o)}
-    <p class="nf-lb">Fecha</p><span class="nf-dt2"><input id="nfD" type="number" min="1" max="31" placeholder="Día" value="${r.date?r.date.d:''}" aria-label="Día"><select id="nfM" aria-label="Mes"><option value="">Mes</option>${MES.map((m,i)=>`<option value="${i}" ${r.date&&r.date.m===i?'selected':''}>${m.charAt(0)+m.slice(1).toLowerCase()}</option>`).join('')}</select></span>
-    <p class="nf-lb">¿Quién es? <small>opcional</small></p>${chips('rel',['Familia','Amistad','Pareja','Trabajo'],r.rel)}
-    <p class="nf-lb">Tope <small>opcional</small></p>${chips('tope',['$15.000','$30.000','$50.000','Sin tope'],r.tope)}
+    <details class="nf-more" id="nfMore"><summary>Más detalles <small>opcional</small></summary>
+      <p class="nf-lb">¿Quién es?</p>${chips('rel',['Familia','Amistad','Pareja','Trabajo'],r.rel)}
+      <p class="nf-lb">Tope</p>${chips('tope',['$15.000','$30.000','$50.000','Sin tope'],r.tope)}</details>
     <button class="nf-ok" id="nfOk">Agregar a mis fechas</button><p class="nf-err" id="nfE"></p>
    </form>
-   <aside class="nf-ai" aria-live="polite"><p class="nf-ak"><span class="nf-orb"></span>Mientras escribes, busco</p>
-    <ul class="nf-l2" id="nfL">${lg.length?`<li class="nf-e"><span class="nf-lg">${lg.map(c=>`<img src="${c.img}" alt="${c.t}">`).join('')}</span>Escribe un nombre y lo busco en lo que conectaste.</li>`:'<li class="nf-e">No tienes conectores. Igual lo guardo con lo que me digas.</li>'}</ul>
-    <div class="nf-sum" id="nfS" hidden><p>Lo que sumo a su ficha</p><ul id="nfSL"></ul></div></aside></div>`;
+   <aside class="nf-ai" aria-live="polite">
+    <div class="nf-viz" id="nfV" aria-hidden="true">
+      ${R.map((rad,k)=>`<span class="nf-ring" style="width:${rad*2}px;height:${rad*2}px"></span>`).join('')}
+      <div class="nf-orbit">${lg.map((c,k)=>{ const a=k/lg.length*360, rad=R[k%3]; return `<span class="nf-sat" style="transform:rotate(${a}deg) translate(${rad}px) rotate(${-a}deg)"><img src="${c.img}" alt=""></span>`; }).join('')}</div>
+      <div class="nf-core"><span id="nfCore">✦</span></div></div>
+    <p class="nf-st"><span id="nfSt">Preparando tus conectores</span><span class="pl-dots"><i></i><i></i><i></i></span></p>
+    <ul class="nf-l2" id="nfL"></ul>
+    <div class="nf-sum" id="nfS" hidden><p>Lo sumo a lo que me diste</p><ul id="nfSL"></ul></div></aside></div>`;
+  nfAmbient();
+}
+/* animación ambiente: no depende de lo que escribes */
+let nfPI=null, nfSI=null;
+function nfAmbient(){
+  clearInterval(nfPI); clearInterval(nfSI); if(REDUCE) return;
+  const V=$('nfV'); const ST=['Leyendo tus contactos','Cruzando correos y fechas','Buscando gustos en tus chats','Mirando fotos públicas','Comparando con tus regalos','Armando su ficha'];
+  let k=0; nfSI=setInterval(()=>{ const e=$('nfSt'); if(!e){ clearInterval(nfSI); return; } k=(k+1)%ST.length; gsap.to(e,{opacity:0,y:-4,duration:.2,onComplete:()=>{ e.textContent=ST[k]; gsap.fromTo(e,{opacity:0,y:4},{opacity:1,y:0,duration:.25}); }}); },1700);
+  nfPI=setInterval(()=>{ const v=$('nfV'); if(!v){ clearInterval(nfPI); return; } const sats=v.querySelectorAll('.nf-sat img'); if(!sats.length) return;
+    const s0=sats[Math.floor(Math.random()*sats.length)], vb=v.getBoundingClientRect(), sb=s0.getBoundingClientRect();
+    const d=document.createElement('i'); d.className='nf-pt'; d.style.left=(sb.left-vb.left+sb.width/2)+'px'; d.style.top=(sb.top-vb.top+sb.height/2)+'px'; v.appendChild(d);
+    gsap.to(d,{left:vb.width/2,top:vb.height/2,scale:.3,duration:.9+Math.random()*.4,ease:'power2.in',onComplete:()=>{ d.remove(); const c=v.querySelector('.nf-core'); if(c) gsap.fromTo(c,{scale:1.06},{scale:1,duration:.3}); }}); },260);
 }
 let nfT=null;
 const nfRow=(k,t)=>{ const c=cxOf(k); return `<li data-k="${k}">${c?`<img src="${c.img}" alt="">`:''}<span><b>${t}</b><small><span class="oc-sp"></span>Buscando…</small></span></li>`; };
@@ -2376,11 +2417,11 @@ $('nf').addEventListener('click',e=>{
   if(e.target.id==='nf'){ nfClose(); return; }
   const c=e.target.closest('[data-nfc]'); if(c){ const k=c.dataset.nfc; nf[k]=nf[k]===c.dataset.v&&k!=='o'?null:c.dataset.v; c.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf[k]))); if(k==='rel'){ const u=document.querySelector('[data-nfuse="rel"]'); if(u) u.remove(); } return; }
   const u=e.target.closest('[data-nfuse]'); if(u){ if(u.dataset.nfuse==='date'){ $('nfD').value=nf.sug.date.d; $('nfM').value=nf.sug.date.m; nfCal(); if(!REDUCE) gsap.fromTo('.nf-dt2',{backgroundColor:'rgba(255,89,36,.25)'},{backgroundColor:'rgba(255,89,36,0)',duration:.8}); }
-    else { nf.rel=nf.sug.rel; document.querySelectorAll('[data-nfc="rel"]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf.rel))); }
+    else { nf.rel=nf.sug.rel; const md=$('nfMore'); if(md) md.open=true; document.querySelectorAll('[data-nfc="rel"]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf.rel))); }
     u.outerHTML=simOk('Listo').replace('sim-ok','sim-ok nf-done'); return; }
   const b=e.target.closest('[data-nf]'); if(b&&b.dataset.nf==='x') nfClose();
 });
-$('nf').addEventListener('input',e=>{ if(e.target.id==='nfN'){ nf.n=e.target.value; clearTimeout(nfT); nfT=setTimeout(nfLive,450); } if(e.target.id==='nfD'||e.target.id==='nfM'){ nfCal(); const E=$('nfE'); if(E) E.textContent=''; } });
+$('nf').addEventListener('input',e=>{ if(e.target.id==='nfN'){ nf.n=e.target.value; const cr=$('nfCore'); if(cr) cr.textContent=(nf.n.trim()[0]||'✦').toUpperCase(); clearTimeout(nfT); nfT=setTimeout(nfLive,450); } if(e.target.id==='nfD'||e.target.id==='nfM'){ nfCal(); const E=$('nfE'); if(E) E.textContent=''; } });
 $('nf').addEventListener('submit',e=>{ e.preventDefault(); nfAdd(); });
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&nf) nfClose(); });
 document.addEventListener('click',e=>{ const a=e.target.closest('[data-dyadd]'); if(!a) return; const has=a.dataset.dyadd!==''; nfOpen(has?+a.dataset.dyadd:null,has?Math.min(28,+a.dataset.dyday||1):null); });
