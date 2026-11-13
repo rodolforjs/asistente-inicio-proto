@@ -555,10 +555,11 @@ body.in-app .ob-kb{display:flex}
 .wk-in{border-radius:28px 0 0 28px;background:#fafbfc;padding:22px 20px;border-right:1px solid #eef1f5}
 .wk-out{padding:22px}
 .wk-k{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#748297}
-.wk-l{display:flex;flex-direction:column;gap:8px;height:208px;overflow:hidden}
-.wk-l li{flex:none}
+.wk-in{display:flex;flex-direction:column}
+.wk-l{display:flex;flex:1 1 0;min-height:200px;flex-direction:column;gap:8px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent);mask-image:linear-gradient(to bottom,#000 70%,transparent)}
+.wk-l li{flex:none;overflow:hidden}
 .wk-l li{display:flex;align-items:center;gap:10px;border-radius:14px;background:#fff;padding:9px 12px;box-shadow:0 0 0 1px #e5eaf2;font-size:13.5px;font-weight:500;line-height:1.25}
-.wk-l li:first-child{box-shadow:0 0 0 1.5px #ff5924}
+
 .wk-ic{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#f1f3f6;color:#0e1014}.wk-ic img{width:16px;height:16px;object-fit:contain}.wk-ic svg{width:15px;height:15px}
 .wk-c{display:grid;grid-template-columns:1.35fr 1fr 1fr;align-items:end;gap:12px}
 .wk-i{display:flex;flex-direction:column;gap:10px;text-align:left}
@@ -1731,7 +1732,7 @@ function runWork(p){
   const cap=[92,64,44], sc=[0,0,0], inc=cap.map(c=>c/Math.max(2,sig.length-1));
   const row = ([t,s]) => { const li=document.createElement('li'); li.innerHTML=`${wkIcon(s)}<span>${esc(t)}</span>`; return li; };
   const G=$('wkG'), tiles=[...G.querySelectorAll("span[data-h]")], keep=tiles.filter(t=>t.classList.contains('is-k')), nT=$('wkScN');
-  if(REDUCE){ sig.slice(0,4).forEach(x=>L.appendChild(row(x))); bars.forEach((b,n)=>b.style.width=cap[n]+'%'); tiles.forEach(t=>t.classList.toggle('out',!keep.includes(t))); nT.textContent=`3 de ${tiles.length}`; return; }
+  if(REDUCE){ sig.slice(0,6).forEach(x=>L.appendChild(row(x))); bars.forEach((b,n)=>b.style.width=cap[n]+'%'); tiles.forEach(t=>t.classList.toggle('out',!keep.includes(t))); nT.textContent=`3 de ${tiles.length}`; return; }
   const alive=()=>run===workRun&&G.isConnected, T=$('wkScT'), beam=$('wkBeam');
   const pool=thinkData(p).pool, finals=items(p).map(o=>o.h);
   const say=t=>{ T.textContent=t; gsap.fromTo(T,{opacity:0,y:4},{opacity:1,y:0,duration:.3}); };
@@ -1761,8 +1762,12 @@ function runWork(p){
   const step=()=>{
     if(run!==workRun||!L.isConnected) return;
     const x=sig[i%sig.length], li=row(x); i++;
-    L.prepend(li); gsap.from(li,{y:-16,opacity:0,duration:.5,ease:'power3.out',clearProps:'all'});
-    [...L.children].slice(4).forEach(o=>{ if(o.dataset.out) return; o.dataset.out=1; gsap.to(o,{opacity:0,duration:.3,onComplete:()=>o.remove()}); });
+    L.prepend(li);
+    gsap.timeline()
+      .from(li,{height:0,paddingTop:0,paddingBottom:0,marginBottom:-8,opacity:0,duration:.55,ease:'power3.out',clearProps:'height,padding,margin,opacity'})
+      .fromTo(li,{backgroundColor:'#fff1ea'},{backgroundColor:'#ffffff',duration:1.6,ease:'power1.out',clearProps:'backgroundColor'},.1)
+      .from(li.firstElementChild,{scale:.4,duration:.45,ease:'back.out(2.4)',clearProps:'transform'},.15);
+    [...L.children].slice(8).forEach(o=>o.remove());
     const n = i%4===0 ? 2 : i%3===0 ? 1 : 0;
     const br=wk.getBoundingClientRect(), a=li.getBoundingClientRect(), t=cards[n].getBoundingClientRect();
     const d=document.createElement('span'); d.className='wk-dot'; wk.appendChild(d);
