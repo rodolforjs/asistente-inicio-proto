@@ -477,25 +477,26 @@ body.in-app .ob-kb{display:flex}
 .dh-pd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:18px;background:#fff;padding:12px 16px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}.dh-pd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .dh-pdi{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#f1f3f6}.dh-pd b{display:block;font-size:14px;font-weight:600}.dh-pd small{display:block;font-size:12px;color:#5f6b7d}.dh-pd em{margin-left:auto;font-style:normal;font-size:16px}
 .dh-h{margin-top:22px;font-size:13px;font-weight:600}
-.dy{margin-top:12px;border-radius:22px;background:#fff;padding:14px 14px 16px;box-shadow:0 0 0 1px #e5eaf2}
-.dy header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:0 4px 12px}
+.dy{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0;margin-top:12px;border-radius:22px;background:#fff;padding:16px 20px;box-shadow:0 0 0 1px #e5eaf2}
+.dh-1,.dh{flex-shrink:0}
+.dy header{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .dy-y{display:flex;align-items:center;gap:4px}
 .dy-y h3{font-family:'Newsreader',serif;font-weight:400;font-size:24px;letter-spacing:-.02em;line-height:1;min-width:56px;text-align:center}
 .dy-y button{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:18px;line-height:1;color:#0e1014}.dy-y button:hover{background:#f5f7f9}.dy-y button:disabled{opacity:.25;cursor:default;background:none}
-.dy-lg{display:flex;align-items:center;gap:6px;font-size:12px;color:#5f6b7d}.dy-lg .dy-i{width:20px;height:20px;margin-left:8px}.dy-lg .dy-i svg{width:11px;height:11px}
-.dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
-.dy-mn{padding-bottom:2px;text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.12em;color:#aab2bf}
+.dy-lg{display:flex;flex-direction:column;align-items:flex-start;gap:5px;font-size:12px;color:#5f6b7d}.dy-lg span{display:flex;align-items:center;gap:7px}.dy-lg .dy-i{width:20px;height:20px;margin-left:8px}.dy-lg .dy-i svg{width:11px;height:11px}
+.dy-g{display:grid;grid-template-columns:repeat(12,28px);gap:5px 6px;justify-content:end}
+.dy-mn{padding-bottom:1px;text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.06em;color:#aab2bf}
 .dy-mn.is-cur{color:#ff5924}
-.dy-c{position:relative;display:grid;place-items:center;aspect-ratio:1.35;border-radius:9px;background:#eceff3;transition:transform .15s}
+.dy-c{position:relative;display:grid;place-items:center;width:28px;height:20px;border-radius:6px;background:#eceff3;transition:transform .15s}
 .dy-c.is-past{background:#f3f5f7}
 .dy-c.is-done{background:#e2551f}
 .dy-c.is-next{background:#f2b3b7}
-.dy-c.is-now{background:#ff5924;box-shadow:0 0 0 2.5px #fff,0 0 0 4.5px #0e1014}
-.dy-c.is-today:not(.is-now)::after{content:"";width:6px;height:6px;border-radius:50%;background:#0e1014}
-.dy-c b{font-size:11px;font-weight:700;color:#fff}
-button.dy-c:hover{transform:scale(1.08)}
-.dy-lg .dy-c{display:inline-block;width:16px;height:12px;aspect-ratio:auto;border-radius:4px;margin-left:10px}.dy-lg .dy-c.is-now{box-shadow:0 0 0 1.5px #fff,0 0 0 3px #0e1014}
-@media(max-width:560px){.dy-g{gap:4px}.dy-c{border-radius:6px;aspect-ratio:1}.dy-mn{font-size:8.5px;letter-spacing:.04em}}
+.dy-c.is-now{background:#ff5924;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #0e1014}
+.dy-c.is-today:not(.is-now)::after{content:"";width:4px;height:4px;border-radius:50%;background:#0e1014}
+.dy-c b{font-size:10px;font-weight:700;color:#fff}
+button.dy-c:hover{transform:scale(1.12)}
+.dy-lg .dy-c{display:inline-block;width:14px;height:10px;border-radius:3px;margin-left:0}.dy-lg .dy-c.is-now{box-shadow:0 0 0 1.5px #fff,0 0 0 2.5px #0e1014}
+@media(max-width:620px){.dy{flex-direction:column;align-items:stretch}.dy-g{grid-template-columns:repeat(12,minmax(0,1fr));justify-content:stretch;gap:4px}.dy-c{width:auto}.dy-mn{font-size:8px;letter-spacing:0}}
 .dt{margin-top:12px;border-radius:22px;background:#fff;padding:16px 8px 10px;box-shadow:0 0 0 1px #e5eaf2}
 .dt header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 12px 10px}
 .dt h3{font-family:'Newsreader',serif;font-weight:400;font-size:19px;letter-spacing:-.01em}.dt header span{font-size:12.5px;color:#5f6b7d}
@@ -2073,7 +2074,7 @@ function dtHtml(){
     const act=!f?'':f.st==='done'?(f.p.bought?`data-act="pedido" data-i="${idx(f.p)}"`:''):`data-act="flow" data-i="${idx(f.p)}"`;
     cells.push(`<${act?'button':'span'} ${act} class="dy-c is-${st}${past&&st==='none'?' is-past':''}${m*4+w===tw?' is-today':''}" style="grid-column:${m+1};grid-row:${w+2}" ${t?`title="${esc(t)}" aria-label="${esc(t)}"`:'aria-hidden="true"'}>${l.length>1?`<b class="num">${l.length}</b>`:''}</${act?'button':'span'}>`); }
   return `<section id="dtY" class="dy" aria-label="Tu año"><header><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div>
-    <p class="dy-lg"><i class="dy-c is-done"></i>Resuelto<i class="dy-c is-now"></i>Ahora<i class="dy-c is-next"></i>Viene</p></header>
+    <p class="dy-lg"><span><i class="dy-c is-done"></i>Resuelto</span><span><i class="dy-c is-now"></i>Ahora</span><span><i class="dy-c is-next"></i>Viene</span></p></header>
     <div class="dy-g">${MES.map((m,i)=>`<span class="dy-mn${i===cur?' is-cur':''}" style="grid-column:${i+1};grid-row:1">${m}</span>`).join('')}${cells.join('')}</div></section>`;
 }
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-dy]'); if(!b||b.disabled) return; dtYear=+b.dataset.dy; const el=$('dtY'); if(el){ el.outerHTML=dtHtml(); if(!REDUCE) gsap.from('#dtY .dy-it',{y:6,opacity:0,duration:.3,stagger:.02,clearProps:'all'}); } });
