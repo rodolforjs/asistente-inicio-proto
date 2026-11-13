@@ -2641,7 +2641,12 @@ const CH_IC = {cam:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" 
 const SAVED = {};            // lo que me mandaste, por persona
 let chPend=null, chBusy=false;
 const chNorm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-const chFind=t=>YEAR.find(q=>new RegExp('(^|[^a-z])'+chNorm(q.n).split(' ')[0]+'([^a-z]|$)').test(chNorm(t)));
+const CH_ALIAS=[['Carla','hermana','tu hermana'],['Andrés','hermano','tu hermano'],['Mamá','mama|madre|mami|vieja','tu mamá'],['Papá','papa|padre|papi|viejo','tu papá'],['Abuela Rosa','abuela|abue|tata','tu abuela'],['Pareja','pareja|polola|pololo|novia|novio|esposa|esposo|senora|marido|mi amor','tu pareja'],['Tío Jorge','tio','tu tío'],['Emilia','sobrina|guagua de','tu sobrina'],['Amigo secreto','amigo secreto|oficina|ofi|trabajo|pega|colega','la oficina'],['Navidad','navidad|pascua','Navidad'],['Sofi y Nico','sofi|nico|matrimonio','el matrimonio'],['Familia Soto','soto|bautizo','el bautizo']];
+let chVia='';
+const chFind=t=>{ const n=chNorm(t), w=x=>new RegExp('(^|[^a-z])('+x+')([^a-z]|$)').test(n); chVia='';
+  const d=YEAR.find(q=>w(chNorm(q.n).split(' ')[0])); if(d) return d;
+  const al=CH_ALIAS.find(([,re])=>w(re)); if(al){ const q=YEAR.find(x=>x.n===al[0]); if(q&&/^tu /.test(al[2])&&chNorm(al[2]).slice(3)!==chNorm(q.n)) chVia=al[2]; return q; } return null; };
+const chViaTxt=p=>{ if(!chVia) return ''; const src=(LEARN[p.n]||[]).find(f=>/^Es tu/.test(f[0])), c=src&&cxOf(src[1]); return `${chVia[0].toUpperCase()+chVia.slice(1)} es ${esc(p.n)}${c?`, lo sé por ${c.t.replace('Google ','')}`:''}. `; };
 const chL = () => $('chL');
 function chAdd(cls,html){ const d=document.createElement('div'); d.className='cm '+cls; d.innerHTML=html; chL().appendChild(d); chL().scrollTop=chL().scrollHeight; if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35,ease:'power3.out',clearProps:'all'}); return d; }
 async function chSay(html){ const t=chAdd('cm-a cm-ty','<i></i><i></i><i></i>'); await wait(REDUCE?0:.85); t.classList.remove('cm-ty'); t.innerHTML=html; chL().scrollTop=chL().scrollHeight; return t; }
@@ -2670,26 +2675,27 @@ async function chSend(o){
       chAdd('cm-u', `<img src="${o.img}" alt="Tu foto">${note?`<span class="block">${esc(note)}</span>`:''}`);
       const p=note&&chFind(note);
       if(p){ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:o.img,t:note.length>40?note.slice(0,38)+'…':note,src:'cam'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:note,n:p.n,unread:false});
-        await chSay(`<span class="cm-ok"><i>${CK}</i><span>Guardada en la ficha de ${esc(p.n)}, con tu nota. Te la propongo para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.</span></span><div class="cm-ppl"><button data-chgo="${esc(p.n)}">Ver su ficha →</button></div>`); if(tab==='personas') render(); }
+        await chSay(`<span class="cm-ok"><i>${CK}</i><span>${chViaTxt(p)}Guardada en su ficha, con tu nota. Te la propongo para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.</span></span><div class="cm-ppl"><button data-chgo="${esc(p.n)}">Ver su ficha →</button></div>`); if(tab==='personas') render(); }
       else { chPend={kind:'img',u:o.img,note}; const top=chWho()[0]; await chSay(`${note?'Anotado.':'Buena.'} ¿Para quién la guardo?${chChips(top&&top.n)}`); }
     } else if(o.text){
       const t=o.text.trim(); chAdd('cm-u', esc(t));
+      if(chPend){ const q=chFind(t); if(q){ await chPick(q.n,true); return; } }
       const url=/^(https?:\/\/|www\.)|\.(com|cl)\b/i.test(t), h=Object.keys(PRODS).find(k=>t.toLowerCase().includes(k));
       if(h){ const x=prod(h), top=Object.keys(GIFT).find(n=>GIFT[n][0].includes(h)&&!SHARED.includes(n)); chPend={kind:'prod',x,src:'link'}; await chSay(`Lo tengo: está en Creado.${prodCard(x)}${chChips(top)}`); }
       else if(url){ chPend={kind:'link',u:t}; await chSay(`Guardé el link. ¿Para quién?${chChips()}`); }
       else {
         const p=chFind(t);
         if(p){ (learned[p.n]=learned[p.n]||[]).push(t.length>60?t.slice(0,58)+'…':t); addAct({k:'learn',t:`Aprendí algo de ${p.n}`,s:'Me lo contaste',n:p.n,unread:false});
-          await chSay(`<span class="cm-ok"><i>${CK}</i><span>Anotado en la ficha de ${esc(p.n)}. Lo uso para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}.</span></span>`); if(tab==='personas') render(); }
+          await chSay(`<span class="cm-ok"><i>${CK}</i><span>${chViaTxt(p)}Anotado en la ficha de ${esc(p.n)}. Lo uso para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}.</span></span>`); if(tab==='personas') render(); }
         else { chPend={kind:'fact',t}; await chSay(`Anotado. ¿De quién me hablas?${chChips()}`); }
       }
     }
   } finally { chBusy=false; }
 }
-async function chPick(n){
-  const p=YEAR.find(q=>q.n===n), it=chPend; if(!p||!it) return; chPend=null;
+async function chPick(n,typed){
+  const p=YEAR.find(q=>q.n===n), it=chPend; if(!p||!it) return; chPend=null; const via=typed?chViaTxt(p):'';
   chL().querySelectorAll('.cm-ppl').forEach(e=>e.remove());
-  chAdd('cm-u', esc(n));
+  if(!typed) chAdd('cm-u', esc(n));
   if(it.kind==='fact'){ (learned[n]=learned[n]||[]).push(it.t.length>60?it.t.slice(0,58)+'…':it.t); await chSay(`<span class="cm-ok"><i>${CK}</i><span>Anotado en la ficha de ${esc(n)}.</span></span>`); }
   else {
     const u=it.kind==='prod'?it.x.u:it.u, t=it.kind==='prod'?it.x.t:it.kind==='img'?(it.note?(it.note.length>40?it.note.slice(0,38)+'…':it.note):'Tu foto'):'Tu link';
@@ -2698,7 +2704,8 @@ async function chPick(n){
     let msg;
     if(g>0){ ypick[n]=g; msg=`Ya estaba entre mis ideas para ${esc(n)}. Ahora va primera.`; }
     else if(g===0) msg=`Coincidimos: era mi idea para ${esc(n)}.`;
-    else msg=`Guardado en la ficha de ${esc(n)}. Te lo propongo para su ${esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.`;
+    else msg=`Guardado en la ficha de ${esc(n)}. Te lo propongo para ${n==='Amigo secreto'||n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.`;
+    msg=via+msg;
     addAct({k:'learn',t:`Guardé una idea para ${n}`,s:t,n,unread:false});
     await chSay(`<span class="cm-ok"><i>${CK}</i><span>${msg}</span></span><div class="cm-ppl"><button data-chgo="${esc(n)}">Ver su ficha →</button></div>`);
   }
