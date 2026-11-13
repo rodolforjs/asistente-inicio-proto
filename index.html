@@ -481,16 +481,38 @@ body.in-app .ob-kb{display:flex}
 .dy-c.is-add{cursor:pointer}
 .dy-c.is-add::after{content:"+";font-size:16px;font-weight:600;color:#748297;opacity:0;transition:opacity .15s}
 .dy-c.is-add:hover{background:#fff;box-shadow:inset 0 0 0 1.5px #d5dbe5}.dy-c.is-add:hover::after{opacity:1}
-.dy-f{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;border-radius:16px;background:#f5f7f9;padding:10px}
-.dy-f input,.dy-f select{height:38px;border:0;border-radius:10px;background:#fff;padding:0 12px;font-size:14px;box-shadow:0 0 0 1px #e5eaf2;outline:0}
-.dy-f input:focus,.dy-f select:focus{box-shadow:0 0 0 1.5px #0e1014}
-#dyN{flex:1 1 150px;min-width:0}
-.dy-oc{display:flex;gap:4px}.dy-oc input{position:absolute;opacity:0;pointer-events:none}
-.dy-oc span{display:inline-flex;align-items:center;height:34px;border-radius:999px;background:#fff;padding:0 12px;font-size:13px;font-weight:600;color:#5f6b7d;box-shadow:0 0 0 1px #e5eaf2;cursor:pointer}
-.dy-oc input:checked+span{background:#0e1014;color:#fff;box-shadow:none}.dy-oc input:focus-visible+span{outline:3px solid #0e1014;outline-offset:2px}
 .dy-dt{display:flex;gap:4px}#dyD{width:62px;padding:0 8px;text-align:center}
-.dy-ok{height:38px;border-radius:999px;background:#0e1014;padding:0 16px;font-size:13.5px;font-weight:600;color:#fff}.dy-ok:hover{background:#ff5924}
-.dy-x{height:38px;padding:0 6px;font-size:13px;font-weight:600;color:#748297}.dy-x:hover{color:#0e1014}
+/* nueva fecha */
+.nf{position:fixed;inset:0;z-index:195;display:none;place-items:center;padding:16px;background:rgba(14,16,20,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+body.nf-on .nf{display:grid}
+.nf-c{position:relative;width:min(520px,100%);max-height:calc(100dvh - 32px);overflow:auto;border-radius:30px;background:#fff;padding:28px 28px 24px;box-shadow:0 50px 90px -30px rgba(14,16,20,.6)}
+.nf-x{position:absolute;right:16px;top:16px;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#f5f7f9;font-size:20px;line-height:1;color:#5f6b7d}.nf-x:hover{background:#0e1014;color:#fff}
+.nf-k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#ff5924}
+.nf-h{margin-top:8px;font-family:'Newsreader',serif;font-weight:400;font-size:38px;line-height:1.02;letter-spacing:-.03em}
+.nf-f{display:flex;align-items:center;gap:8px;margin-top:20px;border-radius:999px;background:#f5f7f9;padding:6px 6px 6px 20px;box-shadow:inset 0 0 0 1px #e5eaf2;transition:box-shadow .15s}
+.nf-f:focus-within{box-shadow:inset 0 0 0 1.5px #0e1014;background:#fff}
+.nf-f input{flex:1;min-width:0;height:44px;border:0;outline:0;background:none;font-size:18px}
+.nf-go{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#0e1014;color:#fff;font-size:20px}.nf-go:hover{background:#ff5924}
+.nf-s{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:13px;line-height:1.35;color:#5f6b7d}
+.nf-lg{display:flex;flex:none}.nf-lg img{width:24px;height:24px;margin-left:-6px;padding:4px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #fff,0 0 0 3px #e5eaf2;object-fit:contain}.nf-lg img:first-child{margin-left:0}
+.nf-l{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+.nf-l li{display:flex;align-items:center;gap:12px;border-radius:16px;background:#f5f7f9;padding:10px 12px;transition:background .3s}
+.nf-l li img,.nf-l li > i{flex:none;width:34px;height:34px;padding:7px;border-radius:10px;background:#fff;object-fit:contain}
+.nf-l b{display:block;font-size:13px}.nf-l small{display:flex;align-items:center;gap:6px;margin-top:1px;font-size:13px;color:#5f6b7d}
+.nf-l li.ok{background:#fff;box-shadow:0 0 0 1px #e5eaf2}.nf-l li.ok small{color:#0e1014}
+.nf-card{display:flex;gap:16px;align-items:center;margin-top:12px}
+.nf-dt{flex:none;display:grid;place-items:center;align-content:center;width:104px;height:116px;border-radius:24px;color:#0e1014}
+.nf-dt b{font-family:'Newsreader',serif;font-weight:400;font-size:58px;line-height:.9}.nf-dt small{margin-top:4px;font-size:12px;font-weight:700;letter-spacing:.14em}
+.nf-n{font-family:'Newsreader',serif;font-weight:400;font-size:32px;line-height:1;letter-spacing:-.02em}
+.nf-r{margin-top:4px;font-size:13.5px;color:#5f6b7d}
+.nf-oc{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.nf-oc button{height:32px;border-radius:999px;background:#f5f7f9;padding:0 12px;font-size:12.5px;font-weight:600;color:#5f6b7d}.nf-oc button[aria-pressed=true]{background:#0e1014;color:#fff}
+.nf-t{margin:18px 0 8px;font-size:12.5px;font-weight:600;color:#5f6b7d}
+.nf-fx{display:flex;flex-direction:column;gap:6px}.nf-fx li{display:flex;align-items:center;gap:10px;font-size:14.5px}.nf-fx img{width:18px;height:18px;object-fit:contain}
+.nf-ed .dy-dt input,.nf-ed select{height:40px;border:0;border-radius:10px;background:#f5f7f9;padding:0 12px;font-size:14px;outline:0}.nf-ed .dy-dt{display:flex;gap:6px}.nf-ed #nfD{width:70px;text-align:center}
+.nf-a{display:flex;align-items:center;gap:12px;margin-top:22px}
+.nf-ok{flex:1;height:52px;border-radius:999px;background:#0e1014;color:#fff;font-size:15px;font-weight:700}.nf-ok:hover{background:#ff5924}
+.nf-lk{font-size:13.5px;font-weight:600;color:#5f6b7d;text-decoration:underline;text-underline-offset:3px}.nf-lk:hover{color:#0e1014}
+@media(max-width:560px){.nf{place-items:end center;padding:0}.nf-c{border-radius:28px 28px 0 0;padding:24px 20px 28px}.nf-h{font-size:32px}}
 .dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
 .dy-mn{padding-bottom:2px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#aab2bf}
 .dy-mn.is-cur{color:#ff5924}
@@ -1268,6 +1290,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 <div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span>Simular en…</button>
 <div id="simMenu" class="sim-menu" hidden><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
 <p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="voz" class="sim-it"><kbd>A</kbd><span>Parlante<small>Respondes mi duda</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
+<div id="nf" class="nf" role="dialog" aria-modal="true" aria-label="Nueva fecha"></div>
 <section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
 
 <!-- mándame algo: conversar con el planner desde cualquier pantalla -->
@@ -1637,7 +1660,7 @@ const addBD = (d,n) => { const x=new Date(d); while(n>0){ x.setDate(x.getDate()+
 const ordLeft = p => Math.max(0,Math.round((lastOrder(p)-TODAY)/864e5));
 const lastOrder = p => { const lim=addD(occ(p),-1); let d=new Date(lim); while(addBD(d,4)>lim) d=addD(d,-1); return d; };
 const etaRange = from => { const a=addBD(from,3), b=addBD(from,4); return a.getMonth()===b.getMonth()?`entre el ${a.getDate()} y el ${fdate(b)}`:`entre el ${fdate(a)} y el ${fdate(b)}`; };
-const SRC_L = {home:'Calendario de la casa',cal:'Google Calendar',mail:'Gmail',con:'Google Contactos',gift:'Tus pedidos',you:'Me lo contaste',cross:'Crucé tus datos',instagram:'Instagram',pinterest:'Pinterest',spotify:'Spotify'};
+const SRC_L = {wa:'WhatsApp',icloud:'iCloud',home:'Calendario de la casa',cal:'Google Calendar',mail:'Gmail',con:'Google Contactos',gift:'Tus pedidos',you:'Me lo contaste',cross:'Crucé tus datos',instagram:'Instagram',pinterest:'Pinterest',spotify:'Spotify'};
 const SRC2CX = {mail:'gmail',con:'contacts'};
 const REL = {'Mamá':'Tu mamá','Andrés':'Tu hermano','Carla':'Tu hermana','Papá':'Tu papá','Abuela Rosa':'Tu abuela','Sofi y Nico':'Tus amigos','Pareja':'Tu pareja','Tío Jorge':'Tu tío','Emilia':'Tu sobrina','Familia Soto':'Familia','Amigo secreto':'Oficina','Navidad':'Familia'};
 const LEARN = {
@@ -2249,37 +2272,82 @@ function dtHtml(){
     const inner=!f?'':st==='done'?'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.500l3.200 3L13 4.500"/></svg>':portrait(f.p.n).replace('<svg ','<svg preserveAspectRatio="xMidYMid slice" ');
     if(!f&&!past&&m*4+w!==tw){ cells.push(`<button class="dy-c is-none is-add" data-dyadd="${m}" data-dyday="${w*8+4}" style="grid-column:${m+1};grid-row:${w+2}" aria-label="Agregar una fecha en ${MES[m].toLowerCase()}"></button>`); continue; }
     cells.push(`<${act?'button':'span'} ${act} class="dy-c is-${st}${past&&st==='none'?' is-past':''}${m*4+w===tw?' is-today':''}" style="grid-column:${m+1};grid-row:${w+2}${f&&st!=='done'?`;background:${(PORT[f.p.n]||{}).bg||'#e5eaf2'}`:''}" ${tip?`data-tip="${esc(tip)}" aria-label="${esc(l.map(x=>x.p.n).join(', '))}"`:'aria-hidden="true"'}>${inner}${l.length>1?`<b class="num">${l.length}</b>`:''}</${act?'button':'span'}>`); }
-  return `<section id="dtY" class="dy" aria-label="Calendario"><header><h3 class="dy-t">Calendario</h3><div class="dy-r"><button class="dy-plus" data-dyadd="" aria-label="Agregar una fecha" title="Agregar una fecha">+</button><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div></div></header>${dyForm?dyFormHtml():''}
+  return `<section id="dtY" class="dy" aria-label="Calendario"><header><h3 class="dy-t">Calendario</h3><div class="dy-r"><button class="dy-plus" data-dyadd="" aria-label="Agregar una fecha" title="Agregar una fecha">+</button><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div></div></header>
     <div class="dy-g">${MES.map((m,i)=>`<span class="dy-mn${i===cur?' is-cur':''}" style="grid-column:${i+1};grid-row:1">${m}</span>`).join('')}${cells.join('')}</div><div id="dyTip" class="dy-tip" role="tooltip"></div></section>`;
 }
 document.addEventListener('pointerover',e=>{ const c=e.target.closest&&e.target.closest('.dy-c[data-tip]'), t=$('dyTip'); if(!t) return; if(!c){ t.classList.remove('on'); return; }
   const S=$('dtY').getBoundingClientRect(), r=c.getBoundingClientRect(); t.innerHTML=c.dataset.tip; t.classList.add('on');
   const w=t.offsetWidth; t.style.left=Math.max(8,Math.min(S.width-w-8,r.left-S.left+r.width/2-w/2))+'px'; t.style.top=(r.top-S.top-t.offsetHeight-8)+'px'; });
 
-/* agregar una fecha a mano: secundario, dentro del calendario */
-let dyForm=null;
-const dyFormHtml=()=>`<form class="dy-f" id="dyF"><input id="dyN" placeholder="¿De quién?" maxlength="24" autocomplete="off" aria-label="De quién es la fecha" required>
-  <div class="dy-oc" role="radiogroup" aria-label="Qué celebran">${['Cumpleaños','Aniversario','Otra'].map((o,i)=>`<label><input type="radio" name="dyO" value="${o}" ${i?'':'checked'}><span>${o}</span></label>`).join('')}</div>
-  <span class="dy-dt"><input id="dyD" type="number" min="1" max="31" value="${dyForm.d}" aria-label="Día"><select id="dyM" aria-label="Mes">${MES.map((m,i)=>`<option value="${i}" ${i===dyForm.m?'selected':''}>${m.charAt(0)+m.slice(1).toLowerCase()}</option>`).join('')}</select></span>
-  <button class="dy-ok">Agregar</button><button type="button" class="dy-x" data-dyx aria-label="Cancelar">Cancelar</button></form>`;
-const dyRe=()=>{ const el=$('dtY'); if(el) el.outerHTML=dtHtml(); };
-document.addEventListener('click',e=>{
-  const a=e.target.closest('[data-dyadd]'), x=e.target.closest('[data-dyx]');
-  if(a){ const m=a.dataset.dyadd===''?TODAY.getMonth():+a.dataset.dyadd; dyForm={m,d:Math.min(28,+a.dataset.dyday||TODAY.getDate())}; dyRe(); const n=$('dyN'); if(n) n.focus(); if(!REDUCE) gsap.from('#dyF',{y:-6,opacity:0,duration:.3}); }
-  else if(x){ dyForm=null; dyRe(); }
+/* agregar una fecha a mano: modal donde el sistema busca con tus conectores */
+let nf=null, nfRun=0;
+const NF_G=['el asado','el café de grano','las plantas','los libros de historia','la cerámica','el vino','salir al cerro','cocinar para muchos'];
+const NF_P={'el asado':['pack-3-salsas-gourmet','tabla-de-piedra-ribete','tabla-tolten'],'el café de grano':['mug-termico-ilustrado-papelucosas','tazon-alerce','botella-termica-oceano'],'las plantas':['mielero-en-ceramica-gres','vela-vasija-likan-esencia-andina','tazon-alerce'],'los libros de historia':['libro-santiago-y-sus-cumbres-copia','libro-wander','diario-de-gratitud'],'la cerámica':['mielero-en-ceramica-gres','tazon-alerce','vela-vasija-likan-esencia-andina'],'el vino':['vasos-gallo-agranda-o-450-ml-set-de-6','tabla-tolten','pack-3-salsas-gourmet'],'salir al cerro':['mochila-zorro-culpeo','botella-bandurria','botella-termica-oceano'],'cocinar para muchos':['tabla-de-piedra-ribete','pack-3-salsas-gourmet','set-de-platos-circulares']};
+const nfHash=t=>[...t.toLowerCase()].reduce((a,c)=>a*31+c.charCodeAt(0)>>>0,7);
+const nfLogos=()=>CONNS.filter(c=>CX[c.k]).map(c=>`<img src="${c.img}" alt="${c.t}" title="${c.t}">`).join('');
+function nfOpen(m,d){ nf={hint:m==null?null:{m,d},step:'name'}; document.body.classList.add('nf-on'); nfView(); setTimeout(()=>{ const i=$('nfN'); if(i) i.focus(); },50); if(!REDUCE) gsap.from('#nf .nf-c',{y:24,scale:.97,opacity:0,duration:.45,ease:'power3.out'}); }
+function nfClose(){ nfRun++; nf=null; document.body.classList.remove('nf-on'); }
+function nfView(){
+  const C$=$('nf'); if(!nf){ C$.innerHTML=''; return; }
+  let b='';
+  if(nf.step==='name') b=`<p class="nf-k">Nueva fecha</p><h2 class="nf-h">¿De quién es la fecha?</h2>
+    <form id="nfF" class="nf-f"><input id="nfN" placeholder="Nombre o apodo" maxlength="24" autocomplete="off" aria-label="Nombre o apodo"><button class="nf-go" aria-label="Buscar">→</button></form>
+    <p class="nf-s"><span class="nf-lg">${nfLogos()}</span>Lo busco en lo que conectaste. Tú solo me das el nombre.</p>`;
+  else if(nf.step==='search') b=`<p class="nf-k">Buscando</p><h2 class="nf-h">${esc(nf.n)}<span class="pl-dots"><i></i><i></i><i></i></span></h2><ul class="nf-l" id="nfL"></ul>`;
+  else { const r=nf, dd=r.date, prt=portrait(r.n).replace('<svg ','<svg preserveAspectRatio="xMidYMid slice" ');
+    b=`<p class="nf-k">Lo armé así</p>
+    <div class="nf-card"><div class="nf-dt" style="background:${r.bg}">${dd?`<b class="num">${dd.d}</b><small>${MES[dd.m]}</small>`:'<b>?</b><small>sin fecha</small>'}</div>
+      <div class="min-w-0 flex-1"><h2 class="nf-n">${esc(r.n)}</h2><p class="nf-r">${esc(r.rel)}</p>
+        <div class="nf-oc" role="radiogroup" aria-label="Qué celebran">${['Cumpleaños','Aniversario','Otra'].map(o=>`<button type="button" data-nfo="${o}" aria-pressed="${r.o===o}">${o}</button>`).join('')}</div></div></div>
+    ${r.facts.length?`<p class="nf-t">Lo que ya sé</p><ul class="nf-fx">${r.facts.map(([t,k])=>{ const c=cxOf(k); return `<li>${c?`<img src="${c.img}" alt="">`:''}<span>${esc(t)}</span></li>`; }).join('')}</ul>`:''}
+    <div class="nf-ed" ${dd&&!r.edit?'hidden':''}><p class="nf-t">${dd?'Cambiar fecha':'No encontré la fecha. ¿Me la dices?'}</p><span class="dy-dt"><input id="nfD" type="number" min="1" max="31" value="${dd?dd.d:1}" aria-label="Día"><select id="nfM" aria-label="Mes">${MES.map((m,i)=>`<option value="${i}" ${dd&&i===dd.m?'selected':''}>${m.charAt(0)+m.slice(1).toLowerCase()}</option>`).join('')}</select></span></div>
+    <div class="nf-a"><button class="nf-ok" data-nf="add">Agregar a mis fechas</button>${dd&&!r.edit?'<button class="nf-lk" data-nf="edit">Cambiar fecha</button>':''}</div>`; }
+  C$.innerHTML=`<div class="nf-c"><button class="nf-x" data-nf="x" aria-label="Cerrar">×</button>${b}</div>`;
+}
+async function nfSearch(n){
+  const run=++nfRun, h=nfHash(n), g=NF_G[h%NF_G.length], g2=NF_G[(h>>3)%NF_G.length], isPato=/^pato$/i.test(n);
+  const hint=nf.hint, found={m:isPato?11:(h>>5)%12,d:isPato?12:1+(h>>9)%28};
+  nf.n=n; nf.step='search'; nf.facts=[]; nf.gusto=null; nf.o='Cumpleaños'; nf.date=hint||null; nf.rel='La agregaste tú'; nf.bg=[C.yellow,C.green,C.pink,C.coral][h%4]; nfView();
+  const rows=[];
+  if(CX.contacts) rows.push(['contacts','Google Contactos',`Está en tus contactos${isPato?', como tu compadre':''}.`,()=>{ nf.rel=isPato?'Tu compadre':'De tus contactos'; }]);
+  if(CX.gmail) rows.push(['gmail','Gmail',`“¡Feliz cumple, ${n}!” · ${found.d} ${MES[found.m].toLowerCase()} del año pasado.`,()=>{ if(!nf.date) nf.date=found; nf.facts.push([`Su cumple es el ${found.d} de ${MESES[found.m]}`,'gmail']); }]);
+  if(CX.cal) rows.push(['cal','Google Calendar','No estaba en tu calendario. Lo sumo yo.',()=>{}]);
+  if(CX.icloud) rows.push(['icloud','iCloud','Tampoco en iCloud.',()=>{}]);
+  if(CX.wa) rows.push(['wa','WhatsApp',`En un chat contó que le encanta ${isPato?'el asado':g}.`,()=>{ nf.gusto=isPato?'el asado':g; nf.facts.push([`Le encanta ${nf.gusto}`,'wa']); }]);
+  if(CX.instagram) rows.push(['instagram','Instagram',`Sus fotos públicas: ${g2}.`,()=>{ nf.gusto=nf.gusto||g2; nf.facts.push([`Sube fotos de ${g2}`,'instagram']); }]);
+  if(CX.pinterest) rows.push(['pinterest','Pinterest','No lo encontré en Pinterest.',()=>{}]);
+  if(!rows.length) rows.push(['','Sin conectores','No tengo dónde buscar. Te pido la fecha.',()=>{}]);
+  for(const [k,t,res,fn] of rows){
+    if(run!==nfRun) return; const c=cxOf(k), L=$('nfL'); if(!L) return;
+    L.insertAdjacentHTML('beforeend',`<li>${c?`<img src="${c.img}" alt="">`:'<i></i>'}<span><b>${t}</b><small><span class="oc-sp"></span>Buscando…</small></span></li>`);
+    const li=L.lastElementChild; if(!REDUCE) gsap.from(li,{y:10,opacity:0,duration:.3});
+    await wait(REDUCE?0:.75); if(run!==nfRun) return;
+    li.querySelector('small').textContent=res; li.classList.add('ok'); fn();
+  }
+  await wait(REDUCE?0:.6); if(run!==nfRun) return;
+  nf.step='done'; nfView(); if(!REDUCE) gsap.from('#nf .nf-c > *:not(.nf-x)',{y:12,opacity:0,duration:.4,stagger:.05,ease:'power3.out'});
+}
+function nfAdd(){
+  const r=nf; if(!r) return;
+  if(!r.date||r.edit){ const m=+$('nfM').value; r.date={m,d:Math.max(1,Math.min(new Date(2027,m+1,0).getDate(),+$('nfD').value||1))}; }
+  const n=r.n[0].toUpperCase()+r.n.slice(1);
+  if(YEAR.some(q=>q.n.toLowerCase()===n.toLowerCase())){ ytoast(`Ya sigo la fecha de ${n}.`); nfClose(); return; }
+  const p={n,o:r.o==='Otra'?'Celebración':r.o,m:r.date.m,d:r.date.d,y:40,k:r.o==='Aniversario'?'amor':'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
+  GIFT[n]=[NF_P[r.gusto]||['vela-anillo-de-fuego-esencia-andina','pack-3-mermeladas-gourmet','libreta-picaflor-1'],r.gusto?`le encanta ${r.gusto}.`:'aún lo estoy conociendo; con lo que me cuentes afino.'];
+  REL[n]=r.rel; LEARN[n]=r.facts.map(([t,k])=>[t,SRC2CX[k]?k:k==='gmail'?'mail':k==='contacts'?'con':k]); if(!LEARN[n].length) LEARN[n]=[['Me la diste tú','you']];
+  PORT[n]={bg:r.bg,d:`<text x="100" y="140" text-anchor="middle" font-family="Newsreader,serif" font-size="110" fill="${INK}" stroke="none">${esc(n[0])}</text>`};
+  addAct({k:'new',t:'Sumé una fecha nueva',s:`${n} · ${r.date.d} ${MES[r.date.m].toLowerCase()}`,n,unread:false});
+  nfClose(); dtYear=occ(p).getFullYear(); render(); ytoast(`Listo, sigo a ${n}. Te aviso el ${fdate(avisoD(p))}.`);
+}
+$('nf').addEventListener('click',e=>{
+  if(e.target.id==='nf'){ nfClose(); return; }
+  const b=e.target.closest('[data-nf],[data-nfo]'); if(!b) return;
+  if(b.dataset.nfo){ nf.o=b.dataset.nfo; b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); return; }
+  const a=b.dataset.nf; if(a==='x') nfClose(); else if(a==='add') nfAdd(); else if(a==='edit'){ nf.edit=true; nfView(); }
 });
-document.addEventListener('submit',e=>{
-  if(e.target.id!=='dyF') return; e.preventDefault();
-  const raw=$('dyN').value.trim(); if(!raw) return; const n=raw[0].toUpperCase()+raw.slice(1);
-  const o=(document.querySelector('input[name=dyO]:checked')||{}).value||'Cumpleaños', m=+$('dyM').value, d=Math.max(1,Math.min(new Date(2027,m+1,0).getDate(),+$('dyD').value||1));
-  if(YEAR.some(q=>q.n.toLowerCase()===n.toLowerCase())){ ytoast(`Ya sigo la fecha de ${n}.`); return; }
-  const p={n,o:o==='Otra'?'Celebración':o,m,d,y:40,k:o==='Aniversario'?'amor':'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
-  GIFT[n]=[['vela-anillo-de-fuego-esencia-andina','pack-3-mermeladas-gourmet','libreta-picaflor-1'],'aún lo estoy conociendo; con lo que me cuentes afino.'];
-  REL[n]='La agregaste tú'; LEARN[n]=[['Me la diste tú','you']];
-  PORT[n]={bg:[C.yellow,C.green,C.pink,C.coral][YEAR.length%4],d:`<text x="100" y="140" text-anchor="middle" font-family="Newsreader,serif" font-size="110" fill="${INK}" stroke="none">${esc(n[0])}</text>`};
-  addAct({k:'new',t:'Sumé una fecha nueva',s:`${n} · ${d} ${MES[m].toLowerCase()}. Me la diste tú`,n,unread:false});
-  dyForm=null; dtYear=occ(p).getFullYear(); render(); ytoast(`Listo, sigo a ${n}. Te aviso el ${fdate(avisoD(p))}.`);
-});
+$('nf').addEventListener('submit',e=>{ e.preventDefault(); const v=$('nfN').value.trim(); if(v) nfSearch(v); });
+addEventListener('keydown',e=>{ if(e.key==='Escape'&&nf) nfClose(); });
+document.addEventListener('click',e=>{ const a=e.target.closest('[data-dyadd]'); if(!a) return; const has=a.dataset.dyadd!==''; nfOpen(has?+a.dataset.dyadd:null,has?Math.min(28,+a.dataset.dyday||1):null); });
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-dy]'); if(!b||b.disabled) return; dtYear=+b.dataset.dy; const el=$('dtY'); if(el){ el.outerHTML=dtHtml(); if(!REDUCE) gsap.from('#dtY .dy-it',{y:6,opacity:0,duration:.3,stagger:.02,clearProps:'all'}); } });
 const DELIVERED=[
   {n:'Mamá',o:'Cumpleaños',d:new Date(2026,2,14),h:'mama-cual-es-tu-historia',no:'CC-46920',a:'Los Aromos 455, Ñuñoa',on:'Entregado el 12 mar'},
