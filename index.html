@@ -477,26 +477,32 @@ body.in-app .ob-kb{display:flex}
 .dh-pd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:18px;background:#fff;padding:12px 16px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}.dh-pd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .dh-pdi{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#f1f3f6}.dh-pd b{display:block;font-size:14px;font-weight:600}.dh-pd small{display:block;font-size:12px;color:#5f6b7d}.dh-pd em{margin-left:auto;font-style:normal;font-size:16px}
 .dh-h{margin-top:22px;font-size:13px;font-weight:600}
-.dy{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0;margin-top:12px;border-radius:22px;background:#fff;padding:16px 20px;box-shadow:0 0 0 1px #e5eaf2}
+.dy{display:block;flex-shrink:0;margin-top:12px;border-radius:22px;background:#fff;padding:16px 20px;box-shadow:0 0 0 1px #e5eaf2}
 .dh-1,.dh{flex-shrink:0}
-.dy header{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.dy header{display:flex;align-items:center;margin:-4px 0 8px -6px}
 .dy-y{display:flex;align-items:center;gap:4px}
-.dy-y h3{font-family:'Newsreader',serif;font-weight:400;font-size:24px;letter-spacing:-.02em;line-height:1;min-width:56px;text-align:center}
+.dy-y h3{font-family:'Newsreader',serif;font-weight:400;font-size:20px;letter-spacing:-.02em;line-height:1;min-width:56px;text-align:center}
 .dy-y button{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:18px;line-height:1;color:#0e1014}.dy-y button:hover{background:#f5f7f9}.dy-y button:disabled{opacity:.25;cursor:default;background:none}
 .dy-lg{display:flex;flex-direction:column;align-items:flex-start;gap:5px;font-size:12px;color:#5f6b7d}.dy-lg span{display:flex;align-items:center;gap:7px}.dy-lg .dy-i{width:20px;height:20px;margin-left:8px}.dy-lg .dy-i svg{width:11px;height:11px}
-.dy-g{display:grid;grid-template-columns:repeat(12,28px);gap:5px 6px;justify-content:end}
-.dy-mn{padding-bottom:1px;text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.06em;color:#aab2bf}
+.dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
+.dy-mn{padding-bottom:2px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#aab2bf}
 .dy-mn.is-cur{color:#ff5924}
-.dy-c{position:relative;display:grid;place-items:center;width:28px;height:20px;border-radius:6px;background:#eceff3;transition:transform .15s}
+.dy-c{position:relative;display:grid;place-items:center;height:30px;border-radius:9px;background:#eceff3;overflow:hidden;transition:transform .18s cubic-bezier(.3,1.5,.5,1),box-shadow .18s}
 .dy-c.is-past{background:#f3f5f7}
-.dy-c.is-done{background:#e2551f}
-.dy-c.is-next{background:#f2b3b7}
-.dy-c.is-now{background:#ff5924;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #0e1014}
-.dy-c.is-today:not(.is-now)::after{content:"";width:4px;height:4px;border-radius:50%;background:#0e1014}
-.dy-c b{font-size:10px;font-weight:700;color:#fff}
-button.dy-c:hover{transform:scale(1.12)}
-.dy-lg .dy-c{display:inline-block;width:14px;height:10px;border-radius:3px;margin-left:0}.dy-lg .dy-c.is-now{box-shadow:0 0 0 1.5px #fff,0 0 0 2.5px #0e1014}
-@media(max-width:620px){.dy{flex-direction:column;align-items:stretch}.dy-g{grid-template-columns:repeat(12,minmax(0,1fr));justify-content:stretch;gap:4px}.dy-c{width:auto}.dy-mn{font-size:8px;letter-spacing:0}}
+.dy-c.is-done{background:#22a06b;color:#fff}
+.dy-c .pt{position:absolute;inset:0;width:100%;height:100%}
+.dy-c.is-now{overflow:visible;box-shadow:0 0 0 2px #fff,0 0 0 4px #ff5924}.dy-c.is-now .pt{border-radius:9px}
+.dy-c.is-today.is-none::after{content:"";width:5px;height:5px;border-radius:50%;background:#0e1014}
+.dy-c b{position:absolute;right:2px;bottom:2px;display:grid;place-items:center;min-width:15px;height:15px;border-radius:8px;background:#0e1014;font-size:9.5px;font-weight:700;color:#fff}
+.dy-c[data-tip]{cursor:pointer}.dy-c[data-tip]:hover{transform:translateY(-2px) scale(1.08);z-index:2;box-shadow:0 10px 18px -8px rgba(14,16,20,.45)}
+.dy-c.is-now:hover{box-shadow:0 0 0 2px #fff,0 0 0 4px #ff5924,0 10px 18px -8px rgba(14,16,20,.45)}
+.dy{position:relative}
+.dy-tip{position:absolute;left:0;top:0;z-index:5;display:flex;flex-direction:column;gap:4px;border-radius:14px;background:#0e1014;color:#fff;padding:9px 12px;font-size:12.5px;line-height:1.3;white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s;box-shadow:0 14px 26px -12px rgba(14,16,20,.6)}
+.dy-tip.on{opacity:1;transform:none}
+.dy-tip span{display:flex;align-items:center;gap:6px}
+.dy-tip em{margin-left:8px;border-radius:999px;padding:1px 8px;font-style:normal;font-size:11px;font-weight:600}
+.dy-tip em.is-done{background:rgba(34,160,107,.25);color:#7be0b0}.dy-tip em.is-now{background:#ff5924;color:#fff}.dy-tip em.is-next{background:rgba(255,255,255,.12);color:rgba(255,255,255,.75)}
+@media(max-width:620px){.dy-g{gap:4px}.dy-c{height:24px;border-radius:6px}.dy-mn{font-size:8px;letter-spacing:0}}
 .dt{margin-top:12px;border-radius:22px;background:#fff;padding:16px 8px 10px;box-shadow:0 0 0 1px #e5eaf2}
 .dt header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 12px 10px}
 .dt h3{font-family:'Newsreader',serif;font-weight:400;font-size:19px;letter-spacing:-.01em}.dt header span{font-size:12.5px;color:#5f6b7d}
@@ -2075,15 +2081,19 @@ function dtItems(Y){
 function dtHtml(){
   const Y=dtYear||(dtYear=TODAY.getFullYear()), it=dtItems(Y), y0=TODAY.getFullYear(), cur=Y===y0?TODAY.getMonth():-1;
   const wk=d=>Math.min(3,Math.floor((d.getDate()-1)/7.75)), tw=Y===y0?TODAY.getMonth()*4+wk(TODAY):-1, rank={none:0,now:3,next:2,done:1};
-  const lbl={done:'resuelto',now:'por decidir',next:'te aviso'};
+  const lbl={done:'Resuelto',now:'Por decidir',next:'Te aviso el '};
   const cells=[]; for(let w=0;w<4;w++) for(let m=0;m<12;m++){ const l=it.filter(x=>x.d.getMonth()===m&&wk(x.d)===w), st=l.reduce((a,x)=>rank[x.st]>rank[a]?x.st:a,'none'), past=Y<y0||(Y===y0&&m*4+w<tw);
-    const t=l.map(x=>`${x.p.n} · ${x.d.getDate()} ${MES[m].toLowerCase()} · ${lbl[x.st]}`).join('\n'), f=l.find(x=>x.st!=='done')||l[0];
+    const f=l.find(x=>x.st===st)||l[0];
+    const tip=l.map(x=>`<span><b>${esc(x.p.n)}</b> · ${x.d.getDate()} ${MES[m].toLowerCase()}<em class="is-${x.st}">${x.st==='next'?lbl.next+fdate(avisoD(x.p)):lbl[x.st]}</em></span>`).join('');
     const act=!f?'':f.st==='done'?(f.p.bought?`data-act="pedido" data-i="${idx(f.p)}"`:''):`data-act="flow" data-i="${idx(f.p)}"`;
-    cells.push(`<${act?'button':'span'} ${act} class="dy-c is-${st}${past&&st==='none'?' is-past':''}${m*4+w===tw?' is-today':''}" style="grid-column:${m+1};grid-row:${w+2}" ${t?`title="${esc(t)}" aria-label="${esc(t)}"`:'aria-hidden="true"'}>${l.length>1?`<b class="num">${l.length}</b>`:''}</${act?'button':'span'}>`); }
-  return `<section id="dtY" class="dy" aria-label="Tu año"><header><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div>
-    <p class="dy-lg"><span><i class="dy-c is-done"></i>Resuelto</span><span><i class="dy-c is-now"></i>Ahora</span><span><i class="dy-c is-next"></i>Viene</span></p></header>
-    <div class="dy-g">${MES.map((m,i)=>`<span class="dy-mn${i===cur?' is-cur':''}" style="grid-column:${i+1};grid-row:1">${m}</span>`).join('')}${cells.join('')}</div></section>`;
+    const inner=!f?'':st==='done'?'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.500l3.200 3L13 4.500"/></svg>':portrait(f.p.n).replace('<svg ','<svg preserveAspectRatio="xMidYMid slice" ');
+    cells.push(`<${act?'button':'span'} ${act} class="dy-c is-${st}${past&&st==='none'?' is-past':''}${m*4+w===tw?' is-today':''}" style="grid-column:${m+1};grid-row:${w+2}${f&&st!=='done'?`;background:${(PORT[f.p.n]||{}).bg||'#e5eaf2'}`:''}" ${tip?`data-tip="${esc(tip)}" aria-label="${esc(l.map(x=>x.p.n).join(', '))}"`:'aria-hidden="true"'}>${inner}${l.length>1?`<b class="num">${l.length}</b>`:''}</${act?'button':'span'}>`); }
+  return `<section id="dtY" class="dy" aria-label="Tu año"><header><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div></header>
+    <div class="dy-g">${MES.map((m,i)=>`<span class="dy-mn${i===cur?' is-cur':''}" style="grid-column:${i+1};grid-row:1">${m}</span>`).join('')}${cells.join('')}</div><div id="dyTip" class="dy-tip" role="tooltip"></div></section>`;
 }
+document.addEventListener('pointerover',e=>{ const c=e.target.closest&&e.target.closest('.dy-c[data-tip]'), t=$('dyTip'); if(!t) return; if(!c){ t.classList.remove('on'); return; }
+  const S=$('dtY').getBoundingClientRect(), r=c.getBoundingClientRect(); t.innerHTML=c.dataset.tip; t.classList.add('on');
+  const w=t.offsetWidth; t.style.left=Math.max(8,Math.min(S.width-w-8,r.left-S.left+r.width/2-w/2))+'px'; t.style.top=(r.top-S.top-t.offsetHeight-8)+'px'; });
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-dy]'); if(!b||b.disabled) return; dtYear=+b.dataset.dy; const el=$('dtY'); if(el){ el.outerHTML=dtHtml(); if(!REDUCE) gsap.from('#dtY .dy-it',{y:6,opacity:0,duration:.3,stagger:.02,clearProps:'all'}); } });
 const DELIVERED=[
   {n:'Mamá',o:'Cumpleaños',d:new Date(2026,2,14),h:'mama-cual-es-tu-historia',no:'CC-46920',a:'Los Aromos 455, Ñuñoa',on:'Entregado el 12 mar'},
