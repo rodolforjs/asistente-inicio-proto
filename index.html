@@ -904,13 +904,13 @@ body.tn-on .tn{display:grid}
 .tn-geo span{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:rgba(255,255,255,.18);padding:6px 12px;font-size:12px;font-weight:600}
 .tn-tap{position:absolute;left:0;right:0;bottom:92px;text-align:center;font-size:12px;opacity:.8}
 /* app en la tienda */
-.tn-ap{position:absolute;inset:0;overflow:auto;padding:56px 18px 22px;color:#0e1014;background:#fbfbfd}
+.tn-ap{position:absolute;inset:0;overflow:auto;padding:60px 20px 24px;color:#0e1014;background:#fbfbfd}
 .tn-ap .tn-sb{position:absolute}
 .tn-here{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#0e1014;color:#fff;padding:6px 12px 6px 9px;font-size:12px;font-weight:600}
-.tn-h{margin-top:14px;font-family:'Newsreader',serif;font-weight:400;font-size:34px;line-height:1;letter-spacing:-.035em}
+.tn-h{margin-top:18px;font-family:'Newsreader',serif;font-weight:400;font-size:34px;line-height:1;letter-spacing:-.035em}
 .tn-h em{color:#ff5924}
-.tn-s{margin-top:7px;font-size:13.5px;line-height:1.35;color:#5f6b7d}
-.tn-pr{margin-top:14px;border-radius:24px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 20px 30px -24px rgba(14,16,20,.4);overflow:hidden}
+.tn-s{margin-top:8px;font-size:14px;line-height:1.35;color:#5f6b7d}
+.tn-pr{margin-top:18px;border-radius:24px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 20px 30px -24px rgba(14,16,20,.4);overflow:hidden}
 .tn-pr .tn-im{position:relative;height:178px;background:#f2f0ec}
 .tn-pr .tn-im img{width:100%;height:100%;object-fit:cover}
 .tn-pr .tn-im span{position:absolute;left:10px;top:10px;border-radius:999px;background:#ff5924;color:#fff;padding:4px 10px;font-size:11.5px;font-weight:700}
@@ -947,6 +947,47 @@ body.tn-on .tn{display:grid}
 .tn-ask{margin-top:14px;border-radius:20px;background:#0e1014;color:#fff;padding:13px 14px;font-size:14px;line-height:1.3}
 .tn-ask div{display:flex;gap:6px;margin-top:10px}
 .tn-ask button{border-radius:999px;background:rgba(255,255,255,.14);padding:6px 13px;font-size:12.5px;font-weight:600}.tn-ask button:hover,.tn-ask button[aria-pressed=true]{background:#fff;color:#0e1014}
+.tn-gd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:20px;background:#fff;padding:12px 14px 12px 12px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}
+button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
+.tn-gd b{display:block;font-size:14.5px}.tn-gd small{display:block;margin-top:1px;font-size:12.5px;color:#5f6b7d}
+.tn-gi{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ff5924;color:#fff}
+.tn-gd-s .tn-gi{background:#0e1014}
+.tn-dp{display:flex;align-items:center;gap:11px;width:100%;margin-top:12px;text-align:left}
+.tn-dp em{flex:none;border-radius:999px;background:#fff;color:#0e1014;padding:5px 11px;font-style:normal;font-size:12px;font-weight:700}
+.tn-dp[aria-pressed=true] em{background:#22a06b;color:#fff}
+.tn-mini{display:flex;align-items:center;gap:12px;padding:8px;font-size:14px}.tn-mini img{width:56px;height:56px;border-radius:14px;object-fit:cover}.tn-mini small{display:block;color:#5f6b7d;font-size:12.5px}
+/* guía con cámara */
+.tn-ar{position:absolute;inset:0;overflow:hidden;background:#1b1a18;color:#fff}
+.tn-ar video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.tn-ar.is-cam video{opacity:1}.tn-ar.is-cam .tn-sim{display:none}
+.tn-sim{position:absolute;inset:0;transform-origin:50% 44%}
+.tn-wall{position:absolute;inset:0 0 44% 0;background:linear-gradient(#e9e0d3,#ddd0bd);box-shadow:inset 0 -30px 40px -30px rgba(0,0,0,.25)}
+.tn-wall::before,.tn-wall::after{content:"";position:absolute;left:8%;right:8%;height:6px;border-radius:3px;background:#c9b597;box-shadow:0 6px 10px -4px rgba(0,0,0,.25)}.tn-wall::before{top:22%}.tn-wall::after{top:46%}
+.tn-sim::after{content:"";position:absolute;inset:56% 0 0 0;background:linear-gradient(#b99e7f,#8c7357)}
+.tn-tb{position:absolute;left:6%;right:6%;top:50%;height:13%;z-index:1;background:linear-gradient(#e4cba6,#c9a77c);clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);box-shadow:0 20px 30px rgba(0,0,0,.3)}
+.tn-o{position:absolute;z-index:2;object-fit:cover;border-radius:8px;box-shadow:0 10px 16px -6px rgba(0,0,0,.45)}
+.tn-o1{left:13%;top:39%;width:22%;aspect-ratio:1;transform:rotate(-4deg)}
+.tn-o3{right:13%;top:40%;width:21%;aspect-ratio:1;transform:rotate(5deg)}
+.tn-o2{left:37%;top:35%;width:26%;aspect-ratio:1}
+.tn-art{position:absolute;left:14px;right:14px;top:48px;z-index:6;display:flex;align-items:center;gap:10px}
+.tn-art button{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(14,16,20,.55);font-size:20px;line-height:1;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tn-art span{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:rgba(14,16,20,.55);padding:8px 13px;font-size:12.5px;font-weight:600;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tn-floor{position:absolute;left:50%;bottom:118px;z-index:4;width:90px;margin-left:-45px;display:flex;flex-direction:column-reverse;align-items:center;gap:6px;perspective:300px;transform-origin:50% 100%}
+.tn-floor i{display:block;width:70px;transform:rotateX(55deg);filter:drop-shadow(0 0 8px rgba(255,89,36,.9))}
+.tn-floor svg{display:block;width:100%}.tn-floor path{stroke:#ff5924}
+.tn-ret{position:absolute;left:33%;top:31%;z-index:5;width:34%;aspect-ratio:1;opacity:0}
+.tn-ar.is-here .tn-ret{opacity:1}
+.tn-ret i{position:absolute;width:22px;height:22px;border:3px solid #fff;filter:drop-shadow(0 0 6px rgba(0,0,0,.5))}
+.tn-ret i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:8px 0 0 0}.tn-ret i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 8px 0 0}.tn-ret i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 8px}.tn-ret i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.tn-tag{position:absolute;left:50%;width:max-content;top:calc(31% + 34% * .9 + 18px);z-index:6;display:none;align-items:center;gap:9px;transform:translateX(-50%);border-radius:16px;background:#fff;color:#0e1014;padding:7px 12px 7px 7px;white-space:nowrap;box-shadow:0 14px 24px -10px rgba(0,0,0,.5)}
+.tn-ar.is-here .tn-tag{display:flex}
+.tn-tag img{width:34px;height:34px;border-radius:9px;object-fit:cover}.tn-tag b{display:block;font-size:13px}.tn-tag small{display:block;font-size:11.5px;color:#5f6b7d}
+.tn-arb{position:absolute;left:14px;right:14px;bottom:24px;z-index:6;display:flex;align-items:center;gap:12px;border-radius:22px;background:rgba(255,255,255,.92);color:#0e1014;padding:10px 16px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.tn-arb b{font-family:'Newsreader',serif;font-weight:400;font-size:38px;line-height:1;min-width:30px;text-align:center}
+.tn-arb strong{display:block;font-size:15px}.tn-arb small{display:block;font-size:12px;color:#5f6b7d}
+.tn-ar.is-here .tn-arb{display:none}
+.tn-got{position:absolute;left:14px;right:14px;bottom:24px;z-index:7;display:none;height:52px;border-radius:999px;background:#ff5924;color:#fff;font-size:15px;font-weight:700;box-shadow:0 14px 24px -10px rgba(255,89,36,.7)}
+.tn-ar.is-here .tn-got{display:block}
 .tn-wait{display:flex;align-items:center;gap:10px;margin-top:16px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px #e5eaf2;padding:12px 14px;font-size:13.5px}
 @media(prefers-reduced-motion:reduce){.fab-o,.fab-o svg,.tn-pulse,.cm-ty i{animation:none}}
 .live-dot{display:inline-block;flex:none;width:8px;height:8px;border-radius:50%;background:#ff5924;animation:ld 2.2s infinite}
@@ -2427,7 +2468,7 @@ const CONNS=[
   {k:'gmail',core:1,t:'Gmail',img:GLOGO('gmail_2020q4'),cat:'Correo',s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes y detalles',found:'Leí el tope de $15.000 del amigo secreto y 9 detalles de tu gente.'},
   {k:'contacts',core:1,t:'Google Contactos',img:GLOGO('contacts_2022'),cat:'Contactos',s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'Tu gente',found:'Ya sé quién es quién: Carla es tu hermana, Andrés tu hermano.'},
   {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Leo tus chats para saber qué les gusta, y te aviso por aquí.',ov:'Chats y avisos',found:'Leí en un chat que Carla anda buscando un libro. Y si se te pasa un aviso, te escribo por aquí.'},
-  {k:'icloud',t:'Calendario de Apple',img:SI('icloud','3693F3'),cat:'Calendario',s:'Las fechas de tu calendario de iCloud.'},
+  {k:'icloud',t:'iCloud',img:SI('icloud','3693F3'),cat:'Calendario',s:'Las fechas de tu calendario de iCloud.'},
   {k:'drive',t:'Google Drive',img:GLOGO('drive_2020q4'),cat:'Productividad',s:'Tus listas y planillas de regalos.'},
   {k:'notion',t:'Notion',img:SI('notion','000000'),cat:'Productividad',s:'Tus notas y listas de deseos.'},
   {k:'facebook',t:'Facebook',img:SI('facebook','0866FF'),cat:'Contactos',s:'Los cumpleaños de tus amigos.'},
@@ -2519,11 +2560,12 @@ function obBoard(){
 }
 const obStopStreams = () => Object.keys(obStreams).forEach(k=>{ clearInterval(obStreams[k]); delete obStreams[k]; });
 const CX={cal:true,gmail:true,contacts:true,wa:true};
-function cxSet(k,on){ CX[k]=on; if(k==='gmail') conn.gmail=on; if(k==='contacts') conn.contacts=on; if(k==='wa') cfg.wa=on; }
+function cxSet(k,on){ CX[k]=on; if(k==='gmail') conn.gmail=on; if(k==='contacts') conn.contacts=on; if(k==='wa') cfg.wa=on; try{ localStorage.setItem('cc.cx',JSON.stringify(CX)); }catch(e){} }
+try{ const sv=JSON.parse(localStorage.getItem('cc.cx')||'null'); if(sv) Object.keys(sv).forEach(k=>{ CX[k]=!!sv[k]; if(k==='gmail') conn.gmail=CX[k]; if(k==='contacts') conn.contacts=CX[k]; if(k==='wa') cfg.wa=CX[k]; }); }catch(e){}
 const ob={step:0,conn:{cal:false,gmail:false,contacts:false,wa:false,icloud:false,instagram:false,pinterest:false,spotify:false},busy:{}};
 const OB_S={cal:'Tus fechas',gmail:'Invitaciones y topes',contacts:'Quién es quién',wa:'Chats y avisos',icloud:'Fechas de tu iPhone',instagram:'Sus gustos públicos',pinterest:'Ideas que guardas',spotify:'Lo que escuchan'};
 const OB_GRID=Object.keys(OB_S).map(k=>CONNS.find(c=>c.k===k));
-const OB_T={contacts:'Contactos',icloud:'iCloud'};
+const OB_T={contacts:'Contactos'};
 const OB_B=on=>on?'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg>':'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>';
 const OB_IMG=h=>PRODS[h][3];
 function obProg(i){ $('obSteps').innerHTML=Array.from({length:OB_STEPS},(_,k)=>`<li><b></b></li>`).join(''); [...$('obSteps').children].forEach((li,k)=>{ li.firstChild.style.width=k<i?'100%':'0%'; }); gsap.to($('obSteps').children[i].firstChild,{width:'100%',duration:REDUCE?0:.6,ease:'power3.out'}); }
@@ -2729,7 +2771,7 @@ $('ch').addEventListener('click',e=>{
 
 /* ---------- En la tienda: el celular te avisa si tienes una fecha encima ---------- */
 const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'], MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-const TN_LOC=[['Mesa central',12,[150,78]],['El frente, regalos listos',6,[150,128]],['Pared de papelería',19,[30,48]]];
+const TN_LOC=[['Mesa central',12,'Sigue derecho'],['Frente de la tienda',6,'Está justo enfrente'],['Pared de papelería',19,'Gira a la izquierda']];
 let tnP=null, tnPick=0, tnRun=0, tnAsk=null, tnSaved=false;
 const tnSb = dark => `<div class="tn-sb" style="color:${dark?'#fff':'#0e1014'}"><span class="num">18:42</span><span>●●● ᯤ ▮</span></div>`;
 const tnTarget = () => yr().filter(p=>phase(p)==='now'&&!p.bought).sort(byDate)[0]||null;
@@ -2762,17 +2804,48 @@ function tnApp(view='main'){
     body=`<h1 class="tn-h">Las 3 están <em>aquí.</em></h1><p class="tn-s">Toca una y te llevo.</p><div class="tn-3">${GIFT[p.n][0].map((h,i)=>{ const y=prod(h); return `<button data-tn="pick" data-i="${i}" aria-pressed="${i===tnPick}">${img(y.u,'')}<span class="min-w-0"><b>${esc(y.t)}</b><small class="num">${clp(y.p)}</small><em>${TN_LOC[i][0]}</em></span></button>`; }).join('')}</div>`;
   } else {
     body=`<h1 class="tn-h">${esc(p.n)}, <em>resuelto hoy.</em></h1>
-    <p class="tn-s">Es el ${DIAS[o.getDay()]} ${o.getDate()}${cap?` · tope ${clp(cap)}`:''}. Ya lo pensé; solo tienes que tomarlo.</p>
+    <p class="tn-s">${DIAS[o.getDay()][0].toUpperCase()+DIAS[o.getDay()].slice(1,3)} ${o.getDate()} ${MES[o.getMonth()].toLowerCase()}${cap?` · hasta ${clp(cap)}`:''}. Ya lo elegí; solo tómalo.</p>
     <div class="tn-pr"><div class="tn-im">${img(x.u,'')}<span>Está aquí</span></div><div class="tn-pb"><b>${esc(x.t)}</b><small class="num">${esc(x.v)} · ${clp(x.p)}</small><p>“${esc((OPT[x.h]||'Lo elegí pensando en '+p.n+'.').replace(/^Mi favorita\. /,''))}”</p></div></div>
-    <div class="tn-mp"><p>${loc}<small>a ${steps} pasos</small></p>${tnMap(tnPick)}</div>
-    ${nx?`<button data-tn="save" class="tn-dp w-full text-left">${img(chosen(nx).u,'')}<span class="min-w-0 flex-1"><small>De paso · ${esc(nx.n)} ${days(dleft(nx))}</small>${tnSaved?'Guardado para después ✓':`${esc(chosen(nx).t)} también está aquí. ¿Te lo guardo?`}</span></button>`:''}`;
+    <button data-tn="guide" class="tn-gd"><span class="tn-gi">${TN_CAM}</span><span class="min-w-0 flex-1"><b>Guíame con la cámara</b><small>${loc} · a ${steps} pasos</small></span><span aria-hidden="true">→</span></button>
+    ${nx?`<button data-tn="save" class="tn-dp"${tnSaved?' aria-pressed="true"':''}>${img(chosen(nx).u,'')}<span class="min-w-0 flex-1"><small>De paso · ${esc(nx.n)}</small>${esc(chosen(nx).t)} también está aquí.</span><em>${tnSaved?'Guardado':'Guardar'}</em></button>`:''}`;
   }
   $('tnS').innerHTML=`<div class="tn-ap" id="tnAp">${head}${body}<div class="tn-bt">${view==='three'?`<button data-tn="main" class="tn-b1">Listo</button>`:`<button data-tn="take" class="tn-b1">Lo llevo</button><button data-tn="three" class="tn-b2">Ver las 3</button>`}</div></div>`;
   if(!REDUCE) gsap.from('#tnAp > *',{y:14,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'});
 }
+const TN_CAM='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+const TN_CHEV='<svg viewBox="0 0 60 30" aria-hidden="true"><path d="M6 26 30 6l24 20" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+let tnStream=null;
+function tnStopCam(){ if(tnStream){ tnStream.getTracks().forEach(t=>t.stop()); tnStream=null; } }
+async function tnGuide(){
+  const run=++tnRun, p=tnP, list=GIFT[p.n][0].map(prod), x=list[tnPick], [loc,steps,dir]=TN_LOC[tnPick], side=list.filter((_,i)=>i!==tnPick);
+  $('tnS').innerHTML=`<div class="tn-ar" id="tnAr">
+    <div class="tn-sim" id="tnSim"><div class="tn-wall"></div><div class="tn-tb"></div>
+      <img class="tn-o tn-o1" src="${side[0].u}" alt=""><img class="tn-o tn-o3" src="${side[1].u}" alt=""><img class="tn-o tn-o2" id="tnTg" src="${x.u}" alt=""></div>
+    <video id="tnV" playsinline muted autoplay></video>
+    ${tnSb(true)}
+    <div class="tn-art"><button data-tn="arx" aria-label="Volver">×</button><span><i class="live-dot"></i>${loc}</span></div>
+    <div class="tn-floor" id="tnFl"><i>${TN_CHEV}</i><i>${TN_CHEV}</i><i>${TN_CHEV}</i></div>
+    <div class="tn-ret" id="tnRet" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="tn-tag" id="tnTag"><img src="${x.u}" alt=""><span><b>${esc(x.t)}</b><small class="num">${clp(x.p)} · el que elegí</small></span></div>
+    <div class="tn-arb" id="tnArB"><b id="tnArS" class="num">${steps}</b><span><strong id="tnArI">${dir==='Gira a la izquierda'?'Sigue derecho':dir}</strong><small>pasos</small></span></div>
+    <button data-tn="got" class="tn-got" id="tnGot">La tengo</button></div>`;
+  if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia) navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false}).then(st=>{ if(run!==tnRun){ st.getTracks().forEach(t=>t.stop()); return; } tnStream=st; const v=$('tnV'); v.srcObject=st; $('tnAr').classList.add('is-cam'); }).catch(()=>{});
+  const cam=false, fl=$('tnFl');
+  if(!REDUCE){ gsap.fromTo('#tnFl i',{opacity:0,y:30},{opacity:1,y:-10,duration:.9,stagger:{each:.22,repeat:-1},ease:'power1.out'}); if(!cam) gsap.fromTo('#tnSim',{scale:.82,filter:'blur(2px)'},{scale:1.18,filter:'blur(0px)',duration:steps*.32,ease:'power1.inOut'}); }
+  for(let k=steps;k>=0;k--){
+    if(run!==tnRun) return; $('tnArS').textContent=k;
+    if(dir==='Gira a la izquierda'&&k===Math.ceil(steps/2)){ $('tnArI').textContent=dir; if(!REDUCE) gsap.to(fl,{rotation:-35,duration:.4}); }
+    await wait(REDUCE?0:.32);
+  }
+  if(run!==tnRun) return;
+  $('tnArI').textContent='Ahí está'; $('tnArS').textContent='0';
+  gsap.killTweensOf('#tnFl i'); gsap.to(fl,{opacity:0,duration:.3});
+  $('tnAr').classList.add('is-here');
+  if(!REDUCE){ gsap.fromTo('#tnRet',{scale:1.6,opacity:0},{scale:1,opacity:1,duration:.5,ease:'back.out(1.6)'}); gsap.from('#tnTag',{y:12,opacity:0,duration:.4,delay:.25}); gsap.from('#tnGot',{y:20,opacity:0,duration:.4,delay:.35}); }
+}
 async function tnTake(){
   const run=++tnRun, p=tnP, x=prod(GIFT[p.n][0][tnPick]);
-  $('tnS').innerHTML=`<div class="tn-ap" id="tnAp">${tnSb()}<span class="tn-here"><span class="live-dot"></span>Estás en Creado · MUT</span><h1 class="tn-h">Llévalo <em>a la caja.</em></h1><p class="tn-s">Pagas ahí, sale envuelto y con tarjeta. Yo lo anoto solo.</p><div class="tn-mp"><p>Caja<small>a 8 pasos</small></p>${tnMap(tnPick).replace(/cx="(\d+)" cy="(\d+)" r="(9|6)"/g,(m,a,b,r)=>`cx="269" cy="111" r="${r}"`).replace(/C 150 140, [\d.]+ [\d.]+, [\d.]+ [\d.]+/,'C 200 150, 269 140, 269 111')}</div><div class="tn-wait"><span class="live-dot"></span>Esperando tu pago en caja…</div></div>`;
+  $('tnS').innerHTML=`<div class="tn-ap" id="tnAp">${tnSb()}<span class="tn-here"><span class="live-dot"></span>Estás en Creado · MUT</span><h1 class="tn-h">Ahora, <em>a la caja.</em></h1><p class="tn-s">Sale envuelto y con tarjeta. Yo lo anoto solo.</p><div class="tn-pr tn-mini">${img(x.u,'')}<span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${clp(x.p)}</small></span></div><div class="tn-gd tn-gd-s"><span class="tn-gi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span><span class="min-w-0 flex-1"><b>Caja</b><small>a 8 pasos, a la derecha de la entrada</small></span></div><div class="tn-wait"><span class="live-dot"></span>Esperando tu pago…</div></div>`;
   if(!REDUCE) gsap.from('#tnAp > *',{y:14,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'});
   await wait(REDUCE?.3:2.6); if(run!==tnRun) return;
   ypick[p.n]=tnPick; p.bought=true; p.justBought=false; p.order={no:'CC-'+(48200+idx(p)*7),ship:'tienda',wrap:true,pay:'card',msg:''};
@@ -2795,7 +2868,7 @@ function tnOpen(){
   if(!REDUCE) gsap.from('.tn-ph',{y:40,opacity:0,duration:.6,ease:'power3.out',clearProps:'all'});
 }
 function tnClose(){
-  tnRun++; document.body.classList.remove('tn-on'); const p=tnP;
+  tnRun++; tnStopCam(); document.body.classList.remove('tn-on'); const p=tnP;
   if(p&&p.bought&&p.order&&p.order.ship==='tienda'){ tab='regalos'; pedido=p; co=null; render(); $('year').scrollTop=0; ytoast(`${p.n} quedó resuelto en la tienda.`); }
   else if(tnSaved) render();
 }
@@ -2805,6 +2878,9 @@ $('tn').addEventListener('click',e=>{
   if(a==='three') tnApp('three'); else if(a==='main') tnApp();
   else if(a==='pick'){ tnPick=+b.dataset.i; tnApp(); }
   else if(a==='take') tnTake();
+  else if(a==='guide') tnGuide();
+  else if(a==='arx'){ tnRun++; tnStopCam(); tnApp(); }
+  else if(a==='got'){ tnStopCam(); tnTake(); }
   else if(a==='save'){ const nx=tnNext(tnP); if(nx&&!tnSaved){ tnSaved=true; const y=chosen(nx); (SAVED[nx.n]=SAVED[nx.n]||[]).unshift({u:y.u,t:y.t,src:'cam'}); addAct({k:'learn',t:`Guardé una idea para ${nx.n}`,s:`${y.t} · lo viste en la tienda`,n:nx.n,unread:false}); tnApp(); } }
   else if(a==='ask'){ tnAsk=b.dataset.v; tnDone(); }
   else if(a==='end') tnClose();
