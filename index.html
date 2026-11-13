@@ -2779,7 +2779,7 @@ async function chSend(o){
     if(o.demo){
       const d=CH_DEMO[o.demo], x=prod(d.h);
       chAdd('cm-u', `${img(x.u,'')}${d.url?`<span class="cm-lk">${d.url}</span>`:''}<span class="block">${esc(d.say)}</span>`);
-      const q=chFind(d.say), lead=`<span class="cm-src">${d.ic==='instagram'?CH_IC.instagram+'Lo vi en Instagram':CH_IC.cam+'Lo reconocí'}</span><br>Está en Creado, a la venta.${prodCard(x)}`;
+      const q=chFind(d.say), lead=`<span class="cm-src">${d.ic==='instagram'?CH_IC.instagram+'Lo vi en Instagram':CH_IC.cam+'Lo reconocí'}</span><br>Está en Creado.${prodCard(x)}`;
       if(q) await chSay(chSave(q,{kind:'prod',x,src:d.ic},chViaTxt(q),lead));
       else { chPend={kind:'prod',x,src:d.ic}; await chSay(`${lead}<p class="mt-2.5">¿Para quién lo guardo?</p>${chChips()}`); }
     } else if(o.img){
