@@ -476,6 +476,21 @@ body.in-app .ob-kb{display:flex}
 .dy-y h3{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.02em;line-height:1;min-width:44px;text-align:center}
 .dy-y button{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:18px;line-height:1;color:#0e1014}.dy-y button:hover{background:#f5f7f9}.dy-y button:disabled{opacity:.25;cursor:default;background:none}
 .dy-lg{display:flex;flex-direction:column;align-items:flex-start;gap:5px;font-size:12px;color:#5f6b7d}.dy-lg span{display:flex;align-items:center;gap:7px}.dy-lg .dy-i{width:20px;height:20px;margin-left:8px}.dy-lg .dy-i svg{width:11px;height:11px}
+.dy-r{display:flex;align-items:center;gap:8px}
+.dy-plus{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#f5f7f9;font-size:17px;line-height:1;color:#5f6b7d;transition:background .15s,color .15s}.dy-plus:hover{background:#0e1014;color:#fff}
+.dy-c.is-add{cursor:pointer}
+.dy-c.is-add::after{content:"+";font-size:16px;font-weight:600;color:#748297;opacity:0;transition:opacity .15s}
+.dy-c.is-add:hover{background:#fff;box-shadow:inset 0 0 0 1.5px #d5dbe5}.dy-c.is-add:hover::after{opacity:1}
+.dy-f{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;border-radius:16px;background:#f5f7f9;padding:10px}
+.dy-f input,.dy-f select{height:38px;border:0;border-radius:10px;background:#fff;padding:0 12px;font-size:14px;box-shadow:0 0 0 1px #e5eaf2;outline:0}
+.dy-f input:focus,.dy-f select:focus{box-shadow:0 0 0 1.5px #0e1014}
+#dyN{flex:1 1 150px;min-width:0}
+.dy-oc{display:flex;gap:4px}.dy-oc input{position:absolute;opacity:0;pointer-events:none}
+.dy-oc span{display:inline-flex;align-items:center;height:34px;border-radius:999px;background:#fff;padding:0 12px;font-size:13px;font-weight:600;color:#5f6b7d;box-shadow:0 0 0 1px #e5eaf2;cursor:pointer}
+.dy-oc input:checked+span{background:#0e1014;color:#fff;box-shadow:none}.dy-oc input:focus-visible+span{outline:3px solid #0e1014;outline-offset:2px}
+.dy-dt{display:flex;gap:4px}#dyD{width:62px;padding:0 8px;text-align:center}
+.dy-ok{height:38px;border-radius:999px;background:#0e1014;padding:0 16px;font-size:13.5px;font-weight:600;color:#fff}.dy-ok:hover{background:#ff5924}
+.dy-x{height:38px;padding:0 6px;font-size:13px;font-weight:600;color:#748297}.dy-x:hover{color:#0e1014}
 .dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
 .dy-mn{padding-bottom:2px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#aab2bf}
 .dy-mn.is-cur{color:#ff5924}
@@ -2232,13 +2247,39 @@ function dtHtml(){
     const tip=l.map(x=>`<span><b>${esc(x.p.n)}</b> · ${x.d.getDate()} ${MES[m].toLowerCase()}<em class="is-${x.st}">${x.st==='next'?lbl.next+fdate(avisoD(x.p)):lbl[x.st]}</em></span>`).join('');
     const act=!f?'':f.st==='done'?(f.p.bought?`data-act="pedido" data-i="${idx(f.p)}"`:''):`data-act="flow" data-i="${idx(f.p)}"`;
     const inner=!f?'':st==='done'?'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.500l3.200 3L13 4.500"/></svg>':portrait(f.p.n).replace('<svg ','<svg preserveAspectRatio="xMidYMid slice" ');
+    if(!f&&!past&&m*4+w!==tw){ cells.push(`<button class="dy-c is-none is-add" data-dyadd="${m}" data-dyday="${w*8+4}" style="grid-column:${m+1};grid-row:${w+2}" aria-label="Agregar una fecha en ${MES[m].toLowerCase()}"></button>`); continue; }
     cells.push(`<${act?'button':'span'} ${act} class="dy-c is-${st}${past&&st==='none'?' is-past':''}${m*4+w===tw?' is-today':''}" style="grid-column:${m+1};grid-row:${w+2}${f&&st!=='done'?`;background:${(PORT[f.p.n]||{}).bg||'#e5eaf2'}`:''}" ${tip?`data-tip="${esc(tip)}" aria-label="${esc(l.map(x=>x.p.n).join(', '))}"`:'aria-hidden="true"'}>${inner}${l.length>1?`<b class="num">${l.length}</b>`:''}</${act?'button':'span'}>`); }
-  return `<section id="dtY" class="dy" aria-label="Calendario"><header><h3 class="dy-t">Calendario</h3><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div></header>
+  return `<section id="dtY" class="dy" aria-label="Calendario"><header><h3 class="dy-t">Calendario</h3><div class="dy-r"><button class="dy-plus" data-dyadd="" aria-label="Agregar una fecha" title="Agregar una fecha">+</button><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div></div></header>${dyForm?dyFormHtml():''}
     <div class="dy-g">${MES.map((m,i)=>`<span class="dy-mn${i===cur?' is-cur':''}" style="grid-column:${i+1};grid-row:1">${m}</span>`).join('')}${cells.join('')}</div><div id="dyTip" class="dy-tip" role="tooltip"></div></section>`;
 }
 document.addEventListener('pointerover',e=>{ const c=e.target.closest&&e.target.closest('.dy-c[data-tip]'), t=$('dyTip'); if(!t) return; if(!c){ t.classList.remove('on'); return; }
   const S=$('dtY').getBoundingClientRect(), r=c.getBoundingClientRect(); t.innerHTML=c.dataset.tip; t.classList.add('on');
   const w=t.offsetWidth; t.style.left=Math.max(8,Math.min(S.width-w-8,r.left-S.left+r.width/2-w/2))+'px'; t.style.top=(r.top-S.top-t.offsetHeight-8)+'px'; });
+
+/* agregar una fecha a mano: secundario, dentro del calendario */
+let dyForm=null;
+const dyFormHtml=()=>`<form class="dy-f" id="dyF"><input id="dyN" placeholder="¿De quién?" maxlength="24" autocomplete="off" aria-label="De quién es la fecha" required>
+  <div class="dy-oc" role="radiogroup" aria-label="Qué celebran">${['Cumpleaños','Aniversario','Otra'].map((o,i)=>`<label><input type="radio" name="dyO" value="${o}" ${i?'':'checked'}><span>${o}</span></label>`).join('')}</div>
+  <span class="dy-dt"><input id="dyD" type="number" min="1" max="31" value="${dyForm.d}" aria-label="Día"><select id="dyM" aria-label="Mes">${MES.map((m,i)=>`<option value="${i}" ${i===dyForm.m?'selected':''}>${m.charAt(0)+m.slice(1).toLowerCase()}</option>`).join('')}</select></span>
+  <button class="dy-ok">Agregar</button><button type="button" class="dy-x" data-dyx aria-label="Cancelar">Cancelar</button></form>`;
+const dyRe=()=>{ const el=$('dtY'); if(el) el.outerHTML=dtHtml(); };
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-dyadd]'), x=e.target.closest('[data-dyx]');
+  if(a){ const m=a.dataset.dyadd===''?TODAY.getMonth():+a.dataset.dyadd; dyForm={m,d:Math.min(28,+a.dataset.dyday||TODAY.getDate())}; dyRe(); const n=$('dyN'); if(n) n.focus(); if(!REDUCE) gsap.from('#dyF',{y:-6,opacity:0,duration:.3}); }
+  else if(x){ dyForm=null; dyRe(); }
+});
+document.addEventListener('submit',e=>{
+  if(e.target.id!=='dyF') return; e.preventDefault();
+  const raw=$('dyN').value.trim(); if(!raw) return; const n=raw[0].toUpperCase()+raw.slice(1);
+  const o=(document.querySelector('input[name=dyO]:checked')||{}).value||'Cumpleaños', m=+$('dyM').value, d=Math.max(1,Math.min(new Date(2027,m+1,0).getDate(),+$('dyD').value||1));
+  if(YEAR.some(q=>q.n.toLowerCase()===n.toLowerCase())){ ytoast(`Ya sigo la fecha de ${n}.`); return; }
+  const p={n,o:o==='Otra'?'Celebración':o,m,d,y:40,k:o==='Aniversario'?'amor':'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
+  GIFT[n]=[['vela-anillo-de-fuego-esencia-andina','pack-3-mermeladas-gourmet','libreta-picaflor-1'],'aún lo estoy conociendo; con lo que me cuentes afino.'];
+  REL[n]='La agregaste tú'; LEARN[n]=[['Me la diste tú','you']];
+  PORT[n]={bg:[C.yellow,C.green,C.pink,C.coral][YEAR.length%4],d:`<text x="100" y="140" text-anchor="middle" font-family="Newsreader,serif" font-size="110" fill="${INK}" stroke="none">${esc(n[0])}</text>`};
+  addAct({k:'new',t:'Sumé una fecha nueva',s:`${n} · ${d} ${MES[m].toLowerCase()}. Me la diste tú`,n,unread:false});
+  dyForm=null; dtYear=occ(p).getFullYear(); render(); ytoast(`Listo, sigo a ${n}. Te aviso el ${fdate(avisoD(p))}.`);
+});
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-dy]'); if(!b||b.disabled) return; dtYear=+b.dataset.dy; const el=$('dtY'); if(el){ el.outerHTML=dtHtml(); if(!REDUCE) gsap.from('#dtY .dy-it',{y:6,opacity:0,duration:.3,stagger:.02,clearProps:'all'}); } });
 const DELIVERED=[
   {n:'Mamá',o:'Cumpleaños',d:new Date(2026,2,14),h:'mama-cual-es-tu-historia',no:'CC-46920',a:'Los Aromos 455, Ñuñoa',on:'Entregado el 12 mar'},
