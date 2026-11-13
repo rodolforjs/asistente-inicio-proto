@@ -502,14 +502,14 @@ body.in-app .ob-kb{display:flex}
 .pn-q small{display:block;margin:-4px 0 9px;font-size:12px;color:rgba(255,255,255,.6)}
 .cx-y{margin-top:8px;font-size:12.5px;font-weight:600;color:#0e1014}
 .me-x{font-size:12px;font-weight:600;color:#9aa3b2}.me-x:hover{color:#c63f12}
-.ov-st{display:flex;align-items:center;gap:10px;margin-top:5px}
+.ov-st{display:flex;align-items:center;gap:12px;margin-left:auto}
 .ov-st:empty{display:none}
-.ov-tk{position:relative;display:flex;align-items:center;justify-content:flex-end;flex:1;min-width:0;height:34px;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 38%);mask-image:linear-gradient(to right,transparent,#000 38%)}
-.tok{flex:none;display:grid;place-items:center;width:28px;height:28px;margin-left:6px;border-radius:9px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 4px 8px -4px rgba(15,23,42,.25);overflow:hidden}
-.tok-cal{position:relative;padding-top:6px;font-family:'Newsreader',serif;font-size:14px;line-height:1;color:#0e1014}.tok-cal::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:#ea4335}
+.ov-tk{display:flex;align-items:center;justify-content:flex-end;width:72px;height:30px}
+.tok{flex:none;display:grid;place-items:center;width:26px;height:26px;margin-left:-5px;border-radius:9px;background:#fff;box-shadow:0 0 0 2px #fff,0 0 0 3px #e5eaf2;overflow:hidden}
+.tok-cal{position:relative;padding-top:6px;font-family:'Newsreader',serif;font-size:13px;line-height:1;color:#0e1014}.tok-cal::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:#ea4335}
 .tok-pt{border-radius:50%}.tok-pt .pt{width:100%;height:100%}
-.tok-ic svg{width:15px;height:15px}
-.ov-ct{flex:none;display:inline-flex;align-items:baseline;gap:4px;font-size:12.5px;font-weight:600;color:#5f6b7d}.ov-ct b{font-family:'Newsreader',serif;font-weight:400;font-size:20px;line-height:1;color:#0e1014}
+.tok-ic svg{width:14px;height:14px}
+.ov-ct{flex:none;min-width:30px;text-align:right;font-family:'Newsreader',serif;font-size:20px;line-height:1;color:#0e1014}
 .ov-f{display:block;margin-top:2px;font-size:12.5px;font-weight:500;color:#ff5924}.ov-f:empty{display:none}
 .src-cal{background:#dbe7ff;color:#2c44d6}.src-mail{background:#ffe2d6;color:#c63f12}.src-con{background:#d8f1e6;color:#14704f}.src-gift{background:#fff0b8;color:#8a6500}.src-you{background:#eadfff;color:#6a4be0}
 .tk .tk-t{margin-top:15px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px}
@@ -2092,10 +2092,10 @@ function closeYear(){ thinkRun++; $('year').style.display='none'; document.body.
 const OB_STEPS=2, GLOGO=n=>`https://www.gstatic.com/images/branding/product/2x/${n}_48dp.png`;
 const SI=(slug,c)=>`https://cdn.simpleicons.org/${slug}/${c}`;
 const CONNS=[
-  {k:'cal',core:1,t:'Google Calendar',img:GLOGO('calendar_2020q4'),cat:'Calendario',s:'De aquí saco tus fechas: cumpleaños, aniversarios, el sorteo de la oficina.',tag:'Recomendado',ov:'Fechas importantes y recordatorios',found:'Encontré 11 fechas: cumpleaños, un matrimonio y el amigo secreto.'},
-  {k:'gmail',core:1,t:'Gmail',img:GLOGO('gmail_2020q4'),cat:'Correo',s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes, plazos y detalles de cada evento',found:'Leí el tope de $15.000 del amigo secreto y 9 detalles de tu gente.'},
-  {k:'contacts',core:1,t:'Google Contactos',img:GLOGO('contacts_2022'),cat:'Contactos',s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'A quién le regalas y cómo se conocen',found:'Ya sé quién es quién: Carla es tu hermana, Andrés tu hermano.'},
-  {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Te insisto por aquí si no ves la notificación.',ov:'Avisos si se te pasa responder',found:'Si se te pasa un aviso, te escribo por aquí.'},
+  {k:'cal',core:1,t:'Google Calendar',img:GLOGO('calendar_2020q4'),cat:'Calendario',s:'De aquí saco tus fechas: cumpleaños, aniversarios, el sorteo de la oficina.',tag:'Recomendado',ov:'Tus fechas',found:'Encontré 11 fechas: cumpleaños, un matrimonio y el amigo secreto.'},
+  {k:'gmail',core:1,t:'Gmail',img:GLOGO('gmail_2020q4'),cat:'Correo',s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes y detalles',found:'Leí el tope de $15.000 del amigo secreto y 9 detalles de tu gente.'},
+  {k:'contacts',core:1,t:'Google Contactos',img:GLOGO('contacts_2022'),cat:'Contactos',s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'Tu gente',found:'Ya sé quién es quién: Carla es tu hermana, Andrés tu hermano.'},
+  {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Te insisto por aquí si no ves la notificación.',ov:'Avisos',found:'Si se te pasa un aviso, te escribo por aquí.'},
   {k:'icloud',t:'Calendario de Apple',img:SI('icloud','3693F3'),cat:'Calendario',s:'Las fechas de tu calendario de iCloud.'},
   {k:'drive',t:'Google Drive',img:GLOGO('drive_2020q4'),cat:'Productividad',s:'Tus listas y planillas de regalos.'},
   {k:'notion',t:'Notion',img:SI('notion','000000'),cat:'Productividad',s:'Tus notas y listas de deseos.'},
@@ -2117,19 +2117,20 @@ const STREAM = {
 const obStreams = {};
 function obStream(k){
   const li=document.querySelector(`.ov-li[data-k="${k}"]`), S=STREAM[k]; if(!li||!S) return;
-  const st=li.querySelector('.ov-st'); st.innerHTML=`<span class="ov-tk" aria-hidden="true"></span>${S.n?`<span class="ov-ct"><b class="num">0</b>${S.u}</span>`:''}`;
-  const tk=st.querySelector('.ov-tk'), nb=st.querySelector('.ov-ct b');
+  const st=li.querySelector('.ov-st'); st.innerHTML=`<span class="ov-tk" aria-hidden="true"></span>${S.n?`<b class="ov-ct num" title="${S.n} ${S.u}">0</b>`:''}`;
+  const tk=st.querySelector('.ov-tk'), nb=st.querySelector('.ov-ct');
   let i=0, n=0;
   const push=()=>{ if(!tk.isConnected){ clearInterval(obStreams[k]); return; }
     if(k==='wa'&&tk.children.length){ const b=tk.lastElementChild; if(!REDUCE) gsap.fromTo(b,{scale:.8},{scale:1,duration:.5,ease:'elastic.out(1,.4)'}); return; }
     tk.insertAdjacentHTML('beforeend',S.t[i++%S.t.length]); const el=tk.lastElementChild;
-    if(!REDUCE) gsap.fromTo(el,{width:0,marginLeft:0,scale:.3,opacity:0},{width:28,marginLeft:6,scale:1,opacity:1,duration:.5,ease:'back.out(1.8)'});
-    while(tk.children.length>12) tk.firstElementChild.remove();
+    if(!REDUCE) gsap.fromTo(el,{width:0,marginLeft:0,scale:.3,opacity:0},{width:26,marginLeft:-5,scale:1,opacity:1,duration:.5,ease:'back.out(1.8)'});
+    const extra=[...tk.children].slice(0,-3);
+    extra.forEach(o=>{ if(o.dataset.out) return; o.dataset.out=1; if(REDUCE){ o.remove(); return; } gsap.to(o,{width:0,marginLeft:0,opacity:0,scale:.5,duration:.4,ease:'power2.in',onComplete:()=>o.remove()}); });
     if(nb&&n<S.n){ n=Math.min(S.n,n+1+Math.floor(Math.random()*2)); nb.textContent=n; if(!REDUCE) gsap.fromTo(nb,{y:-3},{y:0,duration:.3,ease:'back.out(3)'}); }
   };
   clearInterval(obStreams[k]);
   if(REDUCE){ for(let x=0;x<6;x++) push(); if(nb) nb.textContent=S.n; return; }
-  push(); obStreams[k]=setInterval(push,k==='wa'?2200:900);
+  push(); obStreams[k]=setInterval(push,k==='wa'?2400:1400);
 }
 const obStopStreams = () => Object.keys(obStreams).forEach(k=>{ clearInterval(obStreams[k]); delete obStreams[k]; });
 const CX={cal:true,gmail:true,contacts:true,wa:true};
@@ -2151,7 +2152,7 @@ function obPreview(){
     </div></div>`;
     obStory();
   } else {
-    R.innerHTML=`<div class="ov"><p class="ov-cap" style="margin-top:0">Lo que voy encontrando</p>${OB_CONN.map(c=>`<div class="ov-li" data-k="${c.k}" data-on="${ob.conn[c.k]}"><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i><span class="min-w-0 flex-1">${c.ov}<span class="ov-st"></span></span></div>`).join('')}<p class="mt-4 text-[12.5px] leading-snug text-[#748297]">Mientras más conectes, menos te pregunto.</p></div>`;
+    R.innerHTML=`<div class="ov"><p class="ov-cap" style="margin-top:0">Lo que voy encontrando</p>${OB_CONN.map(c=>`<div class="ov-li" data-k="${c.k}" data-on="${ob.conn[c.k]}"><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i><span class="min-w-0 flex-1">${c.ov}</span><span class="ov-st"></span></div>`).join('')}<p class="mt-4 text-[12.5px] leading-snug text-[#748297]">Mientras más conectes, menos te pregunto.</p></div>`;
   }
 }
 function obStory(){
