@@ -555,7 +555,8 @@ body.in-app .ob-kb{display:flex}
 .wk-in{border-radius:28px 0 0 28px;background:#fafbfc;padding:22px 20px;border-right:1px solid #eef1f5}
 .wk-out{padding:22px}
 .wk-k{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#748297}
-.wk-l{display:flex;flex-direction:column;gap:8px;min-height:208px}
+.wk-l{display:flex;flex-direction:column;gap:8px;height:208px;overflow:hidden}
+.wk-l li{flex:none}
 .wk-l li{display:flex;align-items:center;gap:10px;border-radius:14px;background:#fff;padding:9px 12px;box-shadow:0 0 0 1px #e5eaf2;font-size:13.5px;font-weight:500;line-height:1.25}
 .wk-l li:first-child{box-shadow:0 0 0 1.5px #ff5924}
 .wk-ic{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#f1f3f6;color:#0e1014}.wk-ic img{width:16px;height:16px;object-fit:contain}.wk-ic svg{width:15px;height:15px}
@@ -570,10 +571,12 @@ body.in-app .ob-kb{display:flex}
 .wk-dot{position:absolute;left:0;top:0;z-index:5;width:10px;height:10px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 4px rgba(255,89,36,.18);pointer-events:none}
 .wk-sc{grid-column:1/-1;border-top:1px solid #eef1f5;padding:18px 22px 22px}
 .wk-sc .wk-k{justify-content:space-between;margin-bottom:12px}.wk-sc .wk-k b{font-family:'Newsreader',serif;font-weight:400;font-size:18px;letter-spacing:0;text-transform:none;color:#0e1014}
-.wk-g{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:6px}
+.wk-g{position:relative;display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:6px}
+.wk-beam{position:absolute;left:0;top:-8px;bottom:-8px;z-index:2;width:3px;border-radius:3px;background:#ff5924;box-shadow:0 0 14px 4px rgba(255,89,36,.35),-30px 0 40px -6px rgba(255,89,36,.18);opacity:0;pointer-events:none}
+.wk-g span.hit{transform:scale(1.14);box-shadow:0 0 0 2px #ff5924}
 .wk-g span{display:block;aspect-ratio:1;overflow:hidden;border-radius:8px;background:#f5f7f9;box-shadow:0 0 0 1px #eef1f5;transition:opacity .35s,filter .35s,transform .35s,box-shadow .35s}
 .wk-g img{width:100%;height:100%;object-fit:cover}
-.wk-g span.out{opacity:.18;filter:grayscale(1);transform:scale(.86)}
+.wk-g span.out{opacity:.3;filter:grayscale(1);transform:scale(.84)}
 .wk-g span.on{box-shadow:0 0 0 2px #ff5924;transform:scale(1.08)}
 @media(max-width:760px){.wk-g{grid-template-columns:repeat(10,minmax(0,1fr))}}
 @media(max-width:760px){.wk{grid-template-columns:1fr}.wk-in{border-radius:28px 28px 0 0;border-right:0;border-bottom:1px solid #eef1f5}}
@@ -1707,31 +1710,51 @@ function leftOther(p){
     <div class="wk" id="wk">
       <div class="wk-in"><p class="wk-k"><span class="live-dot"></span>Lo que va llegando</p><ol class="wk-l" id="wkL" aria-live="off"></ol></div>
       <div class="wk-out"><p class="wk-k">Mis ideas</p><div class="wk-c">${its.map((o,n)=>`<button class="wk-i" data-act="sheet" data-h="${o.h}" data-n="${n}" aria-label="Ver ${esc(o.t)}"><span class="wk-ph">${img(o.u,'')}${n===0?'<span class="wk-fav">Favorita</span>':''}</span><span class="wk-bar" aria-hidden="true"><i></i></span></button>`).join('')}</div></div>
-      <div class="wk-sc"><p class="wk-k"><span id="wkScT">Revisando el catálogo</span><b class="num" id="wkScN"></b></p><div class="wk-g" id="wkG" aria-hidden="true">${Object.keys(PRODS).map(h=>`<span data-h="${h}" class="${its.some(o=>o.h===h)?'is-k':''}">${img(PRODS[h][3],'')}</span>`).join('')}</div></div>
+      <div class="wk-sc"><p class="wk-k"><span id="wkScT">Revisando el catálogo</span><b class="num" id="wkScN"></b></p><div class="wk-g" id="wkG" aria-hidden="true"><i class="wk-beam" id="wkBeam"></i>${Object.keys(PRODS).map(h=>`<span data-h="${h}" class="${its.some(o=>o.h===h)?'is-k':''}">${img(PRODS[h][3],'')}</span>`).join('')}</div></div>
     </div>`;
 }
 /* el sistema trabajando: llegan señales y van afinando las ideas */
 let workRun=0;
 const WK_CAT='<svg viewBox="0 0 24 24" fill="none" stroke="#0e1014" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>';
 const wkIcon = s => { const c=cxOf(s); return `<span class="wk-ic">${c?`<img src="${c.img}" alt="">`:SRC_ICON[s]?`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${SRC_ICON[s]}</svg>`:WK_CAT}</span>`; };
+function wkFly(wk,from,to,done){
+  const br=wk.getBoundingClientRect(), a=from.getBoundingClientRect(), b=to.getBoundingClientRect();
+  const d=document.createElement('span'); d.className='wk-dot'; wk.appendChild(d);
+  const x0=a.left-br.left+a.width/2-5, y0=a.top-br.top+a.height/2-5, x1=b.left-br.left+b.width/2-5, y1=b.top-br.top+b.height/2-5;
+  gsap.set(d,{x:x0,y:y0});
+  gsap.to(d,{motionPath:{path:[{x:(x0+x1)/2,y:Math.min(y0,y1)-50},{x:x1,y:y1}],curviness:1.2},duration:.9,ease:'power2.inOut',onComplete(){ d.remove(); done&&done(); }});
+}
 function runWork(p){
   const run=++workRun, L=$('wkL'), wk=$('wk'); if(!L) return;
   const cards=[...wk.querySelectorAll('.wk-i')], bars=cards.map(c=>c.querySelector('.wk-bar i'));
   const sig=[...knows(p), [`Revisé ${Object.keys(PRODS).length} regalos del catálogo`,'cat'], ['Hay stock de mi favorita','cat']];
   const cap=[92,64,44], sc=[0,0,0], inc=cap.map(c=>c/Math.max(2,sig.length-1));
   const row = ([t,s]) => { const li=document.createElement('li'); li.innerHTML=`${wkIcon(s)}<span>${esc(t)}</span>`; return li; };
-  const G=$('wkG'), tiles=[...G.children], keep=tiles.filter(t=>t.classList.contains('is-k')), nT=$('wkScN');
+  const G=$('wkG'), tiles=[...G.querySelectorAll("span[data-h]")], keep=tiles.filter(t=>t.classList.contains('is-k')), nT=$('wkScN');
   if(REDUCE){ sig.slice(0,4).forEach(x=>L.appendChild(row(x))); bars.forEach((b,n)=>b.style.width=cap[n]+'%'); tiles.forEach(t=>t.classList.toggle('out',!keep.includes(t))); nT.textContent=`3 de ${tiles.length}`; return; }
-  const scan=()=>{ if(run!==workRun||!G.isConnected) return;
-    const others=gsap.utils.shuffle(tiles.filter(t=>!keep.includes(t)));
-    const tl=gsap.timeline({onComplete:()=>gsap.delayedCall(1.6,scan)});
-    tl.call(()=>{ tiles.forEach(t=>t.classList.remove('out','on')); nT.textContent=tiles.length; })
-      .from(tiles,{scale:.6,opacity:0,duration:.35,stagger:{amount:.5,from:'random'},ease:'back.out(2)'})
-      .to({}, {duration:.5});
-    others.forEach((t,k)=>tl.call(()=>{ t.classList.add('out'); nT.textContent=tiles.length-k-1; },null,`+=${k<10?.09:.05}`));
-    tl.call(()=>keep.forEach(t=>t.classList.add('on')),null,'+=.2')
-      .call(()=>{ nT.textContent=`3 de ${tiles.length}`; })
-      .to({}, {duration:2.6});
+  const alive=()=>run===workRun&&G.isConnected, T=$('wkScT'), beam=$('wkBeam');
+  const pool=thinkData(p).pool, finals=items(p).map(o=>o.h);
+  const say=t=>{ T.textContent=t; gsap.fromTo(T,{opacity:0,y:4},{opacity:1,y:0,duration:.3}); };
+  const pass=(keepH)=>new Promise(res=>{
+    const pend=tiles.filter(t=>!t.classList.contains('out')), W=G.clientWidth; let cnt=pend.length;
+    gsap.fromTo(beam,{x:-10,opacity:1},{x:W+10,duration:2.4,ease:'none',onUpdate(){
+      const x=gsap.getProperty(beam,'x');
+      pend.forEach(t=>{ if(t.dataset.done||t.offsetLeft+t.offsetWidth/2>x) return; t.dataset.done=1;
+        if(keepH.includes(t.dataset.h)){ t.classList.add('hit'); setTimeout(()=>t.classList.remove('hit'),420); }
+        else { t.classList.add('out'); nT.textContent=--cnt; } });
+    },onComplete(){ gsap.to(beam,{opacity:0,duration:.25}); pend.forEach(t=>delete t.dataset.done); res(); }});
+  });
+  const scan=async()=>{
+    if(!alive()) return;
+    tiles.forEach(t=>t.classList.remove('out','on','hit')); nT.textContent=tiles.length; say('Revisando el catálogo');
+    gsap.from(tiles,{scale:.5,opacity:0,duration:.4,stagger:{amount:.6,from:'random'},ease:'back.out(2)',clearProps:'all'});
+    await wait(1.3); if(!alive()) return;
+    say(`Descarto lo que no va con ${p.n}`); await pass(pool); if(!alive()) return;
+    say(`Quedan ${pool.length}. Comparo las mejores`); await wait(.9); if(!alive()) return;
+    await pass(finals); if(!alive()) return;
+    keep.forEach(t=>t.classList.add('on')); nT.textContent=`3 de ${tiles.length}`; say('Me quedo con 3');
+    keep.forEach((t,n)=>{ const k=finals.indexOf(t.dataset.h); gsap.delayedCall(.35+n*.22,()=>{ if(alive()) wkFly(wk,t,cards[k].querySelector('.wk-ph'),()=>gsap.fromTo(cards[k].querySelector('.wk-ph'),{scale:1.05},{scale:1,duration:.5,ease:'back.out(2)'})); }); });
+    await wait(4.2); scan();
   };
   scan();
   let i=0;
