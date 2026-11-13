@@ -1564,6 +1564,13 @@ async function runSync(){
   const nc = cardEl(NEW,'ring-2 ring-brand',20); nc.querySelector('.art').insertAdjacentHTML('beforeend','<span class="new">Nuevo</span>');
   const nxt=cards.find(c=>c._k>(NEW.m*40+NEW.d)); const st2=Flip.getState(cards); box.insertBefore(nc,nxt||null); Flip.from(st2,{duration:.6,ease:'power3.inOut',absolute:false});
   gsap.from(nc,{y:-120,opacity:0,rotation:-6,scale:.8,duration:.9,ease:'back.out(1.6)'});
+  /* la fecha nueva también cuenta: punto en el campo, contador y resumen */
+  const nd=document.createElement('div'); nd.className='dotp hit'; nd.style.left=xPct(NEW.m,NEW.d)+'%'; nd.style.top='50%'; nd.innerHTML='<i class="core"></i>'; $('field').appendChild(nd);
+  gsap.fromTo(nd.firstChild,{scale:0},{scale:1.4,backgroundColor:'#ff5924',boxShadow:'0 0 0 6px rgba(255,89,36,.25)',duration:.6,ease:'back.out(3)'});
+  const total=PEOPLE.length+1, fe=$('cFound');
+  fe.textContent=total; gsap.fromTo(fe,{scale:1.35,y:-4},{scale:1,y:0,duration:.6,ease:'back.out(3)'});
+  $('summary').innerHTML = `Encontré <span class="text-brand">${total} fechas</span>${conn.contacts||conn.gmail?' y ya sé de quién es cada una.':'.'}`;
+  gsap.fromTo('#summary .text-brand',{scale:1.15,display:'inline-block'},{scale:1,duration:.5,ease:'back.out(3)'});
   await wait(2.4); gsap.to(t,{opacity:0,y:-10,duration:.4});
 }
 
@@ -2406,7 +2413,7 @@ const ACT=[
   {id:8,k:'think',t:'Dos eventos el mismo día',s:'22 ago: bautizo Soto y matrimonio de Sofi y Nico. Dejo ambos listos el viernes 21',day:0,n:'Sofi y Nico',unread:true},
   {id:2,k:'new',t:'Vi un bautizo nuevo en tu calendario',s:'Familia Soto · 22 ago. Ya lo estoy siguiendo',day:0,n:'Familia Soto',unread:true},
   {id:3,k:'ship',t:'Despaché el regalo de Emilia',s:'Llega mañana',day:1,n:'Emilia',unread:false},
-  {id:4,k:'read',t:'Leí tu calendario',s:'20 fechas de regalo encontradas',day:3,unread:false},
+  {id:4,k:'read',t:'Leí tu calendario',s:`${YEAR.length} fechas de regalo encontradas`,day:3,unread:false},
   {id:5,k:'learn',t:'Aprendí algo de Mamá',s:'Gmail: le gustan los libros de recuerdos',day:4,n:'Mamá',unread:false},
   {id:7,k:'learn',t:'Supe que Carla es tu hermana',s:'Lo vi en Google Contactos, sin preguntarte',day:3,n:'Carla',unread:false},
   {id:6,k:'conn',t:'Conecté Gmail',s:'Para leer invitaciones y topes',day:6,unread:false}
