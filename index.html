@@ -534,6 +534,19 @@ body.in-app .ob-kb{display:flex}
 .sh-why{display:flex;gap:12px;align-items:center;margin-top:24px;border-radius:16px;background:#f5f7f9;padding:11px 13px;font-size:14px;line-height:1.35}
 .sh-why .sh-pt{flex:none;width:44px;height:44px;border-radius:50%}
 .sh-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.pl-foot{flex-direction:column;align-items:flex-start;gap:14px}
+.pl-opts{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.pl-seg{display:inline-flex;gap:2px;border-radius:999px;background:#fff;padding:4px;box-shadow:0 0 0 1px #e5eaf2}
+.pl-seg button{border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;color:#5f6b7d;transition:background .2s,color .2s}
+.pl-seg button:hover{color:#0e1014}
+.pl-seg button[aria-pressed=true]{background:#0e1014;color:#fff}
+.pl-all{border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;color:#0e1014;text-decoration:underline;text-underline-offset:3px}
+.fn2{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:12.5px;color:#5f6b7d}
+.fn2 li{display:inline-flex;align-items:baseline;gap:5px;white-space:nowrap}
+.fn2 li:not(:last-child)::after{content:"›";margin-left:4px;color:#aab2bf}
+.fn2 b{font-family:'Newsreader',serif;font-weight:400;font-size:19px;line-height:1;color:#0e1014}
+.fn2 li:last-child b{color:#ff5924}.fn2 li:last-child span{color:#0e1014;font-weight:600}
+.sc-nav{z-index:6}.sc-foot{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:18px}
 .an{margin-top:26px;border-radius:22px;background:#f5f7f9;padding:20px 20px 18px}
 .an-h{display:flex;align-items:center;gap:12px}.an-h .pt{width:44px;height:44px;flex:none;border-radius:12px}
 .an-h h3{font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.02em}
@@ -1557,7 +1570,7 @@ async function runThink(p){
   if(!live()) return;
   st=Flip.getState('#thS .th'); out2.forEach(e=>e.remove()); d.its.forEach(h=>S.appendChild(S.querySelector(`[data-h="${h}"]`))); S.className='th-s s3'; Flip.from(st,{duration:.65,ease:'power3.inOut',absolute:true});
   await wait(1.2); if(!live()) return;
-  const scene=showOpts(p)&&SCENES[p.n];
+  const scene=!!SCENES[p.n];
   const fs=scene?null:Flip.getState(!showOpts(p)?`#thS [data-h="${items(p)[ypick[p.n]||0].h}"]`:'#thS .th');
   thought[p.n]=true; setLive('Calendario al día');
   $('plLeft').innerHTML=leftFinal(p);
@@ -1570,33 +1583,44 @@ const finePrint = p => `Si compras hoy, llega ${arrival(p)}${cfg.wrap?', envuelt
 /* lo que hizo el sistema, siempre a la vista */
 function funnel(p){
   const d=thinkData(p), b=BUDGET[p.n];
-  const st=[['1',b?'invitación leída':'fecha en tu calendario'],[d.all.length,'regalos revisados'],[d.pool.length,b?'dentro del tope':'van con tus conectores'],['3','finalistas'],['1','elegida para ti']];
-  return `<ol class="fn" data-rise aria-label="Cómo lo pensé">${st.map(([n,l])=>`<li><b class="num">${n}</b><span>${l}</span></li>`).join('')}</ol>`;
+  const st=[['1',b?'invitación':'fecha'],[d.all.length,'revisados'],[d.pool.length,b?'dentro del tope':'con sentido'],['3','finalistas'],['1','elegida']];
+  return `<ol class="fn2" data-rise aria-label="Cómo lo pensé">${st.map(([n,l])=>`<li><b class="num">${n}</b><span>${l}</span></li>`).join('')}</ol>`;
 }
+function pickLabels(p){
+  const its=items(p), L=['Mi elección','',''], c=its[1].p<=its[2].p?1:2, o=c===1?2:1;
+  if(its[c].p<its[0].p){ L[c]='Más económica'; L[o]='Más original'; } else { L[1]='Más útil'; L[2]='Más original'; }
+  return L;
+}
+function pickText(p,i){
+  const its=items(p), L=pickLabels(p);
+  if(i===0) return `Lo elegí porque ${whyOf(p)}`;
+  const d=its[0].p-its[i].p, less=d>0?` ${clp(d)} menos que mi elección.`:'';
+  if(OPT[its[i].h]) return OPT[its[i].h]+less;
+  const v=(VS[p.n]||[])[i-1];
+  return `${L[i]} que mi elección${d>0?`, ${clp(d)} menos`:''}.${v?` Ojo: ${v.charAt(0).toLowerCase()+v.slice(1)}`:''}`;
+}
+const pickInner = p => { const cur=chosen(p), i=ypick[p.n]||0; return `<button class="pl-ph" data-act="sheet" data-h="${cur.h}" data-flip-id="${cur.h}" aria-label="Ver detalle de ${esc(cur.t)}">${img(cur.u,'')}</button>
+    <div class="pl-info">
+      <p class="pl-v">${esc(cur.v)}</p>
+      <h2 class="pl-t">${esc(cur.t)}</h2>
+      <p class="num mt-2 text-[18px] font-semibold">${clp(cur.p)}</p>
+      <p class="mt-4 text-[16px] leading-[1.4]">${pickText(p,i)}</p>
+      <div class="mt-auto pt-6"><button data-act="ok" data-i="${idx(p)}" class="pl-cta pl-cta-w">Comprar y dejar listo</button><p class="pl-fine">${finePrint(p)}</p></div>
+    </div>`; };
+const pickSeg = (p,act) => { const L=pickLabels(p), cur=ypick[p.n]||0; return `<div class="pl-seg" role="group" aria-label="Opciones">${L.map((l,i)=>`<button data-act="${act}" data-pick="${i}" aria-pressed="${cur===i}">${l}</button>`).join('')}</div>`; };
 function leftFinal(p){
   const its=items(p), cur=chosen(p), minP=Math.min(...its.map(o=>o.p));
   const alt=`<button data-act="opts" data-v="0" class="pl-alt" data-rise>Mejor elige tú por mí</button>`;
+  if(SCENES[p.n]) return `<h1 class="pl-h" data-rise>Ya lo tengo: este es para ${esc(p.n)}.</h1>${sceneHtml(p)}<div id="scFicha" class="sc-f" data-rise>${sceneFicha(p)}</div><div class="sc-foot" data-rise>${funnel(p)}</div>`;
   if(showOpts(p)){
-    if(SCENES[p.n]) return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas. Míralas en su lugar.</h1>${sceneHtml(p)}<div id="scFicha" class="sc-f" data-rise>${sceneFicha(p)}</div>${alt}`;
     const note=(o,i)=>OPT[o.h]||(i===0?'Mi favorita para esta fecha.':o.p===minP?'La más económica de las tres.':'La más distinta de las tres.');
     return `<h1 class="pl-h" data-rise>Te dejé 3 finalistas para ${esc(p.n)}.</h1>
     <div class="pl-3">${its.map((o,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${(ypick[p.n]||0)===i}" class="pc3"><span class="pc3-ph" data-flip-id="${o.h}">${img(o.u,'')}</span><span class="pc3-b"><b>${esc(o.t)}</b><span class="num">${clp(o.p)}</span><small>${note(o,i)}</small></span></button>`).join('')}</div>
     <div class="pt-6" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo · ${clp(cur.p)}</button><p class="pl-fine">${finePrint(p)}</p></div>${alt}`;
   }
   return `<h1 class="pl-h" data-rise>Ya lo tengo: este es para ${esc(p.n)}.</h1>
-  <div class="pl-pick">
-    <button class="pl-ph" data-act="sheet" data-h="${cur.h}" data-flip-id="${cur.h}" aria-label="Ver detalle de ${esc(cur.t)}">${img(cur.u,'')}</button>
-    <div class="pl-info">
-      <p class="pl-v" data-rise>${esc(cur.v)}</p>
-      <h2 class="pl-t" data-rise>${esc(cur.t)}</h2>
-      <p class="num mt-2 text-[18px] font-semibold" data-rise>${clp(cur.p)}</p>
-      <p class="mt-4 text-[16px] leading-[1.4]" data-rise>Lo elegí porque ${whyOf(p)}</p>
-      ${srcsOf(p).length?`<p class="pl-src" data-rise>Lo sé por ${srcChips(srcsOf(p))}</p>`:''}
-      <div class="mt-auto pt-6" data-rise><button data-act="ok" data-i="${idx(p)}" class="pl-cta pl-cta-w">Comprar y dejar listo</button><p class="pl-fine">${finePrint(p)}</p></div>
-    </div>
-  </div>
-  <div class="pl-foot" data-rise>${funnel(p)}
-    <div class="pl-ask"><span>¿Otra idea?</span><button data-act="opts" data-v="1" class="pl-more">${SCENES[p.n]?'Ver las 3 en la oficina':'Ver las 3 finalistas'}</button>${[['eco','Más económica'],['orig','Más original'],['util','Más útil']].map(([k,l])=>`<button data-act="ask" data-k="${k}">${l}</button>`).join('')}<em id="yreply" aria-live="polite"></em></div></div>`;
+  <div class="pl-pick" id="plPick">${pickInner(p)}</div>
+  <div class="pl-foot" data-rise><div class="pl-opts">${pickSeg(p,'swap')}<button data-act="opts" data-v="1" class="pl-all">Verlas lado a lado</button></div>${funnel(p)}</div>`;
 }
 
 /* Finalistas en escena: cada una en su contexto */
@@ -1650,18 +1674,18 @@ const SCENE_SVG = `<svg class="sc-art" viewBox="0 0 3000 600" preserveAspectRati
 <g fill="none" stroke="#b7b0a3" stroke-width="2"><path d="M2536 424v-38"/><path d="M2518 346c0 22 8 34 18 36 10-2 18-14 18-36Z" fill="#f4f1ea" fill-opacity=".7"/></g>
 <rect width="3000" height="600" filter="url(#gr)" opacity=".5" style="mix-blend-mode:multiply"/>
 </svg>`;
-const BOW = `<span class="st-bow" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Mi elección</span>`;
+const BOW = `<span class="st-bow" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Seleccionada</span>`;
 
 function sceneHtml(p){
   const s=SCENES[p.n], its=items(p), cur=ypick[p.n]||0;
   return `<div id="scStage" class="sc" role="group" aria-label="Las tres finalistas en su contexto"><div id="scPano" class="sc-p">${SCENE_SVG}
     ${s.map((z,i)=>`<button class="st" data-act="pick" data-pick="${i}" aria-pressed="${i===cur}" aria-label="${esc(its[i].t)}, ${clp(its[i].p)}. ${z.chip}" style="left:${z.x/30}%;top:${z.y/6}%;width:${z.w/30}%;--r:${z.r}deg"><span class="st-cut"><img src="${its[i].u}" alt="" style="clip-path:${z.clip}"></span><span class="st-dot" aria-hidden="true">+</span>${BOW}<span class="st-tag num" aria-hidden="true">${clp(its[i].p)}</span></button>`).join('')}
   </div><p id="scCap" class="sc-cap">${s[cur].cap}</p></div>
-  <div class="sc-nav" role="group" aria-label="Elegir escena">${s.map((z,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${i===cur}">${z.chip}</button>`).join('')}</div>`;
+  <div class="sc-nav" role="group" aria-label="Opciones">${pickLabels(p).map((l,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${i===cur}">${l}</button>`).join('')}</div>`;
 }
 const CK='<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg>';
 const reasons = (p,o) => { const b=BUDGET[p.n], r=[]; if(b) r.push(`Dentro del tope de ${clp(b)}`); r.push(`Llega ${arrival(p)}`); if(cfg.wrap) r.push('Envuelto y con tarjeta'); return r; };
-const sceneFicha = p => { const o=chosen(p), ty=(PINFO[o.h]||{}).ty; return `<div class="sf-l"><span class="sf-th">${img(o.u,'')}</span><div class="min-w-0"><p class="sf-e">${esc(o.v)}${ty?` · ${esc(ty)}`:''}</p><div class="sf-h"><h2>${esc(o.t)}</h2><span class="num">${clp(o.p)}</span></div><p class="sf-q">${OPT[o.h]||''}</p><ul class="sf-w">${reasons(p,o).map(t=>`<li>${CK}${t}</li>`).join('')}</ul></div></div><div class="sf-r"><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo</button><button data-act="sheet" data-h="${o.h}" class="sf-2">Ver detalle</button><p class="sf-n"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Nada se compra sin tu aprobación.</p></div>`; };
+const sceneFicha = p => { const o=chosen(p), ty=(PINFO[o.h]||{}).ty; return `<div class="sf-l"><span class="sf-th">${img(o.u,'')}</span><div class="min-w-0"><p class="sf-e">${esc(o.v)}${ty?` · ${esc(ty)}`:''}</p><div class="sf-h"><h2>${esc(o.t)}</h2><span class="num">${clp(o.p)}</span></div><p class="sf-q">${pickText(p,ypick[p.n]||0)}</p><ul class="sf-w">${reasons(p,o).map(t=>`<li>${CK}${t}</li>`).join('')}</ul></div></div><div class="sf-r"><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo</button><button data-act="sheet" data-h="${o.h}" class="sf-2">Ver detalle</button><p class="sf-n"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Nada se compra sin tu aprobación.</p></div>`; };
 function scenePos(p,i){ const st=$('scStage'), pa=$('scPano'); return st.clientWidth/2 - SCENES[p.n][i].cx/3000*pa.offsetWidth; }
 function sceneGo(p,i){
   ypick[p.n]=i;
@@ -2002,6 +2026,10 @@ $('year').addEventListener('click',e=>{
     gsap.delayedCall(REDUCE?0:1.1,()=>{ cxSet(k,true); const ps=YEAR.filter(x=>HINT[x.n]&&HINT[x.n][0]===k); addAct({k:'conn',t:`Conecté ${c.t}`,s:`Ya sé algo más de ${ps.map(x=>x.n).join(' y ')}`,unread:false}); ytoast(`Listo. ${c.t} me contó algo nuevo de ${personSel.n}.`); render(); if(!REDUCE) gsap.from('.pn-l li:has(.src-lg)',{x:-10,opacity:0,duration:.5,ease:'back.out(2)',clearProps:'all'}); }); }
   else if(a==='shcx'){ const k=b.dataset.k, c=cxOf(k); b.innerHTML='<span class="oc-sp"></span>Conectando'; b.disabled=true;
     gsap.delayedCall(REDUCE?0:1.1,()=>{ cxSet(k,true); addAct({k:'conn',t:`Conecté ${c.t}`,s:`Ya sé algo más de ${sheetP.n}`,unread:false}); ytoast(`Listo. ${c.t} me contó algo nuevo de ${sheetP.n}.`); const sc=$('apSheet').querySelector('.sh-b')?.scrollTop||0; render(); renderSheet(); const sb=$('apSheet').querySelector('.sh-b'); if(sb) sb.scrollTop=sc; }); }
+  else if(a==='swap'){ const q=yfocus, i=+b.dataset.pick, pk=$('plPick'); if(!pk||(ypick[q.n]||0)===i) return; ypick[q.n]=i;
+    document.querySelectorAll('.pl-seg button').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.pick===i));
+    if(REDUCE){ pk.innerHTML=pickInner(q); return; }
+    gsap.to(pk.children,{opacity:0,y:6,duration:.16,ease:'power2.in',overwrite:true,onComplete(){ pk.innerHTML=pickInner(q); gsap.from('#plPick .pl-ph img',{scale:1.04,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); gsap.from('#plPick .pl-info > *',{y:-6,opacity:0,duration:.35,stagger:.04,ease:'power3.out',clearProps:'all'}); }}); }
   else if(a==='opts'){ const on=b.dataset.v==='1', q=yfocus; optOpen[q.n]=on;
     if(on&&!cfg.likesOpts&&++optSeen>=2){ cfg.likesOpts=true; addAct({k:'learn',t:'Aprendí algo de ti',s:'Te gusta comparar antes de decidir. Te muestro 3 de entrada.',unread:false}); gsap.delayedCall(.2,()=>ytoast('Es la segunda vez que prefieres comparar. Desde ahora te muestro las 3 de entrada.')); }
     render(); if(!REDUCE){ gsap.from('#plLeft [data-rise]',{y:12,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'}); if(on&&SCENES[q.n]) gsap.from('#scStage .st',{y:-46,opacity:0,rotation:8,duration:.7,stagger:.12,delay:.1,ease:'back.out(1.6)',clearProps:'y,opacity,rotation'}); } }
