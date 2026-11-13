@@ -1135,8 +1135,7 @@ async function runSync(){
 
   $('ping').style.display='none'; $('pdot').className='relative inline-flex size-2.5 rounded-full bg-emerald-500';
   say('Listo · conectado con Google Calendar',.9);
-  const xs=[conn.contacts&&['tus contactos','quién es quién'],conn.gmail&&['tus correos','qué le gusta a cada uno']].filter(Boolean);
-  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>.${xs.length?` Las crucé con ${xs.map(x=>x[0]).join(' y ')}: ya sé ${xs.map(x=>x[1]).join(' y ')}.`:' Te aviso con tiempo antes de cada una.'}`;
+  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>${conn.contacts||conn.gmail?' y a quién corresponde cada una.':'.'}`;
   gsap.from('#summary',{opacity:0,y:14,duration:.5});
   gsap.to('#enter',{opacity:1,pointerEvents:'auto',duration:.5});
 
