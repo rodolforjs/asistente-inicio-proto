@@ -561,6 +561,19 @@ label.nf-lb input:focus,.nf-dt2 input:focus,.nf-dt2 select:focus{background:#fff
 .nf-ai .nf-l2{margin-top:14px}.nf-ai .nf-l2 li{padding:8px 10px}.nf-ai .nf-l2 img{width:26px;height:26px;padding:5px}
 @media(prefers-reduced-motion:reduce){.nf-orbit,.nf-sat img,.nf-core{animation:none}}
 @media(max-width:760px){.nf-viz{height:200px}.nf-ring:last-of-type{display:none}}
+.nf-2 .nf-ai{border-radius:0 30px 30px 0;background:#f5f7f9;color:#0e1014;padding:22px}
+.nf-ov{height:100%;display:flex;flex-direction:column;box-shadow:0 0 0 1px #e5eaf2,0 30px 50px -36px rgba(15,23,42,.35)}
+.nf-viz.obb{height:270px;margin:0;overflow:hidden}
+.nf-viz .nf-ring{border-color:#d9dfe8}
+.nf-viz .nf-sat img{box-shadow:0 0 0 4px rgba(255,255,255,.9),0 6px 14px -4px rgba(15,23,42,.3)}
+.nf-viz .nf-core::after{background:#fff}.nf-viz .nf-core span{color:#0e1014}
+.nf-viz .nf-core{box-shadow:0 0 40px 4px rgba(255,89,36,.18)}
+.nf-viz .nf-pt{background:#ff5924;box-shadow:0 0 6px 1px rgba(255,89,36,.6)}
+#nfTk{position:absolute;inset:0;z-index:3;pointer-events:none}#nfTk .obt{pointer-events:auto;width:max-content}#nfTk .obt-date{min-width:70px}
+.nf-ov .nf-st{margin-top:12px;color:#5f6b7d}.nf-ov .nf-st .pl-dots i{background:#9aa3b2}
+.nf-k2{min-height:34px}.nf-k2 span{color:#0e1014}.nf-k2 b{font-weight:700}
+.nf-k2 .nf-use{margin-left:2px}.nf-ck{display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#22a06b;color:#fff;font-size:10px;font-style:normal}
+@media(max-width:760px){.nf-2 .nf-ai{border-radius:0}.nf-viz.obb{height:220px}}
 .dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
 .dy-mn{padding-bottom:2px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#aab2bf}
 .dy-mn.is-cur{color:#ff5924}
@@ -2353,14 +2366,14 @@ function nfView(){
       <p class="nf-lb">Tope</p>${chips('tope',['$15.000','$30.000','$50.000','Sin tope'],r.tope)}</details>
     <button class="nf-ok" id="nfOk">Agregar a mis fechas</button><p class="nf-err" id="nfE"></p>
    </form>
-   <aside class="nf-ai" aria-live="polite">
-    <div class="nf-viz" id="nfV" aria-hidden="true">
-      ${R.map((rad,k)=>`<span class="nf-ring" style="width:${rad*2}px;height:${rad*2}px"></span>`).join('')}
+   <aside class="nf-ai" aria-live="polite"><div class="ov nf-ov"><p class="ov-cap" style="margin-top:0">Lo que voy encontrando</p>
+    <div class="obb nf-viz" id="nfV" aria-hidden="true">
+      ${R.map(rad=>`<span class="nf-ring" style="width:${rad*2}px;height:${rad*2}px"></span>`).join('')}
       <div class="nf-orbit">${lg.map((c,k)=>{ const a=k/lg.length*360, rad=R[k%3]; return `<span class="nf-sat" style="transform:rotate(${a}deg) translate(${rad}px) rotate(${-a}deg)"><img src="${c.img}" alt=""></span>`; }).join('')}</div>
-      <div class="nf-core"><span id="nfCore">✦</span></div></div>
+      <div class="nf-core"><span id="nfCore">✦</span></div><div id="nfTk"></div></div>
     <p class="nf-st"><span id="nfSt">Preparando tus conectores</span><span class="pl-dots"><i></i><i></i><i></i></span></p>
-    <ul class="nf-l2" id="nfL"></ul>
-    <div class="nf-sum" id="nfS" hidden><p>Lo sumo a lo que me diste</p><ul id="nfSL"></ul></div></aside></div>`;
+    <div class="obb-k nf-k2" id="nfK"></div>
+    <p class="mt-3 text-[12.5px] leading-snug text-[#748297]">Lo sumo a lo que me des. Nada se guarda sin tu OK.</p></div></aside></div>`;
   nfAmbient();
 }
 /* animación ambiente: no depende de lo que escribes */
@@ -2375,28 +2388,31 @@ function nfAmbient(){
     gsap.to(d,{left:vb.width/2,top:vb.height/2,scale:.3,duration:.9+Math.random()*.4,ease:'power2.in',onComplete:()=>{ d.remove(); const c=v.querySelector('.nf-core'); if(c) gsap.fromTo(c,{scale:1.06},{scale:1,duration:.3}); }}); },260);
 }
 let nfT=null;
-const nfRow=(k,t)=>{ const c=cxOf(k); return `<li data-k="${k}">${c?`<img src="${c.img}" alt="">`:''}<span><b>${t}</b><small><span class="oc-sp"></span>Buscando…</small></span></li>`; };
-function nfSum(){ const S=$('nfS'); if(!S) return; S.hidden=!nf.facts.length; $('nfSL').innerHTML=nf.facts.map(([t,k])=>{ const c=cxOf(k); return `<li>${c?`<img src="${c.img}" alt="">`:''}${esc(t)}</li>`; }).join(''); }
-function nfCal(){ const li=document.querySelector('#nfL li[data-k="cal"] small'); if(!li) return; const d=nfDate(); li.innerHTML=d?`La dejo en tu calendario. Te aviso el ${fdate(addD(nextOcc(d),-AVISO))}.`:'Espero la fecha para agendarla.'; li.closest('li').classList.toggle('ok',!!d); }
+const NF_SLOT=[[22,26,-6],[73,20,4],[27,80,3],[80,74,-5]];
+function nfToken(slot,html){ const T=$('nfTk'); if(!T) return; const [x,y,r]=NF_SLOT[slot%4]; T.insertAdjacentHTML('beforeend',html); const el=T.lastElementChild; el.style.left=x+'%'; el.style.top=y+'%';
+  gsap.set(el,{xPercent:-50,yPercent:-50,rotation:r}); if(!REDUCE){ gsap.from(el,{y:'-=50',scale:.3,opacity:0,rotation:r+(r>0?24:-24),duration:.7,ease:'back.out(1.6)'}); gsap.to(el,{y:'+=3',duration:2+Math.random(),repeat:-1,yoyo:true,ease:'sine.inOut',delay:.7}); } }
+function nfChip(k,html){ const K=$('nfK'); if(!K) return; const c=cxOf(k), old=K.querySelector(`[data-k="${k}"]`), h=`<span data-k="${k}">${c?`<img src="${c.img}" alt="">`:''}${html}</span>`; if(old) old.outerHTML=h; else { K.insertAdjacentHTML('beforeend',h); if(!REDUCE) gsap.fromTo(K.lastElementChild,{scale:.85,opacity:0},{scale:1,opacity:1,duration:.4,ease:'back.out(3)'}); } }
+function nfCal(){ if(!nf||!(CX.cal||CX.icloud)) return; const d=nfDate(); if(d) nfChip(CX.cal?'cal':'icloud',`Te aviso el <b>${fdate(addD(nextOcc(d),-AVISO))}</b>`); else { const o=$('nfK')&&$('nfK').querySelector('[data-k="cal"],[data-k="icloud"]'); if(o) o.remove(); } }
+const nfSum=()=>{};
 const nfDate=()=>{ const m=$('nfM')?.value, d=+($('nfD')?.value||0); return m!==''&&m!=null&&d>0?{m:+m,d:Math.min(d,new Date(2027,+m+1,0).getDate())}:null; };
 const nextOcc=dt=>{ const t=new Date(TODAY.getFullYear(),dt.m,dt.d); if(t<TODAY) t.setFullYear(t.getFullYear()+1); return t; };
 async function nfLive(){
   const n=nf.n.trim(); if(n.length<2||n.toLowerCase()===nf.key) return; nf.key=n.toLowerCase();
   const run=++nfRun, h=nfHash(n), isPato=/^pato$/i.test(n), g=isPato?'el asado':NF_G[h%NF_G.length], g2=NF_G[(h>>3)%NF_G.length], found={m:isPato?11:(h>>5)%12,d:isPato?12:1+(h>>9)%28}, relG=isPato?'Amistad':['Familia','Amistad','Trabajo'][h%3];
-  nf.facts=[]; nf.gusto=null; nf.sug={}; nfSum();
-  const L=$('nfL'); L.innerHTML='';
+  nf.facts=[]; nf.gusto=null; nf.sug={}; $('nfTk').innerHTML=''; $('nfK').innerHTML=''; nfCal();
   const steps=[];
-  if(CX.contacts) steps.push(['contacts','Contactos',`Está en tus contactos, en el grupo ${relG}.`,li=>{ nf.sug.rel=relG; if(!nf.rel) li.querySelector('small').insertAdjacentHTML('beforeend',` <button type="button" class="nf-use" data-nfuse="rel">Usar</button>`); }]);
-  if(CX.gmail) steps.push(['gmail','Gmail',`“¡Feliz cumple, ${n}!” · ${found.d} ${MES[found.m].toLowerCase()} del año pasado.`,li=>{ nf.sug.date=found; const d=nfDate(); if(!d||d.m!==found.m||d.d!==found.d) li.querySelector('small').insertAdjacentHTML('beforeend',` <button type="button" class="nf-use" data-nfuse="date">Usar esta fecha</button>`); }]);
-  if(CX.wa) steps.push(['wa','WhatsApp',`En un chat contó que le encanta ${g}.`,()=>{ nf.gusto=g; nf.facts.push([`Le encanta ${g}`,'wa']); }]);
-  if(CX.instagram) steps.push(['instagram','Instagram',`Sube fotos de ${g2}.`,()=>{ nf.gusto=nf.gusto||g2; nf.facts.push([`Sube fotos de ${g2}`,'instagram']); }]);
-  if(CX.pinterest) steps.push(['pinterest','Pinterest','No lo encontré en Pinterest.',()=>{}]);
-  if(CX.cal||CX.icloud) steps.push(['cal','Calendario','',()=>nfCal()]);
-  for(const [k,t,res,fn] of steps){
-    if(run!==nfRun) return; L.insertAdjacentHTML('beforeend',nfRow(k,t)); const li=L.lastElementChild; if(!REDUCE) gsap.from(li,{x:12,opacity:0,duration:.3});
-    await wait(REDUCE?0:.6); if(run!==nfRun) return;
-    if(res){ li.querySelector('small').textContent=res; li.classList.add('ok'); } fn(li); nfSum();
-  }
+  if(CX.gmail) steps.push(()=>{ nf.sug.date=found; nf.facts.push([`Su cumple es el ${found.d} de ${MESES[found.m]}`,'gmail']);
+    nfToken(0,`<div class="obt obt-date"><i>${MES[found.m]}</i><b class="num">${found.d}</b><small>Su cumple</small><img class="obt-lg" src="${cxOf('gmail').img}" alt=""></div>`);
+    const d=nfDate(); nfChip('gmail',`${found.d} ${MES[found.m].toLowerCase()}${!d||d.m!==found.m||d.d!==found.d?' <button type="button" class="nf-use" data-nfuse="date">Usar</button>':''}`); });
+  if(CX.contacts) steps.push(()=>{ nf.sug.rel=relG;
+    nfToken(1,`<div class="obt obt-mail"><img class="obt-lg" src="${cxOf('contacts').img}" alt=""><span>${relG}</span></div>`);
+    nfChip('contacts',`${relG}${nf.rel?'':' <button type="button" class="nf-use" data-nfuse="rel">Usar</button>'}`); });
+  if(CX.wa) steps.push(()=>{ nf.gusto=g; nf.facts.push([`Le encanta ${g}`,'wa']);
+    nfToken(2,`<div class="obt obt-wa"><img class="obt-lg" src="${cxOf('wa').img}" alt=""><span>“Me encanta ${g}”</span></div>`); nfChip('wa',`Le encanta ${g}`); });
+  if(CX.instagram) steps.push(()=>{ nf.gusto=nf.gusto||g2; nf.facts.push([`Sube fotos de ${g2}`,'instagram']); const u=prod((NF_P[g2]||['tazon-alerce'])[0]).u;
+    nfToken(3,`<div class="obt obt-photo"><img src="${u}" alt=""><small>Sus fotos</small><img class="obt-lg" src="${cxOf('instagram').img}" alt=""></div>`); nfChip('instagram',`Sube fotos de ${g2}`); });
+  for(const st of steps){ await wait(REDUCE?0:.7); if(run!==nfRun||!nf) return; st(); }
+  nfCal();
 }
 function nfAdd(){
   const r=nf, n0=$('nfN').value.trim(), dt=nfDate(), E=$('nfE');
@@ -2418,7 +2434,7 @@ $('nf').addEventListener('click',e=>{
   const c=e.target.closest('[data-nfc]'); if(c){ const k=c.dataset.nfc; nf[k]=nf[k]===c.dataset.v&&k!=='o'?null:c.dataset.v; c.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf[k]))); if(k==='rel'){ const u=document.querySelector('[data-nfuse="rel"]'); if(u) u.remove(); } return; }
   const u=e.target.closest('[data-nfuse]'); if(u){ if(u.dataset.nfuse==='date'){ $('nfD').value=nf.sug.date.d; $('nfM').value=nf.sug.date.m; nfCal(); if(!REDUCE) gsap.fromTo('.nf-dt2',{backgroundColor:'rgba(255,89,36,.25)'},{backgroundColor:'rgba(255,89,36,0)',duration:.8}); }
     else { nf.rel=nf.sug.rel; const md=$('nfMore'); if(md) md.open=true; document.querySelectorAll('[data-nfc="rel"]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf.rel))); }
-    u.outerHTML=simOk('Listo').replace('sim-ok','sim-ok nf-done'); return; }
+    u.outerHTML='<i class="nf-ck">✓</i>'; return; }
   const b=e.target.closest('[data-nf]'); if(b&&b.dataset.nf==='x') nfClose();
 });
 $('nf').addEventListener('input',e=>{ if(e.target.id==='nfN'){ nf.n=e.target.value; const cr=$('nfCore'); if(cr) cr.textContent=(nf.n.trim()[0]||'✦').toUpperCase(); clearTimeout(nfT); nfT=setTimeout(nfLive,450); } if(e.target.id==='nfD'||e.target.id==='nfM'){ nfCal(); const E=$('nfE'); if(E) E.textContent=''; } });
