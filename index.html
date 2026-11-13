@@ -1710,7 +1710,7 @@ function leftOther(p){
     <p class="pl-lead">No tienes que hacer nada hasta el ${fdate(av)}. Mientras, voy juntando lo que sirve.</p>
     <div class="wk" id="wk">
       <div class="wk-in"><p class="wk-k"><span class="live-dot"></span>Lo que va llegando</p><ol class="wk-l" id="wkL" aria-live="off"></ol></div>
-      <div class="wk-out"><p class="wk-k">Mis ideas</p><div class="wk-c">${its.map((o,n)=>`<button class="wk-i" data-act="sheet" data-h="${o.h}" data-n="${n}" aria-label="Ver ${esc(o.t)}"><span class="wk-ph">${img(o.u,'')}${n===0?'<span class="wk-fav">Favorita</span>':''}</span><span class="wk-bar" aria-hidden="true"><i></i></span></button>`).join('')}</div></div>
+      <div class="wk-out"><p class="wk-k">Mis ideas, por ahora</p><div class="wk-c">${its.map((o,n)=>`<button class="wk-i" data-act="sheet" data-h="${o.h}" data-n="${n}" aria-label="Ver ${esc(o.t)}"><span class="wk-ph">${img(o.u,'')}${n===0?'<span class="wk-fav">Por ahora</span>':''}</span><span class="wk-bar" aria-hidden="true"><i></i></span></button>`).join('')}</div></div>
       <div class="wk-sc"><p class="wk-k"><span id="wkScT">Revisando el catálogo</span><b class="num" id="wkScN"></b></p><div class="wk-g" id="wkG" aria-hidden="true"><i class="wk-beam" id="wkBeam"></i>${Object.keys(PRODS).map(h=>`<span data-h="${h}" class="${its.some(o=>o.h===h)?'is-k':''}">${img(PRODS[h][3],'')}</span>`).join('')}</div></div>
     </div>`;
 }
@@ -1745,17 +1745,18 @@ function runWork(p){
         else { t.classList.add('out'); nT.textContent=--cnt; } });
     },onComplete(){ gsap.to(beam,{opacity:0,duration:.25}); pend.forEach(t=>delete t.dataset.done); res(); }});
   });
+  let round=0;
   const scan=async()=>{
     if(!alive()) return;
-    tiles.forEach(t=>t.classList.remove('out','on','hit')); nT.textContent=tiles.length; say('Revisando el catálogo');
+    tiles.forEach(t=>t.classList.remove('out','on','hit')); nT.textContent=tiles.length; say(round++?'Reviso de nuevo con lo que llegó':'Revisando el catálogo');
     gsap.from(tiles,{scale:.5,opacity:0,duration:.4,stagger:{amount:.6,from:'random'},ease:'back.out(2)',clearProps:'all'});
     await wait(1.3); if(!alive()) return;
     say(`Descarto lo que no va con ${p.n}`); await pass(pool); if(!alive()) return;
     say(`Quedan ${pool.length}. Comparo las mejores`); await wait(.9); if(!alive()) return;
     await pass(finals); if(!alive()) return;
-    keep.forEach(t=>t.classList.add('on')); nT.textContent=`3 de ${tiles.length}`; say('Me quedo con 3');
+    keep.forEach(t=>t.classList.add('on')); nT.textContent=`3 de ${tiles.length}`; say('Por ahora estas 3. Sigo atento');
     keep.forEach((t,n)=>{ const k=finals.indexOf(t.dataset.h); gsap.delayedCall(.35+n*.22,()=>{ if(alive()) wkFly(wk,t,cards[k].querySelector('.wk-ph'),()=>gsap.fromTo(cards[k].querySelector('.wk-ph'),{scale:1.05},{scale:1,duration:.5,ease:'back.out(2)'})); }); });
-    await wait(4.2); scan();
+    await wait(2.8); scan();
   };
   scan();
   let i=0;
@@ -1776,7 +1777,7 @@ function runWork(p){
     gsap.to(d,{motionPath:{path:[{x:(x0+x1)/2,y:Math.min(y0,y1)-40},{x:x1,y:y1}],curviness:1.2},duration:.9,delay:.35,ease:'power2.inOut',onComplete(){
       d.remove(); if(run!==workRun) return;
       gsap.fromTo(cards[n].querySelector('.wk-ph'),{scale:1.04},{scale:1,duration:.5,ease:'back.out(2)'});
-      sc[n]=Math.min(cap[n],sc[n]+inc[n]*(n?2:1.4)); if(i>sig.length) sc[n]=cap[n]+gsap.utils.random(-3,2);
+      sc[n]=Math.min(cap[n],sc[n]+inc[n]*(n?2:1.4)); if(i>sig.length) sc[n]=Math.max(20,cap[n]+gsap.utils.random(-14,n?12:4));
       gsap.to(bars[n],{width:sc[n]+'%',duration:.6,ease:'power2.out'});
     }});
     gsap.delayedCall(2.1,step);
