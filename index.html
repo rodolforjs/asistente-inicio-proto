@@ -542,6 +542,18 @@ body.in-app .ob-kb{display:flex}
 .sh-why{display:flex;gap:12px;align-items:center;margin-top:24px;border-radius:16px;background:#f5f7f9;padding:11px 13px;font-size:14px;line-height:1.35}
 .sh-why .sh-pt{flex:none;width:44px;height:44px;border-radius:50%}
 .sh-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.lt{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:760px;margin-top:34px}
+.lt-ln{position:absolute;left:7px;right:calc(25% - 7px);top:6px;border-top:2px dashed #d5dbe5}
+.lt-n{position:relative;display:flex;flex-direction:column;gap:4px;padding-top:26px}
+.lt-n i{position:absolute;left:0;top:0;width:14px;height:14px;border-radius:50%;background:#f5f7f9;box-shadow:inset 0 0 0 2px #c3cad5}
+.lt-n[data-k=now] i{background:#ff5924;box-shadow:0 0 0 5px rgba(255,89,36,.16);animation:ld 2.2s infinite}
+.lt-n[data-k=end] i{background:#0e1014;box-shadow:none}
+.lt-n small{font-size:12px;font-weight:600;color:#748297}
+.lt-n b{font-size:14.5px;font-weight:600;line-height:1.25}
+.lt-n[data-k=end] b{font-family:'Newsreader',serif;font-weight:400;font-size:20px}
+.pl-idea button{position:relative}
+.pl-idea .lt-fav{position:absolute;left:8px;top:8px;display:inline-block;aspect-ratio:auto;overflow:visible;border-radius:999px;background:#0e1014;box-shadow:none;padding:3px 9px;font-size:11.5px;font-weight:600;line-height:1.3;color:#fff}
+@media(max-width:560px){.lt{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}.lt-ln{display:none}}
 .pl-foot{flex-direction:column;align-items:flex-start;gap:14px}
 .pl-opts{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .pl-seg{display:inline-flex;gap:2px;border-radius:999px;background:#fff;padding:4px;box-shadow:0 0 0 1px #e5eaf2}
@@ -1662,10 +1674,15 @@ addEventListener('resize',()=>{ if($('scStage')&&yfocus) gsap.set('#scPano',{x:s
 function leftOther(p){
   const ph=phase(p), back=autoFocus&&p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver al inicio</button>';
   if(ph==='bought') return `${back}<h1 class="pl-h">Así va tu pedido.</h1>${orderBlock(p)}`;
-  const its=items(p), f=facts(p).filter(x=>x!==p.o);
-  return `${back}<h1 class="pl-h pl-h-lg">${p===defaultFocus()?`Hoy no te necesito, ${esc(firstName())}.`:`${esc(p.n)} todavía no te necesita.`}</h1>
-    <p class="pl-lead">Te aviso el ${fdate(avisoD(p))}. Mientras, voy pensando${f.length?` con lo que ya sé: ${f.map(x=>esc(x).toLowerCase()).join(', ')}`:''}.</p>
-    <p class="mt-7 text-[13px] font-semibold">Lo que voy barajando</p><div class="pl-idea">${its.map(o=>`<button data-act="sheet" data-h="${o.h}" aria-label="Ver ${esc(o.t)}">${img(o.u,'')}</button>`).join('')}</div>`;
+  const its=items(p), o=occ(p), av=avisoD(p), lo=lastOrder(p);
+  const steps=[['now','Hoy','Lo voy pensando'],['','fdate',fdate(av),'Te lo dejo listo'],['','',fdate(lo),'Último día de compra'],['end','',fdate(o),esc(p.n)]];
+  const node=([k,,d,t],n)=>`<li class="lt-n" data-k="${k}"><i></i><small class="num">${n===0?'Hoy':d}</small><b>${n===0?'Lo voy pensando':t}</b></li>`;
+  return `${back}<h1 class="pl-h pl-h-lg">${esc(p.n)}, en mis manos.</h1>
+    <p class="pl-lead">No tienes que hacer nada hasta el ${fdate(av)}.</p>
+    <ol class="lt" aria-label="Plan para ${esc(p.n)}"><span class="lt-ln" aria-hidden="true"></span>${steps.map(node).join('')}</ol>
+    <p class="mt-10 text-[13px] font-semibold">Por ahora me inclino por</p>
+    <div class="pl-idea">${its.map((o,n)=>`<button data-act="sheet" data-h="${o.h}" aria-label="Ver ${esc(o.t)}">${img(o.u,'')}${n===0?'<span class="lt-fav">Favorita</span>':''}</button>`).join('')}</div>
+    <p class="mt-3 text-[12.5px] text-[#5f6b7d]">Puede cambiar si aprendo algo nuevo.</p>`;
 }
 
 function viewPlanner(){
