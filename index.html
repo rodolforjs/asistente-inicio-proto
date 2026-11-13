@@ -568,7 +568,14 @@ body.in-app .ob-kb{display:flex}
 .wk-bar{display:block;height:5px;border-radius:9px;background:#eef1f5;overflow:hidden}.wk-bar i{display:block;width:0;height:100%;border-radius:9px;background:#aab2bf}
 .wk-i[data-n="0"] .wk-bar i{background:#ff5924}
 .wk-dot{position:absolute;left:0;top:0;z-index:5;width:10px;height:10px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 4px rgba(255,89,36,.18);pointer-events:none}
-.wk~.lt{margin-top:30px}
+.wk-sc{grid-column:1/-1;border-top:1px solid #eef1f5;padding:18px 22px 22px}
+.wk-sc .wk-k{justify-content:space-between;margin-bottom:12px}.wk-sc .wk-k b{font-family:'Newsreader',serif;font-weight:400;font-size:18px;letter-spacing:0;text-transform:none;color:#0e1014}
+.wk-g{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:6px}
+.wk-g span{display:block;aspect-ratio:1;overflow:hidden;border-radius:8px;background:#f5f7f9;box-shadow:0 0 0 1px #eef1f5;transition:opacity .35s,filter .35s,transform .35s,box-shadow .35s}
+.wk-g img{width:100%;height:100%;object-fit:cover}
+.wk-g span.out{opacity:.18;filter:grayscale(1);transform:scale(.86)}
+.wk-g span.on{box-shadow:0 0 0 2px #ff5924;transform:scale(1.08)}
+@media(max-width:760px){.wk-g{grid-template-columns:repeat(10,minmax(0,1fr))}}
 @media(max-width:760px){.wk{grid-template-columns:1fr}.wk-in{border-radius:28px 28px 0 0;border-right:0;border-bottom:1px solid #eef1f5}}
 .pl-idea button{position:relative}
 .pl-idea .lt-fav{position:absolute;left:8px;top:8px;display:inline-block;aspect-ratio:auto;overflow:visible;border-radius:999px;background:#0e1014;box-shadow:none;padding:3px 9px;font-size:11.5px;font-weight:600;line-height:1.3;color:#fff}
@@ -681,6 +688,8 @@ body.in-app .ob-kb{display:flex}
 .pe:hover .pt{transform:scale(1.05)}
 .pe-q{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ff5924;font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:#fff;animation:ld 2.2s infinite}
 .pe-b{display:block;padding:11px 13px 13px}
+.pe-cx{position:absolute;left:12px;top:12px;display:flex;padding-left:6px}
+.pe-cx img{width:24px;height:24px;margin-left:-6px;border-radius:50%;background:#fff;padding:4px;object-fit:contain;box-shadow:0 0 0 2px #fff,0 2px 6px rgba(15,23,42,.18)}
 .pe-b b{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.02em}
 .pe-b small{display:block;font-size:12.5px;color:#5f6b7d}
 .pe-k{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11.5px;color:#5f6b7d;white-space:nowrap}
@@ -807,7 +816,7 @@ body.in-app .ob-kb{display:flex}
             <div id="scr-cal" class="scr"><p class="text-[22px] font-semibold tracking-tight">Marzo</p><div class="mt-3 grid grid-cols-7 gap-y-2 text-center text-[11px] text-black/50"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="mt-1 grid grid-cols-7 gap-y-1.5 text-center text-[13px] font-medium"><span class="grid size-8 place-items-center justify-self-center rounded-full ">1</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">2</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">3</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">4</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">5</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">6</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">7</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">8</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">9</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">10</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">11</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">12</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">13</span><span class="grid size-8 place-items-center justify-self-center rounded-full bg-brand text-white font-semibold">14</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">15</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">16</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">17</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">18</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">19</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">20</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">21</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">22</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">23</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">24</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">25</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">26</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">27</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">28</span></div><div class="mt-4 flex gap-2.5 rounded-2xl bg-black/[.04] p-3"><i class="w-1 rounded-full bg-brand"></i><div class="leading-tight"><p class="text-[13px] font-semibold">Cumpleaños de Mamá</p><p class="text-[11.5px] text-black/50">Todo el día · 🎁 14 días antes</p></div></div></div>
             <div id="scr-gift" class="scr"><div class="h-[210px] overflow-hidden rounded-[26px] bg-[#f6d9e4]"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306" alt="Libro Mamá ¿Cuál es tu Historia?" class="size-full origin-bottom scale-[1.14] object-cover object-bottom"></div><p class="mt-4 text-[20px] font-semibold leading-[1.15] tracking-tight">Mamá ¿Cuál es tu Historia?</p><p class="text-[13px] text-black/50">Para Mamá · le gusta leer y guardar historias</p><p class="mt-2 text-[22px] font-semibold">$29.990</p><div class="mt-4 grid h-11 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">Aprobar regalo</div></div>
             <div id="scr-ok" class="scr text-center"><svg viewBox="0 0 80 80" class="mx-auto mt-10 size-28"><circle cx="40" cy="40" r="36" fill="#22a06b"/><path id="okp" d="M24 41l11 11 21-23" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="mt-6 text-[22px] font-semibold tracking-tight">Ya compré el regalo de Papá</p><p class="mt-1 text-[14px] text-black/50">Día del Padre · llega el 18</p><div class="mx-auto mt-6 h-1.5 w-40 overflow-hidden rounded-full bg-black/10"><i id="okbar" class="block h-full w-full origin-left rounded-full bg-[#22a06b]"></i></div><p class="mt-2 text-[12px] text-black/40">Lo estoy despachando…</p></div>
-            <div id="scr-ring" class="scr text-center"><svg viewBox="0 0 120 120" class="mx-auto mt-6 size-44 -rotate-90"><circle cx="60" cy="60" r="50" fill="none" stroke="#e5eaf2" stroke-width="10"/><circle id="ring2" cx="60" cy="60" r="50" fill="none" stroke="#ff5924" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/></svg><p class="-mt-[104px] text-[52px] font-semibold leading-none tracking-tight">6</p><p class="text-[13px] text-black/50">días para avisarte</p><p class="mt-[70px] text-[18px] font-semibold">Emilia · Nacimiento</p><p class="text-[13px] text-black/50">Te dejo 3 opciones listas</p></div>
+            <div id="scr-ring" class="scr text-center"><svg viewBox="0 0 120 120" class="mx-auto mt-6 size-44 -rotate-90"><circle cx="60" cy="60" r="50" fill="none" stroke="#e5eaf2" stroke-width="10"/><circle id="ring2" cx="60" cy="60" r="50" fill="none" stroke="#ff5924" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"/></svg><p class="-mt-[104px] text-[52px] font-semibold leading-none tracking-tight">6</p><p class="text-[13px] text-black/50">días</p><p class="mt-[70px] text-[18px] font-semibold">Emilia · Nacimiento</p><p class="text-[13px] text-black/50">Te aviso con el regalo listo</p></div>
             <div class="absolute inset-x-0 bottom-2 z-10 mx-auto h-[5px] w-[110px] rounded-full bg-black/70"></div>
           </div>
         </div>
@@ -1694,14 +1703,13 @@ function leftOther(p){
   const ph=phase(p), back=autoFocus&&p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver al inicio</button>';
   if(ph==='bought') return `${back}<h1 class="pl-h">Así va tu pedido.</h1>${orderBlock(p)}`;
   const its=items(p), o=occ(p), av=avisoD(p), lo=lastOrder(p);
-  const steps=[['now','Hoy','Lo voy pensando'],['',fdate(av),'Te lo dejo listo'],['',fdate(lo),'Último día de compra'],['end',fdate(o),esc(p.n)]];
   return `${back}<h1 class="pl-h">${esc(p.n)}, en mis manos.</h1>
     <p class="pl-lead">No tienes que hacer nada hasta el ${fdate(av)}. Mientras, voy juntando lo que sirve.</p>
     <div class="wk" id="wk">
       <div class="wk-in"><p class="wk-k"><span class="live-dot"></span>Lo que va llegando</p><ol class="wk-l" id="wkL" aria-live="off"></ol></div>
       <div class="wk-out"><p class="wk-k">Mis ideas</p><div class="wk-c">${its.map((o,n)=>`<button class="wk-i" data-act="sheet" data-h="${o.h}" data-n="${n}" aria-label="Ver ${esc(o.t)}"><span class="wk-ph">${img(o.u,'')}${n===0?'<span class="wk-fav">Favorita</span>':''}</span><span class="wk-bar" aria-hidden="true"><i></i></span></button>`).join('')}</div></div>
-    </div>
-    <ol class="lt" aria-label="Plan para ${esc(p.n)}"><span class="lt-ln" aria-hidden="true"></span>${steps.map(([k,d,t])=>`<li class="lt-n" data-k="${k}"><i></i><small class="num">${d}</small><b>${t}</b></li>`).join('')}</ol>`;
+      <div class="wk-sc"><p class="wk-k"><span id="wkScT">Revisando el catálogo</span><b class="num" id="wkScN"></b></p><div class="wk-g" id="wkG" aria-hidden="true">${Object.keys(PRODS).map(h=>`<span data-h="${h}" class="${its.some(o=>o.h===h)?'is-k':''}">${img(PRODS[h][3],'')}</span>`).join('')}</div></div>
+    </div>`;
 }
 /* el sistema trabajando: llegan señales y van afinando las ideas */
 let workRun=0;
@@ -1713,7 +1721,20 @@ function runWork(p){
   const sig=[...knows(p), [`Revisé ${Object.keys(PRODS).length} regalos del catálogo`,'cat'], ['Hay stock de mi favorita','cat']];
   const cap=[92,64,44], sc=[0,0,0], inc=cap.map(c=>c/Math.max(2,sig.length-1));
   const row = ([t,s]) => { const li=document.createElement('li'); li.innerHTML=`${wkIcon(s)}<span>${esc(t)}</span>`; return li; };
-  if(REDUCE){ sig.slice(0,4).forEach(x=>L.appendChild(row(x))); bars.forEach((b,n)=>b.style.width=cap[n]+'%'); return; }
+  const G=$('wkG'), tiles=[...G.children], keep=tiles.filter(t=>t.classList.contains('is-k')), nT=$('wkScN');
+  if(REDUCE){ sig.slice(0,4).forEach(x=>L.appendChild(row(x))); bars.forEach((b,n)=>b.style.width=cap[n]+'%'); tiles.forEach(t=>t.classList.toggle('out',!keep.includes(t))); nT.textContent=`3 de ${tiles.length}`; return; }
+  const scan=()=>{ if(run!==workRun||!G.isConnected) return;
+    const others=gsap.utils.shuffle(tiles.filter(t=>!keep.includes(t)));
+    const tl=gsap.timeline({onComplete:()=>gsap.delayedCall(1.6,scan)});
+    tl.call(()=>{ tiles.forEach(t=>t.classList.remove('out','on')); nT.textContent=tiles.length; })
+      .from(tiles,{scale:.6,opacity:0,duration:.35,stagger:{amount:.5,from:'random'},ease:'back.out(2)'})
+      .to({}, {duration:.5});
+    others.forEach((t,k)=>tl.call(()=>{ t.classList.add('out'); nT.textContent=tiles.length-k-1; },null,`+=${k<10?.09:.05}`));
+    tl.call(()=>keep.forEach(t=>t.classList.add('on')),null,'+=.2')
+      .call(()=>{ nT.textContent=`3 de ${tiles.length}`; })
+      .to({}, {duration:2.6});
+  };
+  scan();
   let i=0;
   const step=()=>{
     if(run!==workRun||!L.isConnected) return;
@@ -1824,7 +1845,7 @@ function bindCo(){ const m=$('coMsg'); if(m) m.oninput=()=>{ co.msg=m.value; $('
 let personSel=null, personQ='';
 function personTile(p){
   const k=knows(p).length, q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]);
-  return `<button data-act="person" data-i="${idx(p)}" data-name="${esc(p.n.toLowerCase())}" aria-pressed="${p===personSel}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}<span class="pe-b"><b>${esc(p.n)}</b><small>${esc(REL[p.n]||p.o)}</small><span class="pe-k"><span class="pe-p"><em style="width:${Math.min(100,k*25)}%"></em></span>${k} ${k===1?'cosa':'cosas'}</span></span></button>`;
+  return `<button data-act="person" data-i="${idx(p)}" data-name="${esc(p.n.toLowerCase())}" aria-pressed="${p===personSel}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}${srcsOf(p).length?`<span class="pe-cx" title="Lo sé por ${srcsOf(p).map(c=>c.t).join(', ')}">${srcsOf(p).slice(0,4).map(c=>`<img src="${c.img}" alt="">`).join('')}</span>`:''}<span class="pe-b"><b>${esc(p.n)}</b><small>${esc(REL[p.n]||p.o)}</small><span class="pe-k"><span class="pe-p"><em style="width:${Math.min(100,k*25)}%"></em></span>${k} ${k===1?'cosa':'cosas'}</span></span></button>`;
 }
 function personPanel(p){
   const k=knows(p), q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]), c=chosen(p), ph=phase(p), lbl=ph==='bought'?'Compré':ph==='now'?'Regalo listo para aprobar':'Mi idea hasta ahora';
@@ -1837,7 +1858,7 @@ function personPanel(p){
   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
   <h3 class="pn-t">${lbl}</h3>
   <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
-  <p class="pn-why">Porque ${esc(whyOf(p))} <button data-act="sheet" data-h="${c.h}">Ver detalle</button></p>
+
   <button data-act="focus" data-i="${idx(p)}" class="pl-sec mt-4 w-full">Ver en mi planner</button>`;
 }
 function viewPersonas(){
@@ -1885,9 +1906,10 @@ function cxClose(){ $('cxm').classList.remove('on'); }
 async function cxConnect(k){
   const row=document.querySelector(`.cxm-i[data-k="${k}"]`), btn=row&&row.querySelector('button'); if(!btn||CX[k]||btn.dataset.busy) return;
   btn.dataset.busy='1'; btn.innerHTML='<span class="oc-sp"></span>Conectando';
-  await wait(REDUCE?0:1.1); cxSet(k,true); addAct({k:'conn',t:`Conecté ${CONNS.find(c=>c.k===k).t}`,s:'Solo leo, nunca escribo',unread:false}); cxModal();
+  await wait(REDUCE?0:1.1); cxSet(k,true); addAct({k:'conn',t:`Conecté ${CONNS.find(c=>c.k===k).t}`,s:'Solo leo, nunca escribo',unread:false});
+  const ls=document.querySelector('.cxm-l')?.scrollTop||0, ys=$('year').scrollTop; cxModal(); const nl=document.querySelector('.cxm-l'); if(nl) nl.scrollTop=ls;
   const t=CONNS.find(c=>c.k===k); ytoast(`Listo, conecté ${t.t}.`);
-  if(tab==='config') viewConfig();
+  if(tab==='config'){ viewConfig(); $('year').scrollTop=ys; }
 }
 function cxDisconnect(k){ const t=CONNS.find(c=>c.k===k); cxSet(k,false); ytoast(`Desconecté ${t.t}. Dejo de leer sus datos.`); viewConfig(); }
 const habOff = {};
