@@ -858,7 +858,7 @@ body.ch-on .ch{display:flex}
 .ch-q{display:flex;gap:6px;overflow-x:auto;padding:4px 14px 10px;scrollbar-width:none}.ch-q::-webkit-scrollbar{display:none}
 .ch-q button{flex:none;display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#fff;padding:7px 12px;font-size:12.5px;font-weight:600;box-shadow:0 0 0 1px #e5eaf2}.ch-q button:hover{box-shadow:0 0 0 1.5px #0e1014}
 .ch-q img{width:16px;height:16px}
-.ch-f{display:flex;align-items:center;gap:8px;margin:0 12px 10px;border-radius:999px;background:#fff;padding:6px;box-shadow:0 0 0 1px #e5eaf2,0 10px 20px -14px rgba(14,16,20,.3)}
+.ch-f{display:flex;align-items:center;gap:8px;margin:0 12px 12px;border-radius:999px;background:#fff;padding:6px;box-shadow:0 0 0 1px #e5eaf2,0 10px 20px -14px rgba(14,16,20,.3)}
 .ch-f input[type=text]{flex:1;min-width:0;border:0;outline:0;background:none;font-size:14.5px;padding:0 4px}
 .ch-f label,.ch-f button{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;cursor:pointer}
 .ch-f label{background:#f5f7f9;color:#0e1014}.ch-f label:hover{background:#e5eaf2}
@@ -1120,12 +1120,11 @@ body.tn-on .tn{display:grid}
 <!-- mándame algo: conversar con el planner desde cualquier pantalla -->
 <button id="fab" class="fab" aria-label="Abrir el chat" aria-expanded="false" aria-controls="ch"><span class="fab-o"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="fab-t">Chat</span></button>
 <section id="ch" class="ch" role="dialog" aria-label="Chat">
-  <header class="ch-h"><span class="fab-o" style="width:36px;height:36px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span><b>Cuenta conmigo</b><small><span class="live-dot"></span>Te escucho</small></span><button id="chX" class="ch-x" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+  <header class="ch-h"><span class="fab-o" style="width:36px;height:36px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span><b>Cuenta conmigo</b></span><button id="chX" class="ch-x" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
   <div id="chL" class="ch-l" aria-live="polite"></div>
   <div id="chQ" class="ch-q"></div>
   <div id="chTr" class="ch-tr" hidden><span class="ch-th"><img id="chTi" alt="Foto adjunta"><button type="button" id="chTx" aria-label="Quitar foto">×</button></span><small>Agrega un texto si quieres</small></div>
   <form id="chF" class="ch-f"><label aria-label="Mandar una foto"><input id="chImg" type="file" accept="image/*" capture="environment" hidden><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg></label><input id="chT" type="text" autocomplete="off" placeholder="Un link, una idea, un gusto…" aria-label="Escríbeme"><button aria-label="Enviar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></form>
-  <p class="ch-wa"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="">Lo mismo me lo puedes mandar por WhatsApp.</p>
 </section>
 <!-- en la tienda: el aviso que llega al celular -->
 <section id="tn" class="tn" aria-label="Simulación: estás en la tienda">
@@ -2632,9 +2631,9 @@ addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('cxm').classList.contains
 
 /* ---------- Mándame algo: conversar con el planner desde cualquier pantalla ---------- */
 const CH_DEMO = {
-  foto:{lbl:'Foto en la tienda',ic:'cam',h:'vela-anillo-de-fuego-esencia-andina',top:'Carla',why:'lee de noche y le gustan las velas'},
-  link:{lbl:'Post de Instagram',ic:'instagram',h:'tabla-de-piedra-ribete',url:'instagram.com/p/kuyen.diseno',top:'Tío Jorge',why:'recibe a todos en su casa'},
-  shot:{lbl:'Pantallazo',ic:'shot',h:'libro-wander',top:'Pareja',why:'les gusta quedarse en casa'}
+  foto:{lbl:'Foto en la tienda',ic:'cam',h:'vela-anillo-de-fuego-esencia-andina',say:'Vi esto en la tienda, para mi hermana'},
+  link:{lbl:'Post de Instagram',ic:'instagram',h:'tabla-de-piedra-ribete',url:'instagram.com/p/kuyen.diseno',say:'Mira este post, me gustó para mi tío'},
+  shot:{lbl:'Pantallazo',ic:'shot',h:'libro-wander',say:'Para el aniversario con mi pareja'}
 };
 const CH_IC = {cam:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg>',
   shot:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/></svg>',
@@ -2668,22 +2667,23 @@ async function chSend(o){
   try{
     if(o.demo){
       const d=CH_DEMO[o.demo], x=prod(d.h);
-      chAdd('cm-u', d.url?`${img(x.u,'')}<span class="cm-lk">${d.url}</span>`:img(x.u,''));
-      chPend={kind:'prod',x,src:d.ic};
-      await chSay(`<span class="cm-src">${d.ic==='instagram'?CH_IC.instagram+'Lo vi en Instagram':'Lo reconocí'}</span><br>Está en Creado.${prodCard(x)}<p class="mt-2.5">Pienso en ${esc(d.top)}: ${d.why}.</p>${chChips(d.top)}`);
+      chAdd('cm-u', `${img(x.u,'')}${d.url?`<span class="cm-lk">${d.url}</span>`:''}<span class="block">${esc(d.say)}</span>`);
+      const q=chFind(d.say), lead=`<span class="cm-src">${d.ic==='instagram'?CH_IC.instagram+'Lo vi en Instagram':'Lo reconocí'}</span><br>Está en Creado.${prodCard(x)}`;
+      if(q) await chSay(chSave(q,{kind:'prod',x,src:d.ic},chViaTxt(q),lead));
+      else { chPend={kind:'prod',x,src:d.ic}; await chSay(`${lead}<p class="mt-2.5">¿Para quién lo guardo?</p>${chChips()}`); }
     } else if(o.img){
       const note=(o.text||'').trim();
       chAdd('cm-u', `<img src="${o.img}" alt="Tu foto">${note?`<span class="block">${esc(note)}</span>`:''}`);
       const p=note&&chFind(note);
-      if(p){ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:o.img,t:note.length>40?note.slice(0,38)+'…':note,src:'cam'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:note,n:p.n,unread:false});
-        await chSay(`<span class="cm-ok"><i>${CK}</i><span>${chViaTxt(p)}Guardada en su ficha, con tu nota. Te la propongo para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.</span></span><div class="cm-ppl"><button data-chgo="${esc(p.n)}">Ver su ficha →</button></div>`); if(tab==='personas') render(); }
+      if(p) await chSay(chSave(p,{kind:'img',u:o.img,note},chViaTxt(p)));
       else { chPend={kind:'img',u:o.img,note}; const top=chWho()[0]; await chSay(`${note?'Anotado.':'Buena.'} ¿Para quién la guardo?${chChips(top&&top.n)}`); }
     } else if(o.text){
       const t=o.text.trim(); chAdd('cm-u', esc(t));
       if(chPend){ const q=chFind(t); if(q){ await chPick(q.n,true); return; } }
       const url=/^(https?:\/\/|www\.)|\.(com|cl)\b/i.test(t), h=Object.keys(PRODS).find(k=>t.toLowerCase().includes(k));
-      if(h){ const x=prod(h), top=Object.keys(GIFT).find(n=>GIFT[n][0].includes(h)&&!SHARED.includes(n)); chPend={kind:'prod',x,src:'link'}; await chSay(`Lo tengo: está en Creado.${prodCard(x)}${chChips(top)}`); }
-      else if(url){ chPend={kind:'link',u:t}; await chSay(`Guardé el link. ¿Para quién?${chChips()}`); }
+      const who=(h||url)&&chFind(t.replace(/\S*(https?:\/\/|www\.)\S*/g,''));
+      if(h){ const x=prod(h); if(who) await chSay(chSave(who,{kind:'prod',x,src:'link'},chViaTxt(who),`Lo tengo: está en Creado.${prodCard(x)}`)); else { chPend={kind:'prod',x,src:'link'}; await chSay(`Lo tengo: está en Creado.${prodCard(x)}<p class="mt-2.5">¿Para quién lo guardo?</p>${chChips()}`); } }
+      else if(url){ if(who) await chSay(chSave(who,{kind:'link',u:t},chViaTxt(who))); else { chPend={kind:'link',u:t}; await chSay(`Guardé el link. ¿Para quién?${chChips()}`); } }
       else {
         const p=chFind(t);
         if(p){ (learned[p.n]=learned[p.n]||[]).push(t.length>60?t.slice(0,58)+'…':t); addAct({k:'learn',t:`Aprendí algo de ${p.n}`,s:'Me lo contaste',n:p.n,unread:false});
@@ -2693,23 +2693,25 @@ async function chSend(o){
     }
   } finally { chBusy=false; }
 }
+/* guarda lo que me mandaste en la ficha de la persona y arma la respuesta */
+function chSave(p,it,via='',lead=''){
+  const n=p.n, u=it.kind==='prod'?it.x.u:it.u, t=it.kind==='prod'?it.x.t:it.kind==='img'?(it.note?(it.note.length>40?it.note.slice(0,38)+'…':it.note):'Tu foto'):'Tu link';
+  if(it.kind!=='link') (SAVED[n]=SAVED[n]||[]).unshift({u,t,src:it.src||'cam'}); else (learned[n]=learned[n]||[]).push('Me mandaste un link');
+  const g=it.kind==='prod'?GIFT[n][0].indexOf(it.x.h):-1, para=n==='Amigo secreto'||n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase());
+  let msg;
+  if(g>0){ ypick[n]=g; msg=`Ya estaba entre mis ideas para ${esc(n)}. Ahora va primera.`; }
+  else if(g===0) msg=`Coincidimos: era mi idea para ${esc(n)}.`;
+  else msg=`Guardado en la ficha de ${esc(n)}. Te lo propongo para ${para}, el ${fdate(occ(p))}.`;
+  addAct({k:'learn',t:`Guardé una idea para ${n}`,s:t,n,unread:false});
+  if(tab==='personas') gsap.delayedCall(.1,render);
+  return `${lead}<span class="cm-ok${lead?' mt-2.5':''}"><i>${CK}</i><span>${via}${msg}</span></span><div class="cm-ppl"><button data-chgo="${esc(n)}">Ver su ficha →</button></div>`;
+}
 async function chPick(n,typed){
   const p=YEAR.find(q=>q.n===n), it=chPend; if(!p||!it) return; chPend=null; const via=typed?chViaTxt(p):'';
   chL().querySelectorAll('.cm-ppl').forEach(e=>e.remove());
   if(!typed) chAdd('cm-u', esc(n));
   if(it.kind==='fact'){ (learned[n]=learned[n]||[]).push(it.t.length>60?it.t.slice(0,58)+'…':it.t); await chSay(`<span class="cm-ok"><i>${CK}</i><span>Anotado en la ficha de ${esc(n)}.</span></span>`); }
-  else {
-    const u=it.kind==='prod'?it.x.u:it.u, t=it.kind==='prod'?it.x.t:it.kind==='img'?(it.note?(it.note.length>40?it.note.slice(0,38)+'…':it.note):'Tu foto'):'Tu link';
-    if(it.kind!=='link') (SAVED[n]=SAVED[n]||[]).unshift({u,t,src:it.src||'cam'});
-    const g=it.kind==='prod'?GIFT[n][0].indexOf(it.x.h):-1;
-    let msg;
-    if(g>0){ ypick[n]=g; msg=`Ya estaba entre mis ideas para ${esc(n)}. Ahora va primera.`; }
-    else if(g===0) msg=`Coincidimos: era mi idea para ${esc(n)}.`;
-    else msg=`Guardado en la ficha de ${esc(n)}. Te lo propongo para ${n==='Amigo secreto'||n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.`;
-    msg=via+msg;
-    addAct({k:'learn',t:`Guardé una idea para ${n}`,s:t,n,unread:false});
-    await chSay(`<span class="cm-ok"><i>${CK}</i><span>${msg}</span></span><div class="cm-ppl"><button data-chgo="${esc(n)}">Ver su ficha →</button></div>`);
-  }
+  else await chSay(chSave(p,it,via));
   if(tab==='personas'&&personSel===p) render(); else renderChrome();
 }
 $('fab').onclick=chOpen; $('chX').onclick=chClose;
