@@ -27,7 +27,6 @@ button{cursor:pointer}
 .ticket{-webkit-mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
 .grid12{background:repeating-linear-gradient(90deg,#e5eaf2 0 1px,transparent 1px calc(100%/12))}
 /* escena estilo iOS */
-.glass{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 0 0 1px rgba(15,23,42,.05),0 24px 40px -18px rgba(15,23,42,.28),0 4px 10px -4px rgba(15,23,42,.1)}
 .fl{position:absolute;will-change:transform}
 .nt{border-radius:20px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 8px 20px -10px rgba(40,20,10,.35)}
 .appi{flex:none;width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,#ff8a5c,#ff4a14);display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
@@ -920,18 +919,37 @@ body.sim-on .fab{display:none}
 .rl-s button{margin-top:auto;height:44px;font-size:15px}
 .rl-buzz{animation:rlbz .12s linear 6}
 @keyframes rlbz{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px) rotate(-.6deg)}75%{transform:translateX(3px) rotate(.6deg)}}
-/* lentes */
-.gl{position:relative;width:min(820px,calc(100vw - 32px));aspect-ratio:1.9;border-radius:28px;overflow:hidden;background:#cfc6ba;box-shadow:0 60px 90px -30px rgba(0,0,0,.7)}
-.gl-v{position:absolute;inset:0;background:linear-gradient(#efe9df 0 62%,#bdb2a3 62%)}
-.gl-v .gl-sh{position:absolute;left:10%;right:10%;height:2.5%;border-radius:3px;background:#b8a88f;box-shadow:0 8px 12px -6px rgba(0,0,0,.3)}
-.gl-v img{position:absolute;object-fit:cover;border-radius:8px;box-shadow:0 12px 18px -8px rgba(0,0,0,.4)}
-.gl-glass{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.gl-hud{position:absolute;inset:0}
-.gl-ret{position:absolute;opacity:0}.gl-ret i{position:absolute;width:20px;height:20px;border:3px solid #fff;filter:drop-shadow(0 0 5px rgba(0,0,0,.5))}
-.gl-ret i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:7px 0 0 0}.gl-ret i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 7px 0 0}.gl-ret i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 7px}.gl-ret i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 7px 0}
-.gl-tag{position:absolute;display:flex;flex-direction:column;gap:8px;width:min(260px,40%);border-radius:18px;background:rgba(14,16,20,.82);color:#fff;padding:12px 13px;font-size:clamp(12px,1.6vw,14.5px);line-height:1.3;opacity:0;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.gl-tag button{height:36px;font-size:13px}
-@media(max-width:620px){.gl{aspect-ratio:.72}.gl-tag{left:9%!important;right:9%;top:auto!important;bottom:9%;width:auto}}
+.sim-it small{display:block;font-size:11.5px;font-weight:400;color:#748297;line-height:1.2}
+.sim-menu{width:250px}
+.fr-b{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.fr-b li{display:flex;gap:10px;align-items:baseline;border-radius:9px;padding:5px 7px;font-size:12.5px;color:rgba(255,255,255,.8)}
+.fr-b b{flex:none;width:46px;font-size:11px;font-weight:700;color:rgba(255,255,255,.5)}
+.fr-b li.is-new{color:#fff;font-weight:600}.fr-b li.is-new b{color:#ff8a5c}
+/* lentes: interfaz espacial */
+.vp{position:relative;width:min(900px,calc(100vw - 32px));aspect-ratio:1.85;border-radius:32px;overflow:hidden;background:#a89379;box-shadow:0 60px 100px -30px rgba(0,0,0,.75)}
+.vp-sc{position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 10%,#fff6ea 0,transparent 60%),linear-gradient(#e8dccb 0 66%,#a89379 66%)}
+.vp-sc::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px 30px rgba(20,14,8,.35);pointer-events:none}
+.vp-sh{position:absolute;left:4%;right:4%;height:2.4%;border-radius:4px;background:#c3ad8c;box-shadow:0 10px 16px -8px rgba(0,0,0,.35)}
+.vp-o{position:absolute;aspect-ratio:1;object-fit:cover;border-radius:10px;box-shadow:0 14px 22px -10px rgba(0,0,0,.45);filter:blur(1.2px) saturate(.9);transition:filter .5s,transform .5s,box-shadow .5s}
+.vp-o.vp-t{filter:blur(.6px)}
+.vp-o.is-look{filter:none;transform:scale(1.05);box-shadow:0 0 0 3px rgba(255,255,255,.85),0 0 40px 10px rgba(255,255,255,.55),0 24px 30px -12px rgba(0,0,0,.45)}
+.vp-gz{position:absolute;z-index:4;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 4px 12px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none}
+.vp-win{position:absolute;z-index:5;width:min(300px,78%);opacity:0;pointer-events:none}
+.vp-win.on{opacity:1;pointer-events:auto}
+.vp-wc{border-radius:30px;padding:18px 18px 16px;color:#fff;background:rgba(70,66,62,.42);-webkit-backdrop-filter:blur(36px) saturate(1.6);backdrop-filter:blur(36px) saturate(1.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.18),0 30px 60px -20px rgba(0,0,0,.45)}
+.vp-k{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.75)}
+.vp-ap{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ff5924}.vp-ap svg{width:13px;height:13px}
+.vp-t1{display:block;margin-top:10px;font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.05;letter-spacing:-.02em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
+.vp-p{margin-top:6px;font-size:13.5px;color:rgba(255,255,255,.85)}
+.vp-why{display:inline-flex;align-items:center;gap:6px;margin-top:10px;border-radius:999px;background:rgba(255,255,255,.16);padding:5px 10px 5px 6px;font-size:12px;font-weight:500}.vp-why img{width:16px;height:16px}
+.vp-btn{display:block;width:100%;height:46px;margin-top:14px;border-radius:999px;background:rgba(255,255,255,.92);color:#0e1014;font-size:14.5px;font-weight:700;transition:transform .2s,background .2s}
+.vp-btn:hover{transform:scale(1.03);background:#fff}
+.vp-bar{display:block;width:64px;height:5px;margin:10px auto 0;border-radius:3px;background:rgba(255,255,255,.55);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.vp-hint{position:absolute;left:50%;top:18px;z-index:6;display:flex;align-items:center;gap:7px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:7px 14px;font-size:12.5px;font-weight:600;color:#fff;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);opacity:0;transition:opacity .3s}
+.vp-orn{position:absolute;left:50%;bottom:16px;z-index:6;display:flex;align-items:center;gap:8px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:5px 14px 5px 5px;font-size:12.5px;font-weight:600;color:#fff;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.vp-orn span{width:26px;height:26px;border-radius:50%;overflow:hidden}.vp-orn .pt{width:100%;height:100%}
+.vp-orn b{display:grid;place-items:center;min-width:20px;height:20px;border-radius:10px;background:#fff;color:#0e1014;font-size:11px}
+@media(max-width:620px){.vp{aspect-ratio:.68}.vp-sc{transform:translateY(-22%)}.vp-t1{font-size:21px;margin-top:6px}.vp-why{display:none}.vp-wc{padding:14px}.vp-btn{height:42px;margin-top:10px}.vp-hint{white-space:nowrap}}
 /* ---------- En la tienda: aviso del celular ---------- */
 .tn{position:fixed;inset:0;z-index:190;display:none;place-items:center;background:rgba(14,16,20,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.tn-on .tn{display:grid}
@@ -1201,7 +1219,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 
 <div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span>Simular en…</button>
 <div id="simMenu" class="sim-menu" hidden><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
-<p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd>En la tienda</button><button data-sim="car" class="sim-it"><kbd>C</kbd>En el auto</button><button data-sim="voz" class="sim-it"><kbd>A</kbd>Parlante</button><button data-sim="refri" class="sim-it"><kbd>R</kbd>Refri</button><button data-sim="reloj" class="sim-it"><kbd>W</kbd>Reloj</button><button data-sim="lentes" class="sim-it"><kbd>L</kbd>Lentes</button></div></div>
+<p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="voz" class="sim-it"><kbd>A</kbd><span>Parlante<small>Respondes mi duda</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
 <section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
 
 <!-- mándame algo: conversar con el planner desde cualquier pantalla -->
@@ -1564,7 +1582,7 @@ const addBD = (d,n) => { const x=new Date(d); while(n>0){ x.setDate(x.getDate()+
 const ordLeft = p => Math.max(0,Math.round((lastOrder(p)-TODAY)/864e5));
 const lastOrder = p => { const lim=addD(occ(p),-1); let d=new Date(lim); while(addBD(d,4)>lim) d=addD(d,-1); return d; };
 const etaRange = from => { const a=addBD(from,3), b=addBD(from,4); return a.getMonth()===b.getMonth()?`entre el ${a.getDate()} y el ${fdate(b)}`:`entre el ${fdate(a)} y el ${fdate(b)}`; };
-const SRC_L = {cal:'Google Calendar',mail:'Gmail',con:'Google Contactos',gift:'Tus pedidos',you:'Me lo contaste',cross:'Crucé tus datos',instagram:'Instagram',pinterest:'Pinterest',spotify:'Spotify'};
+const SRC_L = {home:'Calendario de la casa',cal:'Google Calendar',mail:'Gmail',con:'Google Contactos',gift:'Tus pedidos',you:'Me lo contaste',cross:'Crucé tus datos',instagram:'Instagram',pinterest:'Pinterest',spotify:'Spotify'};
 const SRC2CX = {mail:'gmail',con:'contacts'};
 const REL = {'Mamá':'Tu mamá','Andrés':'Tu hermano','Carla':'Tu hermana','Papá':'Tu papá','Abuela Rosa':'Tu abuela','Sofi y Nico':'Tus amigos','Pareja':'Tu pareja','Tío Jorge':'Tu tío','Emilia':'Tu sobrina','Familia Soto':'Familia','Amigo secreto':'Oficina','Navidad':'Familia'};
 const LEARN = {
@@ -1626,7 +1644,8 @@ const SRC_ICON = {
  con:'<circle cx="12" cy="9" r="3.500"/><path d="M5 20c.8-4 3.500-6 7-6s6.200 2 7 6"/>',
  gift:'<path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.500S9 7 12 7ZM12 7c2-4 6-4 6-1.500S15 7 12 7Z"/>',
  you:'<path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/>',
- cross:'<path d="M9.5 14.5 14.5 9.5M8 11l-2 2a3.500 3.500 0 0 0 5 5l2-2M16 13l2-2a3.500 3.500 0 0 0-5-5l-2 2"/>'
+ cross:'<path d="M9.5 14.5 14.5 9.5M8 11l-2 2a3.500 3.500 0 0 0 5 5l2-2M16 13l2-2a3.500 3.500 0 0 0-5-5l-2 2"/>',
+ home:'<path d="M4 11 12 4l8 7v9H4Z"/><path d="M10 20v-5h4v5"/>'
 };
 const srcI = k => !SRC_ICON[k]&&cxOf(k) ? `<i class="src src-lg" title="${SRC_L[k]}"><img src="${cxOf(k).img}" alt=""></i>` : `<i class="src src-${k}" title="${SRC_L[k]}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SRC_ICON[k]}</svg></i>`;
 
@@ -2900,11 +2919,11 @@ CH_IC.glass='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke=
 const byN = n => YEAR.find(p=>p.n===n);
 const GIFT_I = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>';
 const SIM = {
-  car:   {t:'En el auto.',     d:'Vas camino a casa de tu mamá el día de su cumple. Aparezco en la pantalla del auto.', n:'Mamá'},
-  voz:   {t:'En el parlante.', d:'Es de mañana y hoy está el cumple de tu abuela. Te hablo desde el parlante de la cocina.', n:'Abuela Rosa'},
-  refri: {t:'En el refri.',    d:'Mañana vas a la once donde tu tío. Aprovecho el pedido del súper.', n:'Tío Jorge'},
-  reloj: {t:'En el reloj.',    d:'Estás en una reunión. Te aviso con una vibración y apruebas con un toque.', n:'Andrés'},
-  lentes:{t:'En los lentes.',  d:'Vas por la calle y miras una vitrina. Reconozco algo que le gustaría a tu mamá.', n:'Mamá', h:'mielero-en-ceramica-gres'},
+  car:   {t:'En el auto.',     d:'Plan B. Se te pasó el cumple de tu mamá y vas camino a su casa. Aparezco en la pantalla del auto.', n:'Mamá'},
+  voz:   {t:'En el parlante.', d:'Mientras cocinas, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
+  refri: {t:'En el refri.',    d:'Alguien de la casa anotó un cumple en el calendario de la cocina. Lo sumo a tus fechas.', n:'Tía Ana'},
+  reloj: {t:'En el reloj.',    d:'Faltan días, no horas. Estás en una reunión y lo apruebas con un toque.', n:'Andrés'},
+  lentes:{t:'En los lentes.',  d:'Miras una vitrina. Reconozco algo para tu mamá y lo guardas con un gesto.', n:'Mamá', h:'mielero-en-ceramica-gres'},
 };
 const SIM_KEY = {c:'car',a:'voz',r:'refri',w:'reloj',l:'lentes'};
 const VOZ_DESC = {'bufanda-alpaca-unisex-chocolate':['una bufanda de alpaca','la']};
@@ -2956,57 +2975,85 @@ function simCar(p){
   simAct.no=()=>{ $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch"><p class="text-[14px] text-white/70">Ok. Te lo recuerdo al estacionar.</p>${simEnd('sim-b2')}</div>`; };
 }
 
-/* parlante */
+/* parlante: respondo la duda que ningún conector sabe */
 async function simVoz(p){
-  const run=simRun, x=chosen(p), dsc=VOZ_DESC[x.h]||[x.t,'lo'];
+  const run=simRun, q=QUESTIONS.find(x=>x.n===p.n);
   $('simD').innerHTML=`<div class="voz"><div class="voz-sp" id="vzS" aria-hidden="true"></div><div class="voz-c" id="vzC" aria-live="polite"></div></div>`;
-  const say=(who,t)=>{ const d=document.createElement('div'); d.className='voz-m '+(who==='a'?'voz-a':'voz-u'); d.innerHTML=(who==='a'?'<small>Cuenta conmigo</small>':'')+t; $('vzC').appendChild(d); if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35}); return d; };
-  const talk=async(t)=>{ $('vzS').classList.add('on'); await wait(REDUCE?0:.7); if(run!==simRun) return false; say('a',t); await wait(REDUCE?0:.6); $('vzS').classList.remove('on'); return run===simRun; };
-  if(!await talk(`Buenos días. Hoy es el cumple de ${rel(p)} ${p.n.split(' ')[1]||''}. Elegí ${esc(dsc[0])} de ${clp(x.p)}. ¿${dsc[1][0].toUpperCase()+dsc[1].slice(1)} mando?`.replace(/  +/g,' ').replace(' .','.'))) return;
-  $('vzC').insertAdjacentHTML('beforeend','<button class="sim-b1 voz-say" data-s="yes">Decir «Sí»</button>');
-  simAct.yes=async b=>{ b.remove(); say('u','Sí.'); simBuy(p,'desde el parlante'); if(!await talk('Hecho. Llega a su casa a las 16:00.')) return; $('vzC').insertAdjacentHTML('beforeend',simEnd('sim-b1 voz-say')); };
+  const say=(who,t)=>{ const d=document.createElement('div'); d.className='voz-m '+(who==='a'?'voz-a':'voz-u'); d.innerHTML=(who==='a'?'<small>Cuenta conmigo</small>':'')+t; $('vzC').appendChild(d); if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35}); };
+  const talk=async t=>{ $('vzS').classList.add('on'); await wait(REDUCE?0:.7); if(run!==simRun) return false; say('a',t); await wait(REDUCE?0:.6); $('vzS').classList.remove('on'); return run===simRun; };
+  if(!await talk('Hola. Una pregunta rápida, de las que ningún correo me responde: ¿a tu papá le gustó la botella de junio?')) return;
+  $('vzC').insertAdjacentHTML('beforeend','<button class="sim-b1 voz-say" data-s="yes">Decir «Sí, la usa todos los días»</button>');
+  simAct.yes=async b=>{ b.remove(); say('u','Sí, la usa todos los días.');
+    if(q&&!yasked[p.n]){ yasked[p.n]=1; doubtDone=true; (learned[p.n]=learned[p.n]||[]).push('La botella de junio: la usa todos los días'); addAct({k:'learn',t:`Aprendí algo de ${p.n}`,s:'Me lo dijiste en el parlante',n:p.n,unread:false}); }
+    simAfter={tab:'personas',p};
+    if(!await talk('Anotado en su ficha. Para el Día del Padre busco algo que acompañe la botella.')) return;
+    $('vzC').insertAdjacentHTML('beforeend',simEnd('sim-b1 voz-say')); };
 }
 
-/* refri */
-function simRefri(p){
-  const x=chosen(p), items=['Pan de molde','Paltas','Leche','Queso mantecoso','Té','Galletas'];
-  $('simD').innerHTML=`<div class="fr"><div class="fr-s"><h4>Lista del súper<small>Llega mañana 10:00</small></h4>
-    <ul class="fr-l" id="frL">${items.map(t=>`<li><i></i>${t}</li>`).join('')}</ul>
-    <div class="fr-n" id="frN"><p>Mañana vas a la once donde ${rel(p)}, y es su cumple. ¿Le sumo un regalo al pedido?</p>
-      <div class="car-g">${img(x.u,'')}<span class="min-w-0"><b class="block truncate text-[13px]">${esc(x.t)}</b><small class="num">${clp(x.p)} · envuelto</small></span></div>
-      <button class="sim-b1" data-s="yes">Sumar al pedido</button></div></div></div>`;
-  if(!REDUCE) gsap.from('#frN',{y:16,opacity:0,duration:.5,delay:.6});
-  simAct.yes=()=>{ simBuy(p,'en el pedido del súper'); $('frL').insertAdjacentHTML('afterbegin',`<li class="is-g"><i></i>Regalo para ${esc(p.n)}</li>`); if(!REDUCE) gsap.from('#frL li:first-child',{x:-10,opacity:0,duration:.4});
-    $('frN').innerHTML=`<p>${simOk('Sumado. Llega mañana con el súper, envuelto.')}</p>${simEnd()}`; };
+/* refri: sumo una fecha que anotaron en la cocina */
+function simRefri(){
+  const N='Tía Ana', B=[['Lun 10','Dentista Sofía'],['Sáb 15','Once donde Tío Jorge'],['3 ene','Cumple tía Ana',1],['Dom 23','Almuerzo familiar']];
+  $('simD').innerHTML=`<div class="fr"><div class="fr-s"><h4>Calendario de la casa<small>Noviembre</small></h4>
+    <ul class="fr-b" id="frL">${B.map(([d,t,n])=>`<li class="${n?'is-new':''}"><b>${d}</b><span>${t}</span></li>`).join('')}</ul>
+    <div class="fr-n" id="frN"><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div></div></div>`;
+  if(!REDUCE){ gsap.from('#frN',{y:16,opacity:0,duration:.5,delay:.7}); gsap.fromTo('#frL .is-new',{backgroundColor:'rgba(255,89,36,0)'},{backgroundColor:'rgba(255,89,36,.22)',duration:.6,delay:.5,yoyo:true,repeat:3}); }
+  simAct.yes=()=>{
+    let p=byN(N);
+    if(!p){ p={n:N,o:'Cumpleaños',m:0,d:3,y:40,k:'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
+      GIFT[N]=[['libro-de-las-preguntas-de-neruda','vela-vasija-pukara-esencia-andina','pack-3-mermeladas-gourmet'],'le gustan los detalles para la casa.'];
+      REL[N]='Tu tía'; CAL_OF[N]='Familia'; LEARN[N]=[['La anotaron en el calendario de la cocina','home']]; PORT[N]={bg:C.green,d:PORT['Carla'].d};
+      addAct({k:'new',t:'Sumé una fecha nueva',s:'Tía Ana · 3 ene. La vi en el refri',n:N,unread:false}); }
+    simAfter={tab:'personas',p};
+    $('frN').innerHTML=`<p>${simOk(`Sumada. Te aviso el ${fdate(avisoD(p))}.`)}</p>${simEnd()}`; };
 }
 
-/* reloj */
-function simReloj(p){
-  const x=chosen(p);
-  $('simD').innerHTML=`<div class="rl"><div class="rl-b" id="rlB"><div class="rl-s" id="rlS"><span class="appi">${GIFT_I}</span><b>El regalo de ${rel(p)} está listo. ¿Lo apruebas?</b>
-    <div class="rl-g">${img(x.u,'')}<span class="min-w-0"><span class="block truncate">${esc(x.t)}</span><span class="num">${clp(x.p)}</span></span></div>
+/* reloj: apruebas con tiempo, no el último día */
+function simReloj(){
+  const p=tnTarget()||byN('Andrés'), x=chosen(p), cap=BUDGET[p.n];
+  $('simD').innerHTML=`<div class="rl"><div class="rl-b" id="rlB"><div class="rl-s" id="rlS"><span class="appi">${GIFT_I}</span><b>${esc(p.n)} es ${days(dleft(p))}. Ya lo elegí.</b>
+    <div class="rl-g">${img(x.u,'')}<span class="min-w-0"><span class="block truncate">${esc(x.t)}</span><span class="num">${clp(x.p)}${cap?' · dentro del tope':''}</span></span></div>
     <button class="sim-b1" data-s="yes">Aprobar</button></div></div></div>`;
   if(!REDUCE) gsap.delayedCall(.7,()=>{ const b=$('rlB'); if(b) b.classList.add('rl-buzz'); });
-  simAct.yes=()=>{ simBuy(p,'desde el reloj'); $('rlS').innerHTML=`<span class="appi" style="background:#22a06b">${CK}</span><b>Aprobado.</b><span class="mt-1 text-[13px] text-white/70">Llega ${arrival(p)}.</span>${simEnd()}`; };
+  simAct.yes=()=>{ simBuy(p,'aprobado desde el reloj'); $('rlS').innerHTML=`<span class="appi" style="background:#22a06b">${CK}</span><b>Aprobado.</b><span class="mt-1 text-[13px] text-white/70">Llega ${arrival(p)}, con tiempo.</span>${simEnd()}`; };
 }
 
-/* lentes */
+/* lentes: guardas una idea mirando, al estilo de una interfaz espacial */
 function simLentes(p,S){
-  const x=prod(S.h), o=['vela-vasija-likan-esencia-andina','tazon-alerce','libro-wander','diario-de-gratitud'].map(h=>prod(h).u);
-  $('simD').innerHTML=`<div class="gl" id="glV"><div class="gl-v"><span class="gl-sh" style="top:34%"></span><span class="gl-sh" style="top:66%"></span>
-      <img src="${o[0]}" alt="" style="left:13%;bottom:66%;width:13%;aspect-ratio:1"><img src="${o[1]}" alt="" style="left:31%;bottom:66%;width:12%;aspect-ratio:1"><img src="${o[2]}" alt="" style="left:66%;bottom:66%;width:12%;aspect-ratio:1">
-      <img src="${o[3]}" alt="" style="left:16%;bottom:34%;width:13%;aspect-ratio:1"><img id="glT" src="${x.u}" alt="" style="left:60%;bottom:34%;width:15%;aspect-ratio:1"></div>
-    <svg class="gl-glass" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><defs><mask id="glM"><rect width="100" height="60" fill="#fff"/><rect x="3" y="6" width="45" height="48" rx="13" fill="#000"/><rect x="52" y="6" width="45" height="48" rx="13" fill="#000"/></mask></defs><rect width="100" height="60" fill="#0e1014" mask="url(#glM)"/></svg>
-    <div class="gl-hud"><div class="gl-ret" id="glR"><i></i><i></i><i></i><i></i></div>
-      <div class="gl-tag" id="glG"><span>Esto calza con ${rel(p)}. ¿Lo guardo para su cumple?</span><button class="sim-b1" data-s="yes">Guardar</button></div></div></div>`;
-  const place=()=>{ const V=$('glV'), T=$('glT'), R=$('glR'), G=$('glG'); if(!V||!T) return; const v=V.getBoundingClientRect(), t=T.getBoundingClientRect(), pad=8;
-    Object.assign(R.style,{left:(t.left-v.left-pad)+'px',top:(t.top-v.top-pad)+'px',width:(t.width+pad*2)+'px',height:(t.height+pad*2)+'px'});
-    const w=G.offsetWidth; let gl=t.left-v.left-w-20; if(gl<v.width*.06) gl=Math.max(v.width*.06,t.left-v.left+t.width/2-w/2);
-    Object.assign(G.style,{left:gl+'px',top:Math.max(v.height*.12,t.top-v.top-(gl===t.left-v.left-w-20?0:G.offsetHeight+20))+'px'}); };
-  requestAnimationFrame(place);
-  gsap.delayedCall(REDUCE?0:.9,()=>{ place(); gsap.to('#glR',{opacity:1,duration:.3}); if(!REDUCE) gsap.from('#glR',{scale:1.4,duration:.5,ease:'back.out(1.6)'}); gsap.to('#glG',{opacity:1,duration:.35,delay:REDUCE?0:.3}); });
+  const x=prod(S.h), o=['vela-vasija-likan-esencia-andina','tazon-alerce','libro-wander','diario-de-gratitud'].map(h=>prod(h).u), n0=(SAVED[p.n]||[]).length;
+  $('simD').innerHTML=`<div class="vp" id="glV">
+    <div class="vp-sc"><span class="vp-sh" style="top:38%"></span><span class="vp-sh" style="top:72%"></span>
+      <img class="vp-o" src="${o[0]}" alt="" style="left:8%;bottom:62%;width:13%"><img class="vp-o" src="${o[1]}" alt="" style="left:25%;bottom:62%;width:11%">
+      <img class="vp-o" src="${o[2]}" alt="" style="left:79%;bottom:62%;width:11%"><img class="vp-o" src="${o[3]}" alt="" style="left:12%;bottom:28%;width:13%">
+      <img class="vp-o vp-t" id="glT" src="${x.u}" alt="" style="left:34%;bottom:28%;width:15%"></div>
+    <span class="vp-gz" id="glZ" aria-hidden="true"></span>
+    <div class="vp-win" id="glG"><div class="vp-wc">
+      <p class="vp-k"><span class="vp-ap">${GIFT_I}</span>Cuenta conmigo</p>
+      <b class="vp-t1">Esto calza con ${rel(p)}.</b>
+      <p class="vp-p">${esc(x.t)} · ${clp(x.p)}</p>
+      <p class="vp-why"><img src="${SI('pinterest','E60023')}" alt="">Guarda ideas de cerámica</p>
+      <button class="vp-btn" data-s="yes">Guardar para su cumple</button></div>
+      <i class="vp-bar" aria-hidden="true"></i></div>
+    <p class="vp-hint" id="glH"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v6M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7s-5-2-6.500-5L3 11.500a1.500 1.500 0 0 1 2.500-1.500L8 13"/></svg>Mira y junta los dedos</p>
+    <div class="vp-orn" id="glO"><span>${portrait(p.n)}</span>Ideas de ${esc(p.n)} <b class="num" id="glN">${n0}</b></div></div>`;
+  const V=$('glV'), T=$('glT'), Z=$('glZ'), G=$('glG');
+  const at=()=>{ const v=V.getBoundingClientRect(), t=T.getBoundingClientRect(); return {x:t.left-v.left+t.width/2, y:t.top-v.top+t.height/2, r:t.right-v.left, top:t.top-v.top, w:v.width, h:v.height}; };
+  const place=()=>{ const a=at(), gw=G.offsetWidth, wide=a.w>620; G.style.left=(wide?Math.min(a.w-gw-24,a.r+28):(a.w-gw)/2)+'px'; G.style.top=(wide?Math.max(24,a.top-30):a.h-G.offsetHeight-70)+'px'; };
+  requestAnimationFrame(()=>{ place(); gsap.set(Z,{left:V.clientWidth*.5,top:V.clientHeight*.45}); });
+  if(REDUCE){ T.classList.add('is-look'); G.classList.add('on'); $('glH').style.opacity=1; }
+  else { const a0=()=>at(); gsap.timeline({delay:.5})
+    .to(Z,{opacity:1,duration:.3})
+    .to(Z,{left:()=>a0().x,top:()=>a0().y,duration:1,ease:'power2.inOut'})
+    .add(()=>T.classList.add('is-look'))
+    .to(Z,{scale:.6,opacity:.6,duration:.3})
+    .add(()=>{ place(); G.classList.add('on'); })
+    .from(G,{y:24,scale:.94,opacity:0,duration:.6,ease:'power3.out'})
+    .to('#glH',{opacity:1,duration:.4},'-=.2'); }
   simAct.yes=()=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · la viste en una vitrina`,n:p.n,unread:false}); simAfter={tab:'personas',p};
-    $('glG').innerHTML=`${simOk(`Guardado en Ideas de ${esc(p.n)}.`)}${simEnd()}`; };
+    const fl=T.cloneNode(); const v=V.getBoundingClientRect(), t=T.getBoundingClientRect(), on=$('glO').getBoundingClientRect();
+    Object.assign(fl.style,{position:'absolute',left:(t.left-v.left)+'px',top:(t.top-v.top)+'px',width:t.width+'px',bottom:'auto',zIndex:9,borderRadius:'14px'}); V.appendChild(fl);
+    gsap.to(fl,{left:on.left-v.left+8,top:on.top-v.top+6,width:24,opacity:.2,duration:REDUCE?0:.7,ease:'power2.in',onComplete:()=>{ fl.remove(); $('glN').textContent=n0+1; if(!REDUCE) gsap.fromTo('#glO',{scale:1.12},{scale:1,duration:.5,ease:'back.out(3)'}); }});
+    $('glH').style.opacity=0;
+    G.querySelector('.vp-wc').innerHTML=`<p class="vp-k"><span class="vp-ap" style="background:#22a06b">${CK}</span>Guardado</p><b class="vp-t1">En Ideas de ${esc(p.n)}.</b><p class="vp-p">Te lo propongo para su cumple, el ${fdate(occ(p))}.</p><button class="vp-btn" data-s="end">Listo</button>`; };
 }
 
 /* menú y teclas */
