@@ -856,6 +856,12 @@ body.ch-on .ch{display:flex}
 .ch-f label,.ch-f button{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;cursor:pointer}
 .ch-f label{background:#f5f7f9;color:#0e1014}.ch-f label:hover{background:#e5eaf2}
 .ch-f button{background:#0e1014;color:#fff}.ch-f button:hover{background:#ff5924}
+.ch-tr{display:flex;align-items:center;gap:10px;margin:0 12px 8px;border-radius:18px;background:#fff;padding:8px;box-shadow:0 0 0 1px #e5eaf2}
+.ch-tr[hidden]{display:none}
+.ch-th{position:relative;flex:none}.ch-th img{display:block;width:56px;height:56px;border-radius:12px;object-fit:cover}
+.ch-th button{position:absolute;top:-6px;right:-6px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#0e1014;color:#fff;font-size:13px;line-height:1}
+.ch-tr small{font-size:12.5px;color:#748297}
+.cm-u span.block{margin-top:2px}
 .ch-wa{display:flex;align-items:center;justify-content:center;gap:6px;padding:0 0 12px;font-size:11.5px;color:#748297}.ch-wa img{width:13px;height:13px}
 /* lo que me mandaste, en la ficha de la persona */
 .pn-sv{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
@@ -1110,6 +1116,7 @@ body.tn-on .tn{display:grid}
   <header class="ch-h"><span class="fab-o" style="width:36px;height:36px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span><b>Cuenta conmigo</b><small><span class="live-dot"></span>Te escucho</small></span><button id="chX" class="ch-x" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
   <div id="chL" class="ch-l" aria-live="polite"></div>
   <div id="chQ" class="ch-q"></div>
+  <div id="chTr" class="ch-tr" hidden><span class="ch-th"><img id="chTi" alt="Foto adjunta"><button type="button" id="chTx" aria-label="Quitar foto">×</button></span><small>Agrega un texto si quieres</small></div>
   <form id="chF" class="ch-f"><label aria-label="Mandar una foto"><input id="chImg" type="file" accept="image/*" capture="environment" hidden><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg></label><input id="chT" type="text" autocomplete="off" placeholder="Un link, una idea, un gusto…" aria-label="Escríbeme"><button aria-label="Enviar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></form>
   <p class="ch-wa"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="">Lo mismo me lo puedes mandar por WhatsApp.</p>
 </section>
@@ -2623,6 +2630,8 @@ const CH_IC = {cam:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" 
   instagram:`<img src="${'https://cdn.simpleicons.org/instagram/E4405F'}" alt="">`};
 const SAVED = {};            // lo que me mandaste, por persona
 let chPend=null, chBusy=false;
+const chNorm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const chFind=t=>YEAR.find(q=>new RegExp('(^|[^a-z])'+chNorm(q.n).split(' ')[0]+'([^a-z]|$)').test(chNorm(t)));
 const chL = () => $('chL');
 function chAdd(cls,html){ const d=document.createElement('div'); d.className='cm '+cls; d.innerHTML=html; chL().appendChild(d); chL().scrollTop=chL().scrollHeight; if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35,ease:'power3.out',clearProps:'all'}); return d; }
 async function chSay(html){ const t=chAdd('cm-a cm-ty','<i></i><i></i><i></i>'); await wait(REDUCE?0:.85); t.classList.remove('cm-ty'); t.innerHTML=html; chL().scrollTop=chL().scrollHeight; return t; }
@@ -2647,18 +2656,19 @@ async function chSend(o){
       chPend={kind:'prod',x,src:d.ic};
       await chSay(`<span class="cm-src">${d.ic==='instagram'?CH_IC.instagram+'Lo vi en Instagram':'Lo reconocí'}</span><br>Está en Creado.${prodCard(x)}<p class="mt-2.5">Pienso en ${esc(d.top)}: ${d.why}.</p>${chChips(d.top)}`);
     } else if(o.img){
-      chAdd('cm-u', `<img src="${o.img}" alt="Tu foto">`);
-      chPend={kind:'img',u:o.img};
-      const top=chWho()[0];
-      await chSay(`Buena. ¿Para quién la guardo?${chChips(top&&top.n)}`);
+      const note=(o.text||'').trim();
+      chAdd('cm-u', `<img src="${o.img}" alt="Tu foto">${note?`<span class="block">${esc(note)}</span>`:''}`);
+      const p=note&&chFind(note);
+      if(p){ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:o.img,t:note.length>40?note.slice(0,38)+'…':note,src:'cam'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:note,n:p.n,unread:false});
+        await chSay(`<span class="cm-ok"><i>${CK}</i><span>Guardada en la ficha de ${esc(p.n)}, con tu nota. Te la propongo para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.</span></span><div class="cm-ppl"><button data-chgo="${esc(p.n)}">Ver su ficha →</button></div>`); if(tab==='personas') render(); }
+      else { chPend={kind:'img',u:o.img,note}; const top=chWho()[0]; await chSay(`${note?'Anotado.':'Buena.'} ¿Para quién la guardo?${chChips(top&&top.n)}`); }
     } else if(o.text){
       const t=o.text.trim(); chAdd('cm-u', esc(t));
       const url=/^(https?:\/\/|www\.)|\.(com|cl)\b/i.test(t), h=Object.keys(PRODS).find(k=>t.toLowerCase().includes(k));
       if(h){ const x=prod(h), top=Object.keys(GIFT).find(n=>GIFT[n][0].includes(h)&&!SHARED.includes(n)); chPend={kind:'prod',x,src:'link'}; await chSay(`Lo tengo: está en Creado.${prodCard(x)}${chChips(top)}`); }
       else if(url){ chPend={kind:'link',u:t}; await chSay(`Guardé el link. ¿Para quién?${chChips()}`); }
       else {
-        const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-        const p=YEAR.find(q=>norm(t).includes(norm(q.n).split(' ')[0]));
+        const p=chFind(t);
         if(p){ (learned[p.n]=learned[p.n]||[]).push(t.length>60?t.slice(0,58)+'…':t); addAct({k:'learn',t:`Aprendí algo de ${p.n}`,s:'Me lo contaste',n:p.n,unread:false});
           await chSay(`<span class="cm-ok"><i>${CK}</i><span>Anotado en la ficha de ${esc(p.n)}. Lo uso para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}.</span></span>`); if(tab==='personas') render(); }
         else { chPend={kind:'fact',t}; await chSay(`Anotado. ¿De quién me hablas?${chChips()}`); }
@@ -2672,7 +2682,7 @@ async function chPick(n){
   chAdd('cm-u', esc(n));
   if(it.kind==='fact'){ (learned[n]=learned[n]||[]).push(it.t.length>60?it.t.slice(0,58)+'…':it.t); await chSay(`<span class="cm-ok"><i>${CK}</i><span>Anotado en la ficha de ${esc(n)}.</span></span>`); }
   else {
-    const u=it.kind==='prod'?it.x.u:it.u, t=it.kind==='prod'?it.x.t:it.kind==='img'?'Tu foto':'Tu link';
+    const u=it.kind==='prod'?it.x.u:it.u, t=it.kind==='prod'?it.x.t:it.kind==='img'?(it.note?(it.note.length>40?it.note.slice(0,38)+'…':it.note):'Tu foto'):'Tu link';
     if(it.kind!=='link') (SAVED[n]=SAVED[n]||[]).unshift({u,t,src:it.src||'cam'});
     const g=it.kind==='prod'?GIFT[n][0].indexOf(it.x.h):-1;
     let msg;
@@ -2685,8 +2695,11 @@ async function chPick(n){
   if(tab==='personas'&&personSel===p) render(); else renderChrome();
 }
 $('fab').onclick=chOpen; $('chX').onclick=chClose;
-$('chF').onsubmit=e=>{ e.preventDefault(); const v=$('chT').value; if(!v.trim()) return; $('chT').value=''; chSend({text:v}); };
-$('chImg').onchange=e=>{ const f=e.target.files&&e.target.files[0]; if(f) chSend({img:URL.createObjectURL(f)}); e.target.value=''; };
+let chAtt=null;
+const chAttSet=u=>{ chAtt=u; $('chTr').hidden=!u; if(u){ $('chTi').src=u; $('chT').placeholder='Escribe algo sobre la foto…'; $('chT').focus(); } else $('chT').placeholder='Un link, una idea, un gusto…'; };
+$('chF').onsubmit=e=>{ e.preventDefault(); const v=$('chT').value; if(chAtt){ const u=chAtt; chAttSet(null); $('chT').value=''; chSend({img:u,text:v}); return; } if(!v.trim()) return; $('chT').value=''; chSend({text:v}); };
+$('chImg').onchange=e=>{ const f=e.target.files&&e.target.files[0]; if(f) chAttSet(URL.createObjectURL(f)); e.target.value=''; };
+$('chTx').onclick=()=>chAttSet(null);
 $('ch').addEventListener('click',e=>{
   const d=e.target.closest('[data-chd]'), c=e.target.closest('[data-chp]'), g=e.target.closest('[data-chgo]');
   if(d) chSend({demo:d.dataset.chd});
