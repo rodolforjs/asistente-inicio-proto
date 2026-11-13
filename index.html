@@ -444,6 +444,14 @@ body.in-app .ob-kb{display:flex}
 .dh-pd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:18px;background:#fff;padding:12px 16px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}.dh-pd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .dh-pdi{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#f1f3f6}.dh-pd b{display:block;font-size:14px;font-weight:600}.dh-pd small{display:block;font-size:12px;color:#5f6b7d}.dh-pd em{margin-left:auto;font-style:normal;font-size:16px}
 .dh-h{margin-top:22px;font-size:13px;font-weight:600}
+.yr{position:relative;height:30px;margin:12px 6px 4px}
+.yr-ln{position:absolute;left:0;right:0;top:6px;height:2px;border-radius:2px;background:linear-gradient(to right,#ff5924 0 3%,#e5eaf2 3%)}
+.yr-d{position:absolute;top:2px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #aab2bf;transition:transform .15s}
+.yr-d.is-nx{box-shadow:inset 0 0 0 2.5px #0e1014}.yr-d.is-now{background:#ff5924;box-shadow:0 0 0 3px rgba(255,89,36,.2)}
+.yr-d:hover,.yr-d:focus-visible{transform:scale(1.35);z-index:2}
+.yr-tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;border-radius:8px;background:#0e1014;padding:4px 8px;font-size:11.5px;font-weight:500;color:#fff;opacity:0;pointer-events:none;transition:opacity .15s}
+.yr-d:hover .yr-tip,.yr-d:focus-visible .yr-tip{opacity:1}
+.yr-a,.yr-b{position:absolute;top:16px;font-size:11px;color:#8b95a5}.yr-a{left:0}.yr-b{right:0}
 .dt{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:10px;position:relative}
 .dt::before{content:"";position:absolute;left:0;right:0;top:5px;height:2px;background:#dde3ec}
 .dt button{position:relative;display:flex;flex-direction:column;gap:1px;padding-right:10px;text-align:left}
@@ -1832,6 +1840,9 @@ function viewPlanner(){
 
 /* ---------- Inicio: lo que viene (pipeline) ---------- */
 const ensureOrder = p => p.order||(p.order={no:'CC-48107',ship:'directo',wrap:true,pay:'card',msg:'Bienvenida a la familia, Emilia.'});
+/* el año en una línea: cada punto es una fecha que sigo */
+const yrRail = v => { const pos=p=>Math.min(97,Math.max(3,dleft(p)/365*100)), end=new Date(TODAY); end.setFullYear(end.getFullYear()+1);
+  return `<div class="yr" role="group" aria-label="Tu año"><span class="yr-ln" aria-hidden="true"></span>${v.filter(p=>phase(p)!=='bought'&&dleft(p)>=0).sort(byDate).map((p,k,a)=>`<button data-act="flow" data-i="${idx(p)}" class="yr-d${phase(p)==='now'?' is-now':a.filter(x=>phase(x)==='later').indexOf(p)>-1&&a.filter(x=>phase(x)==='later').indexOf(p)<3?' is-nx':''}" style="left:calc(${pos(p)}% + ${k&&dleft(a[k-1])===dleft(p)?7:0}px)" aria-label="${esc(p.n)}, ${fdate(occ(p))}"><span class="yr-tip">${esc(p.n)} · ${fdate(occ(p))}</span></button>`).join('')}<span class="yr-a">Hoy</span><span class="yr-b">${fdate(end)}</span></div>`; };
 const chip = p => `<button data-act="flow" data-i="${idx(p)}" class="dh-c"><span class="dh-av" style="background:${(PORT[p.n]||{}).bg||'#e5eaf2'}">${portrait(p.n)}</span><span class="min-w-0"><b>${esc(p.n)}</b><small>${esc(p.o)} · ${fdate(occ(p))}</small></span></button>`;
 function viewHome(){
   const v=yr(), now=v.filter(p=>phase(p)==='now').sort((x,y)=>ordLeft(x)-ordLeft(y)), later=v.filter(p=>phase(p)==='later').sort(byDate), done=v.filter(p=>phase(p)==='bought'), nx=later.slice(0,5);
@@ -1849,11 +1860,10 @@ function viewHome(){
     :n0?`Por ahora estamos bien. Lo próximo es ${esc(n0.n)} el ${fdate(occ(n0))}.`:'Por ahora no hay nada pendiente.';
   $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l"><h1 class="pl-h dh-1 ${hot?'pl-urg':''}">${h1}</h1>
     <p class="pl-lead dh-1">${lead}</p>
-    <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
+    <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,yrRail(v)+later.slice(0,3).map(chip).join('')+more)}
       ${col('Para regalar pronto',now.length,hot?'Esto no puede esperar':'Ya lo pensé, falta tu decisión',now.map(nowItem).join(''),'dh-hot'+(hot?' dh-urg':''))}</div>
     ${done.length?`<section class="dh-or"><header><h3>Pedidos en curso</h3><button data-act="tab" data-t="regalos">Ver todos <span aria-hidden="true">→</span></button></header>${done.slice(0,2).map(order).join('')}</section>`:''}
-    <h2 class="dh-h">Línea de tiempo</h2>
-    <ol class="dt">${nx.map(p=>`<li><button data-act="flow" data-i="${idx(p)}"><i></i><b class="num">${fdate(occ(p))}</b><span>${esc(p.n)}</span><small>Te aviso el ${fdate(avisoD(p))}</small></button></li>`).join('')}</ol></div>
+    </div>
     <aside class="pl-r">${ticket(yfocus)}</aside></div>`;
   animateTicket();
 }
