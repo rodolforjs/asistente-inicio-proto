@@ -429,7 +429,8 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .ob-kb kbd{display:grid;place-items:center;min-width:22px;height:22px;border-radius:7px;background:#fff;font:700 12px Inter,sans-serif;color:#0e1014}
 body.in-app .ob-kb{display:flex}
 .ob-kbs{position:fixed;left:18px;bottom:16px;z-index:170;display:flex;gap:8px}.ob-kb{position:static!important}
-@media(max-width:900px){.ob-w{grid-template-columns:minmax(0,1fr);gap:28px;padding:8px 20px 40px}.ob-r{display:none}.ob-h{padding:18px 20px}.ob-kb{display:none!important}}
+@media(max-width:900px){.ob-w{grid-template-columns:minmax(0,1fr);gap:28px;padding:8px 20px 40px}.ob-r{display:none}.ob-h{padding:18px 20px}}
+@media(max-width:767px){.ob-kbs{left:14px;bottom:calc(76px + env(safe-area-inset-bottom))}}
 /* inicio */
 .dh{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
 .dh-k{display:flex;flex-direction:column;border-radius:22px;background:#fff;padding:16px;box-shadow:0 0 0 1px #e5eaf2}
@@ -847,6 +848,90 @@ body.ch-on .chat{display:flex}
 .pn-sv figcaption{margin-top:4px;font-size:11px;line-height:1.2;color:#5f6b7d}
 .pn-sv i{position:absolute;top:5px;left:5px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#0e1014;color:#fff}
 
+/* ---------- Simular en… ---------- */
+.sim-pl{width:22px;height:22px;border-radius:50%;background:#fff;-webkit-mask:none}
+.sim-pl{position:relative}.sim-pl::after{content:"";position:absolute;left:8px;top:6px;border-left:8px solid #0e1014;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.sim-menu{position:absolute;left:0;bottom:44px;width:230px;border-radius:20px;background:#fff;padding:8px;box-shadow:0 30px 60px -20px rgba(14,16,20,.5),0 0 0 1px #e5eaf2}
+.sim-menu[hidden]{display:none}
+.sim-menu p{padding:8px 10px 4px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9aa3b2}
+.sim-it{display:flex;align-items:center;gap:10px;width:100%;border-radius:12px;padding:8px 10px;font-size:14px;font-weight:500;color:#0e1014;text-align:left}
+.sim-it:hover{background:#f5f7f9}
+.sim-it kbd{display:grid;place-items:center;min-width:22px;height:22px;border-radius:7px;background:#0e1014;font:700 11px Inter,sans-serif;color:#fff}
+body.sim-on #sim{display:grid}
+body.sim-on .fab{display:none}
+.sim-d{position:relative;display:grid;place-items:center;max-width:calc(100vw - 32px)}
+.sim-ok{display:inline-flex;align-items:center;gap:8px}
+.sim-ok i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#22a06b;color:#fff;flex:none}
+.sim-b1,.sim-b2{min-height:44px;padding:0 18px;border-radius:999px;font-weight:700;transition:background .15s,transform .15s}
+.sim-b1{background:#ff5924;color:#fff}.sim-b1:hover{background:#ff6c3d}
+.sim-b2{background:rgba(255,255,255,.12);color:#fff}.sim-b2:hover{background:rgba(255,255,255,.2)}
+/* auto */
+.car{position:relative;width:min(820px,calc(100vw - 32px));aspect-ratio:2.15;border-radius:30px;background:#0b0c0f;padding:12px;box-shadow:0 0 0 2px #2a2d33,0 60px 90px -30px rgba(0,0,0,.7)}
+.car-s{position:relative;display:grid;grid-template-columns:64px 1fr;height:100%;border-radius:20px;overflow:hidden;background:#15171c;color:#fff}
+.car-dock{display:flex;flex-direction:column;align-items:center;gap:12px;padding:14px 0;background:#0e1014}
+.car-dock span{width:40px;height:40px;border-radius:12px;background:#2a2d33}.car-dock span:first-child{background:#ff5924}.car-dock small{margin-top:auto;font-size:12px;font-weight:600}
+.car-map{position:relative;overflow:hidden;background:#1d2026}
+.car-map > svg{position:absolute;inset:0;width:100%;height:100%}
+.car-eta{position:absolute;left:14px;top:14px;display:flex;align-items:center;gap:8px;border-radius:14px;background:rgba(14,16,20,.85);padding:9px 14px;font-size:14px;font-weight:600}
+.car-eta i{width:10px;height:10px;border-radius:50%;background:#4f8cff}
+.car-ban{position:absolute;right:14px;top:14px;bottom:14px;width:min(380px,58%);display:flex;flex-direction:column;gap:10px;border-radius:20px;background:rgba(14,16,20,.92);padding:16px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.car-ban .appi{width:30px;height:30px}
+.car-ban h4{font-size:clamp(14px,1.9vw,18px);font-weight:600;line-height:1.25}
+.car-g{display:flex;align-items:center;gap:12px;border-radius:14px;background:rgba(255,255,255,.07);padding:8px}
+.car-g img{width:54px;height:54px;border-radius:10px;object-fit:cover;background:#fff}
+.car-g small{display:block;font-size:12.5px;color:rgba(255,255,255,.6)}.car-g em{display:block;margin-top:2px;font-style:normal;font-size:12.5px;font-weight:600;color:#7be0b0}
+.car-bt{display:flex;gap:8px;margin-top:auto}.car-bt button{flex:1;height:clamp(40px,6vw,54px);font-size:clamp(13px,1.6vw,16px)}
+@media(max-width:620px){.car{aspect-ratio:auto;height:min(620px,calc(100dvh - 110px));padding:8px}.car-s{grid-template-columns:1fr}.car-dock{display:none}.car-ban{left:10px;right:10px;top:auto;bottom:10px;width:auto}.car-ban h4{font-size:16px}.car-bt button{height:50px;font-size:15px}}
+/* parlante */
+.voz{display:grid;grid-template-columns:auto minmax(0,380px);align-items:center;gap:32px}
+.voz-sp{position:relative;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#3a3d44,#16181c 70%);box-shadow:0 40px 60px -20px rgba(0,0,0,.7),inset 0 2px 0 rgba(255,255,255,.08)}
+.voz-sp::before{content:"";position:absolute;inset:-5px;border-radius:50%;padding:5px;background:conic-gradient(#27d9f2,#5b7cff,#a35bff,#27d9f2);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.25;transition:opacity .3s}
+.voz-sp.on::before{opacity:1;animation:fabspin 3s linear infinite}
+.voz-sp::after{content:"";position:absolute;inset:34%;border-radius:50%;background:repeating-radial-gradient(circle,#24272d 0 2px,#1a1c20 2px 5px)}
+.voz-c{display:flex;flex-direction:column;gap:10px;min-height:240px;justify-content:flex-end}
+.voz-m{max-width:92%;border-radius:20px;padding:12px 15px;font-size:15px;line-height:1.4}
+.voz-a{align-self:flex-start;background:#fff;color:#0e1014;border-bottom-left-radius:6px}
+.voz-u{align-self:flex-end;background:#5b7cff;color:#fff;border-bottom-right-radius:6px}
+.voz-m small{display:block;margin-bottom:4px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.5}
+.voz-say{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;font-size:15px}
+@media(max-width:620px){.voz{grid-template-columns:1fr;justify-items:center;gap:20px}.voz-sp{width:120px;height:120px}.voz-c{width:calc(100vw - 32px);min-height:0}}
+/* refri */
+.fr{position:relative;width:300px;height:min(600px,calc(100vh - 60px));border-radius:22px;background:linear-gradient(90deg,#d9dde3,#f3f5f8 30%,#e3e7ec);box-shadow:0 50px 80px -30px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.08)}
+.fr::before{content:"";position:absolute;left:0;right:0;top:28%;height:3px;background:#b9c0ca}
+.fr::after{content:"";position:absolute;left:14px;top:8%;width:6px;height:14%;border-radius:3px;background:#a6aeb9;box-shadow:0 calc(min(600px,100vh - 60px) * .3) 0 #a6aeb9}
+.fr-s{position:absolute;left:34px;right:16px;top:33%;bottom:8%;overflow:auto;border-radius:16px;background:#0e1014;color:#fff;padding:14px}
+.fr-s h4{display:flex;justify-content:space-between;font-size:13px;font-weight:700}.fr-s h4 small{font-weight:500;color:rgba(255,255,255,.5)}
+.fr-l{margin-top:8px;display:flex;flex-direction:column;gap:5px;font-size:12.5px}
+.fr-l li{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.8)}.fr-l li i{width:12px;height:12px;border-radius:4px;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.fr-l li.is-g{color:#fff;font-weight:600}.fr-l li.is-g i{background:#ff5924;box-shadow:none}
+.fr-n{margin-top:10px;border-radius:14px;background:#fff;color:#0e1014;padding:10px}
+.fr-n p{font-size:13px;line-height:1.3;font-weight:600}
+.fr-n .car-g{background:#f5f7f9;margin-top:8px;padding:6px}.fr-n .car-g img{width:42px;height:42px}.fr-n .car-g small{color:#5f6b7d}
+.fr-n button{width:100%;height:38px;margin-top:8px;font-size:13px}
+/* reloj */
+.rl{position:relative;display:grid;place-items:center}
+.rl::before,.rl::after{content:"";position:absolute;left:50%;width:150px;height:120px;margin-left:-75px;background:#2b2e35;z-index:-1}
+.rl::before{top:-90px;border-radius:30px 30px 0 0}.rl::after{bottom:-90px;border-radius:0 0 30px 30px}
+.rl-b{width:230px;height:276px;border-radius:58px;background:#0b0c0f;padding:12px;box-shadow:0 0 0 3px #3a3d44,0 40px 70px -24px rgba(0,0,0,.8)}
+.rl-s{display:flex;flex-direction:column;height:100%;border-radius:46px;background:#000;color:#fff;padding:18px 16px 14px;text-align:left}
+.rl-s .appi{width:26px;height:26px;border-radius:50%}
+.rl-s b{margin-top:8px;font-size:16px;line-height:1.2}
+.rl-g{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:rgba(255,255,255,.7)}.rl-g img{width:34px;height:34px;border-radius:9px;object-fit:cover;background:#fff}
+.rl-s button{margin-top:auto;height:44px;font-size:15px}
+.rl-buzz{animation:rlbz .12s linear 6}
+@keyframes rlbz{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px) rotate(-.6deg)}75%{transform:translateX(3px) rotate(.6deg)}}
+/* lentes */
+.gl{position:relative;width:min(820px,calc(100vw - 32px));aspect-ratio:1.9;border-radius:28px;overflow:hidden;background:#cfc6ba;box-shadow:0 60px 90px -30px rgba(0,0,0,.7)}
+.gl-v{position:absolute;inset:0;background:linear-gradient(#efe9df 0 62%,#bdb2a3 62%)}
+.gl-v .gl-sh{position:absolute;left:10%;right:10%;height:2.5%;border-radius:3px;background:#b8a88f;box-shadow:0 8px 12px -6px rgba(0,0,0,.3)}
+.gl-v img{position:absolute;object-fit:cover;border-radius:8px;box-shadow:0 12px 18px -8px rgba(0,0,0,.4)}
+.gl-glass{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.gl-hud{position:absolute;inset:0}
+.gl-ret{position:absolute;opacity:0}.gl-ret i{position:absolute;width:20px;height:20px;border:3px solid #fff;filter:drop-shadow(0 0 5px rgba(0,0,0,.5))}
+.gl-ret i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:7px 0 0 0}.gl-ret i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 7px 0 0}.gl-ret i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 7px}.gl-ret i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 7px 0}
+.gl-tag{position:absolute;display:flex;flex-direction:column;gap:8px;width:min(260px,40%);border-radius:18px;background:rgba(14,16,20,.82);color:#fff;padding:12px 13px;font-size:clamp(12px,1.6vw,14.5px);line-height:1.3;opacity:0;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.gl-tag button{height:36px;font-size:13px}
+@media(max-width:620px){.gl{aspect-ratio:.72}.gl-tag{left:9%!important;right:9%;top:auto!important;bottom:9%;width:auto}}
 /* ---------- En la tienda: aviso del celular ---------- */
 .tn{position:fixed;inset:0;z-index:190;display:none;place-items:center;background:rgba(14,16,20,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.tn-on .tn{display:grid}
@@ -879,6 +964,7 @@ body.tn-on .tn{display:grid}
 .tn-here{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#0e1014;color:#fff;padding:6px 12px 6px 9px;font-size:12px;font-weight:600}
 .tn-h{margin-top:18px;font-family:'Newsreader',serif;font-weight:400;font-size:34px;line-height:1;letter-spacing:-.035em}
 .tn-h em{color:#ff5924}
+.tn-1{white-space:nowrap}
 .tn-s{margin-top:8px;font-size:14px;line-height:1.35;color:#5f6b7d}
 .tn-pr{margin-top:18px;border-radius:24px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 20px 30px -24px rgba(14,16,20,.4);overflow:hidden}
 .tn-pr .tn-im{position:relative;height:178px;background:#f2f0ec}
@@ -890,9 +976,6 @@ body.tn-on .tn{display:grid}
 .tn-pb p{margin-top:8px;font-family:'Newsreader',serif;font-style:italic;font-size:15px;line-height:1.3}
 .tn-pulse{transform-box:fill-box;transform-origin:center;animation:tnp 1.6s ease-out infinite}
 @keyframes tnp{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.4);opacity:0}}
-.tn-dp{display:flex;gap:11px;align-items:center;margin-top:12px;border-radius:18px;background:#0e1014;color:#fff;padding:9px 12px 9px 9px;font-size:13px;line-height:1.3}
-.tn-dp img{width:46px;height:46px;flex:none;border-radius:11px;object-fit:cover;background:#fff}
-.tn-dp small{display:block;color:rgba(255,255,255,.6);font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
 .tn-bt{display:flex;gap:8px;margin-top:14px}
 .tn-bt button{flex:1;height:48px;border-radius:999px;font-size:14.5px;font-weight:600}
 .tn-ap .tn-bt{position:sticky;bottom:-22px;margin:14px -18px -22px;padding:14px 18px 22px;background:linear-gradient(rgba(251,251,253,0),#fbfbfd 35%)}
@@ -910,17 +993,11 @@ body.tn-on .tn{display:grid}
 .tn-rc div{display:flex;justify-content:space-between;padding:4px 0}
 .tn-rc div+div{border-top:1px dashed #e5eaf2}
 .tn-rc dt{color:#5f6b7d}
-.tn-ask{margin-top:14px;border-radius:20px;background:#0e1014;color:#fff;padding:13px 14px;font-size:14px;line-height:1.3}
-.tn-ask div{display:flex;gap:6px;margin-top:10px}
-.tn-ask button{border-radius:999px;background:rgba(255,255,255,.14);padding:6px 13px;font-size:12.5px;font-weight:600}.tn-ask button:hover,.tn-ask button[aria-pressed=true]{background:#fff;color:#0e1014}
 .tn-gd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:20px;background:#fff;padding:12px 14px 12px 12px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}
 button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .tn-gd b{display:block;font-size:14.5px}.tn-gd small{display:block;margin-top:1px;font-size:12.5px;color:#5f6b7d}
 .tn-gi{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ff5924;color:#fff}
 .tn-gd-s .tn-gi{background:#0e1014}
-.tn-dp{display:flex;align-items:center;gap:11px;width:100%;margin-top:12px;text-align:left}
-.tn-dp em{flex:none;border-radius:999px;background:#fff;color:#0e1014;padding:5px 11px;font-style:normal;font-size:12px;font-weight:700}
-.tn-dp[aria-pressed=true] em{background:#22a06b;color:#fff}
 .tn-mini{display:flex;align-items:center;gap:12px;padding:8px;font-size:14px}.tn-mini img{width:56px;height:56px;border-radius:14px;object-fit:cover}.tn-mini small{display:block;color:#5f6b7d;font-size:12.5px}
 /* guía con cámara */
 .tn-ar{position:absolute;inset:0;overflow:hidden;background:#1b1a18;color:#fff}
@@ -1122,7 +1199,10 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
   <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
 </section>
 
-<div class="ob-kbs"><button id="obKb" class="ob-kb" aria-label="Simular la notificación"><kbd>N</kbd>Simular notificación</button><button id="obKu" class="ob-kb" aria-label="Simular el último día"><kbd>U</kbd>Último día</button><button id="obKt" class="ob-kb" aria-label="Simular que estás en la tienda"><kbd>T</kbd>En la tienda</button></div>
+<div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span>Simular en…</button>
+<div id="simMenu" class="sim-menu" hidden><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
+<p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd>En la tienda</button><button data-sim="car" class="sim-it"><kbd>C</kbd>En el auto</button><button data-sim="voz" class="sim-it"><kbd>A</kbd>Parlante</button><button data-sim="refri" class="sim-it"><kbd>R</kbd>Refri</button><button data-sim="reloj" class="sim-it"><kbd>W</kbd>Reloj</button><button data-sim="lentes" class="sim-it"><kbd>L</kbd>Lentes</button></div></div>
+<section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
 
 <!-- mándame algo: conversar con el planner desde cualquier pantalla -->
 <button id="fab" class="fab" aria-label="Abrir el chat" aria-expanded="false" aria-controls="ch"><span class="fab-o"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="fab-t">Chat</span></button>
@@ -2156,7 +2236,7 @@ function personPanel(p){
   <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}<small>${SRC_L[s]}</small></span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li class="text-[#5f6b7d]">Todavía estoy aprendiendo.</li>'}</ul>
   ${(()=>{ const h=HINT[p.n], c=h&&cxOf(h[0]); return c&&!CX[h[0]]?`<div class="pn-cx"><img src="${c.img}" alt=""><span class="min-w-0">Conecta ${c.t} y sabré más de ${esc(p.n)}.<small>${h[1]}</small></span><button data-act="pncx" data-k="${c.k}">Conectar</button></div>`:''; })()}
   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
-  ${(SAVED[p.n]||[]).length?`<h3 class="pn-t">Me lo mandaste</h3><div class="pn-sv">${SAVED[p.n].map(v=>`<figure><img src="${v.u}" alt=""><i>${(CH_IC[v.src]||CH_IC.cam).replace(/width="15" height="15"/,'width="11" height="11"')}</i><figcaption>${esc(v.t)}</figcaption></figure>`).join('')}</div>`:''}
+  ${(SAVED[p.n]||[]).length?`<h3 class="pn-t">Ideas guardadas</h3><div class="pn-sv">${SAVED[p.n].map(v=>`<figure><img src="${v.u}" alt=""><i>${(CH_IC[v.src]||CH_IC.cam).replace(/width="15" height="15"/,'width="11" height="11"')}</i><figcaption>${esc(v.t)}</figcaption></figure>`).join('')}</div>`:''}
   <h3 class="pn-t">${lbl}</h3>
   <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
 
@@ -2712,7 +2792,6 @@ const TN_LOC=[['Mesa central',12,'Sigue derecho'],['Frente de la tienda',6,'Est�
 let tnP=null, tnPick=0, tnRun=0, tnAsk=null, tnSaved=false;
 const tnSb = dark => `<div class="tn-sb" style="color:${dark?'#fff':'#0e1014'}"><span class="num">18:42</span><span>●●● ᯤ ▮</span></div>`;
 const tnTarget = () => yr().filter(p=>phase(p)==='now'&&!p.bought).sort(byDate)[0]||null;
-const tnNext = p => yr().filter(x=>x!==p&&!x.bought&&phase(x)==='later').sort(byDate)[0]||null;
 function tnLock(){
   const p=tnP, x=prod(GIFT[p.n][0][tnPick]);
   $('tnS').innerHTML=`<div class="tn-lk">${tnSb(true)}<div class="tn-clk"><small>${DIAS[TODAY.getDay()]} ${TODAY.getDate()} de ${MESES[TODAY.getMonth()]}</small><b class="num">18:42</b></div>
@@ -2723,17 +2802,17 @@ function tnLock(){
   if(!REDUCE){ gsap.set(['#tnN','#tnTap'],{opacity:0}); gsap.fromTo('#tnN',{y:-60,opacity:0,scale:.96},{y:0,opacity:1,scale:1,duration:.7,delay:.7,ease:'back.out(1.6)'}); gsap.to('#tnTap',{opacity:.8,delay:1.5,duration:.4}); }
 }
 function tnApp(view='main'){
-  const p=tnP, x=prod(GIFT[p.n][0][tnPick]), [loc,steps]=TN_LOC[tnPick], o=occ(p), nx=tnNext(p), cap=BUDGET[p.n];
+  const p=tnP, x=prod(GIFT[p.n][0][tnPick]), [loc,steps]=TN_LOC[tnPick], o=occ(p), cap=BUDGET[p.n];
   const head=`${tnSb()}<span class="tn-here"><span class="live-dot"></span>Estás en Creado · MUT</span>`;
   let body;
   if(view==='three'){
     body=`<h1 class="tn-h">Las 3 están <em>aquí.</em></h1><p class="tn-s">Toca una y te llevo.</p><div class="tn-3">${GIFT[p.n][0].map((h,i)=>{ const y=prod(h); return `<button data-tn="pick" data-i="${i}" aria-pressed="${i===tnPick}">${img(y.u,'')}<span class="min-w-0"><b>${esc(y.t)}</b><small class="num">${clp(y.p)}</small><em>${TN_LOC[i][0]}</em></span></button>`; }).join('')}</div>`;
   } else {
-    body=`<h1 class="tn-h">${esc(p.n)}, <em>resuelto hoy.</em></h1>
-    <p class="tn-s">${DIAS[o.getDay()][0].toUpperCase()+DIAS[o.getDay()].slice(1,3)} ${o.getDate()} ${MES[o.getMonth()].toLowerCase()}${cap?` · hasta ${clp(cap)}`:''}. Ya lo elegí; solo tómalo.</p>
+    body=`<h1 class="tn-h tn-1">Resuélvelo <em>hoy.</em></h1>
+    <p class="tn-s"><b class="font-semibold text-[#0e1014]">${esc(p.n)}</b> · ${DIAS[o.getDay()][0].toUpperCase()+DIAS[o.getDay()].slice(1,3)} ${o.getDate()} ${MES[o.getMonth()].toLowerCase()}${cap?` · hasta ${clp(cap)}`:''}<br>Ya lo elegí; solo tómalo.</p>
     <div class="tn-pr"><div class="tn-im">${img(x.u,'')}<span>Está aquí</span></div><div class="tn-pb"><b>${esc(x.t)}</b><small class="num">${esc(x.v)} · ${clp(x.p)}</small><p>“${esc((OPT[x.h]||'Lo elegí pensando en '+p.n+'.').replace(/^Mi favorita\. /,''))}”</p></div></div>
     <button data-tn="guide" class="tn-gd"><span class="tn-gi">${TN_CAM}</span><span class="min-w-0 flex-1"><b>Guíame con la cámara</b><small>${loc} · a ${steps} pasos</small></span><span aria-hidden="true">→</span></button>
-    ${nx?`<button data-tn="save" class="tn-dp"${tnSaved?' aria-pressed="true"':''}>${img(chosen(nx).u,'')}<span class="min-w-0 flex-1"><small>De paso · ${esc(nx.n)}</small>${esc(chosen(nx).t)} también está aquí.</span><em>${tnSaved?'Guardado':'Guardar'}</em></button>`:''}`;
+`;
   }
   $('tnS').innerHTML=`<div class="tn-ap" id="tnAp">${head}${body}<div class="tn-bt">${view==='three'?`<button data-tn="main" class="tn-b1">Listo</button>`:`<button data-tn="take" class="tn-b1">Lo llevo</button><button data-tn="three" class="tn-b2">Ver las 3</button>`}</div></div>`;
   if(!REDUCE) gsap.from('#tnAp > *',{y:14,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'});
@@ -2780,15 +2859,15 @@ async function tnTake(){
 }
 function tnDone(){
   const p=tnP, x=chosen(p);
-  $('tnS').innerHTML=`<div class="tn-ap tn-ct" id="tnAp">${tnSb()}<span class="tn-ok">${CK.replace('width="14" height="14"','width="30" height="30"')}</span><h1 class="tn-h">Resuelto.</h1><p class="tn-s">${esc(p.n)} ya está listo en tu planner.</p>
+  $('tnS').innerHTML=`<div class="tn-ap tn-ct" id="tnAp">${tnSb()}<span class="tn-ok">${CK.replace('width="14" height="14"','width="30" height="30"')}</span><h1 class="tn-h">Resuelto.</h1><p class="tn-s">${esc(p.n)} ya está listo en tu planner. El próximo año te aviso igual.</p>
     <dl class="tn-rc text-left"><div><dt>Regalo</dt><dd class="num">${clp(x.p)}</dd></div><div><dt>Envuelto y con tarjeta</dt><dd>Incluido</dd></div><div><dt>Pagado en</dt><dd>Caja · MUT</dd></div></dl>
-    <div class="tn-ask text-left">¿Te aviso el próximo año para ${esc(p.n)}?<div><button data-tn="ask" data-v="si" aria-pressed="${tnAsk==='si'}">Sí, avísame</button><button data-tn="ask" data-v="no" aria-pressed="${tnAsk==='no'}">No</button></div></div>
     <div class="tn-bt"><button data-tn="end" class="tn-b1">Listo</button></div></div>`;
   if(!REDUCE){ gsap.from('.tn-ok',{scale:0,rotation:-30,duration:.6,ease:'back.out(2)'}); gsap.from('#tnAp > :not(.tn-ok)',{y:12,opacity:0,duration:.4,stagger:.05,delay:.15,clearProps:'all'}); }
 }
 function tnOpen(){
   if($('year').style.display!=='block') return;
   const p=tnTarget(); if(!p){ ytoast('No tienes fechas pendientes: en la tienda no te interrumpo.'); return; }
+  if(document.body.classList.contains('sim-on')) simClose();
   tnP=p; tnPick=ypick[p.n]||0; tnSaved=false; tnRun++; closeSheet(); closePops(); if(document.body.classList.contains('ch-on')) chClose();
   document.body.classList.add('tn-on'); tnLock();
   if(!REDUCE) gsap.from('.tn-ph',{y:40,opacity:0,duration:.6,ease:'power3.out',clearProps:'all'});
@@ -2807,14 +2886,138 @@ $('tn').addEventListener('click',e=>{
   else if(a==='guide') tnGuide();
   else if(a==='arx'){ tnRun++; tnStopCam(); tnApp(); }
   else if(a==='got'){ tnStopCam(); tnTake(); }
-  else if(a==='save'){ const nx=tnNext(tnP); if(nx&&!tnSaved){ tnSaved=true; const y=chosen(nx); (SAVED[nx.n]=SAVED[nx.n]||[]).unshift({u:y.u,t:y.t,src:'cam'}); addAct({k:'learn',t:`Guardé una idea para ${nx.n}`,s:`${y.t} · lo viste en la tienda`,n:nx.n,unread:false}); tnApp(); } }
-  else if(a==='ask'){ tnAsk=b.dataset.v; tnDone(); }
   else if(a==='end') tnClose();
 });
 addEventListener('keydown',e=>{
   if(e.key==='Escape'){ if(document.body.classList.contains('tn-on')){ tnClose(); return; } if(document.body.classList.contains('ch-on')){ chClose(); return; } }
   if(e.metaKey||e.ctrlKey||e.altKey) return; const t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA') return;
   if((e.key==='t'||e.key==='T')&&!document.body.classList.contains('tn-on')) tnOpen();
+});
+
+/* ---------- Simular en…: el asistente aparece en otras pantallas de tu día ---------- */
+Object.assign(ADDR,{'Abuela Rosa':'Pasaje Los Olmos 120, Ñuñoa','Tío Jorge':'Av. Grecia 2550, Peñalolén','Andrés':'Santa Isabel 410, Santiago'});
+CH_IC.glass='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="14" r="3.5"/><circle cx="17.5" cy="14" r="3.5"/><path d="M10 14h4M3 13l2-6M21 13l-2-6"/></svg>';
+const byN = n => YEAR.find(p=>p.n===n);
+const GIFT_I = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>';
+const SIM = {
+  car:   {t:'En el auto.',     d:'Vas camino a casa de tu mamá el día de su cumple. Aparezco en la pantalla del auto.', n:'Mamá'},
+  voz:   {t:'En el parlante.', d:'Es de mañana y hoy está el cumple de tu abuela. Te hablo desde el parlante de la cocina.', n:'Abuela Rosa'},
+  refri: {t:'En el refri.',    d:'Mañana vas a la once donde tu tío. Aprovecho el pedido del súper.', n:'Tío Jorge'},
+  reloj: {t:'En el reloj.',    d:'Estás en una reunión. Te aviso con una vibración y apruebas con un toque.', n:'Andrés'},
+  lentes:{t:'En los lentes.',  d:'Vas por la calle y miras una vitrina. Reconozco algo que le gustaría a tu mamá.', n:'Mamá', h:'mielero-en-ceramica-gres'},
+};
+const SIM_KEY = {c:'car',a:'voz',r:'refri',w:'reloj',l:'lentes'};
+const VOZ_DESC = {'bufanda-alpaca-unisex-chocolate':['una bufanda de alpaca','la']};
+let simRun=0, simAfter=null, simAct={};
+const simOk = t => `<span class="sim-ok"><i>${CK}</i><span>${t}</span></span>`;
+const simEnd = (cls='sim-b1') => `<button class="${cls}" data-s="end">Listo</button>`;
+function simBuy(p,how){
+  if(!p.bought){ p.bought=true; p.justBought=false; p.order={no:'CC-'+(48200+idx(p)*7),ship:'directo',wrap:true,pay:cfg.pay,msg:MSG[p.n]||`Para ${p.n}, con cariño.`};
+    addAct({k:'buy',t:`Compré el regalo de ${p.n}`,s:`${chosen(p).t} · ${how}`,n:p.n,unread:false}); }
+  simAfter={tab:'regalos',p};
+}
+function simOpen(k){
+  if($('year').style.display!=='block') return;
+  const S=SIM[k]; closeMenu(); closeSheet(); closePops();
+  if(document.body.classList.contains('ch-on')) chClose();
+  if(document.body.classList.contains('tn-on')) tnClose();
+  simRun++; simAfter=null; simAct={end:simClose};
+  $('simT').textContent=S.t; $('simP').textContent=S.d;
+  document.body.classList.add('sim-on');
+  ({car:simCar,voz:simVoz,refri:simRefri,reloj:simReloj,lentes:simLentes})[k](byN(S.n),S);
+  if(!REDUCE) gsap.from('#simD',{y:40,opacity:0,duration:.6,ease:'power3.out',clearProps:'all'});
+}
+function simClose(){
+  simRun++; document.body.classList.remove('sim-on'); $('simD').innerHTML=''; const a=simAfter; simAfter=null; if(!a) return;
+  if(a.tab==='regalos'){ tab='regalos'; pedido=a.p; co=null; render(); $('year').scrollTop=0; ytoast(`${a.p.n} quedó resuelto.`); }
+  else { personSel=a.p; setTab('personas'); ytoast(`Guardado en Ideas de ${a.p.n}.`); }
+}
+$('simD').addEventListener('click',e=>{ const b=e.target.closest('[data-s]'); if(b&&simAct[b.dataset.s]) simAct[b.dataset.s](b); });
+$('simX').onclick=simClose;
+const rel = p => (REL[p.n]||p.n).replace(/^Tu /,'tu ');
+
+/* auto */
+const CAR_MAP=`<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <rect width="600" height="300" fill="#1d2026"/>
+  <g fill="#23272e">${[[20,20,120,70],[160,20,150,70],[330,20,110,70],[460,20,140,70],[20,110,90,80],[130,110,180,80],[330,110,120,80],[470,110,130,80],[20,210,160,80],[200,210,110,80],[330,210,140,80],[490,210,110,80]].map(([x,y,w,h])=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8"/>`).join('')}</g>
+  <path d="M60 300 L60 200 L320 200 L320 100 L520 100" fill="none" stroke="#4f8cff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="520" cy="100" r="11" fill="#ff5924" stroke="#fff" stroke-width="3"/>
+  <path d="M60 262 l-11 22 11-6 11 6Z" fill="#fff"/></svg>`;
+function simCar(p){
+  const x=chosen(p);
+  $('simD').innerHTML=`<div class="car"><div class="car-s"><div class="car-dock"><span></span><span></span><span></span><small class="num">18:42</small></div>
+    <div class="car-map">${CAR_MAP}<span class="car-eta"><i></i>Casa de ${esc(p.n)} · 4 min</span>
+      <div class="car-ban" id="carB"><div class="flex items-center gap-2.5"><span class="appi">${GIFT_I}</span><small style="font-size:12px;color:rgba(255,255,255,.6)">Cuenta conmigo · ahora</small></div>
+        <h4>Hoy es el cumple de ${rel(p)} y no tienes regalo. Pídelo ya, te lo llevo ahí.</h4>
+        <div class="car-g">${img(x.u,'')}<span class="min-w-0"><b class="block truncate text-[14px]">${esc(x.t)}</b><small class="num">${clp(x.p)}</small><em>Llega antes que tú</em></span></div>
+        <div class="car-bt" id="carBt"><button class="sim-b1" data-s="yes">Sí, mándalo</button><button class="sim-b2" data-s="no">Ahora no</button></div></div></div></div></div>`;
+  if(!REDUCE) gsap.from('#carB',{x:40,opacity:0,duration:.6,delay:.5,ease:'power3.out'});
+  simAct.yes=()=>{ simBuy(p,'desde el auto'); $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch">${simOk('Listo. Llega a las 19:10, antes que tú.')}${simEnd()}</div>`; };
+  simAct.no=()=>{ $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch"><p class="text-[14px] text-white/70">Ok. Te lo recuerdo al estacionar.</p>${simEnd('sim-b2')}</div>`; };
+}
+
+/* parlante */
+async function simVoz(p){
+  const run=simRun, x=chosen(p), dsc=VOZ_DESC[x.h]||[x.t,'lo'];
+  $('simD').innerHTML=`<div class="voz"><div class="voz-sp" id="vzS" aria-hidden="true"></div><div class="voz-c" id="vzC" aria-live="polite"></div></div>`;
+  const say=(who,t)=>{ const d=document.createElement('div'); d.className='voz-m '+(who==='a'?'voz-a':'voz-u'); d.innerHTML=(who==='a'?'<small>Cuenta conmigo</small>':'')+t; $('vzC').appendChild(d); if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35}); return d; };
+  const talk=async(t)=>{ $('vzS').classList.add('on'); await wait(REDUCE?0:.7); if(run!==simRun) return false; say('a',t); await wait(REDUCE?0:.6); $('vzS').classList.remove('on'); return run===simRun; };
+  if(!await talk(`Buenos días. Hoy es el cumple de ${rel(p)} ${p.n.split(' ')[1]||''}. Elegí ${esc(dsc[0])} de ${clp(x.p)}. ¿${dsc[1][0].toUpperCase()+dsc[1].slice(1)} mando?`.replace(/  +/g,' ').replace(' .','.'))) return;
+  $('vzC').insertAdjacentHTML('beforeend','<button class="sim-b1 voz-say" data-s="yes">Decir «Sí»</button>');
+  simAct.yes=async b=>{ b.remove(); say('u','Sí.'); simBuy(p,'desde el parlante'); if(!await talk('Hecho. Llega a su casa a las 16:00.')) return; $('vzC').insertAdjacentHTML('beforeend',simEnd('sim-b1 voz-say')); };
+}
+
+/* refri */
+function simRefri(p){
+  const x=chosen(p), items=['Pan de molde','Paltas','Leche','Queso mantecoso','Té','Galletas'];
+  $('simD').innerHTML=`<div class="fr"><div class="fr-s"><h4>Lista del súper<small>Llega mañana 10:00</small></h4>
+    <ul class="fr-l" id="frL">${items.map(t=>`<li><i></i>${t}</li>`).join('')}</ul>
+    <div class="fr-n" id="frN"><p>Mañana vas a la once donde ${rel(p)}, y es su cumple. ¿Le sumo un regalo al pedido?</p>
+      <div class="car-g">${img(x.u,'')}<span class="min-w-0"><b class="block truncate text-[13px]">${esc(x.t)}</b><small class="num">${clp(x.p)} · envuelto</small></span></div>
+      <button class="sim-b1" data-s="yes">Sumar al pedido</button></div></div></div>`;
+  if(!REDUCE) gsap.from('#frN',{y:16,opacity:0,duration:.5,delay:.6});
+  simAct.yes=()=>{ simBuy(p,'en el pedido del súper'); $('frL').insertAdjacentHTML('afterbegin',`<li class="is-g"><i></i>Regalo para ${esc(p.n)}</li>`); if(!REDUCE) gsap.from('#frL li:first-child',{x:-10,opacity:0,duration:.4});
+    $('frN').innerHTML=`<p>${simOk('Sumado. Llega mañana con el súper, envuelto.')}</p>${simEnd()}`; };
+}
+
+/* reloj */
+function simReloj(p){
+  const x=chosen(p);
+  $('simD').innerHTML=`<div class="rl"><div class="rl-b" id="rlB"><div class="rl-s" id="rlS"><span class="appi">${GIFT_I}</span><b>El regalo de ${rel(p)} está listo. ¿Lo apruebas?</b>
+    <div class="rl-g">${img(x.u,'')}<span class="min-w-0"><span class="block truncate">${esc(x.t)}</span><span class="num">${clp(x.p)}</span></span></div>
+    <button class="sim-b1" data-s="yes">Aprobar</button></div></div></div>`;
+  if(!REDUCE) gsap.delayedCall(.7,()=>{ const b=$('rlB'); if(b) b.classList.add('rl-buzz'); });
+  simAct.yes=()=>{ simBuy(p,'desde el reloj'); $('rlS').innerHTML=`<span class="appi" style="background:#22a06b">${CK}</span><b>Aprobado.</b><span class="mt-1 text-[13px] text-white/70">Llega ${arrival(p)}.</span>${simEnd()}`; };
+}
+
+/* lentes */
+function simLentes(p,S){
+  const x=prod(S.h), o=['vela-vasija-likan-esencia-andina','tazon-alerce','libro-wander','diario-de-gratitud'].map(h=>prod(h).u);
+  $('simD').innerHTML=`<div class="gl" id="glV"><div class="gl-v"><span class="gl-sh" style="top:34%"></span><span class="gl-sh" style="top:66%"></span>
+      <img src="${o[0]}" alt="" style="left:13%;bottom:66%;width:13%;aspect-ratio:1"><img src="${o[1]}" alt="" style="left:31%;bottom:66%;width:12%;aspect-ratio:1"><img src="${o[2]}" alt="" style="left:66%;bottom:66%;width:12%;aspect-ratio:1">
+      <img src="${o[3]}" alt="" style="left:16%;bottom:34%;width:13%;aspect-ratio:1"><img id="glT" src="${x.u}" alt="" style="left:60%;bottom:34%;width:15%;aspect-ratio:1"></div>
+    <svg class="gl-glass" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><defs><mask id="glM"><rect width="100" height="60" fill="#fff"/><rect x="3" y="6" width="45" height="48" rx="13" fill="#000"/><rect x="52" y="6" width="45" height="48" rx="13" fill="#000"/></mask></defs><rect width="100" height="60" fill="#0e1014" mask="url(#glM)"/></svg>
+    <div class="gl-hud"><div class="gl-ret" id="glR"><i></i><i></i><i></i><i></i></div>
+      <div class="gl-tag" id="glG"><span>Esto calza con ${rel(p)}. ¿Lo guardo para su cumple?</span><button class="sim-b1" data-s="yes">Guardar</button></div></div></div>`;
+  const place=()=>{ const V=$('glV'), T=$('glT'), R=$('glR'), G=$('glG'); if(!V||!T) return; const v=V.getBoundingClientRect(), t=T.getBoundingClientRect(), pad=8;
+    Object.assign(R.style,{left:(t.left-v.left-pad)+'px',top:(t.top-v.top-pad)+'px',width:(t.width+pad*2)+'px',height:(t.height+pad*2)+'px'});
+    const w=G.offsetWidth; let gl=t.left-v.left-w-20; if(gl<v.width*.06) gl=Math.max(v.width*.06,t.left-v.left+t.width/2-w/2);
+    Object.assign(G.style,{left:gl+'px',top:Math.max(v.height*.12,t.top-v.top-(gl===t.left-v.left-w-20?0:G.offsetHeight+20))+'px'}); };
+  requestAnimationFrame(place);
+  gsap.delayedCall(REDUCE?0:.9,()=>{ place(); gsap.to('#glR',{opacity:1,duration:.3}); if(!REDUCE) gsap.from('#glR',{scale:1.4,duration:.5,ease:'back.out(1.6)'}); gsap.to('#glG',{opacity:1,duration:.35,delay:REDUCE?0:.3}); });
+  simAct.yes=()=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · la viste en una vitrina`,n:p.n,unread:false}); simAfter={tab:'personas',p};
+    $('glG').innerHTML=`${simOk(`Guardado en Ideas de ${esc(p.n)}.`)}${simEnd()}`; };
+}
+
+/* menú y teclas */
+const closeMenu=()=>{ $('simMenu').hidden=true; $('simBtn').setAttribute('aria-expanded','false'); };
+$('simBtn').onclick=e=>{ e.stopPropagation(); const m=$('simMenu'); m.hidden=!m.hidden; $('simBtn').setAttribute('aria-expanded',String(!m.hidden)); };
+$('simMenu').addEventListener('click',e=>{ const b=e.target.closest('.sim-it'); if(!b) return; closeMenu(); if(b.dataset.sim) simOpen(b.dataset.sim); });
+document.addEventListener('click',e=>{ if(!e.target.closest('.ob-kbs')) closeMenu(); });
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ if(!$('simMenu').hidden){ closeMenu(); return; } if(document.body.classList.contains('sim-on')){ simClose(); return; } }
+  if(e.metaKey||e.ctrlKey||e.altKey) return; const t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA') return;
+  const k=SIM_KEY[e.key.toLowerCase()]; if(k) simOpen(k);
 });
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
