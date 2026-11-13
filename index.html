@@ -511,7 +511,7 @@ body.in-app .ob-kb{display:flex}
 .tok-ic svg{width:14px;height:14px}
 .ov-ct{flex:none;min-width:30px;text-align:right;font-family:'Newsreader',serif;font-size:20px;line-height:1;color:#0e1014}
 .ov-f{display:block;margin-top:2px;font-size:12.5px;font-weight:500;color:#ff5924}.ov-f:empty{display:none}
-.src-cal{background:#dbe7ff;color:#2c44d6}.src-mail{background:#ffe2d6;color:#c63f12}.src-con{background:#d8f1e6;color:#14704f}.src-gift{background:#fff0b8;color:#8a6500}.src-you{background:#eadfff;color:#6a4be0}
+.src-cross{background:#0e1014;color:#fff}.src-cal{background:#dbe7ff;color:#2c44d6}.src-mail{background:#ffe2d6;color:#c63f12}.src-con{background:#d8f1e6;color:#14704f}.src-gift{background:#fff0b8;color:#8a6500}.src-you{background:#eadfff;color:#6a4be0}
 .tk .tk-t{margin-top:15px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px}
 .tk-t i{margin:8px 0 0}
 .tk-next{margin-top:11px;padding-top:0;border:0}
@@ -566,9 +566,9 @@ body.in-app .ob-kb{display:flex}
 .wk-ph{position:relative;display:block;aspect-ratio:1;overflow:hidden;border-radius:18px;background:#f5f7f9;box-shadow:0 0 0 1px #e5eaf2;transition:transform .2s}
 .wk-i:hover .wk-ph{transform:translateY(-3px)}
 .wk-ph img{width:100%;height:100%;object-fit:cover}
-.wk-fav{position:absolute;left:8px;top:8px;border-radius:999px;background:#0e1014;padding:3px 9px;font-size:11.5px;font-weight:600;color:#fff}
+.wk-fav{z-index:2;position:absolute;left:8px;top:8px;border-radius:999px;background:#0e1014;padding:3px 9px;font-size:11.5px;font-weight:600;color:#fff}
 .wk-bar{display:block;height:5px;border-radius:9px;background:#eef1f5;overflow:hidden}.wk-bar i{display:block;width:0;height:100%;border-radius:9px;background:#aab2bf}
-.wk-i[data-n="0"] .wk-bar i{background:#ff5924}
+.wk-bar i{transition:background-color .5s}.wk-i.is-fav .wk-bar i{background:#ff5924}
 .wk-dot{position:absolute;left:0;top:0;z-index:5;width:10px;height:10px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 4px rgba(255,89,36,.18);pointer-events:none}
 .wk-sc{grid-column:1/-1;border-top:1px solid #eef1f5;padding:18px 22px 22px}
 .wk-sc .wk-k{justify-content:space-between;margin-bottom:12px}.wk-sc .wk-k b{font-family:'Newsreader',serif;font-weight:400;font-size:18px;letter-spacing:0;text-transform:none;color:#0e1014}
@@ -1263,20 +1263,20 @@ const addBD = (d,n) => { const x=new Date(d); while(n>0){ x.setDate(x.getDate()+
 const ordLeft = p => Math.max(0,Math.round((lastOrder(p)-TODAY)/864e5));
 const lastOrder = p => { const lim=addD(occ(p),-1); let d=new Date(lim); while(addBD(d,4)>lim) d=addD(d,-1); return d; };
 const etaRange = from => { const a=addBD(from,3), b=addBD(from,4); return a.getMonth()===b.getMonth()?`entre el ${a.getDate()} y el ${fdate(b)}`:`entre el ${fdate(a)} y el ${fdate(b)}`; };
-const SRC_L = {cal:'Google Calendar',mail:'Gmail',con:'Google Contactos',gift:'Tus pedidos',you:'Me lo contaste',instagram:'Instagram',pinterest:'Pinterest',spotify:'Spotify'};
+const SRC_L = {cal:'Google Calendar',mail:'Gmail',con:'Google Contactos',gift:'Tus pedidos',you:'Me lo contaste',cross:'Crucé tus datos',instagram:'Instagram',pinterest:'Pinterest',spotify:'Spotify'};
 const SRC2CX = {mail:'gmail',con:'contacts'};
 const REL = {'Mamá':'Tu mamá','Andrés':'Tu hermano','Carla':'Tu hermana','Papá':'Tu papá','Abuela Rosa':'Tu abuela','Sofi y Nico':'Tus amigos','Pareja':'Tu pareja','Tío Jorge':'Tu tío','Emilia':'Tu sobrina','Familia Soto':'Familia','Amigo secreto':'Oficina','Navidad':'Familia'};
 const LEARN = {
- 'Mamá':[['Le gusta leer antes de dormir','mail'],['Guarda las historias de la familia','mail'],['Una vela del año pasado le encantó','gift']],
+ 'Mamá':[['Lee de noche, como Carla: les busco autores distintos','cross'],['Le gusta leer antes de dormir','mail'],['Guarda las historias de la familia','mail'],['Una vela del año pasado le encantó','gift']],
  'Andrés':[['Es tu hermano','con'],['Anda en bici a todos lados','cal'],['Ya tiene botella, le falta mochila','mail']],
- 'Carla':[['Es tu hermana','con'],['Lee antes de dormir','mail'],['Le escribes seguido','con']],
+ 'Carla':[['Es tu hermana','con'],['Lee de noche, como Mamá: no les repito libro','cross'],['Lee antes de dormir','mail'],['Le escribes seguido','con']],
  'Papá':[['Toma café todas las mañanas','mail'],['Le regalaste una botella en junio','gift']],
  'Abuela Rosa':[['Siempre tiene frío en invierno','mail'],['Prefiere regalos para la casa','gift']],
- 'Sofi y Nico':[['Se casan el 22 de agosto','cal'],['Están armando su casa','mail']],
+ 'Sofi y Nico':[['Mismo día que el bautizo Soto: dejo ambos listos antes','cross'],['Se casan el 22 de agosto','cal'],['Están armando su casa','mail']],
  'Pareja':[['Les gusta quedarse en casa','cal'],['Aniversario el 12 de septiembre','cal']],
  'Tío Jorge':[['Recibe a todos en su casa','cal'],['Le gusta cocinar para muchos','mail']],
  'Emilia':[['Es tu sobrina','con'],['Está en su primer año','cal']],
- 'Familia Soto':[['Bautizo el 22 de agosto','cal'],['Tienen una guagua recién nacida','mail']],
+ 'Familia Soto':[['Mismo día que el matrimonio de Sofi y Nico','cross'],['Bautizo el 22 de agosto','cal'],['Tienen una guagua recién nacida','mail']],
  'Amigo secreto':[['Tope de $15.000','mail'],['Es anónimo, sin tu nombre','mail'],['Se entrega en la oficina','cal']],
  'Navidad':[['Cena familiar el 24','cal'],['Son 8 personas a la mesa','mail']],
 };
@@ -1324,7 +1324,8 @@ const SRC_ICON = {
  mail:'<rect x="3.500" y="6" width="17" height="13" rx="2.500"/><path d="m4 8 8 6 8-6"/>',
  con:'<circle cx="12" cy="9" r="3.500"/><path d="M5 20c.8-4 3.500-6 7-6s6.200 2 7 6"/>',
  gift:'<path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.500S9 7 12 7ZM12 7c2-4 6-4 6-1.500S15 7 12 7Z"/>',
- you:'<path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/>'
+ you:'<path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/>',
+ cross:'<path d="M9.5 14.5 14.5 9.5M8 11l-2 2a3.500 3.500 0 0 0 5 5l2-2M16 13l2-2a3.500 3.500 0 0 0-5-5l-2 2"/>'
 };
 const srcI = k => !SRC_ICON[k]&&cxOf(k) ? `<i class="src src-lg" title="${SRC_L[k]}"><img src="${cxOf(k).img}" alt=""></i>` : `<i class="src src-${k}" title="${SRC_L[k]}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SRC_ICON[k]}</svg></i>`;
 
@@ -1576,7 +1577,9 @@ async function runThink(p){
   gsap.from('#plLeft [data-rise]',{y:14,opacity:0,duration:.5,stagger:.06,delay:.25,ease:'power3.out',clearProps:'all'});
 }
 
-const finePrint = p => `Si compras hoy, llega ${arrival(p)}${cfg.wrap?', envuelto y con tarjeta':''}. Nada se compra sin tu aprobación.`;
+const PRECISE = {'Amigo secreto':'antes del sorteo (mié 18, 13:00)'};
+const finePrint = p => { const gap=Math.round((occ(p)-addBD(TODAY,4))/864e5), when=PRECISE[p.n]||(gap>0?`${gap} ${gap===1?'día':'días'} antes`:'justo a tiempo');
+  return `Llega ${arrival(p)}, ${when}. Nada se compra sin tu aprobación.`; };
 /* lo que hizo el sistema, siempre a la vista */
 function funnel(p){
   const d=thinkData(p), b=BUDGET[p.n];
@@ -1681,7 +1684,7 @@ function sceneHtml(p){
   <div class="sc-nav" role="group" aria-label="Opciones">${pickLabels(p).map((l,i)=>`<button data-act="pick" data-pick="${i}" aria-pressed="${i===cur}">${l}</button>`).join('')}</div>`;
 }
 const CK='<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg>';
-const reasons = (p,o) => { const b=BUDGET[p.n], r=[]; if(b) r.push(`Dentro del tope de ${clp(b)}`); r.push(`Llega ${arrival(p)}`); if(cfg.wrap) r.push('Envuelto y con tarjeta'); return r; };
+const reasons = (p,o) => { const b=BUDGET[p.n], r=[]; if(b) r.push(`${clp(b-o.p)} bajo el tope`); r.push(p.n==='Amigo secreto'?'Llega antes del sorteo, 13:00':`Llega ${arrival(p)}`); if(p.n==='Amigo secreto') r.push('Sin tu nombre: es anónimo'); else if(cfg.wrap) r.push('Envuelto y con tarjeta'); return r; };
 const sceneFicha = p => { const o=chosen(p), ty=(PINFO[o.h]||{}).ty; return `<div class="sf-l"><span class="sf-th">${img(o.u,'')}</span><div class="min-w-0"><p class="sf-e">${esc(o.v)}${ty?` · ${esc(ty)}`:''}</p><div class="sf-h"><h2>${esc(o.t)}</h2><span class="num">${clp(o.p)}</span></div><p class="sf-q">${pickText(p,ypick[p.n]||0)}</p><ul class="sf-w">${reasons(p,o).map(t=>`<li>${CK}${t}</li>`).join('')}</ul></div></div><div class="sf-r"><button data-act="ok" data-i="${idx(p)}" class="pl-cta">Comprar y dejar listo</button><button data-act="sheet" data-h="${o.h}" class="sf-2">Ver detalle</button><p class="sf-n"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Nada se compra sin tu aprobación.</p></div>`; };
 function scenePos(p,i){ const st=$('scStage'), pa=$('scPano'); return st.clientWidth/2 - SCENES[p.n][i].cx/3000*pa.offsetWidth; }
 function sceneGo(p,i){
@@ -1707,14 +1710,28 @@ function leftOther(p){
   if(ph==='bought') return `${back}<h1 class="pl-h">Así va tu pedido.</h1>${orderBlock(p)}`;
   const its=items(p), o=occ(p), av=avisoD(p), lo=lastOrder(p);
   return `${back}<h1 class="pl-h">${esc(p.n)}, en mis manos.</h1>
-    <p class="pl-lead">No tienes que hacer nada hasta el ${fdate(av)}. Mientras, voy juntando lo que sirve.</p>
+    <p class="pl-lead">${CLASH[p.n]?CLASH[p.n]:`No tienes que hacer nada hasta el ${fdate(av)}. Mientras, voy juntando lo que sirve.`}</p>
     <div class="wk" id="wk">
       <div class="wk-in"><p class="wk-k"><span class="live-dot"></span>Lo que va llegando</p><ol class="wk-l" id="wkL" aria-live="off"></ol></div>
-      <div class="wk-out"><p class="wk-k">Mis ideas, por ahora</p><div class="wk-c">${its.map((o,n)=>`<button class="wk-i" data-act="sheet" data-h="${o.h}" data-n="${n}" aria-label="Ver ${esc(o.t)}"><span class="wk-ph">${img(o.u,'')}${n===0?'<span class="wk-fav">Por ahora</span>':''}</span><span class="wk-bar" aria-hidden="true"><i></i></span></button>`).join('')}</div></div>
+      <div class="wk-out"><p class="wk-k">Mis ideas, por ahora</p><div class="wk-c">${its.map((o,n)=>`<button class="wk-i${n===0?' is-fav':''}" data-act="sheet" data-h="${o.h}" data-n="${n}" aria-label="Ver ${esc(o.t)}"><span class="wk-ph">${img(o.u,'')}${n===0?'<span class="wk-fav">Por ahora</span>':''}</span><span class="wk-bar" aria-hidden="true"><i></i></span></button>`).join('')}</div></div>
       <div class="wk-sc"><p class="wk-k"><span id="wkScT">Revisando el catálogo</span><b class="num" id="wkScN"></b></p><div class="wk-g" id="wkG" aria-hidden="true"><i class="wk-beam" id="wkBeam"></i>${Object.keys(PRODS).map(h=>`<span data-h="${h}" class="${its.some(o=>o.h===h)?'is-k':''}">${img(PRODS[h][3],'')}</span>`).join('')}</div></div>
     </div>`;
 }
 /* el sistema trabajando: llegan señales y van afinando las ideas */
+const CLASH = {
+ 'Sofi y Nico':'Cae el mismo día que el bautizo de la Familia Soto. Dejo los dos regalos listos el viernes 21.',
+ 'Familia Soto':'Cae el mismo día que el matrimonio de Sofi y Nico. Dejo los dos regalos listos el viernes 21.',
+};
+/* señal fuerte que me hace cambiar de idea mientras miras */
+const TURN = {
+ 'Mamá':[1,'mail','Le contó a Carla que quiere una vela nueva'],
+ 'Andrés':[2,'mail','Comentó que le encantan los hongos'],
+ 'Papá':[2,'mail','Anda planeando subir cerros en verano'],
+ 'Carla':[2,'mail','Terminó su diario de gratitud'],
+ 'Sofi y Nico':[1,'mail','La lista de novios ya tiene vasos'],
+ 'Navidad':[1,'mail','La tía ya lleva mermeladas a la cena'],
+ 'Tío Jorge':[1,'mail','Ya le regalaron una tabla este año'],
+};
 let workRun=0;
 const WK_CAT='<svg viewBox="0 0 24 24" fill="none" stroke="#0e1014" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>';
 const wkIcon = s => { const c=cxOf(s); return `<span class="wk-ic">${c?`<img src="${c.img}" alt="">`:SRC_ICON[s]?`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${SRC_ICON[s]}</svg>`:WK_CAT}</span>`; };
@@ -1728,6 +1745,17 @@ function wkFly(wk,from,to,done){
 function runWork(p){
   const run=++workRun, L=$('wkL'), wk=$('wk'); if(!L) return;
   const cards=[...wk.querySelectorAll('.wk-i')], bars=cards.map(c=>c.querySelector('.wk-bar i'));
+  const turn=TURN[p.n]; let turned=false;
+  const moveFav=(k,msg)=>{ const f=wk.querySelector('.wk-fav'), to=cards[k].querySelector('.wk-ph'); if(!f||!to) return;
+    const st=Flip.getState(f); to.appendChild(f); Flip.from(st,{duration:.7,ease:'power3.inOut'}); cards.forEach((c,x)=>c.classList.toggle('is-fav',x===k));
+    if(msg) ytoast(msg); };
+  if(turn&&!REDUCE) gsap.delayedCall(9,()=>{ if(run!==workRun||!L.isConnected) return; turned=true;
+    const li=row([turn[2],turn[1]]); L.prepend(li); gsap.from(li,{height:0,paddingTop:0,paddingBottom:0,marginBottom:-8,opacity:0,duration:.55,ease:'power3.out',clearProps:'height,padding,margin,opacity'});
+    gsap.fromTo(li,{backgroundColor:'#fff1ea'},{backgroundColor:'#ffffff',duration:2.4,clearProps:'backgroundColor'});
+    gsap.to(bars[turn[0]],{width:'96%',duration:.8,ease:'power2.out'}); gsap.to(bars[0],{width:'70%',duration:.8});
+    moveFav(turn[0],`Cambié de idea. ${cxOf(turn[1])?.t||'Gmail'}: ${turn[2].charAt(0).toLowerCase()+turn[2].slice(1)}.`);
+    gsap.delayedCall(14,()=>{ if(run!==workRun||!L.isConnected) return; turned=false; moveFav(0); gsap.to(bars[0],{width:'92%',duration:.8}); gsap.to(bars[turn[0]],{width:'66%',duration:.8}); });
+  });
   const sig=[...knows(p), [`Revisé ${Object.keys(PRODS).length} regalos del catálogo`,'cat'], ['Hay stock de mi favorita','cat']];
   const cap=[92,64,44], sc=[0,0,0], inc=cap.map(c=>c/Math.max(2,sig.length-1));
   const row = ([t,s]) => { const li=document.createElement('li'); li.innerHTML=`${wkIcon(s)}<span>${esc(t)}</span>`; return li; };
@@ -1778,7 +1806,7 @@ function runWork(p){
       d.remove(); if(run!==workRun) return;
       gsap.fromTo(cards[n].querySelector('.wk-ph'),{scale:1.04},{scale:1,duration:.5,ease:'back.out(2)'});
       sc[n]=Math.min(cap[n],sc[n]+inc[n]*(n?2:1.4)); if(i>sig.length) sc[n]=Math.max(20,cap[n]+gsap.utils.random(-14,n?12:4));
-      gsap.to(bars[n],{width:sc[n]+'%',duration:.6,ease:'power2.out'});
+      if(!turned) gsap.to(bars[n],{width:sc[n]+'%',duration:.6,ease:'power2.out'});
     }});
     gsap.delayedCall(2.1,step);
   };
@@ -1998,6 +2026,7 @@ setInterval(()=>{ const y=$('year'); if(y&&y.style.display==='block'&&!liveLock&
 /* ---------- Bandeja de actividad ---------- */
 const ACT=[
   {id:1,k:'think',t:'Pensé el regalo de Amigo secreto',s:'Tope de $15.000 · 3 finalistas',day:0,n:'Amigo secreto',unread:true},
+  {id:8,k:'think',t:'Dos eventos el mismo día',s:'22 ago: bautizo Soto y matrimonio de Sofi y Nico. Dejo ambos listos el viernes 21',day:0,n:'Sofi y Nico',unread:true},
   {id:2,k:'new',t:'Vi un bautizo nuevo en tu calendario',s:'Familia Soto · 22 ago. Ya lo estoy siguiendo',day:0,n:'Familia Soto',unread:true},
   {id:3,k:'ship',t:'Despaché el regalo de Emilia',s:'Llega mañana',day:1,n:'Emilia',unread:false},
   {id:4,k:'read',t:'Leí tu calendario',s:'20 fechas de regalo encontradas',day:3,unread:false},
