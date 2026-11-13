@@ -388,6 +388,31 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .ob-bar{display:block;height:4px;margin-top:10px;border-radius:2px;background:#e5eaf2;overflow:hidden}.ob-bar i{display:block;height:100%;transform-origin:left;background:#10b981}
 .ob-n{margin-top:12px;font-size:12.5px;color:#748297}
 .ob-r{position:relative;min-height:440px}
+.obb{position:relative;height:300px;border-radius:22px;background:#f5f7f9 radial-gradient(#dfe4ec 1px,transparent 1.2px) 0 0/16px 16px;overflow:hidden}
+.obb-e{position:absolute;inset:0;display:grid;place-items:center;padding:0 30px;text-align:center;font-size:13.5px;color:#9aa3b2}
+.obt{position:absolute;left:0;top:0;will-change:transform;box-shadow:0 14px 24px -14px rgba(14,16,20,.4),0 0 0 1px rgba(14,16,20,.05)}
+.obt-lg{position:absolute;right:-7px;top:-7px;width:20px;height:20px;padding:3px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 2px 6px rgba(14,16,20,.18)}
+.obt-date{width:66px;border-radius:12px;background:#fff;text-align:center;padding-bottom:6px}
+.obt-date i{display:block;border-radius:12px 12px 0 0;background:#ea4335;color:#fff;font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:3px 0}
+.obt-date.is-ic i{background:#3693f3}
+.obt-date b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.1}
+.obt-date small,.obt-face small,.obt-photo small,.obt-pin small{display:block;padding:0 4px;font-size:10px;font-weight:600;line-height:1.2;color:#5f6b7d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.obt-mail,.obt-wa{display:flex;align-items:center;gap:7px;max-width:190px;border-radius:12px;background:#fff;padding:8px 12px 8px 9px;font-size:12px;font-weight:600;white-space:nowrap}
+.obt-mail .obt-lg,.obt-wa .obt-lg{position:static;width:18px;height:18px;padding:0;box-shadow:none;background:none}
+.obt-wa{background:#dcf8c6}
+.obt-mail span,.obt-wa span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.obt-face{width:62px;border-radius:16px;background:#fff;padding:5px 5px 6px;text-align:center}.obt-face .pt{display:block;width:52px;height:52px;border-radius:12px;margin-bottom:4px}
+.obt-photo{width:72px;border-radius:12px;background:#fff;padding:4px 4px 6px}.obt-photo img:not(.obt-lg){display:block;width:64px;height:64px;border-radius:9px;object-fit:cover;margin-bottom:4px}
+.obt-pin{width:64px;border-radius:14px;background:#fff;padding:4px 4px 6px}.obt-pin img:not(.obt-lg){display:block;width:56px;height:74px;border-radius:10px;object-fit:cover;margin-bottom:4px}
+.obt-song{display:flex;align-items:center;gap:8px;border-radius:14px;background:#0e1014;color:#fff;padding:8px 12px 8px 9px;font-size:12px;line-height:1.2;white-space:nowrap}
+.obt-song .obt-lg{position:static;width:18px;height:18px;padding:0;background:none;box-shadow:none}
+.obt-song small{display:block;color:rgba(255,255,255,.6);font-size:10.5px}
+.obt-eq{display:flex;align-items:flex-end;gap:2px;height:14px}.obt-eq i{width:3px;border-radius:2px;background:#1db954;animation:obeq .9s ease-in-out infinite}.obt-eq i:nth-child(2){animation-delay:.2s}.obt-eq i:nth-child(3){animation-delay:.4s}
+@keyframes obeq{0%,100%{height:4px}50%{height:14px}}
+.obb-k{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;min-height:30px}
+.obb-k span{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#f5f7f9;padding:5px 11px 5px 6px;font-size:12.5px;color:#5f6b7d}
+.obb-k img{width:18px;height:18px;object-fit:contain}.obb-k b{font-weight:700;color:#0e1014}
+@media(prefers-reduced-motion:reduce){.obt-eq i{animation:none;height:10px}}
 .ov{border-radius:30px;background:#fff;padding:22px;box-shadow:0 0 0 1px #e5eaf2,0 40px 60px -36px rgba(15,23,42,.45)}
 .ov-n{display:flex;gap:12px;border-radius:20px;background:#f5f7f9;padding:14px}
 .ov-ap{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#ff5924}
@@ -458,21 +483,19 @@ body.in-app .ob-kb{display:flex}
 .dy-y h3{font-family:'Newsreader',serif;font-weight:400;font-size:24px;letter-spacing:-.02em;line-height:1;min-width:56px;text-align:center}
 .dy-y button{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:18px;line-height:1;color:#0e1014}.dy-y button:hover{background:#f5f7f9}.dy-y button:disabled{opacity:.25;cursor:default;background:none}
 .dy-lg{display:flex;align-items:center;gap:6px;font-size:12px;color:#5f6b7d}.dy-lg .dy-i{width:20px;height:20px;margin-left:8px}.dy-lg .dy-i svg{width:11px;height:11px}
-.dy-m{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px}
-.dy-m li{display:flex;flex-direction:column;align-items:center;gap:7px;min-height:118px;border-radius:14px;padding:8px 2px 10px}
-.dy-m li.is-cur{background:#fff3ee;box-shadow:inset 0 0 0 1.5px #ffd2c2}
-.dy-mn{position:relative;font-size:10.5px;font-weight:700;letter-spacing:.12em;color:#0e1014}
-.dy-m li.is-past .dy-mn{color:#aab2bf}
-.dy-mn em{position:absolute;left:50%;top:-14px;transform:translateX(-50%);border-radius:999px;background:#ff5924;padding:1px 6px;font-style:normal;font-size:9px;letter-spacing:.06em;color:#fff}
-.dy-m li.is-cur{margin-top:0}.dy-m li{padding-top:16px}
-.dy-it{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;min-width:0;border-radius:10px;padding:2px 0}
-button.dy-it:hover small{color:#0e1014;text-decoration:underline}
-.dy-it small{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;line-height:1.15;color:#5f6b7d}
-.dy-i{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%}
-.dy-i.is-done{background:#e4f4ec;color:#14704f}
-.dy-i.is-now{background:#ff5924;color:#fff;box-shadow:0 0 0 4px rgba(255,89,36,.18)}
-.dy-i.is-next{background:#fff;color:#0e1014;box-shadow:inset 0 0 0 1.5px #d5dbe5}
-@media(max-width:760px){.dy-m{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:6px}.dy-m li{min-height:96px}}
+.dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
+.dy-mn{padding-bottom:2px;text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.12em;color:#aab2bf}
+.dy-mn.is-cur{color:#ff5924}
+.dy-c{position:relative;display:grid;place-items:center;aspect-ratio:1.35;border-radius:9px;background:#eceff3;transition:transform .15s}
+.dy-c.is-past{background:#f3f5f7}
+.dy-c.is-done{background:#e2551f}
+.dy-c.is-next{background:#f2b3b7}
+.dy-c.is-now{background:#ff5924;box-shadow:0 0 0 2.5px #fff,0 0 0 4.5px #0e1014}
+.dy-c.is-today:not(.is-now)::after{content:"";width:6px;height:6px;border-radius:50%;background:#0e1014}
+.dy-c b{font-size:11px;font-weight:700;color:#fff}
+button.dy-c:hover{transform:scale(1.08)}
+.dy-lg .dy-c{display:inline-block;width:16px;height:12px;aspect-ratio:auto;border-radius:4px;margin-left:10px}.dy-lg .dy-c.is-now{box-shadow:0 0 0 1.5px #fff,0 0 0 3px #0e1014}
+@media(max-width:560px){.dy-g{gap:4px}.dy-c{border-radius:6px;aspect-ratio:1}.dy-mn{font-size:8.5px;letter-spacing:.04em}}
 .dt{margin-top:12px;border-radius:22px;background:#fff;padding:16px 8px 10px;box-shadow:0 0 0 1px #e5eaf2}
 .dt header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 12px 10px}
 .dt h3{font-family:'Newsreader',serif;font-weight:400;font-size:19px;letter-spacing:-.01em}.dt header span{font-size:12.5px;color:#5f6b7d}
@@ -2029,7 +2052,6 @@ function viewHome(){
     <p class="pl-lead dh-1">${lead}</p>
     <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
       ${col('Para regalar pronto',now.length,hot?'Esto no puede esperar':'Ya lo pensé, falta tu decisión',now.map(nowItem).join(''),'dh-hot'+(hot?' dh-urg':''))}</div>
-    ${done.length?`<section class="dh-or"><header><h3>Pedidos en curso</h3><button data-act="tab" data-t="regalos">Ver todos <span aria-hidden="true">→</span></button></header>${done.slice(0,2).map(order).join('')}</section>`:''}
     ${dtHtml()}</div>
     <aside class="pl-r">${ticket(yfocus)}</aside></div>`;
   animateTicket();
@@ -2044,11 +2066,15 @@ function dtItems(Y){
 }
 function dtHtml(){
   const Y=dtYear||(dtYear=TODAY.getFullYear()), it=dtItems(Y), y0=TODAY.getFullYear(), cur=Y===y0?TODAY.getMonth():-1;
-  const ic=k=>`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${DT_I[k==='done'?'done':'gift']}</svg>`;
+  const wk=d=>Math.min(3,Math.floor((d.getDate()-1)/7.75)), tw=Y===y0?TODAY.getMonth()*4+wk(TODAY):-1, rank={none:0,now:3,next:2,done:1};
   const lbl={done:'resuelto',now:'por decidir',next:'te aviso'};
+  const cells=[]; for(let w=0;w<4;w++) for(let m=0;m<12;m++){ const l=it.filter(x=>x.d.getMonth()===m&&wk(x.d)===w), st=l.reduce((a,x)=>rank[x.st]>rank[a]?x.st:a,'none'), past=Y<y0||(Y===y0&&m*4+w<tw);
+    const t=l.map(x=>`${x.p.n} · ${x.d.getDate()} ${MES[m].toLowerCase()} · ${lbl[x.st]}`).join('\n'), f=l.find(x=>x.st!=='done')||l[0];
+    const act=!f?'':f.st==='done'?(f.p.bought?`data-act="pedido" data-i="${idx(f.p)}"`:''):`data-act="flow" data-i="${idx(f.p)}"`;
+    cells.push(`<${act?'button':'span'} ${act} class="dy-c is-${st}${past&&st==='none'?' is-past':''}${m*4+w===tw?' is-today':''}" style="grid-column:${m+1};grid-row:${w+2}" ${t?`title="${esc(t)}" aria-label="${esc(t)}"`:'aria-hidden="true"'}>${l.length>1?`<b class="num">${l.length}</b>`:''}</${act?'button':'span'}>`); }
   return `<section id="dtY" class="dy" aria-label="Tu año"><header><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div>
-    <p class="dy-lg"><span class="dy-i is-done">${ic('done')}</span>Resuelto<span class="dy-i is-now">${ic('now')}</span>Ahora<span class="dy-i is-next">${ic('next')}</span>Viene</p></header>
-    <ol class="dy-m">${MES.map((m,i)=>{ const l=it.filter(x=>x.d.getMonth()===i); return `<li class="${i===cur?'is-cur':''}${Y===y0&&i<TODAY.getMonth()?' is-past':''}"><span class="dy-mn">${m}${i===cur?'<em>hoy</em>':''}</span>${l.map(x=>{ const act=x.st==='done'?(x.p.bought?`data-act="pedido" data-i="${idx(x.p)}"`:''):`data-act="flow" data-i="${idx(x.p)}"`; return `<${act?'button':'span'} ${act} class="dy-it" title="${esc(x.p.n)} · ${x.d.getDate()} ${m.toLowerCase()} · ${lbl[x.st]}"><span class="dy-i is-${x.st}">${ic(x.st)}</span><small>${esc(x.p.n)}</small></${act?'button':'span'}>`; }).join('')}</li>`; }).join('')}</ol></section>`;
+    <p class="dy-lg"><i class="dy-c is-done"></i>Resuelto<i class="dy-c is-now"></i>Ahora<i class="dy-c is-next"></i>Viene</p></header>
+    <div class="dy-g">${MES.map((m,i)=>`<span class="dy-mn${i===cur?' is-cur':''}" style="grid-column:${i+1};grid-row:1">${m}</span>`).join('')}${cells.join('')}</div></section>`;
 }
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-dy]'); if(!b||b.disabled) return; dtYear=+b.dataset.dy; const el=$('dtY'); if(el){ el.outerHTML=dtHtml(); if(!REDUCE) gsap.from('#dtY .dy-it',{y:6,opacity:0,duration:.3,stagger:.02,clearProps:'all'}); } });
 const DELIVERED=[
@@ -2156,7 +2182,7 @@ function cxOpen(){ cxQ=''; cxCat='Todos'; cxModal(); const M=$('cxm'); M.classLi
 function cxClose(){ $('cxm').classList.remove('on'); }
 async function cxConnect(k){
   const row=document.querySelector(`.cxm-i[data-k="${k}"]`), btn=row&&row.querySelector('button'); if(!btn||CX[k]||btn.dataset.busy) return;
-  btn.dataset.busy='1'; btn.innerHTML=row.closest('.ob-c2')?'<span class="oc-sp"></span>':'<span class="oc-sp"></span>Conectando';
+  btn.dataset.busy='1'; btn.innerHTML='<span class="oc-sp"></span>Conectando';
   await wait(REDUCE?0:1.1); cxSet(k,true); addAct({k:'conn',t:`Conecté ${CONNS.find(c=>c.k===k).t}`,s:'Solo leo, nunca escribo',unread:false});
   const ls=document.querySelector('.cxm-l')?.scrollTop||0, ys=$('year').scrollTop; cxModal(); const nl=document.querySelector('.cxm-l'); if(nl) nl.scrollTop=ls;
   const t=CONNS.find(c=>c.k===k); ytoast(`Listo, conecté ${t.t}.`);
@@ -2382,7 +2408,7 @@ const CONNS=[
   {k:'cal',core:1,t:'Google Calendar',img:GLOGO('calendar_2020q4'),cat:'Calendario',s:'De aquí saco tus fechas: cumpleaños, aniversarios, el sorteo de la oficina.',tag:'Recomendado',ov:'Tus fechas',found:'Encontré 11 fechas: cumpleaños, un matrimonio y el amigo secreto.'},
   {k:'gmail',core:1,t:'Gmail',img:GLOGO('gmail_2020q4'),cat:'Correo',s:'Invitaciones y correos con topes o plazos, para elegir mejor.',ov:'Topes y detalles',found:'Leí el tope de $15.000 del amigo secreto y 9 detalles de tu gente.'},
   {k:'contacts',core:1,t:'Google Contactos',img:GLOGO('contacts_2022'),cat:'Contactos',s:'Quién es quién: cumpleaños guardados y relación con cada persona.',ov:'Tu gente',found:'Ya sé quién es quién: Carla es tu hermana, Andrés tu hermano.'},
-  {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Te insisto por aquí si no ves la notificación.',ov:'Avisos',found:'Si se te pasa un aviso, te escribo por aquí.'},
+  {k:'wa',core:1,t:'WhatsApp',img:SI('whatsapp','25D366'),cat:'Mensajería',s:'Leo tus chats para saber qué les gusta, y te aviso por aquí.',ov:'Chats y avisos',found:'Leí en un chat que Carla anda buscando un libro. Y si se te pasa un aviso, te escribo por aquí.'},
   {k:'icloud',t:'Calendario de Apple',img:SI('icloud','3693F3'),cat:'Calendario',s:'Las fechas de tu calendario de iCloud.'},
   {k:'drive',t:'Google Drive',img:GLOGO('drive_2020q4'),cat:'Productividad',s:'Tus listas y planillas de regalos.'},
   {k:'notion',t:'Notion',img:SI('notion','000000'),cat:'Productividad',s:'Tus notas y listas de deseos.'},
@@ -2419,11 +2445,65 @@ function obStream(k){
   if(REDUCE){ for(let x=0;x<6;x++) push(); if(nb) nb.textContent=S.n; return; }
   push(); obStreams[k]=setInterval(push,k==='wa'?2400:1400);
 }
+/* tablero del onboarding: lo que encuentro cae como collage */
+const OBD = {
+ cal:{u:'fechas',n:11,it:[['date','14','MAR','Mamá'],['date','18','NOV','Amigo secreto'],['date','2','ABR','Andrés'],['date','24','DIC','Navidad'],['date','22','AGO','Sofi y Nico']]},
+ gmail:{u:'detalles',n:9,it:[['mail','Tope $15.000'],['mail','Sorteo de la oficina'],['mail','Matrimonio, 22 ago'],['mail','Lee antes de dormir']]},
+ contacts:{u:'personas',n:12,it:[['face','Carla'],['face','Andrés'],['face','Abuela Rosa'],['face','Papá'],['face','Tío Jorge']]},
+ wa:{u:'pistas',n:8,it:[['wa','“Carla busca un libro”'],['wa','Asado donde Tío Jorge'],['wa','“Mamá ama las plantas”'],['wa','Te aviso por aquí']]},
+ icloud:{u:'fechas',n:4,it:[['date','9','OCT','Tío Jorge','ic'],['date','12','SEP','Pareja','ic']]},
+ instagram:{u:'gustos',n:6,it:[['photo','mochila-zorro-culpeo','Andrés'],['photo','tabla-de-piedra-ribete','Tío Jorge']]},
+ pinterest:{u:'ideas',n:7,it:[['pin','mielero-en-ceramica-gres','Mamá'],['pin','vela-vasija-pukara-esencia-andina','Mamá'],['pin','vela-anillo-de-fuego-esencia-andina','Carla']]},
+ spotify:{u:'gustos',n:3,it:[['song','Podcasts','Carla'],['song','Para cocinar','Pareja']]},
+};
+const obCnt={}, obIdx={};
+let obSlots=[];
+function obTok(k,x){
+  const c=cxOf(k), lg=c?`<img class="obt-lg" src="${c.img}" alt="">`:'';
+  if(x[0]==='date') return `<div class="obt obt-date${x[4]?' is-ic':''}"><i>${x[2]}</i><b class="num">${x[1]}</b><small>${esc(x[3])}</small>${lg}</div>`;
+  if(x[0]==='mail') return `<div class="obt obt-mail">${lg}<span>${esc(x[1])}</span></div>`;
+  if(x[0]==='face') return `<div class="obt obt-face">${portrait(x[1])}<small>${esc(x[1])}</small>${lg}</div>`;
+  if(x[0]==='wa') return `<div class="obt obt-wa">${lg}<span>${esc(x[1])}</span></div>`;
+  if(x[0]==='photo') return `<div class="obt obt-photo"><img src="${OB_IMG(x[1])}" alt=""><small>${esc(x[2])}</small>${lg}</div>`;
+  if(x[0]==='pin') return `<div class="obt obt-pin"><img src="${OB_IMG(x[1])}" alt=""><small>${esc(x[2])}</small>${lg}</div>`;
+  return `<div class="obt obt-song">${lg}<span class="obt-eq"><i></i><i></i><i></i></span><span><b>${esc(x[1])}</b><small>${esc(x[2])}</small></span></div>`;
+}
+function obCounters(){
+  const K=$('obK'); if(!K) return;
+  K.innerHTML=Object.keys(OBD).filter(k=>ob.conn[k]).map(k=>{ const c=cxOf(k); return `<span data-k="${k}"><img src="${c.img}" alt="">${OBD[k].n>1?`<b class="num">${obCnt[k]||0}</b> `:''}${OBD[k].u}</span>`; }).join('');
+}
+function obDrop(k,times=1){
+  const B=$('obB'); if(!B||!OBD[k]) return;
+  const e=B.querySelector('.obb-e'); if(e) e.remove();
+  for(let t=0;t<times;t++){
+    const D=OBD[k]; let x; for(let g=0;g<D.it.length;g++){ x=D.it[(obIdx[k]=(obIdx[k]||0)+1)%D.it.length]; if(!B.querySelector(`.obt[data-key="${k+x.join()}"]`)) break; x=null; }
+    if(!x) continue;
+    const W=B.clientWidth, H=B.clientHeight, cols=3, rows=3;
+    if(!obSlots.length) obSlots=Array.from({length:cols*rows},(_,i)=>i).sort(()=>Math.random()-.5);
+    const sl=obSlots.pop(), cx=.17+(sl%cols)*.33, cy=.19+Math.floor(sl/cols)*.31;
+    const old=B.querySelector(`.obt[data-sl="${sl}"]`);
+    if(old){ old.removeAttribute('data-sl'); REDUCE?old.remove():gsap.to(old,{scale:.6,opacity:0,duration:.35,ease:'power2.in',onComplete:()=>old.remove()}); }
+    B.insertAdjacentHTML('beforeend',obTok(k,x)); const el=B.lastElementChild; el.dataset.sl=sl; el.dataset.key=k+x.join(); const hw=el.offsetWidth/2+10, hh=el.offsetHeight/2+10;
+    const r=(Math.random()*16-8);
+    gsap.set(el,{left:Math.min(W-hw,Math.max(hw,cx*W+Math.random()*24-12)),top:Math.min(H-hh,Math.max(hh,cy*H+Math.random()*18-9)),xPercent:-50,yPercent:-50,rotation:r});
+    if(!REDUCE){ gsap.from(el,{y:'-=70',scale:.3,opacity:0,rotation:r+(Math.random()>.5?28:-28),duration:.8,delay:t*.14,ease:'back.out(1.5)'});
+      gsap.to(el,{y:'+=4',rotation:r+1.5,duration:2+Math.random(),repeat:-1,yoyo:true,ease:'sine.inOut',delay:.8+t*.14}); }
+    obCnt[k]=Math.min(D.n,(obCnt[k]||0)+1+Math.floor(Math.random()*2));
+  }
+  obCounters(); const ch=document.querySelector(`#obK [data-k="${k}"]`); if(ch&&!REDUCE) gsap.fromTo(ch,{scale:.85},{scale:1,duration:.5,ease:'back.out(3)'});
+}
+function obBoard(){
+  obSlots=[]; Object.keys(obCnt).forEach(k=>delete obCnt[k]);
+  const on=()=>Object.keys(OBD).filter(k=>ob.conn[k]);
+  on().forEach(k=>obDrop(k,2)); obCounters();
+  if(REDUCE) return;
+  obStreams.board=setInterval(()=>{ const B=$('obB'); if(!B||!B.isConnected){ clearInterval(obStreams.board); return; } const l=on(); if(l.length) obDrop(l[Math.floor(Math.random()*l.length)]); },1700);
+}
 const obStopStreams = () => Object.keys(obStreams).forEach(k=>{ clearInterval(obStreams[k]); delete obStreams[k]; });
 const CX={cal:true,gmail:true,contacts:true,wa:true};
 function cxSet(k,on){ CX[k]=on; if(k==='gmail') conn.gmail=on; if(k==='contacts') conn.contacts=on; if(k==='wa') cfg.wa=on; }
 const ob={step:0,conn:{cal:false,gmail:false,contacts:false,wa:false,icloud:false,instagram:false,pinterest:false,spotify:false},busy:{}};
-const OB_S={cal:'Tus fechas',gmail:'Invitaciones y topes',contacts:'Quién es quién',wa:'Te aviso por aquí',icloud:'Fechas de tu iPhone',instagram:'Sus gustos públicos',pinterest:'Ideas que guardas',spotify:'Lo que escuchan'};
+const OB_S={cal:'Tus fechas',gmail:'Invitaciones y topes',contacts:'Quién es quién',wa:'Chats y avisos',icloud:'Fechas de tu iPhone',instagram:'Sus gustos públicos',pinterest:'Ideas que guardas',spotify:'Lo que escuchan'};
 const OB_GRID=Object.keys(OB_S).map(k=>CONNS.find(c=>c.k===k));
 const OB_T={contacts:'Contactos',icloud:'iCloud'};
 const OB_B=on=>on?'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg>':'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>';
@@ -2443,6 +2523,7 @@ function obPreview(){
     </div></div>`;
     obStory();
   } else {
+    R.innerHTML=`<div class="ov"><p class="ov-cap" style="margin-top:0">Lo que voy encontrando</p><div id="obB" class="obb"><p class="obb-e">Conecta algo y lo verás llegar aquí.</p></div><div id="obK" class="obb-k"></div><p class="mt-4 text-[12.5px] leading-snug text-[#748297]">Mientras más conectes, menos te pregunto.</p></div>`; obBoard(); return;
     R.innerHTML=`<div class="ov"><p class="ov-cap" style="margin-top:0">Lo que voy encontrando</p>${OB_CONN.map(c=>`<div class="ov-li" data-k="${c.k}" data-on="${ob.conn[c.k]}"><i><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg></i><span class="min-w-0 flex-1">${c.ov}</span><span class="ov-st"></span></div>`).join('')}<p class="mt-4 text-[12.5px] leading-snug text-[#748297]">Mientras más conectes, menos te pregunto.</p></div>`;
   }
 }
@@ -2467,11 +2548,11 @@ function obView(){
     <label><span>¿Dónde te llegan los regalos?</span><input id="obAddr" class="ob-i" value="${esc(cfg.addr)}" autocomplete="street-address" placeholder="Calle, número, comuna"><small>Lo puedes cambiar en cada compra.</small></label></div>
     <ul class="ob-ch" data-in><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Toma 1 minuto</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Solo lectura</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Lo cambias cuando quieras</li></ul>
     <div class="ob-a" data-in><button id="obNext" class="ob-b">Continuar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>`;
-  else L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 2 · Conectores</p><h1 class="ob-t" data-in>Conecta <em>lo que ya usas</em>.</h1><p class="ob-p" data-in>Aprendo sin preguntarte. Solo leo, nunca envío nada.</p>
+  else L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 2 · Conectores</p><h1 class="ob-t" data-in>Conecta <em>lo que ya usas</em>.</h1><p class="ob-p" data-in>Aprendo sin preguntarte. Solo leo; nunca escribo a nadie por ti.</p>
     <div class="ob-c ob-c2" data-in>${OB_GRID.map(c=>`<div class="oc" data-k="${c.k}" data-on="${ob.conn[c.k]}"><span class="oc-lg"><img src="${c.img}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${c.t[0]}'}))"></span><div class="min-w-0"><b>${OB_T[c.k]||c.t}</b><small>${OB_S[c.k]}</small></div><button data-c="${c.k}" aria-label="${ob.conn[c.k]?'Conectado':'Conectar'} ${c.t}">${OB_B(ob.conn[c.k])}</button></div>`).join('')}</div>
     <p class="ob-n" id="obNote" data-in>Conecta al menos el calendario para que pueda empezar.</p>
     <div class="ob-a" data-in><button id="obNext" class="ob-b" ${ob.conn.cal?'':'disabled'}>Analizar mi calendario <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button id="obBack" class="ob-bk">Atrás</button></div>`;
-  obPreview(); obBind(); if(ob.step===1) Object.keys(ob.conn).filter(k=>ob.conn[k]).forEach(obStream);
+  obPreview(); obBind();
 }
 function obBind(){
   const nx=$('obNext'), bk=$('obBack');
@@ -2484,11 +2565,11 @@ function obBind(){
 }
 async function obConnect(k){
   if(ob.conn[k]||ob.busy[k]) return; ob.busy[k]=true;
-  const row=document.querySelector(`.oc[data-k="${k}"]`), btn=row.querySelector('button'); row.dataset.s='busy'; btn.innerHTML='<span class="oc-sp"></span>Conectando';
+  const row=document.querySelector(`.oc[data-k="${k}"]`), btn=row.querySelector('button'); row.dataset.s='busy'; btn.innerHTML='<span class="oc-sp"></span>';
   await wait(REDUCE?0:1.1);
-  ob.busy[k]=false; ob.conn[k]=true; row.dataset.s=''; row.dataset.on='true'; btn.innerHTML=row.closest('.ob-c2')?OB_B(true):'✓ Conectado';
+  ob.busy[k]=false; ob.conn[k]=true; row.dataset.s=''; row.dataset.on='true'; btn.innerHTML=OB_B(true);
   if(k==='gmail') conn.gmail=true; if(k==='contacts') conn.contacts=true; if(k==='wa') cfg.wa=true;
-  const li=document.querySelector(`.ov-li[data-k="${k}"]`); if(li){ li.dataset.on='true'; obStream(k); const f=li.querySelector('.ov-st'); if(!REDUCE) gsap.from(f,{y:-6,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
+  obDrop(k,3); const li=document.querySelector(`.ov-li[data-k="${k}"]`); if(li){ li.dataset.on='true'; obStream(k); const f=li.querySelector('.ov-st'); if(!REDUCE) gsap.from(f,{y:-6,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
   if(!REDUCE){ gsap.fromTo(row,{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.45)'}); if(li) gsap.fromTo(li,{x:-8},{x:0,duration:.5,ease:'back.out(2)'}); }
   if(ob.conn.cal){ $('obNext').disabled=false; $('obNote').textContent='Con el calendario ya empiezo. Lo demás me ayuda a acertar.'; }
 }
