@@ -479,9 +479,10 @@ body.in-app .ob-kb{display:flex}
 .dh-h{margin-top:22px;font-size:13px;font-weight:600}
 .dy{display:block;flex-shrink:0;margin-top:12px;border-radius:22px;background:#fff;padding:16px 20px;box-shadow:0 0 0 1px #e5eaf2}
 .dh-1,.dh{flex-shrink:0}
-.dy header{display:flex;align-items:center;margin:-4px 0 8px -6px}
+.dy header{display:flex;align-items:center;justify-content:space-between;margin:-2px -4px 10px 0}
+.dy-t{font-family:'Newsreader',serif;font-weight:400;font-size:21px;letter-spacing:-.015em}
 .dy-y{display:flex;align-items:center;gap:4px}
-.dy-y h3{font-family:'Newsreader',serif;font-weight:400;font-size:20px;letter-spacing:-.02em;line-height:1;min-width:56px;text-align:center}
+.dy-y h3{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:-.02em;line-height:1;min-width:44px;text-align:center}
 .dy-y button{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:18px;line-height:1;color:#0e1014}.dy-y button:hover{background:#f5f7f9}.dy-y button:disabled{opacity:.25;cursor:default;background:none}
 .dy-lg{display:flex;flex-direction:column;align-items:flex-start;gap:5px;font-size:12px;color:#5f6b7d}.dy-lg span{display:flex;align-items:center;gap:7px}.dy-lg .dy-i{width:20px;height:20px;margin-left:8px}.dy-lg .dy-i svg{width:11px;height:11px}
 .dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
@@ -2088,7 +2089,7 @@ function dtHtml(){
     const act=!f?'':f.st==='done'?(f.p.bought?`data-act="pedido" data-i="${idx(f.p)}"`:''):`data-act="flow" data-i="${idx(f.p)}"`;
     const inner=!f?'':st==='done'?'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.500l3.200 3L13 4.500"/></svg>':portrait(f.p.n).replace('<svg ','<svg preserveAspectRatio="xMidYMid slice" ');
     cells.push(`<${act?'button':'span'} ${act} class="dy-c is-${st}${past&&st==='none'?' is-past':''}${m*4+w===tw?' is-today':''}" style="grid-column:${m+1};grid-row:${w+2}${f&&st!=='done'?`;background:${(PORT[f.p.n]||{}).bg||'#e5eaf2'}`:''}" ${tip?`data-tip="${esc(tip)}" aria-label="${esc(l.map(x=>x.p.n).join(', '))}"`:'aria-hidden="true"'}>${inner}${l.length>1?`<b class="num">${l.length}</b>`:''}</${act?'button':'span'}>`); }
-  return `<section id="dtY" class="dy" aria-label="Tu año"><header><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div></header>
+  return `<section id="dtY" class="dy" aria-label="Calendario"><header><h3 class="dy-t">Calendario</h3><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div></header>
     <div class="dy-g">${MES.map((m,i)=>`<span class="dy-mn${i===cur?' is-cur':''}" style="grid-column:${i+1};grid-row:1">${m}</span>`).join('')}${cells.join('')}</div><div id="dyTip" class="dy-tip" role="tooltip"></div></section>`;
 }
 document.addEventListener('pointerover',e=>{ const c=e.target.closest&&e.target.closest('.dy-c[data-tip]'), t=$('dyTip'); if(!t) return; if(!c){ t.classList.remove('on'); return; }
