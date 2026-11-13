@@ -911,7 +911,7 @@ body.sim-on .fab{display:none}
 .rl{position:relative;display:grid;place-items:center}
 .rl::before,.rl::after{content:"";position:absolute;left:50%;width:150px;height:120px;margin-left:-75px;background:#2b2e35;z-index:-1}
 .rl::before{top:-90px;border-radius:30px 30px 0 0}.rl::after{bottom:-90px;border-radius:0 0 30px 30px}
-.rl-b{width:230px;height:276px;border-radius:58px;background:#0b0c0f;padding:12px;box-shadow:0 0 0 3px #3a3d44,0 40px 70px -24px rgba(0,0,0,.8)}
+.rl-b{width:244px;height:300px;border-radius:58px;background:#0b0c0f;padding:12px;box-shadow:0 0 0 3px #3a3d44,0 40px 70px -24px rgba(0,0,0,.8)}
 .rl-s{display:flex;flex-direction:column;height:100%;border-radius:46px;background:#000;color:#fff;padding:18px 16px 14px;text-align:left}
 .rl-s .appi{width:26px;height:26px;border-radius:50%}
 .rl-s b{margin-top:8px;font-size:16px;line-height:1.2}
@@ -925,6 +925,14 @@ body.sim-on .fab{display:none}
 .fr-b li{display:flex;gap:10px;align-items:baseline;border-radius:9px;padding:5px 7px;font-size:12.5px;color:rgba(255,255,255,.8)}
 .fr-b b{flex:none;width:46px;font-size:11px;font-weight:700;color:rgba(255,255,255,.5)}
 .fr-b li.is-new{color:#fff;font-weight:600}.fr-b li.is-new b{color:#ff8a5c}
+.rl-k{display:block;margin-top:6px;font-size:11px;font-weight:600;color:rgba(255,255,255,.55)}
+.rl-sub{display:block;margin-top:3px;font-size:13px;color:rgba(255,255,255,.7)}
+.rl-src{display:flex;gap:4px;margin-top:8px}.rl-src img{width:20px;height:20px;padding:3px;border-radius:50%;background:#fff;object-fit:contain}
+.rl-n{display:block;margin-top:6px;font-family:'Newsreader',serif;font-weight:400;font-size:60px!important;line-height:1}
+.rl-bar{display:block;height:4px;margin-top:auto;border-radius:2px;background:rgba(255,255,255,.15);overflow:hidden}.rl-bar i{display:block;width:0;height:100%;background:#ff5924;transition:width .5s}
+.rl-im{display:block;width:62px;height:62px;margin-top:6px;border-radius:14px;overflow:hidden;background:#fff}.rl-im img{width:100%;height:100%;object-fit:cover}
+.rl-t{font-size:14px!important;margin-top:6px!important}
+.rl-why{display:block;margin-top:3px;font-family:'Newsreader',serif;font-style:italic;font-size:13px;line-height:1.25;color:rgba(255,255,255,.85)}
 /* lentes: interfaz espacial */
 .vp{position:relative;width:min(900px,calc(100vw - 32px));aspect-ratio:1.85;border-radius:32px;overflow:hidden;background:#a89379;box-shadow:0 60px 100px -30px rgba(0,0,0,.75)}
 .vp-sc{position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 10%,#fff6ea 0,transparent 60%),linear-gradient(#e8dccb 0 66%,#a89379 66%)}
@@ -2926,7 +2934,7 @@ const SIM = {
   car:   {t:'En el auto.',     d:'Plan B. Se te pasó el cumple de tu mamá y vas camino a su casa. Aparezco en la pantalla del auto.', n:'Mamá'},
   voz:   {t:'En el parlante.', d:'Mientras cocinas, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
   refri: {t:'En el refri.',    d:'Alguien de la casa anotó un cumple en el calendario de la cocina. Lo sumo a tus fechas.', n:'Tía Ana'},
-  reloj: {t:'En el reloj.',    d:'Faltan días, no horas. Estás en una reunión y lo apruebas con un toque.', n:'Andrés'},
+  reloj: {t:'En el reloj.',    d:'El mismo aviso de 14 días, en tu muñeca. Ves cómo elegí y lo apruebas con un toque.', n:'Andrés'},
   lentes:{t:'En los lentes.',  d:'Miras una vitrina. Reconozco algo para tu mamá y lo guardas con un gesto.', n:'Mamá', h:'mielero-en-ceramica-gres'},
 };
 const SIM_KEY = {c:'car',a:'voz',r:'refri',w:'reloj',l:'lentes'};
@@ -3011,14 +3019,22 @@ function simRefri(){
     $('frN').innerHTML=`<p>${simOk(`Sumada. Te aviso el ${fdate(avisoD(p))}.`)}</p>${simEnd()}`; };
 }
 
-/* reloj: apruebas con tiempo, no el último día */
+/* reloj: el mismo aviso de 14 días del planner, en la muñeca */
 function simReloj(){
-  const p=tnTarget()||byN('Andrés'), x=chosen(p), cap=BUDGET[p.n];
-  $('simD').innerHTML=`<div class="rl"><div class="rl-b" id="rlB"><div class="rl-s" id="rlS"><span class="appi">${GIFT_I}</span><b>${esc(p.n)} es ${days(dleft(p))}. Ya lo elegí.</b>
-    <div class="rl-g">${img(x.u,'')}<span class="min-w-0"><span class="block truncate">${esc(x.t)}</span><span class="num">${clp(x.p)}${cap?' · dentro del tope':''}</span></span></div>
-    <button class="sim-b1" data-s="yes">Aprobar</button></div></div></div>`;
-  if(!REDUCE) gsap.delayedCall(.7,()=>{ const b=$('rlB'); if(b) b.classList.add('rl-buzz'); });
-  simAct.yes=()=>{ simBuy(p,'aprobado desde el reloj'); $('rlS').innerHTML=`<span class="appi" style="background:#22a06b">${CK}</span><b>Aprobado.</b><span class="mt-1 text-[13px] text-white/70">Llega ${arrival(p)}, con tiempo.</span>${simEnd()}`; };
+  const run=simRun, p=tnTarget()||yr().filter(x=>!x.bought).sort(byDate)[0]||byN('Andrés'), x=chosen(p), d=thinkData(p), b=BUDGET[p.n];
+  const why=(OPT[x.h]||whyOf(p)).replace(/^Mi favorita\. /,'');
+  const steps=[[d.all.length,'regalos revisados'],[d.pool.length,b?'dentro del tope':'con sentido'],[3,'finalistas'],[1,'elegido']];
+  const srcs=srcsOf(p).slice(0,3).map(c=>`<img src="${c.img}" alt="">`).join('');
+  const scr=h=>{ $('rlS').innerHTML=h; if(!REDUCE) gsap.from('#rlS > *',{y:8,opacity:0,duration:.3,stagger:.05}); };
+  $('simD').innerHTML=`<div class="rl"><div class="rl-b" id="rlB"><div class="rl-s" id="rlS"></div></div></div>`;
+  scr(`<span class="appi">${GIFT_I}</span><small class="rl-k">Cuenta conmigo · ahora</small><b>${esc(p.n)} es en ${AVISO} días.</b><span class="rl-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`);
+  if(!REDUCE) gsap.delayedCall(.6,()=>{ const e=$('rlB'); if(e) e.classList.add('rl-buzz'); });
+  simAct.see=async()=>{
+    scr(`<small class="rl-k">Pensando en ${esc(p.n)}</small><span class="rl-src">${srcs}</span><b class="rl-n num" id="rlN">${steps[0][0]}</b><span class="rl-sub" id="rlL">${steps[0][1]}</span><span class="rl-bar"><i id="rlI"></i></span>`);
+    for(let k=0;k<steps.length;k++){ if(run!==simRun) return; const n=$('rlN'); if(!n) return; n.textContent=steps[k][0]; $('rlL').textContent=steps[k][1]; $('rlI').style.width=((k+1)/steps.length*100)+'%'; if(!REDUCE) gsap.fromTo(n,{scale:1.25,opacity:.4},{scale:1,opacity:1,duration:.35,ease:'back.out(2)'}); await wait(REDUCE?0:.7); }
+    if(run!==simRun) return;
+    scr(`<small class="rl-k">Te elegí este</small><span class="rl-im">${img(x.u,'')}</span><b class="rl-t">${esc(x.t)}</b><span class="rl-sub num">${clp(x.p)}${b?' · dentro del tope':''}</span><span class="rl-why">${esc(why)}</span><button class="sim-b1" data-s="yes">Aprobar</button>`); };
+  simAct.yes=()=>{ simBuy(p,'aprobado desde el reloj'); scr(`<span class="appi" style="background:#22a06b">${CK}</span><b>Aprobado.</b><span class="rl-sub">Llega ${arrival(p)}, con tiempo.</span>${simEnd()}`); };
 }
 
 /* lentes: guardas una idea mirando, al estilo de una interfaz espacial */
