@@ -555,32 +555,7 @@ body.in-app .ob-kb{display:flex}
 .fn2 b{font-family:'Newsreader',serif;font-weight:400;font-size:19px;line-height:1;color:#0e1014}
 .fn2 li:last-child b{color:#ff5924}.fn2 li:last-child span{color:#0e1014;font-weight:600}
 .sc-nav{z-index:6}.sc-foot{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:18px}
-.an{margin-top:26px;border-radius:22px;background:#f5f7f9;padding:20px 20px 18px}
-.an-h{display:flex;align-items:center;gap:12px}.an-h .pt{width:44px;height:44px;flex:none;border-radius:12px}
-.an-h h3{font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.02em}
-.an-h small{display:block;margin-top:2px;font-size:12.5px;color:#5f6b7d}
-.an-k{margin:18px 0 8px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#748297}
-.an-l{display:flex;flex-direction:column;gap:8px}
-.an-l li{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr);align-items:center;gap:10px;border-radius:14px;background:#fff;padding:10px 12px;box-shadow:0 0 0 1px #e5eaf2}
-.an-s{display:flex;flex-direction:column;gap:3px;font-size:13.5px;font-weight:600;line-height:1.25}
-.an-s em{display:inline-flex;align-items:center;gap:5px;font-style:normal;font-size:11.5px;font-weight:500;color:#5f6b7d}
-.an-s em img{width:14px;height:14px;object-fit:contain}
-.an-l li>i{color:#ff5924;font-style:normal;text-align:center}
-.an-d{font-size:13.5px;line-height:1.3;color:#0e1014}
-.an-fn{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:13px;color:#5f6b7d}
-.an-st{white-space:nowrap}.an-fn b{font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#0e1014}.an-st:last-child b{color:#ff5924}
-.an-vs{display:flex;flex-direction:column;gap:8px}
-.an-vs li{display:flex;align-items:center;gap:12px;font-size:13.5px;line-height:1.3}
-.an-vs img{width:44px;height:44px;flex:none;border-radius:10px;object-fit:cover;background:#fff}
-.an-vs b{display:block;font-size:13px}
-.an-cf{display:flex;align-items:center;gap:12px;margin-top:18px;border-top:1px solid #e5eaf2;padding-top:14px;font-size:13px}
-.an-bar{flex:1;height:6px;border-radius:9px;background:#e5eaf2;overflow:hidden}.an-bar i{display:block;height:100%;border-radius:9px;background:#0e1014}
-.an-cf b{font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1}
-.an-mx{display:flex;align-items:center;gap:10px;margin-top:12px;border-radius:14px;background:#fff;padding:10px 12px;font-size:13px;line-height:1.3;box-shadow:0 0 0 1px #e5eaf2}
-.an-mx img{width:22px;height:22px;flex:none;object-fit:contain}
-.an-mx button{flex:none;margin-left:auto;border-radius:999px;background:#0e1014;color:#fff;padding:6px 12px;font-size:12.5px;font-weight:600}.an-mx button:hover{background:#ff5924}
 .pn-why{margin-top:8px;font-size:13px;line-height:1.35;color:#5f6b7d}.pn-why button{font-weight:600;color:#0e1014;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:560px){.an-l li{grid-template-columns:1fr}.an-l li>i{display:none}}
 .sh-s{margin-top:28px;border-top:1px solid #e5eaf2;padding-top:20px;font-size:14.5px;line-height:1.55}
 .sh-s h3{margin-bottom:10px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#748297}
 .sh-s p+p{margin-top:10px}
@@ -1270,21 +1245,6 @@ const HINT = {
  'Pareja':['spotify','Sus listas compartidas me dirían qué escuchan juntos.','Tienen una lista para cocinar'],
  'Sofi y Nico':['pinterest','Sus tableros me dirían cómo quieren su casa.','Arman su casa en tonos tierra'],
 };
-/* qué deduje de cada cosa que sé */
-const INFER = {
- 'Le gusta leer antes de dormir':'Un libro le va a gustar más que un objeto.','Guarda las historias de la familia':'Algo para escribir recuerdos tiene sentido para ella.','Una vela del año pasado le encantó':'Las velas le gustan, pero no quiero repetir tan pronto.','Guarda ideas de cerámica y plantas':'La cerámica también le habla.',
- 'Es tu hermano':'Hay confianza: puede ser algo práctico.','Anda en bici a todos lados':'Lo que lleve encima lo usa todos los días.','Ya tiene botella, le falta mochila':'Descarto botellas y busco mochilas.','Sale a pedalear al cerro los domingos':'Tiene que aguantar uso rudo.',
- 'Es tu hermana':'Puedo ir a algo más personal.','Lee antes de dormir':'Libros y cosas para la noche.','Le escribes seguido':'Son cercanas: vale algo con intención.','Escucha podcasts de libros':'Confirma que los libros son lo suyo.',
- 'Toma café todas las mañanas':'Algo para su café lo usa a diario.','Le regalaste una botella en junio':'Descarto botellas para no repetir.',
- 'Siempre tiene frío en invierno':'Algo que abrigue.','Prefiere regalos para la casa':'Nada de accesorios de moda ni tecnología.',
- 'Se casan el 22 de agosto':'Es para los dos, no para uno solo.','Están armando su casa':'Lo de uso diario les sirve más que lo decorativo.','Arman su casa en tonos tierra':'El vidrio transparente combina con ese estilo.',
- 'Les gusta quedarse en casa':'Algo para disfrutar en casa, juntos.','Aniversario el 12 de septiembre':'Tiene que sentirse especial, no solo útil.','Tienen una lista para cocinar':'Lo de cocina y mesa les suma.',
- 'Recibe a todos en su casa':'Algo para servir a muchos.','Le gusta cocinar para muchos':'Lo de mesa y cocina le calza.',
- 'Es tu sobrina':'Es para la familia, no solo para la guagua.','Está en su primer año':'Algo para guardar este año.',
- 'Bautizo el 22 de agosto':'Un recuerdo, no un juguete.','Tienen una guagua recién nacida':'Para registrar sus primeros meses.',
- 'Tope de $15.000':'Saco todo lo que pase de ese precio.','Es anónimo, sin tu nombre':'Nada personalizado ni con tu firma.','Se entrega en la oficina':'Tiene que servirle a cualquiera.',
- 'Cena familiar el 24':'Algo para compartir en la mesa.','Son 8 personas a la mesa':'Que alcance para todos.',
-};
 /* por qué quedaron atrás la 2.ª y la 3.ª opción */
 const VS = {
  'Mamá':['La vela le gustó el año pasado; no quiero repetir tan pronto.','Lindo, pero no conecta con la lectura.'],
@@ -1300,20 +1260,6 @@ const VS = {
  'Amigo secreto':['La más económica, pero menos especial.','La más distinta; no sé si le sirve a cualquiera.'],
  'Navidad':['Bonito, pero es para una persona, no para la mesa.','Rico, pero las mermeladas alcanzan para más gente.'],
 };
-function analysis(p,h){
-  const its=items(p), i=its.findIndex(o=>o.h===h); if(i<0) return '';
-  const k=knows(p), d=thinkData(p), mine=chosen(p).h===h, srcs=srcsOf(p), hn=HINT[p.n], miss=hn&&!CX[hn[0]]?cxOf(hn[0]):null;
-  const conf=Math.min(94,48+k.length*9+srcs.length*4-(miss?6:0));
-  const sig=k.map(([t,s])=>{ const c=cxOf(s), lab=c?`<img src="${c.img}" alt="">${c.t}`:SRC_L[s]; return `<li><span class="an-s">${esc(t)}<em>${lab}</em></span><i aria-hidden="true">→</i><span class="an-d">${esc(INFER[t]||'Lo tomé en cuenta.')}</span></li>`; }).join('');
-  const others=its.map((o,j)=>({o,j})).filter(x=>x.j!==i).map(({o,j})=>`<li>${img(o.u,'')}<span><b>${esc(o.t)} · <span class="num">${clp(o.p)}</span></b>${j===0?'Era mi primera idea: '+esc(whyOf(p)):esc((VS[p.n]||[])[j-1]||'')}</span></li>`).join('');
-  return `<section class="an"><div class="an-h">${portrait(p.n)}<div><h3>${mine?'Por qué lo pensé':'Por qué quedó como alternativa'}</h3><small>Para ${esc(p.n)} · crucé ${srcs.length} ${srcs.length===1?'conector':'conectores'}: ${srcs.map(c=>c.t.replace('Google ','')).join(', ')}</small></div></div>
-   <p class="an-k">Lo que sé y lo que deduje</p><ol class="an-l">${sig||'<li><span class="an-d">Todavía sé poco. Elegí por la fecha y lo que más se regala.</span></li>'}</ol>
-   <p class="an-k">Cómo llegué</p><p class="an-fn">${[[d.all.length,'revisados'],[d.pool.length,'con sentido'],[3,'finalistas'],[1,mine?'elegida':'mi elección']].map(([n,l])=>`<span class="an-st"><b class="num">${n}</b> ${l}</span>`).join('<span aria-hidden="true">→</span>')}</p>
-   <p class="an-k">${mine?'Por qué no las otras':'Contra las otras'}</p><ul class="an-vs">${others}</ul>
-   <div class="an-cf"><span>Qué tan seguro estoy</span><span class="an-bar"><i style="width:${conf}%"></i></span><b class="num">${conf}%</b></div>
-   ${miss?`<div class="an-mx"><img src="${miss.img}" alt=""><span>${hn[1]} Con ${miss.t} subiría mi seguridad.</span><button data-act="shcx" data-k="${miss.k}">Conectar</button></div>`:''}
-  </section>`;
-}
 const removedFact = {};
 const knows = p => { const h=HINT[p.n], viaCx=h&&CX[h[0]]&&!removedFact[p.n+'|'+h[2]]?[[h[2],h[0]]]:[]; return [...(LEARN[p.n]||[]).filter(f=>!removedFact[p.n+'|'+f[0]]), ...viaCx, ...(learned[p.n]||[]).map(t=>[t,'you'])]; };
 const cxOf = k => CONNS.find(c=>c.k===(SRC2CX[k]||k));
@@ -1473,8 +1419,8 @@ function renderSheet(){
    <div class="sh-g"><div class="sh-main"><img src="${imgs[sheetImg].replace('_600x','_1200x')}" alt="${esc(x.t)}"></div>${imgs.length>1?`<div class="sh-th">${imgs.map((u,n)=>`<button data-act="shimg" data-n="${n}" aria-pressed="${n===sheetImg}" aria-label="Foto ${n+1} de ${imgs.length}"><img src="${u}" alt=""></button>`).join('')}</div>`:''}</div>
    <div class="sh-b">
      <p class="pl-v">${esc(x.v)}${inf.ty?` · ${esc(inf.ty)}`:''}</p><h2 class="pl-t">${esc(x.t)}</h2><p class="num sh-pr">${clp(x.p)}</p>
+     ${p&&i>=0?`<div class="sh-why">${portrait(p.n,'sh-pt')}<p><b>Para ${esc(p.n)}.</b> ${pickText(p,i)}</p></div>`:''}
      ${canBuy?`<div class="sh-cta"><button data-act="ok" data-i="${idx(p)}" data-pick="${i}" class="pl-cta pl-cta-w">Comprar y dejar listo</button>${isCur?'':`<button data-act="shpick" data-pick="${i}" class="pl-sec">Dejarla como mi elección</button>`}</div>`:''}
-     ${p&&i>=0?analysis(p,h):''}
      <section class="sh-s"><h3>Sobre el producto</h3>${inf.d&&inf.d.length?inf.d.map(t=>`<p>${esc(t)}</p>`).join(''):`<p>${esc(descFor(h))}</p>`}</section>
      <section class="sh-s"><h3>Cambios y devoluciones</h3><p>Cambios hasta 90 días después de la compra, con boleta y sin uso. Si llega dañado, se avisa en las primeras 48 horas.</p></section>
      <a class="sh-ext" href="https://creadoenchile.cl/products/${h}" target="_blank" rel="noopener">Ver en Creado en Chile ↗</a>
@@ -1822,7 +1768,7 @@ function personPanel(p){
   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
   <h3 class="pn-t">${lbl}</h3>
   <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
-  <p class="pn-why">Porque ${esc(whyOf(p))} <button data-act="sheet" data-h="${c.h}">Ver el análisis</button></p>
+  <p class="pn-why">Porque ${esc(whyOf(p))} <button data-act="sheet" data-h="${c.h}">Ver detalle</button></p>
   <button data-act="focus" data-i="${idx(p)}" class="pl-sec mt-4 w-full">Ver en mi planner</button>`;
 }
 function viewPersonas(){
@@ -2032,8 +1978,6 @@ $('year').addEventListener('click',e=>{
   else if(a==='undo'){ p.bought=false; p.justBought=false; p.order=null; co=null; pedido=null; tab='planner'; dash=false; yfocus=p; autoFocus=false; addAct({k:'cancel',t:`Cancelé la compra de ${p.n}`,s:'Vuelve a quedar para tu aprobación',n:p.n,unread:false}); ytoast('Listo, cancelé la compra.'); render(); }
   else if(a==='pncx'){ const k=b.dataset.k, c=cxOf(k); b.innerHTML='<span class="oc-sp"></span>Conectando'; b.disabled=true;
     gsap.delayedCall(REDUCE?0:1.1,()=>{ cxSet(k,true); const ps=YEAR.filter(x=>HINT[x.n]&&HINT[x.n][0]===k); addAct({k:'conn',t:`Conecté ${c.t}`,s:`Ya sé algo más de ${ps.map(x=>x.n).join(' y ')}`,unread:false}); ytoast(`Listo. ${c.t} me contó algo nuevo de ${personSel.n}.`); render(); if(!REDUCE) gsap.from('.pn-l li:has(.src-lg)',{x:-10,opacity:0,duration:.5,ease:'back.out(2)',clearProps:'all'}); }); }
-  else if(a==='shcx'){ const k=b.dataset.k, c=cxOf(k); b.innerHTML='<span class="oc-sp"></span>Conectando'; b.disabled=true;
-    gsap.delayedCall(REDUCE?0:1.1,()=>{ cxSet(k,true); addAct({k:'conn',t:`Conecté ${c.t}`,s:`Ya sé algo más de ${sheetP.n}`,unread:false}); ytoast(`Listo. ${c.t} me contó algo nuevo de ${sheetP.n}.`); const sc=$('apSheet').querySelector('.sh-b')?.scrollTop||0; render(); renderSheet(); const sb=$('apSheet').querySelector('.sh-b'); if(sb) sb.scrollTop=sc; }); }
   else if(a==='swap'){ const q=yfocus, i=+b.dataset.pick, pk=$('plPick'); if(!pk||(ypick[q.n]||0)===i) return; ypick[q.n]=i;
     document.querySelectorAll('.pl-seg button').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.pick===i));
     if(REDUCE){ pk.innerHTML=pickInner(q); return; }
