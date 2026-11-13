@@ -1135,7 +1135,7 @@ async function runSync(){
 
   $('ping').style.display='none'; $('pdot').className='relative inline-flex size-2.5 rounded-full bg-emerald-500';
   say('Listo · conectado con Google Calendar',.9);
-  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>${conn.contacts||conn.gmail?' y a quién corresponde cada una.':'.'}`;
+  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>${conn.contacts||conn.gmail?' y ya sé de quién es cada una.':'.'}`;
   gsap.from('#summary',{opacity:0,y:14,duration:.5});
   gsap.to('#enter',{opacity:1,pointerEvents:'auto',duration:.5});
 
