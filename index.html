@@ -326,6 +326,14 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .ob-mc b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.1;letter-spacing:-.02em}
 .ob-mc span{display:block;margin-top:5px;font-size:14px;line-height:1.4;color:#5f6b7d}
 .ob-c{display:grid;gap:10px;margin-top:24px}
+.ob-c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ob-c2 .oc{grid-template-columns:38px minmax(0,1fr) auto;gap:11px;border-radius:18px;padding:11px 11px 11px 12px}
+.ob-c2 .oc-lg{width:38px;height:38px;border-radius:11px}.ob-c2 .oc-lg img{width:22px;height:22px}
+.ob-c2 .oc b{font-size:14px;gap:6px;white-space:nowrap}.ob-c2 .oc b em{padding:1px 6px;font-size:10px}
+.ob-c2 .oc small{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ob-c2 .oc button{display:grid;place-items:center;min-width:0;width:34px;height:34px;padding:0;border-radius:50%}
+.ob-c2 .oc[data-s=busy] button .oc-sp{margin:0}
+@media(max-width:560px){.ob-c2{grid-template-columns:minmax(0,1fr)}}
 .oc{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:14px;border-radius:20px;background:#fff;padding:14px 16px;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .25s}
 .oc[data-on=true]{box-shadow:0 0 0 2px #10b981}
 .oc-lg{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#f5f7f9}.oc-lg img{width:28px;height:28px;object-fit:contain}
@@ -444,6 +452,27 @@ body.in-app .ob-kb{display:flex}
 .dh-pd{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;border-radius:18px;background:#fff;padding:12px 16px;text-align:left;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s}.dh-pd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .dh-pdi{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#f1f3f6}.dh-pd b{display:block;font-size:14px;font-weight:600}.dh-pd small{display:block;font-size:12px;color:#5f6b7d}.dh-pd em{margin-left:auto;font-style:normal;font-size:16px}
 .dh-h{margin-top:22px;font-size:13px;font-weight:600}
+.dy{margin-top:12px;border-radius:22px;background:#fff;padding:14px 14px 16px;box-shadow:0 0 0 1px #e5eaf2}
+.dy header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:0 4px 12px}
+.dy-y{display:flex;align-items:center;gap:4px}
+.dy-y h3{font-family:'Newsreader',serif;font-weight:400;font-size:24px;letter-spacing:-.02em;line-height:1;min-width:56px;text-align:center}
+.dy-y button{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:18px;line-height:1;color:#0e1014}.dy-y button:hover{background:#f5f7f9}.dy-y button:disabled{opacity:.25;cursor:default;background:none}
+.dy-lg{display:flex;align-items:center;gap:6px;font-size:12px;color:#5f6b7d}.dy-lg .dy-i{width:20px;height:20px;margin-left:8px}.dy-lg .dy-i svg{width:11px;height:11px}
+.dy-m{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px}
+.dy-m li{display:flex;flex-direction:column;align-items:center;gap:7px;min-height:118px;border-radius:14px;padding:8px 2px 10px}
+.dy-m li.is-cur{background:#fff3ee;box-shadow:inset 0 0 0 1.5px #ffd2c2}
+.dy-mn{position:relative;font-size:10.5px;font-weight:700;letter-spacing:.12em;color:#0e1014}
+.dy-m li.is-past .dy-mn{color:#aab2bf}
+.dy-mn em{position:absolute;left:50%;top:-14px;transform:translateX(-50%);border-radius:999px;background:#ff5924;padding:1px 6px;font-style:normal;font-size:9px;letter-spacing:.06em;color:#fff}
+.dy-m li.is-cur{margin-top:0}.dy-m li{padding-top:16px}
+.dy-it{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;min-width:0;border-radius:10px;padding:2px 0}
+button.dy-it:hover small{color:#0e1014;text-decoration:underline}
+.dy-it small{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;line-height:1.15;color:#5f6b7d}
+.dy-i{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%}
+.dy-i.is-done{background:#e4f4ec;color:#14704f}
+.dy-i.is-now{background:#ff5924;color:#fff;box-shadow:0 0 0 4px rgba(255,89,36,.18)}
+.dy-i.is-next{background:#fff;color:#0e1014;box-shadow:inset 0 0 0 1.5px #d5dbe5}
+@media(max-width:760px){.dy-m{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:6px}.dy-m li{min-height:96px}}
 .dt{margin-top:12px;border-radius:22px;background:#fff;padding:16px 8px 10px;box-shadow:0 0 0 1px #e5eaf2}
 .dt header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 12px 10px}
 .dt h3{font-family:'Newsreader',serif;font-weight:400;font-size:19px;letter-spacing:-.01em}.dt header span{font-size:12.5px;color:#5f6b7d}
@@ -757,6 +786,132 @@ body.in-app .ob-kb{display:flex}
   .pn-l button{opacity:1}
 }
 @media(prefers-reduced-motion:reduce){.live-dot,.pe-q,.tr [data-s=now] i{animation:none}}
+/* ---------- FAB: mándame algo (en todo el planner) ---------- */
+.fab{position:fixed;right:24px;bottom:24px;z-index:175;display:none;align-items:center;gap:10px;height:56px;padding:0 20px 0 8px;border-radius:999px;background:#0e1014;color:#fff;font-size:14.5px;font-weight:600;box-shadow:0 18px 30px -12px rgba(14,16,20,.55),0 0 0 1px rgba(255,255,255,.06) inset;transition:transform .2s,background .2s}
+.fab:hover{transform:translateY(-2px);background:#1b1e24}
+body.in-app .fab{display:flex}
+body.ch-on .fab,body.tn-on .fab{display:none}
+.fab-o{position:relative;width:40px;height:40px;border-radius:50%;overflow:hidden;background:conic-gradient(from 0deg,#ff5924,#ff3d8b,#ffd23d,#27d9a6,#5b7cff,#ff5924);animation:fabspin 6s linear infinite}
+.fab-o::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#0e1014}
+.fab-o svg{position:absolute;inset:0;margin:auto;z-index:1}
+@keyframes fabspin{to{transform:rotate(360deg)}}
+.fab-o svg{animation:fabspin 6s linear infinite reverse}
+@media(max-width:767px){.fab{right:14px;bottom:calc(74px + env(safe-area-inset-bottom));padding:0 8px}.fab span.fab-t{display:none}}
+
+.ch{position:fixed;right:24px;bottom:24px;z-index:185;display:none;flex-direction:column;width:392px;height:min(640px,calc(100vh - 48px));border-radius:28px;background:#f5f7f9;box-shadow:0 40px 80px -30px rgba(14,16,20,.55),0 0 0 1px rgba(14,16,20,.06);overflow:hidden}
+body.ch-on .ch{display:flex}
+@media(max-width:767px){.ch{inset:auto 0 0 0;width:auto;height:calc(100dvh - 40px);border-radius:26px 26px 0 0}}
+.ch-h{display:flex;align-items:center;gap:11px;padding:14px 14px 12px 18px;background:#fff;box-shadow:0 1px 0 #e5eaf2}
+.ch-h b{display:block;font-family:'Newsreader',serif;font-weight:500;font-size:20px;letter-spacing:-.02em;line-height:1}
+.ch-h small{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;color:#5f6b7d}
+.ch-x{margin-left:auto;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;color:#5f6b7d}.ch-x:hover{background:#f5f7f9;color:#0e1014}
+.ch-l{flex:1;overflow:auto;padding:16px 14px 8px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.cm{max-width:86%;font-size:14.5px;line-height:1.38}
+.cm-a{align-self:flex-start;border-radius:6px 20px 20px 20px;background:#fff;padding:10px 13px;box-shadow:0 0 0 1px #e5eaf2}
+.cm-u{align-self:flex-end;border-radius:20px 6px 20px 20px;background:#0e1014;color:#fff;padding:10px 13px}
+.cm-u img{display:block;width:180px;height:180px;object-fit:cover;border-radius:14px;margin:-4px -6px 6px}
+.cm-u .cm-lk{display:block;font-size:12.5px;color:rgba(255,255,255,.6);word-break:break-all}
+.cm-ty{display:inline-flex;gap:4px;padding:14px 16px}.cm-ty i{width:6px;height:6px;border-radius:50%;background:#afb5c1;animation:cmty 1s infinite}.cm-ty i:nth-child(2){animation-delay:.15s}.cm-ty i:nth-child(3){animation-delay:.3s}
+@keyframes cmty{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+.cm-p{display:flex;gap:11px;align-items:center;margin-top:9px;border-radius:14px;background:#f5f7f9;padding:7px;font-size:13px;line-height:1.25}
+.cm-p img{width:52px;height:52px;flex:none;border-radius:10px;object-fit:cover;background:#fff}
+.cm-p small{display:block;color:#5f6b7d;font-size:12px}
+.cm-src{display:inline-flex;align-items:center;gap:5px;margin-bottom:6px;font-size:11.5px;font-weight:600;color:#5f6b7d}.cm-src img{width:14px;height:14px}
+.cm-ppl{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.cm-ppl button{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#fff;padding:4px 12px 4px 4px;font-size:13px;font-weight:600;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .15s,background .15s}
+.cm-ppl button:hover{box-shadow:0 0 0 1.5px #0e1014}
+.cm-ppl button.is-top{background:#0e1014;color:#fff;box-shadow:none}
+.cm-ppl .pt{width:26px;height:26px;border-radius:50%}
+.cm-ppl em{font-style:normal;font-weight:500;opacity:.6}
+.cm-ok{display:flex;gap:9px;align-items:flex-start}.cm-ok i{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#22a06b;color:#fff;margin-top:1px}
+.ch-q{display:flex;gap:6px;overflow-x:auto;padding:4px 14px 10px;scrollbar-width:none}.ch-q::-webkit-scrollbar{display:none}
+.ch-q button{flex:none;display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#fff;padding:7px 12px;font-size:12.5px;font-weight:600;box-shadow:0 0 0 1px #e5eaf2}.ch-q button:hover{box-shadow:0 0 0 1.5px #0e1014}
+.ch-q img{width:16px;height:16px}
+.ch-f{display:flex;align-items:center;gap:8px;margin:0 12px 10px;border-radius:999px;background:#fff;padding:6px;box-shadow:0 0 0 1px #e5eaf2,0 10px 20px -14px rgba(14,16,20,.3)}
+.ch-f input[type=text]{flex:1;min-width:0;border:0;outline:0;background:none;font-size:14.5px;padding:0 4px}
+.ch-f label,.ch-f button{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;cursor:pointer}
+.ch-f label{background:#f5f7f9;color:#0e1014}.ch-f label:hover{background:#e5eaf2}
+.ch-f button{background:#0e1014;color:#fff}.ch-f button:hover{background:#ff5924}
+.ch-wa{display:flex;align-items:center;justify-content:center;gap:6px;padding:0 0 12px;font-size:11.5px;color:#748297}.ch-wa img{width:13px;height:13px}
+/* lo que me mandaste, en la ficha de la persona */
+.pn-sv{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.pn-sv figure{position:relative;flex:none;width:76px}
+.pn-sv img{width:76px;height:76px;border-radius:14px;object-fit:cover;background:#f5f7f9}
+.pn-sv figcaption{margin-top:4px;font-size:11px;line-height:1.2;color:#5f6b7d}
+.pn-sv i{position:absolute;top:5px;left:5px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#0e1014;color:#fff}
+
+/* ---------- En la tienda: aviso del celular ---------- */
+.tn{position:fixed;inset:0;z-index:190;display:none;place-items:center;background:rgba(14,16,20,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+body.tn-on .tn{display:grid}
+.tn-cx{position:absolute;top:18px;right:20px;border-radius:999px;background:rgba(255,255,255,.14);padding:8px 16px;font-size:13px;font-weight:600;color:#fff}.tn-cx:hover{background:#fff;color:#0e1014}
+.tn-cap{position:absolute;left:24px;top:22px;max-width:300px;color:#fff}
+.tn-cap b{display:block;font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.02;letter-spacing:-.03em}
+.tn-cap p{margin-top:8px;font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.68)}
+.tn-ph{position:relative;width:360px;height:min(740px,calc(100vh - 40px));border-radius:54px;background:#0b0c0f;padding:10px;box-shadow:0 0 0 2px #2a2d33,0 0 0 3px #0b0c0f,0 60px 90px -30px rgba(0,0,0,.7)}
+.tn-sc{position:relative;width:100%;height:100%;border-radius:44px;overflow:hidden;background:#fbfbfd}
+.tn-isl{position:absolute;left:50%;top:11px;z-index:20;width:104px;height:30px;margin-left:-52px;border-radius:20px;background:#0b0c0f}
+.tn-sb{position:absolute;inset:0 0 auto 0;z-index:15;display:flex;justify-content:space-between;padding:16px 30px 0;font-size:14px;font-weight:600;pointer-events:none}
+@media(max-width:620px){.tn{background:#0b0c0f}.tn-cap{display:none}.tn-ph{width:100%;height:100%;border-radius:0;padding:0;box-shadow:none}.tn-sc{border-radius:0}.tn-isl{display:none}.tn-cx{z-index:30;top:44px;right:12px;padding:6px 12px;font-size:12px;background:rgba(14,16,20,.55);color:#fff}}
+/* pantalla bloqueada */
+.tn-lk{position:absolute;inset:0;color:#fff;background:radial-gradient(120% 70% at 20% 0%,#ffb08a 0,transparent 60%),radial-gradient(120% 80% at 100% 100%,#6a4be0 0,transparent 60%),linear-gradient(170deg,#ff7a4a,#c2417a 55%,#3d2a8c)}
+.tn-lk .tn-sb{color:#fff}
+.tn-clk{position:absolute;inset:72px 0 auto;text-align:center}
+.tn-clk small{font-size:15px;font-weight:600;opacity:.85}
+.tn-clk b{display:block;font-size:84px;font-weight:600;line-height:1;letter-spacing:-.04em}
+.tn-nt{position:absolute;left:12px;right:12px;top:262px;display:flex;gap:11px;align-items:flex-start;text-align:left;border-radius:22px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);padding:12px 13px;color:#0e1014;box-shadow:0 12px 30px -12px rgba(0,0,0,.35)}
+.tn-nt .appi{width:34px;height:34px;border-radius:9px}
+.tn-nt b{display:block;font-size:14.5px;line-height:1.25}
+.tn-nt span.tn-nb{display:block;margin-top:2px;font-size:13.5px;line-height:1.3;color:#2b313b}
+.tn-nt .tn-nm{display:flex;justify-content:space-between;font-size:12px;color:#5f6b7d}
+.tn-geo{position:absolute;left:0;right:0;bottom:44px;display:flex;justify-content:center}
+.tn-geo span{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:rgba(255,255,255,.18);padding:6px 12px;font-size:12px;font-weight:600}
+.tn-tap{position:absolute;left:0;right:0;bottom:92px;text-align:center;font-size:12px;opacity:.8}
+/* app en la tienda */
+.tn-ap{position:absolute;inset:0;overflow:auto;padding:56px 18px 22px;color:#0e1014;background:#fbfbfd}
+.tn-ap .tn-sb{position:absolute}
+.tn-here{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#0e1014;color:#fff;padding:6px 12px 6px 9px;font-size:12px;font-weight:600}
+.tn-h{margin-top:14px;font-family:'Newsreader',serif;font-weight:400;font-size:34px;line-height:1;letter-spacing:-.035em}
+.tn-h em{color:#ff5924}
+.tn-s{margin-top:7px;font-size:13.5px;line-height:1.35;color:#5f6b7d}
+.tn-pr{margin-top:14px;border-radius:24px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 20px 30px -24px rgba(14,16,20,.4);overflow:hidden}
+.tn-pr .tn-im{position:relative;height:178px;background:#f2f0ec}
+.tn-pr .tn-im img{width:100%;height:100%;object-fit:cover}
+.tn-pr .tn-im span{position:absolute;left:10px;top:10px;border-radius:999px;background:#ff5924;color:#fff;padding:4px 10px;font-size:11.5px;font-weight:700}
+.tn-pb{padding:12px 14px 14px}
+.tn-pb b{display:block;font-size:16px;line-height:1.2}
+.tn-pb small{display:block;margin-top:2px;font-size:12.5px;color:#5f6b7d}
+.tn-pb p{margin-top:8px;font-family:'Newsreader',serif;font-style:italic;font-size:15px;line-height:1.3}
+.tn-mp{margin-top:12px;border-radius:20px;background:#fff;box-shadow:0 0 0 1px #e5eaf2;padding:10px 12px 12px}
+.tn-mp p{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600}
+.tn-mp p small{font-weight:500;color:#5f6b7d}
+.tn-mp svg{display:block;width:100%;height:auto;margin-top:8px}
+.tn-pulse{transform-box:fill-box;transform-origin:center;animation:tnp 1.6s ease-out infinite}
+@keyframes tnp{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.4);opacity:0}}
+.tn-dp{display:flex;gap:11px;align-items:center;margin-top:12px;border-radius:18px;background:#0e1014;color:#fff;padding:9px 12px 9px 9px;font-size:13px;line-height:1.3}
+.tn-dp img{width:46px;height:46px;flex:none;border-radius:11px;object-fit:cover;background:#fff}
+.tn-dp small{display:block;color:rgba(255,255,255,.6);font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.tn-bt{display:flex;gap:8px;margin-top:14px}
+.tn-bt button{flex:1;height:48px;border-radius:999px;font-size:14.5px;font-weight:600}
+.tn-ap .tn-bt{position:sticky;bottom:-22px;margin:14px -18px -22px;padding:14px 18px 22px;background:linear-gradient(rgba(251,251,253,0),#fbfbfd 35%)}
+.tn-b1{background:#0e1014;color:#fff}.tn-b1:hover{background:#ff5924}
+.tn-b2{background:#eef1f5}.tn-b2:hover{background:#e5eaf2}
+.tn-3{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.tn-3 button{display:flex;gap:11px;align-items:center;text-align:left;border-radius:18px;background:#fff;padding:8px;box-shadow:0 0 0 1px #e5eaf2;font-size:13.5px;line-height:1.25}
+.tn-3 button[aria-pressed=true]{box-shadow:0 0 0 2px #0e1014}
+.tn-3 img{width:58px;height:58px;flex:none;border-radius:12px;object-fit:cover}
+.tn-3 small{display:block;color:#5f6b7d;font-size:12px}
+.tn-3 em{display:inline-block;margin-top:3px;font-style:normal;font-size:11.5px;font-weight:600;color:#ff5924}
+.tn-ok{display:grid;place-items:center;width:64px;height:64px;margin:24px auto 0;border-radius:50%;background:#22a06b;color:#fff}
+.tn-ct{text-align:center}
+.tn-rc{margin-top:16px;border-radius:20px;background:#fff;box-shadow:0 0 0 1px #e5eaf2;padding:12px 14px;font-size:13.5px}
+.tn-rc div{display:flex;justify-content:space-between;padding:4px 0}
+.tn-rc div+div{border-top:1px dashed #e5eaf2}
+.tn-rc dt{color:#5f6b7d}
+.tn-ask{margin-top:14px;border-radius:20px;background:#0e1014;color:#fff;padding:13px 14px;font-size:14px;line-height:1.3}
+.tn-ask div{display:flex;gap:6px;margin-top:10px}
+.tn-ask button{border-radius:999px;background:rgba(255,255,255,.14);padding:6px 13px;font-size:12.5px;font-weight:600}.tn-ask button:hover,.tn-ask button[aria-pressed=true]{background:#fff;color:#0e1014}
+.tn-wait{display:flex;align-items:center;gap:10px;margin-top:16px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px #e5eaf2;padding:12px 14px;font-size:13.5px}
+@media(prefers-reduced-motion:reduce){.fab-o,.fab-o svg,.tn-pulse,.cm-ty i{animation:none}}
 .live-dot{display:inline-block;flex:none;width:8px;height:8px;border-radius:50%;background:#ff5924;animation:ld 2.2s infinite}
 @keyframes ld{0%{box-shadow:0 0 0 0 rgba(255,89,36,.45)}70%,100%{box-shadow:0 0 0 8px rgba(255,89,36,0)}}
 /* onda viva */
@@ -923,7 +1078,23 @@ body.in-app .ob-kb{display:flex}
   <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
 </section>
 
-<div class="ob-kbs"><button id="obKb" class="ob-kb" aria-label="Simular la notificación"><kbd>N</kbd>Simular notificación</button><button id="obKu" class="ob-kb" aria-label="Simular el último día"><kbd>U</kbd>Último día</button></div>
+<div class="ob-kbs"><button id="obKb" class="ob-kb" aria-label="Simular la notificación"><kbd>N</kbd>Simular notificación</button><button id="obKu" class="ob-kb" aria-label="Simular el último día"><kbd>U</kbd>Último día</button><button id="obKt" class="ob-kb" aria-label="Simular que estás en la tienda"><kbd>T</kbd>En la tienda</button></div>
+
+<!-- mándame algo: conversar con el planner desde cualquier pantalla -->
+<button id="fab" class="fab" aria-label="Mándame algo" aria-expanded="false" aria-controls="ch"><span class="fab-o"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="fab-t">Mándame algo</span></button>
+<section id="ch" class="ch" role="dialog" aria-label="Mándame algo">
+  <header class="ch-h"><span class="fab-o" style="width:36px;height:36px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span><b>Cuenta conmigo</b><small><span class="live-dot"></span>Te escucho</small></span><button id="chX" class="ch-x" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+  <div id="chL" class="ch-l" aria-live="polite"></div>
+  <div id="chQ" class="ch-q"></div>
+  <form id="chF" class="ch-f"><label aria-label="Mandar una foto"><input id="chImg" type="file" accept="image/*" capture="environment" hidden><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg></label><input id="chT" type="text" autocomplete="off" placeholder="Un link, una idea, un gusto…" aria-label="Escríbeme"><button aria-label="Enviar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></form>
+  <p class="ch-wa"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="">Lo mismo me lo puedes mandar por WhatsApp.</p>
+</section>
+<!-- en la tienda: el aviso que llega al celular -->
+<section id="tn" class="tn" aria-label="Simulación: estás en la tienda">
+  <div class="tn-cap"><b>Estás en la tienda.</b><p>Entras a Creado y tienes una fecha sin resolver. Te aviso al celular.</p></div>
+  <button id="tnX" class="tn-cx">Cerrar</button>
+  <div class="tn-ph"><div id="tnS" class="tn-sc"></div><span class="tn-isl" aria-hidden="true"></span></div>
+</section>
 <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-[400] -translate-x-1/2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white opacity-0 shadow-2xl"><span class="mr-2 inline-block size-2 rounded-full bg-brand"></span><span id="ttxt"></span></div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -1429,7 +1600,7 @@ function ticket(p){
   const rows = ph==='now'
     ? `<div class="tk-t tk-dl ${left<=3?'tk-urg':''}"><div class="tk-dl-r"><div class="tk-dl-n"><b class="num">${left?left:'Hoy'}</b><span>${left?(left===1?'día':'días'):'último día'}<br>para decidir</span></div><div class="tk-dl-d"><small>Límite</small><b>${fdate(dead)}</b></div></div><i><b style="width:${pct}%"></b></i>${left<=3?'<p class="tk-dl-m">Si decides ahora, llega a tiempo.</p>':''}</div>`
     : ph==='bought'
-    ? `<div class="tk-t"><p class="tk-ok">Resuelto · llega ${arrival(p)}</p><p class="tk-s">${esc(cur.t)}</p></div>`
+    ? `<div class="tk-t"><p class="tk-ok">Resuelto · ${p.order&&p.order.ship==='tienda'?'te lo llevaste de la tienda':'llega '+arrival(p)}</p><p class="tk-s">${esc(cur.t)}</p></div>`
     : `<div class="tk-t"><p>Te aviso el ${fdate(avisoD(p))}</p><p class="tk-s">Con el regalo pensado y tiempo para que llegue</p></div>`;
   return `<article id="apTicket" class="tk" data-flip-id="tk">
     <div class="tk-art ${ph==='bought'?'is-photo':''}" style="background-color:${(PORT[p.n]||{}).bg||'#e5eaf2'}">${ph==='bought'?img(cur.u,'tk-ph'):portrait(p.n)}
@@ -1483,7 +1654,7 @@ const ADDR_OFICINA='Av. Apoquindo 3400, Las Condes';
 const MSG={'Amigo secreto':'Que esta te acompañe en lo que venga. Feliz fin de año. Tu amigo secreto.','Navidad':'Para la mesa de esta Navidad, con cariño.'};
 const firstDest = p => p.n==='Amigo secreto'?'mi':'directo';
 const ADDR={'Amigo secreto':ADDR_OFICINA,'Mamá':'Los Aromos 455, Ñuñoa','Papá':'Los Aromos 455, Ñuñoa','Emilia':'Av. Larraín 6120, La Reina','Pareja':'Av. Providencia 1234, depto. 56, Santiago'};
-const destOf = (p,s) => s==='retiro'?'Casa Creado, Luis Carrera 1817, Vitacura':s==='mi'?cfg.addr:(ADDR[p.n]||`Sin dirección de ${p.n}`);
+const destOf = (p,s) => s==='tienda'?'Te lo llevaste de Creado · MUT':s==='retiro'?'Casa Creado, Luis Carrera 1817, Vitacura':s==='mi'?cfg.addr:(ADDR[p.n]||`Sin dirección de ${p.n}`);
 const hasAddr = (p,s) => s==='mi'?!!cfg.addr:s==='directo'?!!ADDR[p.n]:true;
 function startCo(p){ co={p,edit:null,ship:firstDest(p),wrap:cfg.wrap,msg:MSG[p.n]||`Para ${p.n}, con cariño. Elegido pensando en ti.`,pay:cfg.pay,paying:false}; }
 const shipCost = () => co.ship==='retiro'||chosen(co.p).p>=60000?0:3900;
@@ -1527,6 +1698,7 @@ function receipt(){
 }
 function orderSteps(p){
   const od=p.order||{}, wrap=od.wrap, reti=od.ship==='retiro', tr=od.pay==='transfer', em=p.n==='Emilia';
+  if(od.ship==='tienda') return [['done','Pagado en caja','Creado · MUT, hoy'],['done','Te lo llevaste envuelto y con tarjeta','Sin esperar despacho'],['todo','Lo entregas',fdate(occ(p))],['todo','Te pregunto si le gustó',fdate(addD(occ(p),1))]];
   return [
    [tr&&!em?'now':'done',tr?'Esperando tu transferencia':'Pago confirmado',tr?'Te dejé los datos en tu correo':(em?'2 nov':'Hoy')],
    [em?'done':tr?'todo':'now','Creado en Chile prepara tu pedido',em?'3 nov':'Revisan stock y lo reservan'],
@@ -1858,11 +2030,27 @@ function viewHome(){
     <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
       ${col('Para regalar pronto',now.length,hot?'Esto no puede esperar':'Ya lo pensé, falta tu decisión',now.map(nowItem).join(''),'dh-hot'+(hot?' dh-urg':''))}</div>
     ${done.length?`<section class="dh-or"><header><h3>Pedidos en curso</h3><button data-act="tab" data-t="regalos">Ver todos <span aria-hidden="true">→</span></button></header>${done.slice(0,2).map(order).join('')}</section>`:''}
-    <section class="dt" aria-label="Lo que viene"><header><h3>Lo que viene</h3></header>
-    <ol>${nx.map((p,k)=>`<li><button data-act="flow" data-i="${idx(p)}"><span class="dt-top"><b>${fdate(occ(p))}</b><em class="num">${days(dleft(p))}</em></span><span class="dt-av" style="background:${(PORT[p.n]||{}).bg||'#e5eaf2'}">${portrait(p.n)}</span><span class="dt-n">${esc(p.n)}</span><small>Te aviso el ${fdate(avisoD(p))}</small></button></li>`).join('')}</ol></section></div>
+    ${dtHtml()}</div>
     <aside class="pl-r">${ticket(yfocus)}</aside></div>`;
   animateTicket();
 }
+/* el año: lo que se hizo y lo que viene, mes a mes */
+let dtYear=null;
+const DT_I={done:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',gift:'<rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M12 8v12.5M5.5 12v8.5h13V12M7.8 8a2.4 2.4 0 1 1 0-4.8C10.200 3.200 12 8 12 8s1.800-4.800 4.200-4.800a2.400 2.400 0 1 1 0 4.800"/>'};
+function dtItems(Y){
+  return yr().map(p=>{ const d=new Date(Y,p.m,p.d), o=occ(p), same=d.getTime()===o.getTime();
+    let st; if(same&&p.bought) st='done'; else if(d<TODAY){ if(p.n===NEW.n) return null; st='done'; } else st=same&&phase(p)==='now'?'now':'next';
+    return {p,d,st}; }).filter(Boolean).sort((a,b)=>a.d-b.d);
+}
+function dtHtml(){
+  const Y=dtYear||(dtYear=TODAY.getFullYear()), it=dtItems(Y), y0=TODAY.getFullYear(), cur=Y===y0?TODAY.getMonth():-1;
+  const ic=k=>`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${DT_I[k==='done'?'done':'gift']}</svg>`;
+  const lbl={done:'resuelto',now:'por decidir',next:'te aviso'};
+  return `<section id="dtY" class="dy" aria-label="Tu año"><header><div class="dy-y"><button data-dy="${Y-1}" ${Y<=y0?'disabled':''} aria-label="Año anterior">‹</button><h3 class="num">${Y}</h3><button data-dy="${Y+1}" ${Y>=y0+1?'disabled':''} aria-label="Año siguiente">›</button></div>
+    <p class="dy-lg"><span class="dy-i is-done">${ic('done')}</span>Resuelto<span class="dy-i is-now">${ic('now')}</span>Ahora<span class="dy-i is-next">${ic('next')}</span>Viene</p></header>
+    <ol class="dy-m">${MES.map((m,i)=>{ const l=it.filter(x=>x.d.getMonth()===i); return `<li class="${i===cur?'is-cur':''}${Y===y0&&i<TODAY.getMonth()?' is-past':''}"><span class="dy-mn">${m}${i===cur?'<em>hoy</em>':''}</span>${l.map(x=>{ const act=x.st==='done'?(x.p.bought?`data-act="pedido" data-i="${idx(x.p)}"`:''):`data-act="flow" data-i="${idx(x.p)}"`; return `<${act?'button':'span'} ${act} class="dy-it" title="${esc(x.p.n)} · ${x.d.getDate()} ${m.toLowerCase()} · ${lbl[x.st]}"><span class="dy-i is-${x.st}">${ic(x.st)}</span><small>${esc(x.p.n)}</small></${act?'button':'span'}>`; }).join('')}</li>`; }).join('')}</ol></section>`;
+}
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-dy]'); if(!b||b.disabled) return; dtYear=+b.dataset.dy; const el=$('dtY'); if(el){ el.outerHTML=dtHtml(); if(!REDUCE) gsap.from('#dtY .dy-it',{y:6,opacity:0,duration:.3,stagger:.02,clearProps:'all'}); } });
 const DELIVERED=[
   {n:'Mamá',o:'Cumpleaños',d:new Date(2026,2,14),h:'mama-cual-es-tu-historia',no:'CC-46920',a:'Los Aromos 455, Ñuñoa',on:'Entregado el 12 mar'},
   {n:'Papá',o:'Día del Padre',d:new Date(2026,5,21),h:'botella-termica-oceano',no:'CC-47311',a:'Los Aromos 455, Ñuñoa',on:'Entregado el 18 jun'}
@@ -1918,6 +2106,7 @@ function personPanel(p){
   <ul class="pn-l">${k.map(([t,s])=>`<li>${srcI(s)}<span class="min-w-0 flex-1">${esc(t)}<small>${SRC_L[s]}</small></span><button data-act="forget" data-i="${idx(p)}" data-f="${esc(t)}" data-s="${s}" aria-label="Olvidar: ${esc(t)}">×</button></li>`).join('')||'<li class="text-[#5f6b7d]">Todavía estoy aprendiendo.</li>'}</ul>
   ${(()=>{ const h=HINT[p.n], c=h&&cxOf(h[0]); return c&&!CX[h[0]]?`<div class="pn-cx"><img src="${c.img}" alt=""><span class="min-w-0">Conecta ${c.t} y sabré más de ${esc(p.n)}.<small>${h[1]}</small></span><button data-act="pncx" data-k="${c.k}">Conectar</button></div>`:''; })()}
   <form id="pnAdd" class="pn-a"><input id="pnFact" maxlength="60" placeholder="Cuéntame algo de ${esc(p.n)}" aria-label="Cuéntame algo de ${esc(p.n)}"><button aria-label="Guardar">+</button></form>
+  ${(SAVED[p.n]||[]).length?`<h3 class="pn-t">Me lo mandaste</h3><div class="pn-sv">${SAVED[p.n].map(v=>`<figure><img src="${v.u}" alt=""><i>${(CH_IC[v.src]||CH_IC.cam).replace(/width="15" height="15"/,'width="11" height="11"')}</i><figcaption>${esc(v.t)}</figcaption></figure>`).join('')}</div>`:''}
   <h3 class="pn-t">${lbl}</h3>
   <button data-act="sheet" data-h="${c.h}" class="pn-g"><span>${img(c.u,'')}</span><span class="min-w-0 flex-1"><b>${esc(c.t)}</b><small class="num">${esc(c.v)} · ${clp(c.p)}</small></span></button>
 
@@ -1967,7 +2156,7 @@ function cxOpen(){ cxQ=''; cxCat='Todos'; cxModal(); const M=$('cxm'); M.classLi
 function cxClose(){ $('cxm').classList.remove('on'); }
 async function cxConnect(k){
   const row=document.querySelector(`.cxm-i[data-k="${k}"]`), btn=row&&row.querySelector('button'); if(!btn||CX[k]||btn.dataset.busy) return;
-  btn.dataset.busy='1'; btn.innerHTML='<span class="oc-sp"></span>Conectando';
+  btn.dataset.busy='1'; btn.innerHTML=row.closest('.ob-c2')?'<span class="oc-sp"></span>':'<span class="oc-sp"></span>Conectando';
   await wait(REDUCE?0:1.1); cxSet(k,true); addAct({k:'conn',t:`Conecté ${CONNS.find(c=>c.k===k).t}`,s:'Solo leo, nunca escribo',unread:false});
   const ls=document.querySelector('.cxm-l')?.scrollTop||0, ys=$('year').scrollTop; cxModal(); const nl=document.querySelector('.cxm-l'); if(nl) nl.scrollTop=ls;
   const t=CONNS.find(c=>c.k===k); ytoast(`Listo, conecté ${t.t}.`);
@@ -2233,7 +2422,11 @@ function obStream(k){
 const obStopStreams = () => Object.keys(obStreams).forEach(k=>{ clearInterval(obStreams[k]); delete obStreams[k]; });
 const CX={cal:true,gmail:true,contacts:true,wa:true};
 function cxSet(k,on){ CX[k]=on; if(k==='gmail') conn.gmail=on; if(k==='contacts') conn.contacts=on; if(k==='wa') cfg.wa=on; }
-const ob={step:0,conn:{cal:false,gmail:false,contacts:false,wa:false},busy:{}};
+const ob={step:0,conn:{cal:false,gmail:false,contacts:false,wa:false,icloud:false,instagram:false,pinterest:false,spotify:false},busy:{}};
+const OB_S={cal:'Tus fechas',gmail:'Invitaciones y topes',contacts:'Quién es quién',wa:'Te aviso por aquí',icloud:'Fechas de tu iPhone',instagram:'Sus gustos públicos',pinterest:'Ideas que guardas',spotify:'Lo que escuchan'};
+const OB_GRID=Object.keys(OB_S).map(k=>CONNS.find(c=>c.k===k));
+const OB_T={contacts:'Contactos',icloud:'iCloud'};
+const OB_B=on=>on?'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.500l3.200 3L13 4.500"/></svg>':'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>';
 const OB_IMG=h=>PRODS[h][3];
 function obProg(i){ $('obSteps').innerHTML=Array.from({length:OB_STEPS},(_,k)=>`<li><b></b></li>`).join(''); [...$('obSteps').children].forEach((li,k)=>{ li.firstChild.style.width=k<i?'100%':'0%'; }); gsap.to($('obSteps').children[i].firstChild,{width:'100%',duration:REDUCE?0:.6,ease:'power3.out'}); }
 function obPreview(){
@@ -2274,8 +2467,8 @@ function obView(){
     <label><span>¿Dónde te llegan los regalos?</span><input id="obAddr" class="ob-i" value="${esc(cfg.addr)}" autocomplete="street-address" placeholder="Calle, número, comuna"><small>Lo puedes cambiar en cada compra.</small></label></div>
     <ul class="ob-ch" data-in><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Toma 1 minuto</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Solo lectura</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Lo cambias cuando quieras</li></ul>
     <div class="ob-a" data-in><button id="obNext" class="ob-b">Continuar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>`;
-  else L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 2 · Conectores</p><h1 class="ob-t" data-in>Conecta <em>lo que ya usas</em>.</h1><p class="ob-p" data-in>De aquí aprendo sin preguntarte. Solo leo: nunca escribo ni envío nada sin que me lo pidas.</p>
-    <div class="ob-c" data-in>${OB_CONN.map(c=>`<div class="oc" data-k="${c.k}" data-on="${ob.conn[c.k]}"><span class="oc-lg"><img src="${c.img}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${c.t[0]}'}))"></span><div class="min-w-0"><b>${c.t}${c.tag?`<em>${c.tag}</em>`:''}</b><small>${c.s}</small></div><button data-c="${c.k}">${ob.conn[c.k]?'✓ Conectado':'Conectar'}</button></div>`).join('')}</div>
+  else L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 2 · Conectores</p><h1 class="ob-t" data-in>Conecta <em>lo que ya usas</em>.</h1><p class="ob-p" data-in>Aprendo sin preguntarte. Solo leo, nunca envío nada.</p>
+    <div class="ob-c ob-c2" data-in>${OB_GRID.map(c=>`<div class="oc" data-k="${c.k}" data-on="${ob.conn[c.k]}"><span class="oc-lg"><img src="${c.img}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${c.t[0]}'}))"></span><div class="min-w-0"><b>${OB_T[c.k]||c.t}</b><small>${OB_S[c.k]}</small></div><button data-c="${c.k}" aria-label="${ob.conn[c.k]?'Conectado':'Conectar'} ${c.t}">${OB_B(ob.conn[c.k])}</button></div>`).join('')}</div>
     <p class="ob-n" id="obNote" data-in>Conecta al menos el calendario para que pueda empezar.</p>
     <div class="ob-a" data-in><button id="obNext" class="ob-b" ${ob.conn.cal?'':'disabled'}>Analizar mi calendario <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button id="obBack" class="ob-bk">Atrás</button></div>`;
   obPreview(); obBind(); if(ob.step===1) Object.keys(ob.conn).filter(k=>ob.conn[k]).forEach(obStream);
@@ -2293,11 +2486,11 @@ async function obConnect(k){
   if(ob.conn[k]||ob.busy[k]) return; ob.busy[k]=true;
   const row=document.querySelector(`.oc[data-k="${k}"]`), btn=row.querySelector('button'); row.dataset.s='busy'; btn.innerHTML='<span class="oc-sp"></span>Conectando';
   await wait(REDUCE?0:1.1);
-  ob.busy[k]=false; ob.conn[k]=true; row.dataset.s=''; row.dataset.on='true'; btn.textContent='✓ Conectado';
+  ob.busy[k]=false; ob.conn[k]=true; row.dataset.s=''; row.dataset.on='true'; btn.innerHTML=row.closest('.ob-c2')?OB_B(true):'✓ Conectado';
   if(k==='gmail') conn.gmail=true; if(k==='contacts') conn.contacts=true; if(k==='wa') cfg.wa=true;
   const li=document.querySelector(`.ov-li[data-k="${k}"]`); if(li){ li.dataset.on='true'; obStream(k); const f=li.querySelector('.ov-st'); if(!REDUCE) gsap.from(f,{y:-6,opacity:0,duration:.45,ease:'power3.out',clearProps:'all'}); }
-  if(!REDUCE){ gsap.fromTo(row,{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.45)'}); gsap.fromTo(li,{x:-8},{x:0,duration:.5,ease:'back.out(2)'}); }
-  if(ob.conn.cal){ $('obNext').disabled=false; $('obNote').textContent='Con el calendario ya puedo empezar. Lo demás me ayuda a acertar más.'; }
+  if(!REDUCE){ gsap.fromTo(row,{scale:.985},{scale:1,duration:.6,ease:'elastic.out(1,.45)'}); if(li) gsap.fromTo(li,{x:-8},{x:0,duration:.5,ease:'back.out(2)'}); }
+  if(ob.conn.cal){ $('obNext').disabled=false; $('obNote').textContent='Con el calendario ya empiezo. Lo demás me ayuda a acertar.'; }
 }
 async function obGo(d){
   const n=ob.step+d; if(n<0) return;
@@ -2336,6 +2529,176 @@ function closeSync(){ $('sync').style.display='none'; }
 ['connect'].forEach(id => $(id).addEventListener('click',e=>{e.preventDefault();startOb();}));
 $('enter').onclick = () => openYear();
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('cxm').classList.contains('on')){ cxClose(); return; } if(e.key==='Escape'&&$('ob').classList.contains('on')){ closeOb(); return; } if(e.key==='Escape'){ if($('year').style.display==='block'){ closeSheet(); closePops(); } else closeSync(); } });
+
+/* ---------- Mándame algo: conversar con el planner desde cualquier pantalla ---------- */
+const CH_DEMO = {
+  foto:{lbl:'Foto en la tienda',ic:'cam',h:'vela-anillo-de-fuego-esencia-andina',top:'Carla',why:'lee de noche y le gustan las velas'},
+  link:{lbl:'Post de Instagram',ic:'instagram',h:'tabla-de-piedra-ribete',url:'instagram.com/p/kuyen.diseno',top:'Tío Jorge',why:'recibe a todos en su casa'},
+  shot:{lbl:'Pantallazo',ic:'shot',h:'libro-wander',top:'Pareja',why:'les gusta quedarse en casa'}
+};
+const CH_IC = {cam:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg>',
+  shot:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 18.5h4"/></svg>',
+  instagram:`<img src="${'https://cdn.simpleicons.org/instagram/E4405F'}" alt="">`};
+const SAVED = {};            // lo que me mandaste, por persona
+let chPend=null, chBusy=false;
+const chL = () => $('chL');
+function chAdd(cls,html){ const d=document.createElement('div'); d.className='cm '+cls; d.innerHTML=html; chL().appendChild(d); chL().scrollTop=chL().scrollHeight; if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35,ease:'power3.out',clearProps:'all'}); return d; }
+async function chSay(html){ const t=chAdd('cm-a cm-ty','<i></i><i></i><i></i>'); await wait(REDUCE?0:.85); t.classList.remove('cm-ty'); t.innerHTML=html; chL().scrollTop=chL().scrollHeight; return t; }
+const chWho = top => { const l=yr().filter(p=>!SHARED.includes(p.n)&&!p.bought).sort(byDate); const t=l.find(p=>p.n===top); return [t,...l.filter(p=>p!==t)].filter(Boolean).slice(0,4); };
+const chChips = (top,why) => `<div class="cm-ppl">${chWho(top).map(p=>`<button data-chp="${esc(p.n)}" class="${p.n===top?'is-top':''}">${portrait(p.n)}${esc(p.n)}</button>`).join('')}</div>`;
+const prodCard = x => `<div class="cm-p">${img(x.u,'')}<span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${esc(x.v)} · ${clp(x.p)}</small></span></div>`;
+function chOpen(){
+  if(document.body.classList.contains('ch-on')) return;
+  document.body.classList.add('ch-on'); $('fab').setAttribute('aria-expanded','true'); closePops();
+  if(!chL().children.length){ chAdd('cm-a','Mándame lo que veas: una foto en la tienda, un link, un pantallazo. Lo guardo para quien sea.'); }
+  $('chQ').innerHTML=Object.entries(CH_DEMO).map(([k,d])=>`<button data-chd="${k}">${CH_IC[d.ic]}${d.lbl}</button>`).join('');
+  if(!REDUCE) gsap.from('#ch',{y:24,opacity:0,scale:.97,transformOrigin:'100% 100%',duration:.4,ease:'power3.out',clearProps:'all'});
+  if(matchMedia('(min-width:768px)').matches) $('chT').focus();
+}
+function chClose(){ document.body.classList.remove('ch-on'); $('fab').setAttribute('aria-expanded','false'); $('fab').focus(); }
+async function chSend(o){
+  if(chBusy) return; chBusy=true;
+  try{
+    if(o.demo){
+      const d=CH_DEMO[o.demo], x=prod(d.h);
+      chAdd('cm-u', d.url?`${img(x.u,'')}<span class="cm-lk">${d.url}</span>`:img(x.u,''));
+      chPend={kind:'prod',x,src:d.ic};
+      await chSay(`<span class="cm-src">${d.ic==='instagram'?CH_IC.instagram+'Lo vi en Instagram':'Lo reconocí'}</span><br>Está en Creado.${prodCard(x)}<p class="mt-2.5">Pienso en ${esc(d.top)}: ${d.why}.</p>${chChips(d.top)}`);
+    } else if(o.img){
+      chAdd('cm-u', `<img src="${o.img}" alt="Tu foto">`);
+      chPend={kind:'img',u:o.img};
+      const top=chWho()[0];
+      await chSay(`Buena. ¿Para quién la guardo?${chChips(top&&top.n)}`);
+    } else if(o.text){
+      const t=o.text.trim(); chAdd('cm-u', esc(t));
+      const url=/^(https?:\/\/|www\.)|\.(com|cl)\b/i.test(t), h=Object.keys(PRODS).find(k=>t.toLowerCase().includes(k));
+      if(h){ const x=prod(h), top=Object.keys(GIFT).find(n=>GIFT[n][0].includes(h)&&!SHARED.includes(n)); chPend={kind:'prod',x,src:'link'}; await chSay(`Lo tengo: está en Creado.${prodCard(x)}${chChips(top)}`); }
+      else if(url){ chPend={kind:'link',u:t}; await chSay(`Guardé el link. ¿Para quién?${chChips()}`); }
+      else {
+        const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+        const p=YEAR.find(q=>norm(t).includes(norm(q.n).split(' ')[0]));
+        if(p){ (learned[p.n]=learned[p.n]||[]).push(t.length>60?t.slice(0,58)+'…':t); addAct({k:'learn',t:`Aprendí algo de ${p.n}`,s:'Me lo contaste',n:p.n,unread:false});
+          await chSay(`<span class="cm-ok"><i>${CK}</i><span>Anotado en la ficha de ${esc(p.n)}. Lo uso para ${p.n==='Amigo secreto'||p.n==='Navidad'?'esa fecha':'su '+esc(p.o.toLowerCase())}.</span></span>`); if(tab==='personas') render(); }
+        else { chPend={kind:'fact',t}; await chSay(`Anotado. ¿De quién me hablas?${chChips()}`); }
+      }
+    }
+  } finally { chBusy=false; }
+}
+async function chPick(n){
+  const p=YEAR.find(q=>q.n===n), it=chPend; if(!p||!it) return; chPend=null;
+  chL().querySelectorAll('.cm-ppl').forEach(e=>e.remove());
+  chAdd('cm-u', esc(n));
+  if(it.kind==='fact'){ (learned[n]=learned[n]||[]).push(it.t.length>60?it.t.slice(0,58)+'…':it.t); await chSay(`<span class="cm-ok"><i>${CK}</i><span>Anotado en la ficha de ${esc(n)}.</span></span>`); }
+  else {
+    const u=it.kind==='prod'?it.x.u:it.u, t=it.kind==='prod'?it.x.t:it.kind==='img'?'Tu foto':'Tu link';
+    if(it.kind!=='link') (SAVED[n]=SAVED[n]||[]).unshift({u,t,src:it.src||'cam'});
+    const g=it.kind==='prod'?GIFT[n][0].indexOf(it.x.h):-1;
+    let msg;
+    if(g>0){ ypick[n]=g; msg=`Ya estaba entre mis ideas para ${esc(n)}. Ahora va primera.`; }
+    else if(g===0) msg=`Coincidimos: era mi idea para ${esc(n)}.`;
+    else msg=`Guardado en la ficha de ${esc(n)}. Te lo propongo para su ${esc(p.o.toLowerCase())}, el ${fdate(occ(p))}.`;
+    addAct({k:'learn',t:`Guardé una idea para ${n}`,s:t,n,unread:false});
+    await chSay(`<span class="cm-ok"><i>${CK}</i><span>${msg}</span></span><div class="cm-ppl"><button data-chgo="${esc(n)}">Ver su ficha →</button></div>`);
+  }
+  if(tab==='personas'&&personSel===p) render(); else renderChrome();
+}
+$('fab').onclick=chOpen; $('chX').onclick=chClose;
+$('chF').onsubmit=e=>{ e.preventDefault(); const v=$('chT').value; if(!v.trim()) return; $('chT').value=''; chSend({text:v}); };
+$('chImg').onchange=e=>{ const f=e.target.files&&e.target.files[0]; if(f) chSend({img:URL.createObjectURL(f)}); e.target.value=''; };
+$('ch').addEventListener('click',e=>{
+  const d=e.target.closest('[data-chd]'), c=e.target.closest('[data-chp]'), g=e.target.closest('[data-chgo]');
+  if(d) chSend({demo:d.dataset.chd});
+  else if(c) chPick(c.dataset.chp);
+  else if(g){ const p=YEAR.find(q=>q.n===g.dataset.chgo); personSel=p; chClose(); setTab('personas'); }
+});
+
+/* ---------- En la tienda: el celular te avisa si tienes una fecha encima ---------- */
+const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'], MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const TN_LOC=[['Mesa central',12,[150,78]],['El frente, regalos listos',6,[150,128]],['Pared de papelería',19,[30,48]]];
+let tnP=null, tnPick=0, tnRun=0, tnAsk=null, tnSaved=false;
+const tnSb = dark => `<div class="tn-sb" style="color:${dark?'#fff':'#0e1014'}"><span class="num">18:42</span><span>●●● ᯤ ▮</span></div>`;
+const tnTarget = () => yr().filter(p=>phase(p)==='now'&&!p.bought).sort(byDate)[0]||null;
+const tnNext = p => yr().filter(x=>x!==p&&!x.bought&&phase(x)==='later').sort(byDate)[0]||null;
+function tnMap(i){
+  const [,,[x,y]]=TN_LOC[i];
+  return `<svg viewBox="0 0 300 150" aria-hidden="true"><rect x="2" y="2" width="296" height="146" rx="14" fill="#f5f7f9" stroke="#e5eaf2" stroke-width="2"/>
+  <rect x="14" y="14" width="30" height="104" rx="6" fill="#e5eaf2"/><rect x="256" y="14" width="30" height="64" rx="6" fill="#e5eaf2"/><rect x="56" y="14" width="190" height="22" rx="6" fill="#e5eaf2"/>
+  <rect x="104" y="58" width="92" height="40" rx="10" fill="#fff" stroke="#e5eaf2" stroke-width="2"/><rect x="92" y="114" width="116" height="22" rx="6" fill="#fff" stroke="#e5eaf2" stroke-width="2"/><rect x="250" y="96" width="38" height="30" rx="6" fill="#0e1014"/>
+  <text x="269" y="115" font-size="9" font-weight="700" fill="#fff" text-anchor="middle" font-family="Inter">Caja</text>
+  <text x="150" y="51" font-size="8.5" fill="#748297" text-anchor="middle" font-family="Inter">Sugeridos</text><text x="29" y="134" font-size="8.5" fill="#748297" text-anchor="middle" font-family="Inter">Explora</text>
+  <path d="M150 150 C 150 140, ${x} ${y+30}, ${x} ${y}" fill="none" stroke="#0e1014" stroke-width="2" stroke-dasharray="3 5" stroke-linecap="round"/>
+  <circle cx="150" cy="146" r="5" fill="#5b7cff" stroke="#fff" stroke-width="2"/>
+  <circle class="tn-pulse" cx="${x}" cy="${y}" r="9" fill="#ff5924"/><circle cx="${x}" cy="${y}" r="6" fill="#ff5924" stroke="#fff" stroke-width="2"/></svg>`;
+}
+function tnLock(){
+  const p=tnP, x=prod(GIFT[p.n][0][tnPick]);
+  $('tnS').innerHTML=`<div class="tn-lk">${tnSb(true)}<div class="tn-clk"><small>${DIAS[TODAY.getDay()]} ${TODAY.getDate()} de ${MESES[TODAY.getMonth()]}</small><b class="num">18:42</b></div>
+    <button id="tnN" class="tn-nt"><span class="appi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span class="min-w-0 flex-1"><span class="tn-nm"><span>Cuenta conmigo</span><span>ahora</span></span><b>Estás en Creado. Aprovecha.</b><span class="tn-nb">${esc(p.n)} es ${days(dleft(p))} y aún no lo resuelves. ${esc(x.t)} está aquí, en la ${TN_LOC[tnPick][0].toLowerCase()}.</span></span></button>
+    <p class="tn-tap" id="tnTap">Toca para abrir</p>
+    <div class="tn-geo"><span><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Creado en Chile · MUT</span></div></div>`;
+  $('tnN').onclick=tnApp;
+  if(!REDUCE){ gsap.set(['#tnN','#tnTap'],{opacity:0}); gsap.fromTo('#tnN',{y:-60,opacity:0,scale:.96},{y:0,opacity:1,scale:1,duration:.7,delay:.7,ease:'back.out(1.6)'}); gsap.to('#tnTap',{opacity:.8,delay:1.5,duration:.4}); }
+}
+function tnApp(view='main'){
+  const p=tnP, x=prod(GIFT[p.n][0][tnPick]), [loc,steps]=TN_LOC[tnPick], o=occ(p), nx=tnNext(p), cap=BUDGET[p.n];
+  const head=`${tnSb()}<span class="tn-here"><span class="live-dot"></span>Estás en Creado · MUT</span>`;
+  let body;
+  if(view==='three'){
+    body=`<h1 class="tn-h">Las 3 están <em>aquí.</em></h1><p class="tn-s">Toca una y te llevo.</p><div class="tn-3">${GIFT[p.n][0].map((h,i)=>{ const y=prod(h); return `<button data-tn="pick" data-i="${i}" aria-pressed="${i===tnPick}">${img(y.u,'')}<span class="min-w-0"><b>${esc(y.t)}</b><small class="num">${clp(y.p)}</small><em>${TN_LOC[i][0]}</em></span></button>`; }).join('')}</div>`;
+  } else {
+    body=`<h1 class="tn-h">${esc(p.n)}, <em>resuelto hoy.</em></h1>
+    <p class="tn-s">Es el ${DIAS[o.getDay()]} ${o.getDate()}${cap?` · tope ${clp(cap)}`:''}. Ya lo pensé; solo tienes que tomarlo.</p>
+    <div class="tn-pr"><div class="tn-im">${img(x.u,'')}<span>Está aquí</span></div><div class="tn-pb"><b>${esc(x.t)}</b><small class="num">${esc(x.v)} · ${clp(x.p)}</small><p>“${esc((OPT[x.h]||'Lo elegí pensando en '+p.n+'.').replace(/^Mi favorita\. /,''))}”</p></div></div>
+    <div class="tn-mp"><p>${loc}<small>a ${steps} pasos</small></p>${tnMap(tnPick)}</div>
+    ${nx?`<button data-tn="save" class="tn-dp w-full text-left">${img(chosen(nx).u,'')}<span class="min-w-0 flex-1"><small>De paso · ${esc(nx.n)} ${days(dleft(nx))}</small>${tnSaved?'Guardado para después ✓':`${esc(chosen(nx).t)} también está aquí. ¿Te lo guardo?`}</span></button>`:''}`;
+  }
+  $('tnS').innerHTML=`<div class="tn-ap" id="tnAp">${head}${body}<div class="tn-bt">${view==='three'?`<button data-tn="main" class="tn-b1">Listo</button>`:`<button data-tn="take" class="tn-b1">Lo llevo</button><button data-tn="three" class="tn-b2">Ver las 3</button>`}</div></div>`;
+  if(!REDUCE) gsap.from('#tnAp > *',{y:14,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'});
+}
+async function tnTake(){
+  const run=++tnRun, p=tnP, x=prod(GIFT[p.n][0][tnPick]);
+  $('tnS').innerHTML=`<div class="tn-ap" id="tnAp">${tnSb()}<span class="tn-here"><span class="live-dot"></span>Estás en Creado · MUT</span><h1 class="tn-h">Llévalo <em>a la caja.</em></h1><p class="tn-s">Pagas ahí, sale envuelto y con tarjeta. Yo lo anoto solo.</p><div class="tn-mp"><p>Caja<small>a 8 pasos</small></p>${tnMap(tnPick).replace(/cx="(\d+)" cy="(\d+)" r="(9|6)"/g,(m,a,b,r)=>`cx="269" cy="111" r="${r}"`).replace(/C 150 140, [\d.]+ [\d.]+, [\d.]+ [\d.]+/,'C 200 150, 269 140, 269 111')}</div><div class="tn-wait"><span class="live-dot"></span>Esperando tu pago en caja…</div></div>`;
+  if(!REDUCE) gsap.from('#tnAp > *',{y:14,opacity:0,duration:.45,stagger:.05,ease:'power3.out',clearProps:'all'});
+  await wait(REDUCE?.3:2.6); if(run!==tnRun) return;
+  ypick[p.n]=tnPick; p.bought=true; p.justBought=false; p.order={no:'CC-'+(48200+idx(p)*7),ship:'tienda',wrap:true,pay:'card',msg:''};
+  addAct({k:'buy',t:`Lo resolviste en la tienda`,s:`${x.t} · pagado en Creado MUT`,n:p.n,unread:false});
+  tnAsk=null; tnDone();
+}
+function tnDone(){
+  const p=tnP, x=chosen(p);
+  $('tnS').innerHTML=`<div class="tn-ap tn-ct" id="tnAp">${tnSb()}<span class="tn-ok">${CK.replace('width="14" height="14"','width="30" height="30"')}</span><h1 class="tn-h">Resuelto.</h1><p class="tn-s">${esc(p.n)} ya está listo en tu planner.</p>
+    <dl class="tn-rc text-left"><div><dt>Regalo</dt><dd class="num">${clp(x.p)}</dd></div><div><dt>Envuelto y con tarjeta</dt><dd>Incluido</dd></div><div><dt>Pagado en</dt><dd>Caja · MUT</dd></div></dl>
+    <div class="tn-ask text-left">¿Te aviso el próximo año para ${esc(p.n)}?<div><button data-tn="ask" data-v="si" aria-pressed="${tnAsk==='si'}">Sí, avísame</button><button data-tn="ask" data-v="no" aria-pressed="${tnAsk==='no'}">No</button></div></div>
+    <div class="tn-bt"><button data-tn="end" class="tn-b1">Listo</button></div></div>`;
+  if(!REDUCE){ gsap.from('.tn-ok',{scale:0,rotation:-30,duration:.6,ease:'back.out(2)'}); gsap.from('#tnAp > :not(.tn-ok)',{y:12,opacity:0,duration:.4,stagger:.05,delay:.15,clearProps:'all'}); }
+}
+function tnOpen(){
+  if($('year').style.display!=='block') return;
+  const p=tnTarget(); if(!p){ ytoast('No tienes fechas pendientes: en la tienda no te interrumpo.'); return; }
+  tnP=p; tnPick=ypick[p.n]||0; tnSaved=false; tnRun++; closeSheet(); closePops(); if(document.body.classList.contains('ch-on')) chClose();
+  document.body.classList.add('tn-on'); tnLock();
+  if(!REDUCE) gsap.from('.tn-ph',{y:40,opacity:0,duration:.6,ease:'power3.out',clearProps:'all'});
+}
+function tnClose(){
+  tnRun++; document.body.classList.remove('tn-on'); const p=tnP;
+  if(p&&p.bought&&p.order&&p.order.ship==='tienda'){ tab='regalos'; pedido=p; co=null; render(); $('year').scrollTop=0; ytoast(`${p.n} quedó resuelto en la tienda.`); }
+  else if(tnSaved) render();
+}
+$('tnX').onclick=tnClose; $('obKt').onclick=tnOpen;
+$('tn').addEventListener('click',e=>{
+  const b=e.target.closest('[data-tn]'); if(!b) return; const a=b.dataset.tn;
+  if(a==='three') tnApp('three'); else if(a==='main') tnApp();
+  else if(a==='pick'){ tnPick=+b.dataset.i; tnApp(); }
+  else if(a==='take') tnTake();
+  else if(a==='save'){ const nx=tnNext(tnP); if(nx&&!tnSaved){ tnSaved=true; const y=chosen(nx); (SAVED[nx.n]=SAVED[nx.n]||[]).unshift({u:y.u,t:y.t,src:'cam'}); addAct({k:'learn',t:`Guardé una idea para ${nx.n}`,s:`${y.t} · lo viste en la tienda`,n:nx.n,unread:false}); tnApp(); } }
+  else if(a==='ask'){ tnAsk=b.dataset.v; tnDone(); }
+  else if(a==='end') tnClose();
+});
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ if(document.body.classList.contains('tn-on')){ tnClose(); return; } if(document.body.classList.contains('ch-on')){ chClose(); return; } }
+  if(e.metaKey||e.ctrlKey||e.altKey) return; const t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA') return;
+  if((e.key==='t'||e.key==='T')&&!document.body.classList.contains('tn-on')) tnOpen();
+});
 
 document.fonts.ready.then(()=>{ fit(); intro(); });
 const DEEP = (h=>{ const k=h.replace(/^#/,'').split('/')[0]; return {planner:'planner','mi-ano':'planner',fecha:'planner',personas:'personas',regalos:'regalos',pedidos:'regalos',config:'config'}[k]; })(location.hash);
