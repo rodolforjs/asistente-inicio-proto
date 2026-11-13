@@ -551,6 +551,25 @@ body.in-app .ob-kb{display:flex}
 .lt-n small{font-size:12px;font-weight:600;color:#748297}
 .lt-n b{font-size:14.5px;font-weight:600;line-height:1.25}
 .lt-n[data-k=end] b{font-family:'Newsreader',serif;font-weight:400;font-size:20px}
+.wk{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);max-width:860px;margin-top:26px;border-radius:28px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 30px 50px -36px rgba(15,23,42,.4)}
+.wk-in{border-radius:28px 0 0 28px;background:#fafbfc;padding:22px 20px;border-right:1px solid #eef1f5}
+.wk-out{padding:22px}
+.wk-k{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#748297}
+.wk-l{display:flex;flex-direction:column;gap:8px;min-height:208px}
+.wk-l li{display:flex;align-items:center;gap:10px;border-radius:14px;background:#fff;padding:9px 12px;box-shadow:0 0 0 1px #e5eaf2;font-size:13.5px;font-weight:500;line-height:1.25}
+.wk-l li:first-child{box-shadow:0 0 0 1.5px #ff5924}
+.wk-ic{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#f1f3f6;color:#0e1014}.wk-ic img{width:16px;height:16px;object-fit:contain}.wk-ic svg{width:15px;height:15px}
+.wk-c{display:grid;grid-template-columns:1.35fr 1fr 1fr;align-items:end;gap:12px}
+.wk-i{display:flex;flex-direction:column;gap:10px;text-align:left}
+.wk-ph{position:relative;display:block;aspect-ratio:1;overflow:hidden;border-radius:18px;background:#f5f7f9;box-shadow:0 0 0 1px #e5eaf2;transition:transform .2s}
+.wk-i:hover .wk-ph{transform:translateY(-3px)}
+.wk-ph img{width:100%;height:100%;object-fit:cover}
+.wk-fav{position:absolute;left:8px;top:8px;border-radius:999px;background:#0e1014;padding:3px 9px;font-size:11.5px;font-weight:600;color:#fff}
+.wk-bar{display:block;height:5px;border-radius:9px;background:#eef1f5;overflow:hidden}.wk-bar i{display:block;width:0;height:100%;border-radius:9px;background:#aab2bf}
+.wk-i[data-n="0"] .wk-bar i{background:#ff5924}
+.wk-dot{position:absolute;left:0;top:0;z-index:5;width:10px;height:10px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 4px rgba(255,89,36,.18);pointer-events:none}
+.wk~.lt{margin-top:30px}
+@media(max-width:760px){.wk{grid-template-columns:1fr}.wk-in{border-radius:28px 28px 0 0;border-right:0;border-bottom:1px solid #eef1f5}}
 .pl-idea button{position:relative}
 .pl-idea .lt-fav{position:absolute;left:8px;top:8px;display:inline-block;aspect-ratio:auto;overflow:visible;border-radius:999px;background:#0e1014;box-shadow:none;padding:3px 9px;font-size:11.5px;font-weight:600;line-height:1.3;color:#fff}
 @media(max-width:560px){.lt{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}.lt-ln{display:none}}
@@ -1675,14 +1694,46 @@ function leftOther(p){
   const ph=phase(p), back=autoFocus&&p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver al inicio</button>';
   if(ph==='bought') return `${back}<h1 class="pl-h">Así va tu pedido.</h1>${orderBlock(p)}`;
   const its=items(p), o=occ(p), av=avisoD(p), lo=lastOrder(p);
-  const steps=[['now','Hoy','Lo voy pensando'],['','fdate',fdate(av),'Te lo dejo listo'],['','',fdate(lo),'Último día de compra'],['end','',fdate(o),esc(p.n)]];
-  const node=([k,,d,t],n)=>`<li class="lt-n" data-k="${k}"><i></i><small class="num">${n===0?'Hoy':d}</small><b>${n===0?'Lo voy pensando':t}</b></li>`;
-  return `${back}<h1 class="pl-h pl-h-lg">${esc(p.n)}, en mis manos.</h1>
-    <p class="pl-lead">No tienes que hacer nada hasta el ${fdate(av)}.</p>
-    <ol class="lt" aria-label="Plan para ${esc(p.n)}"><span class="lt-ln" aria-hidden="true"></span>${steps.map(node).join('')}</ol>
-    <p class="mt-10 text-[13px] font-semibold">Por ahora me inclino por</p>
-    <div class="pl-idea">${its.map((o,n)=>`<button data-act="sheet" data-h="${o.h}" aria-label="Ver ${esc(o.t)}">${img(o.u,'')}${n===0?'<span class="lt-fav">Favorita</span>':''}</button>`).join('')}</div>
-    <p class="mt-3 text-[12.5px] text-[#5f6b7d]">Puede cambiar si aprendo algo nuevo.</p>`;
+  const steps=[['now','Hoy','Lo voy pensando'],['',fdate(av),'Te lo dejo listo'],['',fdate(lo),'Último día de compra'],['end',fdate(o),esc(p.n)]];
+  return `${back}<h1 class="pl-h">${esc(p.n)}, en mis manos.</h1>
+    <p class="pl-lead">No tienes que hacer nada hasta el ${fdate(av)}. Mientras, voy juntando lo que sirve.</p>
+    <div class="wk" id="wk">
+      <div class="wk-in"><p class="wk-k"><span class="live-dot"></span>Lo que va llegando</p><ol class="wk-l" id="wkL" aria-live="off"></ol></div>
+      <div class="wk-out"><p class="wk-k">Mis ideas</p><div class="wk-c">${its.map((o,n)=>`<button class="wk-i" data-act="sheet" data-h="${o.h}" data-n="${n}" aria-label="Ver ${esc(o.t)}"><span class="wk-ph">${img(o.u,'')}${n===0?'<span class="wk-fav">Favorita</span>':''}</span><span class="wk-bar" aria-hidden="true"><i></i></span></button>`).join('')}</div></div>
+    </div>
+    <ol class="lt" aria-label="Plan para ${esc(p.n)}"><span class="lt-ln" aria-hidden="true"></span>${steps.map(([k,d,t])=>`<li class="lt-n" data-k="${k}"><i></i><small class="num">${d}</small><b>${t}</b></li>`).join('')}</ol>`;
+}
+/* el sistema trabajando: llegan señales y van afinando las ideas */
+let workRun=0;
+const WK_CAT='<svg viewBox="0 0 24 24" fill="none" stroke="#0e1014" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>';
+const wkIcon = s => { const c=cxOf(s); return `<span class="wk-ic">${c?`<img src="${c.img}" alt="">`:SRC_ICON[s]?`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${SRC_ICON[s]}</svg>`:WK_CAT}</span>`; };
+function runWork(p){
+  const run=++workRun, L=$('wkL'), wk=$('wk'); if(!L) return;
+  const cards=[...wk.querySelectorAll('.wk-i')], bars=cards.map(c=>c.querySelector('.wk-bar i'));
+  const sig=[...knows(p), [`Revisé ${Object.keys(PRODS).length} regalos del catálogo`,'cat'], ['Hay stock de mi favorita','cat']];
+  const cap=[92,64,44], sc=[0,0,0], inc=cap.map(c=>c/Math.max(2,sig.length-1));
+  const row = ([t,s]) => { const li=document.createElement('li'); li.innerHTML=`${wkIcon(s)}<span>${esc(t)}</span>`; return li; };
+  if(REDUCE){ sig.slice(0,4).forEach(x=>L.appendChild(row(x))); bars.forEach((b,n)=>b.style.width=cap[n]+'%'); return; }
+  let i=0;
+  const step=()=>{
+    if(run!==workRun||!L.isConnected) return;
+    const x=sig[i%sig.length], li=row(x); i++;
+    L.prepend(li); gsap.from(li,{y:-16,opacity:0,duration:.5,ease:'power3.out',clearProps:'all'});
+    [...L.children].slice(4).forEach(o=>{ if(o.dataset.out) return; o.dataset.out=1; gsap.to(o,{opacity:0,duration:.3,onComplete:()=>o.remove()}); });
+    const n = i%4===0 ? 2 : i%3===0 ? 1 : 0;
+    const br=wk.getBoundingClientRect(), a=li.getBoundingClientRect(), t=cards[n].getBoundingClientRect();
+    const d=document.createElement('span'); d.className='wk-dot'; wk.appendChild(d);
+    const x0=a.right-br.left-18, y0=a.top-br.top+a.height/2-5, x1=t.left-br.left+t.width/2-5, y1=t.top-br.top+t.width/2-5;
+    gsap.set(d,{x:x0,y:y0});
+    gsap.to(d,{motionPath:{path:[{x:(x0+x1)/2,y:Math.min(y0,y1)-40},{x:x1,y:y1}],curviness:1.2},duration:.9,delay:.35,ease:'power2.inOut',onComplete(){
+      d.remove(); if(run!==workRun) return;
+      gsap.fromTo(cards[n].querySelector('.wk-ph'),{scale:1.04},{scale:1,duration:.5,ease:'back.out(2)'});
+      sc[n]=Math.min(cap[n],sc[n]+inc[n]*(n?2:1.4)); if(i>sig.length) sc[n]=cap[n]+gsap.utils.random(-3,2);
+      gsap.to(bars[n],{width:sc[n]+'%',duration:.6,ease:'power2.out'});
+    }});
+    gsap.delayedCall(2.1,step);
+  };
+  step();
 }
 
 function viewPlanner(){
@@ -1699,6 +1750,7 @@ function viewPlanner(){
   animateTicket();
   if(think && !hold) runThink(p);
   if(!think && now) mountScene(p,false);
+  if(!now && phase(p)==='later') runWork(p);
 }
 
 /* ---------- Inicio: lo que viene (pipeline) ---------- */
