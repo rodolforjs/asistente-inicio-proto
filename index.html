@@ -346,6 +346,8 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 @keyframes ocs{to{transform:rotate(360deg)}}
 .cx-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;font-size:14px;color:#5f6b7d}.cx-top b{color:#0e1014}
 .cx-add{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#0e1014;padding:9px 16px;font-size:13.5px;font-weight:600;color:#fff;transition:background .15s}.cx-add:hover{background:#ff5924}
+.cx-add{flex:none;white-space:nowrap}@media(max-width:420px){.cx-pend{display:none}}
+@media(max-width:767px){.cx-top{font-size:13px}.cx-add{padding:8px 13px;font-size:13px}.mx-auto.max-w-\[1040px\]>section.scroll-mt-20:first-child{padding-top:6px}}
 .cx-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
 .cx-c{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-content:start;border-radius:22px;background:#fff;padding:18px;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .2s,transform .2s}.cx-c:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #d5dbe5,0 20px 30px -24px rgba(15,23,42,.4)}
 .cx-lg{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:#f5f7f9}.cx-lg img{width:30px;height:30px;object-fit:contain}.cx-lg b{font-size:18px}
@@ -567,6 +569,7 @@ label.nf-lb input:focus,.nf-dt2 input:focus,.nf-dt2 select:focus{background:#fff
 .nf-viz .nf-ring{border-color:#d9dfe8}
 .nf-viz .nf-sat img{box-shadow:0 0 0 4px rgba(255,255,255,.9),0 6px 14px -4px rgba(15,23,42,.3)}
 .nf-viz .nf-core::after{background:#fff}.nf-viz .nf-core span{color:#0e1014}
+.nf-viz .nf-core{width:96px;height:96px}.nf-face.has{position:absolute;inset:5px;z-index:1;border-radius:50%;overflow:hidden}.nf-face svg{display:block;width:100%;height:100%}
 .nf-viz .nf-core{box-shadow:0 0 40px 4px rgba(255,89,36,.18)}
 .nf-viz .nf-pt{background:#ff5924;box-shadow:0 0 6px 1px rgba(255,89,36,.6)}
 #nfTk{position:absolute;inset:0;z-index:3;pointer-events:none}#nfTk .obt{pointer-events:auto;width:max-content}#nfTk .obt-date{min-width:70px}
@@ -574,6 +577,23 @@ label.nf-lb input:focus,.nf-dt2 input:focus,.nf-dt2 select:focus{background:#fff
 .nf-k2{min-height:34px}.nf-k2 span{color:#0e1014}.nf-k2 b{font-weight:700}
 .nf-k2 .nf-use{margin-left:2px}.nf-ck{display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#22a06b;color:#fff;font-size:10px;font-style:normal}
 @media(max-width:760px){.nf-2 .nf-ai{border-radius:0}.nf-viz.obb{height:220px}}
+/* móvil: lo que encuentran los conectores va justo bajo el nombre, compacto, para verlo mientras escribes */
+@media(max-width:760px){
+  .nf-2{display:flex;flex-direction:column;padding:24px 20px 20px;border-radius:28px 28px 0 0}
+  .nf-2 .nf-in{display:contents}
+  .nf-2>*,.nf-2 .nf-in>*{flex-shrink:0}.nf-2 .nf-in>*{order:2}.nf-2 .nf-in>.nf-k,.nf-2 .nf-in>.nf-h,.nf-2 .nf-in>.nf-name{order:0}
+  .nf-2 .nf-ai{order:1;margin:12px 0 0;padding:0;background:none}
+  .nf-2 .nf-ov{padding:12px;border-radius:20px;box-shadow:0 0 0 1px #e5eaf2}
+  .nf-2 .nf-ov .ov-cap,.nf-2 .nf-ov>p.mt-3,#nfTk{display:none}
+  .nf-viz.obb{height:140px;border-radius:14px}
+  .nf-viz .nf-core{width:84px;height:84px}
+  .nf-2 .nf-ov .nf-st{margin-top:8px;font-size:12.5px;color:#5f6b7d}
+  .nf-k2{margin-top:8px;min-height:0}.nf-k2:empty{display:none}
+  .nf-x{right:14px;top:14px}
+  .nf-h{font-size:30px}.nf-name{height:54px;font-size:24px;margin-top:14px}
+  .nf-2 .nf-ok{margin-top:18px;height:54px;font-size:16px}
+  .nf-2 .nf-more{margin-bottom:0}
+}
 .dy-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
 .dy-mn{padding-bottom:2px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#aab2bf}
 .dy-mn.is-cur{color:#ff5924}
@@ -592,7 +612,8 @@ label.nf-lb input:focus,.nf-dt2 input:focus,.nf-dt2 select:focus{background:#fff
 .dy-tip span{display:flex;align-items:center;gap:6px}
 .dy-tip em{margin-left:8px;border-radius:999px;padding:1px 8px;font-style:normal;font-size:11px;font-weight:600}
 .dy-tip em.is-done{background:rgba(34,160,107,.25);color:#7be0b0}.dy-tip em.is-now{background:#ff5924;color:#fff}.dy-tip em.is-next{background:rgba(255,255,255,.12);color:rgba(255,255,255,.75)}
-@media(max-width:620px){.dy-g{gap:4px}.dy-c{height:24px;border-radius:6px}.dy-mn{font-size:8px;letter-spacing:0}}
+@media(max-width:620px){.dy-g{gap:4px}.dy-c{height:24px;border-radius:6px}.dy-mn{font-size:9.5px;letter-spacing:0}.dy{padding:14px 14px 16px}}
+@media(max-width:767px){.pl{gap:28px}.pl-l{padding-top:4px}.dh-1{white-space:normal;overflow:visible}.pl-h.dh-1{font-size:30px;line-height:1.08}.pl-lead.dh-1{margin-top:8px;font-size:15.5px}}
 /* mis regalos */
 .mr-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:18px}
 .mr{display:grid;grid-template-columns:200px minmax(0,1fr);overflow:hidden;border-radius:28px;background:#fff;box-shadow:0 0 0 1px #e5eaf2,0 26px 44px -34px rgba(15,23,42,.45)}
@@ -611,7 +632,7 @@ label.nf-lb input:focus,.nf-dt2 input:focus,.nf-dt2 select:focus{background:#fff
 .mr-ac{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:16px}.mr-cx{font-size:12.5px;font-weight:600;color:#9aa3b2}.mr-cx:hover{color:#c63f12}.mr-ok{margin-top:auto;padding-top:16px;font-size:13px;font-weight:500;color:#0b6b48}.mr-pill.ok{background:#d8f5e9;color:#0b6b48}.mr-pill.ok i{background:#10b981;animation:none}
 .mr-bt{align-self:flex-start;padding-top:0;font-size:14px;font-weight:600;text-decoration:underline;text-decoration-color:#afb5c1;text-underline-offset:4px}
 .mr-bt:hover{text-decoration-color:#0e1014}
-@media(max-width:620px){.mr{grid-template-columns:minmax(0,1fr)}.mr-ph{height:200px}.mr-g{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:620px){.mr{grid-template-columns:minmax(0,1fr)}.mr-ph{height:220px;overflow:hidden}.mr-ph img{max-height:100%}.mr-g{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:1023px){.dh{grid-template-columns:minmax(0,1fr)}}
 #apMain{position:relative;z-index:1}
 /* tarjeta */
@@ -958,6 +979,7 @@ body.ch-on .chat{display:flex}
 .sim-pl{position:relative}.sim-pl::after{content:"";position:absolute;left:8px;top:6px;border-left:8px solid #0e1014;border-top:5px solid transparent;border-bottom:5px solid transparent}
 .sim-menu{position:absolute;left:0;bottom:44px;width:230px;border-radius:20px;background:#fff;padding:8px;box-shadow:0 30px 60px -20px rgba(14,16,20,.5),0 0 0 1px #e5eaf2}
 .sim-menu[hidden]{display:none}
+@media(max-width:767px){#simBtn{padding:7px;gap:0}#simBtn .sim-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}#simBtn .sim-pl{width:30px;height:30px}#simBtn .sim-pl::after{left:12px;top:10px}}
 .sim-menu p{padding:8px 10px 4px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9aa3b2}
 .sim-it{display:flex;align-items:center;gap:10px;width:100%;border-radius:12px;padding:8px 10px;font-size:14px;font-weight:500;color:#0e1014;text-align:left}
 .sim-it:hover{background:#f5f7f9}
@@ -1348,7 +1370,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
   <main id="apMain" class="mx-auto max-w-[1360px] px-5 pb-28 lg:px-10 lg:pb-3"></main>
 </section>
 
-<div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span>Simular en…</button>
+<div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span><span class="sim-t">Simular en…</span></button>
 <div id="simMenu" class="sim-menu" hidden><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
 <p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="voz" class="sim-it"><kbd>A</kbd><span>Parlante<small>Respondes mi duda</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
 <div id="nf" class="nf" role="dialog" aria-modal="true" aria-label="Nueva fecha"></div>
@@ -1841,6 +1863,36 @@ const PORT = {
 };
 const TILT = {'Abuela Rosa':-7,'Andrés':6,'Carla':-5,'Emilia':9,'Familia Soto':-4,'Mamá':7,'Papá':-8,'Pareja':5,'Sofi y Nico':-3,'Tío Jorge':7,'Amigo secreto':-9,'Navidad':6};
 const portrait = (n,cls='') => { const x=PORT[n], a=TILT[n]||0; return `<svg class="pt ${cls}" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="${x?x.bg:'#e5eaf2'}"/><g transform="translate(100 208) rotate(${a}) scale(1.03) translate(-100 -200)" fill="none" stroke="${INK}" stroke-width="3.300" stroke-linecap="round" stroke-linejoin="round">${x?x.d:''}</g></svg>`; };
+/* personaje nuevo: se arma con el nombre (pelo, ropa, color) y con lo que encontraron los conectores (el objeto que sostiene) */
+const NP_PAL=[[C.yellow,C.yellowD],[C.green,C.greenD],[C.pink,C.pinkD],[C.coral,C.coralD]];
+const NP_HAIR=[
+ b=>`<path d="M62 84c3-38 74-42 80-4-24-11-56-10-80 4Z" fill="${INK}"/>`,
+ b=>`<path d="M48 214C36 140 46 46 102 44c56-2 64 92 52 170Z" fill="${INK}"/>`,
+ b=>`<circle cx="101" cy="40" r="16" fill="${INK}"/><path d="M64 86c6-34 68-38 76-2-22-11-54-10-76 2Z" fill="${INK}"/>`,
+ b=>`<path d="M48 104c-24-14-14-50 14-50 2-26 42-32 54-12 14-18 54-6 50 20 24 8 20 42-2 46-6-8-14-10-20-8-22-10-56-10-80 4Z" fill="${INK}"/>`,
+ b=>`<path d="M60 86c-2-34 18-50 42-50s44 16 42 50c-26-8-58-8-84 0Z" fill="${C.white}"/><path d="M58 86c28-8 58-8 88 0" stroke-width="4"/><circle cx="102" cy="32" r="8" fill="${C.white}"/>`,
+ b=>`<path d="M60 92c0-40 22-56 44-54 26 2 42 22 40 54-6-14-18-24-34-26-18 8-34 16-50 26Z" fill="${INK}"/>`
+];
+const NP_TOP=[
+ d=>`<path d="M36 214c3-44 30-68 64-68 36 0 62 26 64 68Z" fill="${d}"/>`,
+ d=>`<path d="M36 214c3-44 30-68 64-68 36 0 62 26 64 68Z" fill="${d}"/><path d="M74 152l26 22 26-22" stroke-width="3.400"/>`,
+ d=>`<path d="M36 214c3-44 30-68 64-68 36 0 62 26 64 68Z" fill="${C.white}"/><path d="M56 186h88M52 202h96" stroke="${d}" stroke-width="7"/>`,
+ d=>`<path d="M36 214c3-44 30-68 64-68 36 0 62 26 64 68Z" fill="${d}"/><path d="M70 150c18 14 42 14 60 0l6 14c-24 16-48 16-72 0Z" fill="${C.white}"/>`
+];
+const NP_PROP={
+ 'las plantas':`<path d="M134 172h36l-5 38h-26Z" fill="${C.coral}"/><path d="M152 172c-2-18 4-32 14-40M152 172c-4-14-14-22-24-24" stroke-width="3.400"/><path d="M166 132c10-4 18 2 16 10-8 4-16 0-16-10ZM128 148c-10-6-18 0-14 8 8 4 14 0 14-8Z" fill="${C.green}"/>`,
+ 'el café de grano':`<path d="M128 164h44v38a8 8 0 0 1-8 8h-28a8 8 0 0 1-8-8Z" fill="${C.white}"/><path d="M172 174c12 0 12 22 0 22" stroke-width="3.600"/><path class="st1" d="M142 152c-6-8 6-13 0-22M158 152c-6-8 6-13 0-22" stroke-width="3.400"/>`,
+ 'los libros de historia':`<path d="M126 160l44-8 6 52-44 8Z" fill="${C.yellow}"/><path d="M132 176l34-6M134 188l34-6" stroke-width="3"/>`,
+ 'el vino':`<path d="M150 112h12v20c8 6 10 14 10 24v54h-32v-54c0-10 2-18 10-24Z" fill="${INK}"/><path d="M142 168h28v22h-28Z" fill="${C.white}"/>`,
+ 'la cerámica':`<path d="M134 158h40c2 26-4 50-20 52-16-2-22-26-20-52Z" fill="${C.coral}"/><path d="M136 176c12 4 24 4 36 0" stroke-width="3"/>`,
+ 'el asado':`<path d="M128 150l44 44M140 140l40 40" stroke-width="4"/><path d="M168 186l12 12" stroke-width="7"/><path class="st1" d="M126 132c-6-8 6-13 0-22" stroke-width="3.400"/>`,
+ 'salir al cerro':`<path d="M122 210l26-48 14 24 8-12 20 36Z" fill="${C.green}"/><path d="M148 162l-6 12 8-4 6 8" stroke-width="3" fill="${C.white}"/>`,
+ 'cocinar para muchos':`<path d="M126 168h52c0 20-10 34-26 34s-26-14-26-34Z" fill="${C.white}"/><path d="M120 168h64M152 168v-12" stroke-width="3.600"/><path class="st1" d="M142 150c-6-8 6-13 0-22M162 150c-6-8 6-13 0-22" stroke-width="3.400"/>`
+};
+function genPort(n,g){ const h=nfHash(n||'?'), [bg,d]=NP_PAL[h%4], hair=h>>2, gl=(h>>7)%4===0, prop=g&&NP_PROP[g];
+  const back=hair%6===1?NP_HAIR[1]():'' , front=hair%6===1?`<path d="M66 84c6-28 66-30 72 0-24-6-48-6-72 0Z" fill="${INK}"/>`:NP_HAIR[hair%6]();
+  return {bg,d:`${back}${NP_TOP[(h>>4)%4](d)}<path d="M66 112c-5-30 9-48 34-48 28 0 41 20 35 50-8 26-60 24-69-2Z" fill="${bg}"/>${front}
+   ${gl?`<circle cx="89" cy="98" r="11" stroke-width="3.200"/><circle cx="113" cy="98" r="11" stroke-width="3.200"/><path d="M100 98h2" stroke-width="3.200"/>`:''}${eye(90,98)}${eye(112,98)}<path d="M94 118c4 4 11 4 15 0" stroke-width="3.400"/>${prop||''}`}; }
 const SHARED = ['Amigo secreto','Navidad'];
 
 /* ---------- App: Mi planner, Personas, Configuración ---------- */
@@ -2344,17 +2396,18 @@ document.addEventListener('pointerover',e=>{ const c=e.target.closest&&e.target.
 let nf=null, nfRun=0;
 const NF_G=['el asado','el café de grano','las plantas','los libros de historia','la cerámica','el vino','salir al cerro','cocinar para muchos'];
 const NF_P={'el asado':['pack-3-salsas-gourmet','tabla-de-piedra-ribete','tabla-tolten'],'el café de grano':['mug-termico-ilustrado-papelucosas','tazon-alerce','botella-termica-oceano'],'las plantas':['mielero-en-ceramica-gres','vela-vasija-likan-esencia-andina','tazon-alerce'],'los libros de historia':['libro-santiago-y-sus-cumbres-copia','libro-wander','diario-de-gratitud'],'la cerámica':['mielero-en-ceramica-gres','tazon-alerce','vela-vasija-likan-esencia-andina'],'el vino':['vasos-gallo-agranda-o-450-ml-set-de-6','tabla-tolten','pack-3-salsas-gourmet'],'salir al cerro':['mochila-zorro-culpeo','botella-bandurria','botella-termica-oceano'],'cocinar para muchos':['tabla-de-piedra-ribete','pack-3-salsas-gourmet','set-de-platos-circulares']};
+const enc=g=>/^(los|las) /.test(g)?'encantan':'encanta';
 const nfHash=t=>[...t.toLowerCase()].reduce((a,c)=>a*31+c.charCodeAt(0)>>>0,7);
 const nfLogos=()=>CONNS.filter(c=>CX[c.k]).map(c=>`<img src="${c.img}" alt="${c.t}" title="${c.t}">`).join('');
 function nfOpen(m,d){
-  nf={n:'',o:'Cumpleaños',rel:null,tope:null,date:m==null?null:{m,d},facts:[],gusto:null,sug:{},key:''};
+  nf={n:'',o:'Cumpleaños',rel:null,tope:null,date:m==null?null:{m,d},facts:[],gusto:null,sug:{},key:'',autoDate:false,autoRel:false};
   document.body.classList.add('nf-on'); nfView(); setTimeout(()=>{ const i=$('nfN'); if(i) i.focus(); },50);
   if(!REDUCE) gsap.from('#nf .nf-c',{y:24,scale:.97,opacity:0,duration:.45,ease:'power3.out'});
 }
 function nfClose(){ nfRun++; clearTimeout(nfT); clearInterval(nfPI); clearInterval(nfSI); nf=null; document.body.classList.remove('nf-on'); }
 const chips=(name,list,cur)=>`<div class="nf-ch" role="radiogroup">${list.map(v=>`<button type="button" data-nfc="${name}" data-v="${v}" aria-pressed="${cur===v}">${v}</button>`).join('')}</div>`;
 function nfView(){
-  const r=nf, lg=CONNS.filter(c=>CX[c.k]&&c.k!=='spotify'), R=[64,92,118];
+  const r=nf, lg=CONNS.filter(c=>CX[c.k]&&c.k!=='spotify'), R=matchMedia('(max-width:760px)').matches?[54,96,140]:[64,92,118];
   $('nf').innerHTML=`<div class="nf-c nf-2"><button class="nf-x" data-nf="x" aria-label="Cerrar">×</button>
    <form id="nfF" class="nf-in" novalidate>
     <p class="nf-k">Nueva fecha</p><h2 class="nf-h">¿A quién le regalas?</h2>
@@ -2370,22 +2423,26 @@ function nfView(){
     <div class="obb nf-viz" id="nfV" aria-hidden="true">
       ${R.map(rad=>`<span class="nf-ring" style="width:${rad*2}px;height:${rad*2}px"></span>`).join('')}
       <div class="nf-orbit">${lg.map((c,k)=>{ const a=k/lg.length*360, rad=R[k%3]; return `<span class="nf-sat" style="transform:rotate(${a}deg) translate(${rad}px) rotate(${-a}deg)"><img src="${c.img}" alt=""></span>`; }).join('')}</div>
-      <div class="nf-core"><span id="nfCore">✦</span></div><div id="nfTk"></div></div>
+      <div class="nf-core"><span id="nfCore" class="nf-face">✦</span></div><div id="nfTk"></div></div>
     <p class="nf-st"><span id="nfSt">Preparando tus conectores</span><span class="pl-dots"><i></i><i></i><i></i></span></p>
     <div class="obb-k nf-k2" id="nfK"></div>
-    <p class="mt-3 text-[12.5px] leading-snug text-[#748297]">Lo sumo a lo que me des. Nada se guarda sin tu OK.</p></div></aside></div>`;
+    <p class="mt-3 text-[12.5px] leading-snug text-[#748297]">Lo que encuentro lo dejo puesto. Si algo no calza, lo cambias.</p></div></aside></div>`;
   nfAmbient();
 }
 /* animación ambiente: no depende de lo que escribes */
 let nfPI=null, nfSI=null;
 function nfAmbient(){
   clearInterval(nfPI); clearInterval(nfSI); if(REDUCE) return;
-  const V=$('nfV'); const ST=['Leyendo tus contactos','Cruzando correos y fechas','Buscando gustos en tus chats','Mirando fotos públicas','Comparando con tus regalos','Armando su ficha'];
-  let k=0; nfSI=setInterval(()=>{ const e=$('nfSt'); if(!e){ clearInterval(nfSI); return; } k=(k+1)%ST.length; gsap.to(e,{opacity:0,y:-4,duration:.2,onComplete:()=>{ e.textContent=ST[k]; gsap.fromTo(e,{opacity:0,y:4},{opacity:1,y:0,duration:.25}); }}); },1700);
+  nfAmbientText();
   nfPI=setInterval(()=>{ const v=$('nfV'); if(!v){ clearInterval(nfPI); return; } const sats=v.querySelectorAll('.nf-sat img'); if(!sats.length) return;
     const s0=sats[Math.floor(Math.random()*sats.length)], vb=v.getBoundingClientRect(), sb=s0.getBoundingClientRect();
     const d=document.createElement('i'); d.className='nf-pt'; d.style.left=(sb.left-vb.left+sb.width/2)+'px'; d.style.top=(sb.top-vb.top+sb.height/2)+'px'; v.appendChild(d);
     gsap.to(d,{left:vb.width/2,top:vb.height/2,scale:.3,duration:.9+Math.random()*.4,ease:'power2.in',onComplete:()=>{ d.remove(); const c=v.querySelector('.nf-core'); if(c) gsap.fromTo(c,{scale:1.06},{scale:1,duration:.3}); }}); },260);
+}
+const NF_ST=['Leyendo tus contactos','Cruzando correos y fechas','Buscando gustos en tus chats','Mirando fotos públicas','Comparando con tus regalos','Armando su ficha'];
+function nfAmbientText(){ clearInterval(nfSI); nfSI=null; if(REDUCE) return; const ST=NF_ST;
+  const dt=$('nfSt')?.nextElementSibling; if(dt) dt.style.display='';
+  let k=0; nfSI=setInterval(()=>{ const e=$('nfSt'); if(!e){ clearInterval(nfSI); return; } k=(k+1)%ST.length; gsap.to(e,{opacity:0,y:-4,duration:.2,onComplete:()=>{ e.textContent=ST[k]; gsap.fromTo(e,{opacity:0,y:4},{opacity:1,y:0,duration:.25}); }}); },1700);
 }
 let nfT=null;
 const NF_SLOT=[[22,26,-6],[73,20,4],[27,80,3],[80,74,-5]];
@@ -2393,26 +2450,30 @@ function nfToken(slot,html){ const T=$('nfTk'); if(!T) return; const [x,y,r]=NF_
   gsap.set(el,{xPercent:-50,yPercent:-50,rotation:r}); if(!REDUCE){ gsap.from(el,{y:'-=50',scale:.3,opacity:0,rotation:r+(r>0?24:-24),duration:.7,ease:'back.out(1.6)'}); gsap.to(el,{y:'+=3',duration:2+Math.random(),repeat:-1,yoyo:true,ease:'sine.inOut',delay:.7}); } }
 function nfChip(k,html){ const K=$('nfK'); if(!K) return; const c=cxOf(k), old=K.querySelector(`[data-k="${k}"]`), h=`<span data-k="${k}">${c?`<img src="${c.img}" alt="">`:''}${html}</span>`; if(old) old.outerHTML=h; else { K.insertAdjacentHTML('beforeend',h); if(!REDUCE) gsap.fromTo(K.lastElementChild,{scale:.85,opacity:0},{scale:1,opacity:1,duration:.4,ease:'back.out(3)'}); } }
 function nfCal(){ if(!nf||!(CX.cal||CX.icloud)) return; const d=nfDate(); if(d) nfChip(CX.cal?'cal':'icloud',`Te aviso el <b>${fdate(addD(nextOcc(d),-AVISO))}</b>`); else { const o=$('nfK')&&$('nfK').querySelector('[data-k="cal"],[data-k="icloud"]'); if(o) o.remove(); } }
-const nfSum=()=>{};
+function nfFace(pop){ const cr=$('nfCore'); if(!nf||!cr) return; const n=nf.n.trim(); if(!n){ cr.classList.remove('has'); cr.textContent='✦'; return; }
+  const x=genPort(n,nf.gusto); cr.classList.add('has'); cr.innerHTML=`<svg viewBox="22 34 156 156" aria-hidden="true"><rect x="0" y="0" width="200" height="200" fill="${x.bg}"/><g transform="translate(0 6)" fill="none" stroke="${INK}" stroke-width="3.300" stroke-linecap="round" stroke-linejoin="round">${x.d}</g></svg>`;
+  if(pop&&!REDUCE) gsap.fromTo(cr,{scale:.8},{scale:1,duration:.5,ease:'back.out(2.4)'}); }
 const nfDate=()=>{ const m=$('nfM')?.value, d=+($('nfD')?.value||0); return m!==''&&m!=null&&d>0?{m:+m,d:Math.min(d,new Date(2027,+m+1,0).getDate())}:null; };
 const nextOcc=dt=>{ const t=new Date(TODAY.getFullYear(),dt.m,dt.d); if(t<TODAY) t.setFullYear(t.getFullYear()+1); return t; };
 async function nfLive(){
   const n=nf.n.trim(); if(n.length<2||n.toLowerCase()===nf.key) return; nf.key=n.toLowerCase();
   const run=++nfRun, h=nfHash(n), isPato=/^pato$/i.test(n), g=isPato?'el asado':NF_G[h%NF_G.length], g2=NF_G[(h>>3)%NF_G.length], found={m:isPato?11:(h>>5)%12,d:isPato?12:1+(h>>9)%28}, relG=isPato?'Amistad':['Familia','Amistad','Trabajo'][h%3];
-  nf.facts=[]; nf.gusto=null; nf.sug={}; $('nfTk').innerHTML=''; $('nfK').innerHTML=''; nfCal();
+  nf.facts=[]; nf.gusto=null; nf.sug={}; $('nfTk').innerHTML=''; $('nfK').innerHTML=''; nfFace(); nfCal(); nfAmbientText();
   const steps=[];
   if(CX.gmail) steps.push(()=>{ nf.sug.date=found; nf.facts.push([`Su cumple es el ${found.d} de ${MESES[found.m]}`,'gmail']);
     nfToken(0,`<div class="obt obt-date"><i>${MES[found.m]}</i><b class="num">${found.d}</b><small>Su cumple</small><img class="obt-lg" src="${cxOf('gmail').img}" alt=""></div>`);
-    const d=nfDate(); nfChip('gmail',`${found.d} ${MES[found.m].toLowerCase()}${!d||d.m!==found.m||d.d!==found.d?' <button type="button" class="nf-use" data-nfuse="date">Usar</button>':''}`); });
+    const d=nfDate(); if(!d||nf.autoDate){ $('nfD').value=found.d; $('nfM').value=found.m; nf.autoDate=true; const E=$('nfE'); if(E) E.textContent=''; if(!REDUCE) gsap.fromTo('.nf-dt2 input,.nf-dt2 select',{backgroundColor:'#ffe1d6'},{backgroundColor:'#f5f7f9',duration:1.1,clearProps:'backgroundColor'}); }
+    nfChip('gmail',`Cumple el <b>${found.d} ${MES[found.m].toLowerCase()}</b>`); });
   if(CX.contacts) steps.push(()=>{ nf.sug.rel=relG;
     nfToken(1,`<div class="obt obt-mail"><img class="obt-lg" src="${cxOf('contacts').img}" alt=""><span>${relG}</span></div>`);
-    nfChip('contacts',`${relG}${nf.rel?'':' <button type="button" class="nf-use" data-nfuse="rel">Usar</button>'}`); });
-  if(CX.wa) steps.push(()=>{ nf.gusto=g; nf.facts.push([`Le encanta ${g}`,'wa']);
-    nfToken(2,`<div class="obt obt-wa"><img class="obt-lg" src="${cxOf('wa').img}" alt=""><span>“Me encanta ${g}”</span></div>`); nfChip('wa',`Le encanta ${g}`); });
+    if(!nf.rel||nf.autoRel){ nf.rel=relG; nf.autoRel=true; document.querySelectorAll('[data-nfc="rel"]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===relG))); }
+    nfChip('contacts',`Es de <b>${relG.toLowerCase()}</b>`); });
+  if(CX.wa) steps.push(()=>{ nf.gusto=g; nf.facts.push([`Le ${enc(g)} ${g}`,'wa']);
+    nfToken(2,`<div class="obt obt-wa"><img class="obt-lg" src="${cxOf('wa').img}" alt=""><span>“Amo ${g}”</span></div>`); nfChip('wa',`Le ${enc(g)} ${g}`); nfFace(true); });
   if(CX.instagram) steps.push(()=>{ nf.gusto=nf.gusto||g2; nf.facts.push([`Sube fotos de ${g2}`,'instagram']); const u=prod((NF_P[g2]||['tazon-alerce'])[0]).u;
-    nfToken(3,`<div class="obt obt-photo"><img src="${u}" alt=""><small>Sus fotos</small><img class="obt-lg" src="${cxOf('instagram').img}" alt=""></div>`); nfChip('instagram',`Sube fotos de ${g2}`); });
+    nfToken(3,`<div class="obt obt-photo"><img src="${u}" alt=""><small>Sus fotos</small><img class="obt-lg" src="${cxOf('instagram').img}" alt=""></div>`); nfChip('instagram',`Sube fotos de ${g2}`); nfFace(true); });
   for(const st of steps){ await wait(REDUCE?0:.7); if(run!==nfRun||!nf) return; st(); }
-  nfCal();
+  nfCal(); clearInterval(nfSI); const se=$('nfSt'); if(se&&steps.length){ se.textContent='Listo, lo dejé puesto'; const dt=se.nextElementSibling; if(dt) dt.style.display='none'; }
 }
 function nfAdd(){
   const r=nf, n0=$('nfN').value.trim(), dt=nfDate(), E=$('nfE');
@@ -2420,24 +2481,21 @@ function nfAdd(){
   const n=n0[0].toUpperCase()+n0.slice(1);
   if(YEAR.some(q=>q.n.toLowerCase()===n.toLowerCase())){ ytoast(`Ya sigo la fecha de ${n}.`); nfClose(); return; }
   const p={n,o:r.o==='Otra'?'Celebración':r.o,m:dt.m,d:dt.d,y:40,k:r.o==='Aniversario'?'amor':'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
-  GIFT[n]=[NF_P[r.gusto]||['vela-anillo-de-fuego-esencia-andina','pack-3-mermeladas-gourmet','libreta-picaflor-1'],r.gusto?`le encanta ${r.gusto}.`:'aún lo estoy conociendo; con lo que me cuentes afino.'];
+  GIFT[n]=[NF_P[r.gusto]||['vela-anillo-de-fuego-esencia-andina','pack-3-mermeladas-gourmet','libreta-picaflor-1'],r.gusto?`le ${enc(r.gusto)} ${r.gusto}.`:'aún lo estoy conociendo; con lo que me cuentes afino.'];
   REL[n]={Familia:'Familia',Amistad:'Amistad',Pareja:'Tu pareja',Trabajo:'Trabajo'}[r.rel]||'La agregaste tú';
   CAL_OF[n]=r.rel==='Trabajo'?'Trabajo':r.rel==='Familia'?'Familia':'Personal';
   if(r.tope&&r.tope!=='Sin tope') BUDGET[n]=+r.tope.replace(/\D/g,'');
   LEARN[n]=[...r.facts.map(([t,k])=>[t,k]), ['Me la diste tú','you']];
-  PORT[n]={bg:[C.yellow,C.green,C.pink,C.coral][nfHash(n)%4],d:`<text x="100" y="140" text-anchor="middle" font-family="Newsreader,serif" font-size="110" fill="${INK}" stroke="none">${esc(n[0])}</text>`};
+  PORT[n]=genPort(n,r.gusto); TILT[n]=(nfHash(n)%13)-6;
   addAct({k:'new',t:'Sumé una fecha nueva',s:`${n} · ${dt.d} ${MES[dt.m].toLowerCase()}${r.facts.length?` · ${r.facts.length} cosas de tus conectores`:''}`,n,unread:false});
   nfClose(); dtYear=occ(p).getFullYear(); render(); ytoast(`Listo, sigo a ${n}. Te aviso el ${fdate(avisoD(p))}.`);
 }
 $('nf').addEventListener('click',e=>{
   if(e.target.id==='nf'){ nfClose(); return; }
-  const c=e.target.closest('[data-nfc]'); if(c){ const k=c.dataset.nfc; nf[k]=nf[k]===c.dataset.v&&k!=='o'?null:c.dataset.v; c.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf[k]))); if(k==='rel'){ const u=document.querySelector('[data-nfuse="rel"]'); if(u) u.remove(); } return; }
-  const u=e.target.closest('[data-nfuse]'); if(u){ if(u.dataset.nfuse==='date'){ $('nfD').value=nf.sug.date.d; $('nfM').value=nf.sug.date.m; nfCal(); if(!REDUCE) gsap.fromTo('.nf-dt2',{backgroundColor:'rgba(255,89,36,.25)'},{backgroundColor:'rgba(255,89,36,0)',duration:.8}); }
-    else { nf.rel=nf.sug.rel; const md=$('nfMore'); if(md) md.open=true; document.querySelectorAll('[data-nfc="rel"]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf.rel))); }
-    u.outerHTML='<i class="nf-ck">✓</i>'; return; }
+  const c=e.target.closest('[data-nfc]'); if(c){ const k=c.dataset.nfc; nf[k]=nf[k]===c.dataset.v&&k!=='o'?null:c.dataset.v; c.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===nf[k]))); if(k==='rel') nf.autoRel=false; return; }
   const b=e.target.closest('[data-nf]'); if(b&&b.dataset.nf==='x') nfClose();
 });
-$('nf').addEventListener('input',e=>{ if(e.target.id==='nfN'){ nf.n=e.target.value; const cr=$('nfCore'); if(cr) cr.textContent=(nf.n.trim()[0]||'✦').toUpperCase(); clearTimeout(nfT); nfT=setTimeout(nfLive,450); } if(e.target.id==='nfD'||e.target.id==='nfM'){ nfCal(); const E=$('nfE'); if(E) E.textContent=''; } });
+$('nf').addEventListener('input',e=>{ if(e.target.id==='nfN'){ nf.n=e.target.value; nfFace(); clearTimeout(nfT); nfT=setTimeout(nfLive,450); } if(e.target.id==='nfD'||e.target.id==='nfM'){ nf.autoDate=false; nfCal(); const E=$('nfE'); if(E) E.textContent=''; } });
 $('nf').addEventListener('submit',e=>{ e.preventDefault(); nfAdd(); });
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&nf) nfClose(); });
 document.addEventListener('click',e=>{ const a=e.target.closest('[data-dyadd]'); if(!a) return; const has=a.dataset.dyadd!==''; nfOpen(has?+a.dataset.dyadd:null,has?Math.min(28,+a.dataset.dyday||1):null); });
@@ -2529,7 +2587,7 @@ function cxGives(k){
 function cxHtml(count){
   const on=CONNS.filter(c=>CX[c.k]);
   const cal=CX.cal?`<div class="cx-cal"><p class="cx-ct">Calendarios que leo</p><div class="divide-y divide-mist">${Object.keys(cfg.cals).map(c=>`<div class="flex items-center justify-between gap-4 py-3"><div><p class="text-[14px] font-medium">${c}</p><p class="text-[12.5px] text-[#5f6b7d]">${count(c)}</p></div>${sw('cal:'+c,cfg.cals[c],'Leer el calendario '+c)}</div>`).join('')}</div></div>`:'';
-  return `<div class="cx-top"><p><b class="num">${on.length}</b> ${on.length===1?'conectado':'conectados'} · ${CONNS.length-on.length} por conectar</p><button data-act="cxadd" class="cx-add"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar conector</button></div>
+  return `<div class="cx-top"><p><b class="num">${on.length}</b> ${on.length===1?'conectado':'conectados'}<span class="cx-pend"> · ${CONNS.length-on.length} por conectar</span></p><button data-act="cxadd" class="cx-add"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Agregar conector</button></div>
   <div class="cx-g">${on.map(c=>`<article class="cx-c">${cxLogo(c)}<div class="min-w-0"><h3>${c.t}</h3><p class="cx-st"><i></i>Conectado${c.k==='cal'?' · leído hace 5 min':''}</p><p class="cx-d">${c.s}</p><p class="cx-y">${cxGives(c.k)}</p></div><button data-act="cxoff" data-k="${c.k}" class="cx-off" aria-label="Desconectar ${c.t}">Desconectar</button></article>`).join('')}
    <button data-act="cxadd" class="cx-new"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><b>Agregar conector</b><small>Calendarios, correo, ideas y más</small></button></div>${cal}`;
 }
