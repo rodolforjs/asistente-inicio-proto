@@ -1226,6 +1226,60 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .dotp .core{position:absolute;inset:0;border-radius:50%;background:rgba(116,130,151,.55)}
 .dotp .lb{background:rgba(255,255,255,.85);padding:2px 7px;border-radius:99px;box-shadow:0 0 0 1px rgba(15,23,42,.08),0 4px 10px -4px rgba(15,23,42,.2)}
 .dotp .lb{position:absolute;left:11px;top:-10px;font-size:10px;line-height:1.5;font-weight:600;white-space:nowrap;opacity:0;color:#0e1014}
+
+/* ===== móvil 2026-11-15 ===== */
+@media(max-width:767px){
+  /* flujo: el análisis manda; la tarjeta de la fecha baja y se compacta */
+  .pl-flow .pl-r,.pl-home .pl-r{order:0}
+  .pl-flow .tk,.pl-home .tk{flex-direction:row;height:auto;min-height:0;max-height:none;border-radius:22px;box-shadow:0 20px 34px -24px rgba(15,23,42,.55)}
+  .pl-flow .tk-art,.pl-home .tk-art{flex:none;width:104px;height:auto!important;min-height:120px}
+  .pl-flow .tk-art::before,.pl-home .tk-art::before{display:none}
+  .pl-flow .tk-art>.pt,.pl-home .tk-art>.pt{width:100%!important;bottom:0!important}
+  .pl-flow .tk-d,.pl-home .tk-d{left:8px;top:8px;bottom:auto!important;display:flex;align-items:baseline;gap:3px;border-radius:9px;background:#fff;padding:3px 7px 2px;color:#0e1014;font-family:Inter,sans-serif;font-size:15px!important;font-weight:700;letter-spacing:0;line-height:1.1;text-shadow:none;box-shadow:0 4px 10px -4px rgba(14,16,20,.35)}
+  .pl-flow .tk-d small,.pl-home .tk-d small{display:inline;padding:0!important;font-size:10px;letter-spacing:.06em}
+  .pl-flow .tk-d br,.pl-flow .tk-wd,.pl-home .tk-d br,.pl-home .tk-wd{display:none}
+  .pl-flow .tk-b,.pl-home .tk-b{flex:1;min-width:0;padding:14px 16px 14px}
+  .pl-flow .tk-b h2,.pl-home .tk-b h2{font-size:22px}
+  .pl-flow .tk-when,.pl-home .tk-when{font-size:12.5px}
+  .pl-flow .tk-h,.pl-flow .tk-r,.pl-home .tk-h,.pl-home .tk-r,.pl-flow .tk-dl-m,.pl-home .tk-dl-m{display:none}
+  .pl-flow .tk-t,.pl-home .tk-t{margin-top:8px;font-size:13px}
+  .pl-flow .tk-dl-n b,.pl-home .tk-dl-n b{font-size:28px}
+  .pl-flow .tk-dl-n span,.pl-flow .tk-dl-d small,.pl-home .tk-dl-n span,.pl-home .tk-dl-d small{font-size:11px}
+  .pl-flow .tk-dl-d b,.pl-home .tk-dl-d b{font-size:13px}
+  .pl-flow .tk-t i,.pl-home .tk-t i{margin:6px 0 0!important}
+  .pl-flow{gap:20px}
+  .pl-flow .th-s.s30,.pl-flow .th-s.s8,.pl-flow .th-s.s3{min-height:290px;align-content:start}
+  .ap-top>button:first-child{white-space:nowrap}
+  /* inicio: lo urgente primero, la tarjeta al final */
+  .pl-home .dh{display:flex;flex-direction:column}
+  .pl-home .dh-hot{order:-1}
+  .pl-home .pl-h.dh-1+.pl-lead+.dh{margin-top:18px}
+  /* chat: vive entre la barra superior y el menú, como una sección más */
+  .fab{display:none!important}
+  .chat{inset:0 0 calc(66px + env(safe-area-inset-bottom)) 0!important;width:auto!important;height:auto!important;border-radius:0!important;box-shadow:none!important}
+  .ch-h{padding:calc(12px + env(safe-area-inset-top)) 16px 12px 20px}
+  .ch-h b{font-size:24px}
+  .ch-x{display:none}
+  body.ch-on .ap-tabs{background:#fff}body.ch-on .ap-tabs button[aria-current]{color:#5f6b7d;font-weight:500}
+  body.ch-on .ap-tabs button[data-t=chat]{color:#0e1014;font-weight:600}
+  .ap-tabs .tb-ch .fab-o{width:24px;height:24px;margin:-2px 0}
+  .ap-tabs .tb-ch .fab-o::after{inset:2.5px}
+  /* personas: cada una tiene su página */
+  .pp-pg{padding-top:4px}
+  .pp-pg .pn{position:static;max-height:none;margin-top:12px}
+}
+@media(min-width:768px){.ap-tabs .tb-ch{display:none}}
+.pp-back{display:inline-flex;align-items:center;gap:6px;height:36px;border-radius:999px;background:#fff;padding:0 14px 0 10px;font-size:13.5px;font-weight:600;color:#39414e;box-shadow:0 0 0 1px #e5eaf2}
+/* portada: copy corto y Comenzar abajo, fijo, sin tapar nada */
+.sub-m{display:none}
+@media(max-width:767px){
+  .sub-d{display:none}.sub-m{display:inline}
+  #sub{margin-top:18px;font-size:18px;line-height:1.45}
+  main.h-dvh{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+  #months{bottom:calc(96px + env(safe-area-inset-bottom))!important}
+  #ctaw{position:fixed;left:0;right:0;bottom:0;z-index:30;display:block;margin:0;padding:14px 20px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(245,247,249,0),#f5f7f9 30%);filter:none!important}
+  #ctaw #connect{display:flex;width:100%;justify-content:center;padding:17px 0;filter:drop-shadow(0 14px 16px rgba(15,23,42,.25))}
+}
 </style>
 </head>
 <body class="bg-fog font-sans text-black antialiased">
@@ -1247,7 +1301,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
         <span class="block overflow-hidden pb-[.12em] pt-[.04em]"><span class="relative inline-block"><em id="w2" class="block italic text-brand">resueltos.</em>
           <svg viewBox="0 0 300 20" preserveAspectRatio="none" class="absolute -bottom-[.02em] left-0 h-[.2em] w-full overflow-visible" aria-hidden="true"><path id="ul" d="M4 12 C 60 2, 110 18, 160 9 S 250 4, 296 11" fill="none" stroke="#ff5924" stroke-width="5" stroke-linecap="round"/></svg></span></span>
       </h1>
-      <p id="sub" class="mt-7 max-w-[480px] text-xl leading-relaxed text-gray-600">Soy tu asistente: me hago parte de tu día para acompañarte y guiarte cuando toca regalar. <span class="font-semibold text-black">Juntos no se nos pasará nada</span> y tendremos el mejor regalo para cada ocasión.</p>
+      <p id="sub" class="mt-7 max-w-[480px] text-xl leading-relaxed text-gray-600"><span class="sub-d">Soy tu asistente: me hago parte de tu día para acompañarte y guiarte cuando toca regalar. <span class="font-semibold text-black">Juntos no se nos pasará nada</span> y tendremos el mejor regalo para cada ocasión.</span><span class="sub-m">Tu asistente para regalar. <span class="font-semibold text-black">Juntos no se nos pasará nada.</span></span></p>
       <div id="ctaw" class="mt-9 inline-block drop-shadow-[0_14px_16px_rgba(15,23,42,.3)]">
         <button id="connect" class="ticket inline-flex items-center gap-3 bg-black px-9 py-[19px] text-[17px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand">
           Comenzar
@@ -1379,7 +1433,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 <!-- mándame algo: conversar con el planner desde cualquier pantalla -->
 <button id="fab" class="fab" aria-label="Abrir el chat" aria-expanded="false" aria-controls="ch"><span class="fab-o"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="fab-t">Chat</span></button>
 <section id="ch" class="chat" role="dialog" aria-label="Chat">
-  <header class="ch-h"><span class="fab-o" style="width:36px;height:36px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span><b>Cuenta conmigo</b></span><button id="chX" class="ch-x" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+  <header class="ch-h"><span class="fab-o" style="width:36px;height:36px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span><b>Chat</b></span><button id="chX" class="ch-x" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
   <div id="chL" class="ch-l" aria-live="polite"></div>
   <div id="chQ" class="ch-q"></div>
   <div id="chTr" class="ch-tr" hidden><span class="ch-th"><img id="chTi" alt="Foto adjunta"><button type="button" id="chTx" aria-label="Quitar foto">×</button></span><small>Agrega un texto si quieres</small></div>
@@ -1938,7 +1992,7 @@ function ticket(p){
     : `<div class="tk-t"><p>Te aviso el ${fdate(avisoD(p))}</p><p class="tk-s">Con el regalo pensado y tiempo para que llegue</p></div>`;
   return `<article id="apTicket" class="tk" data-flip-id="tk">
     <div class="tk-art ${ph==='bought'?'is-photo':''}" style="background-color:${(PORT[p.n]||{}).bg||'#e5eaf2'}">${ph==='bought'?img(cur.u,'tk-ph'):portrait(p.n)}
-      <span class="tk-d num">${o.getDate()}<small>${MES[o.getMonth()]}<br>${WD[o.getDay()]}</small></span>${ph==='bought'?'<span class="tk-stamp">Listo</span>':''}</div>
+      <span class="tk-d num">${o.getDate()}<small><span class="tk-mo2">${MES[o.getMonth()]}</span><br><span class="tk-wd">${WD[o.getDay()]}</span></small></span>${ph==='bought'?'<span class="tk-stamp">Listo</span>':''}</div>
     <div class="tk-b"><div class="flex items-baseline justify-between gap-3"><h2>${esc(p.n)}</h2><span class="tk-when">${days(dleft(p))}</span></div>
       <p class="tk-h">Lo que rescaté</p>
       <ul class="tk-r">${rescued(p).map(([k,l,t])=>`<li>${srcI(k)}<span><small>${l}</small>${esc(t)}</span></li>`).join('')}</ul>
@@ -2335,7 +2389,7 @@ function viewPlanner(){
   if(co&&co.p===p&&phase(p)==='now'){ $('apMain').innerHTML=`<div class="pl pl-co"><div id="plLeft" class="pl-l">${coHtml()}</div><div class="pl-r">${receipt()}</div></div>`; bindCo(); return; }
   const now=phase(p)==='now', think=now && !thought[p.n] && !REDUCE;
   if(now && REDUCE) thought[p.n]=true;
-  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l">${!now?leftOther(p):think?leftThinking(p):(autoFocus&&p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver al inicio</button>')+leftFinal(p)}</div><aside class="pl-r">${ticket(p)}</aside></div>`;
+  $('apMain').innerHTML=`<div class="pl pl-flow"><div id="plLeft" class="pl-l">${!now?leftOther(p):think?leftThinking(p):(autoFocus&&p===defaultFocus()?'':'<button data-act="back" class="pl-back">← Volver al inicio</button>')+leftFinal(p)}</div><aside class="pl-r">${ticket(p)}</aside></div>`;
   animateTicket();
   if(think && !hold) runThink(p);
   if(!think && now) mountScene(p,false);
@@ -2358,7 +2412,7 @@ function viewHome(){
   const lead=hot?`${dl(hot)} para pedirlo y que llegue a tiempo.`
     :n1?`${who(n1)[0].toUpperCase()+who(n1).slice(1)} es ${days(dleft(n1))} y ya lo dejé pensado.`
     :n0?`Por ahora estamos bien. Lo próximo es ${esc(n0.n)} el ${fdate(occ(n0))}.`:'Por ahora no hay nada pendiente.';
-  $('apMain').innerHTML=`<div class="pl"><div id="plLeft" class="pl-l"><h1 class="pl-h dh-1 ${hot?'pl-urg':''}">${h1}</h1>
+  $('apMain').innerHTML=`<div class="pl pl-home"><div id="plLeft" class="pl-l"><h1 class="pl-h dh-1 ${hot?'pl-urg':''}">${h1}</h1>
     <p class="pl-lead dh-1">${lead}</p>
     <div class="dh">${col('En mi radar',later.length,`Te aviso ${AVISO} días antes`,later.slice(0,3).map(chip).join('')+more)}
       ${col('Para regalar pronto',now.length,hot?'Esto no puede esperar':'Ya lo pensé, falta tu decisión',now.map(nowItem).join(''),'dh-hot'+(hot?' dh-urg':''))}</div>
@@ -2541,7 +2595,7 @@ function viewRegalos(){
 function bindCo(){ const m=$('coMsg'); if(m) m.oninput=()=>{ co.msg=m.value; $('coMc').textContent=m.value.length+'/140'; }; }
 
 /* ---------- Centro de personas ---------- */
-let personSel=null, personQ='';
+let personSel=null, personQ='', personOpen=false;
 function personTile(p){
   const k=knows(p).length, q=QUESTIONS.find(x=>x.n===p.n&&!yasked[x.n]);
   return `<button data-act="person" data-i="${idx(p)}" data-name="${esc(p.n.toLowerCase())}" aria-pressed="${p===personSel}" class="pe">${portrait(p.n)}${q?'<i class="pe-q" title="Tengo una duda">?</i>':''}<span class="pe-b"><b>${esc(p.n)}</b><small>${esc(REL[p.n]||p.o)}</small><span class="pe-k"><span class="pe-p"><em style="width:${Math.min(100,k*25)}%"></em></span>${k} ${k===1?'cosa':'cosas'}</span></span></button>`;
@@ -2562,6 +2616,8 @@ function personPanel(p){
   <button data-act="focus" data-i="${idx(p)}" class="pl-sec mt-4 w-full">Ver en mi planner</button>`;
 }
 function viewPersonas(){
+  if(personOpen&&personSel&&isM()){ const p=personSel;
+    $('apMain').innerHTML=`<div class="pp-pg"><button data-act="ppback" class="pp-back">← Tu gente</button><aside id="ppPanel" class="pn">${personPanel(p)}</aside></div>`; bindPanel(); return; }
   const v=yr(), ppl=v.filter(p=>!SHARED.includes(p.n)).sort((a,b)=>a.n.localeCompare(b.n,'es')), sh=v.filter(p=>SHARED.includes(p.n)), tot=ppl.reduce((n,p)=>n+knows(p).length,0);
   if(!personSel||!v.includes(personSel)) personSel=[...v].filter(p=>!SHARED.includes(p.n)&&phase(p)==='later').sort(byDate)[0]||v[0];
   $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Tu gente.</h1><p class="mt-1 flex items-center gap-2 text-[14px] text-[#5f6b7d]"><span class="live-dot"></span>He aprendido ${tot} cosas de ${ppl.length} personas con ${CONNS.filter(c=>CX[c.k]&&c.k!=='wa').length} conectores, y sigo aprendiendo.</p></div>
@@ -2687,7 +2743,8 @@ function bellHtml(){
 }
 function renderChrome(){
   const now=yr().filter(p=>phase(p)==='now').length;
-  $('apTabs').innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${k==='planner'&&now?`<em class="num">${now}</em>`:''}</button>`).join('');
+  const chT=`<button data-act="chat" data-t="chat" class="tb-ch" aria-label="Chat"><span class="fab-o"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span>Chat</span></button>`;
+  $('apTabs').innerHTML=TABS.map(([k,l],i)=>(i===2?chT:'')+`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${k==='planner'&&now?`<em class="num">${now}</em>`:''}</button>`).join('');
   $('apAv').textContent=initial();
   $('apBellDot').style.display=unreadN()?'':'none';
   $('popUser').innerHTML=`<div class="flex items-center gap-3 border-b border-mist p-3.5"><span class="grid size-9 place-items-center rounded-full bg-black text-[14px] font-semibold text-white">${initial()}</span><div class="min-w-0 leading-tight"><p class="truncate text-[14px] font-semibold">${esc(cfg.name)}</p><p class="mt-0.5 text-[12px] text-[#5f6b7d]">Google Calendar conectado</p></div></div>
@@ -2696,11 +2753,13 @@ function renderChrome(){
 }
 function render(){ renderChrome(); ({planner:viewPlanner,regalos:viewRegalos,personas:viewPersonas,config:viewConfig})[tab](); syncHash(); }
 /* ---------- Rutas: cada pantalla tiene su dirección ---------- */
+function isM(){ return matchMedia('(max-width:767px)').matches; }
 const slug = n => n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const bySlug = x => YEAR.find(p=>slug(p.n)===x);
 function hashOf(){
   if(tab==='planner'){ if(dash||!yfocus) return '#planner'; return '#fecha/'+slug(yfocus.n)+(co&&co.p===yfocus?'/compra':''); }
   if(tab==='regalos') return pedido?'#pedidos/'+slug(pedido.n):'#pedidos';
+  if(tab==='personas'&&personOpen&&personSel&&isM()) return '#personas/'+slug(personSel.n);
   return '#'+tab;
 }
 function syncHash(){ if(routeQuiet) return; const h=hashOf(); if(location.hash!==h) history.pushState(null,'',h); }
@@ -2709,7 +2768,7 @@ function applyHash(h){
   try{
     if(m[0]==='fecha'&&bySlug(m[1])){ const q=bySlug(m[1]); tab='planner'; dash=false; yfocus=q; autoFocus=false; co=null; pedido=null; if(m[2]==='compra'&&phase(q)==='now') startCo(q); }
     else if(m[0]==='pedidos'||m[0]==='regalos'){ tab='regalos'; const q=bySlug(m[1]||''); pedido=q&&phase(q)==='bought'?q:null; co=null; }
-    else if(m[0]==='personas'){ tab='personas'; co=null; }
+    else if(m[0]==='personas'){ tab='personas'; co=null; const q=bySlug(m[1]||''); personOpen=!!q; if(q) personSel=q; }
     else if(m[0]==='config'){ tab='config'; co=null; }
     else { tab='planner'; dash=true; co=null; }
     render();
@@ -2728,7 +2787,8 @@ $('year').addEventListener('click',e=>{
   if(!e.target.closest('.ap-pop') && !(b&&b.dataset.act==='pop')) closePops();
   if(!b) return;
   const a=b.dataset.act, p=b.dataset.i!==undefined?YEAR[+b.dataset.i]:yfocus;
-  if(a==='tab'){ if(b.dataset.t==='planner'&&!co) dash=true; setTab(b.dataset.t); }
+  if(a==='chat'){ document.body.classList.contains('ch-on')?chClose():chOpen(); return; }
+  if(a==='tab'){ if(document.body.classList.contains('ch-on')) chClose(); if(b.dataset.t==='planner'&&!co) dash=true; personOpen=false; setTab(b.dataset.t); }
   else if(a==='home'){ autoFocus=true; dash=true; setTab('planner'); }
   else if(a==='flow'){ const q=YEAR[+b.dataset.i]; dash=false; yfocus=q; autoFocus=false; if(phase(q)==='now') thought[q.n]=false; render(); $('year').scrollTo({top:0}); }
   else if(a==='focus'){ closePops(); focusOn(p); }
@@ -2759,6 +2819,8 @@ $('year').addEventListener('click',e=>{
   else if(a==='cowrap'){ co.wrap=b.dataset.v==='1'; render(); if(co.wrap&&!REDUCE){ gsap.from('#coBox .bx-r',{scaleX:0,transformOrigin:'50% 50%',duration:.4,stagger:.1}); gsap.from('#coBox .bx-b',{scale:0,transformOrigin:'50% 100%',duration:.5,delay:.3,ease:'back.out(2.4)'}); gsap.from('#coBox .bx-t',{y:-10,opacity:0,duration:.4,delay:.5}); } }
   else if(a==='copay'){ co.pay=b.dataset.v; render(); }
   else if(a==='pay'){ pay(); }
+  else if(a==='ppback'){ personOpen=false; render(); $('year').scrollTop=0; }
+  else if(a==='person'&&isM()){ personSel=p; personOpen=true; render(); $('year').scrollTop=0; if(!REDUCE) gsap.from('#apMain > *',{x:18,opacity:0,duration:.35,ease:'power3.out',clearProps:'all'}); }
   else if(a==='person'){ personSel=p; document.querySelectorAll('.pe').forEach(e=>e.setAttribute('aria-pressed',YEAR[+e.dataset.i]===p)); $('ppPanel').innerHTML=personPanel(p); bindPanel(); if(innerWidth<=1100) $('ppPanel').scrollIntoView({block:'start',behavior:REDUCE?'auto':'smooth'}); if(!REDUCE) gsap.from('#ppPanel > *',{y:8,opacity:0,duration:.3,stagger:.03,clearProps:'all'}); }
   else if(a==='forget'){ const f=b.dataset.f; if(b.dataset.s==='you') learned[p.n]=(learned[p.n]||[]).filter(x=>x!==f); else removedFact[p.n+'|'+f]=1; ytoast('Listo, lo olvido.'); render(); }
   else if(a==='ask'){
@@ -3036,10 +3098,10 @@ function chOpen(){
   document.body.classList.add('ch-on'); $('fab').setAttribute('aria-expanded','true'); closePops();
   if(!chL().children.length){ chAdd('cm-a',`Hola${firstName()?', '+esc(firstName()):''}. ¿Viste algo que le gustaría a alguien?`); chAdd('cm-a','Mándame la foto o el link y dime para quién. Yo me acuerdo.'); }
   $('chQ').innerHTML=Object.entries(CH_DEMO).map(([k,d])=>`<button data-chd="${k}">${CH_IC[d.ic]}${d.lbl}</button>`).join('');
-  if(!REDUCE) gsap.from('#ch',{y:24,opacity:0,scale:.97,transformOrigin:'100% 100%',duration:.4,ease:'power3.out',clearProps:'all'});
+  if(!REDUCE) gsap.from('#ch',isM()?{opacity:0,y:10,duration:.3,ease:'power2.out',clearProps:'all'}:{y:24,opacity:0,scale:.97,transformOrigin:'100% 100%',duration:.4,ease:'power3.out',clearProps:'all'});
   if(matchMedia('(min-width:768px)').matches) $('chT').focus();
 }
-function chClose(){ document.body.classList.remove('ch-on'); $('fab').setAttribute('aria-expanded','false'); $('fab').focus(); }
+function chClose(){ document.body.classList.remove('ch-on'); $('fab').setAttribute('aria-expanded','false'); if(!isM()) $('fab').focus(); }
 async function chSend(o){
   if(chBusy) return; chBusy=true;
   try{
@@ -3102,7 +3164,7 @@ $('ch').addEventListener('click',e=>{
   const d=e.target.closest('[data-chd]'), c=e.target.closest('[data-chp]'), g=e.target.closest('[data-chgo]');
   if(d) chSend({demo:d.dataset.chd});
   else if(c) chPick(c.dataset.chp);
-  else if(g){ const p=YEAR.find(q=>q.n===g.dataset.chgo); personSel=p; chClose(); setTab('personas'); }
+  else if(g){ const p=YEAR.find(q=>q.n===g.dataset.chgo); personSel=p; personOpen=isM(); chClose(); setTab('personas'); }
 });
 
 /* ---------- En la tienda: el celular te avisa si tienes una fecha encima ---------- */
