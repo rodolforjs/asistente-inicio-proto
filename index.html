@@ -347,7 +347,7 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 .cx-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;font-size:14px;color:#5f6b7d}.cx-top b{color:#0e1014}
 .cx-add{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:#0e1014;padding:9px 16px;font-size:13.5px;font-weight:600;color:#fff;transition:background .15s}.cx-add:hover{background:#ff5924}
 .cx-add{flex:none;white-space:nowrap}@media(max-width:420px){.cx-pend{display:none}}
-@media(max-width:767px){.cx-top{font-size:13px}.cx-add{padding:8px 13px;font-size:13px}.mx-auto.max-w-\[1040px\]>section.scroll-mt-20:first-child{padding-top:6px}}
+@media(max-width:767px){.cx-top{font-size:13px}.cx-add{padding:8px 13px;font-size:13px}.cf-w>section.scroll-mt-20:first-child{padding-top:6px}}
 .cx-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
 .cx-c{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-content:start;border-radius:22px;background:#fff;padding:18px;box-shadow:0 0 0 1px #e5eaf2;transition:box-shadow .2s,transform .2s}.cx-c:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #d5dbe5,0 20px 30px -24px rgba(15,23,42,.4)}
 .cx-lg{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:#f5f7f9}.cx-lg img{width:30px;height:30px;object-fit:contain}.cx-lg b{font-size:18px}
@@ -1280,6 +1280,39 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
   #ctaw{position:fixed;left:0;right:0;bottom:0;z-index:30;display:block;margin:0;padding:14px 20px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(245,247,249,0),#f5f7f9 30%);filter:none!important}
   #ctaw #connect{display:flex;width:100%;justify-content:center;padding:17px 0;filter:drop-shadow(0 14px 16px rgba(15,23,42,.25))}
 }
+
+/* ===== jerarquía 2026-11-15 b ===== */
+.cf-h2{font-size:17px;font-weight:600;letter-spacing:-.01em;color:#0e1014}
+.pp-sm{display:none}
+@media(max-width:767px){
+  /* onboarding: el progreso baja a su propia fila, el logo no se parte */
+  .ob-h{grid-template-columns:1fr auto;row-gap:14px}
+  .ob-logo{white-space:nowrap}
+  .ob-st{grid-column:1/-1;grid-row:2}.ob-st li{flex:1;width:auto}
+  /* sincronización: todo en una línea */
+  #stxt{white-space:nowrap}
+  #sync .rounded-full.uppercase{font-size:10.5px;letter-spacing:.06em;padding:8px 14px}
+  #summary{font-size:24px!important;white-space:nowrap}
+  #summary .sum-x{display:none}
+  #people>*{zoom:.72}
+  #field{height:24vh!important;min-height:160px!important}
+  #field .mon{font-size:9px!important;letter-spacing:0!important;transform:translateX(-2px)}
+  #people{margin-top:24px!important}
+  #summary{font-size:21px!important}
+  #summary+div #enter,#enter{padding:12px 18px!important;font-size:14px!important}
+  #sync .sticky.bottom-0{flex-wrap:nowrap!important;gap:10px!important;padding-top:28px!important}
+  /* encabezados de sección: título + bajada en una línea, buscador al lado */
+  .pp-hh{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center!important;column-gap:12px;row-gap:2px}
+  .pp-hh>div{display:contents}
+  .pp-hh h1{grid-column:1;grid-row:1}
+  .pp-hh>div>p{grid-column:1/-1;grid-row:2;margin-top:2px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px!important}
+  .pp-hh .pp-s{grid-column:2;grid-row:1}
+  .pp-hh .pp-s{flex:none;width:150px!important;padding:8px 12px;font-size:13.5px}
+  .pp-hh .pp-s input{min-width:0;width:100%}
+  .pp-sd{display:none}.pp-sm{display:inline}
+  .pp-h{padding:6px 0 16px}
+  .cf-h2{font-size:16.5px}
+}
 </style>
 </head>
 <body class="bg-fog font-sans text-black antialiased">
@@ -1704,7 +1737,7 @@ async function runSync(){
   say('Armando las fichas',.5);
   const box = $('people'); box.innerHTML='';
   const rows = 2, NC = Math.ceil(PEOPLE.length/rows);
-  box.className='relative mt-9 grid shrink-0'; box.style.cssText=`grid-template-rows:repeat(${rows},auto);grid-auto-flow:column;grid-auto-columns:${innerWidth>700?236:200}px;column-gap:20px;row-gap:20px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 22px`;
+  box.className='relative mt-9 grid shrink-0'; box.style.cssText=`grid-template-rows:repeat(${rows},auto);grid-auto-flow:column;grid-auto-columns:${innerWidth>700?236:innerWidth>560?200:144}px;column-gap:20px;row-gap:20px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 22px`;
   const cards = [];
   PEOPLE.forEach((p,i)=>{ const c = cardEl(p, '', i+1); c._k=p.m*40+p.d;
     box.appendChild(c); cards.push(c); });
@@ -1727,7 +1760,7 @@ async function runSync(){
 
   $('ping').style.display='none'; $('pdot').className='relative inline-flex size-2.5 rounded-full bg-emerald-500';
   say('Listo · conectado con Google Calendar',.9);
-  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>${conn.contacts||conn.gmail?' y ya sé de quién es cada una.':'.'}`;
+  $('summary').innerHTML = `Encontré <span class="text-brand">${PEOPLE.length} fechas</span>${conn.contacts||conn.gmail?'<span class="sum-x"> y ya sé de quién es cada una</span>':''}.`;
   gsap.from('#summary',{opacity:0,y:14,duration:.5});
   gsap.to('#enter',{opacity:1,pointerEvents:'auto',duration:.5});
 
@@ -1744,7 +1777,7 @@ async function runSync(){
   gsap.fromTo(nd.firstChild,{scale:0},{scale:1.4,backgroundColor:'#ff5924',boxShadow:'0 0 0 6px rgba(255,89,36,.25)',duration:.6,ease:'back.out(3)'});
   const total=PEOPLE.length+1, fe=$('cFound');
   fe.textContent=total; gsap.fromTo(fe,{scale:1.35,y:-4},{scale:1,y:0,duration:.6,ease:'back.out(3)'});
-  $('summary').innerHTML = `Encontré <span class="text-brand">${total} fechas</span>${conn.contacts||conn.gmail?' y ya sé de quién es cada una.':'.'}`;
+  $('summary').innerHTML = `Encontré <span class="text-brand">${total} fechas</span>${conn.contacts||conn.gmail?'<span class="sum-x"> y ya sé de quién es cada una</span>':''}.`;
   gsap.fromTo('#summary .text-brand',{scale:1.15,display:'inline-block'},{scale:1,duration:.5,ease:'back.out(3)'});
   await wait(2.4); gsap.to(t,{opacity:0,y:-10,duration:.4});
 }
@@ -2620,8 +2653,8 @@ function viewPersonas(){
     $('apMain').innerHTML=`<div class="pp-pg"><button data-act="ppback" class="pp-back">← Tu gente</button><aside id="ppPanel" class="pn">${personPanel(p)}</aside></div>`; bindPanel(); return; }
   const v=yr(), ppl=v.filter(p=>!SHARED.includes(p.n)).sort((a,b)=>a.n.localeCompare(b.n,'es')), sh=v.filter(p=>SHARED.includes(p.n)), tot=ppl.reduce((n,p)=>n+knows(p).length,0);
   if(!personSel||!v.includes(personSel)) personSel=[...v].filter(p=>!SHARED.includes(p.n)&&phase(p)==='later').sort(byDate)[0]||v[0];
-  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Tu gente.</h1><p class="mt-1 flex items-center gap-2 text-[14px] text-[#5f6b7d]"><span class="live-dot"></span>He aprendido ${tot} cosas de ${ppl.length} personas con ${CONNS.filter(c=>CX[c.k]&&c.k!=='wa').length} conectores, y sigo aprendiendo.</p></div>
-    <label class="pp-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="ppQ" value="${esc(personQ)}" placeholder="Buscar por nombre" aria-label="Buscar por nombre"></label></header>
+  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Tu gente.</h1><p class="mt-1 flex items-center gap-2 text-[14px] text-[#5f6b7d]"><span class="live-dot"></span><span class="pp-sd">He aprendido ${tot} cosas de ${ppl.length} personas con ${CONNS.filter(c=>CX[c.k]&&c.k!=='wa').length} conectores, y sigo aprendiendo.</span><span class="pp-sm">${tot} cosas de ${ppl.length} personas, y sigo aprendiendo</span></p></div>
+    <label class="pp-s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="ppQ" value="${esc(personQ)}" placeholder="Buscar" aria-label="Buscar por nombre"></label></header>
   <div class="pp"><div class="min-w-0"><div id="ppG" class="pe-g">${ppl.map(personTile).join('')}</div>
     ${sh.length?`<h2 class="pp-sub">También sigo estas fechas</h2><div class="pe-g pe-g2">${sh.map(personTile).join('')}</div>`:''}</div>
     <aside id="ppPanel" class="pn">${personPanel(personSel)}</aside></div>`;
@@ -2676,12 +2709,12 @@ const HABITS = () => [
 ];
 function viewConfig(){
   const row=(t,s,ctl)=>`<div class="flex items-center justify-between gap-4 py-3.5"><div class="min-w-0"><p class="text-[14.5px] font-medium">${t}</p>${s?`<p class="mt-0.5 text-[12.5px] leading-snug text-[#5f6b7d]">${s}</p>`:''}</div><div class="shrink-0">${ctl}</div></div>`;
-  const box=(id,t,s,body,plain)=>`<section id="${id}" class="scroll-mt-20 border-t border-mist py-7 first:border-0 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><div class="mb-3 lg:mb-0"><h2 class="font-serif text-[23px] font-normal tracking-[-0.02em]">${t}</h2><p class="mt-1 text-[13px] leading-snug text-[#5f6b7d]">${s}</p></div><div class="${plain?'':'divide-y divide-mist rounded-2xl bg-white px-5 ring-1 ring-mist'}">${body}</div></section>`;
+  const box=(id,t,s,body,plain)=>`<section id="${id}" class="scroll-mt-20 border-t border-mist py-7 first:border-0 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><div class="mb-3 lg:mb-0"><h2 class="cf-h2">${t}</h2><p class="mt-1 text-[13px] leading-snug text-[#5f6b7d]">${s}</p></div><div class="${plain?'':'divide-y divide-mist rounded-2xl bg-white px-5 ring-1 ring-mist'}">${body}</div></section>`;
   const opts=(act,cur,list,lab)=>`<div class="ap-seg" role="group" aria-label="${lab}">${list.map(([v,l])=>`<button data-act="${act}" data-v="${v}" aria-pressed="${String(cur)===String(v)}">${l}</button>`).join('')}</div>`;
   const count=c=>{const k=YEAR.filter(p=>calOf(p)===c).length; return `${k} ${k===1?'fecha':'fechas'}`;};
   const hab=HABITS().filter(([k])=>!habOff[k]);
-  $('apMain').innerHTML=`<header class="pp-h"><h1 class="pl-h">Configuración</h1></header><div class="mx-auto max-w-[1040px]">`
-  + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Mientras más conectes, menos te pregunto. Solo leo; nunca escribo ni envío nada por ti.',cxHtml(count),true)
+  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Configuración.</h1><p class="mt-1 text-[14px] text-[#5f6b7d]">Tus conectores, cómo te aviso, envío y pago.</p></div></header><div class="cf-w max-w-[1040px]">`
+  + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Solo leo, nunca escribo por ti.',cxHtml(count),true)
   + box('cf-me','Lo que he notado de ti','Lo aprendo de cómo usas la app, sin que me lo digas. Si algo no calza, olvídalo.',hab.map(([k,t,d])=>row(t,d,`<button data-act="forgethab" data-k="${k}" class="me-x">Olvidar</button>`)).join('')||row('Todavía estoy aprendiendo','Con cada regalo te conozco un poco más.',''))
   + box('cf-av','Avisos','Cuándo aparezco y por dónde te insisto.',
      row('Avisarme antes de cada fecha','',opts('aviso',AVISO,[[7,'7'],[14,'14'],[21,'21'],[30,'30']],'Días de aviso')+'<span class="ml-2 text-[12.5px] text-[#5f6b7d]">días</span>')
