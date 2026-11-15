@@ -1303,7 +1303,9 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
   #sync .sticky.bottom-0{flex-wrap:nowrap!important;gap:10px!important;padding-top:28px!important}
   /* encabezados de sección: título + bajada en una línea, buscador al lado */
   .pp-hh{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center!important;column-gap:12px;row-gap:2px}
-  .pp-hh>div{display:contents}
+  .pp-hh>div:first-child{display:contents}
+  .pp-hh>.ap-seg{grid-column:1/-1;grid-row:3;justify-self:start;margin-top:14px}
+  .pp>#ppPanel{display:none}
   .pp-hh h1{grid-column:1;grid-row:1}
   .pp-hh>div>p{grid-column:1/-1;grid-row:2;margin-top:2px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px!important}
   .pp-hh .pp-s{grid-column:2;grid-row:1}
@@ -2713,7 +2715,7 @@ function viewConfig(){
   const opts=(act,cur,list,lab)=>`<div class="ap-seg" role="group" aria-label="${lab}">${list.map(([v,l])=>`<button data-act="${act}" data-v="${v}" aria-pressed="${String(cur)===String(v)}">${l}</button>`).join('')}</div>`;
   const count=c=>{const k=YEAR.filter(p=>calOf(p)===c).length; return `${k} ${k===1?'fecha':'fechas'}`;};
   const hab=HABITS().filter(([k])=>!habOff[k]);
-  $('apMain').innerHTML=`<header class="pp-h pp-hh"><div><h1 class="pl-h">Configuración.</h1><p class="mt-1 text-[14px] text-[#5f6b7d]">Tus conectores, cómo te aviso, envío y pago.</p></div></header><div class="cf-w max-w-[1040px]">`
+  $('apMain').innerHTML=`<div class="cf-w max-w-[1040px]">`
   + box('cf-cal','Conectores','De aquí saco tus fechas y lo que sé de cada persona. Solo leo, nunca escribo por ti.',cxHtml(count),true)
   + box('cf-me','Lo que he notado de ti','Lo aprendo de cómo usas la app, sin que me lo digas. Si algo no calza, olvídalo.',hab.map(([k,t,d])=>row(t,d,`<button data-act="forgethab" data-k="${k}" class="me-x">Olvidar</button>`)).join('')||row('Todavía estoy aprendiendo','Con cada regalo te conozco un poco más.',''))
   + box('cf-av','Avisos','Cuándo aparezco y por dónde te insisto.',
