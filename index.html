@@ -1263,8 +1263,9 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
   .ch-x{display:none}
   body.ch-on .ap-tabs{background:#fff}body.ch-on .ap-tabs button[aria-current]{color:#5f6b7d;font-weight:500}
   body.ch-on .ap-tabs button[data-t=chat]{color:#0e1014;font-weight:600}
-  .ap-tabs .tb-ch .fab-o{width:24px;height:24px;margin:-2px 0}
-  .ap-tabs .tb-ch .fab-o::after{inset:2.5px}
+  .ap-tabs .tb-ch .tb-sp{fill:#ff5924}
+  body.ch-on .ap-tabs .tb-ch{color:#0e1014;font-weight:600}
+  .ch-h>.fab-o{display:none}
   /* personas: cada una tiene su página */
   .pp-pg{padding-top:4px}
   .pp-pg .pn{position:static;max-height:none;margin-top:12px}
@@ -2811,7 +2812,7 @@ function bellHtml(){
 }
 function renderChrome(){
   const now=yr().filter(p=>phase(p)==='now').length;
-  const chT=`<button data-act="chat" data-t="chat" class="tb-ch" aria-label="Chat"><span class="fab-o"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg></span><span>Chat</span></button>`;
+  const chT=`<button data-act="chat" data-t="chat" class="tb-ch" aria-label="Chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.300 7.600L3.500 20.500l1.300-4.400A8.500 8.500 0 1 1 20.500 11.500Z"/><path class="tb-sp" d="M12 7.600l1 2.900 2.900 1-2.900 1-1 2.900-1-2.900-2.900-1 2.900-1Z" stroke="none"/></svg><span>Chat</span></button>`;
   $('apTabs').innerHTML=TABS.map(([k,l],i)=>(i===2?chT:'')+`<button data-act="tab" data-t="${k}" ${tab===k?'aria-current="page"':''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg><span>${l}</span>${k==='planner'&&now?`<em class="num">${now}</em>`:''}</button>`).join('');
   $('apAv').textContent=initial();
   $('apBellDot').style.display=unreadN()?'':'none';
