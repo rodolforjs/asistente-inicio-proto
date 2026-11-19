@@ -1034,38 +1034,64 @@ body.sim-on .fab{display:none}
   .car-bt{gap:2cqw}.car-bt button{height:10cqw;font-size:3.7cqw}.car-bt p,.car-bt .sim-ok{font-size:3.6cqw}.car-bt .sim-ok i{width:5cqw;height:5cqw}
 }
 
-/* refri: cocina dibujada; todo en cqw del mundo (100cqw × 62.5cqw) para que la cámara pueda acercarse sin perder nitidez */
-.ph-h{background:#e9e3d9}
+/* refri: cocina dibujada; todo en cqw del mundo (100cqw × 62.5cqw) para que la cámara pueda acercarse sin perder nitidez.
+   Texturas con ruido SVG (acero cepillado, veta, piedra, yeso), luz de mañana desde la ventana y sombras de contacto. */
+.ph-h{background:#e9e3d9;
+  --n-steel:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 .004' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 .5'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  --n-wood:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='600'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.06 .004' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .19 0 0 0 0 .08 1.3 0 0 0 -.45'/%3E%3C/filter%3E%3Crect width='240' height='600' filter='url(%23n)'/%3E%3C/svg%3E");
+  --n-fine:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='2'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 .5'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
 .ph-h .ph-w{container-type:size}
-.kt{position:absolute;inset:0;overflow:hidden;background:linear-gradient(180deg,#efe9df,#e6dfd3)}
-.kt > *{position:absolute}
-.kt-tile{left:0;right:0;top:16.9cqw;height:18.6cqw;background-color:#f4f1ea;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cg fill='none' stroke='%23d9d2c6' stroke-width='1.2'%3E%3Cpath d='M0 .6H60M0 15.6H60M30 0V15M0 15V30M60 15V30'/%3E%3C/g%3E%3C/svg%3E");background-size:3.6cqw 1.8cqw;box-shadow:inset 0 2.4cqw 2.4cqw -1.6cqw rgba(60,40,20,.28)}
-.kt-glow{left:0;right:0;top:16.9cqw;height:18.6cqw;background:radial-gradient(9cqw 6cqw at 16cqw 0,rgba(255,214,150,.55),transparent 70%),radial-gradient(9cqw 6cqw at 84cqw 0,rgba(255,214,150,.55),transparent 70%);mix-blend-mode:soft-light}
-.kt-up{top:0;height:16.9cqw;background:repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(60,35,15,.35) 8.25cqw 8.4cqw),repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 .2cqw,transparent .2cqw .9cqw),linear-gradient(180deg,#c99f70,#b88a5c);box-shadow:0 .6cqw 1.2cqw rgba(60,35,15,.35),inset 0 -.25cqw 0 rgba(60,35,15,.25)}
-.kt-up.l{left:0;width:33.6cqw}.kt-up.r{right:0;width:33.6cqw}.kt-up.c{left:35.4cqw;width:29.2cqw;height:5.6cqw}
-.kt-up i{position:absolute;bottom:1.2cqw;width:.25cqw;height:2.6cqw;border-radius:.2cqw;background:#3a3027}
-.kt-ct{top:35.4cqw;bottom:6.9cqw;width:33.6cqw;background:repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(0,0,0,.09) 8.25cqw 8.4cqw),linear-gradient(180deg,#f4f2ee,#e3dfd8);box-shadow:inset 0 1.4cqw 1.2cqw -1cqw rgba(0,0,0,.22)}
-.kt-ct.l{left:0}.kt-ct.r{right:0}
-.kt-ct::before{content:"";position:absolute;left:0;right:0;top:-1.1cqw;height:1.1cqw;background:linear-gradient(180deg,#f7f5f1 0,#e7e3dd 60%,#cfc9c0);box-shadow:0 .3cqw .5cqw rgba(0,0,0,.2)}
-.kt-ct i{position:absolute;top:2cqw;width:3.4cqw;height:.28cqw;border-radius:.2cqw;background:#3a3027}
-.kt-fl{left:0;right:0;bottom:0;height:6.9cqw;background:repeating-linear-gradient(90deg,rgba(80,50,25,.18) 0 .1cqw,transparent .1cqw 7cqw),linear-gradient(180deg,#b58b62,#9c7350)}
-.kt-sh{left:33cqw;width:34cqw;bottom:5.4cqw;height:3cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(30,20,10,.45),transparent)}
-.kt-it{bottom:27.2cqw}
-.kt-light{inset:0;pointer-events:none;background:radial-gradient(60cqw 40cqw at 50% -10%,rgba(255,244,228,.35),transparent 70%),radial-gradient(120cqw 70cqw at 50% 45%,transparent 55%,rgba(40,28,15,.32))}
-/* refri French door de acero */
-.frg{left:36cqw;top:6.9cqw;width:28cqw;height:49.4cqw;border-radius:.8cqw .8cqw .3cqw .3cqw;background:#7d838a;box-shadow:0 0 0 .15cqw #6b7178,1.2cqw 0 2.4cqw rgba(40,28,15,.35),-1.2cqw 0 2.4cqw rgba(40,28,15,.35)}
-.frg-d,.frg-dw{position:absolute;border-radius:.6cqw;background:linear-gradient(90deg,rgba(255,255,255,0) 0,rgba(255,255,255,.38) 22%,rgba(255,255,255,0) 40%,rgba(255,255,255,.14) 72%,rgba(255,255,255,0) 92%),repeating-linear-gradient(90deg,rgba(0,0,0,.035) 0 .06cqw,transparent .06cqw .18cqw),linear-gradient(180deg,#d3d7dc,#b4b9bf);box-shadow:inset 0 .12cqw 0 rgba(255,255,255,.7),inset 0 -.15cqw 0 rgba(0,0,0,.15)}
-.frg-d{top:.25cqw;height:29.6cqw;width:13.85cqw}.frg-d.l{left:.1cqw}.frg-d.r{right:.1cqw}
-.frg-dw{left:.1cqw;right:.1cqw}.frg-dw.a{top:30.1cqw;height:9.3cqw}.frg-dw.b{top:39.7cqw;height:9.5cqw}
-.frg-h{position:absolute;top:4.5cqw;width:.7cqw;height:21cqw;border-radius:.4cqw;background:linear-gradient(90deg,#6e747b,#f4f6f8 42%,#c3c8cd 62%,#71777e);box-shadow:.25cqw .5cqw .7cqw rgba(0,0,0,.35)}
+.kt,.kt-bg{position:absolute;inset:0}
+.kt{overflow:hidden;background:linear-gradient(180deg,#efe9df,#e4ddd1)}
+.kt > *,.kt-bg > *{position:absolute}
+.kt-bg::before{content:"";position:absolute;inset:0;background:var(--n-fine);background-size:20cqw;opacity:.18;mix-blend-mode:multiply}
+/* muebles altos de roble */
+.kt-up{top:0;height:16.9cqw;background:var(--n-wood),repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(50,28,10,.45) 8.25cqw 8.38cqw,transparent 8.38cqw 8.4cqw),linear-gradient(180deg,#c99f70,#b4865a);background-size:12cqw 30cqw,auto,auto;box-shadow:0 .5cqw 1cqw rgba(50,30,12,.4),inset 0 -.2cqw 0 rgba(255,230,200,.25),inset 0 1.2cqw 1.4cqw -1cqw rgba(30,18,6,.45)}
+.kt-up.l{left:0;width:33.6cqw}.kt-up.r{left:66.8cqw;width:16cqw}.kt-up.c{left:34.2cqw;width:31.6cqw;height:6cqw}
+.kt-up i{position:absolute;bottom:1.2cqw;width:.25cqw;height:2.6cqw;border-radius:.2cqw;background:linear-gradient(90deg,#1f1a15,#5a4e42,#1f1a15)}
+.kt-pn{top:6cqw;bottom:6.6cqw;width:1.6cqw;background:var(--n-wood),linear-gradient(90deg,#b4865a,#c99f70 40%,#a97c50);background-size:12cqw 30cqw,auto;box-shadow:inset -.2cqw 0 .3cqw rgba(40,22,8,.35)}
+.kt-pn.l{left:33.6cqw;box-shadow:inset .2cqw 0 .3cqw rgba(40,22,8,.35),.4cqw 0 .8cqw rgba(30,18,6,.35)}.kt-pn.r{left:65.2cqw;box-shadow:inset -.2cqw 0 .3cqw rgba(40,22,8,.35),-.4cqw 0 .8cqw rgba(30,18,6,.35)}
+/* ventana con luz de mañana */
+.kt-win{left:85cqw;top:2.4cqw;width:13cqw;height:25cqw;border-radius:.3cqw;background:#f7f5f0;padding:.7cqw;box-shadow:0 .3cqw .8cqw rgba(0,0,0,.18),inset 0 0 0 .1cqw rgba(0,0,0,.06)}
+.kt-win i{display:block;width:100%;height:100%;background:radial-gradient(5cqw 4cqw at 20% 78%,rgba(92,140,84,.85),transparent 70%),radial-gradient(6cqw 5cqw at 85% 70%,rgba(70,118,72,.8),transparent 70%),radial-gradient(4cqw 3cqw at 60% 92%,rgba(110,150,90,.8),transparent 70%),linear-gradient(180deg,#a9cdf0,#dbeaf5 55%,#f4efe2);filter:blur(.12cqw);box-shadow:inset 0 0 0 .5cqw #f7f5f0}
+.kt-win::before,.kt-win::after{content:"";position:absolute;background:#f7f5f0}
+.kt-win::before{left:50%;top:.7cqw;bottom:.7cqw;width:.5cqw;margin-left:-.25cqw}.kt-win::after{left:.7cqw;right:.7cqw;top:42%;height:.5cqw}
+.kt-sill{left:84.4cqw;top:27.2cqw;width:14.2cqw;height:.7cqw;border-radius:.1cqw;background:linear-gradient(#fbfaf7,#e2ddd4);box-shadow:0 .3cqw .5cqw rgba(0,0,0,.2)}
+.kt-sun{left:40cqw;right:0;top:4cqw;bottom:0;background:linear-gradient(200deg,rgba(255,236,196,.75),rgba(255,236,196,.25) 45%,transparent 75%);clip-path:polygon(100% 0,100% 40%,58% 100%,0 100%,40% 50%);filter:blur(2cqw);mix-blend-mode:soft-light;pointer-events:none}
+/* cerámica, cubiertas, zócalo y piso */
+.kt-tile{left:0;right:0;top:16.9cqw;height:17cqw;background-color:#f6f3ec;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cdefs%3E%3ClinearGradient id='g' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.8'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='.04'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M1 1h28v13H1zM31 1h28v13H31zM-14 16h28v13h-28zM16 16h28v13H16zM46 16h28v13H46z' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23d6cfc2' stroke-width='1.3'%3E%3Cpath d='M0 .6H60M0 15.4H60M30 0V15M15 15V30M45 15V30'/%3E%3C/g%3E%3C/svg%3E");background-size:3.6cqw 1.8cqw;box-shadow:inset 0 2.2cqw 2cqw -1.4cqw rgba(50,30,12,.35)}
+.kt-glow{left:0;right:0;top:16.9cqw;height:17cqw;background:radial-gradient(10cqw 5cqw at 16.8cqw 0,rgba(255,206,140,.7),transparent 70%),radial-gradient(7cqw 4cqw at 75cqw 0,rgba(255,206,140,.55),transparent 70%);mix-blend-mode:soft-light}
+.kt-ct{top:35.3cqw;bottom:6.6cqw;width:33.6cqw;background:repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(0,0,0,.12) 8.25cqw 8.33cqw,rgba(255,255,255,.6) 8.33cqw 8.4cqw),linear-gradient(180deg,#f2f0eb,#dcd7cf);box-shadow:inset 0 1.4cqw 1.2cqw -1cqw rgba(0,0,0,.25)}
+.kt-ct.l{left:0}.kt-ct.r{right:0;width:33.2cqw}
+.kt-top{top:33.9cqw;height:2.5cqw;width:33.6cqw;background:var(--n-fine),linear-gradient(180deg,#ece8e2 0,#f6f4f0 55%,#fbfaf8 70%,#d9d3ca 72%,#cfc8bd 100%);background-size:8cqw,auto;background-blend-mode:soft-light;box-shadow:0 .35cqw .5cqw rgba(0,0,0,.22)}
+.kt-top.l{left:0}.kt-top.r{right:0;width:33.2cqw}
+.kt-ct i{position:absolute;top:1.6cqw;width:3.4cqw;height:.28cqw;border-radius:.2cqw;background:linear-gradient(180deg,#5a4e42,#1f1a15)}
+.kt-ct::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1cqw;background:#2b2520;box-shadow:inset 0 .2cqw .4cqw rgba(0,0,0,.5)}
+.kt-fl{left:-20cqw;right:-20cqw;bottom:-6cqw;height:12.6cqw;transform:perspective(14cqw) rotateX(52deg);transform-origin:50% 0;background:var(--n-wood),repeating-linear-gradient(90deg,rgba(60,35,15,.35) 0 .08cqw,transparent .08cqw 5cqw),linear-gradient(180deg,#a27852,#b98e64);background-size:20cqw 40cqw,auto,auto}
+.kt-fl2{left:0;right:0;bottom:0;height:6.6cqw;background:linear-gradient(180deg,rgba(40,24,10,.35),transparent 40%)}
+.kt-sh{left:31cqw;width:38cqw;bottom:4.6cqw;height:3.4cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(25,15,6,.55),transparent)}
+.kt-it{bottom:27.4cqw}
+.kt-it::after{content:"";position:absolute;left:8%;right:8%;bottom:-.5cqw;height:1.2cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(30,20,10,.45),transparent);z-index:-1}
+.kt-it svg{display:block;width:100%;height:auto;overflow:visible}
+.kt-light{inset:0;pointer-events:none;background:radial-gradient(70cqw 40cqw at 92% 10%,rgba(255,244,222,.28),transparent 70%),radial-gradient(120cqw 70cqw at 50% 45%,transparent 55%,rgba(35,22,10,.35))}
+.kt-grain{inset:-5%;pointer-events:none;background:var(--n-fine);background-size:14cqw;opacity:.09;mix-blend-mode:overlay;animation:ktg .5s steps(4) infinite}
+@keyframes ktg{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(2%,2%)}}
+/* refri French door de acero cepillado */
+.frg{position:absolute;left:35.8cqw;top:6.3cqw;width:29cqw;height:49.8cqw;border-radius:.8cqw .8cqw .3cqw .3cqw;background:linear-gradient(90deg,#5f656c,#868c93 50%,#5f656c);box-shadow:0 0 0 .12cqw #50565d}
+.frg-d,.frg-dw{position:absolute;overflow:hidden;border-radius:.6cqw;background:linear-gradient(90deg,rgba(255,255,255,.05) 0,rgba(255,255,255,.3) 14%,rgba(255,255,255,0) 30%,rgba(255,255,255,0) 62%,rgba(255,255,255,.42) 80%,rgba(255,255,255,.08) 96%),linear-gradient(180deg,#d7dbe0,#b9bec4 60%,#a9aeb5);box-shadow:inset 0 .12cqw 0 rgba(255,255,255,.75),inset 0 -.18cqw 0 rgba(0,0,0,.18),inset .12cqw 0 0 rgba(255,255,255,.35),inset -.12cqw 0 0 rgba(0,0,0,.12),0 .15cqw .3cqw rgba(0,0,0,.25)}
+.frg-d::before,.frg-dw::before{content:"";position:absolute;inset:0;background:var(--n-steel);background-size:6cqw 30cqw;opacity:.5;mix-blend-mode:overlay;pointer-events:none}
+.frg-d{top:.3cqw;height:30cqw;width:14.35cqw}.frg-d.l{left:.1cqw}.frg-d.r{right:.1cqw}
+.frg-dw{left:.1cqw;right:.1cqw}.frg-dw.a{top:30.5cqw;height:9.4cqw}.frg-dw.b{top:40.1cqw;height:9.5cqw}
+.frg-h{position:absolute;z-index:1;top:4.5cqw;width:.75cqw;height:21cqw;border-radius:.4cqw;background:linear-gradient(90deg,#5d636a,#fafbfc 38%,#c3c8cd 60%,#6a7077);box-shadow:.35cqw .6cqw .8cqw rgba(0,0,0,.38)}
+.frg-h::before,.frg-h::after{content:"";position:absolute;left:.1cqw;right:.1cqw;height:.9cqw;background:linear-gradient(90deg,#4b5056,#9aa0a6,#4b5056)}.frg-h::before{top:1.2cqw}.frg-h::after{bottom:1.2cqw}
 .frg-d.l .frg-h{right:.9cqw}.frg-d.r .frg-h{left:.9cqw}
-.frg-hb{position:absolute;left:3cqw;right:3cqw;top:1cqw;height:.7cqw;border-radius:.4cqw;background:linear-gradient(180deg,#6e747b,#f4f6f8 42%,#c3c8cd 62%,#71777e);box-shadow:0 .5cqw .7cqw rgba(0,0,0,.35)}
-.frg-logo{position:absolute;left:50%;top:1.2cqw;transform:translateX(-50%);font-size:.55cqw;font-weight:700;letter-spacing:.3em;color:rgba(0,0,0,.28)}
-.frg-pol{position:absolute;width:3.6cqw;padding:.25cqw .25cqw .9cqw;background:#fbfaf7;box-shadow:0 .3cqw .6cqw rgba(0,0,0,.3)}
-.frg-pol .pt{display:block;width:100%;height:auto;aspect-ratio:1}
-.frg-pol::before{content:"";position:absolute;left:50%;top:-.45cqw;width:.9cqw;height:.9cqw;margin-left:-.45cqw;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a5c,#d9431a);box-shadow:0 .15cqw .25cqw rgba(0,0,0,.35)}
-.frg-pap{position:absolute;width:5cqw;aspect-ratio:.8;background:#fff;box-shadow:0 .3cqw .6cqw rgba(0,0,0,.25)}
-.frg-pap::before{content:"";position:absolute;left:50%;top:-.4cqw;width:.8cqw;height:.8cqw;margin-left:-.4cqw;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7fb2ff,#2e63d6);box-shadow:0 .15cqw .25cqw rgba(0,0,0,.35)}
+.frg-hb{position:absolute;z-index:1;left:3cqw;right:3cqw;top:1cqw;height:.75cqw;border-radius:.4cqw;background:linear-gradient(180deg,#5d636a,#fafbfc 38%,#c3c8cd 60%,#6a7077);box-shadow:0 .55cqw .8cqw rgba(0,0,0,.38)}
+.frg-logo{position:absolute;z-index:1;left:50%;top:1.15cqw;transform:translateX(-50%);font-size:.5cqw;font-weight:700;letter-spacing:.35em;color:rgba(40,44,50,.45);text-shadow:0 .03cqw 0 rgba(255,255,255,.6)}
+.frg-pol{position:absolute;z-index:1;width:3.6cqw;padding:.25cqw .25cqw .9cqw;background:linear-gradient(#fbfaf7,#efece6);box-shadow:0 .25cqw .5cqw rgba(0,0,0,.3),0 .05cqw .1cqw rgba(0,0,0,.2)}
+.frg-pol .pt{display:block;width:100%;height:auto;aspect-ratio:1;filter:saturate(.85) contrast(.95)}
+.frg-pol::before,.frg-pap::before{content:"";position:absolute;z-index:1;left:50%;top:-.45cqw;width:.95cqw;height:.95cqw;margin-left:-.47cqw;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb08f,#ff5924 45%,#b8380f);box-shadow:0 .2cqw .3cqw rgba(0,0,0,.4)}
+.frg-pap{position:absolute;z-index:1;width:5cqw;aspect-ratio:.8;background:#fffdf8;box-shadow:0 .25cqw .5cqw rgba(0,0,0,.25);clip-path:polygon(0 0,100% 1%,99% 100%,1% 98%)}
+.frg-pap::before{top:.1cqw;background:radial-gradient(circle at 35% 30%,#b8d3ff,#2e63d6 45%,#1c3f91)}
 .frg-pap svg{width:100%;height:100%}
 /* pantalla vertical de la puerta */
 .frg-scr{position:absolute;left:2.5cqw;top:3cqw;width:8.96cqw;height:14.3cqw;border-radius:.45cqw;background:#050608;padding:.22cqw;box-shadow:0 0 0 .06cqw rgba(255,255,255,.18),0 .3cqw .8cqw rgba(0,0,0,.35)}
@@ -3527,29 +3553,40 @@ async function simVoz(p){
 
 /* refri: sumo una fecha que anotaron en la cocina */
 /* refri: cocina dibujada (sin foto); la cámara entra y se acerca a la pantalla de la puerta */
-const KT_PLANT=`<svg viewBox="0 0 100 120" aria-hidden="true"><defs><linearGradient id="ktP" x1="0" x2="1"><stop offset="0" stop-color="#c9724b"/><stop offset=".5" stop-color="#e08a5f"/><stop offset="1" stop-color="#a95a38"/></linearGradient></defs>
-  <g fill="#3f7a4a"><path d="M50 70C30 60 14 40 18 18c14 8 28 26 32 52Z"/><path d="M50 70C66 56 86 44 90 22 74 26 58 44 50 70Z" fill="#4f8e57"/><path d="M50 72C46 48 50 22 62 4c6 22 0 46-12 68Z" fill="#5c9c62"/><path d="M50 72C40 58 22 56 8 62c14 10 28 12 42 10Z" fill="#356b40"/></g>
-  <path d="M26 70h48l-6 46a4 4 0 0 1-4 4H36a4 4 0 0 1-4-4Z" fill="url(#ktP)"/><rect x="23" y="66" width="54" height="8" rx="2" fill="#d27d52"/></svg>`;
-const KT_JARS=`<svg viewBox="0 0 120 80" aria-hidden="true"><g><rect x="4" y="22" width="34" height="56" rx="6" fill="#f3efe7" stroke="#d8d1c4"/><rect x="2" y="16" width="38" height="9" rx="3" fill="#b88a5c"/><rect x="10" y="44" width="22" height="12" rx="2" fill="#fff" stroke="#e2dbcf"/></g>
-  <g><rect x="44" y="34" width="28" height="44" rx="5" fill="#f3efe7" stroke="#d8d1c4"/><rect x="42" y="28" width="32" height="8" rx="3" fill="#b88a5c"/></g>
-  <g><path d="M82 78c-4-14-2-30 6-40h20c8 10 10 26 6 40Z" fill="#7a8f7c"/><rect x="88" y="30" width="20" height="9" rx="3" fill="#6a7d6c"/></g></svg>`;
-const KT_BOWL=`<svg viewBox="0 0 140 70" aria-hidden="true"><circle cx="48" cy="30" r="16" fill="#ff8a3d"/><circle cx="72" cy="26" r="17" fill="#e8c547"/><circle cx="94" cy="32" r="15" fill="#c8402c"/><path d="M58 18c4-8 10-10 16-8" stroke="#4f8e57" stroke-width="3" fill="none"/>
-  <path d="M10 36h120c-4 22-26 32-60 32S14 58 10 36Z" fill="#f1ece4" stroke="#d8d1c4"/><path d="M14 40h112" stroke="#e2dbcf"/></svg>`;
-const KT_KETTLE=`<svg viewBox="0 0 90 100" aria-hidden="true"><path d="M18 96h54c4 0 6-3 6-7l-6-52H18l-6 52c0 4 2 7 6 7Z" fill="#2c3036"/><path d="M14 36h62a3 3 0 0 0 0-6H14a3 3 0 0 0 0 6Z" fill="#41464d"/>
-  <path d="M30 30c0-14 30-14 30 0" stroke="#41464d" stroke-width="6" fill="none"/><path d="M12 52 2 44" stroke="#2c3036" stroke-width="7" stroke-linecap="round"/><rect x="24" y="44" width="5" height="40" rx="2" fill="rgba(255,255,255,.12)"/></svg>`;
-const KT_DRAW=`<svg viewBox="0 0 100 125" aria-hidden="true"><rect width="100" height="125" fill="#fff"/><circle cx="78" cy="20" r="11" fill="none" stroke="#f7b500" stroke-width="4"/>
-  <path d="M20 80V56l22-18 22 18v24Z" fill="none" stroke="#ff5924" stroke-width="4" stroke-linejoin="round"/><path d="M36 80V66h12v14" fill="none" stroke="#2e63d6" stroke-width="4"/>
-  <path d="M8 96c20-6 60-6 84 0" stroke="#3f9a52" stroke-width="4" fill="none" stroke-linecap="round"/><text x="50" y="117" text-anchor="middle" font-family="Newsreader,serif" font-style="italic" font-size="15" fill="#5b4a8a">SOFI</text></svg>`;
+const KT_PLANT=`<svg viewBox="0 0 100 120" aria-hidden="true"><defs><linearGradient id="ktP" x1="0" x2="1"><stop offset="0" stop-color="#a9583a"/><stop offset=".35" stop-color="#e3946a"/><stop offset=".55" stop-color="#d07a50"/><stop offset="1" stop-color="#8f4a30"/></linearGradient>
+  <linearGradient id="ktL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6fae6c"/><stop offset="1" stop-color="#2f5f38"/></linearGradient></defs>
+  <g fill="url(#ktL)"><path d="M50 70C30 60 14 40 18 18c14 8 28 26 32 52Z"/><path d="M50 70C66 56 86 44 90 22 74 26 58 44 50 70Z"/><path d="M50 72C46 48 50 22 62 4c6 22 0 46-12 68Z"/><path d="M50 72C40 58 22 56 8 62c14 10 28 12 42 10Z" opacity=".85"/></g>
+  <g stroke="rgba(255,255,255,.25)" stroke-width="1" fill="none"><path d="M50 70 22 22M50 70 86 26M50 72 61 8"/></g>
+  <path d="M26 70h48l-6 46a4 4 0 0 1-4 4H36a4 4 0 0 1-4-4Z" fill="url(#ktP)"/><rect x="23" y="66" width="54" height="8" rx="2" fill="#c8714a"/><rect x="23" y="66" width="54" height="2.5" rx="1" fill="rgba(255,255,255,.3)"/></svg>`;
+const KT_JARS=`<svg viewBox="0 0 120 80" aria-hidden="true"><defs><linearGradient id="ktJ" x1="0" x2="1"><stop offset="0" stop-color="#e2ddd3"/><stop offset=".3" stop-color="#fbf9f5"/><stop offset=".7" stop-color="#f1ede6"/><stop offset="1" stop-color="#d5cfc4"/></linearGradient>
+  <linearGradient id="ktW" x1="0" x2="1"><stop offset="0" stop-color="#9a6f45"/><stop offset=".4" stop-color="#cfa375"/><stop offset="1" stop-color="#8d643d"/></linearGradient><linearGradient id="ktV" x1="0" x2="1"><stop offset="0" stop-color="#5d7461"/><stop offset=".35" stop-color="#9bb39d"/><stop offset="1" stop-color="#4f6453"/></linearGradient></defs>
+  <rect x="4" y="22" width="34" height="56" rx="6" fill="url(#ktJ)"/><rect x="2" y="16" width="38" height="9" rx="3" fill="url(#ktW)"/><rect x="10" y="44" width="22" height="12" rx="2" fill="#fff" opacity=".9"/><rect x="9" y="26" width="3" height="46" rx="1.5" fill="#fff" opacity=".7"/>
+  <rect x="44" y="34" width="28" height="44" rx="5" fill="url(#ktJ)"/><rect x="42" y="28" width="32" height="8" rx="3" fill="url(#ktW)"/><rect x="48" y="38" width="2.5" height="36" rx="1.2" fill="#fff" opacity=".7"/>
+  <path d="M82 78c-4-14-2-30 6-40h20c8 10 10 26 6 40Z" fill="url(#ktV)"/><rect x="88" y="30" width="20" height="9" rx="3" fill="#56695a"/><path d="M90 44c-3 9-3 20-1 30" stroke="rgba(255,255,255,.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`;
+const KT_BOWL=`<svg viewBox="0 0 140 70" aria-hidden="true"><defs><radialGradient id="ktO" cx=".35" cy=".3"><stop offset="0" stop-color="#ffc08a"/><stop offset=".5" stop-color="#ff8a3d"/><stop offset="1" stop-color="#c85a17"/></radialGradient>
+  <radialGradient id="ktY" cx=".35" cy=".3"><stop offset="0" stop-color="#fff2a8"/><stop offset=".5" stop-color="#e8c547"/><stop offset="1" stop-color="#b08f1c"/></radialGradient><radialGradient id="ktR" cx=".35" cy=".3"><stop offset="0" stop-color="#ff9c8a"/><stop offset=".5" stop-color="#c8402c"/><stop offset="1" stop-color="#7d1f12"/></radialGradient>
+  <linearGradient id="ktBw" x2="0" y2="1"><stop offset="0" stop-color="#fbf8f3"/><stop offset="1" stop-color="#d8d0c3"/></linearGradient></defs>
+  <circle cx="48" cy="30" r="16" fill="url(#ktO)"/><circle cx="72" cy="26" r="17" fill="url(#ktY)"/><circle cx="94" cy="32" r="15" fill="url(#ktR)"/><path d="M72 10c3-6 8-8 13-7" stroke="#4f6b3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M10 36h120c-4 22-26 32-60 32S14 58 10 36Z" fill="url(#ktBw)"/><path d="M10 36h120" stroke="#fff" stroke-width="2"/><path d="M24 44c10 12 30 16 46 16" stroke="rgba(255,255,255,.8)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`;
+const KT_KETTLE=`<svg viewBox="0 0 90 100" aria-hidden="true"><defs><linearGradient id="ktK" x1="0" x2="1"><stop offset="0" stop-color="#16181c"/><stop offset=".3" stop-color="#4a5058"/><stop offset=".45" stop-color="#2a2e34"/><stop offset="1" stop-color="#121418"/></linearGradient></defs>
+  <path d="M18 96h54c4 0 6-3 6-7l-6-52H18l-6 52c0 4 2 7 6 7Z" fill="url(#ktK)"/><path d="M14 36h62a3 3 0 0 0 0-6H14a3 3 0 0 0 0 6Z" fill="#3a3f46"/>
+  <path d="M30 30c0-14 30-14 30 0" stroke="#2f343a" stroke-width="6" fill="none"/><path d="M12 52 2 44" stroke="#24282d" stroke-width="7" stroke-linecap="round"/><rect x="26" y="42" width="4" height="46" rx="2" fill="rgba(255,255,255,.22)"/><rect x="58" y="90" width="12" height="2" rx="1" fill="#4cd3ff" opacity=".8"/></svg>`;
+const KT_DRAW=`<svg viewBox="0 0 100 125" aria-hidden="true"><rect width="100" height="125" fill="#fffdf8"/><g fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="78" cy="20" r="11" stroke="#f7b500" stroke-width="4"/><path d="M78 3v-2M95 20h2M90 8l2-2" stroke="#f7b500" stroke-width="3"/>
+  <path d="M20 80V56l22-18 22 18v24Z" stroke="#ff5924" stroke-width="4"/><path d="M36 80V66h12v14" stroke="#2e63d6" stroke-width="4"/><path d="M8 96c20-6 60-6 84 0" stroke="#3f9a52" stroke-width="4"/></g>
+  <text x="50" y="117" text-anchor="middle" font-family="Newsreader,serif" font-style="italic" font-size="15" fill="#5b4a8a">SOFI</text></svg>`;
 function simRefri(){
   const N='Tía Ana', B=[['Lun 10','Dentista Sofía'],['Sáb 15','Once donde tío Jorge'],['3 ene','Cumple tía Ana',1],['Dom 23','Almuerzo familiar']];
   const col=['#5b7cff','#27d9a6','#ff5924','#ffd23d'];
-  $('simD').innerHTML=phMount('refri',{world:`<div class="kt">
+  $('simD').innerHTML=phMount('refri',{world:`<div class="kt"><div class="kt-bg" id="ktB">
     <div class="kt-tile"></div><div class="kt-glow"></div>
-    <div class="kt-up l"><i style="left:7.4cqw"></i><i style="left:15.8cqw"></i><i style="left:24.2cqw"></i></div><div class="kt-up c"></div><div class="kt-up r"><i style="left:1cqw"></i><i style="left:9.4cqw"></i><i style="left:17.8cqw"></i></div>
-    <div class="kt-ct l"><i style="left:2.4cqw"></i><i style="left:10.8cqw"></i><i style="left:19.2cqw"></i><i style="left:27.6cqw"></i></div><div class="kt-ct r"><i style="left:2.4cqw"></i><i style="left:10.8cqw"></i><i style="left:19.2cqw"></i><i style="left:27.6cqw"></i></div>
-    <div class="kt-fl"></div><div class="kt-sh"></div>
+    <div class="kt-win"><i></i></div><div class="kt-sill"></div>
+    <div class="kt-up l"><i style="left:7.4cqw"></i><i style="left:15.8cqw"></i><i style="left:24.2cqw"></i></div><div class="kt-up c"></div><div class="kt-up r"><i style="left:1cqw"></i><i style="left:9.4cqw"></i></div>
+    <div class="kt-fl"></div><div class="kt-fl2"></div>
+    <div class="kt-ct l"><i style="left:2.4cqw"></i><i style="left:10.8cqw"></i><i style="left:19.2cqw"></i><i style="left:27.6cqw"></i></div><div class="kt-ct r"><i style="left:2.4cqw"></i><i style="left:10.8cqw"></i><i style="left:19.2cqw"></i><i style="left:27.4cqw"></i></div>
+    <div class="kt-top l"></div><div class="kt-top r"></div><div class="kt-pn l"></div><div class="kt-pn r"></div>
     <div class="kt-it" style="left:4cqw;width:7cqw">${KT_PLANT}</div><div class="kt-it" style="left:19cqw;width:9cqw">${KT_JARS}</div>
-    <div class="kt-it" style="left:70cqw;width:10cqw">${KT_BOWL}</div><div class="kt-it" style="left:86cqw;width:6cqw">${KT_KETTLE}</div>
+    <div class="kt-it" style="left:71cqw;width:10cqw">${KT_BOWL}</div><div class="kt-it" style="left:88cqw;width:6cqw">${KT_KETTLE}</div>
+    <div class="kt-sun"></div></div><div class="kt-sh"></div>
     <div class="frg"><span class="frg-logo">CASA</span>
       <div class="frg-d l"><span class="frg-h"></span>
         <div class="frg-pol" style="left:2.2cqw;top:4.2cqw;transform:rotate(-5deg)">${portrait('Mamá')}</div>
@@ -3564,9 +3601,13 @@ function simRefri(){
           <div class="fh-n" id="frN"><span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div>
         </div></div></div></div>
       <div class="frg-dw a"><span class="frg-hb"></span></div><div class="frg-dw b"><span class="frg-hb"></span></div></div>
-    <div class="kt-light"></div></div>`});
+    <div class="kt-light"></div><div class="kt-grain"></div></div>`});
   /* foco: centro de la pantalla de la puerta (en fracción del mundo de 100 × 62.5) */
-  const cam=phCamera('refri',{focus:[.5708,17.05/62.5],zoomTo:(vw,vh,w)=>(vw<=620?Math.min(vw-56,(vh-150)/1.6):Math.min(340,(vh-170)/1.6))/(.0896*w),at:[.5,.54]});
+  /* cámara: foco en la pantalla; al acercarse, el fondo se desenfoca (profundidad de campo) y hay un leve pulso de mano */
+  const KB=$('ktB');
+  const cam=phCamera('refri',{focus:[.5733,16.75/62.5],zoomTo:(vw,vh,w)=>(vw<=620?Math.min(vw-56,(vh-150)/1.6):Math.min(340,(vh-170)/1.6))/(.0896*w),at:[.5,.54],par:REDUCE?0:.012,
+    onMove:()=>{ if(KB&&phCam) KB.style.filter=phCam.st.k>.02?`blur(${(phCam.st.k*.12).toFixed(3)}cqw)`:''; }});
+  if(!REDUCE){ gsap.to(cam.st,{mx:.35,duration:3.1,ease:'sine.inOut',yoyo:true,repeat:-1,onUpdate:cam.draw}); gsap.to(cam.st,{my:.3,duration:2.3,ease:'sine.inOut',yoyo:true,repeat:-1,delay:.4}); }
   const show=()=>{ const n=$('frN'); if(!n) return;
     if(REDUCE){ n.style.transform='none'; return; }
     gsap.to(n,{y:0,duration:.6,ease:'back.out(1.3)'});
