@@ -997,7 +997,7 @@ body.sim-on .fab{display:none}
 #sim .tn-cap,#sim .tn-cx{z-index:3}
 .ph{position:fixed;inset:0;z-index:0;overflow:hidden;background:#0b0c0f}
 .ph-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(28px) brightness(.4);transform:scale(1.15)}
-.ph-w{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.ph-w{position:absolute;left:0;top:0;transform-origin:0 0}
 .ph-i{position:absolute;inset:0;display:block;width:100%;height:100%;-webkit-user-select:none;user-select:none;pointer-events:none}
 .ph-q{position:absolute;left:0;top:0;z-index:1;transform-origin:0 0;overflow:hidden;container-type:size;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .ph-gl{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.13) 0,rgba(255,255,255,.04) 28%,transparent 44%,transparent 80%,rgba(255,255,255,.05))}
@@ -1034,29 +1034,67 @@ body.sim-on .fab{display:none}
   .car-bt{gap:2cqw}.car-bt button{height:10cqw;font-size:3.7cqw}.car-bt p,.car-bt .sim-ok{font-size:3.6cqw}.car-bt .sim-ok i{width:5cqw;height:5cqw}
 }
 
-/* refri: pantalla de la puerta */
-.fh{position:absolute;inset:0;display:grid;grid-template-columns:46% 1fr;gap:2.4cqw;padding:2.6cqw;background:radial-gradient(120% 90% at 10% 0%,#2a3346,transparent 60%),linear-gradient(#14171d,#0c0e12);color:#fff;font-size:1.6cqw}
-.fh-l{display:flex;flex-direction:column;min-height:0}
+/* refri: cocina dibujada; todo en cqw del mundo (100cqw × 62.5cqw) para que la cámara pueda acercarse sin perder nitidez */
+.ph-h{background:#e9e3d9}
+.ph-h .ph-w{container-type:size}
+.kt{position:absolute;inset:0;overflow:hidden;background:linear-gradient(180deg,#efe9df,#e6dfd3)}
+.kt > *{position:absolute}
+.kt-tile{left:0;right:0;top:16.9cqw;height:18.6cqw;background-color:#f4f1ea;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cg fill='none' stroke='%23d9d2c6' stroke-width='1.2'%3E%3Cpath d='M0 .6H60M0 15.6H60M30 0V15M0 15V30M60 15V30'/%3E%3C/g%3E%3C/svg%3E");background-size:3.6cqw 1.8cqw;box-shadow:inset 0 2.4cqw 2.4cqw -1.6cqw rgba(60,40,20,.28)}
+.kt-glow{left:0;right:0;top:16.9cqw;height:18.6cqw;background:radial-gradient(9cqw 6cqw at 16cqw 0,rgba(255,214,150,.55),transparent 70%),radial-gradient(9cqw 6cqw at 84cqw 0,rgba(255,214,150,.55),transparent 70%);mix-blend-mode:soft-light}
+.kt-up{top:0;height:16.9cqw;background:repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(60,35,15,.35) 8.25cqw 8.4cqw),repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 .2cqw,transparent .2cqw .9cqw),linear-gradient(180deg,#c99f70,#b88a5c);box-shadow:0 .6cqw 1.2cqw rgba(60,35,15,.35),inset 0 -.25cqw 0 rgba(60,35,15,.25)}
+.kt-up.l{left:0;width:33.6cqw}.kt-up.r{right:0;width:33.6cqw}.kt-up.c{left:35.4cqw;width:29.2cqw;height:5.6cqw}
+.kt-up i{position:absolute;bottom:1.2cqw;width:.25cqw;height:2.6cqw;border-radius:.2cqw;background:#3a3027}
+.kt-ct{top:35.4cqw;bottom:6.9cqw;width:33.6cqw;background:repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(0,0,0,.09) 8.25cqw 8.4cqw),linear-gradient(180deg,#f4f2ee,#e3dfd8);box-shadow:inset 0 1.4cqw 1.2cqw -1cqw rgba(0,0,0,.22)}
+.kt-ct.l{left:0}.kt-ct.r{right:0}
+.kt-ct::before{content:"";position:absolute;left:0;right:0;top:-1.1cqw;height:1.1cqw;background:linear-gradient(180deg,#f7f5f1 0,#e7e3dd 60%,#cfc9c0);box-shadow:0 .3cqw .5cqw rgba(0,0,0,.2)}
+.kt-ct i{position:absolute;top:2cqw;width:3.4cqw;height:.28cqw;border-radius:.2cqw;background:#3a3027}
+.kt-fl{left:0;right:0;bottom:0;height:6.9cqw;background:repeating-linear-gradient(90deg,rgba(80,50,25,.18) 0 .1cqw,transparent .1cqw 7cqw),linear-gradient(180deg,#b58b62,#9c7350)}
+.kt-sh{left:33cqw;width:34cqw;bottom:5.4cqw;height:3cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(30,20,10,.45),transparent)}
+.kt-it{bottom:27.2cqw}
+.kt-light{inset:0;pointer-events:none;background:radial-gradient(60cqw 40cqw at 50% -10%,rgba(255,244,228,.35),transparent 70%),radial-gradient(120cqw 70cqw at 50% 45%,transparent 55%,rgba(40,28,15,.32))}
+/* refri French door de acero */
+.frg{left:36cqw;top:6.9cqw;width:28cqw;height:49.4cqw;border-radius:.8cqw .8cqw .3cqw .3cqw;background:#7d838a;box-shadow:0 0 0 .15cqw #6b7178,1.2cqw 0 2.4cqw rgba(40,28,15,.35),-1.2cqw 0 2.4cqw rgba(40,28,15,.35)}
+.frg-d,.frg-dw{position:absolute;border-radius:.6cqw;background:linear-gradient(90deg,rgba(255,255,255,0) 0,rgba(255,255,255,.38) 22%,rgba(255,255,255,0) 40%,rgba(255,255,255,.14) 72%,rgba(255,255,255,0) 92%),repeating-linear-gradient(90deg,rgba(0,0,0,.035) 0 .06cqw,transparent .06cqw .18cqw),linear-gradient(180deg,#d3d7dc,#b4b9bf);box-shadow:inset 0 .12cqw 0 rgba(255,255,255,.7),inset 0 -.15cqw 0 rgba(0,0,0,.15)}
+.frg-d{top:.25cqw;height:29.6cqw;width:13.85cqw}.frg-d.l{left:.1cqw}.frg-d.r{right:.1cqw}
+.frg-dw{left:.1cqw;right:.1cqw}.frg-dw.a{top:30.1cqw;height:9.3cqw}.frg-dw.b{top:39.7cqw;height:9.5cqw}
+.frg-h{position:absolute;top:4.5cqw;width:.7cqw;height:21cqw;border-radius:.4cqw;background:linear-gradient(90deg,#6e747b,#f4f6f8 42%,#c3c8cd 62%,#71777e);box-shadow:.25cqw .5cqw .7cqw rgba(0,0,0,.35)}
+.frg-d.l .frg-h{right:.9cqw}.frg-d.r .frg-h{left:.9cqw}
+.frg-hb{position:absolute;left:3cqw;right:3cqw;top:1cqw;height:.7cqw;border-radius:.4cqw;background:linear-gradient(180deg,#6e747b,#f4f6f8 42%,#c3c8cd 62%,#71777e);box-shadow:0 .5cqw .7cqw rgba(0,0,0,.35)}
+.frg-logo{position:absolute;left:50%;top:1.2cqw;transform:translateX(-50%);font-size:.55cqw;font-weight:700;letter-spacing:.3em;color:rgba(0,0,0,.28)}
+.frg-pol{position:absolute;width:3.6cqw;padding:.25cqw .25cqw .9cqw;background:#fbfaf7;box-shadow:0 .3cqw .6cqw rgba(0,0,0,.3)}
+.frg-pol .pt{display:block;width:100%;height:auto;aspect-ratio:1}
+.frg-pol::before{content:"";position:absolute;left:50%;top:-.45cqw;width:.9cqw;height:.9cqw;margin-left:-.45cqw;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a5c,#d9431a);box-shadow:0 .15cqw .25cqw rgba(0,0,0,.35)}
+.frg-pap{position:absolute;width:5cqw;aspect-ratio:.8;background:#fff;box-shadow:0 .3cqw .6cqw rgba(0,0,0,.25)}
+.frg-pap::before{content:"";position:absolute;left:50%;top:-.4cqw;width:.8cqw;height:.8cqw;margin-left:-.4cqw;border-radius:50%;background:radial-gradient(circle at 35% 35%,#7fb2ff,#2e63d6);box-shadow:0 .15cqw .25cqw rgba(0,0,0,.35)}
+.frg-pap svg{width:100%;height:100%}
+/* pantalla vertical de la puerta */
+.frg-scr{position:absolute;left:2.5cqw;top:3cqw;width:8.96cqw;height:14.3cqw;border-radius:.45cqw;background:#050608;padding:.22cqw;box-shadow:0 0 0 .06cqw rgba(255,255,255,.18),0 .3cqw .8cqw rgba(0,0,0,.35)}
+.frg-scr::after{content:"";position:absolute;inset:.22cqw;border-radius:.3cqw;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.16) 0,rgba(255,255,255,.04) 30%,transparent 46%)}
+.fh{position:relative;width:100%;height:100%;overflow:hidden;border-radius:.3cqw;container-type:size;opacity:0;transition:opacity .8s;
+  background:radial-gradient(90% 50% at 15% 0%,#33405a,transparent 70%),radial-gradient(80% 40% at 100% 100%,#3a2a3c,transparent 70%),linear-gradient(#141821,#0b0d12);color:#fff}
+.fh-in{position:absolute;inset:0;padding:7cqw 6cqw;font-size:4.6cqw}
+.fh.on{opacity:1}
 .fh-top{display:flex;justify-content:space-between;align-items:flex-start}
-.fh-top b{display:block;font-size:4.6cqw;font-weight:300;letter-spacing:-.02em;line-height:1}
-.fh-top small{display:block;margin-top:.4cqw;font-size:1.5cqw;color:rgba(255,255,255,.6)}
-.fh-w{display:flex;align-items:center;gap:.6cqw;font-size:1.8cqw;font-weight:500}.fh-w i{width:1.8cqw;height:1.8cqw;border-radius:50%;background:radial-gradient(circle,#ffd25a 45%,rgba(255,210,90,.3) 46%)}
-.fh-cal{flex:1;margin-top:1.6cqw;border-radius:1.6cqw;background:rgba(255,255,255,.07);padding:1.3cqw 1.4cqw}
-.fh-cal p{font-size:1.5cqw;font-weight:700;color:rgba(255,255,255,.75)}
-.fh-cal li{display:flex;gap:1cqw;align-items:center;margin-top:.6cqw;border-radius:1cqw;padding:.5cqw .8cqw;font-size:1.7cqw;color:rgba(255,255,255,.85)}
-.fh-cal li b{flex:none;width:5.6cqw;font-size:1.4cqw;color:rgba(255,255,255,.5)}
-.fh-cal li i{flex:none;width:.9cqw;height:.9cqw;border-radius:50%}
-.fh-cal li.is-new{background:rgba(255,89,36,.22);color:#fff;font-weight:600}.fh-cal li.is-new b{color:#ff8a5c}
-.fh-n{align-self:center;border-radius:2.4cqw;background:rgba(255,255,255,.96);color:#0e1014;padding:2.4cqw;box-shadow:0 1.6cqw 4cqw rgba(0,0,0,.45)}
-.fh-n .fh-a{display:flex;align-items:center;gap:.9cqw;font-size:1.5cqw;font-weight:600;color:#5f6b7d}.fh-n .appi{width:3cqw;height:3cqw;border-radius:.8cqw}.fh-n .appi svg{width:1.8cqw;height:1.8cqw}
-.fh-n p{margin-top:1.2cqw;font-size:2.4cqw;font-weight:600;line-height:1.3}
-.fh-n button{width:100%;height:5.2cqw;margin-top:1.6cqw;font-size:1.9cqw}
-.fh-n .sim-ok{font-size:2.2cqw;font-weight:600}.fh-n .sim-ok i{width:3cqw;height:3cqw}
-@container (max-width:560px){
-  .fh{grid-template-columns:1fr;padding:3cqw}.fh-l{display:none}
-  .fh-n{padding:3.6cqw;border-radius:3.6cqw}.fh-n .fh-a{font-size:3.2cqw;gap:1.6cqw}.fh-n .appi{width:5.4cqw;height:5.4cqw}.fh-n .appi svg{width:3.2cqw;height:3.2cqw}
-  .fh-n p{font-size:4.2cqw;margin-top:1.6cqw}.fh-n button{height:9.6cqw;font-size:3.8cqw;margin-top:2.4cqw}.fh-n .sim-ok{font-size:4cqw}.fh-n .sim-ok i{width:5.4cqw;height:5.4cqw}
-}
+.fh-top b{display:block;font-size:17cqw;font-weight:200;letter-spacing:-.03em;line-height:.95}
+.fh-top small{display:block;margin-top:1.4cqw;font-size:3.8cqw;color:rgba(255,255,255,.65)}
+.fh-w{display:flex;align-items:center;gap:1.6cqw;margin-top:1.6cqw;font-size:5.2cqw;font-weight:400}.fh-w i{width:5cqw;height:5cqw;border-radius:50%;background:radial-gradient(circle,#ffd25a 45%,rgba(255,210,90,.3) 46%)}
+.fh-card{margin-top:4.5cqw;border-radius:4.5cqw;background:rgba(255,255,255,.08);padding:4cqw;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 .3cqw rgba(255,255,255,.06)}
+.fh-card > p{display:flex;justify-content:space-between;font-size:3.7cqw;font-weight:600;color:rgba(255,255,255,.7)}.fh-card > p i{font-style:normal;font-weight:400;color:rgba(255,255,255,.45)}
+.fh-cal li{display:flex;gap:2.4cqw;align-items:center;margin-top:2cqw;border-radius:2.6cqw;padding:1.6cqw 2cqw;font-size:4.4cqw;color:rgba(255,255,255,.88)}
+.fh-cal li b{flex:none;width:14.5cqw;white-space:nowrap;font-size:3.5cqw;font-weight:600;color:rgba(255,255,255,.5)}
+.fh-cal li i{flex:none;width:2.2cqw;height:2.2cqw;border-radius:50%}
+.fh-cal li.is-new{background:rgba(255,89,36,.22);color:#fff;font-weight:600}.fh-cal li.is-new b{color:#ff9a72}
+.fh-cal li small{display:block;font-size:3.2cqw;font-weight:500;color:#ffb294}
+.fh-row{display:grid;grid-template-columns:1fr 1fr;gap:3.5cqw}
+.fh-note{background:#ffe27a;color:#3b3220}.fh-note > p{color:rgba(59,50,32,.7)}
+.fh-row span{display:block;margin-top:1.6cqw;font-size:4cqw;font-weight:600;line-height:1.25}
+.fh-dock{position:absolute;left:6cqw;right:6cqw;bottom:5cqw;display:flex;justify-content:space-between;border-radius:6cqw;background:rgba(255,255,255,.08);padding:2.6cqw 4cqw}
+.fh-dock i{width:8cqw;height:8cqw;border-radius:2.4cqw;background:rgba(255,255,255,.16)}.fh-dock i:first-child{background:linear-gradient(160deg,#ff8a5c,#ff4a14)}
+.fh-n{position:absolute;left:4cqw;right:4cqw;top:4cqw;z-index:2;border-radius:5cqw;background:rgba(250,250,252,.97);color:#0e1014;padding:4.4cqw;box-shadow:0 4cqw 10cqw rgba(0,0,0,.5);transform:translateY(-130%)}
+.fh-n .fh-a{display:flex;align-items:center;gap:2cqw;font-size:3.6cqw;font-weight:600;color:#5f6b7d}.fh-n .appi{width:7cqw;height:7cqw;border-radius:2cqw}.fh-n .appi svg{width:4.2cqw;height:4.2cqw}
+.fh-n p{margin-top:2.6cqw;font-size:5.4cqw;font-weight:600;line-height:1.28}
+.fh-n button{width:100%;min-height:0;height:11cqw;margin-top:3.4cqw;padding:0;font-size:4.6cqw}
+.fh-n .sim-ok{font-size:5cqw;font-weight:600;gap:2cqw}.fh-n .sim-ok i{width:6.4cqw;height:6.4cqw}.fh-n .sim-ok i svg{width:60%;height:60%}
 /* parlante */
 .voz{display:grid;grid-template-columns:auto minmax(0,380px);align-items:center;gap:32px}
 .voz-sp{position:relative;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#3a3d44,#16181c 70%);box-shadow:0 40px 60px -20px rgba(0,0,0,.7),inset 0 2px 0 rgba(255,255,255,.08)}
@@ -3406,7 +3444,7 @@ const rel = p => (REL[p.n]||p.n).replace(/^Tu /,'tu ');
    q: esquinas de la pantalla en la foto (sup. izq., sup. der., inf. der., inf. izq.), en fracción del ancho/alto. */
 const PH = {
   auto:  {src:'sim/auto.jpg',   ar:3200/1920, cr:'Fotos: Kazyakuruma (CC0) · bluesbby, CC BY 2.0', q:[[.4138,.4292],[.5792,.4292],[.5800,.6070],[.4134,.6070]], sar:1.54},
-  refri: {src:'sim/refri.jpg',  ar:4/3,       q:[[.165,.271],[.915,.264],[.825,.689],[.245,.696]], sar:2.1, cr:'Foto: David Berkowitz · CC BY 2.0'},
+  refri: {html:1, ar:1.6},
   lentes:{lens:1, src:'sim/tienda.jpg', ar:2702/2022, cr:'Foto: Andre Carrotflower · CC BY-SA 4.0'},
 };
 let phCam=null;
@@ -3423,7 +3461,7 @@ const LENS=`<div class="ph-blur" aria-hidden="true"></div><svg class="ph-lens" v
   <rect width="1000" height="600" fill="#0b0b0d" fill-opacity=".9" mask="url(#lnM)"/>
   <path d="M444 600 C462 566 480 546 500 546 C520 546 538 566 556 600Z" fill="#0b0b0d" fill-opacity=".9" filter="url(#lnF)"/></svg>`;
 const phMount=(k,{screen='',world='',layer=''}={})=>{ const P=PH[k];
-  return `<div class="ph" id="phV"><img class="ph-bg" src="${P.src}" alt=""><div class="ph-w" id="phW"><img class="ph-i" src="${P.src}" alt="">${P.q?`<div class="ph-q" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${P.lens?LENS:''}${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
+  return `<div class="ph${P.html?' ph-h':''}" id="phV">${P.src?`<img class="ph-bg" src="${P.src}" alt="">`:''}<div class="ph-w" id="phW">${P.src?`<img class="ph-i" src="${P.src}" alt="">`:''}${P.q?`<div class="ph-q" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${P.lens?LENS:''}${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
 /* cámara: k=0 muestra la foto completa; k=1 acerca hasta que la pantalla (o el foco) queda en "at" con el tamaño de zoomTo */
 function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove}={}){
   const P=PH[k], V=$('phV'), W=$('phW'), Q=$('phQ'), st={k:0,mx:0,my:0}; let L={};
@@ -3441,7 +3479,7 @@ function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove}={}){
       const W0=Math.round(qw*s1), H0=Math.round(W0/P.sar);
       Object.assign(Q.style,{width:W0+'px',height:H0+'px',transform:quadM(W0,H0,q)});
       if(!focus) f=[P.q.reduce((t,p)=>t+p[0],0)/4, P.q.reduce((t,p)=>t+p[1],0)/4]; }
-    else if(zoomTo) s1=zoomTo(vw,vh);
+    else if(zoomTo) s1=zoomTo(vw,vh,w);
     L={vw,vh,w,h,f,s1}; draw(); };
   phCam={st,draw,toView:(fx,fy)=>[L.tx+fx*L.w*L.s, L.ty+fy*L.h*L.s], L:()=>L, off:()=>{ removeEventListener('resize',layout); gsap.killTweensOf(st); }};
   layout(); addEventListener('resize',layout);
@@ -3488,17 +3526,54 @@ async function simVoz(p){
 }
 
 /* refri: sumo una fecha que anotaron en la cocina */
+/* refri: cocina dibujada (sin foto); la cámara entra y se acerca a la pantalla de la puerta */
+const KT_PLANT=`<svg viewBox="0 0 100 120" aria-hidden="true"><defs><linearGradient id="ktP" x1="0" x2="1"><stop offset="0" stop-color="#c9724b"/><stop offset=".5" stop-color="#e08a5f"/><stop offset="1" stop-color="#a95a38"/></linearGradient></defs>
+  <g fill="#3f7a4a"><path d="M50 70C30 60 14 40 18 18c14 8 28 26 32 52Z"/><path d="M50 70C66 56 86 44 90 22 74 26 58 44 50 70Z" fill="#4f8e57"/><path d="M50 72C46 48 50 22 62 4c6 22 0 46-12 68Z" fill="#5c9c62"/><path d="M50 72C40 58 22 56 8 62c14 10 28 12 42 10Z" fill="#356b40"/></g>
+  <path d="M26 70h48l-6 46a4 4 0 0 1-4 4H36a4 4 0 0 1-4-4Z" fill="url(#ktP)"/><rect x="23" y="66" width="54" height="8" rx="2" fill="#d27d52"/></svg>`;
+const KT_JARS=`<svg viewBox="0 0 120 80" aria-hidden="true"><g><rect x="4" y="22" width="34" height="56" rx="6" fill="#f3efe7" stroke="#d8d1c4"/><rect x="2" y="16" width="38" height="9" rx="3" fill="#b88a5c"/><rect x="10" y="44" width="22" height="12" rx="2" fill="#fff" stroke="#e2dbcf"/></g>
+  <g><rect x="44" y="34" width="28" height="44" rx="5" fill="#f3efe7" stroke="#d8d1c4"/><rect x="42" y="28" width="32" height="8" rx="3" fill="#b88a5c"/></g>
+  <g><path d="M82 78c-4-14-2-30 6-40h20c8 10 10 26 6 40Z" fill="#7a8f7c"/><rect x="88" y="30" width="20" height="9" rx="3" fill="#6a7d6c"/></g></svg>`;
+const KT_BOWL=`<svg viewBox="0 0 140 70" aria-hidden="true"><circle cx="48" cy="30" r="16" fill="#ff8a3d"/><circle cx="72" cy="26" r="17" fill="#e8c547"/><circle cx="94" cy="32" r="15" fill="#c8402c"/><path d="M58 18c4-8 10-10 16-8" stroke="#4f8e57" stroke-width="3" fill="none"/>
+  <path d="M10 36h120c-4 22-26 32-60 32S14 58 10 36Z" fill="#f1ece4" stroke="#d8d1c4"/><path d="M14 40h112" stroke="#e2dbcf"/></svg>`;
+const KT_KETTLE=`<svg viewBox="0 0 90 100" aria-hidden="true"><path d="M18 96h54c4 0 6-3 6-7l-6-52H18l-6 52c0 4 2 7 6 7Z" fill="#2c3036"/><path d="M14 36h62a3 3 0 0 0 0-6H14a3 3 0 0 0 0 6Z" fill="#41464d"/>
+  <path d="M30 30c0-14 30-14 30 0" stroke="#41464d" stroke-width="6" fill="none"/><path d="M12 52 2 44" stroke="#2c3036" stroke-width="7" stroke-linecap="round"/><rect x="24" y="44" width="5" height="40" rx="2" fill="rgba(255,255,255,.12)"/></svg>`;
+const KT_DRAW=`<svg viewBox="0 0 100 125" aria-hidden="true"><rect width="100" height="125" fill="#fff"/><circle cx="78" cy="20" r="11" fill="none" stroke="#f7b500" stroke-width="4"/>
+  <path d="M20 80V56l22-18 22 18v24Z" fill="none" stroke="#ff5924" stroke-width="4" stroke-linejoin="round"/><path d="M36 80V66h12v14" fill="none" stroke="#2e63d6" stroke-width="4"/>
+  <path d="M8 96c20-6 60-6 84 0" stroke="#3f9a52" stroke-width="4" fill="none" stroke-linecap="round"/><text x="50" y="117" text-anchor="middle" font-family="Newsreader,serif" font-style="italic" font-size="15" fill="#5b4a8a">SOFI</text></svg>`;
 function simRefri(){
-  const N='Tía Ana', B=[['Lun 10','Dentista Sofía'],['Sáb 15','Once donde Tío Jorge'],['3 ene','Cumple tía Ana',1],['Dom 23','Almuerzo familiar']];
+  const N='Tía Ana', B=[['Lun 10','Dentista Sofía'],['Sáb 15','Once donde tío Jorge'],['3 ene','Cumple tía Ana',1],['Dom 23','Almuerzo familiar']];
   const col=['#5b7cff','#27d9a6','#ff5924','#ffd23d'];
-  $('simD').innerHTML=phMount('refri',{screen:`<div class="fh"><div class="fh-l"><div class="fh-top"><span><b class="num">8:12</b><small>Mié 4 nov</small></span><span class="fh-w"><i></i>18°</span></div>
-      <div class="fh-cal"><p>Calendario de la casa</p><ul id="frL">${B.map(([d,t,n],k)=>`<li class="${n?'is-new':''}"><i style="background:${col[k]}"></i><b>${d}</b>${t}</li>`).join('')}</ul></div></div>
-      <div class="fh-n" id="frN" style="visibility:hidden"><span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div></div>`});
-  const cam=phCamera('refri',{zoomTo:(vw,vh,qw)=>vw<=620?vw-24:Math.min(qw*1.06,vw*.86,(vh-180)*2.1),at:[.5,.55]});
-  const show=()=>{ const n=$('frN'); if(!n) return; n.style.visibility='visible';
-    if(!REDUCE){ gsap.from(n,{y:20,opacity:0,duration:.5,ease:'back.out(1.4)'}); gsap.fromTo('#frL .is-new',{backgroundColor:'rgba(255,89,36,0)'},{backgroundColor:'rgba(255,89,36,.3)',duration:.6,yoyo:true,repeat:3}); } };
-  if(REDUCE){ cam.st.k=1; cam.draw(); show(); }
-  else gsap.to(cam.st,{k:1,duration:1.6,delay:.2,ease:'power2.out',onUpdate:cam.draw,onComplete:show});
+  $('simD').innerHTML=phMount('refri',{world:`<div class="kt">
+    <div class="kt-tile"></div><div class="kt-glow"></div>
+    <div class="kt-up l"><i style="left:7.4cqw"></i><i style="left:15.8cqw"></i><i style="left:24.2cqw"></i></div><div class="kt-up c"></div><div class="kt-up r"><i style="left:1cqw"></i><i style="left:9.4cqw"></i><i style="left:17.8cqw"></i></div>
+    <div class="kt-ct l"><i style="left:2.4cqw"></i><i style="left:10.8cqw"></i><i style="left:19.2cqw"></i><i style="left:27.6cqw"></i></div><div class="kt-ct r"><i style="left:2.4cqw"></i><i style="left:10.8cqw"></i><i style="left:19.2cqw"></i><i style="left:27.6cqw"></i></div>
+    <div class="kt-fl"></div><div class="kt-sh"></div>
+    <div class="kt-it" style="left:4cqw;width:7cqw">${KT_PLANT}</div><div class="kt-it" style="left:19cqw;width:9cqw">${KT_JARS}</div>
+    <div class="kt-it" style="left:70cqw;width:10cqw">${KT_BOWL}</div><div class="kt-it" style="left:86cqw;width:6cqw">${KT_KETTLE}</div>
+    <div class="frg"><span class="frg-logo">CASA</span>
+      <div class="frg-d l"><span class="frg-h"></span>
+        <div class="frg-pol" style="left:2.2cqw;top:4.2cqw;transform:rotate(-5deg)">${portrait('Mamá')}</div>
+        <div class="frg-pol" style="left:6.6cqw;top:5.4cqw;transform:rotate(4deg)">${portrait('Papá')}</div>
+        <div class="frg-pap" style="left:3.6cqw;top:12.6cqw;transform:rotate(-2deg)">${KT_DRAW}</div></div>
+      <div class="frg-d r"><span class="frg-h"></span>
+        <div class="frg-scr"><div class="fh" id="fhS"><div class="fh-in">
+          <div class="fh-top"><div><b class="num">8:12</b><small>Miércoles 4 de noviembre</small></div><span class="fh-w"><i></i>18°</span></div>
+          <div class="fh-card fh-cal"><p>Calendario de la casa<i>4 personas</i></p><ul id="frL">${B.map(([d,t,n],k)=>`<li class="${n?'is-new':''}"><i style="background:${col[k]}"></i><b>${d}</b><span>${t}${n?'<small>Nuevo · lo anotó Sofía</small>':''}</span></li>`).join('')}</ul></div>
+          <div class="fh-row"><div class="fh-card fh-note"><p>Nota</p><span>Comprar huevos y pan</span></div><div class="fh-card"><p>Adentro</p><span>Leche · vence mañana</span></div></div>
+          <div class="fh-dock"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="fh-n" id="frN"><span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div>
+        </div></div></div></div>
+      <div class="frg-dw a"><span class="frg-hb"></span></div><div class="frg-dw b"><span class="frg-hb"></span></div></div>
+    <div class="kt-light"></div></div>`});
+  /* foco: centro de la pantalla de la puerta (en fracción del mundo de 100 × 62.5) */
+  const cam=phCamera('refri',{focus:[.5708,17.05/62.5],zoomTo:(vw,vh,w)=>(vw<=620?Math.min(vw-56,(vh-150)/1.6):Math.min(340,(vh-170)/1.6))/(.0896*w),at:[.5,.54]});
+  const show=()=>{ const n=$('frN'); if(!n) return;
+    if(REDUCE){ n.style.transform='none'; return; }
+    gsap.to(n,{y:0,duration:.6,ease:'back.out(1.3)'});
+    gsap.fromTo('#frL .is-new',{backgroundColor:'rgba(255,89,36,0)'},{backgroundColor:'rgba(255,89,36,.32)',duration:.6,delay:.5,yoyo:true,repeat:3}); };
+  if(REDUCE){ cam.st.k=1; cam.draw(); $('fhS').classList.add('on'); show(); }
+  else { gsap.delayedCall(.6,()=>{ const s=$('fhS'); if(s) s.classList.add('on'); });
+    gsap.to(cam.st,{k:1,duration:2.4,delay:.5,ease:'power2.inOut',onUpdate:cam.draw,onComplete:()=>gsap.delayedCall(.3,show)}); }
   simAct.yes=()=>{
     let p=byN(N);
     if(!p){ p={n:N,o:'Cumpleaños',m:0,d:3,y:40,k:'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
