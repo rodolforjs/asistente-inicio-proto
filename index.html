@@ -993,53 +993,68 @@ body.sim-on .fab{display:none}
 .sim-b1,.sim-b2{min-height:44px;padding:0 18px;border-radius:999px;font-weight:700;transition:background .15s,transform .15s}
 .sim-b1{background:#ff5924;color:#fff}.sim-b1:hover{background:#ff6c3d}
 .sim-b2{background:rgba(255,255,255,.12);color:#fff}.sim-b2:hover{background:rgba(255,255,255,.2)}
-/* auto */
-.car{position:relative;width:min(820px,calc(100vw - 32px));aspect-ratio:2.15;border-radius:30px;background:#0b0c0f;padding:12px;box-shadow:0 0 0 2px #2a2d33,0 60px 90px -30px rgba(0,0,0,.7)}
-.car-s{position:relative;display:grid;grid-template-columns:64px 1fr;height:100%;border-radius:20px;overflow:hidden;background:#15171c;color:#fff}
-.car-dock{display:flex;flex-direction:column;align-items:center;gap:12px;padding:14px 0;background:#0e1014}
-.car-dock span{width:40px;height:40px;border-radius:12px;background:#2a2d33}.car-dock span:first-child{background:#ff5924}.car-dock small{margin-top:auto;font-size:12px;font-weight:600}
+/* escenas con foto real: la interfaz se proyecta sobre la pantalla que aparece en la foto */
+#sim .tn-cap,#sim .tn-cx{z-index:3}
+.ph{position:fixed;inset:0;z-index:0;overflow:hidden;background:#0b0c0f}
+.ph-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(28px) brightness(.4);transform:scale(1.15)}
+.ph-w{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.ph-i{position:absolute;inset:0;display:block;width:100%;height:100%;-webkit-user-select:none;user-select:none;pointer-events:none}
+.ph-q{position:absolute;left:0;top:0;z-index:1;transform-origin:0 0;overflow:hidden;container-type:size;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.ph-gl{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.13) 0,rgba(255,255,255,.04) 28%,transparent 44%,transparent 80%,rgba(255,255,255,.05))}
+.ph-sc{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(8,10,14,.62),rgba(8,10,14,.2) 22%,transparent 36%,transparent 82%,rgba(0,0,0,.3))}
+#sim .tn-cap{text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.ph-cr{position:absolute;right:14px;bottom:10px;z-index:2;font-size:10px;color:rgba(255,255,255,.45);pointer-events:none}
+.ph-q .sim-b1,.ph-q .sim-b2{min-height:0;padding:0 1em}
+
+/* auto: pantalla central del auto */
+.car-s{position:absolute;inset:0;display:grid;grid-template-columns:8cqw 1fr;background:#15171c;color:#fff;font-size:2.2cqw}
+.car-dock{display:flex;flex-direction:column;align-items:center;gap:1.6cqw;padding:2.2cqw 0;background:#0e1014}
+.car-dock span{width:4.6cqw;height:4.6cqw;border-radius:1.3cqw;background:#2a2d33}.car-dock span:first-child{background:#ff5924}.car-dock small{margin-top:auto;font-size:1.7cqw;font-weight:600}
 .car-map{position:relative;overflow:hidden;background:#1d2026}
 .car-map > svg{position:absolute;inset:0;width:100%;height:100%}
-.car-eta{position:absolute;left:14px;top:14px;display:flex;align-items:center;gap:8px;border-radius:14px;background:rgba(14,16,20,.85);padding:9px 14px;font-size:14px;font-weight:600}
-.car-eta i{width:10px;height:10px;border-radius:50%;background:#4f8cff}
-.car-ban{position:absolute;right:14px;top:14px;bottom:14px;width:min(380px,58%);display:flex;flex-direction:column;gap:10px;border-radius:20px;background:rgba(14,16,20,.92);padding:16px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-.car-ban .appi{width:30px;height:30px}
-.car-ban h4{font-size:clamp(14px,1.9vw,18px);font-weight:600;line-height:1.25}
-.car-g{display:flex;align-items:center;gap:12px;border-radius:14px;background:rgba(255,255,255,.07);padding:8px}
-.car-g img{width:54px;height:54px;border-radius:10px;object-fit:cover;background:#fff}
-.car-g small{display:block;font-size:12.5px;color:rgba(255,255,255,.6)}.car-g em{display:block;margin-top:2px;font-style:normal;font-size:12.5px;font-weight:600;color:#7be0b0}
-.car-bt{display:flex;gap:8px;margin-top:auto}.car-bt button{flex:1;height:clamp(40px,6vw,54px);font-size:clamp(13px,1.6vw,16px)}
-@media(max-width:620px){.car{aspect-ratio:auto;height:min(620px,calc(100dvh - 110px));padding:8px}.car-s{grid-template-columns:1fr}.car-dock{display:none}.car-ban{left:10px;right:10px;top:auto;bottom:10px;width:auto}.car-ban h4{font-size:16px}.car-bt button{height:50px;font-size:15px}}
-/* refri con pantalla */
-.kt{position:relative;width:min(780px,calc(100vw - 32px));aspect-ratio:1.3;border-radius:28px;overflow:hidden;box-shadow:0 60px 100px -30px rgba(0,0,0,.75);
-  background:linear-gradient(rgba(255,255,255,.0),rgba(0,0,0,.08)),repeating-linear-gradient(0deg,#e9e6df 0 22px,#dcd8cf 22px 23px),#e9e6df}
-.kt::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 44px,rgba(0,0,0,.06) 44px 45px);pointer-events:none}
-.kt-cab{position:absolute;top:0;height:22%;width:16%;background:linear-gradient(#cdb08a,#b8976d);box-shadow:inset 0 -3px 0 rgba(0,0,0,.12)}.kt-cab.l{left:0}.kt-cab.r{right:0}
-.kt-ct{position:absolute;bottom:0;height:30%;width:15%;background:linear-gradient(#f4f2ee,#e4e0d8);box-shadow:inset 0 6px 0 #8a7a66}.kt-ct.l{left:0}.kt-ct.r{right:0}
-.kt-ct.r::after{content:"";position:absolute;left:24%;top:-36%;width:34%;height:36%;border-radius:40% 40% 8px 8px;background:radial-gradient(circle at 50% 30%,#6f9b63,#3f6a3a)}
-.frg{position:absolute;left:16.5%;right:16.5%;top:4%;bottom:-6%;display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:18px 18px 0 0;background:#9aa0a8;padding:3px 3px 0;box-shadow:0 30px 50px -20px rgba(0,0,0,.5)}
-.frg-d{position:relative;border-radius:14px 14px 0 0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px),linear-gradient(100deg,#c9ced5 0%,#eef1f4 38%,#d4d9df 60%,#bfc5cc 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 0 0 1px rgba(0,0,0,.06)}
-.frg-h{position:absolute;top:10%;height:56%;width:12px;border-radius:7px;background:linear-gradient(90deg,#8d939b,#f5f7f9 45%,#a3a9b1);box-shadow:0 6px 10px -4px rgba(0,0,0,.4)}
-.frg-l .frg-h{right:14px}.frg-r .frg-h{left:14px}
-.frg-logo{position:absolute;left:50%;top:5%;transform:translateX(-50%);font-size:9px;font-weight:700;letter-spacing:.3em;color:rgba(0,0,0,.25)}
-.frg-scr{position:absolute;left:46px;right:14px;top:9%;height:68%;border-radius:12px;background:#08090b;padding:5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 4px 10px rgba(0,0,0,.3)}
-.fh{position:relative;height:100%;overflow:hidden;border-radius:8px;background:radial-gradient(120% 70% at 20% 0%,#2a3346,transparent 60%),linear-gradient(#14171d,#0c0e12);color:#fff;padding:10px 10px 8px;font-size:11px}
+.car-eta{position:absolute;left:2cqw;top:2cqw;display:flex;align-items:center;gap:1cqw;border-radius:1.6cqw;background:rgba(14,16,20,.85);padding:1.1cqw 1.7cqw;font-size:1.9cqw;font-weight:600}
+.car-eta i{width:1.3cqw;height:1.3cqw;border-radius:50%;background:#4f8cff}
+.car-ban{position:absolute;right:2cqw;top:2cqw;bottom:2cqw;width:54%;display:flex;flex-direction:column;gap:1.4cqw;border-radius:2.6cqw;background:rgba(14,16,20,.93);padding:2.4cqw;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.car-ban .appi{width:3.8cqw;height:3.8cqw;border-radius:1cqw}.car-ban .appi svg{width:2.2cqw;height:2.2cqw}
+.car-ban .car-k{font-size:1.6cqw;color:rgba(255,255,255,.6)}
+.car-ban h4{font-size:2.5cqw;font-weight:600;line-height:1.25}
+.car-g{display:flex;align-items:center;gap:1.4cqw;border-radius:1.8cqw;background:rgba(255,255,255,.07);padding:1cqw}
+.car-g img{width:7cqw;height:7cqw;border-radius:1.2cqw;object-fit:cover;background:#fff}
+.car-g b{font-size:1.9cqw}.car-g small{display:block;font-size:1.6cqw;color:rgba(255,255,255,.6)}.car-g em{display:block;margin-top:2px;font-style:normal;font-size:1.6cqw;font-weight:600;color:#7be0b0}
+.car-bt{display:flex;gap:1cqw;margin-top:auto}.car-bt button{flex:1;height:6.4cqw;font-size:2cqw}
+.car-bt p{font-size:1.9cqw}.car-bt .sim-ok{font-size:2cqw}.car-bt .sim-ok i{width:2.8cqw;height:2.8cqw}
+@container (max-width:560px){
+  .car-s{grid-template-columns:1fr;font-size:3.6cqw}.car-dock,.car-eta{display:none}
+  .car-ban{left:2.5cqw;right:2.5cqw;top:2.5cqw;bottom:2.5cqw;width:auto;gap:2.2cqw;padding:3.5cqw;border-radius:4cqw}
+  .car-ban .appi{width:6cqw;height:6cqw;border-radius:1.6cqw}.car-ban .appi svg{width:3.4cqw;height:3.4cqw}.car-ban .car-k{font-size:3.2cqw}
+  .car-ban h4{font-size:4.3cqw}.car-g{gap:2.4cqw;padding:1.6cqw;border-radius:3cqw}.car-g img{width:11cqw;height:11cqw;border-radius:2cqw}
+  .car-g b{font-size:3.7cqw}.car-g small,.car-g em{font-size:3.2cqw}
+  .car-bt{gap:2cqw}.car-bt button{height:10cqw;font-size:3.7cqw}.car-bt p,.car-bt .sim-ok{font-size:3.6cqw}.car-bt .sim-ok i{width:5cqw;height:5cqw}
+}
+
+/* refri: pantalla de la puerta */
+.fh{position:absolute;inset:0;display:grid;grid-template-columns:46% 1fr;gap:2.4cqw;padding:2.6cqw;background:radial-gradient(120% 90% at 10% 0%,#2a3346,transparent 60%),linear-gradient(#14171d,#0c0e12);color:#fff;font-size:1.6cqw}
+.fh-l{display:flex;flex-direction:column;min-height:0}
 .fh-top{display:flex;justify-content:space-between;align-items:flex-start}
-.fh-top b{display:block;font-size:22px;font-weight:300;letter-spacing:-.02em;line-height:1}
-.fh-top small{display:block;margin-top:2px;font-size:10px;color:rgba(255,255,255,.6)}
-.fh-w{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500}.fh-w i{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,#ffd25a 45%,rgba(255,210,90,.3) 46%)}
-.fh-cal{margin-top:10px;border-radius:10px;background:rgba(255,255,255,.07);padding:8px}
-.fh-cal p{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.75)}
-.fh-cal li{display:flex;gap:7px;align-items:center;margin-top:5px;border-radius:7px;padding:3px 5px;font-size:11px;color:rgba(255,255,255,.85)}
-.fh-cal li b{flex:none;width:38px;font-size:9.5px;color:rgba(255,255,255,.5)}
-.fh-cal li i{flex:none;width:6px;height:6px;border-radius:50%}
+.fh-top b{display:block;font-size:4.6cqw;font-weight:300;letter-spacing:-.02em;line-height:1}
+.fh-top small{display:block;margin-top:.4cqw;font-size:1.5cqw;color:rgba(255,255,255,.6)}
+.fh-w{display:flex;align-items:center;gap:.6cqw;font-size:1.8cqw;font-weight:500}.fh-w i{width:1.8cqw;height:1.8cqw;border-radius:50%;background:radial-gradient(circle,#ffd25a 45%,rgba(255,210,90,.3) 46%)}
+.fh-cal{flex:1;margin-top:1.6cqw;border-radius:1.6cqw;background:rgba(255,255,255,.07);padding:1.3cqw 1.4cqw}
+.fh-cal p{font-size:1.5cqw;font-weight:700;color:rgba(255,255,255,.75)}
+.fh-cal li{display:flex;gap:1cqw;align-items:center;margin-top:.6cqw;border-radius:1cqw;padding:.5cqw .8cqw;font-size:1.7cqw;color:rgba(255,255,255,.85)}
+.fh-cal li b{flex:none;width:5.6cqw;font-size:1.4cqw;color:rgba(255,255,255,.5)}
+.fh-cal li i{flex:none;width:.9cqw;height:.9cqw;border-radius:50%}
 .fh-cal li.is-new{background:rgba(255,89,36,.22);color:#fff;font-weight:600}.fh-cal li.is-new b{color:#ff8a5c}
-.fh-n{position:absolute;left:8px;right:8px;bottom:8px;border-radius:12px;background:rgba(255,255,255,.95);color:#0e1014;padding:9px;box-shadow:0 10px 24px rgba(0,0,0,.45)}
-.fh-n .fh-a{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:#5f6b7d}.fh-n .appi{width:18px;height:18px;border-radius:5px}.fh-n .appi svg{width:11px;height:11px}
-.fh-n p{margin-top:5px;font-size:11.5px;font-weight:600;line-height:1.3}
-.fh-n button{width:100%;min-height:32px!important;margin-top:7px;font-size:12px}
-.fh-n .sim-ok{font-size:11.5px;font-weight:600}.fh-n .sim-ok i{width:18px;height:18px}
-@media(max-width:620px){.kt{aspect-ratio:.66}.frg{left:-48%;right:5%;top:3%}.kt-cab,.kt-ct{display:none}.frg-scr{left:34px;right:8px;top:6%;height:74%}.frg-l .frg-h{right:8px}.frg-r .frg-h{left:8px;width:9px}}
+.fh-n{align-self:center;border-radius:2.4cqw;background:rgba(255,255,255,.96);color:#0e1014;padding:2.4cqw;box-shadow:0 1.6cqw 4cqw rgba(0,0,0,.45)}
+.fh-n .fh-a{display:flex;align-items:center;gap:.9cqw;font-size:1.5cqw;font-weight:600;color:#5f6b7d}.fh-n .appi{width:3cqw;height:3cqw;border-radius:.8cqw}.fh-n .appi svg{width:1.8cqw;height:1.8cqw}
+.fh-n p{margin-top:1.2cqw;font-size:2.4cqw;font-weight:600;line-height:1.3}
+.fh-n button{width:100%;height:5.2cqw;margin-top:1.6cqw;font-size:1.9cqw}
+.fh-n .sim-ok{font-size:2.2cqw;font-weight:600}.fh-n .sim-ok i{width:3cqw;height:3cqw}
+@container (max-width:560px){
+  .fh{grid-template-columns:1fr;padding:3cqw}.fh-l{display:none}
+  .fh-n{padding:3.6cqw;border-radius:3.6cqw}.fh-n .fh-a{font-size:3.2cqw;gap:1.6cqw}.fh-n .appi{width:5.4cqw;height:5.4cqw}.fh-n .appi svg{width:3.2cqw;height:3.2cqw}
+  .fh-n p{font-size:4.2cqw;margin-top:1.6cqw}.fh-n button{height:9.6cqw;font-size:3.8cqw;margin-top:2.4cqw}.fh-n .sim-ok{font-size:4cqw}.fh-n .sim-ok i{width:5.4cqw;height:5.4cqw}
+}
 /* parlante */
 .voz{display:grid;grid-template-columns:auto minmax(0,380px);align-items:center;gap:32px}
 .voz-sp{position:relative;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#3a3d44,#16181c 70%);box-shadow:0 40px 60px -20px rgba(0,0,0,.7),inset 0 2px 0 rgba(255,255,255,.08)}
@@ -1075,31 +1090,29 @@ body.sim-on .fab{display:none}
 .rl-im{display:block;width:62px;height:62px;margin-top:6px;border-radius:14px;overflow:hidden;background:#fff}.rl-im img{width:100%;height:100%;object-fit:cover}
 .rl-t{font-size:14px!important;margin-top:6px!important}
 .rl-why{display:block;margin-top:3px;font-family:'Newsreader',serif;font-style:italic;font-size:13px;line-height:1.25;color:rgba(255,255,255,.85)}
-/* lentes: interfaz espacial */
-.vp{position:relative;width:min(900px,calc(100vw - 32px));aspect-ratio:1.85;border-radius:32px;overflow:hidden;background:#a89379;box-shadow:0 60px 100px -30px rgba(0,0,0,.75)}
-.vp-sc{position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 10%,#fff6ea 0,transparent 60%),linear-gradient(#e8dccb 0 66%,#a89379 66%)}
-.vp-sc::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px 30px rgba(20,14,8,.35);pointer-events:none}
-.vp-sh{position:absolute;left:4%;right:4%;height:2.4%;border-radius:4px;background:#c3ad8c;box-shadow:0 10px 16px -8px rgba(0,0,0,.35)}
-.vp-o{position:absolute;aspect-ratio:1;object-fit:cover;border-radius:10px;box-shadow:0 14px 22px -10px rgba(0,0,0,.45);filter:blur(1.2px) saturate(.9);transition:filter .5s,transform .5s,box-shadow .5s}
-.vp-o.vp-t{filter:blur(.6px)}
-.vp-o.is-look{filter:none;transform:scale(1.05);box-shadow:0 0 0 3px rgba(255,255,255,.85),0 0 40px 10px rgba(255,255,255,.55),0 24px 30px -12px rgba(0,0,0,.45)}
-.vp-gz{position:absolute;z-index:4;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 4px 12px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none}
-.vp-win{position:absolute;z-index:5;width:min(300px,78%);opacity:0;pointer-events:none}
+/* lentes: interfaz espacial sobre lo que ves (foto real del Pueblito Los Dominicos) */
+.vp-hl{position:absolute;width:5.2%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.8);background:radial-gradient(closest-side,rgba(255,255,255,.22),rgba(255,255,255,.06) 70%,transparent);box-shadow:0 0 0 2px rgba(255,255,255,.8),0 0 36px 8px rgba(255,255,255,.3);opacity:0;transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.3,1.3);pointer-events:none}
+.vp-hl.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.vp-gz{position:absolute;left:0;top:0;z-index:4;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 4px 12px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none}
+.vp-win{position:absolute;left:0;top:0;z-index:5;width:min(310px,calc(100vw - 32px));opacity:0;pointer-events:none}
 .vp-win.on{opacity:1;pointer-events:auto}
 .vp-wc{border-radius:30px;padding:18px 18px 16px;color:#fff;background:rgba(70,66,62,.42);-webkit-backdrop-filter:blur(36px) saturate(1.6);backdrop-filter:blur(36px) saturate(1.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.18),0 30px 60px -20px rgba(0,0,0,.45)}
 .vp-k{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.75)}
 .vp-ap{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ff5924}.vp-ap svg{width:13px;height:13px}
 .vp-t1{display:block;margin-top:10px;font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.05;letter-spacing:-.02em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
 .vp-p{margin-top:6px;font-size:13.5px;color:rgba(255,255,255,.85)}
+.vp-pr{display:flex;align-items:center;gap:10px;margin-top:12px;border-radius:18px;background:rgba(255,255,255,.12);padding:8px}
+.vp-pr img{flex:none;width:52px;height:52px;border-radius:12px;object-fit:cover;background:#fff}
+.vp-pr b{display:block;font-size:13.5px;line-height:1.2}.vp-pr small{display:block;margin-top:2px;font-size:12px;color:rgba(255,255,255,.75)}
 .vp-why{display:inline-flex;align-items:center;gap:6px;margin-top:10px;border-radius:999px;background:rgba(255,255,255,.16);padding:5px 10px 5px 6px;font-size:12px;font-weight:500}.vp-why img{width:16px;height:16px}
 .vp-btn{display:block;width:100%;height:46px;margin-top:14px;border-radius:999px;background:rgba(255,255,255,.92);color:#0e1014;font-size:14.5px;font-weight:700;transition:transform .2s,background .2s}
 .vp-btn:hover{transform:scale(1.03);background:#fff}
 .vp-bar{display:block;width:64px;height:5px;margin:10px auto 0;border-radius:3px;background:rgba(255,255,255,.55);box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.vp-hint{position:absolute;left:50%;top:18px;z-index:6;display:flex;align-items:center;gap:7px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:7px 14px;font-size:12.5px;font-weight:600;color:#fff;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);opacity:0;transition:opacity .3s}
-.vp-orn{position:absolute;left:50%;bottom:16px;z-index:6;display:flex;align-items:center;gap:8px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:5px 14px 5px 5px;font-size:12.5px;font-weight:600;color:#fff;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.vp-hint{position:absolute;left:50%;bottom:72px;z-index:6;display:flex;align-items:center;gap:7px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:7px 14px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);opacity:0;transition:opacity .3s}
+.vp-orn{position:absolute;left:50%;bottom:22px;z-index:6;display:flex;align-items:center;gap:8px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:5px 14px 5px 5px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 .vp-orn span{width:26px;height:26px;border-radius:50%;overflow:hidden}.vp-orn .pt{width:100%;height:100%}
 .vp-orn b{display:grid;place-items:center;min-width:20px;height:20px;border-radius:10px;background:#fff;color:#0e1014;font-size:11px}
-@media(max-width:620px){.vp{aspect-ratio:.68}.vp-sc{transform:translateY(-22%)}.vp-t1{font-size:21px;margin-top:6px}.vp-why{display:none}.vp-wc{padding:14px}.vp-btn{height:42px;margin-top:10px}.vp-hint{white-space:nowrap}}
+@media(max-width:620px){.vp-t1{font-size:22px;margin-top:6px}.vp-wc{padding:14px}.vp-btn{height:42px;margin-top:10px}.vp-hint{display:none}}
 /* ---------- En la tienda: aviso del celular ---------- */
 .tn{position:fixed;inset:0;z-index:190;display:none;place-items:center;background:rgba(14,16,20,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.tn-on .tn{display:grid}
@@ -3354,7 +3367,7 @@ const SIM = {
   voz:   {t:'En el parlante.', d:'Mientras cocinas, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
   refri: {t:'En el refri.',    d:'Alguien de la casa anotó un cumple en el calendario de la cocina. Lo sumo a tus fechas.', n:'Tía Ana'},
   reloj: {t:'En el reloj.',    d:'El mismo aviso de 14 días, en tu muñeca. Ves cómo elegí y lo apruebas con un toque.', n:'Andrés'},
-  lentes:{t:'En los lentes.',  d:'Miras una vitrina. Reconozco algo para tu mamá y lo guardas con un gesto.', n:'Mamá', h:'mielero-en-ceramica-gres'},
+  lentes:{t:'En los lentes.',  d:'Paseas por el Pueblito Los Dominicos. Algo te recuerda a tu mamá y lo guardas con un gesto.', n:'Mamá', h:'mielero-en-ceramica-gres'},
 };
 const SIM_KEY = {c:'car',a:'voz',r:'refri',w:'reloj',l:'lentes'};
 const VOZ_DESC = {'bufanda-alpaca-unisex-chocolate':['una bufanda de alpaca','la']};
@@ -3371,14 +3384,14 @@ function simOpen(k){
   const S=SIM[k]; closeMenu(); closeSheet(); closePops();
   if(document.body.classList.contains('ch-on')) chClose();
   if(document.body.classList.contains('tn-on')) tnClose();
-  simRun++; simAfter=null; simAct={end:simClose};
+  phOff(); simRun++; simAfter=null; simAct={end:simClose};
   $('simT').textContent=S.t; $('simP').textContent=S.d;
   document.body.classList.add('sim-on');
   ({car:simCar,voz:simVoz,refri:simRefri,reloj:simReloj,lentes:simLentes})[k](byN(S.n),S);
-  if(!REDUCE) gsap.from('#simD',{y:40,opacity:0,duration:.6,ease:'power3.out',clearProps:'all'});
+  if(!REDUCE) gsap.from('#simD',{opacity:0,duration:.5,ease:'power2.out',clearProps:'opacity'});
 }
 function simClose(){
-  simRun++; document.body.classList.remove('sim-on'); $('simD').innerHTML=''; const a=simAfter; simAfter=null; if(!a) return;
+  simRun++; phOff(); document.body.classList.remove('sim-on'); $('simD').innerHTML=''; const a=simAfter; simAfter=null; if(!a) return;
   if(a.tab==='regalos'){ tab='regalos'; pedido=a.p; co=null; render(); $('year').scrollTop=0; ytoast(`${a.p.n} quedó resuelto.`); }
   else { personSel=a.p; setTab('personas'); ytoast(`Guardado en Ideas de ${a.p.n}.`); }
 }
@@ -3386,7 +3399,50 @@ $('simD').addEventListener('click',e=>{ const b=e.target.closest('[data-s]'); if
 $('simX').onclick=simClose;
 const rel = p => (REL[p.n]||p.n).replace(/^Tu /,'tu ');
 
-/* auto */
+/* ---------- escenas con foto real ----------
+   La foto llena la vista y la interfaz se proyecta (matrix3d) sobre la pantalla que aparece en ella.
+   q: esquinas de la pantalla en la foto (sup. izq., sup. der., inf. der., inf. izq.), en fracción del ancho/alto. */
+const PH = {
+  auto:  {src:'sim/auto.jpg',   ar:3200/1919, q:[[.4138,.4292],[.5792,.4292],[.5800,.6070],[.4134,.6070]], sar:1.54},
+  refri: {src:'sim/refri.jpg',  ar:4/3,       q:[[.165,.271],[.915,.264],[.825,.689],[.245,.696]], sar:2.1, cr:'Foto: David Berkowitz · CC BY 2.0'},
+  lentes:{src:'sim/lentes.jpg', ar:2800/1838, cr:'Foto: Rjcastillo · CC BY-SA 4.0'},
+};
+let phCam=null;
+const lerp=(a,b,k)=>a+(b-a)*k;
+/* matriz que lleva un rectángulo w×h a las 4 esquinas q (homografía) */
+function quadM(w,h,q){
+  const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=q, dx1=x1-x2, dx2=x3-x2, dx3=x0-x1+x2-x3, dy1=y1-y2, dy2=y3-y2, dy3=y0-y1+y2-y3, den=dx1*dy2-dx2*dy1;
+  const g=(dx3*dy2-dx2*dy3)/den, hh=(dx1*dy3-dx3*dy1)/den, a=x1-x0+g*x1, b=x3-x0+hh*x3, d=y1-y0+g*y1, e=y3-y0+hh*y3;
+  return `matrix3d(${a/w},${d/w},0,${g/w},${b/h},${e/h},0,${hh/h},0,0,1,0,${x0},${y0},0,1)`;
+}
+const phMount=(k,{screen='',world='',layer=''}={})=>{ const P=PH[k];
+  return `<div class="ph" id="phV"><img class="ph-bg" src="${P.src}" alt=""><div class="ph-w" id="phW"><img class="ph-i" src="${P.src}" alt="">${P.q?`<div class="ph-q" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
+/* cámara: k=0 muestra la foto completa; k=1 acerca hasta que la pantalla (o el foco) queda en "at" con el tamaño de zoomTo */
+function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove}={}){
+  const P=PH[k], V=$('phV'), W=$('phW'), Q=$('phQ'), st={k:0,mx:0,my:0}; let L={};
+  const draw=()=>{ if(!L.w) return;
+    const {vw,vh,w,h,f,s1}=L, s=lerp(1,s1,st.k)*(1+par);
+    let tx=lerp((vw-w)/2+f[0]*w, vw*at[0], st.k)-f[0]*w*s+st.mx*par*w, ty=lerp((vh-h)/2+f[1]*h, vh*at[1], st.k)-f[1]*h*s+st.my*par*h;
+    const cl=(t,size,v)=>size>=v?Math.min(0,Math.max(v-size,t)):(v-size)/2;
+    tx=cl(tx,w*s,vw); ty=cl(ty,h*s,vh); Object.assign(L,{tx,ty,s});
+    W.style.transform=`translate(${tx}px,${ty}px) scale(${s})`; onMove&&onMove(); };
+  const layout=()=>{ if(!V.isConnected) return;
+    const vw=V.clientWidth, vh=V.clientHeight, w=Math.max(vw,vh*P.ar), h=w/P.ar; let f=focus||[.5,.5], s1=1;
+    W.style.width=w+'px'; W.style.height=h+'px';
+    if(P.q){ const q=P.q.map(([x,y])=>[x*w,y*h]), qw=(q[1][0]-q[0][0]+q[2][0]-q[3][0])/2;
+      s1=zoomTo?zoomTo(vw,vh,qw)/qw:1;
+      const W0=Math.round(qw*s1), H0=Math.round(W0/P.sar);
+      Object.assign(Q.style,{width:W0+'px',height:H0+'px',transform:quadM(W0,H0,q)});
+      if(!focus) f=[P.q.reduce((t,p)=>t+p[0],0)/4, P.q.reduce((t,p)=>t+p[1],0)/4]; }
+    else if(zoomTo) s1=zoomTo(vw,vh);
+    L={vw,vh,w,h,f,s1}; draw(); };
+  phCam={st,draw,toView:(fx,fy)=>[L.tx+fx*L.w*L.s, L.ty+fy*L.h*L.s], L:()=>L, off:()=>{ removeEventListener('resize',layout); gsap.killTweensOf(st); }};
+  layout(); addEventListener('resize',layout);
+  return phCam;
+}
+function phOff(){ if(phCam){ phCam.off(); phCam=null; } }
+
+/* auto: estás adentro; la cámara se acerca a la pantalla central y ahí aparezco */
 const CAR_MAP=`<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
   <rect width="600" height="300" fill="#1d2026"/>
   <g fill="#23272e">${[[20,20,120,70],[160,20,150,70],[330,20,110,70],[460,20,140,70],[20,110,90,80],[130,110,180,80],[330,110,120,80],[470,110,130,80],[20,210,160,80],[200,210,110,80],[330,210,140,80],[490,210,110,80]].map(([x,y,w,h])=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8"/>`).join('')}</g>
@@ -3395,15 +3451,18 @@ const CAR_MAP=`<svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" a
   <path d="M60 262 l-11 22 11-6 11 6Z" fill="#fff"/></svg>`;
 function simCar(p){
   const x=chosen(p);
-  $('simD').innerHTML=`<div class="car"><div class="car-s"><div class="car-dock"><span></span><span></span><span></span><small class="num">18:42</small></div>
+  $('simD').innerHTML=phMount('auto',{screen:`<div class="car-s"><div class="car-dock"><span></span><span></span><span></span><small class="num">18:42</small></div>
     <div class="car-map">${CAR_MAP}<span class="car-eta"><i></i>Casa de ${esc(p.n)} · 4 min</span>
-      <div class="car-ban" id="carB"><div class="flex items-center gap-2.5"><span class="appi">${GIFT_I}</span><small style="font-size:12px;color:rgba(255,255,255,.6)">Cuenta conmigo · ahora</small></div>
+      <div class="car-ban" id="carB" style="visibility:hidden"><div class="flex items-center" style="gap:1.2cqw"><span class="appi">${GIFT_I}</span><small class="car-k">Cuenta conmigo · ahora</small></div>
         <h4>Hoy es el cumple de ${rel(p)} y no tienes regalo. Pídelo ya, te lo llevo ahí.</h4>
-        <div class="car-g">${img(x.u,'')}<span class="min-w-0"><b class="block truncate text-[14px]">${esc(x.t)}</b><small class="num">${clp(x.p)}</small><em>Llega antes que tú</em></span></div>
-        <div class="car-bt" id="carBt"><button class="sim-b1" data-s="yes">Sí, mándalo</button><button class="sim-b2" data-s="no">Ahora no</button></div></div></div></div></div>`;
-  if(!REDUCE) gsap.from('#carB',{x:40,opacity:0,duration:.6,delay:.5,ease:'power3.out'});
+        <div class="car-g">${img(x.u,'')}<span class="min-w-0"><b class="block truncate">${esc(x.t)}</b><small class="num">${clp(x.p)}</small><em>Llega antes que tú</em></span></div>
+        <div class="car-bt" id="carBt"><button class="sim-b1" data-s="yes">Sí, mándalo</button><button class="sim-b2" data-s="no">Ahora no</button></div></div></div></div>`});
+  const cam=phCamera('auto',{zoomTo:(vw,vh)=>vw<=620?vw-20:Math.min(vw*.44,(vh-260)*1.54,660),at:[.5,.58]});
+  const show=()=>{ const b=$('carB'); if(!b) return; b.style.visibility='visible'; if(!REDUCE) gsap.from(b,{x:30,opacity:0,duration:.6,ease:'power3.out'}); };
+  if(REDUCE){ cam.st.k=1; cam.draw(); show(); }
+  else gsap.to(cam.st,{k:1,duration:2.4,delay:.5,ease:'power2.inOut',onUpdate:cam.draw,onComplete:show});
   simAct.yes=()=>{ simBuy(p,'desde el auto'); $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch">${simOk('Listo. Llega a las 19:10, antes que tú.')}${simEnd()}</div>`; };
-  simAct.no=()=>{ $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch"><p class="text-[14px] text-white/70">Ok. Te lo recuerdo al estacionar.</p>${simEnd('sim-b2')}</div>`; };
+  simAct.no=()=>{ $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch"><p style="color:rgba(255,255,255,.7)">Ok. Te lo recuerdo al estacionar.</p>${simEnd('sim-b2')}</div>`; };
 }
 
 /* parlante: respondo la duda que ningún conector sabe */
@@ -3425,12 +3484,14 @@ async function simVoz(p){
 function simRefri(){
   const N='Tía Ana', B=[['Lun 10','Dentista Sofía'],['Sáb 15','Once donde Tío Jorge'],['3 ene','Cumple tía Ana',1],['Dom 23','Almuerzo familiar']];
   const col=['#5b7cff','#27d9a6','#ff5924','#ffd23d'];
-  $('simD').innerHTML=`<div class="kt"><span class="kt-cab l"></span><span class="kt-cab r"></span><span class="kt-ct l"></span><span class="kt-ct r"></span>
-    <div class="frg"><div class="frg-d frg-l"><span class="frg-h"></span></div><div class="frg-d frg-r"><span class="frg-h"></span>
-      <div class="frg-scr"><div class="fh"><div class="fh-top"><span><b class="num">8:12</b><small>Mié 4 nov</small></span><span class="fh-w"><i></i>18°</span></div>
-        <div class="fh-cal"><p>Calendario de la casa</p><ul id="frL">${B.map(([d,t,n],k)=>`<li class="${n?'is-new':''}"><i style="background:${col[k]}"></i><b>${d}</b>${t}</li>`).join('')}</ul></div>
-        <div class="fh-n" id="frN"><span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div></div></div></div></div></div>`;
-  if(!REDUCE){ gsap.from('#frN',{y:20,opacity:0,duration:.5,delay:.8,ease:'back.out(1.4)'}); gsap.fromTo('#frL .is-new',{backgroundColor:'rgba(255,89,36,0)'},{backgroundColor:'rgba(255,89,36,.3)',duration:.6,delay:.4,yoyo:true,repeat:3}); }
+  $('simD').innerHTML=phMount('refri',{screen:`<div class="fh"><div class="fh-l"><div class="fh-top"><span><b class="num">8:12</b><small>Mié 4 nov</small></span><span class="fh-w"><i></i>18°</span></div>
+      <div class="fh-cal"><p>Calendario de la casa</p><ul id="frL">${B.map(([d,t,n],k)=>`<li class="${n?'is-new':''}"><i style="background:${col[k]}"></i><b>${d}</b>${t}</li>`).join('')}</ul></div></div>
+      <div class="fh-n" id="frN" style="visibility:hidden"><span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div></div>`});
+  const cam=phCamera('refri',{zoomTo:(vw,vh,qw)=>vw<=620?vw-24:Math.min(qw*1.06,vw*.86,(vh-180)*2.1),at:[.5,.55]});
+  const show=()=>{ const n=$('frN'); if(!n) return; n.style.visibility='visible';
+    if(!REDUCE){ gsap.from(n,{y:20,opacity:0,duration:.5,ease:'back.out(1.4)'}); gsap.fromTo('#frL .is-new',{backgroundColor:'rgba(255,89,36,0)'},{backgroundColor:'rgba(255,89,36,.3)',duration:.6,yoyo:true,repeat:3}); } };
+  if(REDUCE){ cam.st.k=1; cam.draw(); show(); }
+  else gsap.to(cam.st,{k:1,duration:1.6,delay:.2,ease:'power2.out',onUpdate:cam.draw,onComplete:show});
   simAct.yes=()=>{
     let p=byN(N);
     if(!p){ p={n:N,o:'Cumpleaños',m:0,d:3,y:40,k:'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
@@ -3461,41 +3522,45 @@ function simReloj(){
 
 /* lentes: guardas una idea mirando, al estilo de una interfaz espacial */
 function simLentes(p,S){
-  const x=prod(S.h), o=['vela-vasija-likan-esencia-andina','tazon-alerce','libro-wander','diario-de-gratitud'].map(h=>prod(h).u), n0=(SAVED[p.n]||[]).length;
-  $('simD').innerHTML=`<div class="vp" id="glV">
-    <div class="vp-sc"><span class="vp-sh" style="top:38%"></span><span class="vp-sh" style="top:72%"></span>
-      <img class="vp-o" src="${o[0]}" alt="" style="left:8%;bottom:62%;width:13%"><img class="vp-o" src="${o[1]}" alt="" style="left:25%;bottom:62%;width:11%">
-      <img class="vp-o" src="${o[2]}" alt="" style="left:79%;bottom:62%;width:11%"><img class="vp-o" src="${o[3]}" alt="" style="left:12%;bottom:28%;width:13%">
-      <img class="vp-o vp-t" id="glT" src="${x.u}" alt="" style="left:34%;bottom:28%;width:15%"></div>
-    <span class="vp-gz" id="glZ" aria-hidden="true"></span>
+  const x=prod(S.h), n0=(SAVED[p.n]||[]).length, POT=[.5104,.5683], mob=innerWidth<=620;
+  $('simD').innerHTML=phMount('lentes',{world:`<span class="vp-hl" id="glL" style="left:${POT[0]*100}%;top:${POT[1]*100}%"></span>`,
+    layer:`<span class="vp-gz" id="glZ" aria-hidden="true"></span>
     <div class="vp-win" id="glG"><div class="vp-wc">
       <p class="vp-k"><span class="vp-ap">${GIFT_I}</span>Cuenta conmigo</p>
-      <b class="vp-t1">Esto calza con ${rel(p)}.</b>
-      <p class="vp-p">${esc(x.t)} · ${clp(x.p)}</p>
-      <p class="vp-why"><img src="${SI('pinterest','E60023')}" alt="">Guarda ideas de cerámica</p>
+      <b class="vp-t1">Esto me recordó a ${rel(p)}.</b>
+      <div class="vp-pr"><img id="glT" src="${x.u}" alt=""><span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${clp(x.p)} · en Creado</small></span></div>
+      <p class="vp-why"><img src="${SI('pinterest','E60023')}" alt="">Guarda ideas de greda</p>
       <button class="vp-btn" data-s="yes">Guardar para su cumple</button></div>
       <i class="vp-bar" aria-hidden="true"></i></div>
-    <p class="vp-hint" id="glH"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v6M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7s-5-2-6.500-5L3 11.500a1.500 1.500 0 0 1 2.500-1.500L8 13"/></svg>Mira y junta los dedos</p>
-    <div class="vp-orn" id="glO"><span>${portrait(p.n)}</span>Ideas de ${esc(p.n)} <b class="num" id="glN">${n0}</b></div></div>`;
-  const V=$('glV'), T=$('glT'), Z=$('glZ'), G=$('glG');
-  const at=()=>{ const v=V.getBoundingClientRect(), t=T.getBoundingClientRect(); return {x:t.left-v.left+t.width/2, y:t.top-v.top+t.height/2, r:t.right-v.left, top:t.top-v.top, w:v.width, h:v.height}; };
-  const place=()=>{ const a=at(), gw=G.offsetWidth, wide=a.w>620; G.style.left=(wide?Math.min(a.w-gw-24,a.r+28):(a.w-gw)/2)+'px'; G.style.top=(wide?Math.max(24,a.top-30):a.h-G.offsetHeight-70)+'px'; };
-  requestAnimationFrame(()=>{ place(); gsap.set(Z,{left:V.clientWidth*.5,top:V.clientHeight*.45}); });
-  if(REDUCE){ T.classList.add('is-look'); G.classList.add('on'); $('glH').style.opacity=1; }
-  else { const a0=()=>at(); gsap.timeline({delay:.5})
-    .to(Z,{opacity:1,duration:.3})
-    .to(Z,{left:()=>a0().x,top:()=>a0().y,duration:1,ease:'power2.inOut'})
-    .add(()=>T.classList.add('is-look'))
-    .to(Z,{scale:.6,opacity:.6,duration:.3})
-    .add(()=>{ place(); G.classList.add('on'); })
-    .from(G,{y:24,scale:.94,opacity:0,duration:.6,ease:'power3.out'})
-    .to('#glH',{opacity:1,duration:.4},'-=.2'); }
-  simAct.yes=()=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · la viste en una vitrina`,n:p.n,unread:false}); simAfter={tab:'personas',p};
-    const fl=T.cloneNode(); const v=V.getBoundingClientRect(), t=T.getBoundingClientRect(), on=$('glO').getBoundingClientRect();
-    Object.assign(fl.style,{position:'absolute',left:(t.left-v.left)+'px',top:(t.top-v.top)+'px',width:t.width+'px',bottom:'auto',zIndex:9,borderRadius:'14px'}); V.appendChild(fl);
-    gsap.to(fl,{left:on.left-v.left+8,top:on.top-v.top+6,width:24,opacity:.2,duration:REDUCE?0:.7,ease:'power2.in',onComplete:()=>{ fl.remove(); $('glN').textContent=n0+1; if(!REDUCE) gsap.fromTo('#glO',{scale:1.12},{scale:1,duration:.5,ease:'back.out(3)'}); }});
+    <p class="vp-hint" id="glH"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v6M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7s-5-2-6.5-5L3 11.5a1.5 1.5 0 0 1 2.5-1.5L8 13"/></svg>Mira y junta los dedos</p>
+    <div class="vp-orn" id="glO"><span>${portrait(p.n)}</span>Ideas de ${esc(p.n)} <b class="num" id="glN">${n0}</b></div>`});
+  const V=$('phV'), Z=$('glZ'), G=$('glG'); let look=false;
+  /* la ventana queda junto a lo que miras, como si estuviera en el espacio */
+  const place=()=>{ if(!phCam||!G.isConnected) return; const [px,py]=phCam.toView(...POT), L=phCam.L(), gw=G.offsetWidth, gh=G.offsetHeight;
+    if(mob){ G.style.left=(L.vw-gw)/2+'px'; G.style.top=(L.vh-gh-74)+'px'; }
+    else { G.style.left=Math.min(L.vw-gw-24,px+L.w*L.s*.05)+'px'; G.style.top=Math.max(90,Math.min(L.vh-gh-80,py-gh/2))+'px'; }
+    if(look) gsap.set(Z,{x:px,y:py}); };
+  const cam=phCamera('lentes',{focus:POT,zoomTo:(vw)=>vw<=620?1.15:1.7,at:mob?[.5,.3]:[.36,.55],par:REDUCE?0:.03,onMove:place});
+  const lookAt=()=>{ if(!G.isConnected) return; look=true; $('glL').classList.add('on'); place(); G.classList.add('on'); };
+  if(REDUCE){ cam.st.k=1; cam.draw(); lookAt(); $('glH').style.opacity=1; }
+  else { const L=cam.L();
+    gsap.timeline()
+      .to(cam.st,{k:1,duration:2.2,ease:'power2.inOut',onUpdate:cam.draw})
+      .set(Z,{x:L.vw/2,y:L.vh/2},0).to(Z,{opacity:1,duration:.3},'-=.6')
+      .to(Z,{x:()=>cam.toView(...POT)[0],y:()=>cam.toView(...POT)[1],duration:.9,ease:'power2.inOut'})
+      .add(lookAt)
+      .to(Z,{scale:.6,opacity:.6,duration:.3})
+      .from(G,{opacity:0,scale:.94,duration:.6,ease:'power3.out'},'<')
+      .to('#glH',{opacity:1,duration:.4},'-=.2');
+    /* mover la cabeza: la escena se desplaza apenas */
+    V.addEventListener('pointermove',e=>{ cam.st.mx=-(e.clientX/innerWidth-.5); cam.st.my=-(e.clientY/innerHeight-.5); cam.draw(); }); }
+  simAct.yes=()=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · la viste en el Pueblito Los Dominicos`,n:p.n,unread:false}); simAfter={tab:'personas',p};
+    const T=$('glT'), fl=T.cloneNode(), v=V.getBoundingClientRect(), t=T.getBoundingClientRect(), on=$('glO').getBoundingClientRect();
+    Object.assign(fl.style,{position:'absolute',left:(t.left-v.left)+'px',top:(t.top-v.top)+'px',width:t.width+'px',height:t.height+'px',zIndex:9,borderRadius:'12px',objectFit:'cover'}); V.appendChild(fl);
+    gsap.to(fl,{left:on.left-v.left+8,top:on.top-v.top+6,width:24,height:24,opacity:.2,duration:REDUCE?0:.7,ease:'power2.in',onComplete:()=>{ fl.remove(); $('glN').textContent=n0+1; if(!REDUCE) gsap.fromTo('#glO',{scale:1.12},{scale:1,duration:.5,ease:'back.out(3)'}); }});
     $('glH').style.opacity=0;
-    G.querySelector('.vp-wc').innerHTML=`<p class="vp-k"><span class="vp-ap" style="background:#22a06b">${CK}</span>Guardado</p><b class="vp-t1">En Ideas de ${esc(p.n)}.</b><p class="vp-p">Te lo propongo para su cumple, el ${fdate(occ(p))}.</p><button class="vp-btn" data-s="end">Listo</button>`; };
+    G.querySelector('.vp-wc').innerHTML=`<p class="vp-k"><span class="vp-ap" style="background:#22a06b">${CK}</span>Guardado</p><b class="vp-t1">En Ideas de ${esc(p.n)}.</b><p class="vp-p">Te lo propongo para su cumple, el ${fdate(occ(p))}.</p><button class="vp-btn" data-s="end">Listo</button>`;
+    place(); };
 }
 
 /* menú y teclas */
