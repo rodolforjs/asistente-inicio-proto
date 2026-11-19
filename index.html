@@ -1003,6 +1003,8 @@ body.sim-on .fab{display:none}
 .ph-gl{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.13) 0,rgba(255,255,255,.04) 28%,transparent 44%,transparent 80%,rgba(255,255,255,.05))}
 .ph-sc{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(8,10,14,.62),rgba(8,10,14,.2) 22%,transparent 36%,transparent 82%,rgba(0,0,0,.3))}
 #sim .tn-cap{text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.ph-lens{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
+.ph-blur{position:absolute;inset:0;z-index:2;pointer-events:none;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);-webkit-mask-image:radial-gradient(ellipse 72% 68% at 50% 48%,transparent 62%,#000 100%);mask-image:radial-gradient(ellipse 72% 68% at 50% 48%,transparent 62%,#000 100%)}
 .ph-cr{position:absolute;right:14px;bottom:10px;z-index:2;font-size:10px;color:rgba(255,255,255,.45);pointer-events:none}
 .ph-q .sim-b1,.ph-q .sim-b2{min-height:0;padding:0 1em}
 
@@ -1091,7 +1093,7 @@ body.sim-on .fab{display:none}
 .rl-t{font-size:14px!important;margin-top:6px!important}
 .rl-why{display:block;margin-top:3px;font-family:'Newsreader',serif;font-style:italic;font-size:13px;line-height:1.25;color:rgba(255,255,255,.85)}
 /* lentes: interfaz espacial sobre lo que ves (foto real del Pueblito Los Dominicos) */
-.vp-hl{position:absolute;width:5.2%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.8);background:radial-gradient(closest-side,rgba(255,255,255,.22),rgba(255,255,255,.06) 70%,transparent);box-shadow:0 0 0 2px rgba(255,255,255,.8),0 0 36px 8px rgba(255,255,255,.3);opacity:0;transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.3,1.3);pointer-events:none}
+.vp-hl{position:absolute;width:8.4%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.8);background:radial-gradient(closest-side,rgba(255,255,255,.22),rgba(255,255,255,.06) 70%,transparent);box-shadow:0 0 0 2px rgba(255,255,255,.8),0 0 36px 8px rgba(255,255,255,.3);opacity:0;transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.3,1.3);pointer-events:none}
 .vp-hl.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .vp-gz{position:absolute;left:0;top:0;z-index:4;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(255,255,255,.7),0 4px 12px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;pointer-events:none}
 .vp-win{position:absolute;left:0;top:0;z-index:5;width:min(310px,calc(100vw - 32px));opacity:0;pointer-events:none}
@@ -1108,8 +1110,8 @@ body.sim-on .fab{display:none}
 .vp-btn{display:block;width:100%;height:46px;margin-top:14px;border-radius:999px;background:rgba(255,255,255,.92);color:#0e1014;font-size:14.5px;font-weight:700;transition:transform .2s,background .2s}
 .vp-btn:hover{transform:scale(1.03);background:#fff}
 .vp-bar{display:block;width:64px;height:5px;margin:10px auto 0;border-radius:3px;background:rgba(255,255,255,.55);box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.vp-hint{position:absolute;left:50%;bottom:72px;z-index:6;display:flex;align-items:center;gap:7px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:7px 14px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);opacity:0;transition:opacity .3s}
-.vp-orn{position:absolute;left:50%;bottom:22px;z-index:6;display:flex;align-items:center;gap:8px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:5px 14px 5px 5px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.vp-hint{position:absolute;left:50%;bottom:136px;z-index:6;display:flex;align-items:center;gap:7px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:7px 14px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);opacity:0;transition:opacity .3s}
+.vp-orn{position:absolute;left:50%;bottom:86px;z-index:6;display:flex;align-items:center;gap:8px;transform:translateX(-50%);border-radius:999px;background:rgba(128,128,128,.3);padding:5px 14px 5px 5px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 .vp-orn span{width:26px;height:26px;border-radius:50%;overflow:hidden}.vp-orn .pt{width:100%;height:100%}
 .vp-orn b{display:grid;place-items:center;min-width:20px;height:20px;border-radius:10px;background:#fff;color:#0e1014;font-size:11px}
 @media(max-width:620px){.vp-t1{font-size:22px;margin-top:6px}.vp-wc{padding:14px}.vp-btn{height:42px;margin-top:10px}.vp-hint{display:none}}
@@ -3367,7 +3369,7 @@ const SIM = {
   voz:   {t:'En el parlante.', d:'Mientras cocinas, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
   refri: {t:'En el refri.',    d:'Alguien de la casa anotó un cumple en el calendario de la cocina. Lo sumo a tus fechas.', n:'Tía Ana'},
   reloj: {t:'En el reloj.',    d:'El mismo aviso de 14 días, en tu muñeca. Ves cómo elegí y lo apruebas con un toque.', n:'Andrés'},
-  lentes:{t:'En los lentes.',  d:'Paseas por el Pueblito Los Dominicos. Algo te recuerda a tu mamá y lo guardas con un gesto.', n:'Mamá', h:'mielero-en-ceramica-gres'},
+  lentes:{t:'En los lentes.',  d:'Recorres una tienda con tus lentes. Algo te recuerda a tu mamá y lo guardas con un gesto.', n:'Mamá', h:'mielero-en-ceramica-gres'},
 };
 const SIM_KEY = {c:'car',a:'voz',r:'refri',w:'reloj',l:'lentes'};
 const VOZ_DESC = {'bufanda-alpaca-unisex-chocolate':['una bufanda de alpaca','la']};
@@ -3403,9 +3405,9 @@ const rel = p => (REL[p.n]||p.n).replace(/^Tu /,'tu ');
    La foto llena la vista y la interfaz se proyecta (matrix3d) sobre la pantalla que aparece en ella.
    q: esquinas de la pantalla en la foto (sup. izq., sup. der., inf. der., inf. izq.), en fracción del ancho/alto. */
 const PH = {
-  auto:  {src:'sim/auto.jpg',   ar:3200/1919, q:[[.4138,.4292],[.5792,.4292],[.5800,.6070],[.4134,.6070]], sar:1.54},
+  auto:  {src:'sim/auto.jpg',   ar:3200/1920, cr:'Fotos: Kazyakuruma (CC0) · bluesbby, CC BY 2.0', q:[[.4138,.4292],[.5792,.4292],[.5800,.6070],[.4134,.6070]], sar:1.54},
   refri: {src:'sim/refri.jpg',  ar:4/3,       q:[[.165,.271],[.915,.264],[.825,.689],[.245,.696]], sar:2.1, cr:'Foto: David Berkowitz · CC BY 2.0'},
-  lentes:{src:'sim/lentes.jpg', ar:2800/1838, cr:'Foto: Rjcastillo · CC BY-SA 4.0'},
+  lentes:{lens:1, src:'sim/tienda.jpg', ar:2702/2022, cr:'Foto: Andre Carrotflower · CC BY-SA 4.0'},
 };
 let phCam=null;
 const lerp=(a,b,k)=>a+(b-a)*k;
@@ -3415,8 +3417,13 @@ function quadM(w,h,q){
   const g=(dx3*dy2-dx2*dy3)/den, hh=(dx1*dy3-dx3*dy1)/den, a=x1-x0+g*x1, b=x3-x0+hh*x3, d=y1-y0+g*y1, e=y3-y0+hh*y3;
   return `matrix3d(${a/w},${d/w},0,${g/w},${b/h},${e/h},0,${hh/h},0,0,1,0,${x0},${y0},0,1)`;
 }
+const LENS=`<div class="ph-blur" aria-hidden="true"></div><svg class="ph-lens" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+  <defs><filter id="lnF" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="9"/></filter>
+  <mask id="lnM"><rect width="1000" height="600" fill="#fff"/><g filter="url(#lnF)" fill="#000"><rect x="8" y="10" width="574" height="584" rx="220"/><rect x="418" y="10" width="574" height="584" rx="220"/></g></mask></defs>
+  <rect width="1000" height="600" fill="#0b0b0d" fill-opacity=".9" mask="url(#lnM)"/>
+  <path d="M444 600 C462 566 480 546 500 546 C520 546 538 566 556 600Z" fill="#0b0b0d" fill-opacity=".9" filter="url(#lnF)"/></svg>`;
 const phMount=(k,{screen='',world='',layer=''}={})=>{ const P=PH[k];
-  return `<div class="ph" id="phV"><img class="ph-bg" src="${P.src}" alt=""><div class="ph-w" id="phW"><img class="ph-i" src="${P.src}" alt="">${P.q?`<div class="ph-q" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
+  return `<div class="ph" id="phV"><img class="ph-bg" src="${P.src}" alt=""><div class="ph-w" id="phW"><img class="ph-i" src="${P.src}" alt="">${P.q?`<div class="ph-q" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${P.lens?LENS:''}${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
 /* cámara: k=0 muestra la foto completa; k=1 acerca hasta que la pantalla (o el foco) queda en "at" con el tamaño de zoomTo */
 function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove}={}){
   const P=PH[k], V=$('phV'), W=$('phW'), Q=$('phQ'), st={k:0,mx:0,my:0}; let L={};
@@ -3457,7 +3464,7 @@ function simCar(p){
         <h4>Hoy es el cumple de ${rel(p)} y no tienes regalo. Pídelo ya, te lo llevo ahí.</h4>
         <div class="car-g">${img(x.u,'')}<span class="min-w-0"><b class="block truncate">${esc(x.t)}</b><small class="num">${clp(x.p)}</small><em>Llega antes que tú</em></span></div>
         <div class="car-bt" id="carBt"><button class="sim-b1" data-s="yes">Sí, mándalo</button><button class="sim-b2" data-s="no">Ahora no</button></div></div></div></div>`});
-  const cam=phCamera('auto',{zoomTo:(vw,vh)=>vw<=620?vw-20:Math.min(vw*.44,(vh-260)*1.54,660),at:[.5,.58]});
+  const cam=phCamera('auto',{zoomTo:(vw,vh)=>vw<=620?vw-20:Math.min(vw*.4,(vh-300)*1.54,620),at:[.5,.64]});
   const show=()=>{ const b=$('carB'); if(!b) return; b.style.visibility='visible'; if(!REDUCE) gsap.from(b,{x:30,opacity:0,duration:.6,ease:'power3.out'}); };
   if(REDUCE){ cam.st.k=1; cam.draw(); show(); }
   else gsap.to(cam.st,{k:1,duration:2.4,delay:.5,ease:'power2.inOut',onUpdate:cam.draw,onComplete:show});
@@ -3522,14 +3529,14 @@ function simReloj(){
 
 /* lentes: guardas una idea mirando, al estilo de una interfaz espacial */
 function simLentes(p,S){
-  const x=prod(S.h), n0=(SAVED[p.n]||[]).length, POT=[.5104,.5683], mob=innerWidth<=620;
+  const x=prod(S.h), n0=(SAVED[p.n]||[]).length, POT=[.338,.564], mob=innerWidth<=620;
   $('simD').innerHTML=phMount('lentes',{world:`<span class="vp-hl" id="glL" style="left:${POT[0]*100}%;top:${POT[1]*100}%"></span>`,
     layer:`<span class="vp-gz" id="glZ" aria-hidden="true"></span>
     <div class="vp-win" id="glG"><div class="vp-wc">
       <p class="vp-k"><span class="vp-ap">${GIFT_I}</span>Cuenta conmigo</p>
       <b class="vp-t1">Esto me recordó a ${rel(p)}.</b>
       <div class="vp-pr"><img id="glT" src="${x.u}" alt=""><span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${clp(x.p)} · en Creado</small></span></div>
-      <p class="vp-why"><img src="${SI('pinterest','E60023')}" alt="">Guarda ideas de greda</p>
+      <p class="vp-why"><img src="${SI('pinterest','E60023')}" alt="">Guarda ideas de cocina</p>
       <button class="vp-btn" data-s="yes">Guardar para su cumple</button></div>
       <i class="vp-bar" aria-hidden="true"></i></div>
     <p class="vp-hint" id="glH"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v6M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7s-5-2-6.5-5L3 11.5a1.5 1.5 0 0 1 2.5-1.5L8 13"/></svg>Mira y junta los dedos</p>
@@ -3537,10 +3544,10 @@ function simLentes(p,S){
   const V=$('phV'), Z=$('glZ'), G=$('glG'); let look=false;
   /* la ventana queda junto a lo que miras, como si estuviera en el espacio */
   const place=()=>{ if(!phCam||!G.isConnected) return; const [px,py]=phCam.toView(...POT), L=phCam.L(), gw=G.offsetWidth, gh=G.offsetHeight;
-    if(mob){ G.style.left=(L.vw-gw)/2+'px'; G.style.top=(L.vh-gh-74)+'px'; }
+    if(mob){ G.style.left=(L.vw-gw)/2+'px'; G.style.top=(L.vh-gh-140)+'px'; }
     else { G.style.left=Math.min(L.vw-gw-24,px+L.w*L.s*.05)+'px'; G.style.top=Math.max(90,Math.min(L.vh-gh-80,py-gh/2))+'px'; }
     if(look) gsap.set(Z,{x:px,y:py}); };
-  const cam=phCamera('lentes',{focus:POT,zoomTo:(vw)=>vw<=620?1.15:1.7,at:mob?[.5,.3]:[.36,.55],par:REDUCE?0:.03,onMove:place});
+  const cam=phCamera('lentes',{focus:POT,zoomTo:(vw)=>vw<=620?1.8:1.7,at:mob?[.5,.3]:[.36,.55],par:REDUCE?0:.03,onMove:place});
   const lookAt=()=>{ if(!G.isConnected) return; look=true; $('glL').classList.add('on'); place(); G.classList.add('on'); };
   if(REDUCE){ cam.st.k=1; cam.draw(); lookAt(); $('glH').style.opacity=1; }
   else { const L=cam.L();
@@ -3554,7 +3561,7 @@ function simLentes(p,S){
       .to('#glH',{opacity:1,duration:.4},'-=.2');
     /* mover la cabeza: la escena se desplaza apenas */
     V.addEventListener('pointermove',e=>{ cam.st.mx=-(e.clientX/innerWidth-.5); cam.st.my=-(e.clientY/innerHeight-.5); cam.draw(); }); }
-  simAct.yes=()=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · la viste en el Pueblito Los Dominicos`,n:p.n,unread:false}); simAfter={tab:'personas',p};
+  simAct.yes=()=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · lo viste en una tienda`,n:p.n,unread:false}); simAfter={tab:'personas',p};
     const T=$('glT'), fl=T.cloneNode(), v=V.getBoundingClientRect(), t=T.getBoundingClientRect(), on=$('glO').getBoundingClientRect();
     Object.assign(fl.style,{position:'absolute',left:(t.left-v.left)+'px',top:(t.top-v.top)+'px',width:t.width+'px',height:t.height+'px',zIndex:9,borderRadius:'12px',objectFit:'cover'}); V.appendChild(fl);
     gsap.to(fl,{left:on.left-v.left+8,top:on.top-v.top+6,width:24,height:24,opacity:.2,duration:REDUCE?0:.7,ease:'power2.in',onComplete:()=>{ fl.remove(); $('glN').textContent=n0+1; if(!REDUCE) gsap.fromTo('#glO',{scale:1.12},{scale:1,duration:.5,ease:'back.out(3)'}); }});
