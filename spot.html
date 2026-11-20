@@ -38,6 +38,30 @@ body.ui{cursor:default}
 #mem .dt{display:inline-flex;align-items:center;gap:14px;margin-top:34px;border-radius:999px;background:#fff;padding:14px 26px;font-family:'Inter',sans-serif;font-size:26px;font-weight:600;color:#4b5563;box-shadow:0 20px 40px -24px rgba(15,23,42,.35),0 0 0 1px rgba(15,23,42,.05)}
 #mem .dt i{width:12px;height:12px;border-radius:50%;background:var(--brand)}
 #mem .sb2{margin-top:30px;font-style:italic;font-size:46px;font-weight:500;color:#4b5563;opacity:0}
+/* T11: chat en un celular limpio, sobre papel */
+#cht{position:absolute;inset:0;z-index:3;background:var(--paper);opacity:0;visibility:hidden;font-family:'Newsreader',serif;color:var(--ink)}
+#cht .lt{position:absolute;left:130px;top:50%;width:1010px;transform:translateY(-50%)}
+#cht .lt .big{font-size:94px;text-align:left;margin:0}
+#cht .lt small{display:block;margin-top:26px;font-family:'Inter',sans-serif;font-size:24px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9aa3af}
+#cp{position:absolute;left:1180px;top:70px;width:440px;height:940px;border-radius:70px;background:#0b0c0f;padding:13px;box-shadow:0 0 0 2px #2a2d33,0 0 0 4px #0b0c0f,0 80px 120px -40px rgba(0,0,0,.55)}
+#cp .scr{position:relative;display:flex;flex-direction:column;width:100%;height:100%;border-radius:58px;overflow:hidden;background:#f4f5f7;font-family:'Inter',sans-serif;color:#0e1014}
+#cp .isl{position:absolute;left:50%;top:16px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;z-index:2}
+#cp .hd{display:flex;align-items:center;gap:12px;padding:70px 24px 16px;background:#fff;border-bottom:1px solid #eceff3}
+#cp .hd .appi{flex:none;width:42px;height:42px;border-radius:50%;background:linear-gradient(160deg,#ff8a5c,#ff4a14);display:grid;place-items:center}
+#cp .hd b{display:block;font-size:18px}#cp .hd small{font-size:14px;color:#10b981;font-weight:600}
+#cp .ms{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:18px 18px 10px;overflow:hidden}
+#cp .b{max-width:82%;border-radius:22px;padding:12px 16px;font-size:17px;line-height:1.35}
+#cp .u{align-self:flex-end;background:#0e1014;color:#fff;border-bottom-right-radius:6px}
+#cp .u img{display:block;width:100%;height:220px;object-fit:cover;border-radius:14px;margin-bottom:8px}
+#cp .u.ph{padding:6px 6px 12px}#cp .u.ph span{padding:0 10px}
+#cp .a{align-self:flex-start;background:#fff;box-shadow:0 1px 0 rgba(15,23,42,.06);border-bottom-left-radius:6px}
+#cp .a .ok{display:flex;gap:10px;align-items:flex-start}
+#cp .a .ok i{flex:none;display:grid;place-items:center;width:24px;height:24px;margin-top:1px;border-radius:50%;background:#10b981;color:#fff;font-style:normal;font-size:14px;font-weight:700}
+#cp .a small{display:block;margin-top:6px;font-size:13px;color:#748297}
+#cp .ty{align-self:flex-start;display:flex;gap:5px;border-radius:22px;background:#fff;padding:16px 18px}
+#cp .ty i{width:8px;height:8px;border-radius:50%;background:#b8c0cc;animation:cpty 1s infinite}#cp .ty i:nth-child(2){animation-delay:.15s}#cp .ty i:nth-child(3){animation-delay:.3s}
+@keyframes cpty{0%,60%,100%{opacity:.35;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+#cp .in{display:flex;align-items:center;gap:10px;margin:6px 16px 28px;border-radius:999px;background:#fff;padding:12px 16px;font-size:16px;color:#9aa3af;box-shadow:0 0 0 1px #e5e8ee}
 /* barra arrastrable */
 #chs{cursor:pointer;touch-action:none}
 #ph2{position:absolute;bottom:0;width:2px;height:22px;margin-left:-1px;background:#fff;border-radius:2px;pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
@@ -99,6 +123,12 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 <div id="stage">
   <div id="cam"><iframe id="app" title="Cuenta conmigo" tabindex="-1"></iframe></div>
   <div id="dim"></div>
+  <div id="cht"><div class="lt"><p class="big" id="chtT">Mándame <em>lo que ves.</em></p><small id="chtS">Una foto, un link o un audio</small></div>
+    <div id="cp" aria-hidden="true"><div class="scr"><span class="isl"></span>
+      <div class="hd"><span class="appi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span><b>Cuenta conmigo</b><small>Siempre al día</small></span></div>
+      <div class="ms" id="cpM"></div>
+      <div class="in"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg>Escribe o manda una foto…</div>
+    </div></div></div>
   <div id="mem"><div class="in"><p class="big">Me acuerdo <em>por ti.</em></p><span class="dt"><i></i><b id="memD">miércoles 4 de noviembre</b></span><p class="sb2" id="memS">Si algo se acerca, te aviso.</p></div></div>
   <div id="ph" aria-hidden="true"><div class="scr"><span class="isl"></span><div class="sb"><span>9:12</span><span>●●● ᯤ ▮</span></div>
     <div class="clk"><small id="phD">lunes 9 de noviembre</small><b>9:12</b></div>
@@ -216,7 +246,16 @@ function phoneOut(){
   gsap.to('#ph',{scale:2.6,opacity:0,duration:.8,ease:'power2.in',onComplete:()=>gsap.set('#ph',{visibility:'hidden'})});
   gsap.to('#mem',{opacity:0,duration:.6,delay:.3,onComplete:()=>gsap.set('#mem',{visibility:'hidden'})}); camReset();
 }
-function phoneReset(){ gsap.killTweensOf(['#ph','#dim','#phN','#phTap','#phTch','#mem','#mem .in','#memD','#memS']); gsap.set('#ph',{visibility:'hidden',opacity:0}); gsap.set('#dim',{opacity:0}); gsap.set('#mem',{visibility:'hidden',opacity:0}); }
+/* T11: la conversación del chat, mensaje a mensaje */
+function chtIn(){ $('cpM').innerHTML=''; $('chtT').innerHTML='Mándame <em>lo que ves.</em>'; $('chtS').textContent='Una foto, un link o un audio';
+  gsap.set('#cht',{visibility:'visible'}); gsap.fromTo('#cht',{opacity:0},{opacity:1,duration:.5});
+  gsap.fromTo('#cht .lt > *',{opacity:0,y:30},{opacity:1,y:0,duration:.8,stagger:.12,ease:'power3.out',delay:.2});
+  gsap.fromTo('#cp',{y:240,opacity:0},{y:0,opacity:1,duration:1,ease:'power3.out',delay:.25}); }
+function chtMsg(html,cls){ const m=$('cpM'); m.querySelectorAll('.ty').forEach(x=>x.remove()); m.insertAdjacentHTML('beforeend',`<div class="b ${cls}">${html}</div>`); gsap.from(m.lastElementChild,{y:20,opacity:0,scale:.96,duration:.45,ease:'back.out(1.6)',transformOrigin:cls.includes('u')?'100% 100%':'0 100%'}); }
+function chtTyping(){ $('cpM').insertAdjacentHTML('beforeend','<div class="ty"><i></i><i></i><i></i></div>'); gsap.from($('cpM').lastElementChild,{opacity:0,y:10,duration:.3}); }
+function chtLine(big,small){ gsap.timeline().to('#cht .lt > *',{opacity:0,y:-16,duration:.25,stagger:.05,ease:'power2.in'}).call(()=>{ $('chtT').innerHTML=big; $('chtS').textContent=small; }).fromTo('#cht .lt > *',{opacity:0,y:24},{opacity:1,y:0,duration:.55,stagger:.08,ease:'power3.out'}); }
+const chtOut=()=>gsap.to('#cht',{opacity:0,duration:.4,onComplete:()=>gsap.set('#cht',{visibility:'hidden'})});
+function phoneReset(){ gsap.killTweensOf(['#ph','#dim','#phN','#phTap','#phTch','#mem','#mem .in','#memD','#memS']); gsap.set('#ph',{visibility:'hidden',opacity:0}); gsap.set('#dim',{opacity:0}); gsap.set('#mem',{visibility:'hidden',opacity:0}); gsap.killTweensOf('#cht'); gsap.set('#cht',{visibility:'hidden',opacity:0}); }
 
 /* las tomas: inicio (s) según el guion; cada "grupo" puede arrancar desde cero recargando la web */
 const SHOTS=[
@@ -229,13 +268,12 @@ const SHOTS=[
   {t:63.6,  name:'T7 Propuesta', join:4},
   {t:69.6,  name:'T8 Puente'},
   {t:73.6,  name:'T9 Reloj'},
-  {t:80.2,  name:'T10 Casa'},
-  {t:88.2,  name:'T11 Auto'},
-  {t:96.2,  name:'T12 Chat'},
-  {t:104.5, name:'T13 Tienda'},
-  {t:111.9, name:'T14 Cierre'},
+  {t:80.2,  name:'T10 Auto'},
+  {t:88.2,  name:'T11 Chat'},
+  {t:100.9, name:'T12 Tienda'},
+  {t:112.1, name:'T13 Cierre'},
 ];
-const END=118.2;
+const END=118.4;
 
 function build(){
   const T=gsap.timeline({paused:true,onComplete:()=>{ if(LOOP) start(0); }});
@@ -304,35 +342,34 @@ function build(){
    .call(()=>capIn('Respondes <em>en un toque.</em>',{dark:true}),null,76.3)
    .call(()=>click('#rlS [data-s="see"]'),null,76.9)
    .call(capOut,null,80.1);
-  /* T10 · Casa (parlante): lo que ningún conector sabe */
-  T.call(()=>fade(()=>{ camReset(); E("simOpen('voz')"); }),null,80.3)
-   .call(()=>capIn('En tu <em>casa.</em>',{dark:true}),null,81.1)
-   .call(()=>capIn('Te pregunto <em>lo que no sé.</em>',{dark:true}),null,83.6)
-   .call(()=>click('.vz-say[data-s="yes"]'),null,85.9)
+  /* T10 · Auto: plan B hasta el final */
+  T.call(()=>fade(()=>{ camReset(); E("simOpen('car')"); }),null,80.3)
+   .call(()=>capIn('¿Se te pasó <em>una fecha?</em>',{dark:true}),null,81.1)
+   .call(()=>frame('#phQ',1.3,1.8,.46,.6),null,83.3)
+   .call(()=>capIn('Te ayudo <em>hasta el final.</em>',{dark:true}),null,84.2)
+   .call(()=>click('#carBt [data-s="yes"]'),null,85.7)
    .call(capOut,null,88.1);
-  /* T11 · Auto: plan B hasta el último momento */
-  T.call(()=>fade(()=>{ camReset(); E("simOpen('car')"); }),null,88.3)
-   .call(()=>capIn('¿Se te pasó <em>una fecha?</em>',{dark:true}),null,89.1)
-   .call(()=>capIn('Te ayudo <em>hasta el final.</em>',{dark:true}),null,92.2)
-   .call(()=>frame('#phQ',1.3,1.8,.46,.6),null,91.3)
-   .call(()=>click('#carBt [data-s="yes"]'),null,93.7)
-   .call(capOut,null,96.1);
-  /* T12 · Chat: le mandas lo de tu día y aprende */
-  T.call(()=>fade(()=>{ camReset(); E("simClose(); chOpen()"); }),null,96.3)
-   .call(()=>capIn('Mándame <em>lo que ves.</em>',{sm:true}),null,97.1)
-   .call(()=>capIn('Y aprendo <em>de ti.</em>',{sm:true}),null,100.8)
-   .call(()=>frame('#ch',1.3,1.4,.5,.66),null,97.6)
-   .call(()=>E("chSend({demo:'foto'})"),null,98.2)
-   .call(()=>E("chSend({demo:'link'})"),null,101.6)
-   .call(capOut,null,104.4);
-  /* T13 · Tienda */
-  T.call(()=>fade(()=>{ E("chClose(); simClose(); tnOpen()"); }),null,104.6)
-   .call(()=>{ camReset(); capIn('Y cuando pasas <em>por la tienda.</em>',{dark:true}); },null,105.4)
-   .call(()=>click('#tnN'),null,107.6)
-   .call(()=>click('[data-tn="guide"]'),null,109.8)
-   .call(capOut,null,111.4);
-  /* T14 · Cierre */
-  T.call(()=>{ cardIn('c12'); camReset(); },null,112)
+  /* T11 · Chat: le mandas lo que ves y le cuentas cómo les fue; aprende */
+  T.call(()=>fade(()=>{ camReset(); E("simClose()"); chtIn(); }),null,88.3)
+   .call(()=>chtMsg(`<img src="${E("prod('vela-anillo-de-fuego-esencia-andina').u")}" alt=""><span>Vi esto, para mi hermana</span>`,'u ph'),null,90)
+   .call(chtTyping,null,90.9)
+   .call(()=>chtMsg('<div class="ok"><i>✓</i><span>Tu hermana es Carla. Lo guardé para su cumpleaños.<small>Lo sé por Contactos</small></span></div>','a'),null,91.9)
+   .call(()=>chtLine('Cuéntame <em>cómo les fue.</em>','Lo que ningún conector sabe'),null,94.1)
+   .call(()=>chtMsg('A mi papá le encantó la botella','u'),null,94.9)
+   .call(chtTyping,null,95.7)
+   .call(()=>chtMsg('<div class="ok"><i>✓</i><span>Anotado. Le gusta lo útil: lo tengo en cuenta para su próximo regalo.</span></div>','a'),null,96.7)
+   .call(()=>chtLine('Y aprendo <em>de ti.</em>','Cada vez acierto más'),null,98.6);
+  /* T12 · Tienda: pasas por Creado con un regalo pendiente */
+  T.call(()=>fade(()=>{ chtOut(); camReset(); E("simClose(); tnOpen()"); }),null,101)
+   .call(()=>capIn('¿Pasas por <em>la tienda?</em>',{dark:true,sm:true,r:true}),null,101.8)
+   .call(()=>capIn('¿Con un regalo <em>pendiente?</em>',{dark:true,sm:true,r:true}),null,104)
+   .call(()=>click('#tnN'),null,106)
+   .call(()=>capIn('Te aviso <em>que está aquí.</em>',{dark:true,sm:true,r:true}),null,106.4)
+   .call(()=>click('[data-tn="guide"]'),null,108.8)
+   .call(()=>capIn('Y te llevo <em>directo a él.</em>',{dark:true,sm:true,r:true}),null,109.2)
+   .call(capOut,null,111.6);
+  /* T13 · Cierre */
+  T.call(()=>{ cardIn('c12'); camReset(); },null,112.2)
    .set({},{},END);
   /* barra de progreso */
   T.fromTo('#bar',{width:0},{width:1920,duration:END,ease:'none'},0);
@@ -368,12 +405,12 @@ function prep(i){
   const n=SHOTS[i].name.split(' ')[0];
   if(n==='T2'){ E("startOb()"); E("obGo(1)"); }
   else if(n==='T3'){ E("startOb(); ob.step=1; obProg(1); ['cal','gmail','contacts','wa'].forEach(k=>{ ob.conn[k]=true; if(k==='gmail') conn.gmail=true; if(k==='contacts') conn.contacts=true; }); obView()"); }
-  else if(n==='T14'){ cardIn('c12'); }
+  else if(n==='T13'){ cardIn('c12'); }
   else E("openYear()");
   if(n==='T8') cardIn('c7');
-  const SIM={T9:"simOpen('reloj')",T10:"simOpen('voz')",T11:"simOpen('car')",T13:"tnOpen()"}; if(SIM[n]) E(SIM[n]);
-  const CAPS={T9:'En tu <em>reloj.</em>',T10:'En tu <em>casa.</em>',T11:'¿Se te pasó <em>una fecha?</em>',T13:'Y cuando pasas <em>por la tienda.</em>'};
-  if(CAPS[n]) capIn(CAPS[n],{dark:true});
+  const SIM={T9:"simOpen('reloj')",T10:"simOpen('car')",T12:"tnOpen()"}; if(SIM[n]) E(SIM[n]);
+  const CAPS={T9:'En tu <em>reloj.</em>',T10:'¿Se te pasó <em>una fecha?</em>',T12:'¿Pasas por <em>la tienda?</em>'};
+  if(CAPS[n]) capIn(CAPS[n],n==='T12'?{dark:true,sm:true,r:true}:{dark:true});
 }
 function shotAt(t){ let k=0; SHOTS.forEach((s,i)=>{ if(t>=s.t) k=i; }); return k; }
 const grp=i=>SHOTS[i].join!=null?SHOTS[i].join:i;           // las tomas unidas arrancan desde la primera del grupo
