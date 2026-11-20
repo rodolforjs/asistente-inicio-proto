@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cuenta conmigo · Spot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Spot de ~80 s: reproduce la web real (index.html?spot=1) dentro de un escenario 1920×1080 y la anima sola.
+   Controles: espacio = pausa · ← → = toma anterior/siguiente · Esc = salir. ?loop=1 repite al terminar. */
+:root{--ink:#0e1014;--brand:#ff5924;--paper:#f4f2ee}
+html,body{margin:0;height:100%;background:#000;overflow:hidden;cursor:none}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--paper)}
+#cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+#app{display:block;width:1920px;height:1080px;border:0;pointer-events:none;background:#f3f4f6}
+/* placas limpias (T1, T7, T12) */
+.card{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;background:var(--paper);opacity:0;visibility:hidden;text-align:center;font-family:'Newsreader',serif;color:var(--ink)}
+.logo{font-family:'Newsreader',serif;font-size:44px;font-weight:500;letter-spacing:-.04em}.logo i{font-style:normal;color:var(--brand)}
+.big{max-width:1400px;font-size:112px;font-weight:400;line-height:1;letter-spacing:-.045em}
+.big em{font-style:italic;color:var(--brand)}
+.sub{margin-top:-6px;font-family:'Newsreader',serif;font-style:italic;font-size:48px;font-weight:500;letter-spacing:-.01em;color:#4b5563}
+.cc{display:flex;flex-direction:column;align-items:center;justify-content:center;width:112px;height:112px;margin-top:22px;border:2.5px solid #a8452c;background:#fff;color:#a8452c;font-family:'Newsreader',serif;font-weight:500;line-height:.95}
+.cc b{font-weight:500;font-size:27px;letter-spacing:-.01em;transform:scaleX(.82);white-space:nowrap}
+/* textos sobre la web */
+.cap{position:absolute;left:96px;bottom:84px;z-index:4;max-width:1200px;border-radius:30px;background:rgba(255,255,255,.94);padding:22px 38px 28px;font-family:'Newsreader',serif;font-size:84px;font-weight:400;line-height:1.02;letter-spacing:-.04em;color:var(--ink);box-shadow:0 30px 60px -30px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.05);opacity:0}
+.cap em{font-style:italic;color:var(--brand)}
+.cap.sm{bottom:40px;font-size:66px;padding:18px 32px 22px}
+.cap.dk{background:rgba(10,12,16,.78);color:#fff;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+#veil{position:absolute;inset:0;z-index:8;background:#000;opacity:1;pointer-events:none}
+#bar{position:absolute;left:0;bottom:0;z-index:9;height:5px;width:0;background:var(--brand);opacity:.85}
+#hud{position:fixed;right:18px;bottom:16px;z-index:20;border-radius:999px;background:rgba(255,255,255,.12);padding:8px 14px;font:600 13px/1 'Inter',sans-serif;color:rgba(255,255,255,.8);opacity:0;transition:opacity .3s}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="cam"><iframe id="app" title="Cuenta conmigo" tabindex="-1"></iframe></div>
+  <p class="cap" id="cap"></p>
+  <section class="card" id="c1"><span class="logo">Cuenta conmigo<i>.</i></span><p class="big">Un asistente que <em>planifica</em> tus regalos del año.</p></section>
+  <section class="card" id="c7"><p class="big">Y no solo <em>en la web.</em></p></section>
+  <section class="card" id="c12"><p class="big" style="font-size:150px">Cuenta conmigo<em>.</em></p><p class="sub">Juntos no se nos pasará nada.</p><span class="cc" aria-label="Creado en Chile"><b>CREADO</b><b>EN CHILE</b></span></section>
+  <div id="veil"></div><div id="bar"></div>
+</div>
+<div id="hud"></div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script>
+const Q=new URLSearchParams(location.search), LOOP=Q.get('loop')==='1';
+const $=id=>document.getElementById(id), STAGE=$('stage'), CAM=$('cam'), APP=$('app'), CAP=$('cap');
+let W=null, tl=null, cur=0, paused=false;
+
+/* el escenario 1920×1080 se ajusta a la pantalla (con bandas si no es 16:9) */
+function fit(){ const s=Math.min(innerWidth/1920,innerHeight/1080); STAGE.style.transform=`translate(${(innerWidth-1920*s)/2}px,${(innerHeight-1080*s)/2}px) scale(${s})`; }
+addEventListener('resize',fit); fit();
+
+/* acceso a la web dentro del marco */
+const E=code=>W.eval(code);
+const el=sel=>W.document.querySelector(sel);
+const click=sel=>{ const b=el(sel); if(b) b.click(); };
+
+/* cámara: lleva un elemento de la web hacia el centro (un poco arriba, para dejar espacio al texto) */
+function frame(sel,scale=1.15,dur=1.6,cy=.44,cx=.5){
+  const e=sel&&el(sel); let x=0,y=0;
+  if(e&&scale>1){ const r=e.getBoundingClientRect(), mx=r.left+r.width/2, my=r.top+r.height/2;
+    x=Math.min(0,Math.max(1920-1920*scale,1920*cx-mx*scale)); y=Math.min(0,Math.max(1080-1080*scale,1080*cy-my*scale)); }
+  else scale=1;
+  gsap.to(CAM,{x,y,scale,duration:dur,ease:'power2.inOut',overwrite:true});
+}
+const camReset=()=>gsap.set(CAM,{x:0,y:0,scale:1});
+
+/* textos: máximo 8 palabras, grandes, en la serif de la web */
+function capIn(t,{dark=false,sm=false}={}){ gsap.killTweensOf(CAP); CAP.innerHTML=t; CAP.classList.toggle('dk',dark); CAP.classList.toggle('sm',sm); gsap.fromTo(CAP,{opacity:0,y:24},{opacity:1,y:0,duration:.6,ease:'power3.out'}); }
+function capOut(){ gsap.to(CAP,{opacity:0,y:-10,duration:.4,ease:'power2.in'}); }
+function cardIn(id){ gsap.set(`#${id}`,{visibility:'visible'}); gsap.fromTo(`#${id}`,{opacity:0},{opacity:1,duration:.6}); gsap.fromTo(`#${id} > *`,{opacity:0,y:30},{opacity:1,y:0,duration:.9,stagger:.12,ease:'power3.out'}); }
+function cardOut(id){ gsap.to(`#${id}`,{opacity:0,duration:.6,onComplete:()=>gsap.set(`#${id}`,{visibility:'hidden'})}); }
+
+/* las tomas: inicio (s) según el guion; cada "grupo" puede arrancar desde cero recargando la web */
+const SHOTS=[
+  {t:0,  name:'T1 Definición'},
+  {t:4,  name:'T2 Conectar'},
+  {t:9,  name:'T3 Análisis'},
+  {t:24, name:'T4 Planner'},
+  {t:30, name:'T5 Pensando', join:3},
+  {t:36, name:'T6 Propuesta', join:3},
+  {t:42, name:'T7 Puente'},
+  {t:46, name:'T8 Reloj'},
+  {t:53, name:'T9 Casa'},
+  {t:61, name:'T10 Auto'},
+  {t:69, name:'T11 Tienda'},
+  {t:76, name:'T12 Cierre'},
+];
+const END=82;
+
+function build(){
+  const T=gsap.timeline({paused:true,onComplete:()=>{ if(LOOP) start(0); }});
+  /* T1 · Definición — la web se prepara detrás de la placa */
+  T.call(()=>{ cardIn('c1'); E("startOb()"); },null,0)
+   .call(()=>E("obGo(1)"),null,1.2);
+  /* T2 · Conectar */
+  T.call(()=>{ cardOut('c1'); frame('#obR',1.08,3,.5); capIn('Conectas <em>lo que ya usas.</em>'); },null,4)
+   .call(()=>E("obConnect('cal')"),null,5)
+   .call(capOut,null,8.4);
+  /* T3 · Análisis: sin apuro */
+  T.call(()=>{ camReset(); E("obFinish()"); W.gsap.delayedCall(.45,()=>W.gsap.globalTimeline.timeScale(.55)); },null,9)
+   .call(()=>capIn('Leo <em>tu año.</em>'),null,10)
+   .call(()=>frame('#field',1.06,4,.42),null,11)
+   .call(capOut,null,15.6)
+   .call(()=>{ frame('#people',1.04,3,.5); capIn('Encontré <em>11 fechas</em> que importan.'); },null,16.4)
+   .call(()=>W.gsap.globalTimeline.timeScale(1),null,23)
+   .call(capOut,null,23.4);
+  /* T4 · Planner: llega el aviso y la tarjeta de Amigo secreto */
+  T.call(()=>{ camReset(); E("closeSync(); openYear()"); },null,24)
+   .call(()=>E("simulateNotif()"),null,24.8)
+   .call(()=>frame('#apNotif',1.7,1.2,.32),null,25.3)
+   .call(()=>capIn('Te aviso <em>antes</em> de que se te pase.',{sm:true}),null,25.2)
+   .call(()=>frame('#apTicket',1.2,1.4,.42,.62),null,28.4)
+   .call(()=>W.gsap.globalTimeline.timeScale(.62),null,29.2)
+   .call(capOut,null,29.6);
+  /* T5 · Pensando: 30 → 8 → 3 → 1 */
+  T.call(()=>{ frame('#plLeft',1.08,1.4,.4,.42); capIn('Busco <em>por ti.</em>',{sm:true}); },null,30)
+   .call(()=>W.gsap.globalTimeline.timeScale(1),null,35.4)
+   .call(capOut,null,35.6);
+  /* T6 · Propuesta: chips y "Comprar y dejar listo" destacado */
+  T.call(()=>{ const b=el('.pl-cta'); if(b) b.classList.add('spot-hl'); frame(null,1,1.2); capIn('Tú solo <em>apruebas.</em>',{sm:true}); },null,36)
+   .call(capOut,null,41.4);
+  /* T7 · Puente */
+  T.call(()=>{ cardIn('c7'); camReset(); },null,42)
+   .call(()=>E("simOpen('reloj')"),null,45.4);
+  /* T8 · Reloj */
+  T.call(()=>{ cardOut('c7'); capIn('En tu <em>muñeca.</em>',{dark:true}); },null,46)
+   .call(()=>click('#rlS [data-s="see"]'),null,49.2)
+   .call(capOut,null,52.4);
+  /* T9 · Casa (parlante) */
+  T.call(()=>fade(()=>{ camReset(); E("simOpen('voz')"); }),null,52.6)
+   .call(()=>capIn('En tu <em>casa.</em>',{dark:true}),null,53.4)
+   .call(()=>click('.vz-say[data-s="yes"]'),null,58.2)
+   .call(capOut,null,60.4);
+  /* T10 · Auto */
+  T.call(()=>fade(()=>{ camReset(); E("simOpen('car')"); }),null,60.6)
+   .call(()=>capIn('En el <em>camino.</em>',{dark:true}),null,61.4)
+   .call(()=>frame('#phQ',1.3,1.8,.46,.6),null,63.6)
+   .call(()=>click('#carBt [data-s="yes"]'),null,66)
+   .call(capOut,null,68.4);
+  /* T11 · Tienda */
+  T.call(()=>fade(()=>{ E("simClose(); tnOpen()"); }),null,68.6)
+   .call(()=>{ camReset(); capIn('Y cuando pasas <em>por la tienda.</em>',{dark:true}); frame('.tn-ph',1.22,1.6,.47,.66); },null,69.4)
+   .call(()=>click('#tnN'),null,71.6)
+   .call(()=>click('[data-tn="guide"]'),null,73.8)
+   .call(capOut,null,75.4);
+  /* T12 · Cierre */
+  T.call(()=>{ cardIn('c12'); camReset(); },null,76)
+   .set({},{},END);
+  /* barra de progreso */
+  T.fromTo('#bar',{width:0},{width:1920,duration:END,ease:'none'},0);
+  return T;
+}
+/* fundido corto entre simulaciones */
+function fade(fn){ gsap.timeline().to('#veil',{opacity:1,duration:.35}).call(fn).to('#veil',{opacity:0,duration:.5,delay:.15}); }
+
+/* arrancar desde una toma: se recarga la web para empezar limpio y se adelanta hasta ese punto */
+function start(i){
+  i=Math.max(0,Math.min(SHOTS.length-1,i)); if(SHOTS[i].join!=null) i=SHOTS[i].join; cur=i;
+  if(tl){ tl.kill(); tl=null; }
+  gsap.killTweensOf([CAP,CAM,'.card','.card > *']); gsap.set(CAP,{opacity:0}); gsap.set('.card',{opacity:0,visibility:'hidden'}); camReset();
+  gsap.to('#veil',{opacity:1,duration:.3});
+  APP.onload=()=>{ W=APP.contentWindow; setTimeout(()=>{ tl=build(); const t0=SHOTS[i].t;
+      if(i>0) prep(i);                       // deja la web en el estado que esa toma necesita
+      tl.seek(t0,true); tl.play(); if(paused){ tl.pause(); W.gsap.globalTimeline.pause(); }
+      gsap.to('#veil',{opacity:0,duration:.5,delay:.2}); }, 900); };
+  APP.src='index.html?spot=1&r='+Date.now();
+}
+/* estado previo de cada grupo de tomas, al saltar con las flechas */
+function prep(i){
+  const n=SHOTS[i].name.split(' ')[0];
+  if(n==='T2'){ E("startOb()"); E("obGo(1)"); }
+  else if(n==='T3'){ E("startOb()"); E("ob.conn.cal=true"); }
+  else if(n==='T7'||n==='T8'){ E("openYear()"); if(n==='T8') E("simOpen('reloj')"); else cardIn('c7'); }
+  else if(['T4','T9','T10','T11'].includes(n)){ E("openYear()"); }
+  else if(n==='T12'){ cardIn('c12'); }
+  if(n==='T9') E("simOpen('voz')"); if(n==='T10') E("simOpen('car')"); if(n==='T11') E("tnOpen()");
+  if(['T9','T10','T11'].includes(n)) capIn({T9:'En tu <em>casa.</em>',T10:'En el <em>camino.</em>',T11:'Y cuando pasas <em>por la tienda.</em>'}[n],{dark:true});
+}
+function shotAt(t){ let k=0; SHOTS.forEach((s,i)=>{ if(t>=s.t) k=i; }); return k; }
+function hud(t){ const h=$('hud'); h.textContent=t; h.style.opacity=1; clearTimeout(hud.k); hud.k=setTimeout(()=>h.style.opacity=paused?1:0,1400); }
+
+addEventListener('keydown',e=>{
+  if(e.key===' '){ e.preventDefault(); if(!tl) return; paused=!paused;
+    if(paused){ tl.pause(); gsap.globalTimeline.pause(); W&&W.gsap.globalTimeline.pause(); hud('Pausa'); }
+    else { gsap.globalTimeline.resume(); W&&W.gsap.globalTimeline.resume(); tl.resume(); hud(SHOTS[shotAt(tl.time())].name); } }
+  else if(e.key==='ArrowRight'){ const k=tl?shotAt(tl.time()):cur; let n=k+1; while(n<SHOTS.length&&SHOTS[n].join!=null) n++; start(n); hud(SHOTS[Math.min(n,SHOTS.length-1)].name); }
+  else if(e.key==='ArrowLeft'){ const k=tl?shotAt(tl.time()):cur; let n=SHOTS[k].join!=null?SHOTS[k].join:k; n=(tl&&tl.time()-SHOTS[n].t>1.5)?n:n-1; while(n>0&&SHOTS[n].join!=null) n--; start(Math.max(0,n)); hud(SHOTS[Math.max(0,n)].name); }
+  else if(e.key==='Escape'){ location.href='index.html'; }
+});
+document.fonts.ready.then(()=>start(0));
+</script>
+</body>
+</html>
