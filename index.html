@@ -1042,9 +1042,9 @@ body.sim-on .fab{display:none}
   --n-fine:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='2'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 .5'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
 .ph-h .ph-w{container-type:size}
 .kt,.kt-bg{position:absolute;inset:0}
+.kt-bg.dof{filter:blur(.1cqw)}
 .kt{overflow:hidden;background:linear-gradient(180deg,#efe9df,#e4ddd1)}
 .kt > *,.kt-bg > *{position:absolute}
-.kt-bg::before{content:"";position:absolute;inset:0;background:var(--n-fine);background-size:20cqw;opacity:.18;mix-blend-mode:multiply}
 /* muebles altos de roble */
 .kt-up{top:0;height:16.9cqw;background:var(--n-wood),repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(50,28,10,.45) 8.25cqw 8.38cqw,transparent 8.38cqw 8.4cqw),linear-gradient(180deg,#c99f70,#b4865a);background-size:12cqw 30cqw,auto,auto;box-shadow:0 .5cqw 1cqw rgba(50,30,12,.4),inset 0 -.2cqw 0 rgba(255,230,200,.25),inset 0 1.2cqw 1.4cqw -1cqw rgba(30,18,6,.45)}
 .kt-up.l{left:0;width:33.6cqw}.kt-up.r{left:66.8cqw;width:16cqw}.kt-up.c{left:34.2cqw;width:31.6cqw;height:6cqw}
@@ -1057,10 +1057,10 @@ body.sim-on .fab{display:none}
 .kt-win::before,.kt-win::after{content:"";position:absolute;background:#f7f5f0}
 .kt-win::before{left:50%;top:.7cqw;bottom:.7cqw;width:.5cqw;margin-left:-.25cqw}.kt-win::after{left:.7cqw;right:.7cqw;top:42%;height:.5cqw}
 .kt-sill{left:84.4cqw;top:27.2cqw;width:14.2cqw;height:.7cqw;border-radius:.1cqw;background:linear-gradient(#fbfaf7,#e2ddd4);box-shadow:0 .3cqw .5cqw rgba(0,0,0,.2)}
-.kt-sun{left:40cqw;right:0;top:4cqw;bottom:0;background:linear-gradient(200deg,rgba(255,236,196,.75),rgba(255,236,196,.25) 45%,transparent 75%);clip-path:polygon(100% 0,100% 40%,58% 100%,0 100%,40% 50%);filter:blur(2cqw);mix-blend-mode:soft-light;pointer-events:none}
+.kt-sun{left:40cqw;right:0;top:4cqw;bottom:0;background:linear-gradient(200deg,rgba(255,240,210,.32),rgba(255,240,210,.1) 45%,transparent 75%);clip-path:polygon(100% 0,100% 40%,58% 100%,0 100%,40% 50%);pointer-events:none}
 /* cerámica, cubiertas, zócalo y piso */
 .kt-tile{left:0;right:0;top:16.9cqw;height:17cqw;background-color:#f6f3ec;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cdefs%3E%3ClinearGradient id='g' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.8'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='.04'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M1 1h28v13H1zM31 1h28v13H31zM-14 16h28v13h-28zM16 16h28v13H16zM46 16h28v13H46z' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23d6cfc2' stroke-width='1.3'%3E%3Cpath d='M0 .6H60M0 15.4H60M30 0V15M15 15V30M45 15V30'/%3E%3C/g%3E%3C/svg%3E");background-size:3.6cqw 1.8cqw;box-shadow:inset 0 2.2cqw 2cqw -1.4cqw rgba(50,30,12,.35)}
-.kt-glow{left:0;right:0;top:16.9cqw;height:17cqw;background:radial-gradient(10cqw 5cqw at 16.8cqw 0,rgba(255,206,140,.7),transparent 70%),radial-gradient(7cqw 4cqw at 75cqw 0,rgba(255,206,140,.55),transparent 70%);mix-blend-mode:soft-light}
+.kt-glow{left:0;right:0;top:16.9cqw;height:17cqw;background:radial-gradient(10cqw 5cqw at 16.8cqw 0,rgba(255,206,140,.38),transparent 70%),radial-gradient(7cqw 4cqw at 75cqw 0,rgba(255,206,140,.3),transparent 70%)}
 .kt-ct{top:35.3cqw;bottom:6.6cqw;width:33.6cqw;background:repeating-linear-gradient(90deg,transparent 0 8.25cqw,rgba(0,0,0,.12) 8.25cqw 8.33cqw,rgba(255,255,255,.6) 8.33cqw 8.4cqw),linear-gradient(180deg,#f2f0eb,#dcd7cf);box-shadow:inset 0 1.4cqw 1.2cqw -1cqw rgba(0,0,0,.25)}
 .kt-ct.l{left:0}.kt-ct.r{right:0;width:33.2cqw}
 .kt-top{top:33.9cqw;height:2.5cqw;width:33.6cqw;background:var(--n-fine),linear-gradient(180deg,#ece8e2 0,#f6f4f0 55%,#fbfaf8 70%,#d9d3ca 72%,#cfc8bd 100%);background-size:8cqw,auto;background-blend-mode:soft-light;box-shadow:0 .35cqw .5cqw rgba(0,0,0,.22)}
@@ -1074,12 +1074,12 @@ body.sim-on .fab{display:none}
 .kt-it::after{content:"";position:absolute;left:8%;right:8%;bottom:-.5cqw;height:1.2cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(30,20,10,.45),transparent);z-index:-1}
 .kt-it svg{display:block;width:100%;height:auto;overflow:visible}
 .kt-light{inset:0;pointer-events:none;background:radial-gradient(70cqw 40cqw at 92% 10%,rgba(255,244,222,.28),transparent 70%),radial-gradient(120cqw 70cqw at 50% 45%,transparent 55%,rgba(35,22,10,.35))}
-.kt-grain{inset:-5%;pointer-events:none;background:var(--n-fine);background-size:14cqw;opacity:.09;mix-blend-mode:overlay;animation:ktg .5s steps(4) infinite}
+.kt-grain{inset:-5%;pointer-events:none;background:var(--n-fine);background-size:14cqw;opacity:.07;mix-blend-mode:overlay}
 @keyframes ktg{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(2%,2%)}}
 /* refri French door de acero cepillado */
 .frg{position:absolute;left:35.8cqw;top:6.3cqw;width:29cqw;height:49.8cqw;border-radius:.8cqw .8cqw .3cqw .3cqw;background:linear-gradient(90deg,#5f656c,#868c93 50%,#5f656c);box-shadow:0 0 0 .12cqw #50565d}
 .frg-d,.frg-dw{position:absolute;overflow:hidden;border-radius:.6cqw;background:linear-gradient(90deg,rgba(255,255,255,.05) 0,rgba(255,255,255,.3) 14%,rgba(255,255,255,0) 30%,rgba(255,255,255,0) 62%,rgba(255,255,255,.42) 80%,rgba(255,255,255,.08) 96%),linear-gradient(180deg,#d7dbe0,#b9bec4 60%,#a9aeb5);box-shadow:inset 0 .12cqw 0 rgba(255,255,255,.75),inset 0 -.18cqw 0 rgba(0,0,0,.18),inset .12cqw 0 0 rgba(255,255,255,.35),inset -.12cqw 0 0 rgba(0,0,0,.12),0 .15cqw .3cqw rgba(0,0,0,.25)}
-.frg-d::before,.frg-dw::before{content:"";position:absolute;inset:0;background:var(--n-steel);background-size:6cqw 30cqw;opacity:.5;mix-blend-mode:overlay;pointer-events:none}
+.frg-d::before,.frg-dw::before{content:"";position:absolute;inset:0;background:var(--n-steel);background-size:6cqw 30cqw;opacity:.22;pointer-events:none}
 .frg-d{top:.3cqw;height:30cqw;width:14.35cqw}.frg-d.l{left:.1cqw}.frg-d.r{right:.1cqw}
 .frg-dw{left:.1cqw;right:.1cqw}.frg-dw.a{top:30.5cqw;height:9.4cqw}.frg-dw.b{top:40.1cqw;height:9.5cqw}
 .frg-h{position:absolute;z-index:1;top:4.5cqw;width:.75cqw;height:21cqw;border-radius:.4cqw;background:linear-gradient(90deg,#5d636a,#fafbfc 38%,#c3c8cd 60%,#6a7077);box-shadow:.35cqw .6cqw .8cqw rgba(0,0,0,.38)}
@@ -1104,7 +1104,7 @@ body.sim-on .fab{display:none}
 .fh-top b{display:block;font-size:17cqw;font-weight:200;letter-spacing:-.03em;line-height:.95}
 .fh-top small{display:block;margin-top:1.4cqw;font-size:3.8cqw;color:rgba(255,255,255,.65)}
 .fh-w{display:flex;align-items:center;gap:1.6cqw;margin-top:1.6cqw;font-size:5.2cqw;font-weight:400}.fh-w i{width:5cqw;height:5cqw;border-radius:50%;background:radial-gradient(circle,#ffd25a 45%,rgba(255,210,90,.3) 46%)}
-.fh-card{margin-top:4.5cqw;border-radius:4.5cqw;background:rgba(255,255,255,.08);padding:4cqw;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 .3cqw rgba(255,255,255,.06)}
+.fh-card{margin-top:4.5cqw;border-radius:4.5cqw;background:rgba(255,255,255,.08);padding:4cqw;box-shadow:inset 0 0 0 .3cqw rgba(255,255,255,.06)}
 .fh-card > p{display:flex;justify-content:space-between;font-size:3.7cqw;font-weight:600;color:rgba(255,255,255,.7)}.fh-card > p i{font-style:normal;font-weight:400;color:rgba(255,255,255,.45)}
 .fh-cal li{display:flex;gap:2.4cqw;align-items:center;margin-top:2cqw;border-radius:2.6cqw;padding:1.6cqw 2cqw;font-size:4.4cqw;color:rgba(255,255,255,.88)}
 .fh-cal li b{flex:none;width:14.5cqw;white-space:nowrap;font-size:3.5cqw;font-weight:600;color:rgba(255,255,255,.5)}
@@ -1179,6 +1179,30 @@ body.sim-on .fab{display:none}
 .vp-orn span{width:26px;height:26px;border-radius:50%;overflow:hidden}.vp-orn .pt{width:100%;height:100%}
 .vp-orn b{display:grid;place-items:center;min-width:20px;height:20px;border-radius:10px;background:#fff;color:#0e1014;font-size:11px}
 @media(max-width:620px){.vp-t1{font-size:22px;margin-top:6px}.vp-wc{padding:14px}.vp-btn{height:42px;margin-top:10px}.vp-hint{display:none}}
+/* lentes estilo Ray-Ban Display: pantalla pequeña en el lente derecho. Es luz que se suma (no puede mostrar negro): por eso mix-blend screen */
+.hud{position:absolute;z-index:5;left:70.5%;top:56%;width:min(300px,52vw);transform:translate(-50%,-50%);pointer-events:none}
+.hud-c{border-radius:18px;padding:14px 15px 13px;color:#fff;background:linear-gradient(160deg,rgba(40,46,60,.62),rgba(16,18,26,.5));box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 30px rgba(140,170,255,.08);text-shadow:0 0 8px rgba(255,255,255,.35);pointer-events:auto}
+.hud-k{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.75)}
+.hud-ap{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:#ff5924}.hud-ap svg{width:11px;height:11px}
+.hud-scan{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.85)}
+.hud-scan i{width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:hudsp .9s linear infinite}
+@keyframes hudsp{to{transform:rotate(360deg)}}
+.hud-t{display:block;margin-top:9px;font-size:17px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.hud-s{margin-top:4px;font-size:13px;color:rgba(255,255,255,.8)}
+.hud-p{display:flex;align-items:center;gap:10px;margin-top:10px}
+.hud-p img{flex:none;width:46px;height:46px;border-radius:10px;object-fit:cover;opacity:.92}
+.hud-p b{display:block;font-size:13.5px;line-height:1.2}.hud-p small{display:block;margin-top:2px;font-size:12px;color:rgba(255,255,255,.7)}
+.hud-a{display:flex;gap:6px;margin-top:12px}
+.hud-a button{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;border-radius:999px;background:rgba(255,255,255,.14);font-size:12.5px;font-weight:600;color:#fff;transition:background .2s}
+.hud-a button:first-child{background:rgba(255,255,255,.9);color:#0e1014;text-shadow:none}
+.hud-a button:hover{background:rgba(255,255,255,.28)}.hud-a button:first-child:hover{background:#fff}
+.hud-v{display:flex;align-items:center;gap:8px;min-height:34px;font-size:14px;font-style:italic}
+.hud-v i{flex:none;width:10px;height:10px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 0 rgba(255,89,36,.6);animation:hudmic 1s ease-out infinite}
+@keyframes hudmic{to{box-shadow:0 0 0 10px rgba(255,89,36,0)}}
+.hud-band{position:absolute;z-index:5;left:24px;bottom:22px;display:flex;align-items:center;gap:8px;border-radius:999px;background:rgba(14,16,20,.55);padding:6px 13px 6px 8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85);white-space:nowrap}
+.hud-bi{width:22px;height:12px;border-radius:6px;border:2px solid rgba(255,255,255,.7);transition:background .2s,border-color .2s}
+.hud-band.on .hud-bi{background:#ff5924;border-color:#ff5924}
+@media(max-width:620px){.hud{left:58%;top:60%;width:min(270px,78vw)}.hud-c{padding:12px}.hud-t{font-size:15px}.hud-a button{height:32px;font-size:11.5px}}
 /* ---------- En la tienda: aviso del celular ---------- */
 .tn{position:fixed;inset:0;z-index:190;display:none;place-items:center;background:rgba(14,16,20,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.tn-on .tn{display:grid}
@@ -3433,7 +3457,7 @@ const SIM = {
   voz:   {t:'En el parlante.', d:'Mientras cocinas, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
   refri: {t:'En el refri.',    d:'Alguien de la casa anotó un cumple en el calendario de la cocina. Lo sumo a tus fechas.', n:'Tía Ana'},
   reloj: {t:'En el reloj.',    d:'El mismo aviso de 14 días, en tu muñeca. Ves cómo elegí y lo apruebas con un toque.', n:'Andrés'},
-  lentes:{t:'En los lentes.',  d:'Recorres una tienda con tus lentes. Algo te recuerda a tu mamá y lo guardas con un gesto.', n:'Mamá', h:'mielero-en-ceramica-gres'},
+  lentes:{t:'En los lentes.',  d:'Recorres una tienda. En un lente te muestro algo para tu mamá; lo guardas con la voz o juntando los dedos.', n:'Mamá', h:'mielero-en-ceramica-gres'},
 };
 const SIM_KEY = {c:'car',a:'voz',r:'refri',w:'reloj',l:'lentes'};
 const VOZ_DESC = {'bufanda-alpaca-unisex-chocolate':['una bufanda de alpaca','la']};
@@ -3489,7 +3513,7 @@ const LENS=`<div class="ph-blur" aria-hidden="true"></div><svg class="ph-lens" v
 const phMount=(k,{screen='',world='',layer=''}={})=>{ const P=PH[k];
   return `<div class="ph${P.html?' ph-h':''}" id="phV">${P.src?`<img class="ph-bg" src="${P.src}" alt="">`:''}<div class="ph-w" id="phW">${P.src?`<img class="ph-i" src="${P.src}" alt="">`:''}${P.q?`<div class="ph-q" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${P.lens?LENS:''}${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
 /* cámara: k=0 muestra la foto completa; k=1 acerca hasta que la pantalla (o el foco) queda en "at" con el tamaño de zoomTo */
-function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove}={}){
+function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove,wc=false}={}){
   const P=PH[k], V=$('phV'), W=$('phW'), Q=$('phQ'), st={k:0,mx:0,my:0}; let L={};
   const draw=()=>{ if(!L.w) return;
     const {vw,vh,w,h,f,s1}=L, s=lerp(1,s1,st.k)*(1+par);
@@ -3507,7 +3531,10 @@ function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove}={}){
       if(!focus) f=[P.q.reduce((t,p)=>t+p[0],0)/4, P.q.reduce((t,p)=>t+p[1],0)/4]; }
     else if(zoomTo) s1=zoomTo(vw,vh,w);
     L={vw,vh,w,h,f,s1}; draw(); };
-  phCam={st,draw,toView:(fx,fy)=>[L.tx+fx*L.w*L.s, L.ty+fy*L.h*L.s], L:()=>L, off:()=>{ removeEventListener('resize',layout); gsap.killTweensOf(st); }};
+  if(wc) W.style.willChange='transform';
+  /* acercamiento: durante el movimiento la escena va en su propia capa (fluido); al terminar se vuelve a dibujar nítida */
+  const go=v=>{ W.style.willChange='transform'; return gsap.to(st,{k:1,...v,onUpdate:draw,onComplete:()=>{ if(!wc) W.style.willChange=''; v.onComplete&&v.onComplete(); }}); };
+  phCam={st,draw,go,toView:(fx,fy)=>[L.tx+fx*L.w*L.s, L.ty+fy*L.h*L.s], L:()=>L, off:()=>{ removeEventListener('resize',layout); gsap.killTweensOf(st); }};
   layout(); addEventListener('resize',layout);
   return phCam;
 }
@@ -3531,7 +3558,7 @@ function simCar(p){
   const cam=phCamera('auto',{zoomTo:(vw,vh)=>vw<=620?vw-20:Math.min(vw*.4,(vh-300)*1.54,620),at:[.5,.64]});
   const show=()=>{ const b=$('carB'); if(!b) return; b.style.visibility='visible'; if(!REDUCE) gsap.from(b,{x:30,opacity:0,duration:.6,ease:'power3.out'}); };
   if(REDUCE){ cam.st.k=1; cam.draw(); show(); }
-  else gsap.to(cam.st,{k:1,duration:2.4,delay:.5,ease:'power2.inOut',onUpdate:cam.draw,onComplete:show});
+  else cam.go({duration:2.4,delay:.5,ease:'power2.inOut',onComplete:show});
   simAct.yes=()=>{ simBuy(p,'desde el auto'); $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch">${simOk('Listo. Llega a las 19:10, antes que tú.')}${simEnd()}</div>`; };
   simAct.no=()=>{ $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch"><p style="color:rgba(255,255,255,.7)">Ok. Te lo recuerdo al estacionar.</p>${simEnd('sim-b2')}</div>`; };
 }
@@ -3601,20 +3628,18 @@ function simRefri(){
           <div class="fh-n" id="frN"><span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div>
         </div></div></div></div>
       <div class="frg-dw a"><span class="frg-hb"></span></div><div class="frg-dw b"><span class="frg-hb"></span></div></div>
-    <div class="kt-light"></div><div class="kt-grain"></div></div>`});
+    <div class="kt-light"></div></div>`});
   /* foco: centro de la pantalla de la puerta (en fracción del mundo de 100 × 62.5) */
   /* cámara: foco en la pantalla; al acercarse, el fondo se desenfoca (profundidad de campo) y hay un leve pulso de mano */
   const KB=$('ktB');
-  const cam=phCamera('refri',{focus:[.5733,16.75/62.5],zoomTo:(vw,vh,w)=>(vw<=620?Math.min(vw-56,(vh-150)/1.6):Math.min(340,(vh-170)/1.6))/(.0896*w),at:[.5,.54],par:REDUCE?0:.012,
-    onMove:()=>{ if(KB&&phCam) KB.style.filter=phCam.st.k>.02?`blur(${(phCam.st.k*.12).toFixed(3)}cqw)`:''; }});
-  if(!REDUCE){ gsap.to(cam.st,{mx:.35,duration:3.1,ease:'sine.inOut',yoyo:true,repeat:-1,onUpdate:cam.draw}); gsap.to(cam.st,{my:.3,duration:2.3,ease:'sine.inOut',yoyo:true,repeat:-1,delay:.4}); }
+  const cam=phCamera('refri',{focus:[.5733,16.75/62.5],zoomTo:(vw,vh,w)=>(vw<=620?Math.min(vw-56,(vh-150)/1.6):Math.min(340,(vh-170)/1.6))/(.0896*w),at:[.5,.54]});
   const show=()=>{ const n=$('frN'); if(!n) return;
     if(REDUCE){ n.style.transform='none'; return; }
     gsap.to(n,{y:0,duration:.6,ease:'back.out(1.3)'});
     gsap.fromTo('#frL .is-new',{backgroundColor:'rgba(255,89,36,0)'},{backgroundColor:'rgba(255,89,36,.32)',duration:.6,delay:.5,yoyo:true,repeat:3}); };
-  if(REDUCE){ cam.st.k=1; cam.draw(); $('fhS').classList.add('on'); show(); }
+  if(REDUCE){ cam.st.k=1; cam.draw(); $('fhS').classList.add('on'); if(KB) KB.classList.add('dof'); show(); }
   else { gsap.delayedCall(.6,()=>{ const s=$('fhS'); if(s) s.classList.add('on'); });
-    gsap.to(cam.st,{k:1,duration:2.4,delay:.5,ease:'power2.inOut',onUpdate:cam.draw,onComplete:()=>gsap.delayedCall(.3,show)}); }
+    cam.go({duration:2.4,delay:.5,ease:'power2.inOut',onComplete:()=>{ if(KB) KB.classList.add('dof'); gsap.delayedCall(.3,show); }}); }
   simAct.yes=()=>{
     let p=byN(N);
     if(!p){ p={n:N,o:'Cumpleaños',m:0,d:3,y:40,k:'cumple',h:150,st:'Te aviso'}; YEAR.push(p);
@@ -3645,45 +3670,30 @@ function simReloj(){
 
 /* lentes: guardas una idea mirando, al estilo de una interfaz espacial */
 function simLentes(p,S){
-  const x=prod(S.h), n0=(SAVED[p.n]||[]).length, POT=[.338,.564], mob=innerWidth<=620;
-  $('simD').innerHTML=phMount('lentes',{world:`<span class="vp-hl" id="glL" style="left:${POT[0]*100}%;top:${POT[1]*100}%"></span>`,
-    layer:`<span class="vp-gz" id="glZ" aria-hidden="true"></span>
-    <div class="vp-win" id="glG"><div class="vp-wc">
-      <p class="vp-k"><span class="vp-ap">${GIFT_I}</span>Cuenta conmigo</p>
-      <b class="vp-t1">Esto me recordó a ${rel(p)}.</b>
-      <div class="vp-pr"><img id="glT" src="${x.u}" alt=""><span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${clp(x.p)} · en Creado</small></span></div>
-      <p class="vp-why"><img src="${SI('pinterest','E60023')}" alt="">Guarda ideas de cocina</p>
-      <button class="vp-btn" data-s="yes">Guardar para su cumple</button></div>
-      <i class="vp-bar" aria-hidden="true"></i></div>
-    <p class="vp-hint" id="glH"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v6M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7s-5-2-6.5-5L3 11.5a1.5 1.5 0 0 1 2.5-1.5L8 13"/></svg>Mira y junta los dedos</p>
-    <div class="vp-orn" id="glO"><span>${portrait(p.n)}</span>Ideas de ${esc(p.n)} <b class="num" id="glN">${n0}</b></div>`});
-  const V=$('phV'), Z=$('glZ'), G=$('glG'); let look=false;
-  /* la ventana queda junto a lo que miras, como si estuviera en el espacio */
-  const place=()=>{ if(!phCam||!G.isConnected) return; const [px,py]=phCam.toView(...POT), L=phCam.L(), gw=G.offsetWidth, gh=G.offsetHeight;
-    if(mob){ G.style.left=(L.vw-gw)/2+'px'; G.style.top=(L.vh-gh-140)+'px'; }
-    else { G.style.left=Math.min(L.vw-gw-24,px+L.w*L.s*.05)+'px'; G.style.top=Math.max(90,Math.min(L.vh-gh-80,py-gh/2))+'px'; }
-    if(look) gsap.set(Z,{x:px,y:py}); };
-  const cam=phCamera('lentes',{focus:POT,zoomTo:(vw)=>vw<=620?1.8:1.7,at:mob?[.5,.3]:[.36,.55],par:REDUCE?0:.03,onMove:place});
-  const lookAt=()=>{ if(!G.isConnected) return; look=true; $('glL').classList.add('on'); place(); G.classList.add('on'); };
-  if(REDUCE){ cam.st.k=1; cam.draw(); lookAt(); $('glH').style.opacity=1; }
-  else { const L=cam.L();
-    gsap.timeline()
-      .to(cam.st,{k:1,duration:2.2,ease:'power2.inOut',onUpdate:cam.draw})
-      .set(Z,{x:L.vw/2,y:L.vh/2},0).to(Z,{opacity:1,duration:.3},'-=.6')
-      .to(Z,{x:()=>cam.toView(...POT)[0],y:()=>cam.toView(...POT)[1],duration:.9,ease:'power2.inOut'})
-      .add(lookAt)
-      .to(Z,{scale:.6,opacity:.6,duration:.3})
-      .from(G,{opacity:0,scale:.94,duration:.6,ease:'power3.out'},'<')
-      .to('#glH',{opacity:1,duration:.4},'-=.2');
-    /* mover la cabeza: la escena se desplaza apenas */
-    V.addEventListener('pointermove',e=>{ cam.st.mx=-(e.clientX/innerWidth-.5); cam.st.my=-(e.clientY/innerHeight-.5); cam.draw(); }); }
-  simAct.yes=()=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · lo viste en una tienda`,n:p.n,unread:false}); simAfter={tab:'personas',p};
-    const T=$('glT'), fl=T.cloneNode(), v=V.getBoundingClientRect(), t=T.getBoundingClientRect(), on=$('glO').getBoundingClientRect();
-    Object.assign(fl.style,{position:'absolute',left:(t.left-v.left)+'px',top:(t.top-v.top)+'px',width:t.width+'px',height:t.height+'px',zIndex:9,borderRadius:'12px',objectFit:'cover'}); V.appendChild(fl);
-    gsap.to(fl,{left:on.left-v.left+8,top:on.top-v.top+6,width:24,height:24,opacity:.2,duration:REDUCE?0:.7,ease:'power2.in',onComplete:()=>{ fl.remove(); $('glN').textContent=n0+1; if(!REDUCE) gsap.fromTo('#glO',{scale:1.12},{scale:1,duration:.5,ease:'back.out(3)'}); }});
-    $('glH').style.opacity=0;
-    G.querySelector('.vp-wc').innerHTML=`<p class="vp-k"><span class="vp-ap" style="background:#22a06b">${CK}</span>Guardado</p><b class="vp-t1">En Ideas de ${esc(p.n)}.</b><p class="vp-p">Te lo propongo para su cumple, el ${fdate(occ(p))}.</p><button class="vp-btn" data-s="end">Listo</button>`;
-    place(); };
+  const x=prod(S.h), n0=(SAVED[p.n]||[]).length, MIC=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>`,
+    PINCH=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M11 12h2"/></svg>`;
+  /* estilo Ray-Ban Display: pantalla pequeña en un solo lente (el derecho); la luz se suma a lo que ves, no hay ventanas pegadas a los objetos */
+  $('simD').innerHTML=phMount('lentes',{layer:`<div class="hud" id="hud" aria-live="polite">
+      <div class="hud-c" id="hudC"><p class="hud-k"><span class="hud-ap">${GIFT_I}</span>Cuenta conmigo</p><p class="hud-scan"><i></i>Mirando la tienda…</p></div></div>
+    <div class="hud-band" id="hudB"><span class="hud-bi"></span>Pulsera conectada</div>`});
+  const C=$('hudC');
+  const cam=phCamera('lentes',{focus:[.338,.564],zoomTo:(vw)=>vw<=620?1.5:1.35,at:[.42,.5],par:REDUCE?0:.03,wc:true});
+  const card=()=>{ if(!C.isConnected) return;
+    C.innerHTML=`<p class="hud-k"><span class="hud-ap">${GIFT_I}</span>Cuenta conmigo</p>
+      <b class="hud-t">Esto le gustaría a ${rel(p)}.</b>
+      <div class="hud-p"><img src="${x.u}" alt=""><span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${clp(x.p)} · Creado</small></span></div>
+      <div class="hud-a"><button data-s="yes">${PINCH}Guardar</button><button data-s="voz">${MIC}«Guárdalo»</button></div>`;
+    if(!REDUCE) gsap.from(C.children,{opacity:0,y:6,duration:.4,stagger:.08,ease:'power2.out'}); };
+  if(REDUCE){ cam.st.k=1; cam.draw(); card(); }
+  else { cam.go({duration:2.2,ease:'power2.inOut'}); gsap.delayedCall(2.6,card);
+    $('phV').addEventListener('pointermove',e=>{ cam.st.mx=-(e.clientX/innerWidth-.5); cam.st.my=-(e.clientY/innerHeight-.5); cam.draw(); }); }
+  const save=how=>{ (SAVED[p.n]=SAVED[p.n]||[]).unshift({u:x.u,t:x.t,src:'glass'}); addAct({k:'learn',t:`Guardé una idea para ${p.n}`,s:`${x.t} · lo viste en una tienda`,n:p.n,unread:false}); simAfter={tab:'personas',p};
+    C.innerHTML=`<p class="hud-k"><span class="hud-ap" style="background:#22a06b">${CK}</span>${how}</p><b class="hud-t">En Ideas de ${esc(p.n)} · ${n0+1}</b><p class="hud-s">Te lo propongo para su cumple, el ${fdate(occ(p))}.</p><div class="hud-a"><button data-s="end">Listo</button></div>`;
+    if(!REDUCE) gsap.from(C,{opacity:.3,duration:.35}); };
+  simAct.yes=()=>{ const b=$('hudB'); if(b){ b.classList.add('on'); setTimeout(()=>b.classList.remove('on'),700); } save('Guardado'); };
+  simAct.voz=async()=>{ const run=simRun; C.querySelector('.hud-a').innerHTML=`<p class="hud-v"><i></i><span id="hudV"></span></p>`;
+    const t='«Guárdalo para su cumple»'; for(let i=1;i<=t.length;i++){ if(run!==simRun) return; const v=$('hudV'); if(!v) return; v.textContent=t.slice(0,i); await wait(REDUCE?0:.035); }
+    await wait(REDUCE?0:.5); if(run===simRun) save('Te escuché'); };
 }
 
 /* menú y teclas */
