@@ -1121,19 +1121,6 @@ body.sim-on .fab{display:none}
 .fh-n p{margin-top:2.6cqw;font-size:5.4cqw;font-weight:600;line-height:1.28}
 .fh-n button{width:100%;min-height:0;height:11cqw;margin-top:3.4cqw;padding:0;font-size:4.6cqw}
 .fh-n .sim-ok{font-size:5cqw;font-weight:600;gap:2cqw}.fh-n .sim-ok i{width:6.4cqw;height:6.4cqw}.fh-n .sim-ok i svg{width:60%;height:60%}
-/* parlante */
-.voz{display:grid;grid-template-columns:auto minmax(0,380px);align-items:center;gap:32px}
-.voz-sp{position:relative;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#3a3d44,#16181c 70%);box-shadow:0 40px 60px -20px rgba(0,0,0,.7),inset 0 2px 0 rgba(255,255,255,.08)}
-.voz-sp::before{content:"";position:absolute;inset:-5px;border-radius:50%;padding:5px;background:conic-gradient(#27d9f2,#5b7cff,#a35bff,#27d9f2);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.25;transition:opacity .3s}
-.voz-sp.on::before{opacity:1;animation:fabspin 3s linear infinite}
-.voz-sp::after{content:"";position:absolute;inset:34%;border-radius:50%;background:repeating-radial-gradient(circle,#24272d 0 2px,#1a1c20 2px 5px)}
-.voz-c{display:flex;flex-direction:column;gap:10px;min-height:240px;justify-content:flex-end}
-.voz-m{max-width:92%;border-radius:20px;padding:12px 15px;font-size:15px;line-height:1.4}
-.voz-a{align-self:flex-start;background:#fff;color:#0e1014;border-bottom-left-radius:6px}
-.voz-u{align-self:flex-end;background:#5b7cff;color:#fff;border-bottom-right-radius:6px}
-.voz-m small{display:block;margin-bottom:4px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.5}
-.voz-say{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;font-size:15px}
-@media(max-width:620px){.voz{grid-template-columns:1fr;justify-items:center;gap:20px}.voz-sp{width:120px;height:120px}.voz-c{width:calc(100vw - 32px);min-height:0}}
 /* reloj */
 .rl{position:relative;display:grid;place-items:center}
 .rl::before,.rl::after{content:"";position:absolute;left:50%;width:150px;height:120px;margin-left:-75px;background:#2b2e35;z-index:-1}
@@ -1219,20 +1206,6 @@ body.sim-on .fab{display:none}
 .rw-im{display:block;width:26cqw;height:26cqw;margin-top:2.6cqw;border-radius:6cqw;overflow:hidden;background:#fff}.rw-im img{width:100%;height:100%;object-fit:cover}
 .rw-s b.rw-pt{font-size:7cqw;margin-top:2.6cqw;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .rw-s .sim-ok{font-size:7cqw}
-/* parlante: luz sobre el vidrio superior y subtítulos */
-.vz-glow{position:absolute;width:24%;aspect-ratio:3.1;border-radius:50%;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent);transform:translate(-50%,-50%);overflow:hidden;opacity:0;transition:opacity .5s;pointer-events:none;mix-blend-mode:screen}
-.vz-glow i{position:absolute;inset:-60% -10%;background:conic-gradient(from 0deg,#27d9f2,#5b7cff,#c45bff,#ff5c8a,#ffb03b,#27d9f2);filter:blur(1.6vw);animation:vzsp 2.4s linear infinite}
-.vz-glow::after{content:"";position:absolute;inset:30% 34%;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(1vw)}
-.vz-glow.on{opacity:.95}
-@keyframes vzsp{to{transform:rotate(360deg)}}
-.vz-cap{position:absolute;left:50%;bottom:9vh;z-index:3;width:min(640px,calc(100vw - 32px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
-.vz-l{border-radius:14px;background:rgba(10,12,16,.72);padding:10px 16px;font-size:clamp(16px,2.1vw,21px);font-weight:500;line-height:1.35;color:#fff;transition:opacity .4s}
-.vz-l small{display:block;margin-bottom:2px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.vz-u{background:rgba(91,124,255,.85)}
-.vz-l.old{opacity:.45;font-size:clamp(13px,1.5vw,15px)}
-.vz-say{display:inline-flex;align-items:center;gap:9px;height:46px;border-radius:999px;background:#fff;padding:0 20px;font-size:15px;font-weight:700;color:#0e1014}
-.vz-say i{width:10px;height:10px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 0 rgba(255,89,36,.6);animation:hudmic 1s ease-out infinite}
-.vz-end{background:#ff5924;color:#fff}
 /* ---------- modo spot: pantallas limpias para el video ---------- */
 html.spot,html.spot *{cursor:none!important}
 html.spot .ob-x,html.spot #obBack,html.spot .ob-kbs,html.spot #fab,html.spot .pl-back,html.spot .pl-sec,html.spot #toast,
@@ -1636,7 +1609,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 
 <div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span><span class="sim-t">Simular en…</span></button>
 <div id="simMenu" class="sim-menu" hidden><button id="obSpot" class="sim-it"><kbd>▶</kbd><span>Ver spot<small>1:58, se reproduce solo</small></span></button><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
-<p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="voz" class="sim-it"><kbd>A</kbd><span>Parlante<small>Respondes mi duda</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
+<p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
 <div id="nf" class="nf" role="dialog" aria-modal="true" aria-label="Nueva fecha"></div>
 <section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
 
@@ -3495,12 +3468,11 @@ const byN = n => YEAR.find(p=>p.n===n);
 const GIFT_I = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>';
 const SIM = {
   car:   {t:'En el auto.',     d:'Plan B. Es 14 de marzo, el cumple de tu mamá, y no alcanzaste a responder mis avisos. Aparezco en la pantalla del auto.', n:'Mamá'},
-  voz:   {t:'En el parlante.', d:'En casa, mientras haces otra cosa, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
   refri: {t:'En el refri.',    d:'Alguien de la casa anotó un cumple en el calendario de la cocina. Lo sumo a tus fechas.', n:'Tía Ana'},
   reloj: {t:'En el reloj.',    d:'El mismo aviso de 14 días, en tu muñeca. Ves cómo elegí y lo apruebas con un toque.', n:'Andrés'},
   lentes:{t:'En los lentes.',  d:'Recorres una tienda. En un lente te muestro algo para tu mamá; lo guardas con la voz o juntando los dedos.', n:'Mamá', h:'mielero-en-ceramica-gres'},
 };
-const SIM_KEY = {c:'car',a:'voz',r:'refri',w:'reloj',l:'lentes'};
+const SIM_KEY = {c:'car',r:'refri',w:'reloj',l:'lentes'};
 const VOZ_DESC = {'bufanda-alpaca-unisex-chocolate':['una bufanda de alpaca','la']};
 let simRun=0, simAfter=null, simAct={};
 const simOk = t => `<span class="sim-ok"><i>${CK}</i><span>${t}</span></span>`;
@@ -3518,7 +3490,7 @@ function simOpen(k){
   phOff(); simRun++; simAfter=null; simAct={end:simClose};
   $('simT').textContent=S.t; $('simP').textContent=S.d;
   document.body.classList.add('sim-on');
-  ({car:simCar,voz:simVoz,refri:simRefri,reloj:simReloj,lentes:simLentes})[k](byN(S.n),S);
+  ({car:simCar,refri:simRefri,reloj:simReloj,lentes:simLentes})[k](byN(S.n),S);
   if(!REDUCE) gsap.from('#simD',{opacity:0,duration:.5,ease:'power2.out',clearProps:'opacity'});
 }
 function simClose(){
@@ -3537,7 +3509,6 @@ const PH = {
   auto:  {src:'sim/auto.jpg',   ar:3200/1920, cr:'Fotos: Kazyakuruma (CC0) · bluesbby, CC BY 2.0', q:[[.4138,.4292],[.5792,.4292],[.5800,.6070],[.4134,.6070]], sar:1.54},
   refri: {html:1, ar:1.6},
   reloj: {src:'sim/reloj.jpg', ar:1.5, q:[[.4271,.3313],[.6583,.3281],[.6604,.7594],[.4271,.7625]], sar:.806, qc:'rq', cr:'Foto: Jonathan Cutrer · CC BY 2.0'},
-  voz:   {src:'sim/parlante.jpg', ar:.75, top:[.5208,.25], glow:[.5208,.2266], cr:'Foto: Fastily · CC BY-SA 4.0'},
   lentes:{lens:1, src:'sim/tienda.jpg', ar:2702/2022, cr:'Foto: Andre Carrotflower · CC BY-SA 4.0'},
 };
 let phCam=null;
@@ -3604,28 +3575,6 @@ function simCar(p){
   else cam.go({duration:2.4,delay:.5,ease:'power2.inOut',onComplete:show});
   simAct.yes=()=>{ simBuy(p,'desde el auto'); $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch">${simOk('Listo. Llega hoy antes de las 20:00.')}${simEnd()}</div>`; };
   simAct.no=()=>{ $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch"><p style="color:rgba(255,255,255,.7)">Ok. Te lo recuerdo al estacionar.</p>${simEnd('sim-b2')}</div>`; };
-}
-
-/* parlante: respondo la duda que ningún conector sabe. Foto real de un parlante; su luz se enciende cuando hablo y la conversación va como subtítulos */
-async function simVoz(p){
-  const run=simRun, q=QUESTIONS.find(x=>x.n===p.n);
-  $('simD').innerHTML=phMount('voz',{world:`<span class="vz-glow" id="vzS" style="left:${PH.voz.glow[0]*100}%;top:${PH.voz.glow[1]*100}%" aria-hidden="true"><i></i></span>`,
-    layer:`<div class="vz-cap" id="vzC" aria-live="polite"></div>`});
-  const cam=phCamera('voz',{focus:PH.voz.top,zoomTo:(vw)=>vw<=620?1.25:1.15,at:innerWidth<=620?[.5,.36]:[.5,.42]});
-  if(REDUCE){ cam.st.k=1; cam.draw(); } else cam.go({duration:2,ease:'power2.inOut'});
-  const say=(who,t)=>{ const C=$('vzC'); if(!C) return; [...C.querySelectorAll('.vz-l')].forEach(e=>e.classList.add('old'));
-    const d=document.createElement('p'); d.className='vz-l '+(who==='a'?'vz-a':'vz-u'); d.innerHTML=(who==='a'?'':'<small>Tú</small>')+t; C.appendChild(d);
-    if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35}); };
-  const talk=async t=>{ const S=$('vzS'); if(!S) return false; S.classList.add('on'); await wait(REDUCE?0:.8); if(run!==simRun) return false; say('a',t); await wait(REDUCE?0:Math.min(2.2,t.length*.03)); const S2=$('vzS'); if(S2) S2.classList.remove('on'); return run===simRun; };
-  await wait(REDUCE?0:2.1); if(run!==simRun) return;
-  if(!await talk('Hola. Una pregunta rápida, de las que ningún correo me responde: ¿a tu papá le gustó la botella de junio?')) return;
-  $('vzC').insertAdjacentHTML('beforeend','<button class="vz-say" data-s="yes"><i></i>Decir «Sí, la usa todos los días»</button>');
-  simAct.yes=async b=>{ b.remove(); say('u','Sí, la usa todos los días.');
-    if(q&&!yasked[p.n]){ yasked[p.n]=1; doubtDone=true; (learned[p.n]=learned[p.n]||[]).push('La botella de junio: la usa todos los días'); addAct({k:'learn',t:`Aprendí algo de ${p.n}`,s:'Me lo dijiste en el parlante',n:p.n,unread:false}); }
-    simAfter={tab:'personas',p};
-    await wait(REDUCE?0:.5);
-    if(!await talk('Anotado en su ficha. Para el Día del Padre busco algo que acompañe la botella.')) return;
-    $('vzC').insertAdjacentHTML('beforeend',simEnd('vz-say vz-end')); };
 }
 
 /* refri: sumo una fecha que anotaron en la cocina */
