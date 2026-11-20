@@ -241,10 +241,9 @@ function build(){
   T.call(()=>{ cardIn('c1'); E("startOb()"); },null,0)
    .call(()=>E("obGo(1)"),null,1.2);
   /* T2 · Conectar: el paso 2 del onboarding tal cual, conectando uno por uno */
-  T.call(()=>{ cardOut('c1'); camReset(); capIn('Me conecto a <em><span class="w">tu calendario</span></em>',{top:true}); },null,4);
+  T.call(()=>{ cardOut('c1'); camReset(); capIn('Un planner inteligente que <em>se conecta a lo que usas.</em>',{top:true}); },null,4);
   tap(T,'.oc[data-k="cal"] button',5.4,.9); tap(T,'.oc[data-k="gmail"] button',7); tap(T,'.oc[data-k="contacts"] button',8.6); tap(T,'.oc[data-k="wa"] button',10.2);
-  T.call(()=>swapW('tu correo'),null,7.05).call(()=>swapW('tus contactos'),null,8.65).call(()=>swapW('tus chats'),null,10.25)
-   .call(()=>capIn('Me conecto a todo <em>para planificar por ti.</em>',{top:true}),null,11.2)
+  T.call(()=>capIn('<em>Sin complicarte</em> la vida.',{top:true}),null,8.9)
    .call(capOut,null,12.6)
    .call(()=>{ curOut(); frame('#obR',1.14,1.6,.46,.5); },null,12.4)
    .call(()=>capIn('Cada app <em>me cuenta algo.</em>',{sm:true}),null,13.1)
