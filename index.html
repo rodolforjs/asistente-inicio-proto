@@ -1238,6 +1238,8 @@ html.spot,html.spot *{cursor:none!important}
 html.spot .ob-x,html.spot #obBack,html.spot .ob-kbs,html.spot #fab,html.spot .pl-back,html.spot .pl-sec,html.spot #toast,
 html.spot #sim .tn-cap,html.spot #sim .tn-cx,html.spot #tn .tn-cap,html.spot #tn .tn-cx,html.spot .pl-fine,html.spot .tn-more,html.spot .tn-art button{visibility:hidden!important}
 html.spot .spot-hl{position:relative;box-shadow:0 0 0 0 rgba(255,89,36,.55);animation:spothl 1.4s ease-out infinite}
+html.spot .dh-c.spot-hov{background:rgba(127,138,156,.12)}
+html.spot .dy-c.spot-hov{transform:translateY(-2px) scale(1.08);z-index:2;box-shadow:0 10px 18px -8px rgba(14,16,20,.45)}
 @keyframes spothl{0%{box-shadow:0 0 0 0 rgba(255,89,36,.55)}100%{box-shadow:0 0 0 22px rgba(255,89,36,0)}}
 /* ---------- En la tienda: aviso del celular ---------- */
 .tn{position:fixed;inset:0;z-index:190;display:none;place-items:center;background:rgba(14,16,20,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -1633,7 +1635,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 </section>
 
 <div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span><span class="sim-t">Simular en…</span></button>
-<div id="simMenu" class="sim-menu" hidden><button id="obSpot" class="sim-it"><kbd>▶</kbd><span>Ver spot<small>1:38, se reproduce solo</small></span></button><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
+<div id="simMenu" class="sim-menu" hidden><button id="obSpot" class="sim-it"><kbd>▶</kbd><span>Ver spot<small>1:47, se reproduce solo</small></span></button><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
 <p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="voz" class="sim-it"><kbd>A</kbd><span>Parlante<small>Respondes mi duda</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
 <div id="nf" class="nf" role="dialog" aria-modal="true" aria-label="Nueva fecha"></div>
 <section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
