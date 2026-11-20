@@ -107,7 +107,7 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
   <div id="cur"><i></i><svg width="46" height="46" viewBox="0 0 24 24" style="position:absolute;left:-8px;top:-4px"><path d="M5 2.5v17.2l4.3-4.1 2.8 6.4 3-1.3-2.8-6.3 6-.2Z" fill="#0e1014" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
   <p class="cap" id="cap"></p>
   <section class="card" id="c1"><span class="logo">Cuenta conmigo<i>.</i></span><p class="big">Un asistente que <em>planifica</em> tus regalos del año.</p></section>
-  <section class="card" id="c7"><p class="big">Te acompaño <em>en tu día a día.</em></p></section>
+  <section class="card" id="c7"><p class="big" id="c7t">Y no solo <em>en la web.</em></p></section>
   <section class="card" id="c12"><p class="big" style="font-size:150px">Cuenta conmigo<em>.</em></p><p class="sub">Juntos no se nos pasará nada.</p><span class="cc" aria-label="Creado en Chile"><b>CREADO</b><b>EN CHILE</b></span></section>
   <div id="veil"></div><div id="ffv" style="position:absolute;inset:0;z-index:10;background:#000;opacity:0;visibility:hidden;pointer-events:none"></div><div id="bar"></div>
 </div>
@@ -243,9 +243,10 @@ function build(){
   T.call(()=>{ cardIn('c1'); E("startOb()"); },null,0)
    .call(()=>E("obGo(1)"),null,1.2);
   /* T2 · Conectar: el paso 2 del onboarding tal cual, conectando uno por uno */
-  T.call(()=>{ cardOut('c1'); camReset(); capIn('Un planner inteligente que <em>se conecta a lo que usas.</em>',{top:true}); },null,4);
+  T.call(()=>{ cardOut('c1'); camReset(); capIn('Un planner <em>inteligente.</em>',{top:true}); },null,4);
   tap(T,'.oc[data-k="cal"] button',5.4,.9); tap(T,'.oc[data-k="gmail"] button',7); tap(T,'.oc[data-k="contacts"] button',8.6); tap(T,'.oc[data-k="wa"] button',10.2);
-  T.call(()=>capIn('<em>Sin complicarte</em> la vida.',{top:true}),null,8.9)
+  T.call(()=>capIn('Se conecta <em>a lo que usas.</em>',{top:true}),null,6.3)
+   .call(()=>capIn('<em>Sin complicarte</em> la vida.',{top:true}),null,9.2)
    .call(capOut,null,12.6)
    .call(()=>{ curOut(); frame('#obR',1.14,1.6,.46,.5); },null,12.4)
    .call(()=>capIn('Cada app <em>me cuenta algo.</em>',{sm:true}),null,13.1)
@@ -255,7 +256,8 @@ function build(){
   /* T3 · Análisis: la pantalla de la web completa, sin apuro */
   T.call(()=>{ W.gsap.delayedCall(.5,()=>wts(.6)); },null,16.75)
    .call(curOut,null,17.2)
-   .call(()=>capIn('Analizo lo que conectas y <em>recupero ocasiones por ti.</em>',{sm:true}),null,18)
+   .call(()=>capIn('Analizo <em>lo que conectas.</em>',{sm:true}),null,18)
+   .call(()=>capIn('Y recupero <em>tus ocasiones.</em>',{sm:true}),null,20.3)
    .call(()=>frame('#field',1.06,3,.42),null,19)
    .call(capOut,null,22.6)
    .call(()=>frame(null,1,1.4),null,22.8)
@@ -286,33 +288,39 @@ function build(){
    .call(()=>frame('#apTicket',1.1,1.4,.42,.62),null,52.8)
    .call(()=>wts(.45),null,53.9);
   /* T6 · Pensando: 30 → 8 → 3 → 1, con más tiempo */
-  T.call(()=>{ frame(null,1,1.4); capIn('Analizo cada ocasión y <em>te muestro la mejor opción.</em>',{sm:true}); },null,54.7)
+  T.call(()=>{ frame(null,1,1.4); capIn('Analizo <em>cada ocasión.</em>',{sm:true}); },null,54.7)
+   .call(()=>capIn('Y te muestro <em>la mejor opción.</em>',{sm:true}),null,58.9)
    .call(()=>wts(1),null,63.1)
    .call(capOut,null,63.3);
   /* T7 · Propuesta: "Comprar y dejar listo" destacado */
   T.call(()=>{ const b=el('.pl-cta'); if(b) b.classList.add('spot-hl'); frame(null,1,1.2); capIn('Tú solo <em>apruebas.</em>',{sm:true}); },null,63.7)
    .call(capOut,null,69.1);
   /* T8 · Puente */
-  T.call(()=>{ cardIn('c7'); camReset(); },null,69.7)
+  T.call(()=>{ $('c7t').innerHTML='Y no solo <em>en la web.</em>'; cardIn('c7'); camReset(); },null,69.7)
+   .call(()=>gsap.timeline().to('#c7t',{opacity:0,y:-20,duration:.3,ease:'power2.in'}).call(()=>{ $('c7t').innerHTML='Te acompaño <em>en tu día a día.</em>'; }).fromTo('#c7t',{opacity:0,y:26},{opacity:1,y:0,duration:.6,ease:'power3.out'}),null,71.6)
    .call(()=>E("simOpen('reloj')"),null,73.1);
   /* T9 · Reloj: respondes rápido */
-  T.call(()=>{ cardOut('c7'); capIn('En tu reloj, <em>respondes en un toque.</em>',{dark:true}); },null,73.7)
+  T.call(()=>{ cardOut('c7'); capIn('En tu <em>reloj.</em>',{dark:true}); },null,73.7)
+   .call(()=>capIn('Respondes <em>en un toque.</em>',{dark:true}),null,76.3)
    .call(()=>click('#rlS [data-s="see"]'),null,76.9)
    .call(capOut,null,80.1);
   /* T10 · Casa (parlante): lo que ningún conector sabe */
   T.call(()=>fade(()=>{ camReset(); E("simOpen('voz')"); }),null,80.3)
-   .call(()=>capIn('En casa, <em>te pregunto lo que no sé.</em>',{dark:true}),null,81.1)
+   .call(()=>capIn('En tu <em>casa.</em>',{dark:true}),null,81.1)
+   .call(()=>capIn('Te pregunto <em>lo que no sé.</em>',{dark:true}),null,83.6)
    .call(()=>click('.vz-say[data-s="yes"]'),null,85.9)
    .call(capOut,null,88.1);
   /* T11 · Auto: plan B hasta el último momento */
   T.call(()=>fade(()=>{ camReset(); E("simOpen('car')"); }),null,88.3)
-   .call(()=>capIn('Si se te pasó una, <em>te ayudo hasta el último momento.</em>',{dark:true}),null,89.1)
+   .call(()=>capIn('¿Se te pasó <em>una fecha?</em>',{dark:true}),null,89.1)
+   .call(()=>capIn('Te ayudo <em>hasta el final.</em>',{dark:true}),null,92.2)
    .call(()=>frame('#phQ',1.3,1.8,.46,.6),null,91.3)
    .call(()=>click('#carBt [data-s="yes"]'),null,93.7)
    .call(capOut,null,96.1);
   /* T12 · Chat: le mandas lo de tu día y aprende */
   T.call(()=>fade(()=>{ camReset(); E("simClose(); chOpen()"); }),null,96.3)
-   .call(()=>capIn('Mándame lo que ves <em>y aprendo de ti.</em>',{sm:true}),null,97.1)
+   .call(()=>capIn('Mándame <em>lo que ves.</em>',{sm:true}),null,97.1)
+   .call(()=>capIn('Y aprendo <em>de ti.</em>',{sm:true}),null,100.8)
    .call(()=>frame('#ch',1.3,1.4,.5,.66),null,97.6)
    .call(()=>E("chSend({demo:'foto'})"),null,98.2)
    .call(()=>E("chSend({demo:'link'})"),null,101.6)
@@ -364,7 +372,7 @@ function prep(i){
   else E("openYear()");
   if(n==='T8') cardIn('c7');
   const SIM={T9:"simOpen('reloj')",T10:"simOpen('voz')",T11:"simOpen('car')",T13:"tnOpen()"}; if(SIM[n]) E(SIM[n]);
-  const CAPS={T9:'En tu reloj, <em>respondes en un toque.</em>',T10:'En casa, <em>te pregunto lo que no sé.</em>',T11:'Si se te pasó una, <em>te ayudo hasta el último momento.</em>',T13:'Y cuando pasas <em>por la tienda.</em>'};
+  const CAPS={T9:'En tu <em>reloj.</em>',T10:'En tu <em>casa.</em>',T11:'¿Se te pasó <em>una fecha?</em>',T13:'Y cuando pasas <em>por la tienda.</em>'};
   if(CAPS[n]) capIn(CAPS[n],{dark:true});
 }
 function shotAt(t){ let k=0; SHOTS.forEach((s,i)=>{ if(t>=s.t) k=i; }); return k; }
