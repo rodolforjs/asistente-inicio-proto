@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Spot de ~100 s: reproduce la web real (index.html?spot=1) dentro de un escenario 1920×1080 y la anima sola.
-   Controles: barra al mover el mouse · espacio/K pausa · ← → toma · 1–9 ir a toma · R reiniciar · L repetir · F pantalla completa · Esc salir. ?loop=1 repite. */
+   Controles: barra al mover el mouse · espacio/K pausa · ← → toma · 1–9 ir a toma · R reiniciar · L repetir · F pantalla completa · H ocultar barra · Esc salir. ?loop=1 repite. */
 :root{--ink:#0e1014;--brand:#ff5924;--paper:#f4f2ee}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;cursor:none}
 body.ui{cursor:default}
@@ -55,6 +55,9 @@ body.ui{cursor:default}
 #ph .tch{position:absolute;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 2px rgba(255,255,255,.7);opacity:0;transform:scale(.4)}
 /* controles (fuera del cuadro: no salen en la grabación si se esconden) */
 #ctl{position:fixed;left:50%;bottom:18px;z-index:20;width:min(1100px,calc(100vw - 32px));transform:translate(-50%,12px);border-radius:22px;background:rgba(14,16,20,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:12px 16px 14px;font:500 13px/1.2 'Inter',sans-serif;color:#fff;box-shadow:0 20px 50px -20px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+body.noui #ctl{opacity:0!important;pointer-events:none!important}
+body.noui{cursor:none!important}
+#tip{position:fixed;left:50%;bottom:24px;z-index:21;transform:translateX(-50%);border-radius:999px;background:rgba(14,16,20,.82);padding:9px 16px;font:600 13px/1 'Inter',sans-serif;color:#fff;opacity:0;pointer-events:none;transition:opacity .3s}
 body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 #chs{display:flex;gap:3px;height:30px;align-items:flex-end}
 #chs button{position:relative;flex:1 1 0;height:100%;border:0;padding:0;background:none;cursor:pointer}
@@ -90,6 +93,7 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
   <section class="card" id="c12"><p class="big" style="font-size:150px">Cuenta conmigo<em>.</em></p><p class="sub">Juntos no se nos pasará nada.</p><span class="cc" aria-label="Creado en Chile"><b>CREADO</b><b>EN CHILE</b></span></section>
   <div id="veil"></div><div id="bar"></div>
 </div>
+<div id="tip"></div>
 <div id="ctl" role="toolbar" aria-label="Controles del spot">
   <div id="chs"></div>
   <div class="cr">
@@ -98,10 +102,11 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
     <button class="b" id="nx" aria-label="Toma siguiente" title="Toma siguiente (→)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
     <span id="tm">0:00 / 0:00</span>
     <span id="nm"></span>
-    <span class="kb">←→ tomas · 1–9 · R · L · F</span>
+    <span class="kb">←→ tomas · 1–9 · R · L · F · H</span>
     <button class="b" id="rs" aria-label="Reiniciar" title="Reiniciar (R)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg></button>
     <button class="b" id="lp" aria-label="Repetir al terminar" title="Repetir al terminar (L)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></svg></button>
     <button class="b" id="fs" aria-label="Pantalla completa" title="Pantalla completa (F)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    <button class="b" id="hd" aria-label="Ocultar la barra" title="Ocultar la barra (H)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 5.1A10 10 0 0 1 12 5c5 0 9 4.500 10 7a13 13 0 0 1-3.100 4.200M6.600 6.600A13 13 0 0 0 2 12c1 2.500 5 7 10 7a10 10 0 0 0 4.300-1M9.900 9.900a3 3 0 0 0 4.200 4.200"/></svg></button>
     <button class="b" id="ex" aria-label="Volver a la web" title="Volver a la web (Esc)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
 </div>
@@ -321,7 +326,11 @@ $('pp').innerHTML=IC_PAUSE;
 /* la barra aparece al mover el mouse y se esconde sola mientras corre (en pausa se queda) */
 let uiK=0;
 function showUI(){ document.body.classList.add('ui'); clearTimeout(uiK); uiK=setTimeout(()=>{ if(!paused&&!$('ctl').matches(':hover')) document.body.classList.remove('ui'); },2200); }
-addEventListener('mousemove',showUI); $('ctl').addEventListener('mouseleave',showUI);
+/* ocultar la barra del todo (para grabar o presentar): H o el botón del ojo; H la vuelve a mostrar */
+function tip(t){ const e=$('tip'); e.textContent=t; e.style.opacity=1; clearTimeout(tip.k); tip.k=setTimeout(()=>e.style.opacity=0,1800); }
+function setHidden(v){ document.body.classList.toggle('noui',v); if(v){ document.body.classList.remove('ui'); tip('Barra oculta · H para mostrarla'); } else showUI(); }
+$('hd').onclick=()=>setHidden(true);
+addEventListener('mousemove',()=>{ if(!document.body.classList.contains('noui')) showUI(); }); $('ctl').addEventListener('mouseleave',showUI);
 
 /* reloj y avance de cada capítulo */
 gsap.ticker.add(()=>{ if(!tl) return; const t=tl.time(), k=shotAt(t);
@@ -338,6 +347,7 @@ addEventListener('keydown',e=>{
   else if(k==='r'||k==='R') go(0);
   else if(k==='l'||k==='L'){ setLoop(!LOOP); showUI(); }
   else if(k==='f'||k==='F') fsToggle();
+  else if(k==='h'||k==='H') setHidden(!document.body.classList.contains('noui'));
   else if(/^[1-9]$/.test(k)) go(+k-1);
   else if(k==='Escape'&&!document.fullscreenElement) location.href='index.html';
 });
