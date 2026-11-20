@@ -1203,6 +1203,36 @@ body.sim-on .fab{display:none}
 .hud-bi{width:22px;height:12px;border-radius:6px;border:2px solid rgba(255,255,255,.7);transition:background .2s,border-color .2s}
 .hud-band.on .hud-bi{background:#ff5924;border-color:#ff5924}
 @media(max-width:620px){.hud{left:58%;top:60%;width:min(270px,78vw)}.hud-c{padding:12px}.hud-t{font-size:15px}.hud-a button{height:32px;font-size:11.5px}}
+/* reloj: pantalla del reloj real (watchOS-like, fondo negro, todo en cqw de la pantalla) */
+.ph-q.rq{border-radius:17%/14%;background:#000}
+.rw{position:absolute;inset:0;background:#000;color:#fff;font-size:7cqw}
+.rw-t{position:absolute;right:9cqw;top:6cqw;font-size:6.6cqw;font-weight:600;color:#fff}
+.rw-s{position:absolute;left:8cqw;right:8cqw;top:16cqw;bottom:7cqw;display:flex;flex-direction:column;text-align:left}
+.rw-s .appi{width:13cqw;height:13cqw;border-radius:50%}.rw-s .appi svg{width:7cqw;height:7cqw}
+.rw-k{display:block;margin-top:3cqw;font-size:5.6cqw;font-weight:600;color:rgba(255,255,255,.55)}
+.rw-s b{margin-top:2.4cqw;font-size:8.6cqw;line-height:1.15;font-weight:600}
+.rw-sub{display:block;margin-top:1.6cqw;font-size:6.4cqw;color:rgba(255,255,255,.7)}
+.rw-s button{margin-top:auto;min-height:0;height:17cqw;border-radius:9cqw;padding:0;font-size:7.4cqw}
+.rw-src{display:flex;gap:2cqw;margin-top:3cqw}.rw-src img{width:9cqw;height:9cqw;padding:1.4cqw;border-radius:50%;background:#fff;object-fit:contain}
+.rw-n{display:block;margin-top:3cqw;font-family:'Newsreader',serif;font-weight:400;font-size:30cqw!important;line-height:1}
+.rw-bar{display:block;height:2cqw;margin-top:auto;border-radius:1cqw;background:rgba(255,255,255,.15);overflow:hidden}.rw-bar i{display:block;width:0;height:100%;background:#ff5924;transition:width .4s}
+.rw-im{display:block;width:26cqw;height:26cqw;margin-top:2.6cqw;border-radius:6cqw;overflow:hidden;background:#fff}.rw-im img{width:100%;height:100%;object-fit:cover}
+.rw-s b.rw-pt{font-size:7cqw;margin-top:2.6cqw;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rw-s .sim-ok{font-size:7cqw}
+/* parlante: luz sobre el vidrio superior y subtítulos */
+.vz-glow{position:absolute;width:24%;aspect-ratio:3.1;border-radius:50%;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent);transform:translate(-50%,-50%);overflow:hidden;opacity:0;transition:opacity .5s;pointer-events:none;mix-blend-mode:screen}
+.vz-glow i{position:absolute;inset:-60% -10%;background:conic-gradient(from 0deg,#27d9f2,#5b7cff,#c45bff,#ff5c8a,#ffb03b,#27d9f2);filter:blur(1.6vw);animation:vzsp 2.4s linear infinite}
+.vz-glow::after{content:"";position:absolute;inset:30% 34%;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(1vw)}
+.vz-glow.on{opacity:.95}
+@keyframes vzsp{to{transform:rotate(360deg)}}
+.vz-cap{position:absolute;left:50%;bottom:9vh;z-index:3;width:min(640px,calc(100vw - 32px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.vz-l{border-radius:14px;background:rgba(10,12,16,.72);padding:10px 16px;font-size:clamp(16px,2.1vw,21px);font-weight:500;line-height:1.35;color:#fff;transition:opacity .4s}
+.vz-l small{display:block;margin-bottom:2px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.vz-u{background:rgba(91,124,255,.85)}
+.vz-l.old{opacity:.45;font-size:clamp(13px,1.5vw,15px)}
+.vz-say{display:inline-flex;align-items:center;gap:9px;height:46px;border-radius:999px;background:#fff;padding:0 20px;font-size:15px;font-weight:700;color:#0e1014}
+.vz-say i{width:10px;height:10px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 0 rgba(255,89,36,.6);animation:hudmic 1s ease-out infinite}
+.vz-end{background:#ff5924;color:#fff}
 /* ---------- En la tienda: aviso del celular ---------- */
 .tn{position:fixed;inset:0;z-index:190;display:none;place-items:center;background:rgba(14,16,20,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.tn-on .tn{display:grid}
@@ -3454,7 +3484,7 @@ const byN = n => YEAR.find(p=>p.n===n);
 const GIFT_I = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>';
 const SIM = {
   car:   {t:'En el auto.',     d:'Plan B. Se te pasó el cumple de tu mamá y vas camino a su casa. Aparezco en la pantalla del auto.', n:'Mamá'},
-  voz:   {t:'En el parlante.', d:'Mientras cocinas, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
+  voz:   {t:'En el parlante.', d:'En casa, mientras haces otra cosa, te hago la única pregunta que ningún conector me puede responder.', n:'Papá'},
   refri: {t:'En el refri.',    d:'Alguien de la casa anotó un cumple en el calendario de la cocina. Lo sumo a tus fechas.', n:'Tía Ana'},
   reloj: {t:'En el reloj.',    d:'El mismo aviso de 14 días, en tu muñeca. Ves cómo elegí y lo apruebas con un toque.', n:'Andrés'},
   lentes:{t:'En los lentes.',  d:'Recorres una tienda. En un lente te muestro algo para tu mamá; lo guardas con la voz o juntando los dedos.', n:'Mamá', h:'mielero-en-ceramica-gres'},
@@ -3495,6 +3525,8 @@ const rel = p => (REL[p.n]||p.n).replace(/^Tu /,'tu ');
 const PH = {
   auto:  {src:'sim/auto.jpg',   ar:3200/1920, cr:'Fotos: Kazyakuruma (CC0) · bluesbby, CC BY 2.0', q:[[.4138,.4292],[.5792,.4292],[.5800,.6070],[.4134,.6070]], sar:1.54},
   refri: {html:1, ar:1.6},
+  reloj: {src:'sim/reloj.jpg', ar:1.5, q:[[.4271,.3313],[.6583,.3281],[.6604,.7594],[.4271,.7625]], sar:.806, qc:'rq', cr:'Foto: Jonathan Cutrer · CC BY 2.0'},
+  voz:   {src:'sim/parlante.jpg', ar:.75, top:[.5208,.25], glow:[.5208,.2266], cr:'Foto: Fastily · CC BY-SA 4.0'},
   lentes:{lens:1, src:'sim/tienda.jpg', ar:2702/2022, cr:'Foto: Andre Carrotflower · CC BY-SA 4.0'},
 };
 let phCam=null;
@@ -3511,7 +3543,7 @@ const LENS=`<div class="ph-blur" aria-hidden="true"></div><svg class="ph-lens" v
   <rect width="1000" height="600" fill="#0b0b0d" fill-opacity=".9" mask="url(#lnM)"/>
   <path d="M444 600 C462 566 480 546 500 546 C520 546 538 566 556 600Z" fill="#0b0b0d" fill-opacity=".9" filter="url(#lnF)"/></svg>`;
 const phMount=(k,{screen='',world='',layer=''}={})=>{ const P=PH[k];
-  return `<div class="ph${P.html?' ph-h':''}" id="phV">${P.src?`<img class="ph-bg" src="${P.src}" alt="">`:''}<div class="ph-w" id="phW">${P.src?`<img class="ph-i" src="${P.src}" alt="">`:''}${P.q?`<div class="ph-q" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${P.lens?LENS:''}${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
+  return `<div class="ph${P.html?' ph-h':''}" id="phV">${P.src?`<img class="ph-bg" src="${P.src}" alt="">`:''}<div class="ph-w" id="phW">${P.src?`<img class="ph-i" src="${P.src}" alt="">`:''}${P.q?`<div class="ph-q${P.qc?' '+P.qc:''}" id="phQ">${screen}<i class="ph-gl"></i></div>`:''}${world}</div><div class="ph-sc"></div>${P.lens?LENS:''}${layer}${P.cr?`<small class="ph-cr">${P.cr}</small>`:''}</div>`; };
 /* cámara: k=0 muestra la foto completa; k=1 acerca hasta que la pantalla (o el foco) queda en "at" con el tamaño de zoomTo */
 function phCamera(k,{focus,zoomTo,at=[.5,.5],par=0,onMove,wc=false}={}){
   const P=PH[k], V=$('phV'), W=$('phW'), Q=$('phQ'), st={k:0,mx:0,my:0}; let L={};
@@ -3563,19 +3595,26 @@ function simCar(p){
   simAct.no=()=>{ $('carBt').outerHTML=`<div class="car-bt" style="flex-direction:column;align-items:stretch"><p style="color:rgba(255,255,255,.7)">Ok. Te lo recuerdo al estacionar.</p>${simEnd('sim-b2')}</div>`; };
 }
 
-/* parlante: respondo la duda que ningún conector sabe */
+/* parlante: respondo la duda que ningún conector sabe. Foto real de un parlante; su luz se enciende cuando hablo y la conversación va como subtítulos */
 async function simVoz(p){
   const run=simRun, q=QUESTIONS.find(x=>x.n===p.n);
-  $('simD').innerHTML=`<div class="voz"><div class="voz-sp" id="vzS" aria-hidden="true"></div><div class="voz-c" id="vzC" aria-live="polite"></div></div>`;
-  const say=(who,t)=>{ const d=document.createElement('div'); d.className='voz-m '+(who==='a'?'voz-a':'voz-u'); d.innerHTML=(who==='a'?'<small>Cuenta conmigo</small>':'')+t; $('vzC').appendChild(d); if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35}); };
-  const talk=async t=>{ $('vzS').classList.add('on'); await wait(REDUCE?0:.7); if(run!==simRun) return false; say('a',t); await wait(REDUCE?0:.6); $('vzS').classList.remove('on'); return run===simRun; };
+  $('simD').innerHTML=phMount('voz',{world:`<span class="vz-glow" id="vzS" style="left:${PH.voz.glow[0]*100}%;top:${PH.voz.glow[1]*100}%" aria-hidden="true"><i></i></span>`,
+    layer:`<div class="vz-cap" id="vzC" aria-live="polite"></div>`});
+  const cam=phCamera('voz',{focus:PH.voz.top,zoomTo:(vw)=>vw<=620?1.25:1.15,at:innerWidth<=620?[.5,.36]:[.5,.42]});
+  if(REDUCE){ cam.st.k=1; cam.draw(); } else cam.go({duration:2,ease:'power2.inOut'});
+  const say=(who,t)=>{ const C=$('vzC'); if(!C) return; [...C.querySelectorAll('.vz-l')].forEach(e=>e.classList.add('old'));
+    const d=document.createElement('p'); d.className='vz-l '+(who==='a'?'vz-a':'vz-u'); d.innerHTML=(who==='a'?'':'<small>Tú</small>')+t; C.appendChild(d);
+    if(!REDUCE) gsap.from(d,{y:10,opacity:0,duration:.35}); };
+  const talk=async t=>{ const S=$('vzS'); if(!S) return false; S.classList.add('on'); await wait(REDUCE?0:.8); if(run!==simRun) return false; say('a',t); await wait(REDUCE?0:Math.min(2.2,t.length*.03)); const S2=$('vzS'); if(S2) S2.classList.remove('on'); return run===simRun; };
+  await wait(REDUCE?0:2.1); if(run!==simRun) return;
   if(!await talk('Hola. Una pregunta rápida, de las que ningún correo me responde: ¿a tu papá le gustó la botella de junio?')) return;
-  $('vzC').insertAdjacentHTML('beforeend','<button class="sim-b1 voz-say" data-s="yes">Decir «Sí, la usa todos los días»</button>');
+  $('vzC').insertAdjacentHTML('beforeend','<button class="vz-say" data-s="yes"><i></i>Decir «Sí, la usa todos los días»</button>');
   simAct.yes=async b=>{ b.remove(); say('u','Sí, la usa todos los días.');
     if(q&&!yasked[p.n]){ yasked[p.n]=1; doubtDone=true; (learned[p.n]=learned[p.n]||[]).push('La botella de junio: la usa todos los días'); addAct({k:'learn',t:`Aprendí algo de ${p.n}`,s:'Me lo dijiste en el parlante',n:p.n,unread:false}); }
     simAfter={tab:'personas',p};
+    await wait(REDUCE?0:.5);
     if(!await talk('Anotado en su ficha. Para el Día del Padre busco algo que acompañe la botella.')) return;
-    $('vzC').insertAdjacentHTML('beforeend',simEnd('sim-b1 voz-say')); };
+    $('vzC').insertAdjacentHTML('beforeend',simEnd('vz-say vz-end')); };
 }
 
 /* refri: sumo una fecha que anotaron en la cocina */
@@ -3650,22 +3689,26 @@ function simRefri(){
     $('frN').innerHTML=`<span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo</span><p>${simOk(`Sumada. Te aviso el ${fdate(avisoD(p))}.`)}</p>${simEnd()}`; };
 }
 
-/* reloj: el mismo aviso de 14 días del planner, en la muñeca */
+/* reloj: el mismo aviso de 14 días del planner, en la muñeca (foto real; la interfaz se proyecta sobre la pantalla del reloj) */
 function simReloj(){
   const run=simRun, p=tnTarget()||yr().filter(x=>!x.bought).sort(byDate)[0]||byN('Andrés'), x=chosen(p), d=thinkData(p), b=BUDGET[p.n];
   const why=(OPT[x.h]||whyOf(p)).replace(/^Mi favorita\. /,'');
   const steps=[[d.all.length,'regalos revisados'],[d.pool.length,b?'dentro del tope':'con sentido'],[3,'finalistas'],[1,'elegido']];
   const srcs=srcsOf(p).slice(0,3).map(c=>`<img src="${c.img}" alt="">`).join('');
-  const scr=h=>{ $('rlS').innerHTML=h; if(!REDUCE) gsap.from('#rlS > *',{y:8,opacity:0,duration:.3,stagger:.05}); };
-  $('simD').innerHTML=`<div class="rl"><div class="rl-b" id="rlB"><div class="rl-s" id="rlS"></div></div></div>`;
-  scr(`<span class="appi">${GIFT_I}</span><small class="rl-k">Cuenta conmigo · ahora</small><b>${esc(p.n)} es en ${AVISO} días.</b><span class="rl-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`);
-  if(!REDUCE) gsap.delayedCall(.6,()=>{ const e=$('rlB'); if(e) e.classList.add('rl-buzz'); });
+  const scr=h=>{ const S=$('rlS'); if(!S) return; S.innerHTML=h; if(!REDUCE) gsap.from('#rlS > *',{y:8,opacity:0,duration:.3,stagger:.05}); };
+  $('simD').innerHTML=phMount('reloj',{screen:`<div class="rw"><span class="rw-t num">9:41</span><div class="rw-s" id="rlS"></div></div>`});
+  const cam=phCamera('reloj',{zoomTo:(vw,vh,qw)=>Math.max(qw*1.08,vw<=620?Math.min(vw-110,250):Math.min(270,(vh-220)*.82)),at:[.5,.53]});
+  const buzz=()=>{ const V=$('phV'); if(V&&!REDUCE) gsap.fromTo(V,{x:-3},{x:3,duration:.06,repeat:7,yoyo:true,ease:'none',clearProps:'x'}); };
+  const first=()=>{ scr(`<span class="appi">${GIFT_I}</span><small class="rw-k">Cuenta conmigo · ahora</small><b>${esc(p.n)} es en ${AVISO} días.</b><span class="rw-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`); buzz(); };
+  scr('');
+  if(REDUCE){ cam.st.k=1; cam.draw(); first(); }
+  else cam.go({duration:2.2,delay:.3,ease:'power2.inOut',onComplete:()=>gsap.delayedCall(.2,first)});
   simAct.see=async()=>{
-    scr(`<small class="rl-k">Pensando en ${esc(p.n)}</small><span class="rl-src">${srcs}</span><b class="rl-n num" id="rlN">${steps[0][0]}</b><span class="rl-sub" id="rlL">${steps[0][1]}</span><span class="rl-bar"><i id="rlI"></i></span>`);
+    scr(`<small class="rw-k">Pensando en ${esc(p.n)}</small><span class="rw-src">${srcs}</span><b class="rw-n num" id="rlN">${steps[0][0]}</b><span class="rw-sub" id="rlL">${steps[0][1]}</span><span class="rw-bar"><i id="rlI"></i></span>`);
     for(let k=0;k<steps.length;k++){ if(run!==simRun) return; const n=$('rlN'); if(!n) return; n.textContent=steps[k][0]; $('rlL').textContent=steps[k][1]; $('rlI').style.width=((k+1)/steps.length*100)+'%'; if(!REDUCE) gsap.fromTo(n,{scale:1.25,opacity:.4},{scale:1,opacity:1,duration:.35,ease:'back.out(2)'}); await wait(REDUCE?0:.7); }
     if(run!==simRun) return;
-    scr(`<small class="rl-k">Te elegí este</small><span class="rl-im">${img(x.u,'')}</span><b class="rl-t">${esc(x.t)}</b><span class="rl-sub num">${clp(x.p)}${b?' · dentro del tope':''}</span><span class="rl-why">${esc(why)}</span><button class="sim-b1" data-s="yes">Aprobar</button>`); };
-  simAct.yes=()=>{ simBuy(p,'aprobado desde el reloj'); scr(`<span class="appi" style="background:#22a06b">${CK}</span><b>Aprobado.</b><span class="rl-sub">Llega ${arrival(p)}, con tiempo.</span>${simEnd()}`); };
+    scr(`<small class="rw-k">Te elegí este</small><span class="rw-im">${img(x.u,'')}</span><b class="rw-pt">${esc(x.t)}</b><span class="rw-sub num">${clp(x.p)}${b?' · en tope':''}</span><button class="sim-b1" data-s="yes">Aprobar</button>`); };
+  simAct.yes=()=>{ simBuy(p,'aprobado desde el reloj'); scr(`<span class="appi" style="background:#22a06b">${CK}</span><b>Aprobado.</b><span class="rw-sub">Llega ${arrival(p)}, con tiempo.</span>${simEnd()}`); buzz(); };
 }
 
 /* lentes: guardas una idea mirando, al estilo de una interfaz espacial */
