@@ -27,7 +27,7 @@ body.ui{cursor:default}
 /* textos sobre la web */
 .cap{position:absolute;left:96px;bottom:84px;z-index:4;max-width:1200px;border-radius:30px;background:rgba(255,255,255,.94);padding:22px 38px 28px;font-family:'Newsreader',serif;font-size:84px;font-weight:400;line-height:1.02;letter-spacing:-.04em;color:var(--ink);box-shadow:0 30px 60px -30px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.05);opacity:0}
 .cap em{font-style:italic;color:var(--brand)}
-.cap.sm{bottom:40px;font-size:66px;padding:18px 32px 22px}
+.cap.sm{bottom:40px;max-width:1100px;font-size:60px;padding:18px 32px 22px}
 .cap.r{left:auto;right:96px}
 .cap.top{top:84px;bottom:auto;left:0;right:0;width:max-content;max-width:none;margin:0 auto;font-size:58px;padding:16px 32px 20px}
 .cap em .w{display:inline-block}
@@ -107,7 +107,7 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
   <div id="cur"><i></i><svg width="46" height="46" viewBox="0 0 24 24" style="position:absolute;left:-8px;top:-4px"><path d="M5 2.5v17.2l4.3-4.1 2.8 6.4 3-1.3-2.8-6.3 6-.2Z" fill="#0e1014" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
   <p class="cap" id="cap"></p>
   <section class="card" id="c1"><span class="logo">Cuenta conmigo<i>.</i></span><p class="big">Un asistente que <em>planifica</em> tus regalos del año.</p></section>
-  <section class="card" id="c7"><p class="big">Y no solo <em>en la web.</em></p></section>
+  <section class="card" id="c7"><p class="big">Te acompaño <em>en tu día a día.</em></p></section>
   <section class="card" id="c12"><p class="big" style="font-size:150px">Cuenta conmigo<em>.</em></p><p class="sub">Juntos no se nos pasará nada.</p><span class="cc" aria-label="Creado en Chile"><b>CREADO</b><b>EN CHILE</b></span></section>
   <div id="veil"></div><div id="ffv" style="position:absolute;inset:0;z-index:10;background:#000;opacity:0;visibility:hidden;pointer-events:none"></div><div id="bar"></div>
 </div>
@@ -144,8 +144,9 @@ const el=sel=>W.document.querySelector(sel);
 const click=sel=>{ const b=el(sel); if(b) b.click(); };
 
 /* cámara: lleva un elemento de la web hacia el centro (un poco arriba, para dejar espacio al texto) */
-function frame(sel,scale=1.15,dur=1.6,cy=.44,cx=.5){
+function frame(sel,scale=1.15,dur=1.6,cy=.44,cx=.5,tries=0){
   const e=sel&&el(sel); let x=0,y=0;
+  if(e&&scale>1&&!e.getBoundingClientRect().width&&tries<15){ gsap.delayedCall(.1,()=>frame(sel,scale,dur,cy,cx,tries+1)); return; }   // aún no se muestra: esperar
   if(e&&scale>1){ const r=e.getBoundingClientRect(), mx=(r.left+r.width/2)*Z, my=(r.top+r.height/2)*Z;
     x=Math.min(0,Math.max(1920-1920*scale,1920*cx-mx*scale)); y=Math.min(0,Math.max(1080-1080*scale,1080*cy-my*scale)); }
   else scale=1;
@@ -219,21 +220,22 @@ function phoneReset(){ gsap.killTweensOf(['#ph','#dim','#phN','#phTap','#phTch',
 
 /* las tomas: inicio (s) según el guion; cada "grupo" puede arrancar desde cero recargando la web */
 const SHOTS=[
-  {t:0,    name:'T1 Definición'},
-  {t:3.9,  name:'T2 Conectar'},
-  {t:16.6, name:'T3 Análisis'},
-  {t:32.9, name:'T4 Planner'},
-  {t:41.9, name:'T5 Me acuerdo'},
-  {t:54.6, name:'T6 Pensando', join:4},
-  {t:60.6, name:'T7 Propuesta', join:4},
-  {t:66.6, name:'T8 Puente'},
-  {t:70.6, name:'T9 Reloj'},
-  {t:77.2, name:'T10 Casa'},
-  {t:85.2, name:'T11 Auto'},
-  {t:93.2, name:'T12 Tienda'},
-  {t:100.6, name:'T13 Cierre'},
+  {t:0,     name:'T1 Definición'},
+  {t:3.9,   name:'T2 Conectar'},
+  {t:16.6,  name:'T3 Análisis'},
+  {t:32.9,  name:'T4 Planner'},
+  {t:41.9,  name:'T5 Me acuerdo'},
+  {t:54.6,  name:'T6 Pensando', join:4},
+  {t:63.6,  name:'T7 Propuesta', join:4},
+  {t:69.6,  name:'T8 Puente'},
+  {t:73.6,  name:'T9 Reloj'},
+  {t:80.2,  name:'T10 Casa'},
+  {t:88.2,  name:'T11 Auto'},
+  {t:96.2,  name:'T12 Chat'},
+  {t:104.5, name:'T13 Tienda'},
+  {t:111.9, name:'T14 Cierre'},
 ];
-const END=106.9;
+const END=118.2;
 
 function build(){
   const T=gsap.timeline({paused:true,onComplete:()=>{ if(LOOP) start(0); }});
@@ -253,7 +255,7 @@ function build(){
   /* T3 · Análisis: la pantalla de la web completa, sin apuro */
   T.call(()=>{ W.gsap.delayedCall(.5,()=>wts(.6)); },null,16.75)
    .call(curOut,null,17.2)
-   .call(()=>capIn('Leo <em>tu año.</em>',{sm:true}),null,18)
+   .call(()=>capIn('Analizo lo que conectas y <em>recupero ocasiones por ti.</em>',{sm:true}),null,18)
    .call(()=>frame('#field',1.06,3,.42),null,19)
    .call(capOut,null,22.6)
    .call(()=>frame(null,1,1.4),null,22.8)
@@ -261,7 +263,7 @@ function build(){
   tap(T,'#enter',33,.8);
   /* T4 · Planner: recorrido por el radar y el calendario */
   T.call(()=>frame('.dh',1.12,1.4,.4,.5),null,33.6)
-   .call(()=>capIn('Vigilo <em>todo tu año.</em>',{sm:true}),null,34.1)
+   .call(()=>capIn('Visualiza <em>lo que se te viene.</em>',{sm:true}),null,34.1)
    .call(()=>hov('.dh-l .dh-c:nth-child(1)'),null,35.1)
    .call(()=>hov('.dh-l .dh-c:nth-child(2)'),null,35.9)
    .call(()=>hov('.dh-l .dh-c:nth-child(3)'),null,36.7)
@@ -282,40 +284,47 @@ function build(){
    .call(phoneTap,null,51.4)
    .call(()=>{ phoneOut(); E("simulateNotif(); const n=document.getElementById('apNotif'); n.style.visibility='hidden'; n.click(); setTimeout(()=>n.style.visibility='',1500)"); },null,51.7)
    .call(()=>frame('#apTicket',1.1,1.4,.42,.62),null,52.8)
-   .call(()=>wts(.62),null,53.9);
-  /* T6 · Pensando: 30 → 8 → 3 → 1 */
-  T.call(()=>{ frame(null,1,1.4); capIn('Busco <em>por ti.</em>',{sm:true}); },null,54.7)
-   .call(()=>wts(1),null,60.1)
-   .call(capOut,null,60.3);
+   .call(()=>wts(.45),null,53.9);
+  /* T6 · Pensando: 30 → 8 → 3 → 1, con más tiempo */
+  T.call(()=>{ frame(null,1,1.4); capIn('Analizo cada ocasión y <em>te muestro la mejor opción.</em>',{sm:true}); },null,54.7)
+   .call(()=>wts(1),null,63.1)
+   .call(capOut,null,63.3);
   /* T7 · Propuesta: "Comprar y dejar listo" destacado */
-  T.call(()=>{ const b=el('.pl-cta'); if(b) b.classList.add('spot-hl'); frame(null,1,1.2); capIn('Tú solo <em>apruebas.</em>',{sm:true}); },null,60.7)
-   .call(capOut,null,66.1);
+  T.call(()=>{ const b=el('.pl-cta'); if(b) b.classList.add('spot-hl'); frame(null,1,1.2); capIn('Tú solo <em>apruebas.</em>',{sm:true}); },null,63.7)
+   .call(capOut,null,69.1);
   /* T8 · Puente */
-  T.call(()=>{ cardIn('c7'); camReset(); },null,66.7)
-   .call(()=>E("simOpen('reloj')"),null,70.1);
-  /* T9 · Reloj */
-  T.call(()=>{ cardOut('c7'); capIn('En tu <em>muñeca.</em>',{dark:true}); },null,70.7)
-   .call(()=>click('#rlS [data-s="see"]'),null,73.9)
-   .call(capOut,null,77.1);
-  /* T10 · Casa (parlante) */
-  T.call(()=>fade(()=>{ camReset(); E("simOpen('voz')"); }),null,77.3)
-   .call(()=>capIn('En tu <em>casa.</em>',{dark:true}),null,78.1)
-   .call(()=>click('.vz-say[data-s="yes"]'),null,82.9)
-   .call(capOut,null,85.1);
-  /* T11 · Auto */
-  T.call(()=>fade(()=>{ camReset(); E("simOpen('car')"); }),null,85.3)
-   .call(()=>capIn('En el <em>camino.</em>',{dark:true}),null,86.1)
-   .call(()=>frame('#phQ',1.3,1.8,.46,.6),null,88.3)
-   .call(()=>click('#carBt [data-s="yes"]'),null,90.7)
-   .call(capOut,null,93.1);
-  /* T12 · Tienda */
-  T.call(()=>fade(()=>{ E("simClose(); tnOpen()"); }),null,93.3)
-   .call(()=>{ camReset(); capIn('Y cuando pasas <em>por la tienda.</em>',{dark:true});  },null,94.1)
-   .call(()=>click('#tnN'),null,96.3)
-   .call(()=>click('[data-tn="guide"]'),null,98.5)
-   .call(capOut,null,100.1);
-  /* T13 · Cierre */
-  T.call(()=>{ cardIn('c12'); camReset(); },null,100.7)
+  T.call(()=>{ cardIn('c7'); camReset(); },null,69.7)
+   .call(()=>E("simOpen('reloj')"),null,73.1);
+  /* T9 · Reloj: respondes rápido */
+  T.call(()=>{ cardOut('c7'); capIn('En tu reloj, <em>respondes en un toque.</em>',{dark:true}); },null,73.7)
+   .call(()=>click('#rlS [data-s="see"]'),null,76.9)
+   .call(capOut,null,80.1);
+  /* T10 · Casa (parlante): lo que ningún conector sabe */
+  T.call(()=>fade(()=>{ camReset(); E("simOpen('voz')"); }),null,80.3)
+   .call(()=>capIn('En casa, <em>te pregunto lo que no sé.</em>',{dark:true}),null,81.1)
+   .call(()=>click('.vz-say[data-s="yes"]'),null,85.9)
+   .call(capOut,null,88.1);
+  /* T11 · Auto: plan B hasta el último momento */
+  T.call(()=>fade(()=>{ camReset(); E("simOpen('car')"); }),null,88.3)
+   .call(()=>capIn('Si se te pasó una, <em>te ayudo hasta el último momento.</em>',{dark:true}),null,89.1)
+   .call(()=>frame('#phQ',1.3,1.8,.46,.6),null,91.3)
+   .call(()=>click('#carBt [data-s="yes"]'),null,93.7)
+   .call(capOut,null,96.1);
+  /* T12 · Chat: le mandas lo de tu día y aprende */
+  T.call(()=>fade(()=>{ camReset(); E("simClose(); chOpen()"); }),null,96.3)
+   .call(()=>capIn('Mándame lo que ves <em>y aprendo de ti.</em>',{sm:true}),null,97.1)
+   .call(()=>frame('#ch',1.3,1.4,.5,.66),null,97.6)
+   .call(()=>E("chSend({demo:'foto'})"),null,98.2)
+   .call(()=>E("chSend({demo:'link'})"),null,101.6)
+   .call(capOut,null,104.4);
+  /* T13 · Tienda */
+  T.call(()=>fade(()=>{ E("chClose(); simClose(); tnOpen()"); }),null,104.6)
+   .call(()=>{ camReset(); capIn('Y cuando pasas <em>por la tienda.</em>',{dark:true}); },null,105.4)
+   .call(()=>click('#tnN'),null,107.6)
+   .call(()=>click('[data-tn="guide"]'),null,109.8)
+   .call(capOut,null,111.4);
+  /* T14 · Cierre */
+  T.call(()=>{ cardIn('c12'); camReset(); },null,112)
    .set({},{},END);
   /* barra de progreso */
   T.fromTo('#bar',{width:0},{width:1920,duration:END,ease:'none'},0);
@@ -327,15 +336,18 @@ function fade(fn){ gsap.timeline().to('#veil',{opacity:1,duration:.35}).call(fn)
 /* arrancar desde una toma: se recarga la web para empezar limpio y se adelanta hasta ese punto */
 /* adelanto rápido: para llegar a un segundo exacto, la toma arranca desde su inicio y corre ×12 tapada */
 let FF=1, wReq=1, ffTo=null;
+gsap.ticker.lagSmoothing(80,33);   // cada cuadro avanza poco: al adelantar ×18 las llamadas no se saltan el orden
 function wts(v){ wReq=v; if(W) W.gsap.globalTimeline.timeScale(v*FF); }
 function ffEnd(){ FF=1; ffTo=null; gsap.globalTimeline.timeScale(1); wts(wReq); gsap.set('#ffv',{opacity:0,visibility:'hidden'}); $('ffl').style.opacity=0; if(paused) setPaused(true); }
+let run=0;
 function start(i,toT=null){
+  const me=++run;   // si se salta de nuevo antes de que cargue, solo vale la última carga
   i=Math.max(0,Math.min(SHOTS.length-1,i)); if(SHOTS[i].join!=null) i=SHOTS[i].join; cur=i;
   if(tl){ tl.kill(); tl=null; }
   FF=1; ffTo=null; wReq=1; gsap.globalTimeline.timeScale(1);
   gsap.killTweensOf([CAP,CAM,CUR,'.card','.card > *']); gsap.set(CAP,{opacity:0}); gsap.set(CUR,{opacity:0}); phoneReset(); gsap.set('.card',{opacity:0,visibility:'hidden'}); camReset();
   gsap.to('#veil',{opacity:1,duration:.3});
-  APP.onload=()=>{ W=APP.contentWindow; setTimeout(()=>{ tl=build(); const t0=SHOTS[i].t;
+  APP.onload=()=>{ if(me!==run) return; W=APP.contentWindow; setTimeout(()=>{ if(me!==run) return; tl=build(); const t0=SHOTS[i].t;
       if(i>0) prep(i);                       // deja la web en el estado que esa toma necesita
       tl.seek(t0,true); tl.play();
       if(toT!=null&&toT>t0+.2){ ffTo=toT; FF=12; gsap.set('#ffv',{opacity:1,visibility:'visible'}); $('ffl').textContent='Yendo a '+fmt(toT)+'…'; $('ffl').style.opacity=1; gsap.globalTimeline.timeScale(FF); wts(1); }
@@ -348,11 +360,12 @@ function prep(i){
   const n=SHOTS[i].name.split(' ')[0];
   if(n==='T2'){ E("startOb()"); E("obGo(1)"); }
   else if(n==='T3'){ E("startOb(); ob.step=1; obProg(1); ['cal','gmail','contacts','wa'].forEach(k=>{ ob.conn[k]=true; if(k==='gmail') conn.gmail=true; if(k==='contacts') conn.contacts=true; }); obView()"); }
-  else if(n==='T8'||n==='T9'){ E("openYear()"); if(n==='T9') E("simOpen('reloj')"); else cardIn('c7'); }
-  else if(['T4','T5','T10','T11','T12'].includes(n)){ E("openYear()"); }
-  else if(n==='T13'){ cardIn('c12'); }
-  if(n==='T10') E("simOpen('voz')"); if(n==='T11') E("simOpen('car')"); if(n==='T12') E("tnOpen()");
-  if(['T10','T11','T12'].includes(n)) capIn({T10:'En tu <em>casa.</em>',T11:'En el <em>camino.</em>',T12:'Y cuando pasas <em>por la tienda.</em>'}[n],{dark:true});
+  else if(n==='T14'){ cardIn('c12'); }
+  else E("openYear()");
+  if(n==='T8') cardIn('c7');
+  const SIM={T9:"simOpen('reloj')",T10:"simOpen('voz')",T11:"simOpen('car')",T13:"tnOpen()"}; if(SIM[n]) E(SIM[n]);
+  const CAPS={T9:'En tu reloj, <em>respondes en un toque.</em>',T10:'En casa, <em>te pregunto lo que no sé.</em>',T11:'Si se te pasó una, <em>te ayudo hasta el último momento.</em>',T13:'Y cuando pasas <em>por la tienda.</em>'};
+  if(CAPS[n]) capIn(CAPS[n],{dark:true});
 }
 function shotAt(t){ let k=0; SHOTS.forEach((s,i)=>{ if(t>=s.t) k=i; }); return k; }
 const grp=i=>SHOTS[i].join!=null?SHOTS[i].join:i;           // las tomas unidas arrancan desde la primera del grupo
@@ -420,7 +433,7 @@ addEventListener('keydown',e=>{
   else if(/^[1-9]$/.test(k)) go(+k-1);
   else if(k==='Escape'&&!document.fullscreenElement) location.href='index.html';
 });
-document.fonts.ready.then(()=>start(0));
+document.fonts.ready.then(()=>{ if(!run) start(0); });   // si ya se saltó con la barra, no pisarlo
 </script>
 </body>
 </html>
