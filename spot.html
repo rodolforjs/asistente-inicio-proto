@@ -99,7 +99,7 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 <div id="stage">
   <div id="cam"><iframe id="app" title="Cuenta conmigo" tabindex="-1"></iframe></div>
   <div id="dim"></div>
-  <div id="mem"><div class="in"><p class="big">Me acuerdo <em>por ti.</em></p><span class="dt"><i></i><b id="memD">miércoles 4 de noviembre</b></span><p class="sb2" id="memS">Si algo se acerca, te aviso.</p></div></div>
+  <div id="mem"><div class="in"><p class="big" id="memT">Cuando se acerca <em>una fecha…</em></p><span class="dt"><i></i><b id="memD">miércoles 4 de noviembre</b></span><p class="sb2" id="memS">Si algo se acerca, te aviso.</p></div></div>
   <div id="ph" aria-hidden="true"><div class="scr"><span class="isl"></span><div class="sb"><span>9:12</span><span>●●● ᯤ ▮</span></div>
     <div class="clk"><small id="phD">lunes 9 de noviembre</small><b>9:12</b></div>
     <div class="nt" id="phN"><span class="appi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span style="flex:1;min-width:0"><span class="urg"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Urgente</span><span class="nm"><span>Cuenta conmigo</span><span>ahora</span></span><b id="phT"></b><span class="bd" id="phB"></span></span></div>
@@ -182,6 +182,7 @@ const tap=(T,sel,t,mv=.7)=>T.call(()=>curTo(sel,mv),null,t-mv-.1).call(()=>curCl
 
 /* T5: el celular entra con el aviso urgente; al tocarlo, la web abre la misma fecha */
 function memIn(){
+  $('memT').innerHTML='Cuando se acerca <em>una fecha…</em>';
   gsap.set('#mem',{visibility:'visible'}); gsap.set('#mem .in',{x:0}); gsap.set('#memS',{opacity:0,y:0}); $('memD').textContent='miércoles 4 de noviembre';
   gsap.fromTo('#mem',{opacity:0},{opacity:1,duration:.6});
   gsap.fromTo('#mem .big, #mem .dt',{opacity:0,y:30},{opacity:1,y:0,duration:.9,stagger:.15,ease:'power3.out'});
@@ -191,6 +192,7 @@ function memDays(){
   const D=['miércoles 4','jueves 5','viernes 6','sábado 7','domingo 8','lunes 9'], tl2=gsap.timeline();
   D.slice(1).forEach((d,i)=>tl2.to('#memD',{y:-10,opacity:0,duration:.12,delay:i?.2:0}).call(()=>{ $('memD').textContent=d+' de noviembre'; }).fromTo('#memD',{y:10,opacity:0},{y:0,opacity:1,duration:.16}));
 }
+function memSwap(){ gsap.timeline().to('#memT',{opacity:0,y:-20,duration:.3,ease:'power2.in'}).call(()=>{ $('memT').innerHTML='Me acuerdo <em>por ti.</em>'; }).fromTo('#memT',{opacity:0,y:26},{opacity:1,y:0,duration:.6,ease:'power3.out'}); }
 function memSide(){ gsap.to('#mem .in',{x:-330,duration:1.1,ease:'power3.inOut'}); }
 function phoneIn(){
   const p=E('defaultFocus()'), l=E(`ordLeft(defaultFocus())`), D=E('TODAY');
@@ -261,15 +263,13 @@ function build(){
    .call(()=>frame(null,1,1.4),null,19.4)
    .call(()=>wts(1),null,27.8);
   tap(T,'#enter',29.6,.8);
-  /* T4 · Planner: cómo trabajo, y el puente a la fecha que se viene */
+  /* T4 · Planner: organiza tus regalos (radar y calendario) */
   T.call(()=>frame('.dh',1.12,1.1,.4,.5),null,30)
-   .call(()=>capIn('Visualiza <em>cómo trabajo.</em>',{sm:true}),null,30.3)
+   .call(()=>capIn('Organiza <em>tus regalos.</em>',{top:true}),null,30.3)
    .call(()=>hov('.dh-l .dh-c:nth-child(1)',.45),null,31.2)
    .call(()=>hov('.dh-l .dh-c:nth-child(2)',.45),null,31.8)
    .call(()=>hov('.dh-l .dh-c:nth-child(3)',.45),null,32.4)
-   .call(capOut,null,33)
    .call(()=>{ unhov(); frame('.dy',1.1,1.1,.4,.5); },null,33.1)
-   .call(()=>capIn('Y cuando se viene <em>una fecha…</em>',{top:true}),null,33.5)
    .call(()=>{ const c=cells(); hov(c[1],.45); },null,34.3)
    .call(()=>{ const c=cells(); hov(c[Math.min(5,c.length-1)],.45); },null,34.9)
    .call(()=>hov('.dy-c.is-now',.5),null,35.5)
@@ -278,6 +278,7 @@ function build(){
   T.call(memIn,null,37.0)
    .call(()=>{ unhov(); camReset(); E("simulateUrgent()"); },null,37.7)
    .call(memDays,null,38.4)
+   .call(memSwap,null,39.2)
    .call(()=>{ memSide(); phoneIn(); },null,41.0)
    .call(phoneNotif,null,42.6)
    .call(()=>gsap.fromTo('#memS',{opacity:0,y:16},{opacity:1,y:0,duration:.6}),null,43.2)
