@@ -265,10 +265,11 @@ function build(){
   tap(T,'#enter',29.6,.8);
   /* T4 · Planner: organiza tus regalos (radar y calendario) */
   T.call(()=>frame('.dh',1.12,1.1,.4,.5),null,30)
-   .call(()=>capIn('Organiza <em>tus regalos.</em>',{top:true}),null,30.3)
+   .call(()=>capIn('Organiza <em>tus regalos.</em>',{sm:true}),null,30.3)
    .call(()=>hov('.dh-l .dh-c:nth-child(1)',.45),null,31.2)
    .call(()=>hov('.dh-l .dh-c:nth-child(2)',.45),null,31.8)
    .call(()=>hov('.dh-l .dh-c:nth-child(3)',.45),null,32.4)
+   .call(capOut,null,33)
    .call(()=>{ unhov(); frame('.dy',1.1,1.1,.4,.5); },null,33.1)
    .call(()=>{ const c=cells(); hov(c[1],.45); },null,34.3)
    .call(()=>{ const c=cells(); hov(c[Math.min(5,c.length-1)],.45); },null,34.9)
