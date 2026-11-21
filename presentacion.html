@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cuenta conmigo · Presentación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Presentación de 5 min. Avanza quien presenta: → / espacio / AvPág = siguiente · ← / RePág = anterior.
+   N = notas · V = spot en loop (video) · P = volver a la presentación · F = pantalla completa.
+   Las escenas del producto son el spot real (spot.html?present=1) reproducido por tramos. */
+:root{--ink:#0e1014;--brand:#ff5924;--paper:#f4f2ee;--muted:#4b5563}
+html,body{margin:0;height:100%;background:#000;overflow:hidden}
+body{cursor:none}body.mouse{cursor:default}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--paper)}
+#sp{position:absolute;inset:0;width:1920px;height:1080px;border:0;pointer-events:none;background:var(--paper)}
+/* escenas propias */
+.ov{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--paper);font-family:'Newsreader',serif;color:var(--ink);text-align:center;opacity:0;visibility:hidden}
+.big{margin:0;max-width:1500px;font-size:120px;font-weight:400;line-height:1;letter-spacing:-.045em}
+.big em{font-style:italic;color:var(--brand)}
+.mid{margin:0;max-width:1300px;font-size:52px;font-weight:400;line-height:1.15;letter-spacing:-.02em;color:var(--muted)}
+.src{position:absolute;left:0;right:0;bottom:70px;font-family:'Inter',sans-serif;font-size:22px;font-weight:500;letter-spacing:.04em;color:#9aa3af}
+.kick{margin:0 0 34px;font-family:'Inter',sans-serif;font-size:24px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9aa3af}
+/* 1 · gancho */
+#o1 .st{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#o1 .pct{margin:0;font-size:340px;font-weight:400;line-height:.9;letter-spacing:-.06em;color:var(--brand)}
+#o1 .st2 .mid{margin-top:34px;max-width:1100px}
+/* 2 · usuarios */
+#o2 .row{display:flex;gap:120px;align-items:flex-start;justify-content:center}
+#o2 .p{display:flex;flex-direction:column;align-items:center;width:400px}
+#o2 .ph{width:250px;height:250px;border-radius:50%;padding:9px;box-sizing:border-box}
+#o2 .ph img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#ddd}
+#o2 h3{margin:30px 0 0;font-size:54px;font-weight:400;letter-spacing:-.03em}
+#o2 small{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-size:20px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9aa3af}
+#o2 .ol{margin-top:6px;font-size:40px;font-style:italic;letter-spacing:-.02em;color:var(--muted)}
+#o2 .big{margin-top:96px;font-size:84px}
+/* 4 y 11 */
+#o11 .pills{display:flex;flex-direction:column;gap:22px;align-items:center}
+#o11 .pills span{font-size:104px;line-height:1;letter-spacing:-.045em}
+#o11 .pills i{display:block;width:60px;height:3px;margin:6px auto;background:var(--brand);border-radius:2px}
+/* cortina: tapa la recarga del spot cuando se salta a un tramo que no sigue */
+#cur{position:absolute;inset:0;z-index:8;background:var(--paper);opacity:0;visibility:hidden}
+/* contador y barra */
+#cnt{position:absolute;right:42px;bottom:26px;z-index:9;font:600 20px/1 'Inter',sans-serif;letter-spacing:.06em;color:rgba(14,16,20,.35);font-variant-numeric:tabular-nums}
+#cnt.dk{color:rgba(255,255,255,.45)}
+#bar{position:absolute;left:0;bottom:0;z-index:9;height:5px;width:0;background:var(--brand);opacity:.85;transition:width .6s ease}
+body.video #cnt,body.video #bar,body.video .ov,body.video #cur{display:none!important}
+/* notas para quien presenta (N) */
+#notes{position:fixed;top:16px;right:16px;bottom:16px;z-index:30;width:min(460px,calc(100vw - 32px));display:flex;flex-direction:column;gap:14px;box-sizing:border-box;border-radius:22px;background:rgba(14,16,20,.94);padding:22px 24px;font:400 17px/1.45 'Inter',sans-serif;color:#e8eaee;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);transform:translateX(110%);transition:transform .3s ease;overflow:auto}
+#notes.on{transform:none}
+#notes .h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+#notes b{font-size:20px;color:#fff}
+#notes .tm{font-variant-numeric:tabular-nums;font-weight:600;color:#ff8a5c}
+#notes .tm.over{color:#ff4d4d}
+#notes .nt{font-size:19px;line-height:1.5;color:#fff}
+#notes .nx{margin-top:auto;border-top:1px solid rgba(255,255,255,.12);padding-top:12px;font-size:14px;color:#9aa3af}
+#notes .k{font-size:12.5px;color:#6b7280}
+#flash{position:fixed;left:50%;top:24px;z-index:31;transform:translateX(-50%);border-radius:999px;background:rgba(14,16,20,.85);padding:9px 16px;font:600 14px/1 'Inter',sans-serif;color:#fff;opacity:0;pointer-events:none;transition:opacity .3s}
+</style>
+</head>
+<body>
+<div id="stage">
+  <iframe id="sp" title="Escenas del spot" tabindex="-1" inert></iframe>
+
+  <!-- 1 · Gancho + problema (dos pasos) -->
+  <section class="ov" id="o1">
+    <div class="st st1"><p class="big">¿Alguna vez se te pasó <em>un regalo?</em></p></div>
+    <div class="st st2"><p class="pct">54%</p><p class="mid">compró el regalo del Día de la Madre con menos de una semana.</p></div>
+    <p class="src">Logisfashion 2026 · CNC 2025</p>
+  </section>
+
+  <!-- 2 · Usuarios -->
+  <section class="ov" id="o2">
+    <div class="row">
+      <div class="p"><div class="ph" style="background:#ff6a1f"><img src="assets/marcela.jpg" alt="Marcela"></div><h3>Marcela, 58</h3><small>Se le olvida</small><span class="ol">lo que vio y dónde</span></div>
+      <div class="p"><div class="ph" style="background:#2a35e6"><img src="assets/andres.jpg" alt="Andrés"></div><h3>Andrés, 52</h3><small>Se le olvida</small><span class="ol">que la fecha se acerca</span></div>
+      <div class="p"><div class="ph" style="background:#6b2bf0"><img src="assets/felipe.jpg" alt="Felipe"></div><h3>Felipe, 34</h3><small>Se le olvida</small><span class="ol">la fecha</span></div>
+    </div>
+    <p class="big">Necesito ayuda, <em>sin que sea una carga.</em></p>
+  </section>
+
+  <!-- 3 · Oportunidad -->
+  <section class="ov" id="o3"><p class="big">De un regalo suelto a <em>los regalos del año.</em></p></section>
+
+  <!-- 11 · Por qué le sirve a Creado -->
+  <section class="ov" id="o11">
+    <p class="kick">Por qué le sirve a Creado</p>
+    <div class="pills"><span>Más compras en la web</span><i></i><span>Compra recurrente</span><i></i><span>Compra <em style="color:var(--brand)">anticipada.</em></span></div>
+  </section>
+
+  <div id="cur"></div>
+  <div id="cnt">1/12</div><div id="bar"></div>
+</div>
+
+<aside id="notes" aria-label="Notas para quien presenta">
+  <div class="h"><b id="nT"></b><span class="tm" id="nTm"></span></div>
+  <div class="k" id="nO"></div>
+  <div class="nt" id="nN"></div>
+  <div class="nx" id="nX"></div>
+  <div class="k">→ / espacio siguiente · ← anterior · N notas · V spot en loop · P volver · F pantalla completa · R reiniciar reloj</div>
+</aside>
+<div id="flash"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script>
+const $=id=>document.getElementById(id), STAGE=$('stage'), SPF=$('sp');
+function fit(){ const s=Math.min(innerWidth/1920,innerHeight/1080); STAGE.style.transform=`translate(${(innerWidth-1920*s)/2}px,${(innerHeight-1080*s)/2}px) scale(${s})`; }
+addEventListener('resize',fit); fit();
+
+/* Escenas. spot: tramo [desde,hasta] de spot.html (en segundos de su línea de tiempo); steps: tramos por tecla. */
+const S=[
+  {t:'Gancho + problema', obj:30, ov:'o1', steps:2,
+   n:'Levante la mano a quien le ha pasado. Al 54% le pasa, y más de la mitad ya tuvo problemas con un despacho. Y en Navidad cada persona hace unos 7 regalos. Regalar bien se vive como un cacho.'},
+  {t:'Usuarios', obj:35, ov:'o2',
+   n:'Marcela quiere regalar cosas bonitas, pero siempre la pilla el tiempo. Andrés pone la plata, pero que lo vea otro. A Felipe le pasa que es hoy y no tiene nada. A cada uno se le olvida algo distinto, pero quieren lo mismo.'},
+  {t:'Oportunidad', obj:15, ov:'o3',
+   n:'Creado ya resuelve la identidad chilena y la rapidez. Lo que falta es alguien que acompañe a la persona antes de la fecha.'},
+  {t:'Propuesta', obj:20, spot:[[0,3.7]], extras:true,
+   n:'Cuenta conmigo es un planner de regalos. Se acuerda por ti, te propone el regalo listo y aprende cuánto quieres participar.'},
+  {t:'Conecta', obj:20, spot:[[3.7,12.9]],
+   n:'No te pregunta nada: lee lo que ya usas, como tu calendario o tu correo.'},
+  {t:'Analiza + 11 fechas', obj:25, spot:[[12.9,28.6]],
+   n:'Lee tu año completo: de 214 eventos encuentra 11 fechas que importan y sabe de quién es cada una.'},
+  {t:'Se acuerda', obj:15, spot:[[36.9,46.2]],
+   n:'Antes de que se te pase, te avisa.'},
+  {t:'Piensa', obj:40, spot:[[46.2,58.2]], key:true,
+   n:'Esta es la inteligencia. Cruza la invitación del calendario, el tope de $15.000 que venía en el correo y a los compañeros del sorteo con el catálogo de Creado. De 30 regalos llega a 1.'},
+  {t:'Tú apruebas', obj:20, spot:[[58.2,64.0]],
+   n:'Te lo deja listo y te explica por qué lo eligió. Si te importa más, te muestra 3 opciones; si no, elige solo. Nada se compra sin tu aprobación.'},
+  {t:'Omnicanalidad', obj:50, spot:[[64.0,75.0],[75.0,83.0],[83.0,95.8]], momentos:['reloj','auto','tienda'],
+   n:'Y no vive solo en la web: aparece donde estás. En el reloj apruebas con un toque. Si igual se te pasa, te rescata en el auto. Y si pasas por la tienda, te guía al regalo.'},
+  {t:'Por qué le sirve a Creado', obj:15, ov:'o11', pre:[95.8,97.2],
+   n:'Así respondemos al desafío: la persona deja de comprar un regalo suelto y empieza a resolver su año con Creado.'},
+  {t:'Cierre', obj:15, spot:[[97.2,102.7]], replay:'c12', n:'Cuenta conmigo. Tu planner para que no se te pase nada.'}
+];
+const TOTAL=S.reduce((a,x)=>a+x.obj,0);
+const nSteps=x=>x.steps||(x.spot?x.spot.length:1);
+let cur=0, step=0, SP=null, W=null, video=false, t0=null, sceneT0=performance.now(), busy=0;
+
+/* Dispositivos físicos (a futuro): cada momento de la omnicanalidad avisa por evento y por canal.
+   Para escucharlo desde otra pestaña o un puente: new BroadcastChannel('cuenta-conmigo').onmessage = e => e.data */
+let BC=null; try{ BC=new BroadcastChannel('cuenta-conmigo'); }catch(e){}
+function momento(nombre){
+  const detail={tipo:'momento',momento:nombre,escena:cur+1,ts:Date.now()};
+  dispatchEvent(new CustomEvent('cc:momento',{detail}));
+  try{ BC&&BC.postMessage(detail); }catch(e){}
+}
+
+/* escenas propias: entra una, salen las otras */
+function showOv(id){
+  document.querySelectorAll('.ov').forEach(o=>{
+    if(o.id===id){ gsap.set(o,{visibility:'visible'}); gsap.to(o,{opacity:1,duration:.5,overwrite:true}); }
+    else if(getComputedStyle(o).visibility!=='hidden') gsap.to(o,{opacity:0,duration:.5,overwrite:true,onComplete:()=>gsap.set(o,{visibility:'hidden'})});   // también si recién venía entrando (teclas rápidas)
+  });
+}
+function animOv(id,st){
+  const o=$(id);
+  if(id==='o1'){
+    if(st===0){ gsap.set('#o1 .st2',{opacity:0}); gsap.fromTo('#o1 .st1',{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',delay:.15}); gsap.fromTo('#o1 .src',{opacity:0},{opacity:0,duration:0}); }
+    else { gsap.to('#o1 .st1',{opacity:0,y:-30,duration:.4,ease:'power2.in'}); gsap.set('#o1 .st2',{opacity:1}); gsap.fromTo('#o1 .pct',{opacity:0,scale:.8},{opacity:1,scale:1,duration:.9,ease:'back.out(1.4)',delay:.3}); gsap.fromTo('#o1 .st2 .mid',{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:'power3.out',delay:.65}); gsap.to('#o1 .src',{opacity:1,duration:.6,delay:1}); }
+    return;
+  }
+  if(id==='o2'){ gsap.fromTo('#o2 .p',{opacity:0,y:40},{opacity:1,y:0,duration:.8,stagger:.18,ease:'power3.out',delay:.2}); gsap.fromTo('#o2 .big',{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',delay:1}); return; }
+  if(id==='o11'){ gsap.fromTo('#o11 .kick, #o11 .pills > *',{opacity:0,y:26},{opacity:1,y:0,duration:.7,stagger:.14,ease:'power3.out',delay:.2}); return; }
+  gsap.fromTo(o.children,{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',delay:.15});
+}
+
+/* tramo del spot: si no sigue del anterior, la cortina tapa la recarga hasta que la toma esté lista */
+function playSeg(a,b,after){
+  const me=++busy;
+  if(SP.contig(a)){ SP.seg(a,b); after&&after(); return; }
+  gsap.set('#cur',{visibility:'visible'}); gsap.to('#cur',{opacity:1,duration:.25,overwrite:true,onComplete:()=>{
+    if(me!==busy) return; SP.seg(a,b);
+    const k=setInterval(()=>{ if(me!==busy){ clearInterval(k); return; } if(SP.ready()){ clearInterval(k); after&&after(); gsap.to('#cur',{opacity:0,duration:.45,onComplete:()=>gsap.set('#cur',{visibility:'hidden'})}); } },60);
+  }});
+}
+
+function render(dirFwd=true){
+  const x=S[cur];
+  $('cnt').textContent=`${cur+1}/${S.length}`;
+  $('bar').style.width=((cur+(step+1)/nSteps(x))/S.length*1920)+'px';
+  try{ history.replaceState(null,'',`#${cur+1}${step?'.'+(step+1):''}`); }catch(e){}
+  notes();
+  if(!x.ov&&!SP){ setTimeout(()=>render(dirFwd),200); return; }
+  if(x.ov){
+    showOv(x.ov); animOv(x.ov,step);
+    if(SP){ if(x.pre) SP.seg(x.pre[0],x.pre[1]); else SP.pause(); }   // pre: el spot avanza escondido detrás para que la escena siguiente ya esté lista
+    $('cnt').classList.remove('dk'); return;
+  }
+  // escena del spot: las propias se van y el spot toma el cuadro
+  showOv(null);
+  const [a,b]=x.spot[step];
+  const after=()=>{ if(x.extras){ SP.hideExtras(); SP.extras(); } };
+  if(x.extras&&a===0&&SP.contig(0)) SP.replayCard('c1');
+  if(x.replay&&SP.contig(a)) SP.replayCard(x.replay);
+  playSeg(a,b,after);
+  if(x.momentos) momento(x.momentos[step]);
+}
+
+function go(d){
+  if(video) return;
+  if(t0==null) t0=performance.now();
+  const x=S[cur];
+  if(d>0){ if(step<nSteps(x)-1) step++; else if(cur<S.length-1){ cur++; step=0; sceneT0=performance.now(); } else return; }
+  else { if(step>0) step--; else if(cur>0){ cur--; step=nSteps(S[cur])-1; sceneT0=performance.now(); } else return; }
+  render(d>0);
+}
+
+/* notas para quien presenta */
+const fmt=s=>{ s=Math.max(0,Math.round(s)); return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; };
+function notes(){
+  const x=S[cur], nx=S[cur+1];
+  $('nT').textContent=`${cur+1} · ${x.t}${nSteps(x)>1?` (${step+1}/${nSteps(x)})`:''}`;
+  $('nO').textContent=`Objetivo ${fmt(x.obj)} · total ${fmt(TOTAL)}${x.momentos?` · momento: ${x.momentos[step]}`:''}`;
+  $('nN').textContent=x.n;
+  $('nX').textContent=nx?`Siguiente: ${cur+2} · ${nx.t}`:'Fin';
+}
+setInterval(()=>{ const e=t0==null?0:(performance.now()-t0)/1000, es=(performance.now()-sceneT0)/1000, el=$('nTm');
+  el.textContent=`${fmt(es)} · ${fmt(e)}`; el.classList.toggle('over',es>S[cur].obj); },500);
+function flash(t){ const f=$('flash'); f.textContent=t; f.style.opacity=1; clearTimeout(flash.k); flash.k=setTimeout(()=>f.style.opacity=0,1400); }
+
+/* V = spot en loop (modo video) · P = volver a la presentación donde quedó */
+function toVideo(){ if(video||!SP) return; video=true; document.body.classList.add('video'); busy++; gsap.killTweensOf('#cur'); SP.video(); flash('Spot en loop · P para volver'); }
+function toPres(){ if(!video) return; video=false; document.body.classList.remove('video'); SP.pause(); render(); flash(`Presentación · ${cur+1}/${S.length}`); }
+
+addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey) return; const k=e.key;
+  if(['ArrowRight',' ','PageDown','Enter'].includes(k)){ e.preventDefault(); go(1); }
+  else if(['ArrowLeft','PageUp','Backspace'].includes(k)){ e.preventDefault(); go(-1); }
+  else if(k==='n'||k==='N') $('notes').classList.toggle('on');
+  else if(k==='v'||k==='V') toVideo();
+  else if(k==='p'||k==='P') toPres();
+  else if(k==='f'||k==='F'){ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(()=>{}); }
+  else if(k==='r'||k==='R'){ t0=performance.now(); sceneT0=t0; flash('Reloj en cero'); }
+  else if(k==='Escape'&&!document.fullscreenElement){ location.href='index.html'; }
+});
+let mk=0; addEventListener('mousemove',()=>{ document.body.classList.add('mouse'); clearTimeout(mk); mk=setTimeout(()=>document.body.classList.remove('mouse'),1500); });
+
+/* arranque: carga el spot detenido al inicio y abre en la escena del enlace (#5, #10.2…) */
+const h=(location.hash||'').slice(1).split('.'); cur=Math.max(0,Math.min(S.length-1,(+h[0]||1)-1)); step=Math.max(0,Math.min(nSteps(S[cur])-1,(+h[1]||1)-1));
+S.forEach(x=>{ if(x.ov) gsap.set('#'+x.ov,{opacity:0,visibility:'hidden'}); });
+if(S[cur].ov) render();
+SPF.onload=()=>{ W=SPF.contentWindow; const wait=setInterval(()=>{ if(W.SP){ clearInterval(wait); SP=W.SP; SP.prime(); if(!S[cur].ov) setTimeout(()=>render(),300); else if(S[cur].pre) setTimeout(()=>render(),300); } },50); };
+SPF.src='spot.html?present=1';
+/* el foco nunca se queda dentro del spot (la web enfoca campos del onboarding): las teclas siempre llegan aquí */
+addEventListener('blur',()=>setTimeout(()=>{ if(document.activeElement===SPF){ SPF.blur(); window.focus(); } },0));
+</script>
+</body>
+</html>

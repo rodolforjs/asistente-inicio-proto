@@ -13,6 +13,11 @@
 :root{--ink:#0e1014;--brand:#ff5924;--paper:#f4f2ee}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;cursor:none}
 body.ui{cursor:default}
+/* modo presentación (presentacion.html lo maneja por tramos): sin controles ni barra propios */
+body.present #ctl,body.present #bar,body.present #tip,body.present #ffl{display:none!important}
+#c1x{display:none;font-family:'Newsreader',serif;font-size:52px;font-weight:400;letter-spacing:-.02em;color:#4b5563}
+body.present #c1x{display:block}
+#c1x span{display:inline-block;opacity:0}
 #stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--paper)}
 #cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #app{display:block;width:1440px;height:810px;transform:scale(1.3333334);transform-origin:0 0;border:0;pointer-events:none;background:#f3f4f6}
@@ -107,7 +112,7 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
     <p class="tap" id="phTap">Toca para abrir</p><i class="tch" id="phTch"></i></div></div>
   <div id="cur"><i></i><svg width="46" height="46" viewBox="0 0 24 24" style="position:absolute;left:-8px;top:-4px"><path d="M5 2.5v17.2l4.3-4.1 2.8 6.4 3-1.3-2.8-6.3 6-.2Z" fill="#0e1014" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
   <p class="cap" id="cap"></p>
-  <section class="card" id="c1"><span class="logo">Cuenta conmigo<i>.</i></span><p class="big">Un asistente que <em>planifica</em> tus regalos del año.</p></section>
+  <section class="card" id="c1"><span class="logo">Cuenta conmigo<i>.</i></span><p class="big">Un asistente que <em>planifica</em> tus regalos del año.</p><p id="c1x"><span>Se acuerda</span><span>&nbsp;·&nbsp;</span><span>Te propone</span><span>&nbsp;·&nbsp;</span><span>Se adapta.</span></p></section>
   <section class="card" id="c7"><p class="big" id="c7t">Y no solo <em>en la web.</em></p></section>
   <section class="card" id="c12"><p class="big" style="font-size:150px">Cuenta conmigo<em>.</em></p><p class="sub">Tu planner para que no se te pase nada.</p><span class="cc" aria-label="Creado en Chile"><b>CREADO</b><b>EN CHILE</b></span></section>
   <div id="veil"></div><div id="ffv" style="position:absolute;inset:0;z-index:10;background:#000;opacity:0;visibility:hidden;pointer-events:none"></div><div id="bar"></div>
@@ -130,8 +135,9 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script>
-const Q=new URLSearchParams(location.search); let LOOP=Q.get('loop')==='1';
+const Q=new URLSearchParams(location.search); let LOOP=Q.get('loop')==='1'; const PRESENT=Q.get('present')==='1';
 const $=id=>document.getElementById(id), STAGE=$('stage'), CAM=$('cam'), APP=$('app'), CAP=$('cap');
+if(PRESENT){ document.body.classList.add('present'); APP.inert=true; }   // en la presentación el foco no entra a la web
 let W=null, tl=null, cur=0, paused=false;
 
 /* el escenario 1920×1080 se ajusta a la pantalla (con bandas si no es 16:9) */
@@ -340,6 +346,23 @@ let FF=1, wReq=1, ffTo=null;
 
 function wts(v){ wReq=v; if(W) W.gsap.globalTimeline.timeScale(v*FF); }
 function ffEnd(){ FF=1; ffTo=null; gsap.ticker.lagSmoothing(500,33); gsap.globalTimeline.timeScale(1); wts(wReq); gsap.set('#ffv',{opacity:0,visibility:'hidden'}); $('ffl').style.opacity=0; if(paused) setPaused(true); }
+/* ---------- control remoto para presentacion.html ----------
+   seg(a,b): reproduce el tramo [a,b] y se queda quieto al final. Si el spot ya está detenido en a, sigue de ahí;
+   si no, recarga la toma y adelanta tapado hasta a. */
+let stopAt=null;
+window.SP={
+  contig(a){ return !!tl&&ffTo==null&&paused&&Math.abs(tl.time()-a)<.3; },
+  seg(a,b){ LOOP=false; stopAt=b; if(this.contig(a)){ setPaused(false); return 'sigue'; } paused=false; gsap.globalTimeline.resume(); seekTo(a); return 'salta'; },
+  prime(){ LOOP=false; stopAt=.05; paused=false; start(0); },
+  pause(){ stopAt=null; if(tl&&!paused) setPaused(true); },
+  video(){ stopAt=null; LOOP=true; paused=false; gsap.globalTimeline.resume(); start(0); },
+  ready(){ return !!tl&&ffTo==null&&+gsap.getProperty('#veil','opacity')<.05; },
+  time(){ return tl?tl.time():0; },
+  state(){ return {t:tl?+tl.time().toFixed(2):null,paused,stopAt,ff:ffTo}; },   // para verificar desde afuera
+  replayCard(id){ cardIn(id); },
+  extras(){ gsap.fromTo('#c1x span',{opacity:0,y:18},{opacity:1,y:0,duration:.6,stagger:.35,ease:'power3.out',delay:.6}); },
+  hideExtras(){ gsap.set('#c1x span',{opacity:0}); }
+};
 let run=0;
 function start(i,toT=null){
   const me=++run;   // si se salta de nuevo antes de que cargue, solo vale la última carga
@@ -364,6 +387,7 @@ function prep(i){
   else if(n==='T12'){ cardIn('c12'); }
   else E("openYear()");
   if(n==='T8') cardIn('c7');
+  if(['T8','T9','T10','T11'].includes(n)) E("if(TODAY.getDate()===4) simulateUrgent()");   // al saltar, la web queda en el 9 de noviembre como en la historia
   const SIM={T9:"simOpen('reloj')",T10:"simOpen('car')",T11:"tnOpen('Navidad')"}; if(SIM[n]) E(SIM[n]);
   const CAPS={T9:'En tu <em>reloj.</em>',T10:'¿Se te pasó <em>una fecha?</em>',T11:'¿Pasas por <em>la tienda?</em>'};
   if(CAPS[n]) capIn(CAPS[n],n==='T11'?{dark:true,sm:true,r:true}:{dark:true});
@@ -413,6 +437,8 @@ addEventListener('mousemove',()=>{ if(!document.body.classList.contains('noui'))
 
 /* reloj y avance de cada capítulo */
 gsap.ticker.add(()=>{ if(!tl) return; const t=tl.time(), k=shotAt(t);
+  if(stopAt!=null&&ffTo==null&&t>=stopAt){ stopAt=null; paused=true; tl.pause(); $('pp').innerHTML=IC_PLAY;   // fin de tramo: la línea se detiene ya
+    setTimeout(()=>{ if(paused&&W) W.gsap.globalTimeline.pause(); },800); }   // y la web termina lo que estaba animando antes de quedar quieta
   if(ffTo!=null){ if(t>=ffTo){ tl.seek(ffTo,true); ffEnd(); } else { const r=ffTo-t, f=r>4?18:r>1?4:1.5; if(f!==FF){ FF=f; gsap.globalTimeline.timeScale(f); wts(wReq); } } }   // frena al acercarse para caer justo
   if(drag) return; if(ffTo==null) $('ph2').style.left=xAtT(t)+'px';
   $('tm').textContent=`${fmt(t)} / ${fmt(END)}`;
@@ -421,7 +447,8 @@ gsap.ticker.add(()=>{ if(!tl) return; const t=tl.time(), k=shotAt(t);
 });
 
 addEventListener('keydown',e=>{
-  if(e.metaKey||e.ctrlKey||e.altKey) return; const k=e.key;
+  if(PRESENT||e.metaKey||e.ctrlKey||e.altKey) return; const k=e.key;
+  if(k==='p'||k==='P'){ location.href='presentacion.html'; return; }
   if(k===' '||k==='k'||k==='K'){ e.preventDefault(); setPaused(!paused); }
   else if(k==='ArrowRight'&&e.shiftKey){ e.preventDefault(); seekTo((tl?tl.time():0)+5); }
   else if(k==='ArrowLeft'&&e.shiftKey){ e.preventDefault(); seekTo((tl?tl.time():0)-5); }
@@ -434,7 +461,7 @@ addEventListener('keydown',e=>{
   else if(/^[1-9]$/.test(k)) go(+k-1);
   else if(k==='Escape'&&!document.fullscreenElement) location.href='index.html';
 });
-document.fonts.ready.then(()=>{ if(!run) start(0); });   // si ya se saltó con la barra, no pisarlo
+document.fonts.ready.then(()=>{ if(!run&&!PRESENT) start(0); });   // si ya se saltó con la barra, no pisarlo
 </script>
 </body>
 </html>

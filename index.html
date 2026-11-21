@@ -1614,7 +1614,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 </section>
 
 <div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span><span class="sim-t">Simular en…</span></button>
-<div id="simMenu" class="sim-menu" hidden><button id="obSpot" class="sim-it"><kbd>▶</kbd><span>Ver spot<small>1:43, se reproduce solo</small></span></button><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
+<div id="simMenu" class="sim-menu" hidden><button id="obSpot" class="sim-it"><kbd>▶</kbd><span>Ver spot<small>1:43, en loop</small></span></button><button id="obPres" class="sim-it"><kbd>P</kbd><span>Presentar<small>Pitch de 5 min, avanzas tú</small></span></button><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
 <p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
 <div id="nf" class="nf" role="dialog" aria-modal="true" aria-label="Nueva fecha"></div>
 <section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
@@ -3462,7 +3462,7 @@ function tnClose(){
   if(p&&p.bought&&p.order&&p.order.ship==='tienda'){ tab='regalos'; pedido=p; co=null; render(); $('year').scrollTop=0; ytoast(`${p.n} quedó resuelto en la tienda.`); }
   else if(tnSaved) render();
 }
-$('tnX').onclick=tnClose; $('obKt').onclick=tnOpen; $('obSpot').onclick=()=>{ location.href='spot.html'; };
+$('tnX').onclick=tnClose; $('obKt').onclick=tnOpen; $('obSpot').onclick=()=>{ location.href='spot.html?loop=1'; }; $('obPres').onclick=()=>{ location.href='presentacion.html'; };
 $('tn').addEventListener('click',e=>{
   const b=e.target.closest('[data-tn]'); if(!b) return; const a=b.dataset.tn;
   if(a==='three') tnApp('three'); else if(a==='main') tnApp();
@@ -3680,7 +3680,7 @@ function simReloj(){
   const first=()=>{ scr(`<span class="appi">${GIFT_I}</span><small class="rw-k">Cuenta conmigo · ahora</small><b>${esc(p.n)} es ${days(dleft(p))}.</b><span class="rw-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`); buzz(); };
   scr('');
   if(REDUCE){ cam.st.k=1; cam.draw(); first(); }
-  else cam.go({duration:2.2,delay:.3,ease:'power2.inOut',onComplete:()=>gsap.delayedCall(.2,first)});
+  else { first(); cam.go({duration:2.2,delay:.3,ease:'power2.inOut'}); }   // el aviso ya está en pantalla mientras la cámara se acerca (antes quedaba negra ~2,7 s)
   simAct.see=async()=>{
     scr(`<small class="rw-k">Pensando en ${esc(p.n)}</small><span class="rw-src">${srcs}</span><b class="rw-n num" id="rlN">${steps[0][0]}</b><span class="rw-sub" id="rlL">${steps[0][1]}</span><span class="rw-bar"><i id="rlI"></i></span>`);
     for(let k=0;k<steps.length;k++){ if(run!==simRun) return; const n=$('rlN'); if(!n) return; n.textContent=steps[k][0]; $('rlL').textContent=steps[k][1]; $('rlI').style.width=((k+1)/steps.length*100)+'%'; if(!REDUCE) gsap.fromTo(n,{scale:1.25,opacity:.4},{scale:1,opacity:1,duration:.35,ease:'back.out(2)'}); await wait(REDUCE?0:.7); }
