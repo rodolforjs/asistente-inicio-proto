@@ -164,7 +164,7 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur{display:none!impo
   </section>
 
   <div id="cur"><span id="curT"></span></div>
-  <div id="cnt">1/13</div><div id="bar"></div>
+  <div id="cnt">1/12</div><div id="bar"></div>
 </div>
 
 <aside id="notes" aria-label="Notas para quien presenta">
@@ -200,10 +200,8 @@ const S=[
    n:'Con eso arma tu planner: en un vistazo ves qué fechas vienen, a quién le toca y qué ya está resuelto.'},
   {t:'Se acuerda', obj:15, spot:[[36.9,46.2]],
    n:'Antes de que se te pase, te avisa.'},
-  {t:'Piensa', obj:40, spot:[[46.2,58.2]], key:true,
-   n:'Esta es la inteligencia. Cruza la invitación del calendario, el tope de $15.000 que venía en el correo y a los compañeros del sorteo con el catálogo de Creado. De 30 regalos llega a 1.'},
-  {t:'Tú apruebas', obj:20, spot:[[58.2,64.0]],
-   n:'Te lo deja listo y te explica por qué lo eligió. Si te importa más, te muestra 3 opciones; si no, elige solo. Nada se compra sin tu aprobación.'},
+  {t:'Piensa + tú apruebas', obj:60, spot:[[46.2,64.0]], key:true,
+   n:'Esta es la inteligencia. Cruza la invitación del calendario, el tope de $15.000 que venía en el correo y a los compañeros del sorteo con el catálogo de Creado. De 30 regalos llega a 1. Te lo deja listo y te explica por qué; nada se compra sin tu aprobación.'},
   {t:'Omnicanalidad', obj:50, spot:[[64.0,75.0],[75.0,83.0],[83.0,95.8]], momentos:['reloj','auto','tienda'],
    n:'Y no vive solo en la web: aparece donde estás. En el reloj apruebas con un toque. Si igual se te pasa, te rescata en el auto. Y si pasas por la tienda, te guía al regalo.'},
   {t:'Por qué le sirve a Creado', obj:15, ov:'o11', pre:[95.8,97.2],
@@ -267,7 +265,7 @@ function animOv(id,st,enter){
 /* tramo del spot: si no sigue del anterior, la cortina tapa la recarga hasta que la toma esté lista */
 function playSeg(a,b,after){
   const me=++busy;
-  if(SP.contig(a)){ SP.seg(a,b); after&&after(); return; }
+  if(SP.near?SP.near(a):SP.contig(a)){ SP.seg(a,b); after&&after(); return; }   // sigue de corrido (o acelera si aún no terminaba el tramo anterior): sin cortina
   $('curT').textContent=`${cur+1} · ${S[cur].t}`;
   gsap.set('#cur',{visibility:'visible'}); gsap.to('#cur',{opacity:1,duration:.2,overwrite:true,onComplete:()=>{
     if(me!==busy) return; SP.seg(a,b);
