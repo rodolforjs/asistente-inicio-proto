@@ -10,7 +10,7 @@
 <style>
 /* Spot de ~100 s: reproduce la web real (index.html?spot=1) dentro de un escenario 1920×1080 y la anima sola.
    Controles: barra al mover el mouse · espacio/K pausa · ← → toma · 1–9 ir a toma · R reiniciar · L repetir · F pantalla completa · H ocultar barra · Esc salir. ?loop=1 repite. */
-:root{--ink:#0e1014;--brand:#d13c00;--paper:#f4f2ee}
+:root{--ink:#0e1014;--brand:#ff5924;--paper:#f4f2ee}
 html,body{margin:0;height:100%;background:#000;overflow:hidden;cursor:none}
 body.ui{cursor:default}
 /* modo presentación (presentacion.html lo maneja por tramos): sin controles ni barra propios */
@@ -53,23 +53,22 @@ body.present #c1x{display:block}
 #chs.drag button span{opacity:0!important}
 #ffl{position:fixed;left:50%;top:50%;z-index:19;transform:translate(-50%,-50%);border-radius:999px;background:rgba(255,255,255,.1);padding:10px 18px;font:600 14px/1 'Inter',sans-serif;color:rgba(255,255,255,.85);opacity:0;pointer-events:none;transition:opacity .2s}
 .cap.dk{background:rgba(10,12,16,.78);color:#fff;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
-.cap.dk em{color:#e5602b}   /* sobre oscuro, el naranja un tono más claro */
 #veil{position:absolute;inset:0;z-index:8;background:#000;opacity:1;pointer-events:none}
 #bar{position:absolute;left:0;bottom:0;z-index:9;height:5px;width:0;background:var(--brand);opacity:.85}
 /* cursor de la demo (las pantallas de la web se manejan "a mano") */
 #cur{position:absolute;left:0;top:0;z-index:6;width:34px;height:34px;pointer-events:none;opacity:0;filter:drop-shadow(0 6px 10px rgba(0,0,0,.28))}
-#cur i{position:absolute;left:-16px;top:-16px;width:32px;height:32px;border-radius:50%;background:rgba(209,60,0,.35);transform:scale(0);opacity:0}
+#cur i{position:absolute;left:-16px;top:-16px;width:32px;height:32px;border-radius:50%;background:rgba(255,89,36,.35);transform:scale(0);opacity:0}
 /* T5: el celular con el aviso urgente */
 #dim{position:absolute;inset:0;z-index:3;background:rgba(10,12,16,.62);opacity:0;pointer-events:none}
 #ph{position:absolute;left:1120px;top:70px;z-index:4;width:440px;height:940px;border-radius:70px;background:#0b0c0f;padding:13px;box-shadow:0 0 0 2px #2a2d33,0 0 0 4px #0b0c0f,0 80px 120px -40px rgba(0,0,0,.8);opacity:0;visibility:hidden;transform-origin:50% 22%}
-#ph .scr{position:relative;width:100%;height:100%;border-radius:58px;overflow:hidden;color:#fff;font-family:'Inter',sans-serif;background:radial-gradient(120% 70% at 20% 0%,#e8a3d7 0,transparent 60%),radial-gradient(120% 80% at 100% 100%,#3b00d1 0,transparent 60%),linear-gradient(170deg,#d9531c,#d15cb5 55%,#2a0096)}
+#ph .scr{position:relative;width:100%;height:100%;border-radius:58px;overflow:hidden;color:#fff;font-family:'Inter',sans-serif;background:radial-gradient(120% 70% at 20% 0%,#ffb08a 0,transparent 60%),radial-gradient(120% 80% at 100% 100%,#6a4be0 0,transparent 60%),linear-gradient(170deg,#ff7a4a,#c2417a 55%,#3d2a8c)}
 #ph .isl{position:absolute;left:50%;top:16px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000}
 #ph .sb{display:flex;justify-content:space-between;padding:24px 40px 0;font-size:17px;font-weight:600}
 #ph .clk{margin-top:52px;text-align:center}
 #ph .clk small{display:block;font-size:21px;font-weight:500;opacity:.9}
 #ph .clk b{display:block;margin-top:-4px;font-size:118px;font-weight:600;letter-spacing:-.04em;line-height:1.05}
 #ph .nt{position:absolute;left:16px;right:16px;top:330px;display:flex;gap:14px;align-items:flex-start;border-radius:28px;background:rgba(255,255,255,.88);padding:16px 18px;color:#0e1014;text-align:left;box-shadow:0 20px 40px -18px rgba(0,0,0,.45);opacity:0}
-#ph .appi{flex:none;width:44px;height:44px;border-radius:11px;background:linear-gradient(160deg,#e5602b,#a83000);display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+#ph .appi{flex:none;width:44px;height:44px;border-radius:11px;background:linear-gradient(160deg,#ff8a5c,#ff4a14);display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
 #ph .nm{display:flex;justify-content:space-between;align-items:center;font-size:15px;color:#5f6b7d}
 #ph .urg{display:inline-flex;align-items:center;gap:5px;margin-bottom:3px;font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#e2410f}
 #ph .urg svg{flex:none}
@@ -86,15 +85,15 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 #chs{position:relative;display:flex;gap:3px;height:30px;align-items:flex-end}
 #chs button{position:relative;flex:1 1 0;height:100%;border:0;padding:0;background:none;cursor:pointer}
 #chs button::before{content:"";position:absolute;left:0;right:0;bottom:6px;height:5px;border-radius:3px;background:rgba(255,255,255,.2);transition:height .15s,bottom .15s}
-#chs button i{position:absolute;left:0;bottom:6px;height:5px;width:0;border-radius:3px;background:#d13c00;transition:height .15s,bottom .15s}
+#chs button i{position:absolute;left:0;bottom:6px;height:5px;width:0;border-radius:3px;background:#ff5924;transition:height .15s,bottom .15s}
 #chs button:hover::before,#chs button:hover i{height:9px;bottom:4px}
 #chs button span{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);white-space:nowrap;border-radius:8px;background:#fff;padding:5px 9px;font-size:12px;font-weight:600;color:#0e1014;opacity:0;pointer-events:none;transition:opacity .15s}
 #chs button:hover span{opacity:1}
 .cr{display:flex;align-items:center;gap:6px;margin-top:6px}
 .cr button.b{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:12px;background:none;color:#fff;cursor:pointer}
 .cr button.b:hover{background:rgba(255,255,255,.12)}
-.cr button.b[aria-pressed="true"]{color:#d13c00}
-.cr #pp{width:44px;height:44px;border-radius:50%;background:#fff;color:#0e1014}.cr #pp:hover{background:#d13c00;color:#fff}
+.cr button.b[aria-pressed="true"]{color:#ff5924}
+.cr #pp{width:44px;height:44px;border-radius:50%;background:#fff;color:#0e1014}.cr #pp:hover{background:#ff5924;color:#fff}
 #tm{margin-left:8px;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.7)}
 #nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
 #nm small{margin-left:8px;font-weight:500;color:rgba(255,255,255,.5)}
