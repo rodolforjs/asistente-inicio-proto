@@ -23,19 +23,64 @@ body{cursor:none}body.mouse{cursor:default}
 .mid{margin:0;max-width:1300px;font-size:52px;font-weight:400;line-height:1.15;letter-spacing:-.02em;color:var(--muted)}
 .src{position:absolute;left:0;right:0;bottom:70px;font-family:'Inter',sans-serif;font-size:22px;font-weight:500;letter-spacing:.04em;color:#9aa3af}
 .kick{margin:0 0 34px;font-family:'Inter',sans-serif;font-size:24px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9aa3af}
-/* 1 · gancho */
-#o1 .st{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-#o1 .pct{margin:0;font-size:340px;font-weight:400;line-height:.9;letter-spacing:-.06em;color:var(--brand)}
-#o1 .st2 .mid{margin-top:34px;max-width:1100px}
+/* escenas 1–4: cada una con su diagramación; los elementos [data-s] aparecen en el paso n (data-h = se van en ese paso) */
+.ov.fr{display:block;text-align:left;--or:#ff6a1f;--dk:#1c1b19;--cr:#f4f2ee}
+.ov.fr em{font-style:italic;color:var(--or)}
+/* 1 · problema (oscuro) */
+#o1{background:var(--dk);color:var(--cr)}
+#o1 .q{position:absolute;left:0;right:0;top:0;margin:0;text-align:center;white-space:nowrap;font-size:112px;font-weight:400;line-height:1.05;letter-spacing:-.045em;transform-origin:50% 0}
+#o1 .body{position:absolute;left:160px;right:160px;top:250px;bottom:150px;display:grid;grid-template-columns:1fr 820px;gap:110px;align-items:center}
+#o1 .tt{margin:0;font-size:128px;font-weight:400;line-height:.98;letter-spacing:-.05em}
+#o1 .d{display:grid;grid-template-columns:250px 1fr;gap:34px;align-items:center;padding:34px 0}
+#o1 .d+.d{border-top:1px solid rgba(244,242,238,.22)}
+#o1 .d b{font-size:108px;font-weight:400;line-height:.9;letter-spacing:-.05em;color:var(--or)}
+#o1 .d span{font:400 30px/1.38 'Inter',sans-serif;color:rgba(244,242,238,.88)}
+#o1 .src{left:160px;right:auto;bottom:64px;color:rgba(244,242,238,.45)}
 /* 2 · usuarios */
-#o2 .row{display:flex;gap:120px;align-items:flex-start;justify-content:center}
-#o2 .p{display:flex;flex-direction:column;align-items:center;width:400px}
-#o2 .ph{width:250px;height:250px;border-radius:50%;padding:9px;box-sizing:border-box}
-#o2 .ph img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#ddd}
-#o2 h3{margin:30px 0 0;font-size:54px;font-weight:400;letter-spacing:-.03em}
-#o2 small{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-size:20px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9aa3af}
-#o2 .ol{margin-top:6px;font-size:40px;font-style:italic;letter-spacing:-.02em;color:var(--muted)}
-#o2 .big{margin-top:96px;font-size:84px}
+#o2{background:var(--cr)}
+#o2 .cols{position:absolute;left:80px;right:80px;top:60px;height:960px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+#o2 .c{display:flex;flex-direction:column;align-items:flex-start;box-sizing:border-box;border-radius:32px;padding:44px 46px 40px;background:var(--t);overflow:hidden}
+#o2 .ph{width:184px;height:184px;flex:none;border-radius:50%;border:8px solid var(--k);box-sizing:border-box;overflow:hidden;background:#ddd}
+#o2 .ph img{display:block;width:100%;height:100%;object-fit:cover}
+#o2 h3{margin:28px 0 0;font-size:68px;font-weight:400;line-height:1;letter-spacing:-.035em}
+#o2 .tag{margin-top:16px;border-radius:999px;background:var(--k);padding:10px 20px;font:600 21px/1.15 'Inter',sans-serif;color:#fff}
+#o2 .qt{margin:26px 0 0;font-size:36px;font-style:italic;line-height:1.22;letter-spacing:-.015em;color:#2b2a27}
+#o2 .ft{margin-top:auto;width:100%;border-top:2px solid var(--k);padding-top:20px;font:500 21px/1.2 'Inter',sans-serif;color:#5b5750}
+#o2 .ft b{display:block;margin-top:6px;font:700 30px/1.2 'Inter',sans-serif;color:var(--dk)}
+#o2 .un{position:absolute;left:80px;right:80px;bottom:60px;height:230px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
+#o2 .un .h{display:flex;align-items:baseline;gap:26px}
+#o2 .un small{flex:none;font:600 21px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
+#o2 .un p{margin:0;font-size:46px;line-height:1.1;letter-spacing:-.025em}
+#o2 .chips{display:flex;gap:14px}
+#o2 .chips span{border:1.5px solid rgba(244,242,238,.35);border-radius:999px;padding:11px 24px;font:500 22px/1 'Inter',sans-serif}
+/* 3 · oportunidad (pantalla partida) */
+#o3{background:var(--cr)}
+#o3 .half{position:absolute;top:0;bottom:0;width:960px;box-sizing:border-box;padding:200px 130px 0 130px}
+#o3 .hl{left:0;background:var(--cr)}
+#o3 .hr{left:960px;background:var(--or);color:var(--dk);padding-left:170px}
+#o3 h2{margin:0;font:600 24px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+#o3 .hl h2{color:var(--or)}
+#o3 ul{list-style:none;margin:64px 0 0;padding:0}
+#o3 li{display:flex;gap:28px;align-items:baseline;border-top:1.5px solid rgba(28,27,25,.16);padding:34px 0;font-size:62px;line-height:1.08;letter-spacing:-.03em}
+#o3 li i{flex:none;font:600 22px/1 'Inter',sans-serif;font-style:normal;color:var(--or)}
+#o3 li small{display:block;margin-top:10px;font:400 28px/1.3 'Inter',sans-serif;letter-spacing:0;color:#6b665e}
+#o3 .bp{margin:64px 0 0;font-size:92px;font-weight:400;line-height:1.02;letter-spacing:-.045em}
+#o3 .ar{position:absolute;left:890px;top:470px;z-index:2;width:140px;height:140px;border-radius:50%;background:var(--dk);color:var(--cr);display:flex;align-items:center;justify-content:center;font:400 64px/1 'Inter',sans-serif}
+#o3 .fin{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
+#o3 .fin p{margin:0;max-width:1500px;font-size:128px;font-weight:400;line-height:1;letter-spacing:-.05em}
+/* 4 · propuesta */
+#o4{background:var(--cr)}
+#o4 .hd{position:absolute;left:120px;right:120px;top:100px}
+#o4 .k4{margin:0;font-size:42px;font-style:italic;letter-spacing:-.02em;color:var(--or)}
+#o4 h2{margin:14px 0 0;max-width:1500px;font-size:98px;font-weight:400;line-height:1;letter-spacing:-.045em}
+#o4 .cards{position:absolute;left:120px;right:120px;top:410px;bottom:100px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+#o4 .cd{display:flex;flex-direction:column;box-sizing:border-box;border-radius:32px;padding:46px 48px}
+#o4 .cd i{font:600 24px/1 'Inter',sans-serif;font-style:normal;letter-spacing:.1em}
+#o4 .cd h3{margin:auto 0 0;font-size:104px;font-weight:400;line-height:1;letter-spacing:-.045em}
+#o4 .cd p{margin:22px 0 0;font:400 29px/1.38 'Inter',sans-serif}
+#o4 .c1{background:var(--dk);color:var(--cr)}#o4 .c1 i{color:var(--or)}
+#o4 .c2{background:var(--or);color:var(--dk)}
+#o4 .c3{border:2px solid var(--dk);color:var(--dk)}#o4 .c3 i{color:var(--or)}
 /* 4 y 11 */
 #o11 .pills{display:flex;flex-direction:column;gap:22px;align-items:center}
 #o11 .pills span{font-size:104px;line-height:1;letter-spacing:-.045em}
@@ -64,25 +109,56 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur{display:none!impo
 <div id="stage">
   <iframe id="sp" title="Escenas del spot" tabindex="-1" inert></iframe>
 
-  <!-- 1 · Gancho + problema (dos pasos) -->
-  <section class="ov" id="o1">
-    <div class="st st1"><p class="big">¿Alguna vez se te pasó <em>un regalo?</em></p></div>
-    <div class="st st2"><p class="pct">54%</p><p class="mid">compró el regalo del Día de la Madre con menos de una semana.</p></div>
-    <p class="src">Logisfashion 2026 · CNC 2025</p>
-  </section>
-
-  <!-- 2 · Usuarios -->
-  <section class="ov" id="o2">
-    <div class="row">
-      <div class="p"><div class="ph" style="background:#ff6a1f"><img src="assets/marcela.jpg" alt="Marcela"></div><h3>Marcela, 58</h3><small>Se le olvida</small><span class="ol">lo que vio y dónde</span></div>
-      <div class="p"><div class="ph" style="background:#2a35e6"><img src="assets/andres.jpg" alt="Andrés"></div><h3>Andrés, 52</h3><small>Se le olvida</small><span class="ol">que la fecha se acerca</span></div>
-      <div class="p"><div class="ph" style="background:#6b2bf0"><img src="assets/felipe.jpg" alt="Felipe"></div><h3>Felipe, 34</h3><small>Se le olvida</small><span class="ol">la fecha</span></div>
+  <!-- 1 · Problema (5 pasos: pregunta · título · 3 datos) -->
+  <section class="ov fr" id="o1">
+    <p class="q">¿Alguna vez se te pasó <em>un regalo?</em></p>
+    <div class="body">
+      <p class="tt" data-s="1" data-d=".35">Regalar bien se vive como <em>un cacho.</em></p>
+      <div class="ds">
+        <div class="d" data-s="2"><b>54%</b><span>compró el regalo del Día de la Madre con menos de una semana de anticipación.</span></div>
+        <div class="d" data-s="3"><b>7</b><span>regalos por persona en Navidad, a unos $17.700 cada uno.</span></div>
+        <div class="d" data-s="4"><b>+50%</b><span>ya tuvo problemas con un despacho.</span></div>
+      </div>
     </div>
-    <p class="big">Necesito ayuda, <em>sin que sea una carga.</em></p>
+    <p class="src" data-s="2" data-y="0">Logisfashion 2026 · CNC 2025</p>
   </section>
 
-  <!-- 3 · Oportunidad -->
-  <section class="ov" id="o3"><p class="big">De un regalo suelto a <em>los regalos del año.</em></p></section>
+  <!-- 2 · Usuarios (4 pasos: una columna por tecla · lo que los une) -->
+  <section class="ov fr" id="o2">
+    <div class="cols">
+      <div class="c" data-s="0" style="--t:#ffe5d6;--k:#ff6a1f"><div class="ph"><img src="assets/marcela.jpg" alt="Marcela"></div><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p><div class="ft">Se le olvida:<b>lo que vio y dónde</b></div></div>
+      <div class="c" data-s="1" style="--t:#e2e4fc;--k:#2a35e6"><div class="ph"><img src="assets/andres.jpg" alt="Andrés"></div><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p><div class="ft">Se le olvida:<b>que la fecha se acerca</b></div></div>
+      <div class="c" data-s="2" style="--t:#ebe1fd;--k:#6b2bf0"><div class="ph"><img src="assets/felipe.jpg" alt="Felipe"></div><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p><div class="ft">Se le olvida:<b>la fecha</b></div></div>
+    </div>
+    <div class="un" data-s="3" data-d=".25">
+      <div class="h"><small>Lo que los une:</small><p>“Necesito que alguien me ayude con esto, <em>y que no sea una carga.</em>”</p></div>
+      <div class="chips"><span>Sin que cueste tiempo</span><span>Que llegue a tiempo</span><span>No quedar mal</span><span>Que no sea genérico</span></div>
+    </div>
+  </section>
+
+  <!-- 3 · Oportunidad (3 pasos: lo que resuelve Creado · lo que falta · el cambio) -->
+  <section class="ov fr" id="o3">
+    <div class="half hl">
+      <h2 data-s="0">Creado ya resuelve</h2>
+      <ul><li data-s="0" data-d=".15"><i>01</i><span>La identidad chilena</span></li><li data-s="0" data-d=".3"><i>02</i><span>La rapidez<small>Express, para regalo</small></span></li></ul>
+    </div>
+    <div class="half hr">
+      <h2 data-s="0" data-d=".45">Lo que falta</h2>
+      <p class="bp" data-s="1" data-d=".2">Alguien que acompañe a la persona antes de la fecha.</p>
+    </div>
+    <div class="ar" data-s="1" data-h="2" data-y="0">→</div>
+    <div class="fin"><p data-s="2" data-d=".35">De un regalo suelto a <em>los regalos del año.</em></p></div>
+  </section>
+
+  <!-- 4 · Propuesta (4 pasos: título · 3 tarjetas) -->
+  <section class="ov fr" id="o4">
+    <div class="hd" data-s="0"><p class="k4">Cuenta conmigo.</p><h2>Un asistente que planifica <em>tus regalos del año.</em></h2></div>
+    <div class="cards">
+      <div class="cd c1" data-s="1"><i>01</i><h3>Se acuerda</h3><p>Sabe a quién le regalas, cuándo y qué le gusta, y lo aprende con cada regalo.</p></div>
+      <div class="cd c2" data-s="2"><i>02</i><h3>Te propone</h3><p>Llega a tiempo con el regalo listo, para que no salgas a buscar.</p></div>
+      <div class="cd c3" data-s="3"><i>03</i><h3>Se adapta</h3><p>Si te importa más, te muestra 3 opciones; si no, elige solo y te avisa.</p></div>
+    </div>
+  </section>
 
   <!-- 11 · Por qué le sirve a Creado -->
   <section class="ov" id="o11">
@@ -111,14 +187,14 @@ addEventListener('resize',fit); fit();
 
 /* Escenas. spot: tramo [desde,hasta] de spot.html (en segundos de su línea de tiempo); steps: tramos por tecla. */
 const S=[
-  {t:'Gancho + problema', obj:30, ov:'o1', steps:2,
-   n:'Levante la mano a quien le ha pasado. Al 54% le pasa, y más de la mitad ya tuvo problemas con un despacho. Y en Navidad cada persona hace unos 7 regalos. Regalar bien se vive como un cacho.'},
-  {t:'Usuarios', obj:35, ov:'o2',
-   n:'Marcela quiere regalar cosas bonitas, pero siempre la pilla el tiempo. Andrés pone la plata, pero que lo vea otro. A Felipe le pasa que es hoy y no tiene nada. A cada uno se le olvida algo distinto, pero quieren lo mismo.'},
-  {t:'Oportunidad', obj:15, ov:'o3',
-   n:'Creado ya resuelve la identidad chilena y la rapidez. Lo que falta es alguien que acompañe a la persona antes de la fecha.'},
-  {t:'Propuesta', obj:20, spot:[[0,3.7]], extras:true,
-   n:'Cuenta conmigo es un planner de regalos. Se acuerda por ti, te propone el regalo listo y aprende cuánto quieres participar.'},
+  {t:'Problema', obj:30, ov:'o1', steps:5, dark:true,
+   n:'Levanten la mano a quien le ha pasado. Al 54% le pasa, más de la mitad ya tuvo problemas con un despacho, y solo en Navidad hacemos unos 7 regalos. Regalar bien se vive como un cacho.'},
+  {t:'Usuarios', obj:35, ov:'o2', steps:4,
+   n:'Marcela quiere regalar bonito, pero la pilla el tiempo. Andrés pone la plata, pero que lo vea otro. A Felipe le pasa que es hoy y no tiene nada. A cada uno se le olvida algo distinto, pero los tres quieren lo mismo.'},
+  {t:'Oportunidad', obj:15, ov:'o3', steps:3,
+   n:'Creado ya resuelve la identidad chilena y la rapidez. Lo que falta es alguien que acompañe antes de la fecha. La oportunidad es pasar de un regalo suelto a los regalos del año.'},
+  {t:'Propuesta', obj:20, ov:'o4', steps:4, pre:[0,3.7],
+   n:'Cuenta conmigo se acuerda por ti, te propone el regalo listo y aprende cuánto quieres participar.'},
   {t:'Conecta', obj:20, spot:[[3.7,12.9]],
    n:'No te pregunta nada: lee lo que ya usas, como tu calendario o tu correo.'},
   {t:'Analiza + 11 fechas', obj:25, spot:[[12.9,28.6]],
@@ -137,7 +213,7 @@ const S=[
 ];
 const TOTAL=S.reduce((a,x)=>a+x.obj,0);
 const nSteps=x=>x.steps||(x.spot?x.spot.length:1);
-let cur=0, step=0, SP=null, W=null, video=false, t0=null, sceneT0=performance.now(), busy=0;
+let cur=0, step=0, SP=null, W=null, video=false, t0=null, sceneT0=performance.now(), busy=0, ovNow=null, first=true;
 
 /* Dispositivos físicos (a futuro): cada momento de la omnicanalidad avisa por evento y por canal.
    Para escucharlo desde otra pestaña o un puente: new BroadcastChannel('cuenta-conmigo').onmessage = e => e.data */
@@ -148,21 +224,43 @@ function momento(nombre){
   try{ BC&&BC.postMessage(detail); }catch(e){}
 }
 
-/* escenas propias: entra una, salen las otras */
-function showOv(id){
+/* escenas propias: la que entra queda encima y opaca; la que sale se esconde recién cuando la tapa (nunca se ve el spot ni otra escena a través).
+   instant: sin fundido (al abrir la página, para que no asome el spot detrás). */
+function showOv(id,instant){
   document.querySelectorAll('.ov').forEach(o=>{
-    if(o.id===id){ gsap.set(o,{visibility:'visible'}); gsap.to(o,{opacity:1,duration:.5,overwrite:true}); }
-    else if(getComputedStyle(o).visibility!=='hidden') gsap.to(o,{opacity:0,duration:.5,overwrite:true,onComplete:()=>gsap.set(o,{visibility:'hidden'})});   // también si recién venía entrando (teclas rápidas)
+    const hide=()=>gsap.set(o,{visibility:'hidden',opacity:0});
+    if(o.id===id){ o.style.zIndex=4; gsap.set(o,{visibility:'visible'}); if(instant) gsap.set(o,{opacity:1}); else gsap.to(o,{opacity:1,duration:.45,overwrite:true}); }
+    else if(getComputedStyle(o).visibility!=='hidden'){
+      o.style.zIndex=3;
+      if(instant) hide();
+      else if(id) gsap.to(o,{opacity:1,duration:.5,overwrite:true,onComplete:hide});   // queda detrás de la nueva hasta que esta termina de entrar
+      else gsap.to(o,{opacity:0,duration:.5,overwrite:true,onComplete:hide});            // vuelve el spot
+    }
   });
 }
-function animOv(id,st){
-  const o=$(id);
-  if(id==='o1'){
-    if(st===0){ gsap.set('#o1 .st2',{opacity:0}); gsap.fromTo('#o1 .st1',{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',delay:.15}); gsap.fromTo('#o1 .src',{opacity:0},{opacity:0,duration:0}); }
-    else { gsap.to('#o1 .st1',{opacity:0,y:-30,duration:.4,ease:'power2.in'}); gsap.set('#o1 .st2',{opacity:1}); gsap.fromTo('#o1 .pct',{opacity:0,scale:.8},{opacity:1,scale:1,duration:.9,ease:'back.out(1.4)',delay:.3}); gsap.fromTo('#o1 .st2 .mid',{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:'power3.out',delay:.65}); gsap.to('#o1 .src',{opacity:1,duration:.6,delay:1}); }
+/* un elemento [data-s] se muestra (sube y aparece) o se va (se desvanece) */
+function vis(el,on,enter){
+  if(on===(el.dataset.on==='1')) return;
+  el.dataset.on=on?'1':'';
+  const y=el.dataset.y!=null?+el.dataset.y:28, d=(+el.dataset.d||0)+(enter?.15:0);
+  if(on) gsap.fromTo(el,{opacity:0,y},{opacity:1,y:0,duration:.7,delay:d,ease:'power3.out',overwrite:true});
+  else gsap.to(el,{opacity:0,duration:.3,overwrite:true});
+}
+/* cada paso deja la escena en su estado (sirve igual hacia adelante y hacia atrás) */
+function animOv(id,st,enter){
+  const o=$(id), els=o.querySelectorAll('[data-s]');
+  if(els.length){
+    if(enter) els.forEach(el=>{ gsap.killTweensOf(el); gsap.set(el,{opacity:0,y:0}); el.dataset.on=''; });
+    els.forEach(el=>vis(el, st>=+el.dataset.s && !(el.dataset.h&&st>=+el.dataset.h), enter));
+    if(id==='o1'){   // la pregunta: centrada y grande → sube y se achica como encabezado
+      const q=o.querySelector('.q'), to=st===0?{y:(1080-q.offsetHeight)/2,scale:1}:{y:112,scale:.42};
+      if(enter){ gsap.killTweensOf(q); gsap.set(q,to); gsap.fromTo(q,{opacity:0},{opacity:1,duration:.8,delay:.15}); }
+      else gsap.to(q,{...to,duration:.8,ease:'power3.inOut'});
+    }
+    if(id==='o2') gsap.to('#o2 .cols',{height:st>=3?702:960,duration:enter?0:.7,ease:'power3.inOut'});   // las columnas se acortan para la franja
+    if(id==='o3'){ const off=st>=2, du=enter?0:.7; gsap.to('#o3 .hl',{xPercent:off?-100:0,duration:du,ease:'power3.inOut'}); gsap.to('#o3 .hr',{xPercent:off?100:0,duration:du,ease:'power3.inOut'}); }
     return;
   }
-  if(id==='o2'){ gsap.fromTo('#o2 .p',{opacity:0,y:40},{opacity:1,y:0,duration:.8,stagger:.18,ease:'power3.out',delay:.2}); gsap.fromTo('#o2 .big',{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',delay:1}); return; }
   if(id==='o11'){ gsap.fromTo('#o11 .kick, #o11 .pills > *',{opacity:0,y:26},{opacity:1,y:0,duration:.7,stagger:.14,ease:'power3.out',delay:.2}); return; }
   gsap.fromTo(o.children,{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',delay:.15});
 }
@@ -185,12 +283,13 @@ function render(dirFwd=true){
   notes();
   if(!x.ov&&!SP){ setTimeout(()=>render(dirFwd),200); return; }
   if(x.ov){
-    showOv(x.ov); animOv(x.ov,step);
-    if(SP){ if(x.pre) SP.seg(x.pre[0],x.pre[1]); else SP.pause(); }   // pre: el spot avanza escondido detrás para que la escena siguiente ya esté lista
-    $('cnt').classList.remove('dk'); return;
+    const enter=ovNow!==x.ov;
+    showOv(x.ov,first); ovNow=x.ov; first=false; animOv(x.ov,step,enter);
+    if(SP&&enter){ if(x.pre) SP.seg(x.pre[0],x.pre[1]); else SP.pause(); }   // pre: el spot avanza escondido detrás para que la escena siguiente ya esté lista
+    $('cnt').classList.toggle('dk',!!x.dark); return;
   }
   // escena del spot: las propias se van y el spot toma el cuadro
-  showOv(null);
+  showOv(null); ovNow=null; first=false; $('cnt').classList.remove('dk');
   const [a,b]=x.spot[step];
   const after=()=>{ if(x.extras){ SP.hideExtras(); SP.extras(); } };
   if(x.extras&&a===0&&SP.contig(0)) SP.replayCard('c1');
@@ -223,7 +322,7 @@ function flash(t){ const f=$('flash'); f.textContent=t; f.style.opacity=1; clear
 
 /* V = spot en loop (modo video) · P = volver a la presentación donde quedó */
 function toVideo(){ if(video||!SP) return; video=true; document.body.classList.add('video'); busy++; gsap.killTweensOf('#cur'); SP.video(); flash('Spot en loop · P para volver'); }
-function toPres(){ if(!video) return; video=false; document.body.classList.remove('video'); SP.pause(); render(); flash(`Presentación · ${cur+1}/${S.length}`); }
+function toPres(){ if(!video) return; video=false; document.body.classList.remove('video'); SP.pause(); ovNow=null; render(); flash(`Presentación · ${cur+1}/${S.length}`); }
 
 addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey) return; const k=e.key;
@@ -242,7 +341,7 @@ let mk=0; addEventListener('mousemove',()=>{ document.body.classList.add('mouse'
 const h=(location.hash||'').slice(1).split('.'); cur=Math.max(0,Math.min(S.length-1,(+h[0]||1)-1)); step=Math.max(0,Math.min(nSteps(S[cur])-1,(+h[1]||1)-1));
 S.forEach(x=>{ if(x.ov) gsap.set('#'+x.ov,{opacity:0,visibility:'hidden'}); });
 if(S[cur].ov) render();
-SPF.onload=()=>{ W=SPF.contentWindow; const wait=setInterval(()=>{ if(W.SP){ clearInterval(wait); SP=W.SP; SP.prime(); if(!S[cur].ov) setTimeout(()=>render(),300); else if(S[cur].pre) setTimeout(()=>render(),300); } },50); };
+SPF.onload=()=>{ W=SPF.contentWindow; const wait=setInterval(()=>{ if(W.SP){ clearInterval(wait); SP=W.SP; SP.prime(); if(!S[cur].ov) setTimeout(()=>render(),300); else if(S[cur].pre) setTimeout(()=>SP.seg(S[cur].pre[0],S[cur].pre[1]),300); } },50); };
 SPF.src='spot.html?present=1';
 /* el foco nunca se queda dentro del spot (la web enfoca campos del onboarding): las teclas siempre llegan aquí */
 addEventListener('blur',()=>setTimeout(()=>{ if(document.activeElement===SPF){ SPF.blur(); window.focus(); } },0));
