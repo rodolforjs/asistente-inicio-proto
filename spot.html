@@ -376,7 +376,7 @@ function start(i,toT=null){
       tl.seek(t0,true); tl.play();
       if(toT!=null&&toT>t0+.2){ ffTo=toT; FF=12; gsap.ticker.lagSmoothing(80,33); /* al adelantar, cada cuadro avanza poco */ gsap.set('#ffv',{opacity:1,visibility:'visible'}); $('ffl').textContent='Yendo a '+fmt(toT)+'…'; $('ffl').style.opacity=1; gsap.globalTimeline.timeScale(FF); wts(1); }
       else if(paused){ tl.pause(); W.gsap.globalTimeline.pause(); }
-      gsap.to('#veil',{opacity:0,duration:.5,delay:.2}); }, 900); };
+      gsap.to('#veil',{opacity:0,duration:PRESENT?.2:.5,delay:PRESENT?0:.2}); }, PRESENT?380:900); };   // en la presentación la cortina de afuera ya tapa: espera menos
   APP.src='index.html?spot=1&r='+Date.now();
 }
 /* estado previo de cada grupo de tomas, al saltar con las flechas */
