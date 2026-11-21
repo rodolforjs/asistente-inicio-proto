@@ -26,7 +26,8 @@ body.ui{cursor:default}
 .cc b{font-weight:500;font-size:27px;letter-spacing:-.01em;transform:scaleX(.82);white-space:nowrap}
 /* textos sobre la web */
 .cap{position:absolute;left:96px;bottom:84px;z-index:4;max-width:1200px;border-radius:30px;background:rgba(255,255,255,.94);padding:22px 38px 28px;font-family:'Newsreader',serif;font-size:84px;font-weight:400;line-height:1.02;letter-spacing:-.04em;color:var(--ink);box-shadow:0 30px 60px -30px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.05);opacity:0}
-.cap em{font-style:italic;color:inherit}   /* sobre la web el naranja ya lo pone la pantalla: un solo acento por cuadro */
+.cap em{font-style:italic;color:var(--brand)}
+.cap.pl em{color:inherit}   /* en el onboarding el naranja ya lo pone el título de la web: un solo acento */
 .cap.sm{bottom:40px;max-width:1100px;font-size:60px;padding:18px 32px 22px}
 .cap.r{left:auto;right:96px}
 .cap.top{top:84px;bottom:auto;left:0;right:0;width:max-content;max-width:none;margin:0 auto;font-size:58px;padding:16px 32px 20px}
@@ -155,7 +156,7 @@ function frame(sel,scale=1.15,dur=1.6,cy=.44,cx=.5,tries=0){
 const camReset=()=>gsap.set(CAM,{x:0,y:0,scale:1});
 
 /* textos: máximo 8 palabras, grandes, en la serif de la web */
-function capIn(t,{dark=false,sm=false,r=false,top=false}={}){ gsap.killTweensOf(CAP); CAP.innerHTML=t; CAP.classList.toggle('dk',dark); CAP.classList.toggle('sm',sm); CAP.classList.toggle('r',r); CAP.classList.toggle('top',top); gsap.fromTo(CAP,{opacity:0,y:24},{opacity:1,y:0,duration:.6,ease:'power3.out'}); }
+function capIn(t,{dark=false,sm=false,r=false,top=false,pl=false}={}){ gsap.killTweensOf(CAP); CAP.innerHTML=t; CAP.classList.toggle('pl',pl); CAP.classList.toggle('dk',dark); CAP.classList.toggle('sm',sm); CAP.classList.toggle('r',r); CAP.classList.toggle('top',top); gsap.fromTo(CAP,{opacity:0,y:24},{opacity:1,y:0,duration:.6,ease:'power3.out'}); }
 function capOut(){ gsap.to(CAP,{opacity:0,y:-10,duration:.4,ease:'power2.in'}); }
 function cardIn(id){ gsap.set(`#${id}`,{visibility:'visible'}); gsap.fromTo(`#${id}`,{opacity:0},{opacity:1,duration:.6}); gsap.fromTo(`#${id} > *`,{opacity:0,y:30},{opacity:1,y:0,duration:.9,stagger:.12,ease:'power3.out'}); }
 function cardOut(id){ gsap.to(`#${id}`,{opacity:0,duration:.6,onComplete:()=>gsap.set(`#${id}`,{visibility:'hidden'})}); }
@@ -243,13 +244,13 @@ function build(){
   T.call(()=>{ cardIn('c1'); E("startOb()"); },null,0.0)
    .call(()=>E("obGo(1)"),null,1.2);
   /* T2 · Conectar: el paso 2 del onboarding tal cual, conectando uno por uno (ritmo ágil) */
-  T.call(()=>{ cardOut('c1'); camReset(); capIn('Un planner <em>inteligente.</em>',{top:true}); },null,4);
+  T.call(()=>{ cardOut('c1'); camReset(); capIn('Un planner <em>inteligente.</em>',{top:true,pl:true}); },null,4);
   tap(T,'.oc[data-k="cal"] button',5,.7); tap(T,'.oc[data-k="gmail"] button',6.1,.6); tap(T,'.oc[data-k="contacts"] button',7.2,.6); tap(T,'.oc[data-k="wa"] button',8.3,.6);
-  T.call(()=>capIn('Se conecta <em>a lo que usas.</em>',{top:true}),null,5.9)
-   .call(()=>capIn('<em>Sin complicarte</em> la vida.',{top:true}),null,7.8)
+  T.call(()=>capIn('Se conecta <em>a lo que usas.</em>',{top:true,pl:true}),null,5.9)
+   .call(()=>capIn('<em>Sin complicarte</em> la vida.',{top:true,pl:true}),null,7.8)
    .call(capOut,null,9.6)
    .call(()=>{ curOut(); frame('#obR',1.14,1.2,.46,.5); },null,9.6)
-   .call(()=>capIn('Cada app <em>me cuenta algo.</em>',{sm:true}),null,10.1)
+   .call(()=>capIn('Cada app <em>me cuenta algo.</em>',{sm:true,pl:true}),null,10.1)
    .call(capOut,null,11.8)
    .call(()=>frame(null,1,.9),null,11.9);
   tap(T,'#obNext',13.3,.6);
