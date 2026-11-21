@@ -38,16 +38,14 @@ body{cursor:none}body.mouse{cursor:default}
 #o1 .src{left:160px;right:auto;bottom:64px;color:rgba(244,242,238,.45)}
 /* 2 · usuarios */
 #o2{background:var(--cr)}
-#o2 .cols{position:absolute;left:80px;right:80px;top:60px;height:960px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+#o2 .cols{position:absolute;left:80px;right:80px;top:230px;height:620px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 #o2 .c{display:flex;flex-direction:column;align-items:flex-start;box-sizing:border-box;border-radius:32px;padding:44px 46px 40px;background:var(--t);overflow:hidden}
 #o2 .ph{width:184px;height:184px;flex:none;border-radius:50%;border:8px solid var(--k);box-sizing:border-box;overflow:hidden;background:#ddd}
 #o2 .ph img{display:block;width:100%;height:100%;object-fit:cover}
 #o2 h3{margin:28px 0 0;font-size:68px;font-weight:400;line-height:1;letter-spacing:-.035em}
 #o2 .tag{margin-top:16px;border-radius:999px;background:var(--k);padding:10px 20px;font:600 21px/1.15 'Inter',sans-serif;color:#fff}
 #o2 .qt{margin:26px 0 0;font-size:41px;font-style:italic;line-height:1.22;letter-spacing:-.015em;color:#2b2a27}
-#o2 .ft{margin-top:auto;width:100%;border-top:2px solid var(--k);padding-top:20px;font:500 21px/1.2 'Inter',sans-serif;color:#5b5750}
-#o2 .ft b{display:block;margin-top:6px;font:700 30px/1.2 'Inter',sans-serif;color:var(--dk)}
-#o2 .un{position:absolute;left:80px;right:80px;bottom:60px;height:150px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
+#o2 .un{position:absolute;left:80px;right:80px;bottom:120px;height:150px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
 #o2 .un .h{display:flex;align-items:baseline;gap:26px}
 #o2 .un small{flex:none;font:600 21px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
 #o2 .un p{margin:0;font-size:44px;font-weight:600;line-height:1.1;letter-spacing:-.025em}
@@ -126,9 +124,9 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur{display:none!impo
   <!-- 2 · Usuarios (4 pasos: una columna por tecla · lo que los une) -->
   <section class="ov fr" id="o2">
     <div class="cols">
-      <div class="c" data-s="0" style="--t:#ffe5d6;--k:#ff6a1f"><div class="ph"><img src="assets/marcela.jpg" alt="Marcela"></div><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p><div class="ft">Se le olvida:<b>lo que vio y dónde</b></div></div>
-      <div class="c" data-s="0" data-d=".1" style="--t:#e2e4fc;--k:#2a35e6"><div class="ph"><img src="assets/andres.jpg" alt="Andrés"></div><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p><div class="ft">Se le olvida:<b>que la fecha se acerca</b></div></div>
-      <div class="c" data-s="0" data-d=".2" style="--t:#ebe1fd;--k:#6b2bf0"><div class="ph"><img src="assets/felipe.jpg" alt="Felipe"></div><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p><div class="ft">Se le olvida:<b>la fecha</b></div></div>
+      <div class="c" data-s="0" style="--t:#ffe5d6;--k:#ff6a1f"><div class="ph"><img src="assets/marcela.jpg" alt="Marcela"></div><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p></div>
+      <div class="c" data-s="0" data-d=".1" style="--t:#e2e4fc;--k:#2a35e6"><div class="ph"><img src="assets/andres.jpg" alt="Andrés"></div><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p></div>
+      <div class="c" data-s="0" data-d=".2" style="--t:#ebe1fd;--k:#6b2bf0"><div class="ph"><img src="assets/felipe.jpg" alt="Felipe"></div><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p></div>
     </div>
     <div class="un" data-s="1" data-d=".25">
       <div class="h"><small>Lo que los une:</small><p>“Necesito que alguien me ayude con esto, <em>y que no sea una carga.</em>”</p></div>
@@ -258,7 +256,7 @@ function animOv(id,st,enter){
       if(enter){ gsap.killTweensOf(q); gsap.set(q,to); gsap.fromTo(q,{opacity:0},{opacity:1,duration:.8,delay:.15}); }
       else gsap.to(q,{...to,duration:.9,ease:'power2.inOut'});
     }
-    if(id==='o2') gsap.to('#o2 .cols',{height:st>=1?782:960,duration:enter?0:.7,ease:'power3.inOut'});   // las columnas se acortan para la franja
+    if(id==='o2') gsap.to('#o2 .cols',{top:st>=1?130:230,duration:enter?0:.7,ease:'power3.inOut'});   // las columnas se acortan para la franja
     if(id==='o3'){ const off=st>=2, du=enter?0:.7; gsap.to('#o3 .hl',{xPercent:off?-100:0,duration:du,ease:'power3.inOut'}); gsap.to('#o3 .hr',{xPercent:off?100:0,duration:du,ease:'power3.inOut'}); }
     return;
   }
