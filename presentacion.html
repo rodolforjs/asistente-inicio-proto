@@ -27,7 +27,7 @@ body{cursor:none}body.mouse{cursor:default}
 .ov.fr{display:block;text-align:left;--or:#d13c00;--dk:#1c1b19;--cr:#f4f2ee}
 .ov.fr em{font-style:italic;color:var(--or)}
 /* 1 · problema (oscuro) */
-#o1{background:var(--dk);color:var(--cr)}
+#o1{background:var(--dk);color:var(--cr);--or:#e5602b}   /* sobre oscuro, el mismo naranja un tono más claro */
 #o1 .q{position:absolute;left:0;right:0;top:0;margin:0;text-align:center;white-space:nowrap;font-size:112px;font-weight:400;line-height:1.05;letter-spacing:-.045em;transform-origin:50% 0}
 #o1 .body{position:absolute;left:160px;right:160px;top:250px;bottom:150px;display:grid;grid-template-columns:1fr 820px;gap:110px;align-items:center}
 #o1 .tt{margin:0;font-size:128px;font-weight:400;line-height:.98;letter-spacing:-.05em}
@@ -45,9 +45,9 @@ body{cursor:none}body.mouse{cursor:default}
 #o2 h3{margin:28px 0 0;font-size:68px;font-weight:400;line-height:1;letter-spacing:-.035em}
 #o2 .tag{margin-top:16px;border-radius:999px;background:var(--k);padding:10px 20px;font:600 21px/1.15 'Inter',sans-serif;color:var(--kt)}
 #o2 .qt{margin:26px 0 0;font-size:41px;font-style:italic;line-height:1.22;letter-spacing:-.015em;color:#2b2a27}
-#o2 .ft{margin-top:auto;width:100%;border-top:2px solid var(--k);padding-top:20px;font:500 21px/1.2 'Inter',sans-serif;color:#5b5750}
+#o2 .ft{margin-top:auto;width:100%;border-top:2px solid var(--kb,var(--k));padding-top:20px;font:500 21px/1.2 'Inter',sans-serif;color:#5b5750}
 #o2 .ft b{display:block;margin-top:6px;font:700 30px/1.2 'Inter',sans-serif;color:var(--dk)}
-#o2 .un{position:absolute;left:80px;right:80px;bottom:60px;height:230px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
+#o2 .un{--or:#e5602b;position:absolute;left:80px;right:80px;bottom:60px;height:230px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
 #o2 .un .h{display:flex;align-items:baseline;gap:26px}
 #o2 .un small{flex:none;font:600 21px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
 #o2 .un p{margin:0;font-size:46px;line-height:1.1;letter-spacing:-.025em}
@@ -79,7 +79,7 @@ body{cursor:none}body.mouse{cursor:default}
 #o4 .cd h3{margin:auto 0 0;font-size:80px;white-space:nowrap;font-weight:400;line-height:1;letter-spacing:-.045em}
 #o4 .cd p{margin:22px 0 0;font:400 29px/1.38 'Inter',sans-serif}
 #o4 .c1{background:var(--dk);color:var(--cr)}#o4 .c1 i{color:var(--or)}
-#o4 .c2{background:var(--or);color:var(--dk)}
+#o4 .c2{background:var(--or);color:var(--cr)}
 #o4 .c3{border:2px solid var(--dk);color:var(--dk)}#o4 .c3 i{color:var(--or)}
 /* 4 y 11 */
 #o11 .pills{display:flex;flex-direction:column;gap:22px;align-items:center}
@@ -128,7 +128,7 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur{display:none!impo
     <div class="cols">
       <div class="c" data-s="0" style="--t:#f6dcf0;--k:#d15cb5;--kt:#1c1b19"><div class="ph"><img src="assets/marcela.jpg" alt="Marcela"></div><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p><div class="ft">Se le olvida:<b>lo que vio y dónde</b></div></div>
       <div class="c" data-s="1" style="--t:#e3dbfb;--k:#3b00d1;--kt:#fff"><div class="ph"><img src="assets/andres.jpg" alt="Andrés"></div><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p><div class="ft">Se le olvida:<b>que la fecha se acerca</b></div></div>
-      <div class="c" data-s="2" style="--t:#f1f3c4;--k:#ccd100;--kt:#1c1b19"><div class="ph"><img src="assets/felipe.jpg" alt="Felipe"></div><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p><div class="ft">Se le olvida:<b>la fecha</b></div></div>
+      <div class="c" data-s="2" style="--t:#f1f3c4;--k:#ccd100;--kt:#1c1b19;--kb:#9a9e00"><div class="ph"><img src="assets/felipe.jpg" alt="Felipe"></div><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p><div class="ft">Se le olvida:<b>la fecha</b></div></div>
     </div>
     <div class="un" data-s="3" data-d=".25">
       <div class="h"><small>Lo que los une:</small><p>“Necesito que alguien me ayude con esto, <em>y que no sea una carga.</em>”</p></div>
