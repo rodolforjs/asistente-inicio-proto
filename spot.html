@@ -355,7 +355,8 @@ window.SP={
   /* near(a): el spot ya va camino a 'a' (quieto ahí, o corriendo un poco antes): se puede seguir sin recargar */
   near(a){ return this.contig(a) || (!!tl&&ffTo==null&&!paused&&tl.time()<=a+.3&&a-tl.time()<25); },
   seg(a,b){ LOOP=false; stopAt=b; if(this.contig(a)){ setPaused(false); return 'sigue'; }
-    if(this.near(a)){ if(tl.time()<a-.25){ RUSH=true; ffTo=a; FF=2.5; gsap.globalTimeline.timeScale(FF); wts(wReq); } return 'apura'; }   // quien presenta pasó antes de que terminara: acelera a la vista hasta el próximo tramo paused=false; gsap.globalTimeline.resume(); seekTo(a); return 'salta'; },
+    if(this.near(a)){ if(tl.time()<a-.25){ RUSH=true; ffTo=a; FF=2.5; gsap.globalTimeline.timeScale(FF); wts(wReq); } return 'apura'; }   // quien presenta pasó antes de que terminara: acelera a la vista hasta el próximo tramo
+    paused=false; gsap.globalTimeline.resume(); seekTo(a); return 'salta'; },
   prime(){ LOOP=false; stopAt=.05; paused=false; start(0); },
   pause(){ stopAt=null; if(tl&&!paused) setPaused(true); },
   video(){ stopAt=null; LOOP=true; paused=false; gsap.globalTimeline.resume(); start(0); },
