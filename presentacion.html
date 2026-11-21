@@ -340,7 +340,7 @@ const h=(location.hash||'').slice(1).split('.'); cur=Math.max(0,Math.min(S.lengt
 S.forEach(x=>{ if(x.ov) gsap.set('#'+x.ov,{opacity:0,visibility:'hidden'}); });
 if(S[cur].ov) render();
 SPF.onload=()=>{ W=SPF.contentWindow; const wait=setInterval(()=>{ if(W.SP){ clearInterval(wait); SP=W.SP; SP.prime(); if(!S[cur].ov) setTimeout(()=>render(),300); else if(S[cur].pre) setTimeout(()=>SP.seg(S[cur].pre[0],S[cur].pre[1]),300); } },50); };
-SPF.src='spot.html?present=1';
+SPF.src='spot.html?present=1&v='+Date.now();   // siempre la versión más nueva del spot (sin caché)
 /* el foco nunca se queda dentro del spot (la web enfoca campos del onboarding): las teclas siempre llegan aquí */
 addEventListener('blur',()=>setTimeout(()=>{ if(document.activeElement===SPF){ SPF.blur(); window.focus(); } },0));
 </script>
