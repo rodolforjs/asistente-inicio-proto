@@ -1210,6 +1210,11 @@ body.sim-on .fab{display:none}
 html.spot,html.spot *{cursor:none!important}
 html.spot .ob-x,html.spot #obBack,html.spot .ob-kbs,html.spot #fab,html.spot .pl-back,html.spot .pl-sec,html.spot #toast,
 html.spot #sim .tn-cap,html.spot #sim .tn-cx,html.spot #tn .tn-cap,html.spot #tn .tn-cx,html.spot .pl-fine,html.spot .tn-more,html.spot .tn-art button{visibility:hidden!important}
+html.spot .ap-top{-webkit-backdrop-filter:none;backdrop-filter:none;background:#f5f7f9}
+/* spot: sin desenfoques de fondo en la tienda (se recalculaban cada cuadro mientras la cámara avanza) */
+html.spot .tn{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(14,16,20,.78)}
+html.spot .tn-nt,html.spot .tn-arb{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.96)}
+html.spot .tn-art button,html.spot .tn-art span{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(14,16,20,.72)}
 html.spot .spot-hl{position:relative;box-shadow:0 0 0 0 rgba(255,89,36,.55);animation:spothl 1.4s ease-out infinite}
 html.spot .dh-c.spot-hov{background:rgba(127,138,156,.12)}
 html.spot .dy-c.spot-hov{transform:translateY(-2px) scale(1.08);z-index:2;box-shadow:0 10px 18px -8px rgba(14,16,20,.45)}
@@ -1468,7 +1473,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 </head>
 <body class="bg-fog font-sans text-black antialiased">
 
-<main class="relative grid h-dvh grid-rows-[auto_1fr] overflow-hidden">
+<main id="hero" class="relative grid h-dvh grid-rows-[auto_1fr] overflow-hidden">
   <div class="grid12 pointer-events-none absolute inset-0"></div>
   <div class="pointer-events-none absolute inset-x-0 top-0 h-[70%] bg-[radial-gradient(900px_420px_at_28%_30%,#fff,transparent_70%)]"></div>
 
@@ -1669,10 +1674,10 @@ function fit(){
   const g=$('garland'); const k=Math.min(g.clientWidth/720, g.clientHeight/640, 1.08);
   gsap.set('#canvas',{scale:k,transformOrigin:'50% 50%'});
 }
-let bobs=[];
+let bobs=[], heroAsleep=false;
 function float(){
   bobs.forEach(t=>t.kill()); bobs=[];
-  if(REDUCE) return;
+  if(REDUCE||heroAsleep) return;
   fls().forEach((el,i)=>bobs.push(gsap.to(el,{y:gsap.utils.random(-11,11),x:gsap.utils.random(-5,5),duration:gsap.utils.random(2.4,4),yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.1})));
 }
 addEventListener('pointermove',e=>{
@@ -1682,7 +1687,7 @@ addEventListener('pointermove',e=>{
 });
 let nTl;
 function notifs(){
-  nTl && nTl.kill();
+  nTl && nTl.kill(); if(heroAsleep) return;
   const n=gsap.utils.toArray('#nts .nt');
   nTl=gsap.timeline({repeat:-1,repeatDelay:.4});
   gsap.set(n,{opacity:0});
@@ -1919,7 +1924,7 @@ async function runSync(){
 
 
   await wait(2.4);
-  if($('sync').style.display==='none') return;
+  if($('sync').style.display==='none'||SPOT) return;   // en el spot se salta la fecha nueva: reacomodar todas las fichas daba un tirón
   const t = $('toast'); $('ttxt').textContent='Detecté un bautizo nuevo en tu calendario · 22 ago';
   gsap.fromTo(t,{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:'back.out(2)'});
   const nc = cardEl(NEW,'ring-2 ring-brand',20); nc.querySelector('.art').insertAdjacentHTML('beforeend','<span class="new">Nuevo</span>');
@@ -3061,6 +3066,7 @@ async function arrive(){
 }
 
 function openYear(t='planner'){
+  heroSleep();
   const y=$('year'); autoFocus=true; yfocus=defaultFocus();
   document.body.classList.add('in-app');
   y.style.display='block'; waveLoop(); tab=t; pedido=null; closePops(); dash=(t==='planner');
@@ -3221,15 +3227,18 @@ async function obGo(d){
   const n=ob.step+d; if(n<0) return;
   const L=$('obL'), R=$('obR');
   if(n>=OB_STEPS){ obFinish(); return; }
-  if(!REDUCE) await Promise.all([new Promise(r=>gsap.to(L,{opacity:0,y:d>0?-14:14,filter:'blur(6px)',duration:.22,ease:'power2.in',onComplete:r})),new Promise(r=>gsap.to(R,{opacity:0,x:d>0?-18:18,duration:.22,ease:'power2.in',onComplete:r}))]);
+  if(!REDUCE) await Promise.all([new Promise(r=>gsap.to(L,{opacity:0,y:d>0?-14:14,filter:SPOT?'none':'blur(6px)',duration:.22,ease:'power2.in',onComplete:r})),new Promise(r=>gsap.to(R,{opacity:0,x:d>0?-18:18,duration:.22,ease:'power2.in',onComplete:r}))]);
   ob.step=n; obProg(n); obView();
-  if(!REDUCE){ gsap.fromTo(L,{opacity:1,y:0,filter:'blur(0px)'},{opacity:1,y:0,filter:'blur(0px)',duration:0}); gsap.from('#obL [data-in]',{y:22,opacity:0,filter:'blur(8px)',duration:.6,stagger:.06,ease:'power3.out',clearProps:'all'}); gsap.fromTo(R,{opacity:0,x:d>0?24:-24,scale:.97},{opacity:1,x:0,scale:1,duration:.65,ease:'power3.out',clearProps:'all'}); }
+  if(!REDUCE){ gsap.fromTo(L,{opacity:1,y:0,filter:'blur(0px)'},{opacity:1,y:0,filter:'blur(0px)',duration:0}); gsap.from('#obL [data-in]',{y:22,opacity:0,filter:SPOT?'none':'blur(8px)',duration:.6,stagger:.06,ease:'power3.out',clearProps:'all'}); gsap.fromTo(R,{opacity:0,x:d>0?24:-24,scale:.97},{opacity:1,x:0,scale:1,duration:.65,ease:'power3.out',clearProps:'all'}); }
   else { gsap.set([L,R],{clearProps:'all'}); }
 }
+/* modo spot: la portada (tarjetas de vidrio flotando, notificaciones en bucle) se pausa y deja de pintarse cuando ya no se ve */
+function heroSleep(){ if(!SPOT||heroAsleep) return; heroAsleep=true; bobs.forEach(t=>t.kill()); bobs=[]; nTl&&nTl.kill(); gsap.killTweensOf(['#nts .nt','#ring']); gsap.delayedCall(.5,()=>{ const h=$('hero'); if(h) h.style.visibility='hidden'; }); }
 function startOb(){
+  heroSleep();
   ob.step=0; Object.keys(ob.conn).forEach(k=>ob.conn[k]=false);
   const el=$('ob'); el.classList.add('on'); el.scrollTop=0; obProg(0); obView();
-  if(!REDUCE){ gsap.fromTo(el,{opacity:0},{opacity:1,duration:.4}); gsap.from('#obL [data-in]',{y:26,opacity:0,filter:'blur(8px)',duration:.7,stagger:.07,delay:.1,ease:'power3.out',clearProps:'all'}); gsap.from('#obR',{opacity:0,y:30,scale:.96,duration:.8,delay:.25,ease:'power3.out',clearProps:'all'}); }
+  if(!REDUCE){ gsap.fromTo(el,{opacity:0},{opacity:1,duration:.4}); gsap.from('#obL [data-in]',{y:26,opacity:0,filter:SPOT?'none':'blur(8px)',duration:.7,stagger:.07,delay:.1,ease:'power3.out',clearProps:'all'}); gsap.from('#obR',{opacity:0,y:30,scale:.96,duration:.8,delay:.25,ease:'power3.out',clearProps:'all'}); }
 }
 function closeOb(){ obStopStreams(); if(ob.tl){ ob.tl.kill(); ob.tl=null; } $('ob').classList.remove('on'); }
 async function obFinish(){
@@ -3668,7 +3677,7 @@ function simReloj(){
   $('simD').innerHTML=phMount('reloj',{screen:`<div class="rw"><span class="rw-t num">9:41</span><div class="rw-s" id="rlS"></div></div>`});
   const cam=phCamera('reloj',{zoomTo:(vw,vh,qw)=>Math.max(qw*1.08,vw<=620?Math.min(vw-110,250):Math.min(270,(vh-220)*.82)),at:[.5,.53]});
   const buzz=()=>{ const V=$('phV'); if(V&&!REDUCE) gsap.fromTo(V,{x:-3},{x:3,duration:.06,repeat:7,yoyo:true,ease:'none',clearProps:'x'}); };
-  const first=()=>{ scr(`<span class="appi">${GIFT_I}</span><small class="rw-k">Cuenta conmigo · ahora</small><b>${esc(p.n)} es en ${AVISO} días.</b><span class="rw-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`); buzz(); };
+  const first=()=>{ scr(`<span class="appi">${GIFT_I}</span><small class="rw-k">Cuenta conmigo · ahora</small><b>${esc(p.n)} es ${days(dleft(p))}.</b><span class="rw-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`); buzz(); };
   scr('');
   if(REDUCE){ cam.st.k=1; cam.draw(); first(); }
   else cam.go({duration:2.2,delay:.3,ease:'power2.inOut',onComplete:()=>gsap.delayedCall(.2,first)});
