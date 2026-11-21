@@ -1289,15 +1289,16 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 .tn-ar{position:absolute;inset:0;overflow:hidden;background:#1b1a18;color:#fff}
 .tn-ar video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
 .tn-ar.is-cam video{opacity:1}.tn-ar.is-cam .tn-sim{display:none}
-.tn-sim{position:absolute;inset:0;transform-origin:50% 44%}
-.tn-wall{position:absolute;inset:0 0 44% 0;background:linear-gradient(#e9e0d3,#ddd0bd);box-shadow:inset 0 -30px 40px -30px rgba(0,0,0,.25)}
-.tn-wall::before,.tn-wall::after{content:"";position:absolute;left:8%;right:8%;height:6px;border-radius:3px;background:#c9b597;box-shadow:0 6px 10px -4px rgba(0,0,0,.25)}.tn-wall::before{top:22%}.tn-wall::after{top:46%}
-.tn-sim::after{content:"";position:absolute;inset:56% 0 0 0;background:linear-gradient(#b99e7f,#8c7357)}
-.tn-tb{position:absolute;left:6%;right:6%;top:50%;height:13%;z-index:1;background:linear-gradient(#e4cba6,#c9a77c);clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);box-shadow:0 20px 30px rgba(0,0,0,.3)}
-.tn-o{position:absolute;z-index:2;object-fit:cover;border-radius:8px;box-shadow:0 10px 16px -6px rgba(0,0,0,.45)}
-.tn-o1{left:13%;top:39%;width:22%;aspect-ratio:1;transform:rotate(-4deg)}
-.tn-o3{right:13%;top:40%;width:21%;aspect-ratio:1;transform:rotate(5deg)}
-.tn-o2{left:37%;top:35%;width:26%;aspect-ratio:1}
+.tn-sim{position:absolute;inset:0;overflow:hidden;transform-origin:50% 44%}
+.tn-sim > img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;will-change:transform}
+.tn-sim::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.28),transparent 22%,transparent 70%,rgba(0,0,0,.35))}
+.tn-pin{position:absolute;z-index:5;display:flex;flex-direction:column;align-items:center;gap:6px;transform:translate(-50%,-100%);pointer-events:none}
+.tn-pin b{border-radius:999px;background:#fff;padding:5px 11px;font-size:12.5px;font-weight:700;color:#0e1014;box-shadow:0 8px 16px -6px rgba(0,0,0,.5)}
+.tn-pin i{width:16px;height:16px;border-radius:50%;background:#ff5924;box-shadow:0 0 0 4px rgba(255,255,255,.9),0 0 0 4px rgba(255,89,36,.5);animation:tnpin 1.4s ease-out infinite}
+@keyframes tnpin{0%{box-shadow:0 0 0 4px rgba(255,255,255,.9),0 0 0 4px rgba(255,89,36,.55)}100%{box-shadow:0 0 0 4px rgba(255,255,255,.9),0 0 0 22px rgba(255,89,36,0)}}
+.tn-ar.is-here .tn-pin{display:none}
+.tn-cr{position:absolute;right:12px;bottom:92px;z-index:5;font-size:9.5px;color:rgba(255,255,255,.6)}
+.tn-ar.is-cam .tn-pin,.tn-ar.is-cam .tn-cr{display:none}
 .tn-art{position:absolute;left:14px;right:14px;top:48px;z-index:6;display:flex;align-items:center;gap:10px}
 .tn-art button{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(14,16,20,.55);font-size:20px;line-height:1;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .tn-art span{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:rgba(14,16,20,.55);padding:8px 13px;font-size:12.5px;font-weight:600;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -1608,7 +1609,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 </section>
 
 <div class="ob-kbs"><button id="simBtn" class="ob-kb" aria-haspopup="true" aria-expanded="false" aria-controls="simMenu"><span class="sim-pl" aria-hidden="true"></span><span class="sim-t">Simular en…</span></button>
-<div id="simMenu" class="sim-menu" hidden><button id="obSpot" class="sim-it"><kbd>▶</kbd><span>Ver spot<small>1:41, se reproduce solo</small></span></button><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
+<div id="simMenu" class="sim-menu" hidden><button id="obSpot" class="sim-it"><kbd>▶</kbd><span>Ver spot<small>1:43, se reproduce solo</small></span></button><p>En la app</p><button id="obKb" class="sim-it"><kbd>N</kbd>Notificación</button><button id="obKu" class="sim-it"><kbd>U</kbd>Último día</button>
 <p>En tu día</p><button id="obKt" class="sim-it"><kbd>T</kbd><span>En la tienda<small>Lo llevas al paso</small></span></button><button data-sim="reloj" class="sim-it"><kbd>W</kbd><span>Reloj<small>Apruebas con tiempo</small></span></button><button data-sim="refri" class="sim-it"><kbd>R</kbd><span>Refri<small>Sumo una fecha</small></span></button><button data-sim="lentes" class="sim-it"><kbd>L</kbd><span>Lentes<small>Guardas una idea</small></span></button><button data-sim="car" class="sim-it"><kbd>C</kbd><span>En el auto<small>Plan B, si se pasó</small></span></button></div></div>
 <div id="nf" class="nf" role="dialog" aria-modal="true" aria-label="Nueva fecha"></div>
 <section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
@@ -3391,8 +3392,8 @@ function tnStopCam(){ if(tnStream){ tnStream.getTracks().forEach(t=>t.stop()); t
 async function tnGuide(){
   const run=++tnRun, p=tnP, list=GIFT[p.n][0].map(prod), x=list[tnPick], [loc,steps,dir]=TN_LOC[tnPick], side=list.filter((_,i)=>i!==tnPick);
   $('tnS').innerHTML=`<div class="tn-ar" id="tnAr">
-    <div class="tn-sim" id="tnSim"><div class="tn-wall"></div><div class="tn-tb"></div>
-      <img class="tn-o tn-o1" src="${side[0].u}" alt=""><img class="tn-o tn-o3" src="${side[1].u}" alt=""><img class="tn-o tn-o2" id="tnTg" src="${x.u}" alt=""></div>
+    <div class="tn-sim" id="tnSim"><img id="tnBg" src="sim/tienda.jpg" alt=""></div>
+    <span class="tn-pin" id="tnPin"><b>Aquí</b><i></i></span><span class="tn-cr">Foto: Andre Carrotflower · CC BY-SA 4.0</span>
     <video id="tnV" playsinline muted autoplay></video>
     ${tnSb(true)}
     <div class="tn-art"><button data-tn="arx" aria-label="Volver">×</button><span><i class="live-dot"></i>${loc}</span></div>
@@ -3403,7 +3404,15 @@ async function tnGuide(){
     <button data-tn="got" class="tn-got" id="tnGot">La tengo</button></div>`;
   if(!SPOT&&navigator.mediaDevices&&navigator.mediaDevices.getUserMedia) navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false}).then(st=>{ if(run!==tnRun){ st.getTracks().forEach(t=>t.stop()); return; } tnStream=st; const v=$('tnV'); v.srcObject=st; $('tnAr').classList.add('is-cam'); }).catch(()=>{});
   const cam=false, fl=$('tnFl');
-  if(!REDUCE){ gsap.fromTo('#tnFl i',{opacity:0,y:30},{opacity:1,y:-10,duration:.9,stagger:{each:.22,repeat:-1},ease:'power1.out'}); if(!cam) gsap.fromTo('#tnSim',{scale:.82,filter:'blur(2px)'},{scale:1.18,filter:'blur(0px)',duration:steps*.32,ease:'power1.inOut'}); }
+  /* cámara: foto real de una tienda; el punto de destino (la mesa con frascos) queda fijo en pantalla y la imagen se acerca a él al caminar */
+  const S=$('tnSim'), W=S.clientWidth, H=S.clientHeight, iw=H*2702/2022, TX=.29, TY=.63;
+  const left=Math.min(0,Math.max(W-iw,W*.5-TX*iw)), tx=left+TX*iw, ty=TY*H;
+  gsap.set('#tnBg',{x:left}); S.style.transformOrigin=`${tx}px ${ty}px`;
+  gsap.set('#tnPin',{left:tx,top:ty-6}); gsap.set('#tnRet',{left:tx,top:ty,xPercent:-50,yPercent:-50}); gsap.set('#tnTag',{top:ty+W*.17+14,left:tx});
+  if(!REDUCE){ gsap.fromTo('#tnFl i',{opacity:0,y:30},{opacity:1,y:-10,duration:.9,stagger:{each:.22,repeat:-1},ease:'power1.out'});
+    gsap.fromTo(S,{scale:1},{scale:2.05,duration:steps*.32,ease:'power1.inOut'});
+    gsap.fromTo('#tnBg',{y:-3,rotation:-.35},{y:4,rotation:.35,duration:.32,repeat:steps,yoyo:true,ease:'sine.inOut'});   // el paso al caminar
+    gsap.fromTo('#tnPin',{scale:.7},{scale:1.15,duration:steps*.32,ease:'power1.in'}); }
   for(let k=steps;k>=0;k--){
     if(run!==tnRun) return; $('tnArS').textContent=k;
     if(dir==='Gira a la izquierda'&&k===Math.ceil(steps/2)){ $('tnArI').textContent=dir; if(!REDUCE) gsap.to(fl,{rotation:-35,duration:.4}); }
@@ -3412,7 +3421,7 @@ async function tnGuide(){
   if(run!==tnRun) return;
   $('tnArI').textContent='Ahí está'; $('tnArS').textContent='0';
   gsap.killTweensOf('#tnFl i'); gsap.to(fl,{opacity:0,duration:.3});
-  $('tnAr').classList.add('is-here');
+  $('tnAr').classList.add('is-here'); gsap.killTweensOf('#tnBg'); gsap.to('#tnBg',{y:0,rotation:0,duration:.3});
   if(!REDUCE){ gsap.fromTo('#tnRet',{scale:1.6,opacity:0},{scale:1,opacity:1,duration:.5,ease:'back.out(1.6)'}); gsap.from('#tnTag',{y:12,opacity:0,duration:.4,delay:.25}); gsap.from('#tnGot',{y:20,opacity:0,duration:.4,delay:.35}); }
 }
 async function tnTake(){
@@ -3431,9 +3440,9 @@ function tnDone(){
     <div class="tn-bt"><button data-tn="end" class="tn-b1">Listo</button></div></div>`;
   if(!REDUCE){ gsap.from('.tn-ok',{scale:0,rotation:-30,duration:.6,ease:'back.out(2)'}); gsap.from('#tnAp > :not(.tn-ok)',{y:12,opacity:0,duration:.4,stagger:.05,delay:.15,clearProps:'all'}); }
 }
-function tnOpen(){
+function tnOpen(n){
   if($('year').style.display!=='block') return;
-  const p=tnTarget(); if(!p){ ytoast('No tienes fechas pendientes: en la tienda no te interrumpo.'); return; }
+  const p=(typeof n==='string'&&YEAR.find(q=>q.n===n))||tnTarget(); if(!p){ ytoast('No tienes fechas pendientes: en la tienda no te interrumpo.'); return; }
   if(document.body.classList.contains('sim-on')) simClose();
   tnP=p; tnPick=ypick[p.n]||0; tnSaved=false; tnRun++; closeSheet(); closePops(); if(document.body.classList.contains('ch-on')) chClose();
   document.body.classList.add('tn-on'); tnLock();

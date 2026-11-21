@@ -234,9 +234,9 @@ const SHOTS=[
   {t:68.6,  name:'T9 Reloj'},
   {t:75.2,  name:'T10 Auto'},
   {t:83.2,  name:'T11 Tienda'},
-  {t:94.4,  name:'T12 Cierre'},
+  {t:96.4,  name:'T12 Cierre'},
 ];
-const END=100.7;
+const END=102.7;
 
 function build(){
   const T=gsap.timeline({paused:true,onComplete:()=>{ if(LOOP) start(0); }});
@@ -313,16 +313,16 @@ function build(){
    .call(()=>click('#carBt [data-s="yes"]'),null,80.7)
    .call(capOut,null,83.1);
   /* T11 · Tienda: pasas por Creado con un regalo pendiente */
-  T.call(()=>fade(()=>{ camReset(); E("simClose(); tnOpen()"); }),null,83.3)
+  T.call(()=>fade(()=>{ camReset(); E("simClose(); tnOpen('Navidad')"); }),null,83.3)
    .call(()=>capIn('¿Pasas por <em>la tienda?</em>',{dark:true,sm:true,r:true}),null,84.1)
    .call(()=>capIn('¿Con un regalo <em>pendiente?</em>',{dark:true,sm:true,r:true}),null,86.3)
    .call(()=>click('#tnN'),null,88.3)
    .call(()=>capIn('Te aviso <em>que está aquí.</em>',{dark:true,sm:true,r:true}),null,88.7)
    .call(()=>click('[data-tn="guide"]'),null,91.1)
    .call(()=>capIn('Y te llevo <em>directo a él.</em>',{dark:true,sm:true,r:true}),null,91.5)
-   .call(capOut,null,93.9);
+   .call(capOut,null,95.9);
   /* T12 · Cierre */
-  T.call(()=>{ cardIn('c12'); camReset(); },null,94.5)
+  T.call(()=>{ cardIn('c12'); camReset(); },null,96.5)
    .set({},{},END);
   /* barra de progreso */
   T.fromTo('#bar',{width:0},{width:1920,duration:END,ease:'none'},0);
@@ -361,7 +361,7 @@ function prep(i){
   else if(n==='T12'){ cardIn('c12'); }
   else E("openYear()");
   if(n==='T8') cardIn('c7');
-  const SIM={T9:"simOpen('reloj')",T10:"simOpen('car')",T11:"tnOpen()"}; if(SIM[n]) E(SIM[n]);
+  const SIM={T9:"simOpen('reloj')",T10:"simOpen('car')",T11:"tnOpen('Navidad')"}; if(SIM[n]) E(SIM[n]);
   const CAPS={T9:'En tu <em>reloj.</em>',T10:'¿Se te pasó <em>una fecha?</em>',T11:'¿Pasas por <em>la tienda?</em>'};
   if(CAPS[n]) capIn(CAPS[n],n==='T11'?{dark:true,sm:true,r:true}:{dark:true});
 }
