@@ -439,7 +439,7 @@ addEventListener('mousemove',()=>{ if(!document.body.classList.contains('noui'))
 gsap.ticker.add(()=>{ if(!tl) return; const t=tl.time(), k=shotAt(t);
   if(stopAt!=null&&ffTo==null&&t>=stopAt){ stopAt=null; paused=true; tl.pause(); $('pp').innerHTML=IC_PLAY;   // fin de tramo: la línea se detiene ya
     setTimeout(()=>{ if(paused&&W) W.gsap.globalTimeline.pause(); },800); }   // y la web termina lo que estaba animando antes de quedar quieta
-  if(ffTo!=null){ if(t>=ffTo){ tl.seek(ffTo,true); ffEnd(); } else { const r=ffTo-t, f=r>4?18:r>1?4:1.5; if(f!==FF){ FF=f; gsap.globalTimeline.timeScale(f); wts(wReq); } } }   // frena al acercarse para caer justo
+  if(ffTo!=null){ if(t>=ffTo){ tl.seek(ffTo,true); ffEnd(); } else { const r=ffTo-t, f=r>4?40:r>1.5?12:3; if(f!==FF){ FF=f; gsap.globalTimeline.timeScale(f); wts(wReq); } } }   // frena al acercarse para caer justo
   if(drag) return; if(ffTo==null) $('ph2').style.left=xAtT(t)+'px';
   $('tm').textContent=`${fmt(t)} / ${fmt(END)}`;
   $('nm').innerHTML=`${SHOTS[k].name.replace(/^T\d+ /,'')}<small>${k+1} de ${SHOTS.length}</small>`;

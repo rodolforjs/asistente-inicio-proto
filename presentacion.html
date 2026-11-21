@@ -84,7 +84,10 @@ body{cursor:none}body.mouse{cursor:default}
 #o11 .pills span{font-size:104px;line-height:1;letter-spacing:-.045em}
 #o11 .pills i{display:block;width:60px;height:3px;margin:6px auto;background:var(--brand);border-radius:2px}
 /* cortina: tapa la recarga del spot cuando se salta a un tramo que no sigue */
-#cur{position:absolute;inset:0;z-index:8;background:var(--paper);opacity:0;visibility:hidden}
+#cur{position:absolute;inset:0;z-index:8;display:flex;align-items:center;justify-content:center;background:var(--paper);opacity:0;visibility:hidden}
+#cur span{font:500 26px/1 'Inter',sans-serif;letter-spacing:.06em;color:#9aa3af}
+#cur span:after{content:'';display:inline-block;width:10px;height:10px;margin-left:16px;border-radius:50%;background:var(--brand);animation:cl 1s ease-in-out infinite}
+@keyframes cl{50%{opacity:.25}}
 /* contador y barra */
 #cnt{position:absolute;right:42px;bottom:26px;z-index:9;font:600 20px/1 'Inter',sans-serif;letter-spacing:.06em;color:rgba(14,16,20,.35);font-variant-numeric:tabular-nums}
 #cnt.dk{color:rgba(255,255,255,.45)}
@@ -162,7 +165,7 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur{display:none!impo
     <div class="pills"><span>Más compras en la web</span><i></i><span>Compra recurrente</span><i></i><span>Compra <em style="color:var(--brand)">anticipada.</em></span></div>
   </section>
 
-  <div id="cur"></div>
+  <div id="cur"><span id="curT"></span></div>
   <div id="cnt">1/12</div><div id="bar"></div>
 </div>
 
@@ -265,7 +268,8 @@ function animOv(id,st,enter){
 function playSeg(a,b,after){
   const me=++busy;
   if(SP.contig(a)){ SP.seg(a,b); after&&after(); return; }
-  gsap.set('#cur',{visibility:'visible'}); gsap.to('#cur',{opacity:1,duration:.25,overwrite:true,onComplete:()=>{
+  $('curT').textContent=`${cur+1} · ${S[cur].t}`;
+  gsap.set('#cur',{visibility:'visible'}); gsap.to('#cur',{opacity:1,duration:.2,overwrite:true,onComplete:()=>{
     if(me!==busy) return; SP.seg(a,b);
     const k=setInterval(()=>{ if(me!==busy){ clearInterval(k); return; } if(SP.ready()){ clearInterval(k); after&&after(); gsap.to('#cur',{opacity:0,duration:.45,onComplete:()=>gsap.set('#cur',{visibility:'hidden'})}); } },60);
   }});
