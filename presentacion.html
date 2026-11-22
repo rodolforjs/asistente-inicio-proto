@@ -117,6 +117,44 @@ body.framed #sp{border-radius:26px;box-shadow:0 40px 80px -40px rgba(15,23,42,.4
 #o8 .pb small em{font-style:normal;font-weight:700;color:var(--brand)}
 #o8 .pb small i{font-style:normal}
 #o8 .pb b{display:block;margin-top:2px;font-size:17px}
+/* lámina En la tienda: dos celulares */
+#o11b .dev{position:absolute;top:96px;width:400px}
+#o11b .d1{left:760px}#o11b .d2{left:1300px}
+#o11b .dl{margin:0 0 18px;text-align:center;font:600 22px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+#o11b .phone{position:relative;width:400px;height:820px;box-sizing:border-box;border-radius:66px;background:#111;padding:12px;box-shadow:0 50px 90px -40px rgba(15,23,42,.55),inset 0 0 0 2px #2a2a2e}
+#o11b .ps{position:relative;height:100%;border-radius:55px;overflow:hidden;font-family:'Inter',sans-serif}
+#o11b .pisl{position:absolute;z-index:3;left:50%;top:14px;width:112px;height:32px;margin-left:-56px;border-radius:20px;background:#000}
+#o11b .st{background:url(sim/tienda.jpg) 46% 50%/cover}
+#o11b .pill2{position:absolute;left:22px;top:62px;display:flex;align-items:center;gap:7px;border-radius:999px;background:rgba(14,16,20,.72);padding:7px 13px;font-size:14px;font-weight:600;color:#fff}
+#o11b .pill2 i{width:8px;height:8px;border-radius:50%;background:var(--brand)}
+#o11b .tnot{position:absolute;left:14px;right:14px;top:104px;display:flex;gap:11px;border-radius:22px;background:rgba(255,255,255,.92);padding:13px 15px;font-size:15px;line-height:1.3;color:#222;box-shadow:0 12px 30px -14px rgba(0,0,0,.5);animation:tnot 8s infinite}
+#o11b .tnot b{display:block;font-size:16px;color:#111}
+#o11b .pi{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:11px;background:var(--brand)}
+@keyframes tnot{0%{opacity:0;transform:translateY(-20px)}6%,60%{opacity:1;transform:none}68%,100%{opacity:0;transform:translateY(-10px)}}
+#o11b .pin{position:absolute;left:52%;top:58%;display:flex;flex-direction:column;align-items:center;gap:7px;transform:translate(-50%,-100%)}
+#o11b .pin b{border-radius:999px;background:#fff;padding:6px 13px;font-size:15px;font-weight:700;color:#0e1014;box-shadow:0 8px 16px -6px rgba(0,0,0,.5)}
+#o11b .pin i{width:20px;height:20px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 5px rgba(255,255,255,.9);animation:pinp 1.4s ease-out infinite}
+@keyframes pinp{0%{box-shadow:0 0 0 5px rgba(255,255,255,.9),0 0 0 5px rgba(255,89,36,.6)}100%{box-shadow:0 0 0 5px rgba(255,255,255,.9),0 0 0 26px rgba(255,89,36,0)}}
+#o11b .steps{position:absolute;left:14px;right:14px;bottom:22px;display:flex;align-items:center;gap:14px;border-radius:22px;background:#fff;padding:14px 18px;box-shadow:0 12px 30px -14px rgba(0,0,0,.5)}
+#o11b .steps b{font-family:'Newsreader',serif;font-size:44px;font-weight:400;line-height:1;color:#111}
+#o11b .steps span{font-size:14px;color:#6b7280}#o11b .steps strong{display:block;font-size:17px;color:#111}
+#o11b .sc{background:#f5f7f9}
+#o11b .chh{display:flex;align-items:center;gap:10px;margin-top:60px;border-bottom:1px solid #e5eaf2;padding:0 22px 14px;font-size:19px}
+#o11b .chh b{font-family:'Newsreader',serif;font-weight:500;font-size:22px}
+#o11b .cho{width:30px;height:30px;border-radius:50%;background:conic-gradient(#ff5924,#ff3d8b,#ffd23d,#27d9a6,#5b7cff,#ff5924)}
+#o11b .cu{margin:18px 16px 0 70px;overflow:hidden;border-radius:22px 22px 6px 22px;background:#0e1014;color:#fff;font-size:15px;line-height:1.35;opacity:0;animation:cu 9s infinite}
+#o11b .cu img{display:block;width:100%;height:190px;object-fit:cover}
+#o11b .cu span{display:block;padding:10px 14px 12px}
+#o11b .ca{margin:14px 50px 0 16px;border-radius:22px 22px 22px 6px;background:#fff;padding:14px 16px;font-size:15px;line-height:1.35;color:#222;box-shadow:0 1px 0 #e5eaf2;opacity:0;animation:ca 9s infinite}
+#o11b .ca small{font-size:12px;font-weight:600;color:#6b7280}
+#o11b .ca p{margin:4px 0 0}
+#o11b .cp{display:flex;gap:10px;align-items:center;margin-top:10px;border-radius:14px;background:#f5f7f9;padding:8px}
+#o11b .cp img{width:46px;height:46px;border-radius:10px;object-fit:cover}
+#o11b .cp span{font-size:12.5px;color:#6b7280}#o11b .cp b{display:block;font-size:14px;color:#111}
+#o11b .cok{display:flex;gap:8px;margin-top:10px!important;font-size:14px}
+#o11b .cok i{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#22a06b}
+@keyframes cu{0%,4%{opacity:0;transform:translateY(16px)}10%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+@keyframes ca{0%,22%{opacity:0;transform:translateY(16px)}30%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
 #o8 .ptap{position:absolute;left:0;right:0;bottom:46px;margin:0;font-size:16px;font-weight:500;opacity:.85}
 #o10 .hd{position:absolute;left:110px;right:110px;top:90px}
 #o7 .stt{font-size:68px}
@@ -231,6 +269,28 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur,body.video #side{
     </div>
   </section>
 
+  <!-- 11 · En la tienda: dos celulares en HTML (guía en la tienda + chat) -->
+  <section class="ov fr sx" id="o11b">
+    <div class="tx" data-s="0"><h2 class="stt">Te acompaña <em>en la tienda.</em></h2>
+      <ul class="sl"><li>Si detecta que <b>estás en Creado</b> y tienes una fecha encima, te avisa.</li><li>Te <b>guía hasta el regalo</b> dentro de la tienda.</li><li>¿Viste algo? <b>Mándalo por el chat</b> y lo guarda para esa persona.</li></ul></div>
+    <div class="dev d1" data-s="0" data-d=".15" data-y="0"><p class="dl">Te guía en la tienda</p>
+      <div class="phone"><div class="ps st">
+        <span class="pisl"></span><span class="pill2"><i></i>Regalos listos</span>
+        <div class="tnot"><span class="pi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.5S9 7 12 7ZM12 7c2-4 6-4 6-1.5S15 7 12 7Z"/></svg></span><span><b>Estás en Creado</b>El regalo de Navidad está aquí, en Regalos listos.</span></div>
+        <span class="pin"><b>Aquí</b><i></i></span>
+        <div class="steps"><b>10</b><span><strong>Sigue derecho</strong>pasos</span></div>
+      </div></div></div>
+    <div class="dev d2" data-s="0" data-d=".28" data-y="0"><p class="dl">Le mandas lo que viste</p>
+      <div class="phone"><div class="ps sc">
+        <span class="pisl"></span>
+        <div class="chh"><span class="cho"></span><b>Chat</b></div>
+        <div class="cu"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634" alt="Foto de una vela vista en la tienda"><span>Vi esto en la tienda, para mi hermana</span></div>
+        <div class="ca"><small>Lo reconocí</small><p>Está en Creado.</p>
+          <div class="cp"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634" alt=""><span><b>Vela Anillo de Fuego</b>Esencia Andina · $18.990</span></div>
+          <p class="cok"><i><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Tu hermana es Carla. La guardé en su ficha y va primera.</p></div>
+      </div></div></div>
+  </section>
+
   <!-- 11 · Por qué le sirve a Creado -->
   <section class="ov" id="o11">
     <p class="kick">Por qué le sirve a Creado</p>
@@ -245,9 +305,6 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur,body.video #side{
       <ul class="sl"><li data-s="0" data-d=".2">Encuentra las <b>fechas que importan</b>, según su contexto.</li><li data-s="0" data-d=".28">Rescata la <b>información clave:</b> invitaciones, topes, quién participa.</li><li data-s="0" data-d=".36">Sabe <b>de quién es</b> cada fecha y qué le gusta.</li></ul></div>
     <div class="sd" data-k="piensa"><h2 class="stt" data-s="0">Piensa <em>cada regalo.</em></h2>
       <ul class="sl"><li data-s="0" data-d=".2">Analiza la <b>información que recuperó</b> de cada fecha.</li><li data-s="0" data-d=".28"><b>Hace la limpieza por ti:</b> descarta lo que no calza.</li><li data-t="58.2">Te hace <b>la mejor propuesta</b> y te explica por qué.</li></ul></div>
-    <div class="sd" data-k="tienda"><h2 class="stt" data-s="0">Te acompaña <em>en la tienda.</em></h2>
-      <ul class="sl"><li data-s="0" data-d=".2">Si detecta que <b>estás en Creado</b> y tienes una fecha encima, te avisa.</li><li data-s="0" data-d=".28">Te <b>guía hasta el regalo</b> dentro de la tienda.</li><li data-t="89">¿Viste algo? <b>Mándalo por el chat</b> y lo guarda para esa persona.</li></ul>
-      <img class="chatimg" data-t="89" src="assets/slides/chat.png" alt="Chat: foto de una vela vista en la tienda, guardada para la hermana"></div>
   </div>
 
   <div id="cur"><span id="curT"></span></div>
@@ -291,7 +348,7 @@ const S=[
    n:'Esta es la inteligencia. Analiza la información que recuperó de cada fecha, hace la limpieza por ti descartando lo que no calza, y te hace la mejor propuesta explicándote por qué. Nada se compra sin tu aprobación.'},
   {t:'Donde estés', obj:25, ov:'o10', pre:[64.0,84.4], mom:'reloj',
    n:'Y no vive solo en la web: el mismo sistema llega a las pantallas que ya usas en tu día a día, para que no se te escape ni un regalo ni un detalle. En el reloj apruebas con un toque; y si igual se te pasa, en el auto te lo resuelve camino a casa.'},
-  {t:'En la tienda', obj:25, spot:[[84.4,95.8]], frame:'tienda', fr:{x:650,w:820}, mom:'tienda',
+  {t:'En la tienda', obj:25, ov:'o11b', pre:[84.4,95.8], mom:'tienda',
    n:'Y si detecta que estás en Creado con una fecha encima, te avisa y te guía directo al regalo. Y si ves algo que le gustaría a alguien, se lo mandas por el chat: reconoce el producto y lo guarda en la ficha de esa persona.'},
   {t:'Por qué le sirve a Creado', obj:15, ov:'o11', pre:[95.8,97.2],
    n:'Así respondemos al desafío: la persona deja de comprar un regalo suelto y empieza a resolver su año con Creado.'},
