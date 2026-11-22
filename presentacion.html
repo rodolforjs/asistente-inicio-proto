@@ -93,11 +93,12 @@ body.framed #sp{border-radius:26px;box-shadow:0 40px 80px -40px rgba(15,23,42,.4
 .sl li{position:relative;border-top:1px solid rgba(14,16,20,.12);padding:18px 0 18px 30px;font:400 27px/1.38 'Inter',sans-serif;color:#2f343c}
 .sl li:before{content:'';position:absolute;left:0;top:31px;width:10px;height:10px;border-radius:50%;background:var(--brand)}
 .sl li b{font-weight:600;color:var(--ink)}
-.sx .tx{position:absolute;left:110px;top:50%;width:560px;transform:translateY(-50%)}
+.sx .tx{position:absolute;left:110px;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center}   /* centrado sin transform (la animación de entrada usa transform) */
 .sx .im{position:absolute;display:block;border-radius:24px;box-shadow:0 40px 80px -40px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.06)}
-#o7 .im{left:720px;top:50%;width:1120px;transform:translateY(-50%)}
-#o8 .im{left:1080px;top:50%;height:820px;transform:translateY(-50%);border-radius:0;box-shadow:none;filter:drop-shadow(0 40px 50px rgba(15,23,42,.28))}
+#o7 .im{left:720px;top:227px;width:1120px}
+#o8 .im{left:1080px;top:130px;height:820px;border-radius:0;box-shadow:none;filter:drop-shadow(0 40px 50px rgba(15,23,42,.28))}
 #o10 .hd{position:absolute;left:110px;right:110px;top:90px}
+#o7 .stt{font-size:68px}
 #o10 .figs{position:absolute;left:110px;right:110px;top:250px;display:flex;justify-content:center;gap:40px}
 #o10 figure{margin:0}
 #o10 figure img{display:block;height:540px;border-radius:24px;box-shadow:0 40px 80px -40px rgba(15,23,42,.45)}
@@ -181,8 +182,8 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur,body.video #side{
 
   <!-- 7 · Tu planner (pantallazo) -->
   <section class="ov fr sx" id="o7">
-    <div class="tx" data-s="0"><p class="sk">Tu planner</p><h2 class="stt">Todo tu año, <em>de un vistazo.</em></h2>
-      <ul class="sl"><li><b>En mi radar:</b> lo que viene.</li><li><b>Para regalar pronto:</b> lo que ya pensó por ti.</li><li><b>Calendario:</b> lo resuelto y lo pendiente.</li></ul></div>
+    <div class="tx" data-s="0"><h2 class="stt">Todas tus fechas de regalo, <em>en un vistazo.</em></h2>
+      <ul class="sl"><li><b>Lo que viene:</b> te avisa 14 días antes.</li><li><b>Para regalar pronto:</b> lo que ya pensó y espera tu decisión.</li><li><b>Tu año:</b> lo resuelto y lo pendiente, mes a mes.</li></ul></div>
     <img class="im" src="assets/slides/planner.jpg" alt="Planner: radar, para regalar pronto y calendario del año" data-s="0" data-d=".15" data-y="0">
   </section>
 
@@ -254,7 +255,7 @@ const S=[
   {t:'Analiza', obj:25, spot:[[12.9,28.6]], frame:'analiza',
    n:'Analiza lo que conectaste: encuentra las fechas que importan según su contexto, rescata la información clave, como invitaciones, topes o quién participa, y sabe de quién es cada fecha.'},
   {t:'Tu planner', obj:20, ov:'o7', pre:[28.6,46.2],
-   n:'Con eso arma tu planner: en un vistazo ves qué fechas vienen, a quién le toca y qué ya está resuelto.'},
+   n:'Con eso arma tu planner: todas tus fechas de regalo en un vistazo. Lo que viene, lo que ya pensó y espera tu decisión, y tu año mes a mes.'},
   {t:'Se acuerda', obj:15, ov:'o8', pre:'keep',
    n:'Antes de que se te pase, te avisa al celular, con el regalo ya elegido.'},
   {t:'Piensa + tú apruebas', obj:55, spot:[[46.2,64.0]], frame:'piensa', key:true,
