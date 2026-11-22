@@ -342,21 +342,17 @@ function fade(fn){ gsap.timeline().to('#veil',{opacity:1,duration:.35}).call(fn)
 
 /* arrancar desde una toma: se recarga la web para empezar limpio y se adelanta hasta ese punto */
 /* adelanto rápido: para llegar a un segundo exacto, la toma arranca desde su inicio y corre ×12 tapada */
-let FF=1, wReq=1, ffTo=null, RUSH=false;   // RUSH: apurar a la vista (sin tapar) hasta el próximo tramo
+let FF=1, wReq=1, ffTo=null;
 
 function wts(v){ wReq=v; if(W) W.gsap.globalTimeline.timeScale(v*FF); }
-function ffEnd(){ FF=1; ffTo=null; RUSH=false; gsap.ticker.lagSmoothing(500,33); gsap.globalTimeline.timeScale(1); wts(wReq); gsap.set('#ffv',{opacity:0,visibility:'hidden'}); $('ffl').style.opacity=0; if(paused) setPaused(true); }
+function ffEnd(){ FF=1; ffTo=null; gsap.ticker.lagSmoothing(500,33); gsap.globalTimeline.timeScale(1); wts(wReq); gsap.set('#ffv',{opacity:0,visibility:'hidden'}); $('ffl').style.opacity=0; if(paused) setPaused(true); }
 /* ---------- control remoto para presentacion.html ----------
    seg(a,b): reproduce el tramo [a,b] y se queda quieto al final. Si el spot ya está detenido en a, sigue de ahí;
    si no, recarga la toma y adelanta tapado hasta a. */
 let stopAt=null;
 window.SP={
   contig(a){ return !!tl&&ffTo==null&&paused&&Math.abs(tl.time()-a)<.3; },
-  /* near(a): el spot ya va camino a 'a' (quieto ahí, o corriendo un poco antes): se puede seguir sin recargar */
-  near(a){ return this.contig(a) || (!!tl&&ffTo==null&&!paused&&tl.time()<=a+.3&&a-tl.time()<25); },
-  seg(a,b){ LOOP=false; stopAt=b; if(this.contig(a)){ setPaused(false); return 'sigue'; }
-    if(this.near(a)){ if(tl.time()<a-.25){ RUSH=true; ffTo=a; FF=2.5; gsap.globalTimeline.timeScale(FF); wts(wReq); } return 'apura'; }   // quien presenta pasó antes de que terminara: acelera a la vista hasta el próximo tramo
-    paused=false; gsap.globalTimeline.resume(); seekTo(a); return 'salta'; },
+  seg(a,b){ LOOP=false; stopAt=b; if(this.contig(a)){ setPaused(false); return 'sigue'; } paused=false; gsap.globalTimeline.resume(); seekTo(a); return 'salta'; },
   prime(){ LOOP=false; stopAt=.05; paused=false; start(0); },
   pause(){ stopAt=null; if(tl&&!paused) setPaused(true); },
   video(){ stopAt=null; LOOP=true; paused=false; gsap.globalTimeline.resume(); start(0); },
@@ -380,7 +376,7 @@ function start(i,toT=null){
       tl.seek(t0,true); tl.play();
       if(toT!=null&&toT>t0+.2){ ffTo=toT; FF=12; gsap.ticker.lagSmoothing(80,33); /* al adelantar, cada cuadro avanza poco */ gsap.set('#ffv',{opacity:1,visibility:'visible'}); $('ffl').textContent='Yendo a '+fmt(toT)+'…'; $('ffl').style.opacity=1; gsap.globalTimeline.timeScale(FF); wts(1); }
       else if(paused){ tl.pause(); W.gsap.globalTimeline.pause(); }
-      gsap.to('#veil',{opacity:0,duration:PRESENT?.2:.5,delay:PRESENT?0:.2}); }, PRESENT?380:900); };   // en la presentación la cortina de afuera ya tapa: espera menos
+      gsap.to('#veil',{opacity:0,duration:.5,delay:.2}); }, 900); };
   APP.src='index.html?spot=1&r='+Date.now();
 }
 /* estado previo de cada grupo de tomas, al saltar con las flechas */
@@ -443,7 +439,7 @@ addEventListener('mousemove',()=>{ if(!document.body.classList.contains('noui'))
 gsap.ticker.add(()=>{ if(!tl) return; const t=tl.time(), k=shotAt(t);
   if(stopAt!=null&&ffTo==null&&t>=stopAt){ stopAt=null; paused=true; tl.pause(); $('pp').innerHTML=IC_PLAY;   // fin de tramo: la línea se detiene ya
     setTimeout(()=>{ if(paused&&W) W.gsap.globalTimeline.pause(); },800); }   // y la web termina lo que estaba animando antes de quedar quieta
-  if(ffTo!=null){ if(t>=ffTo){ tl.seek(ffTo,true); ffEnd(); } else { const r=ffTo-t, f=RUSH?(r>2?5:2.5):(r>4?40:r>1.5?12:3); if(f!==FF){ FF=f; gsap.globalTimeline.timeScale(f); wts(wReq); } } }   // frena al acercarse para caer justo
+  if(ffTo!=null){ if(t>=ffTo){ tl.seek(ffTo,true); ffEnd(); } else { const r=ffTo-t, f=r>4?18:r>1?4:1.5; if(f!==FF){ FF=f; gsap.globalTimeline.timeScale(f); wts(wReq); } } }   // frena al acercarse para caer justo
   if(drag) return; if(ffTo==null) $('ph2').style.left=xAtT(t)+'px';
   $('tm').textContent=`${fmt(t)} / ${fmt(END)}`;
   $('nm').innerHTML=`${SHOTS[k].name.replace(/^T\d+ /,'')}<small>${k+1} de ${SHOTS.length}</small>`;
