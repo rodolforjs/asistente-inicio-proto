@@ -99,9 +99,10 @@ body.framed #sp{border-radius:26px;box-shadow:0 40px 80px -40px rgba(15,23,42,.4
 #o8 .im{left:1080px;top:130px;height:820px;border-radius:0;box-shadow:none;filter:drop-shadow(0 40px 50px rgba(15,23,42,.28))}
 #o10 .hd{position:absolute;left:110px;right:110px;top:90px}
 #o7 .stt{font-size:68px}
-#o10 .figs{position:absolute;left:110px;right:110px;top:250px;display:flex;justify-content:center;gap:40px}
+#o10 .sub{margin:18px 0 0;max-width:1300px;font:400 30px/1.4 'Inter',sans-serif;color:#4b5563}
+#o10 .figs{position:absolute;left:110px;right:110px;top:330px;display:flex;justify-content:center;gap:40px}
 #o10 figure{margin:0}
-#o10 figure img{display:block;height:540px;border-radius:24px;box-shadow:0 40px 80px -40px rgba(15,23,42,.45)}
+#o10 figure img{display:block;height:500px;border-radius:24px;box-shadow:0 40px 80px -40px rgba(15,23,42,.45)}
 #o10 figcaption{margin-top:22px;font:400 27px/1.35 'Inter',sans-serif;color:#2f343c}
 #o10 figcaption b{font-weight:600;color:var(--ink)}
 /* cortina: tapa la recarga del spot cuando se salta a un tramo que no sigue */
@@ -196,10 +197,10 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur,body.video #side{
 
   <!-- 10 · Donde estés: reloj y auto (pantallazos) -->
   <section class="ov fr sx" id="o10">
-    <div class="hd" data-s="0"><p class="sk">Donde estés</p><h2 class="stt">No vive solo <em>en la web.</em></h2></div>
+    <div class="hd" data-s="0"><h2 class="stt">Te acompaña <em>en tu día a día.</em></h2><p class="sub">El mismo sistema llega a las pantallas que ya usas, para que no se te escape ni un regalo ni un detalle.</p></div>
     <div class="figs">
-      <figure data-s="0" data-d=".15"><img src="assets/slides/reloj.jpg" alt="Reloj con el regalo elegido y botón Aprobar"><figcaption><b>En tu reloj:</b> apruebas con un toque.</figcaption></figure>
-      <figure data-s="0" data-d=".28"><img src="assets/slides/auto.jpg" alt="Pantalla del auto con el aviso y el regalo"><figcaption><b>En el auto:</b> si se te pasó, lo resuelve en el camino.</figcaption></figure>
+      <figure data-s="0" data-d=".15"><img src="assets/slides/reloj.jpg" alt="Reloj con el regalo elegido y botón Aprobar"><figcaption><b>En tu reloj:</b> apruebas con un toque, sin sacar el celular.</figcaption></figure>
+      <figure data-s="0" data-d=".28"><img src="assets/slides/auto.jpg" alt="Pantalla del auto con el aviso y el regalo"><figcaption><b>En el auto:</b> si se te pasó, te lo resuelve camino a casa.</figcaption></figure>
     </div>
   </section>
 
@@ -261,7 +262,7 @@ const S=[
   {t:'Piensa + tú apruebas', obj:55, spot:[[46.2,64.0]], frame:'piensa', key:true,
    n:'Esta es la inteligencia. Analiza la información que recuperó de cada fecha, hace la limpieza por ti descartando lo que no calza, y te hace la mejor propuesta explicándote por qué. Nada se compra sin tu aprobación.'},
   {t:'Donde estés', obj:25, ov:'o10', pre:[64.0,84.4], mom:'reloj',
-   n:'Y no vive solo en la web: aparece donde estás. En el reloj apruebas con un toque. Y si igual se te pasa, en el auto te lo resuelve camino a casa.'},
+   n:'Y no vive solo en la web: el mismo sistema llega a las pantallas que ya usas en tu día a día, para que no se te escape ni un regalo ni un detalle. En el reloj apruebas con un toque; y si igual se te pasa, en el auto te lo resuelve camino a casa.'},
   {t:'De la web a la tienda', obj:20, spot:[[84.4,95.8]], frame:'tienda', mom:'tienda',
    n:'Y si pasas por la tienda, te avisa y te guía directo al regalo.'},
   {t:'Por qué le sirve a Creado', obj:15, ov:'o11', pre:[95.8,97.2],
