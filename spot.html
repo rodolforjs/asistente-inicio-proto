@@ -17,6 +17,8 @@ body.ui{cursor:default}
 body.present #ctl,body.present #bar,body.present #tip,body.present #ffl{display:none!important}
 #c1x{display:none;font-family:'Newsreader',serif;font-size:52px;font-weight:400;letter-spacing:-.02em;color:#4b5563}
 body.present #c1x{display:block}
+/* clean: la presentación muestra el spot en un marco con su propio texto al lado: sin frases ni placas del spot */
+body.clean #cap,body.clean #c1,body.clean #c7{display:none!important}
 #c1x span{display:inline-block;opacity:0}
 #stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--paper)}
 #cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
@@ -363,6 +365,7 @@ window.SP={
   ready(){ return !!tl&&ffTo==null&&+gsap.getProperty('#veil','opacity')<.05; },
   time(){ return tl?tl.time():0; },
   state(){ return {t:tl?+tl.time().toFixed(2):null,paused,stopAt,ff:ffTo}; },   // para verificar desde afuera
+  clean(v){ document.body.classList.toggle('clean',!!v); },
   replayCard(id){ cardIn(id); },
   extras(){ gsap.fromTo('#c1x span',{opacity:0,y:18},{opacity:1,y:0,duration:.6,stagger:.35,ease:'power3.out',delay:.6}); },
   hideExtras(){ gsap.set('#c1x span',{opacity:0}); }
