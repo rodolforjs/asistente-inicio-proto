@@ -166,42 +166,9 @@ body{cursor:none}body.mouse{cursor:default}
 #o5 .fi img{flex:none;width:22px;height:22px;object-fit:contain;margin-top:1px}
 #o5 .fnd{position:absolute}
 #o5 .fe{position:absolute;left:0;right:0;top:240px;margin:0;text-align:center;font-size:15px;color:#9aa3b2}
-/* 6 · análisis del año */
-#o6 .cnts{position:absolute;right:32px;top:90px;display:flex;gap:12px}
-#o6 .cn{border-radius:16px;background:#fff;padding:10px 18px;box-shadow:0 0 0 1px #e5eaf2}
-#o6 .cn small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5f6b7d}
-#o6 .cn b{display:block;margin-top:2px;font-family:'Newsreader',serif;font-size:44px;font-weight:400;line-height:1;font-variant-numeric:tabular-nums}
-#o6 .cn.dark{background:#0e1014}#o6 .cn.dark small{color:#9aa3b2}#o6 .cn.dark b{color:var(--brand)}
-#o6 .lead{position:absolute;left:32px;top:104px;width:560px;font-size:17px;line-height:1.4;color:#5f6b7d}
-#o6 .lead b{display:block;font-family:'Newsreader',serif;font-size:30px;font-weight:400;color:#0e1014}
-#o6 .tl{position:absolute;left:32px;right:32px;top:200px;height:340px;border-radius:20px;background:#fff repeating-linear-gradient(90deg,transparent 0 calc(100%/12 - 1px),#eef1f5 calc(100%/12 - 1px) calc(100%/12));box-shadow:0 0 0 1px #e5eaf2;overflow:hidden}
-#o6 .mos{position:absolute;left:32px;right:32px;top:552px;display:grid;grid-template-columns:repeat(12,1fr);text-align:center;font-size:12px;font-weight:600;letter-spacing:.08em;color:#9aa3b2}
-#o6 .dt{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#c3cad5}
-#o6 .dk{position:absolute;z-index:2;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 5px rgba(255,89,36,.18)}
-#o6 .dk span{position:absolute;left:14px;top:-7px;white-space:nowrap;border-radius:8px;background:#fff;padding:3px 8px;font-size:13px;font-weight:600;box-shadow:0 6px 14px -6px rgba(15,23,42,.35)}
-#o6 .scan{position:absolute;z-index:3;top:0;bottom:0;left:0;width:3px;background:var(--brand);box-shadow:0 0 22px 6px rgba(255,89,36,.3)}
-#o6 .kc{position:absolute;left:32px;right:32px;top:596px;display:flex;gap:12px}
-#o6 .kc span{display:flex;align-items:center;gap:9px;border-radius:999px;background:#fff;padding:11px 18px;font-size:15.5px;box-shadow:0 0 0 1px #e5eaf2;opacity:0}
-#o6 .kc img{width:20px;height:20px;object-fit:contain}
-/* 9 · piensa */
-#o9 .fl{position:absolute;left:32px;top:96px;width:360px}
-#o9 .fr{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;border-radius:16px;background:#fff;padding:14px 16px;font-size:15.5px;line-height:1.38;box-shadow:0 0 0 1px #e5eaf2;opacity:0}
-#o9 .fr img{flex:none;width:22px;height:22px;object-fit:contain;margin-top:1px}
-#o9 .fr b{display:block;font-size:13px;font-weight:600;color:#5f6b7d}
-#o9 .pc{margin-top:18px;font-size:16px;color:#5f6b7d}#o9 .pc b{font-family:'Newsreader',serif;font-size:40px;font-weight:400;color:#0e1014;font-variant-numeric:tabular-nums}
-#o9 .pg{position:absolute;left:424px;top:96px;display:grid;grid-template-columns:repeat(4,150px);gap:12px}
-#o9 .pg img{display:block;width:150px;height:150px;border-radius:16px;object-fit:cover;background:#fff;box-shadow:0 0 0 1px #e5eaf2}
-#o9 .prop{position:absolute;left:424px;top:96px;width:636px;height:330px;box-sizing:border-box;display:flex;gap:26px;border-radius:24px;background:#fff;padding:26px;box-shadow:0 30px 60px -30px rgba(15,23,42,.35),0 0 0 2px var(--brand);opacity:0;visibility:hidden}
-#o9 .prop img{width:250px;height:250px;border-radius:18px;object-fit:cover}
-#o9 .prop small{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
-#o9 .prop h3{margin:6px 0 0;font-family:'Newsreader',serif;font-size:38px;font-weight:400;line-height:1.05}
-#o9 .prop .pv{margin-top:6px;font-size:16px;color:#5f6b7d}
-#o9 .prop ul{list-style:none;margin:18px 0 0;padding:0}
-#o9 .prop li{display:flex;gap:10px;margin-top:9px;font-size:15.5px;line-height:1.35}
-#o9 .prop li i{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#22a06b}
-#o9 .prop .bt{position:absolute;left:302px;bottom:26px;display:flex;gap:10px}
-#o9 .prop .bt span{border-radius:999px;padding:12px 22px;font-size:15px;font-weight:600;box-shadow:0 0 0 1px #d5dbe5}
-#o9 .prop .bt span:first-child{background:#0e1014;color:#fff;box-shadow:none}
+/* 6 y 9: la web real (index.html) corriendo sus propias funciones, a 1440×900 escalada a la ventana */
+.win.app{background:#fbfbfd}
+.appf{position:absolute;left:0;top:0;width:1440px;height:900px;border:0;transform:scale(.77778);transform-origin:0 0;pointer-events:none}
 /* 13 · cierre */
 #o13{text-align:center}
 #o13 h2{margin:0;font-family:'Newsreader',serif;font-size:170px;font-weight:400;line-height:1;letter-spacing:-.05em}
@@ -301,13 +268,7 @@ body.video #cnt,body.video #bar,body.video .ov{display:none!important}
   <section class="ov fr sx" id="o6">
     <div class="tx" data-s="0"><h2 class="stt">Analiza <em>lo que conectas.</em></h2>
       <ul class="sl"><li>Encuentra las <b>fechas que importan</b>, según su contexto.</li><li>Rescata la <b>información clave:</b> invitaciones, topes, quién participa.</li><li>Sabe <b>de quién es</b> cada fecha y qué le gusta.</li></ul></div>
-    <div class="win" data-s="0" data-d=".1" data-y="0"><div class="wh"><span class="wl">Cuenta conmigo<i>.</i></span><span class="wt"><i></i>Analizando tu año</span></div>
-      <p class="lead"><b>Tu año, leído completo.</b>Separo lo que es un regalo de lo que no.</p>
-      <div class="cnts"><div class="cn"><small>Eventos leídos</small><b id="o6e">0</b></div><div class="cn dark"><small>Fechas de regalo</small><b id="o6f">0</b></div></div>
-      <div class="tl" id="o6tl"><i class="scan"></i></div>
-      <div class="mos"><span>ENE</span><span>FEB</span><span>MAR</span><span>ABR</span><span>MAY</span><span>JUN</span><span>JUL</span><span>AGO</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DIC</span></div>
-      <div class="kc"><span><img src="https://www.gstatic.com/images/branding/product/2x/calendar_2020q4_48dp.png" alt="">Invitación: sorteo de la oficina</span><span><img src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png" alt="">Correo: tope de $15.000</span><span><img src="https://www.gstatic.com/images/branding/product/2x/contacts_2022_48dp.png" alt="">Contactos: quién es quién</span></div>
-    </div>
+    <div class="win app" data-s="0" data-d=".1" data-y="0"><iframe id="a6" class="appf" title="La web: análisis" tabindex="-1" inert></iframe></div>
   </section>
 
   <!-- 7 · Tu planner (pantallazo) -->
@@ -365,17 +326,7 @@ body.video #cnt,body.video #bar,body.video .ov{display:none!important}
   <section class="ov fr sx" id="o9">
     <div class="tx" data-s="0"><h2 class="stt">Piensa <em>cada regalo.</em></h2>
       <ul class="sl"><li>Analiza la <b>información que recuperó</b> de cada fecha.</li><li><b>Hace la limpieza por ti:</b> descarta lo que no calza.</li><li>Te hace <b>la mejor propuesta</b> y te explica por qué.</li></ul></div>
-    <div class="win" data-s="0" data-d=".1" data-y="0"><div class="wh"><span class="wl">Cuenta conmigo<i>.</i></span><span class="wt"><i></i>Pensando en Amigo secreto</span></div>
-      <div class="fl"><h4>Lo que sé</h4>
-        <div class="fr"><img src="https://www.gstatic.com/images/branding/product/2x/calendar_2020q4_48dp.png" alt=""><span><b>Calendario</b>Sorteo de la oficina, en 14 días.</span></div>
-        <div class="fr"><img src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png" alt=""><span><b>Correo</b>Tope de $15.000.</span></div>
-        <div class="fr"><img src="https://www.gstatic.com/images/branding/product/2x/contacts_2022_48dp.png" alt=""><span><b>Contactos</b>Es para alguien de la oficina.</span></div>
-        <p class="pc">Quedan <b id="o9n">12</b> opciones</p></div>
-      <div class="pg"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/products/JUv4OH4diw_600x.jpg?v=1701118558" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/products/tKFvLH5YUh_600x.jpg?v=1749502459" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/WhatsAppImage2025-08-06at15.45.48_1_600x.jpg?v=1754509629" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/HvqaAJrWOY_600x.png?v=1744055312" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/products/y1HkNdlPxP_600x.jpg?v=1749502261" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/products/AX11vEKQnm_600x.jpg?v=1701682759" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/Disenosintitulo_5_600x.webp?v=1785431345" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/products/Captura_de_Pantalla_2019-11-18_a_la_s_09.06.33_600x.png?v=1749502616" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/CapturadePantalla2026-01-20ala_s_15.39.40_600x.png?v=1768934392" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/products/4UyzMKfer0_600x.jpg?v=1625680551" alt=""><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/OSSRhX0LFH_600x.jpg?v=1762873802" alt=""></div>
-      <div class="prop"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936" alt="Libreta Picaflor"><div><small>Te elegí este</small><h3>Libreta Picaflor</h3><p class="pv">Cocó Obach · $11.990</p>
-        <ul><li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Entra en el tope de $15.000.</li><li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Le sirve a cualquiera de la oficina.</li><li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Hecha en Chile, llega a tiempo.</li></ul></div>
-        <div class="bt"><span>Aprobar</span><span>Ver otras 2</span></div></div>
-    </div>
+    <div class="win app" data-s="0" data-d=".1" data-y="0"><iframe id="a9" class="appf" title="La web: piensa el regalo" tabindex="-1" inert></iframe></div>
   </section>
 
   <!-- 13 · Cierre -->
@@ -458,6 +409,11 @@ function vis(el,on,enter){
   else gsap.to(el,{opacity:0,duration:.3,overwrite:true});
 }
 
+/* la web real dentro de las láminas 6 y 9: se le pide correr su propia animación (si aún carga, corre apenas esté lista) */
+const APPQ={};
+function APP(id,code){ const f=$(id), w=f.contentWindow; if(f.dataset.ok&&w&&w.runSync){ try{ w.eval(code); }catch(e){ console.warn(e); } } else APPQ[id]=code; }
+['a6','a9'].forEach(id=>{ const f=$(id); f.onload=()=>{ const k=setInterval(()=>{ const w=f.contentWindow; if(w&&w.runSync&&w.openYear){ clearInterval(k); f.dataset.ok='1'; if(APPQ[id]){ const c=APPQ[id]; delete APPQ[id]; APP(id,c); } } },100); }; f.src='index.html?spot=1'; });
+
 /* animaciones propias de cada lámina: corren una vez al entrar y se reinician si vuelves a ella */
 const Q=(o,s)=>[...o.querySelectorAll(s)];
 const ANIM={
@@ -467,32 +423,11 @@ const ANIM={
     [0,1,2,3].forEach((k,i)=>{ const at=1.1+i*.9; t.call(()=>cx[k].classList.add('on'),null,at); if(i===0) t.to(fe,{opacity:0,duration:.2},at+.15);
       t.to(fi[i],{opacity:1,y:0,duration:.5,ease:'power2.out'},at+.3); });
     return t; },
-  o6(o){ const tl=o.querySelector('.tl'), sc=tl.querySelector('.scan'), dts=Q(tl,'.dt'), dks=Q(tl,'.dk'), e=$('o6e'), f=$('o6f'), kc=Q(o,'.kc span'), c={e:0}, SW=3.6, T0=1.1;
-    e.textContent='0'; f.textContent='0';
-    const t=gsap.timeline({delay:.4});
-    t.set(dks,{opacity:0,scale:0}).set(kc,{opacity:0,y:12}).set(sc,{left:'0%',opacity:0})
-     .fromTo(dts,{opacity:0,scale:0},{opacity:1,scale:1,duration:.4,stagger:{each:.006,from:'random'}},0)
-     .to(sc,{opacity:1,duration:.2},T0).to(sc,{left:'100%',duration:SW,ease:'none'},T0)
-     .to(c,{e:214,duration:SW,ease:'none',onUpdate:()=>e.textContent=Math.round(c.e)},T0)
-     .to(sc,{opacity:0,duration:.3},T0+SW);
-    dks.sort((a,b)=>a.dataset.x-b.dataset.x).forEach((d,i)=>{ const at=T0+SW*d.dataset.x/100; t.to(d,{opacity:1,scale:1,duration:.4,ease:'back.out(2)'},at).call(()=>f.textContent=i+1,null,at); });
-    t.to(kc,{opacity:1,y:0,duration:.5,stagger:.15,ease:'power2.out'},T0+SW+.2);
-    return t; },
+  /* 6 · el análisis real del onboarding (runSync): lee el año, marca las fechas y las fichas vuelan a su lugar */
+  o6(){ APP('a6',"gsap.globalTimeline.getChildren(true,true,true).forEach(t=>t.kill()); heroSleep(); Object.keys(ob.conn).forEach(k=>ob.conn[k]=['cal','gmail','contacts','wa'].includes(k)); conn.gmail=true; conn.contacts=true; Object.keys(ob.conn).forEach(k=>cxSet(k,!!ob.conn[k])); runSync();"); return null; },
+  /* 9 · el planner real piensa el Amigo secreto (30 → 8 → 3 → 1) y deja la propuesta lista */
+  o9(){ APP('a9',"gsap.globalTimeline.getChildren(true,true,true).forEach(t=>t.kill()); heroSleep(); $('sync').style.display='none'; openYear(); TODAY=new Date(2026,10,9); AVISO=14; co=null; simulateNotif(); const n=document.getElementById('apNotif'); n.style.visibility='hidden'; n.click(); setTimeout(()=>n.style.visibility='',1500);"); return null; },
   o8(o){ return gsap.timeline({delay:.7}).fromTo(Q(o,'.pn'),{opacity:0,y:-22,scale:.96},{opacity:1,y:0,scale:1,duration:.55,stagger:1,ease:'power3.out'}); },
-  o9(o){ const im=Q(o,'.pg img'), fr=Q(o,'.fr'), n=$('o9n'), pr=o.querySelector('.prop'), c={n:12};
-    const OUT=[[3,6,9,10],[1,4,7,8,11],[2,5]];
-    n.textContent='12';
-    const t=gsap.timeline({delay:.5});
-    t.set(fr,{opacity:0,y:14}).set(im,{opacity:1,filter:'grayscale(0)',scale:1}).set(pr,{opacity:0,visibility:'hidden',scale:.96})
-     .fromTo(im,{opacity:0,y:14},{opacity:1,y:0,duration:.4,stagger:.04,ease:'power2.out'},0);
-    OUT.forEach((g,i)=>{ const at=1+i*1.3, left=12-OUT.slice(0,i+1).flat().length;
-      t.to(fr[i],{opacity:1,y:0,duration:.45,ease:'power2.out'},at)
-       .to(g.map(k=>im[k]),{opacity:.12,filter:'grayscale(1)',scale:.94,duration:.5,stagger:.05},at+.35)
-       .to(c,{n:left,duration:.5,onUpdate:()=>n.textContent=Math.round(c.n)},at+.35); });
-    t.to(im[0],{scale:1.06,duration:.4,ease:'power2.out'},4.6)
-     .to(im,{opacity:0,duration:.35},5.2)
-     .set(pr,{visibility:'visible'},5.4).to(pr,{opacity:1,scale:1,duration:.6,ease:'power3.out'},5.4);
-    return t; },
   o11b(o){ const no=o.querySelector('.tnot'), pin=o.querySelector('.pin'), ring=o.querySelector('.pin u'), stp=o.querySelector('.steps'), cu=o.querySelector('.cu'), ca=o.querySelector('.ca');
     const t=gsap.timeline({delay:.6});
     t.fromTo(no,{opacity:0,y:-20},{opacity:1,y:0,duration:.5,ease:'power3.out'},0)
@@ -504,12 +439,6 @@ const ANIM={
     return t; },
   o13(o){ return gsap.timeline({delay:.3}).fromTo(o.children,{opacity:0,y:30},{opacity:1,y:0,duration:.9,stagger:.2,ease:'power3.out'}); }
 };
-/* puntos del año (lámina 6): eventos del calendario en gris y las fechas de regalo en naranja */
-(()=>{ const tl=$('o6tl'); let s=7; const r=()=>(s=(s*16807)%2147483647)/2147483647; let h='';
-  for(let i=0;i<96;i++) h+=`<i class="dt" style="left:${(2+r()*96).toFixed(1)}%;top:${(8+r()*84).toFixed(1)}%"></i>`;
-  [['Mamá',2,14,30],['Andrés',3,2,72],['Carla',4,19,22],['Papá',5,21,62],['Abuela Rosa',7,3,30],['Sofi y Nico',7,22,80],['Pareja',8,12,44],['Tío Jorge',9,9,72],['Emilia',10,5,24],['Amigo secreto',10,18,58],['Navidad',11,24,32]]
-    .forEach(([n,m,d,y])=>{ const x=((m+d/31)/12*100); h+=`<i class="dk" data-x="${x.toFixed(2)}" style="left:${x.toFixed(2)}%;top:${y}%"><span${x>86?' style="left:auto;right:14px"':''}>${n}</span></i>`; });
-  tl.insertAdjacentHTML('beforeend',h); })();
 
 /* cada paso deja la lámina en su estado (sirve igual hacia adelante y hacia atrás) */
 function animOv(id,st,enter){
@@ -565,8 +494,9 @@ setInterval(()=>{ const e=t0==null?0:(performance.now()-t0)/1000, es=(performanc
 function flash(t){ const f=$('flash'); f.textContent=t; f.style.opacity=1; clearTimeout(flash.k); flash.k=setTimeout(()=>f.style.opacity=0,1400); }
 
 /* V = spot completo en loop (la opción de video) · P = volver a la presentación donde quedó */
-function toVideo(){ if(video) return; if(!SP){ flash('El spot aún está cargando…'); return; } video=true; document.body.classList.add('video'); SP.video(); flash('Spot en loop · P para volver'); }
-function toPres(){ if(!video) return; video=false; document.body.classList.remove('video'); SP.pause(); ovNow=null; render(); flash(`Presentación · ${cur+1}/${S.length}`); }
+let wantVideo=false;
+function toVideo(){ if(video) return; video=true; document.body.classList.add('video'); if(SP) SP.video(); else { wantVideo=true; if(!SPF.src) SPF.src='spot.html?present=1'; flash('Cargando el spot…'); return; } flash('Spot en loop · P para volver'); }
+function toPres(){ if(!video) return; video=false; wantVideo=false; document.body.classList.remove('video'); if(SP) SP.pause(); ovNow=null; render(); flash(`Presentación · ${cur+1}/${S.length}`); }
 
 addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey) return; const k=e.key;
@@ -585,8 +515,8 @@ let mk=0; addEventListener('mousemove',()=>{ document.body.classList.add('mouse'
 const h=(location.hash||'').slice(1).split('.'); cur=Math.max(0,Math.min(S.length-1,(+h[0]||1)-1)); step=Math.max(0,Math.min(nSteps(S[cur])-1,(+h[1]||1)-1));
 S.forEach(x=>gsap.set('#'+x.ov,{opacity:0,visibility:'hidden'}));
 render();
-SPF.onload=()=>{ W=SPF.contentWindow; const wait=setInterval(()=>{ if(W.SP){ clearInterval(wait); SP=W.SP; SP.prime(); } },100); };
-SPF.src='spot.html?present=1';
+/* el spot (opción de video, V) se carga recién la primera vez que se pide */
+SPF.onload=()=>{ W=SPF.contentWindow; const wait=setInterval(()=>{ if(W.SP){ clearInterval(wait); SP=W.SP; if(wantVideo&&video){ SP.video(); flash('Spot en loop · P para volver'); } } },100); };
 /* el foco nunca se queda dentro del spot (la web enfoca campos del onboarding): las teclas siempre llegan aquí */
 addEventListener('blur',()=>setTimeout(()=>{ if(document.activeElement===SPF){ SPF.blur(); window.focus(); } },0));
 </script>
