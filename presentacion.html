@@ -86,6 +86,8 @@ body{cursor:none}body.mouse{cursor:default}
 body.framed #sp{border-radius:26px;box-shadow:0 40px 80px -40px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.06)}
 #side{position:absolute;left:110px;top:0;bottom:0;width:560px;z-index:2;display:flex;align-items:center;opacity:0;visibility:hidden}
 #side .sd{display:none}#side .sd.on{display:block}
+#side .sd[data-k=tienda]{width:500px}
+#side .chatimg{position:absolute;left:1410px;top:250px;height:580px;filter:drop-shadow(0 40px 50px rgba(15,23,42,.28))}
 .sk{margin:0 0 22px;font:600 22px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
 .stt{margin:0;font-family:'Newsreader',serif;font-size:74px;font-weight:400;line-height:1.02;letter-spacing:-.04em;color:var(--ink)}
 .stt em{font-style:italic;color:var(--brand)}
@@ -218,8 +220,9 @@ body.video #cnt,body.video #bar,body.video .ov,body.video #cur,body.video #side{
       <ul class="sl"><li data-s="0" data-d=".2">Encuentra las <b>fechas que importan</b>, según su contexto.</li><li data-s="0" data-d=".28">Rescata la <b>información clave:</b> invitaciones, topes, quién participa.</li><li data-s="0" data-d=".36">Sabe <b>de quién es</b> cada fecha y qué le gusta.</li></ul></div>
     <div class="sd" data-k="piensa"><h2 class="stt" data-s="0">Piensa <em>cada regalo.</em></h2>
       <ul class="sl"><li data-s="0" data-d=".2">Analiza la <b>información que recuperó</b> de cada fecha.</li><li data-s="0" data-d=".28"><b>Hace la limpieza por ti:</b> descarta lo que no calza.</li><li data-t="58.2">Te hace <b>la mejor propuesta</b> y te explica por qué.</li></ul></div>
-    <div class="sd" data-k="tienda"><p class="sk" data-s="0">En la tienda</p><h2 class="stt" data-s="0" data-d=".08">De la web <em>a la tienda.</em></h2>
-      <ul class="sl"><li data-s="0" data-d=".2">Si pasas por Creado, <b>te avisa.</b></li><li data-s="0" data-d=".28">Te guía <b>hasta el regalo</b> en la tienda.</li><li data-s="0" data-d=".36">Lo compras <b>sin buscar.</b></li></ul></div>
+    <div class="sd" data-k="tienda"><h2 class="stt" data-s="0">Te acompaña <em>en la tienda.</em></h2>
+      <ul class="sl"><li data-s="0" data-d=".2">Si detecta que <b>estás en Creado</b> y tienes una fecha encima, te avisa.</li><li data-s="0" data-d=".28">Te <b>guía hasta el regalo</b> dentro de la tienda.</li><li data-t="89">¿Viste algo? <b>Mándalo por el chat</b> y lo guarda para esa persona.</li></ul>
+      <img class="chatimg" data-t="89" src="assets/slides/chat.png" alt="Chat: foto de una vela vista en la tienda, guardada para la hermana"></div>
   </div>
 
   <div id="cur"><span id="curT"></span></div>
@@ -263,8 +266,8 @@ const S=[
    n:'Esta es la inteligencia. Analiza la información que recuperó de cada fecha, hace la limpieza por ti descartando lo que no calza, y te hace la mejor propuesta explicándote por qué. Nada se compra sin tu aprobación.'},
   {t:'Donde estés', obj:25, ov:'o10', pre:[64.0,84.4], mom:'reloj',
    n:'Y no vive solo en la web: el mismo sistema llega a las pantallas que ya usas en tu día a día, para que no se te escape ni un regalo ni un detalle. En el reloj apruebas con un toque; y si igual se te pasa, en el auto te lo resuelve camino a casa.'},
-  {t:'De la web a la tienda', obj:20, spot:[[84.4,95.8]], frame:'tienda', mom:'tienda',
-   n:'Y si pasas por la tienda, te avisa y te guía directo al regalo.'},
+  {t:'En la tienda', obj:25, spot:[[84.4,95.8]], frame:'tienda', fr:{x:650,w:820}, mom:'tienda',
+   n:'Y si detecta que estás en Creado con una fecha encima, te avisa y te guía directo al regalo. Y si ves algo que le gustaría a alguien, se lo mandas por el chat: reconoce el producto y lo guarda en la ficha de esa persona.'},
   {t:'Por qué le sirve a Creado', obj:15, ov:'o11', pre:[95.8,97.2],
    n:'Así respondemos al desafío: la persona deja de comprar un regalo suelto y empieza a resolver su año con Creado.'},
   {t:'Cierre', obj:15, spot:[[97.2,102.7]], replay:'c12', n:'Cuenta conmigo. Tu planner para que no se te pase nada.'}
@@ -367,10 +370,10 @@ function cleanSpot(on){ try{ const d=SPF.contentDocument; if(!d) return;
   if(!d.getElementById('prs')){ const st=d.createElement('style'); st.id='prs'; st.textContent='html.prs-clean #cap,html.prs-clean #c1,html.prs-clean #c7{visibility:hidden!important}'; d.head.appendChild(st); }
   d.documentElement.classList.toggle('prs-clean',!!on); }catch(e){} }
 function setFrame(k,instant){
-  const on=!!k, du=instant?0:.7;
+  const on=!!k, du=instant?0:.7, g=(on&&S[cur].fr)||{x:720,w:1120}, sc=g.w/1920, gy=(1080-1080*sc)/2;
   cleanSpot(on);
   document.body.classList.toggle('framed',on);
-  gsap.to(SPF,{x:on?720:0,y:on?225:0,scale:on?1120/1920:1,duration:du,ease:'power3.inOut',overwrite:true});
+  gsap.to(SPF,{x:on?g.x:0,y:on?gy:0,scale:on?sc:1,duration:du,ease:'power3.inOut',overwrite:true});
   const sd=document.querySelectorAll('#side .sd'), changed=k!==frameNow; frameNow=k;
   if(on){
     if(changed){ sd.forEach(e=>e.classList.toggle('on',e.dataset.k===k));
