@@ -108,8 +108,8 @@ $('go').onclick=()=>{
 /* rescate */
 let busy=0;
 const ACT=$('act').innerHTML;
-function rescue(){ clearTimeout(busy); $('act').innerHTML=ACT; bind(); $('ban').classList.add('on'); chime(); }
-function reset(){ clearTimeout(busy); $('ban').classList.remove('on'); setTimeout(()=>{ $('act').innerHTML=ACT; bind(); },700); }
+function rescue(){ clearTimeout(busy); busy=0; $('act').innerHTML=ACT; bind(); $('ban').classList.add('on'); chime(); }
+function reset(){ clearTimeout(busy); busy=0; $('ban').classList.remove('on'); setTimeout(()=>{ $('act').innerHTML=ACT; bind(); },700); }
 function bind(){
   $('yes').onclick=()=>{ $('act').innerHTML='<div class="done"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></i>Listo. Llega hoy antes de las 20:00.</div>'; CC.send('auto-si',{para:'Mamá',gift:'Mamá ¿Cuál es tu Historia?'}); busy=setTimeout(reset,9000); };
   $('no').onclick=()=>{ $('act').innerHTML='<div class="done" style="color:var(--mut)">Ok. Te lo recuerdo al estacionar.</div>'; busy=setTimeout(reset,5000); };
@@ -117,7 +117,12 @@ function bind(){
 bind();
 
 /* sala: la presentación (o la compu) manda 'auto'; 'reset' vuelve al mapa */
-CC.on('auto',rescue);
+let seen=-1;
+CC.on('auto',d=>{ seen=-2; rescue(); });
+CC.on('estado',d=>{
+  if(d.mom==='auto'){ if(d.visit!==seen&&seen!==-2&&!$('ban').classList.contains('on')) rescue(); seen=d.visit; }
+  else { seen=-1; if($('ban').classList.contains('on')&&!busy) reset(); }
+});
 CC.on('reset',reset);
 CC.onState(s=>{ const g=$('sig'); g.classList.toggle('live',s==='en vivo'); g.lastElementChild.textContent=s; });
 /* respaldo a mano si falla la red: A / R, o doble toque en la hora */

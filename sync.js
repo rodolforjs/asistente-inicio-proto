@@ -18,17 +18,23 @@
   const H={}, ST=[]; let chP=null, state='off';
   const setState=s=>{ state=s; ST.forEach(f=>{ try{ f(s); }catch(e){} }); };
   const lib=()=>window.supabase?Promise.resolve():new Promise((ok,ko)=>{ const s=document.createElement('script'); s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js'; s.onload=ok; s.onerror=ko; document.head.appendChild(s); });
+  let cli=null, chObj=null;
   function chan(){
     if(chP) return chP; if(!ready()) return Promise.reject('sin configurar');
     setState('conectando');
     chP=lib().then(()=>new Promise(ok=>{
-      const c=window.supabase.createClient(CFG.url,CFG.key,{auth:{persistSession:false}});
-      const ch=c.channel('cc:'+sala,{config:{broadcast:{self:false}}});
+      const c=cli=cli||window.supabase.createClient(CFG.url,CFG.key,{auth:{persistSession:false}});
+      const ch=chObj=c.channel('cc:'+sala,{config:{broadcast:{self:false}}});
       ch.on('broadcast',{event:'m'},({payload:p})=>{ [...(H[p.t]||[]),...(H['*']||[])].forEach(f=>{ try{ f(p.d||{},p); }catch(e){ console.error(e); } }); });
-      ch.subscribe(s=>{ setState(s==='SUBSCRIBED'?'en vivo':s==='CLOSED'?'off':'reconectando'); if(s==='SUBSCRIBED') ok(ch); });
+      ch.subscribe(s=>{ setState(s==='SUBSCRIBED'?'en vivo':s==='CLOSED'?'off':'reconectando'); if(s==='SUBSCRIBED'){ ok(ch); (H['_conectado']||[]).forEach(f=>f()); } });
     }));
     return chP;
   }
+  /* Safari corta la conexión con la pantalla apagada o la pestaña oculta: al volver, si no está en vivo, se rehace */
+  function revive(){ if(!chP||state==='en vivo') return; try{ cli&&chObj&&cli.removeChannel(chObj); }catch(e){} chP=null; chan().catch(()=>{}); }
+  document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible') setTimeout(revive,400); });
+  addEventListener('online',()=>setTimeout(revive,400));
+  setInterval(revive,8000);
   const send=(t,d={})=>chan().then(ch=>ch.send({type:'broadcast',event:'m',payload:{t,d,ts:Date.now()}})).catch(()=>{});
   const on=(t,f)=>{ (H[t]=H[t]||[]).push(f); chan().catch(()=>{}); };
   const onState=f=>{ ST.push(f); f(state); };

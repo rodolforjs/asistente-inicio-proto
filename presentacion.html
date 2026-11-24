@@ -11,6 +11,7 @@
 /* Presentación de 5 min. Avanza quien presenta: → / espacio / AvPág = siguiente · ← / RePág = anterior.
    N = notas · V = spot en loop (video) · P = volver a la presentación · F = pantalla completa.
    Al avanzar desde la última lámina (o 20 s después de entrar a ella) la TV vuelve sola al spot; → desde el spot parte de nuevo en la 1.
+   D = reenviar a mano el aviso de la lámina actual (respaldo).
    Dispositivos de la mesa (sync.js): 'Se acuerda' manda el aviso al celular (celu.html) y 'Donde estés' activa el auto en el iPad (auto.html).
    Las escenas del producto son el spot real (spot.html?present=1) reproducido por tramos. */
 :root{--ink:#0e1014;--brand:#ff5924;--paper:#f4f2ee;--muted:#4b5563}
@@ -401,8 +402,11 @@ const DEV={
     gift:'Libreta Picaflor',price:'$11.990 · llega antes del intercambio',para:'Amigo secreto',img:'https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936'}),
   auto:()=>window.CC&&CC.send('auto',{para:'Mamá'})
 };
-let devT=0;
-function devices(nombre){ clearTimeout(devT); if(DEV[nombre]) devT=setTimeout(()=>{ DEV[nombre](); flash(nombre==='aviso'?'Aviso enviado al celular':'Auto activado en el iPad'); },1200); }
+let devT=0, visit=0;
+/* latido: cada 3 s dice en qué lámina va; si el iPad se perdió la señal, se pone al día solo */
+const beat=()=>{ if(window.CC&&CC.ready()&&!document.hidden) CC.send('estado',{escena:video?0:cur+1,mom:video?'':(S[cur].mom||''),visit}); };
+setInterval(beat,3000);
+function devices(nombre){ visit++; clearTimeout(devT); setTimeout(beat,1300); if(DEV[nombre]) devT=setTimeout(()=>{ DEV[nombre](); flash(nombre==='aviso'?'Aviso enviado al celular':'Auto activado en el iPad'); },1200); }
 
 /* láminas: la que entra queda encima y opaca; la que sale se esconde recién cuando la tapa.
    instant: sin fundido (al abrir la página). */
@@ -523,6 +527,7 @@ addEventListener('keydown',e=>{
   if(['ArrowRight',' ','PageDown','Enter'].includes(k)){ e.preventDefault(); go(1); }
   else if(['ArrowLeft','PageUp','Backspace'].includes(k)){ e.preventDefault(); go(-1); }
   else if(k==='n'||k==='N') $('notes').classList.toggle('on');
+  else if((k==='d'||k==='D')&&!video){ const m=S[cur].mom; if(DEV[m]){ visit++; DEV[m](); setTimeout(beat,300); flash(m==='aviso'?'Aviso reenviado al celular':'Auto reenviado al iPad'); } else flash('Esta lámina no activa dispositivos'); }
   else if(k==='v'||k==='V') toVideo();
   else if(k==='p'||k==='P') toPres();
   else if(k==='f'||k==='F'){ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(()=>{}); }
