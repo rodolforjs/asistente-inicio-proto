@@ -554,7 +554,7 @@ let mk=0; const wake=()=>{ document.body.classList.add('mouse'); clearTimeout(mk
 addEventListener('mousemove',wake); addEventListener('touchstart',wake,{passive:true});
 /* barra de control (los botones hacen lo mismo que las teclas; el foco vuelve a la página para que las teclas sigan andando) */
 const fsT=()=>{ const el=document.documentElement; if(document.fullscreenElement||document.webkitFullscreenElement) (document.exitFullscreen||document.webkitExitFullscreen).call(document); else { const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); r&&r.catch&&r.catch(()=>{}); } };
-const pcSync=()=>{ $('pcN').textContent=video?'Spot':`${cur+1}/${S.length}`; $('pcV').textContent=video?'Volver a la presentación':'Ver spot'; $('pcFt').textContent=(document.fullscreenElement||document.webkitFullscreenElement)?'Salir':'Pantalla completa'; };
+const pcSync=()=>{ ['pcP','pcN','pcX'].forEach(i=>$(i).style.display=video?'none':''); document.querySelector('#pc .sep').style.display=video?'none':''; $('pcN').textContent=`${cur+1}/${S.length}`; $('pcV').textContent=video?'Volver a la presentación':'Ver spot'; $('pcFt').textContent=(document.fullscreenElement||document.webkitFullscreenElement)?'Salir':'Pantalla completa'; };
 ['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,pcSync));
 $('pcP').onclick=()=>go(-1); $('pcX').onclick=()=>go(1); $('pcV').onclick=()=>video?toPres():toVideo(); $('pcF').onclick=fsT;
 $('pc').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ b.blur(); setTimeout(pcSync,50); }));
