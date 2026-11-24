@@ -1,5 +1,5 @@
 /* Cuenta conmigo · sincronización entre dispositivos (demo).
-   Una "sala" agrupa los dispositivos de la mesa: ?sala=xxx (se recuerda en ese navegador); por defecto 'demo'.
+   Una "sala" agrupa los dispositivos de la mesa: ?sala=xxx en la URL; por defecto 'demo'.
    CC.push({title,body,img,k})  → notificación web a los celulares de la sala (función push de Supabase)
    CC.send(tipo, datos)         → mensaje en vivo a las páginas abiertas de la sala (Supabase Realtime)
    CC.on(tipo, fn)              → escuchar esos mensajes ('*' = todos) */
@@ -8,7 +8,8 @@
   const ls=(k,v)=>{ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){} };
   const clean=s=>String(s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,40);
   const qs=new URLSearchParams(location.search);
-  const sala=clean(qs.get('sala'))||clean(ls('cc-sala'))||'demo'; if(qs.get('sala')) ls('cc-sala',sala);
+  /* la sala sale solo de la URL (no se recuerda: una prueba con otra sala no debe quedar pegada) */
+  const sala=clean(qs.get('sala'))||'demo'; try{ localStorage.removeItem('cc-sala'); }catch(e){}
   const ready=()=>!CFG.url.startsWith('__');
   const fn=body=>fetch(CFG.url+'/functions/v1/push',{method:'POST',keepalive:true,headers:{'content-type':'application/json',apikey:CFG.key,authorization:'Bearer '+CFG.key},body:JSON.stringify({sala,...body})})
     .then(r=>r.json()).catch(e=>({error:String(e)}));
