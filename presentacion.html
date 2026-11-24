@@ -412,7 +412,7 @@ function momento(nombre){
   devices(nombre);
 }
 /* Dispositivos de la mesa (sync.js, sala ?sala=…): celular = avisos web; iPad = pantalla del auto (auto.html).
-   Se disparan solo al avanzar (no al retroceder), un poco después de que entra la lámina. */
+   Se disparan cada vez que se llega a la lámina (avanzando, retrocediendo o abriendo el enlace directo), un poco después de que entra. */
 const DEV={
   aviso:()=>window.CC&&CC.push({k:'aviso',tag:'amigo-secreto',title:'Amigo secreto: quedan 2 días',body:'Para pedirlo y que llegue a tiempo. Ya tengo uno elegido.',
     gift:'Libreta Picaflor',price:'$11.990 · llega antes del intercambio',para:'Amigo secreto',img:'https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936'}),
@@ -500,7 +500,7 @@ function render(){
   notes();
   const enter=ovNow!==x.ov;
   showOv(x.ov,first); ovNow=x.ov; first=false; animOv(x.ov,step,enter);
-  if(enter&&x.mom&&dir>0) momento(x.mom);
+  if(enter&&x.mom) momento(x.mom);
   if(enter&&cur===0&&window.CC) CC.send('reset');
   /* al terminar, la TV vuelve sola al spot */
   clearTimeout(endT); if(cur===S.length-1) endT=setTimeout(toVideo,END_MS);
