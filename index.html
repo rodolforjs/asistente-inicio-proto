@@ -1642,6 +1642,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+<script src="sync.js"></script>
 <script>
 gsap.registerPlugin(SplitText,ScrambleTextPlugin,DrawSVGPlugin,MotionPathPlugin,Flip);
 const $ = id => document.getElementById(id);
@@ -3044,6 +3045,8 @@ async function pay(){
   if(co!==c) return;
   p.order={no:'CC-'+(48200+idx(p)*7),ship:c.ship,wrap:c.wrap,pay:c.pay,msg:c.wrap?c.msg:''};
   p.bought=true; p.justBought=true; co=null; yfocus=p; autoFocus=false; addAct({k:'buy',t:`Compré el regalo de ${p.n}`,s:`${chosen(p).t} · llega ${arrival(p)}`,n:p.n,unread:false});
+  /* demo en la mesa: al aprobar en la compu, el celular de la sala recibe el aviso */
+  if(!SPOT&&window.CC){ const g=chosen(p); CC.push({k:'compra',tag:'compra',title:'Listo, ya lo compré',body:`${g.t} para ${p.n}. Llega ${arrival(p)}.`,gift:g.t,price:clp(g.p),para:p.n,img:g.u}); }
   ytoast(c.pay==='transfer'?'Listo. Te dejé los datos de transferencia en tu correo.':`Listo. Compré el regalo de ${p.n}.`); render(); $('year').scrollTop=0;
   if(!REDUCE){ gsap.fromTo('#apTicket',{scale:.97},{scale:1,duration:.7,ease:'elastic.out(1,.5)',clearProps:'all'}); gsap.from('.tk-stamp',{scale:2.2,opacity:0,rotation:-14,duration:.5,delay:.1,ease:'back.out(2)'}); gsap.from('.tr li',{x:-10,opacity:0,duration:.4,stagger:.07,delay:.2,clearProps:'all'}); }
 }

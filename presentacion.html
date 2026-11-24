@@ -10,6 +10,8 @@
 <style>
 /* Presentación de 5 min. Avanza quien presenta: → / espacio / AvPág = siguiente · ← / RePág = anterior.
    N = notas · V = spot en loop (video) · P = volver a la presentación · F = pantalla completa.
+   Al avanzar desde la última lámina (o 20 s después de entrar a ella) la TV vuelve sola al spot; → desde el spot parte de nuevo en la 1.
+   Dispositivos de la mesa (sync.js): 'Se acuerda' manda el aviso al celular (celu.html) y 'Donde estés' activa el auto en el iPad (auto.html).
    Las escenas del producto son el spot real (spot.html?present=1) reproducido por tramos. */
 :root{--ink:#0e1014;--brand:#ff5924;--paper:#f4f2ee;--muted:#4b5563}
 html,body{margin:0;height:100%;background:#000;overflow:hidden}
@@ -355,6 +357,7 @@ body.video #cnt,body.video #bar,body.video .ov{display:none!important}
 <div id="flash"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="sync.js"></script>
 <script>
 const $=id=>document.getElementById(id), STAGE=$('stage'), SPF=$('sp');
 function fit(){ const s=Math.min(innerWidth/1920,innerHeight/1080); STAGE.style.transform=`translate(${(innerWidth-1920*s)/2}px,${(innerHeight-1080*s)/2}px) scale(${s})`; }
@@ -371,16 +374,16 @@ const S=[
   {t:'Parte con lo que ya tienes', obj:20, ov:'o5'},
   {t:'Analiza', obj:25, ov:'o6'},
   {t:'Tu planner', obj:20, ov:'o7'},
-  {t:'Se acuerda', obj:15, ov:'o8'},
+  {t:'Se acuerda', obj:15, ov:'o8', mom:'aviso'},
   {t:'Piensa', obj:55, ov:'o9'},
-  {t:'Donde estés', obj:25, ov:'o10', mom:'reloj'},
+  {t:'Donde estés', obj:25, ov:'o10', mom:'auto'},
   {t:'En la tienda', obj:25, ov:'o11b', mom:'tienda'},
   {t:'Por qué le sirve a Creado', obj:15, ov:'o11'},
   {t:'Cierre', obj:15, ov:'o13'}
 ].map((x,i)=>({...x,n:N[i]}));
 const TOTAL=S.reduce((a,x)=>a+x.obj,0);
 const nSteps=x=>x.steps||1;
-let cur=0, step=0, SP=null, W=null, video=false, t0=null, sceneT0=performance.now(), ovNow=null, first=true, TL=null;
+let cur=0, step=0, SP=null, W=null, video=false, t0=null, sceneT0=performance.now(), ovNow=null, first=true, TL=null, dir=0;
 
 /* Dispositivos físicos (a futuro): cada momento avisa por evento y por canal.
    Para escucharlo desde otra pestaña o un puente: new BroadcastChannel('cuenta-conmigo').onmessage = e => e.data */
@@ -389,7 +392,17 @@ function momento(nombre){
   const detail={tipo:'momento',momento:nombre,escena:cur+1,ts:Date.now()};
   dispatchEvent(new CustomEvent('cc:momento',{detail}));
   try{ BC&&BC.postMessage(detail); }catch(e){}
+  devices(nombre);
 }
+/* Dispositivos de la mesa (sync.js, sala ?sala=…): celular = avisos web; iPad = pantalla del auto (auto.html).
+   Se disparan solo al avanzar (no al retroceder), un poco después de que entra la lámina. */
+const DEV={
+  aviso:()=>window.CC&&CC.push({k:'aviso',tag:'amigo-secreto',title:'Amigo secreto: quedan 2 días',body:'Para pedirlo y que llegue a tiempo. Ya tengo uno elegido.',
+    gift:'Libreta Picaflor',price:'$11.990 · llega antes del intercambio',para:'Amigo secreto',img:'https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936'}),
+  auto:()=>window.CC&&CC.send('auto',{para:'Mamá'})
+};
+let devT=0;
+function devices(nombre){ clearTimeout(devT); if(DEV[nombre]) devT=setTimeout(()=>{ DEV[nombre](); flash(nombre==='aviso'?'Aviso enviado al celular':'Auto activado en el iPad'); },1200); }
 
 /* láminas: la que entra queda encima y opaca; la que sale se esconde recién cuando la tapa.
    instant: sin fundido (al abrir la página). */
@@ -467,15 +480,19 @@ function render(){
   notes();
   const enter=ovNow!==x.ov;
   showOv(x.ov,first); ovNow=x.ov; first=false; animOv(x.ov,step,enter);
-  if(enter&&x.mom) momento(x.mom);
+  if(enter&&x.mom&&dir>0) momento(x.mom);
+  if(enter&&cur===0&&window.CC) CC.send('reset');
+  /* al terminar, la TV vuelve sola al spot */
+  clearTimeout(endT); if(cur===S.length-1) endT=setTimeout(toVideo,END_MS);
   $('cnt').classList.toggle('dk',!!x.dark);
 }
 
+let endT=0; const END_MS=20000;
 function go(d){
-  if(video) return;
+  if(video){ if(d>0) toPres(); return; }
   if(t0==null) t0=performance.now();
-  const x=S[cur];
-  if(d>0){ if(step<nSteps(x)-1) step++; else if(cur<S.length-1){ cur++; step=0; sceneT0=performance.now(); } else return; }
+  const x=S[cur]; dir=d;
+  if(d>0){ if(step<nSteps(x)-1) step++; else if(cur<S.length-1){ cur++; step=0; sceneT0=performance.now(); } else { toVideo(); return; } }
   else { if(step>0) step--; else if(cur>0){ cur--; step=nSteps(S[cur])-1; sceneT0=performance.now(); } else return; }
   render();
 }
@@ -495,8 +512,11 @@ function flash(t){ const f=$('flash'); f.textContent=t; f.style.opacity=1; clear
 
 /* V = spot completo en loop (la opción de video) · P = volver a la presentación donde quedó */
 let wantVideo=false;
-function toVideo(){ if(video) return; video=true; document.body.classList.add('video'); if(SP) SP.video(); else { wantVideo=true; if(!SPF.src) SPF.src='spot.html?present=1'; flash('Cargando el spot…'); return; } flash('Spot en loop · P para volver'); }
-function toPres(){ if(!video) return; video=false; wantVideo=false; document.body.classList.remove('video'); if(SP) SP.pause(); ovNow=null; render(); flash(`Presentación · ${cur+1}/${S.length}`); }
+function toVideo(){ if(video) return; clearTimeout(endT); clearTimeout(devT); video=true; document.body.classList.add('video'); if(SP) SP.video(); else { wantVideo=true; if(!SPF.src) SPF.src='spot.html?present=1'; flash('Cargando el spot…'); return; } flash('Spot en loop · P para volver'); }
+function toPres(){ if(!video) return; video=false; wantVideo=false; document.body.classList.remove('video'); if(SP) SP.pause();
+  /* si el spot venía del final, la presentación parte de nuevo desde la 1 */
+  if(cur===S.length-1){ cur=0; step=0; t0=null; sceneT0=performance.now(); }
+  ovNow=null; dir=0; render(); flash(`Presentación · ${cur+1}/${S.length}`); }
 
 addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey) return; const k=e.key;
