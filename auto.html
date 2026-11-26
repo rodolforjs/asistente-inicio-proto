@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Regi · Auto</title>
-<meta name="theme-color" content="#0b0c0f">
+<meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,32 +12,53 @@
 <link rel="icon" href="assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
-/* iPad = pantalla del auto. Mapa real que se mueve, apps del auto y Regi.
-   La presentación (o la compu) puede mandar el rescate; respaldo: A = rescate · R = volver · doble toque en la hora. */
-:root{--bg:#0b0c0f;--panel:#17191e;--panel2:#1f2228;--line:rgba(255,255,255,.08);--tx:#f3f4f6;--mut:rgba(255,255,255,.58);--brand:#ff5924;--ok:#3ccf8e;--blue:#2f6fed}
+/* iPad = pantalla del auto, con el lenguaje de los sistemas de auto conectados al celular (referencia: CarPlay en iOS 26):
+   barra lateral con hora, apps recientes y botón de inicio · inicio con íconos · panel (mapa + tarjetas) · apps como plantillas (listas, ficha, reproduciendo)
+   · los avisos llegan abajo, sin tapar el mapa · paneles de vidrio translúcido.
+   Respaldo de la demo: A = aviso de rescate · R = volver · doble toque en la hora. */
+:root{--bg:#000;--glass:rgba(38,40,46,.72);--glass2:rgba(255,255,255,.08);--line:rgba(255,255,255,.1);--tx:#f5f5f7;--mut:rgba(235,235,245,.6);--mut2:rgba(235,235,245,.38);--brand:#ff5924;--ok:#30d158;--blue:#0a84ff;--r:22px}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);font:16px/1.35 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);font:16px/1.3 Inter,-apple-system,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
 em,i{font-style:normal}
-.car{position:fixed;inset:0;display:grid;grid-template-columns:clamp(76px,8.4vw,108px) 1fr;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
-/* dock */
-.dock{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2.2vh,20px);padding:20px 0;background:#060709;border-right:1px solid var(--line);z-index:5}
-.clk{font-weight:600;font-size:clamp(17px,2vw,21px);font-variant-numeric:tabular-nums;padding:4px 6px}
-.ap{position:relative;width:clamp(48px,5.4vw,60px);aspect-ratio:1;border-radius:15px;background:var(--panel2);display:grid;place-items:center;transition:transform .15s}
-.ap:active{transform:scale(.92)}
-.ap[aria-current="true"]::after{content:"";position:absolute;left:-14px;top:22%;bottom:22%;width:4px;border-radius:2px;background:#fff}
-.ap.map{background:var(--blue)}.ap.mus{background:linear-gradient(135deg,#8a5cf6,#ec4899)}.ap.tel{background:#22a06b}.ap.regi{background:var(--brand)}
-.ap .dot{position:absolute;right:-3px;top:-3px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #060709;display:none}
-.ap.regi.has .dot{display:block}
-.sig{margin-top:auto;font-size:10.5px;color:var(--mut);display:flex;align-items:center;gap:6px}
-.sig i{width:7px;height:7px;border-radius:50%;background:#666}.sig.live i{background:var(--ok)}
-.main{position:relative;overflow:hidden}
-.view{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.gl{background:var(--glass);-webkit-backdrop-filter:blur(30px) saturate(1.6);backdrop-filter:blur(30px) saturate(1.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 .5px rgba(255,255,255,.08),0 16px 40px rgba(0,0,0,.45)}
+.car{position:fixed;inset:0;display:grid;grid-template-columns:clamp(78px,8vw,100px) 1fr;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+/* barra lateral */
+.sb{display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 0 16px;background:#0b0b0d;z-index:6}
+.clk{font-weight:600;font-size:clamp(17px,2vw,20px);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.sig{display:flex;align-items:center;gap:5px;color:var(--mut);font-size:11px;font-weight:600;margin-top:-6px}
+.sig i{width:7px;height:7px;border-radius:50%;background:#555}.sig.live i{background:var(--ok)}
+.rec{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.ic{position:relative;width:clamp(50px,5.4vw,58px);aspect-ratio:1;border-radius:24%;display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.25);transition:transform .15s}
+.ic:active{transform:scale(.9)}
+.ic.map{background:linear-gradient(160deg,#5fd27a,#1d9c4a)}.ic.mus{background:linear-gradient(160deg,#ff6b81,#e5254a)}.ic.tel{background:linear-gradient(160deg,#5ef18a,#25b14f)}
+.ic.regi{background:linear-gradient(160deg,#ff8a5c,#ff4d12)}.ic.cal{background:#fff}.ic.set{background:linear-gradient(160deg,#a3a3ab,#636369)}.ic.msg{background:linear-gradient(160deg,#6cf08b,#26c04d)}.ic.pod{background:linear-gradient(160deg,#c56cf0,#8a2be2)}
+.ic .bd{position:absolute;right:-5px;top:-5px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#ff3b30;color:#fff;font-size:13px;font-weight:700;display:none;place-items:center;box-shadow:0 0 0 2px #0b0b0d}
+.ic.has .bd{display:grid}
+.ic.cal>span>b{display:block;text-align:center;color:#ff3b30;font-size:9px;font-weight:700;letter-spacing:.04em;line-height:1;margin-top:2px}
+.ic.cal>span>span{display:block;text-align:center;color:#111;font-size:24px;font-weight:500;line-height:1}
+.sb .rec .ic[aria-current="true"]{box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 0 2.5px #fff}
+.hb{margin-top:auto;width:clamp(50px,5.4vw,58px);aspect-ratio:1;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.1)}
+.hb:active{background:rgba(255,255,255,.2)}
+.main{position:relative;overflow:hidden;background:#000}
+.view{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
 .view.on{opacity:1;visibility:visible}
-/* mapa */
+/* inicio */
+.home{background:radial-gradient(1200px 600px at 20% 0%,#2a2340,transparent 60%),radial-gradient(900px 500px at 100% 100%,#132a3a,transparent 60%),#0a0a0c;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.grid{display:grid;grid-template-columns:repeat(4,clamp(96px,12vw,130px));gap:clamp(22px,4vh,40px) clamp(18px,3vw,40px)}
+.app{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500}
+.app .ic{width:clamp(72px,8.6vw,92px)}
+.app .ic svg{width:44%;height:44%}
+.app .ic.cal>span>b{font-size:12px;margin-top:4px}.app .ic.cal>span>span{font-size:36px}
+.dots{display:flex;gap:8px;margin-top:clamp(26px,5vh,46px)}.dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3)}.dots i.on{background:#fff}
+/* mapa (app Mapas y panel) */
+#vMap{display:flex;gap:14px;padding:0}
+#vMap.dash{padding:14px}
+.mw{position:relative;flex:1;min-width:0;overflow:hidden;background:#1b1d22}
+#vMap.dash .mw{border-radius:var(--r)}
 #map{position:absolute;inset:0;background:#1b1d22}
 .leaflet-container{font:12px Inter,sans-serif;background:#1b1d22}
 .leaflet-control-attribution{background:rgba(0,0,0,.45)!important;color:rgba(255,255,255,.5)!important;font-size:9px!important}
@@ -45,167 +66,189 @@ em,i{font-style:normal}
 .leaflet-control-zoom{display:none}
 .osm .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.85) saturate(.35)}
 .carm{width:44px;height:44px;display:grid;place-items:center}
-.carm b{display:block;width:44px;height:44px;border-radius:50%;background:rgba(47,111,237,.22);display:grid;place-items:center}
+.carm b{display:block;width:44px;height:44px;border-radius:50%;background:rgba(10,132,255,.22);display:grid;place-items:center}
 .carm svg{transition:transform .4s linear;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
 .pin{display:grid;place-items:center;width:40px;height:40px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);box-shadow:0 6px 14px rgba(0,0,0,.45)}
 .pin span{transform:rotate(45deg);display:grid;place-items:center}
 .pin.home{background:#fff}.pin.shop{background:var(--brand)}
-.tag{white-space:nowrap;background:rgba(11,12,15,.92);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:13px;font-weight:600;color:#fff;transform:translate(-50%,-62px)}
+.tag{white-space:nowrap;background:rgba(20,20,24,.92);border-radius:10px;padding:6px 10px;font-size:13px;font-weight:600;color:#fff;transform:translate(-50%,-62px)}
 .tag small{display:block;font-weight:500;color:var(--mut);font-size:11.5px}
-.mv{position:absolute;left:20px;top:18px;z-index:500;display:flex;align-items:center;gap:14px;background:rgba(11,12,15,.94);border:1px solid var(--line);border-radius:20px;padding:14px 20px 14px 14px;min-width:min(380px,46%);box-shadow:0 12px 30px rgba(0,0,0,.4)}
-.mv .ic{width:54px;height:54px;border-radius:14px;background:var(--blue);display:grid;place-items:center;flex:none}
-.mv b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.mv small{display:block;color:var(--mut);font-size:16px;margin-top:1px}
-.eta{position:absolute;left:20px;bottom:18px;z-index:500;display:flex;align-items:center;gap:20px;background:rgba(11,12,15,.94);border:1px solid var(--line);border-radius:20px;padding:14px 20px;box-shadow:0 12px 30px rgba(0,0,0,.4)}
-.eta div b{display:block;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.mv{position:absolute;left:14px;top:14px;z-index:500;display:flex;align-items:center;gap:14px;border-radius:var(--r);padding:14px 22px 14px 14px;min-width:min(360px,60%)}
+.mv .ti{width:58px;height:58px;border-radius:16px;background:rgba(255,255,255,.1);display:grid;place-items:center;flex:none}
+.mv b{display:block;font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.mv small{display:block;color:var(--tx);font-size:17px;font-weight:500;margin-top:1px}
+#vMap.dash .mv{padding:10px 16px 10px 10px;min-width:0}#vMap.dash .mv .ti{width:46px;height:46px}#vMap.dash .mv b{font-size:22px}#vMap.dash .mv small{font-size:14.5px}
+.eta{position:absolute;left:14px;bottom:14px;z-index:500;display:flex;align-items:center;gap:18px;border-radius:var(--r);padding:12px 12px 12px 22px}
+.eta div b{display:block;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
 .eta div small{display:block;color:var(--mut);font-size:13px}
-.eta .sep{width:1px;align-self:stretch;background:var(--line)}
 .eta .stop{display:none;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#ffb08f}
 .eta.mut .stop{display:flex}
-.rc{position:absolute;right:20px;bottom:96px;z-index:500;display:none;align-items:center;gap:8px;height:52px;padding:0 18px;border-radius:16px;background:rgba(11,12,15,.94);border:1px solid var(--line);font-weight:600;font-size:15px}
+.eta .end{height:48px;padding:0 20px;border-radius:14px;background:#ff453a;color:#fff;font-weight:600;font-size:16px}
+#vMap.dash .eta{padding:10px 16px}#vMap.dash .eta .end{display:none}#vMap.dash .eta div b{font-size:19px}
+.rc{position:absolute;right:14px;bottom:14px;z-index:500;display:none;align-items:center;gap:8px;height:52px;padding:0 18px;border-radius:16px;font-weight:600;font-size:15px}
 .rc.on{display:flex}
-.zm{position:absolute;right:20px;top:18px;z-index:500;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:rgba(11,12,15,.94)}
-.zm button{width:52px;height:52px;font-size:26px;font-weight:400;display:grid;place-items:center}
+.zm{position:absolute;right:14px;top:14px;z-index:500;display:flex;flex-direction:column;border-radius:16px;overflow:hidden}
+.zm button{width:54px;height:54px;font-size:28px;font-weight:300;display:grid;place-items:center}
 .zm button+button{border-top:1px solid var(--line)}
-.mini{position:absolute;right:20px;bottom:18px;z-index:500;display:flex;align-items:center;gap:12px;background:rgba(11,12,15,.94);border:1px solid var(--line);border-radius:18px;padding:9px 14px 9px 9px;max-width:300px}
-.mini .cv{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#8a5cf6,#ec4899);flex:none}
-.mini b{display:block;font-size:14px}.mini small{color:var(--mut);font-size:12.5px}
-.mini .pp{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex:none;margin-left:6px}
-/* apps */
-.app{padding:clamp(22px,3.4vh,34px) clamp(22px,3vw,38px);display:flex;flex-direction:column;gap:18px;overflow:auto;background:var(--bg)}
-.ah{display:flex;align-items:center;gap:12px}
-.ah img{width:40px;height:40px;border-radius:6px;background:#fff;display:block}
-.ah b{font:600 28px/1 'Inter Tight',sans-serif;letter-spacing:-.02em}
-.ah small{margin-left:4px;color:var(--mut);font-size:15px}
-.cols{display:grid;grid-template-columns:1.15fr 1fr;gap:18px;flex:1;min-height:0}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:20px}
-.kk{font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.hoy h2{margin:10px 0 0;font:600 clamp(26px,3vw,34px)/1.08 'Inter Tight',sans-serif;letter-spacing:-.02em}
-.hoy p.s{margin:6px 0 0;color:var(--mut);font-size:16px}
-.gf{display:flex;gap:16px;align-items:center;margin-top:18px;background:rgba(255,255,255,.05);border-radius:18px;padding:12px}
-.gf img{width:clamp(84px,10vw,112px);aspect-ratio:1;object-fit:cover;border-radius:14px;background:#2a2d33;flex:none}
-.gf b{display:block;font-size:17px;font-weight:600}.gf small{display:block;color:var(--mut);font-size:15px;margin-top:2px}
-.bts{display:flex;flex-direction:column;gap:10px;margin-top:16px}
-.bt{height:clamp(54px,7vh,62px);border-radius:16px;font-weight:600;font-size:17px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .12s}
+#vMap.dash .zm{display:none}
+/* columna del panel */
+.dc{display:none;flex:none;width:min(36%,400px);flex-direction:column;gap:14px}
+#vMap.dash .dc{display:flex}
+.dk{border-radius:var(--r);background:#1c1c1f;padding:16px;display:flex;flex-direction:column;text-align:left}
+.dk .k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--mut)}
+.dk .k .mi{width:22px;height:22px;border-radius:6px;display:grid;place-items:center}
+.dk.np{flex:1.1}
+.np .r{display:flex;align-items:center;gap:14px;margin-top:auto}
+.np .cv{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#8a5cf6,#ec4899);flex:none}
+.np b{display:block;font-size:17px}.np small{color:var(--mut);font-size:14px}
+.np .cs{display:flex;justify-content:space-around;margin-top:12px}
+.np .cs button{width:52px;height:44px;display:grid;place-items:center}
+.dk.rg{flex:1.3;background:linear-gradient(160deg,#2a1a12,#1c1c1f 60%)}
+.rg h3{margin:10px 0 0;font-size:21px;font-weight:600;line-height:1.15}
+.rg p{margin:4px 0 0;color:var(--mut);font-size:14.5px}
+.rg .g{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:12px}
+.rg .g img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex:none}
+.rg .g b{font-size:15px}.rg .g small{display:block;color:var(--mut);font-size:13px}
+.dk.cl{flex:.8}
+.cl .ev{display:flex;gap:10px;margin-top:auto}
+.cl .ev i{width:4px;border-radius:2px;background:#ff9f0a;flex:none}
+.cl .ev b{display:block;font-size:16px}.cl .ev small{color:var(--mut);font-size:13.5px}
+/* plantillas */
+.tpl{display:flex;flex-direction:column;background:#000;padding:0}
+.th{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:70px;padding:0 20px;flex:none}
+.th .bk{justify-self:start;display:flex;align-items:center;gap:6px;color:var(--blue);font-size:17px;font-weight:500;height:48px;visibility:hidden}
+.th .bk.on{visibility:visible}
+.th h1{margin:0;font-size:19px;font-weight:600;display:flex;align-items:center;gap:10px}
+.th h1 img{width:28px;height:28px;border-radius:5px;background:#fff}
+.seg{display:flex;justify-self:end;background:rgba(118,118,128,.24);border-radius:12px;padding:3px}
+.seg button{height:40px;padding:0 18px;border-radius:9px;font-size:15px;font-weight:600;color:var(--mut)}
+.seg button[aria-pressed="true"]{background:#636366;color:#fff}
+.tb{flex:1;overflow:auto;padding:0 20px 20px}
+.row{display:flex;align-items:center;gap:16px;width:100%;min-height:76px;padding:10px 16px;border-radius:16px;text-align:left}
+.row+.row{margin-top:2px}
+.row:active{background:rgba(255,255,255,.08)}
+.row .im{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none;background:#2c2c2e;display:grid;place-items:center;font-size:20px;font-weight:600}
+.row .t{flex:1;min-width:0}.row .t b{display:block;font-size:18px;font-weight:600}.row .t small{display:block;color:var(--mut);font-size:15px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .st{flex:none;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;background:rgba(255,255,255,.1);color:var(--mut)}
+.st.r{background:rgba(255,89,36,.2)!important;color:#ffb08f!important}.st.k{background:rgba(48,209,88,.16)!important;color:var(--ok)!important}
+.row .ch{color:var(--mut2);flex:none}
+.sec{margin:16px 16px 6px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut2)}
+/* ficha (plantilla de información) */
+.inf{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:6px 36px 28px;flex:1;min-height:0}
+.inf img{width:100%;height:100%;max-height:60vh;object-fit:cover;border-radius:24px;background:#1c1c1f}
+.inf .tx{display:flex;flex-direction:column;min-height:0}
+.inf .kk{font-size:14px;font-weight:600;color:#ffb08f}
+.inf h2{margin:8px 0 0;font-size:clamp(26px,3vw,34px);font-weight:700;line-height:1.1;letter-spacing:-.02em}
+.inf p{margin:8px 0 0;color:var(--mut);font-size:17px}
+.inf .bts{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+.bt{height:clamp(56px,7vh,64px);border-radius:16px;font-weight:600;font-size:18px;display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.12);transition:transform .12s}
 .bt:active{transform:scale(.97)}
-.bt.p{background:var(--brand);color:#fff}.bt.s{background:rgba(255,255,255,.08)}.bt.g{color:var(--mut);height:46px}
-.bt small{font-weight:500;opacity:.75;font-size:14px}
-.ok{margin-top:16px;display:flex;align-items:center;gap:12px;font-size:19px;font-weight:600;line-height:1.25}
-.ok i{width:34px;height:34px;border-radius:50%;background:var(--ok);display:grid;place-items:center;flex:none}
+.bt.p{background:var(--brand);color:#fff}
+.bt small{font-weight:500;opacity:.75;font-size:14.5px}
+.ok{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:600;line-height:1.25;margin-top:auto}
+.ok i{width:36px;height:36px;border-radius:50%;background:var(--ok);display:grid;place-items:center;flex:none}
 .ok.m{color:var(--mut);font-weight:500}
-.ls{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-.it{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.04);border-radius:16px;padding:12px 14px;text-align:left;width:100%}
-.it .d{width:52px;flex:none;text-align:center;border-radius:12px;background:var(--panel2);padding:6px 0}
-.it .d b{display:block;font-size:21px;font-weight:700;line-height:1}.it .d small{font-size:11px;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
-.it .t{flex:1;min-width:0}.it .t b{display:block;font-size:16px;font-weight:600}.it .t small{display:block;color:var(--mut);font-size:14px}
-.st{flex:none;border-radius:999px;padding:5px 11px;font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);color:var(--mut)}
-.st.r{background:rgba(255,89,36,.16);color:#ffb08f}.st.k{background:rgba(60,207,142,.15);color:var(--ok)}
-.it.open{flex-wrap:wrap}
-.it .xp{flex-basis:100%;display:flex;align-items:center;gap:12px;padding-top:10px}
-.it .xp img{width:58px;height:58px;border-radius:10px;object-fit:cover;flex:none}
-.it .xp span{flex:1;font-size:14px;color:var(--mut)}.it .xp span b{display:block;color:var(--tx);font-size:15px}
-.it .xp .bt{height:46px;padding:0 18px;font-size:15px}
-/* música */
-.mus{align-items:center;justify-content:center;text-align:center}
-.art{width:min(34vh,300px);aspect-ratio:1;border-radius:28px;background:linear-gradient(135deg,#8a5cf6,#ec4899);box-shadow:0 30px 60px rgba(236,72,153,.25);display:grid;place-items:center}
-.mus h2{margin:22px 0 0;font:600 30px/1.1 'Inter Tight',sans-serif}.mus p{margin:6px 0 0;color:var(--mut)}
-.bar{width:min(60%,520px);height:5px;border-radius:3px;background:rgba(255,255,255,.12);margin-top:22px;overflow:hidden}.bar i{display:block;height:100%;width:30%;background:#fff;border-radius:3px}
-.ctl{display:flex;align-items:center;gap:28px;margin-top:18px}
-.ctl button{width:60px;height:60px;border-radius:50%;display:grid;place-items:center}
-.ctl .pl{width:78px;height:78px;background:#fff;color:#0b0c0f}
-/* teléfono */
-.fv{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
-.fv button{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px 10px}
-.fv .av{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;font-size:26px;font-weight:600}
-.fv b{font-size:16px}.fv small{color:var(--mut);font-size:13px}
-.call{position:absolute;inset:0;background:rgba(11,12,15,.97);display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:3}
+/* reproduciendo */
+.npv{flex:1;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:clamp(28px,4vw,56px);padding:10px clamp(28px,5vw,70px) 30px}
+.art{width:min(46vh,340px);aspect-ratio:1;border-radius:22px;background:linear-gradient(135deg,#8a5cf6,#ec4899);box-shadow:0 30px 60px rgba(236,72,153,.25);display:grid;place-items:center}
+.npv h2{margin:0;font-size:clamp(26px,3vw,34px);font-weight:700;letter-spacing:-.02em}.npv p{margin:6px 0 0;color:var(--mut);font-size:19px}
+.bar{height:6px;border-radius:3px;background:rgba(255,255,255,.18);margin-top:28px;overflow:hidden}.bar i{display:block;height:100%;width:30%;background:#fff;border-radius:3px}
+.tm{display:flex;justify-content:space-between;color:var(--mut2);font-size:13px;margin-top:8px;font-variant-numeric:tabular-nums}
+.ctl{display:flex;align-items:center;gap:clamp(24px,4vw,48px);margin-top:26px}
+.ctl button{width:64px;height:64px;border-radius:50%;display:grid;place-items:center}
+.ctl .pl{width:84px;height:84px;background:rgba(255,255,255,.14)}
+/* llamada */
+.call{position:absolute;inset:0;background:rgba(0,0,0,.96);display:none;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:3}
 .call.on{display:flex}
-.call .av{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;font-size:40px;font-weight:600}
-.call b{font-size:30px;margin-top:10px}.call small{color:var(--mut);font-size:17px}
-.call .end{margin-top:28px;width:74px;height:74px;border-radius:50%;background:#e5484d;display:grid;place-items:center}
-/* rescate (llega encima de cualquier pantalla) */
-.ban{position:absolute;right:20px;top:18px;bottom:18px;z-index:800;width:min(46%,520px);background:rgba(23,25,30,.98);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,3vh,28px);display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateX(calc(100% + 40px));opacity:0;transition:transform .7s cubic-bezier(.2,.9,.25,1),opacity .4s}
-.ban.on{transform:none;opacity:1}
-.ban .hd{display:flex;align-items:center;gap:10px;color:var(--mut);font-size:14px;font-weight:500}
-.ai{width:30px;height:30px;border-radius:9px;background:var(--brand);display:grid;place-items:center;flex:none}
-.ban h2{margin:clamp(12px,2vh,20px) 0 0;font:600 clamp(26px,3vw,33px)/1.1 'Inter Tight',sans-serif;letter-spacing:-.02em}
-.ban .gf{margin-top:auto}
-.toast{position:absolute;left:50%;top:18px;z-index:900;transform:translate(-50%,-140%);display:flex;align-items:center;gap:12px;background:rgba(23,25,30,.98);border:1px solid var(--line);border-radius:18px;padding:12px 18px 12px 12px;font-size:16px;font-weight:600;box-shadow:0 20px 40px rgba(0,0,0,.5);transition:transform .5s cubic-bezier(.2,.9,.25,1);max-width:70%}
+.call .av{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;font-size:42px;font-weight:600;color:#111}
+.call b{font-size:32px;margin-top:12px}.call small{color:var(--mut);font-size:17px}
+.call .end{margin-top:30px;width:76px;height:76px;border-radius:50%;background:#ff3b30;display:grid;place-items:center}
+/* aviso abajo (como las notificaciones del auto: no tapan el mapa) */
+.nb{position:absolute;left:50%;bottom:14px;z-index:800;width:min(92%,880px);border-radius:26px;padding:14px;display:flex;align-items:center;gap:14px;transform:translate(-50%,calc(100% + 40px));opacity:0;transition:transform .6s cubic-bezier(.2,.9,.25,1.1),opacity .35s}
+.nb.on{transform:translate(-50%,0);opacity:1}
+.nb .ai{width:52px;height:52px;border-radius:13px;background:linear-gradient(160deg,#ff8a5c,#ff4d12);display:grid;place-items:center;flex:none}
+.nb .gi{width:60px;height:60px;border-radius:12px;object-fit:cover;flex:none}
+.nb .tx{flex:1;min-width:0}
+.nb .tx small{display:block;font-size:13px;color:var(--mut);font-weight:600}
+.nb .tx b{display:block;font-size:18px;font-weight:600;line-height:1.2;margin-top:2px}
+.nb .tx span{display:block;font-size:14.5px;color:var(--mut);margin-top:2px}
+.nb .ac{display:flex;gap:8px;flex:none}
+.nb .ac button{height:52px;padding:0 18px;border-radius:15px;background:rgba(255,255,255,.14);font-weight:600;font-size:15.5px;white-space:nowrap}
+.nb .ac button.p{background:var(--brand);color:#fff}
+.nb .ac button.x{width:52px;padding:0;display:grid;place-items:center}
+.nb .ok{margin:0;font-size:17px}
+.toast{position:absolute;left:50%;top:14px;z-index:900;transform:translate(-50%,-140%);display:flex;align-items:center;gap:12px;border-radius:18px;padding:12px 18px 12px 12px;font-size:16px;font-weight:600;transition:transform .5s cubic-bezier(.2,.9,.25,1);max-width:70%}
 .toast.on{transform:translate(-50%,0)}
+.toast .ai{width:34px;height:34px;border-radius:9px;background:var(--brand);display:grid;place-items:center;flex:none}
 .toast small{display:block;font-weight:500;color:var(--mut);font-size:13.5px}
 /* arranque */
-#go{position:fixed;inset:0;z-index:2000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;cursor:pointer}
+#go{position:fixed;inset:0;z-index:2000;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;cursor:pointer}
 #go b{font-size:28px;font-weight:600}#go small{color:var(--mut);font-size:15px;max-width:36ch}
 #go.off{display:none}
-@media (max-width:820px){.cols{grid-template-columns:1fr}.mini{display:none}.ban{left:16px;right:16px;width:auto;top:auto;bottom:16px}.fv{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){.dc{width:42%}.nb{flex-wrap:wrap}.nb .ac{width:100%}.nb .ac button{flex:1}.inf{grid-template-columns:1fr}.inf img{max-height:28vh}.npv{grid-template-columns:1fr;justify-items:center;text-align:center}.grid{grid-template-columns:repeat(3,96px)}}
 </style>
 </head>
 <body>
-<div id="go"><b>Toca para empezar</b><small>Pantalla del auto para la demo. Puedes mover el mapa y abrir Regi. Déjala encendida: se activa sola cuando la presentación llegue a esa parte.</small></div>
+<div id="go"><b>Toca para empezar</b><small>Pantalla del auto para la demo. Puedes mover el mapa, abrir las apps y Regi. Déjala encendida: se activa sola cuando la presentación llegue a esa parte.</small></div>
 <div class="car">
-  <nav class="dock" aria-label="Apps del auto">
+  <nav class="sb" aria-label="Barra del auto">
     <div class="clk" id="clk">18:42</div>
-    <button class="ap map" data-v="vMap" aria-current="true" aria-label="Mapa"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></svg></button>
-    <button class="ap mus" data-v="vMus" aria-label="Música"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></button>
-    <button class="ap tel" data-v="vTel" aria-label="Teléfono"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></button>
-    <button class="ap regi has" data-v="vRegi" aria-label="Regi"><span class="dot"></span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.5S9 7 12 7ZM12 7c2-4 6-4 6-1.5S15 7 12 7Z"/></svg></button>
     <div class="sig" id="sig"><i></i><span>off</span></div>
+    <div class="rec" id="rec"></div>
+    <button class="hb" id="hb" aria-label="Inicio"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg></button>
   </nav>
 
   <main class="main">
-    <!-- MAPA -->
-    <section class="view on" id="vMap">
-      <div id="map"></div>
-      <div class="mv"><span class="ic" id="mvI"></span><span><b id="mvD">200 m</b><small id="mvN">Avenida Apoquindo</small></span></div>
-      <div class="zm"><button id="zIn" aria-label="Acercar">+</button><button id="zOut" aria-label="Alejar">−</button></div>
-      <div class="eta" id="eta"><div><b id="eT">18:55</b><small>llegada</small></div><span class="sep"></span><div><b id="eM">12 min</b><small id="eK">3,3 km</small></div><span class="stop" id="eS"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>Parada: Creado MUT</span></div>
-      <button class="rc" id="rc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></svg>Recentrar</button>
-      <div class="mini" id="mini"><span class="cv"></span><span style="min-width:0"><b>Tu radio de la tarde</b><small>Lo que suena</small></span><button class="pp" id="mpp" aria-label="Pausa"></button></div>
-    </section>
+    <!-- INICIO -->
+    <section class="view home" id="vHome"><div class="grid" id="grid"></div><div class="dots"><i class="on"></i><i></i></div></section>
 
-    <!-- REGI -->
-    <section class="view app" id="vRegi">
-      <div class="ah"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile"><b>Regi</b><small>Tu planner de regalos</small></div>
-      <div class="cols">
-        <div class="card hoy">
-          <p class="kk">Hoy · 14 mar</p>
-          <h2>Cumpleaños de Mamá</h2>
-          <p class="s">Tengo su regalo listo. ¿Cómo lo hacemos?</p>
-          <div class="gf"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306" alt=""><span><b>Mamá ¿Cuál es tu Historia?</b><small>$29.990 · envuelto para regalo</small></span></div>
-          <div id="rAct"></div>
-        </div>
-        <div class="card">
-          <p class="kk">Lo que viene</p>
-          <div class="ls" id="rNext"></div>
-          <p class="kk" style="margin-top:20px">Pedidos</p>
-          <div class="ls"><div class="it"><span class="d"><b>21</b><small>jun</small></span><span class="t"><b>Papá</b><small>Día del Padre · ya lo compré</small></span><span class="st k">En camino</span></div></div>
-        </div>
+    <!-- MAPA / PANEL -->
+    <section class="view dash on" id="vMap">
+      <div class="mw">
+        <div id="map"></div>
+        <div class="mv gl"><span class="ti" id="mvI"></span><span><b id="mvD">200 m</b><small id="mvN">Avenida Apoquindo</small></span></div>
+        <div class="zm gl"><button id="zIn" aria-label="Acercar">+</button><button id="zOut" aria-label="Alejar">−</button></div>
+        <div class="eta gl" id="eta"><div><b id="eT">18:55</b><small>llegada</small></div><div><b id="eM">12 min</b><small>restante</small></div><div><b id="eK">3,3 km</b><small>distancia</small></div><span class="stop"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>Parada: Creado MUT</span><button class="end" id="eEnd">Finalizar</button></div>
+        <button class="rc gl" id="rc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></svg>Recentrar</button>
+      </div>
+      <div class="dc">
+        <button class="dk rg" id="dRg"><span class="k"><span class="mi" style="background:linear-gradient(160deg,#ff8a5c,#ff4d12)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span>Regi</span><h3 id="dRgT">Hoy es el cumple de Mamá</h3><p id="dRgS">Tengo su regalo listo</p><span class="g"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306" alt=""><span><b>Mamá ¿Cuál es tu Historia?</b><small>$29.990</small></span></span></button>
+        <div class="dk np" id="dNp"><span class="k"><span class="mi" style="background:linear-gradient(160deg,#ff6b81,#e5254a)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 18V5l12-2v13"/></svg></span>Música</span><span class="r"><span class="cv"></span><span style="min-width:0"><b class="nT">Tu radio de la tarde</b><small class="nA">Lo que suena</small></span></span><span class="cs"><button data-m="prev" aria-label="Anterior"></button><button data-m="play" aria-label="Pausa"></button><button data-m="next" aria-label="Siguiente"></button></span></div>
+        <button class="dk cl" id="dCl"><span class="k"><span class="mi" style="background:#fff"><b style="color:#ff3b30;font-size:8px">MAR</b></span>Calendario</span><span class="ev"><i></i><span><b>Cumpleaños de Mamá</b><small>Hoy · todo el día</small></span></span></button>
       </div>
     </section>
 
-    <!-- MÚSICA -->
-    <section class="view app mus" id="vMus">
-      <div class="art"><svg width="86" height="86" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-      <h2 id="mT">Tu radio de la tarde</h2><p id="mA">Lo que suena</p>
-      <div class="bar"><i id="mB"></i></div>
-      <div class="ctl"><button id="mPrev" aria-label="Anterior"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button><button class="pl" id="mPlay" aria-label="Pausa"></button><button id="mNext" aria-label="Siguiente"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button></div>
+    <!-- REGI (plantilla de lista + ficha) -->
+    <section class="view tpl" id="vRegi">
+      <header class="th"><button class="bk" id="rBk"><svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2 2 10l8 8"/></svg>Regi</button><h1 id="rH"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile">Regi</h1><div class="seg" id="rSeg"><button data-t="hoy" aria-pressed="true">Hoy</button><button data-t="viene" aria-pressed="false">Lo que viene</button><button data-t="ped" aria-pressed="false">Pedidos</button></div></header>
+      <div class="tb" id="rL"></div>
+      <div class="inf" id="rI" hidden></div>
+    </section>
+
+    <!-- MÚSICA (reproduciendo) -->
+    <section class="view tpl" id="vMus">
+      <header class="th"><span></span><h1>Reproduciendo</h1><span></span></header>
+      <div class="npv"><div class="art"><svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <div><h2 class="nT">Tu radio de la tarde</h2><p class="nA">Lo que suena</p><div class="bar"><i id="mB"></i></div><div class="tm"><span id="mC">1:02</span><span>3:28</span></div>
+          <div class="ctl"><button data-m="prev" aria-label="Anterior"></button><button class="pl" data-m="play" aria-label="Pausa"></button><button data-m="next" aria-label="Siguiente"></button></div></div></div>
     </section>
 
     <!-- TELÉFONO -->
-    <section class="view app" id="vTel">
-      <p class="kk">Favoritos</p>
-      <div class="fv" id="fv"></div>
-      <div class="call" id="call"><span class="av" id="cA"></span><b id="cN"></b><small id="cS">Llamando…</small><button class="end" id="cEnd" aria-label="Colgar"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 14c4-4 12-4 16 0l-2 3-3-1v-2c-2-.6-4-.6-6 0v2l-3 1Z"/></svg></button></div>
+    <section class="view tpl" id="vTel">
+      <header class="th"><span></span><h1>Teléfono</h1><div class="seg"><button aria-pressed="true">Favoritos</button><button aria-pressed="false">Recientes</button></div></header>
+      <div class="tb" id="fv"></div>
+      <div class="call" id="call"><span class="av" id="cA"></span><b id="cN"></b><small id="cS">Llamando…</small><button class="end" id="cEnd" aria-label="Colgar"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 14c4-4 12-4 16 0l-2 3-3-1v-2c-2-.6-4-.6-6 0v2l-3 1Z"/></svg></button></div>
     </section>
 
-    <!-- rescate -->
-    <aside class="ban" id="ban" aria-live="assertive">
-      <div class="hd"><span class="ai"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.5S9 7 12 7ZM12 7c2-4 6-4 6-1.5S15 7 12 7Z"/></svg></span><span>Regi · hoy · cumple de Mamá</span></div>
-      <h2>¿Se te pasó? Pídelo ya, te lo llevo hoy.</h2>
-      <div class="gf"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306" alt=""><span><b>Mamá ¿Cuál es tu Historia?</b><small>$29.990</small></span></div>
-      <div id="bAct"></div>
-    </aside>
-    <div class="toast" id="toast"><span class="ai"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span id="toT"></span></div>
+    <!-- CALENDARIO -->
+    <section class="view tpl" id="vCal">
+      <header class="th"><span></span><h1>Hoy · sábado 14 de marzo</h1><span></span></header>
+      <div class="tb" id="calL"></div>
+    </section>
+
+    <!-- aviso abajo -->
+    <div class="nb gl" id="nb" aria-live="assertive"></div>
+    <div class="toast gl" id="toast"><span class="ai"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span id="toT"></span></div>
   </main>
 </div>
 
@@ -214,15 +257,21 @@ em,i{font-style:normal}
 <script src="sync.js?v=3"></script>
 <script>
 const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const G='M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.5S9 7 12 7ZM12 7c2-4 6-4 6-1.5S15 7 12 7Z';
 const IC={
   play:'<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg>',
   pause:'<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>',
+  prev:'<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>',
+  next:'<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg>',
   check:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>',
-  gift:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.5S9 7 12 7ZM12 7c2-4 6-4 6-1.5S15 7 12 7Z"/></svg>',
-  home:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9H3z"/></svg>'
+  gift:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${G}"/></svg>`,
+  home:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b0c0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9H3z"/></svg>',
+  chev:'<svg class="ch" width="10" height="17" viewBox="0 0 10 17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m2 2 6.5 6.5L2 15"/></svg>',
+  x:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
 };
 const turn=m=>{ const r={left:-90,'sharp left':-135,'slight left':-45,right:90,'sharp right':135,'slight right':45,uturn:180}[m]||0;
-  return `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(${r}deg)"><path d="M12 20V5M6 11l6-6 6 6"/></svg>`; };
+  return `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(${r}deg)"><path d="M12 20V5M6 11l6-6 6 6"/></svg>`; };
 const tick=()=>{ const d=new Date(); $('clk').textContent=d.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit',hour12:false}); }; tick(); setInterval(tick,15000);
 
 /* sonido y pantalla encendida (se habilitan con el primer toque) */
@@ -236,16 +285,40 @@ $('go').onclick=()=>{
   wake(); $('go').classList.add('off'); setTimeout(()=>M&&M.resize(),300);
 };
 
-/* apps del dock */
-function openView(id){
-  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));
-  document.querySelectorAll('.ap').forEach(a=>a.setAttribute('aria-current',a.dataset.v===id));
-  if(id==='vRegi') document.querySelector('.ap.regi').classList.remove('has');
-  if(id==='vMap') setTimeout(()=>M&&M.resize(),50);
+/* ===== apps, inicio y apps recientes ===== */
+const APPS={
+  map:{n:'Mapas',v:'vMap',svg:'<svg viewBox="0 0 24 24" fill="#fff"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></svg>'},
+  mus:{n:'Música',v:'vMus',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3" fill="#fff"/><circle cx="18" cy="16" r="3" fill="#fff"/></svg>'},
+  tel:{n:'Teléfono',v:'vTel',svg:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>'},
+  regi:{n:'Regi',v:'vRegi',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="${G}"/></svg>`},
+  cal:{n:'Calendario',v:'vCal',cal:1},
+  msg:{n:'Mensajes',v:null,svg:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.4 1.3 4.6 3.4 6.1L4.5 21l4.2-2.2c1 .3 2.1.4 3.3.4 5.5 0 10-3.6 10-8.1S17.5 3 12 3Z"/></svg>'},
+  pod:{n:'Podcasts',v:null,svg:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="10" r="3" fill="#fff"/><path d="M12 14v7M7.5 15.5a7 7 0 1 1 9 0"/></svg>'},
+  set:{n:'Ajustes',v:null,svg:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>'}
+};
+const icon=(k,big)=>{ const a=APPS[k]; return `<span class="ic ${k}">${a.cal?'<span><b>SÁB</b><span>14</span></span>':a.svg}<span class="bd">1</span></span>`; };
+$('grid').innerHTML=['map','mus','tel','regi','cal','msg','pod','set'].map(k=>`<button class="app" data-k="${k}">${icon(k)}<span>${APPS[k].n}</span></button>`).join('');
+let recent=['map','mus','regi'], cur='dash', pending=true;
+function drawRec(){ $('rec').innerHTML=recent.map(k=>`<button data-k="${k}" aria-label="${APPS[k].n}" ${cur===k?'aria-current="true"':''}>${icon(k)}</button>`).join(''); badges(); }
+function badges(){ document.querySelectorAll('.ic.regi').forEach(i=>i.classList.toggle('has',pending)); }
+function show(id){ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id)); }
+function openApp(k){
+  const a=APPS[k]; if(!a.v){ toast(`${a.n}<small>No disponible en la demo</small>`); return; }
+  cur=k; if(k!=='map'&&!recent.includes(k)){ recent=[k,...recent].slice(0,3); }
+  if(k==='map'){ $('vMap').classList.remove('dash'); show('vMap'); setTimeout(()=>M&&M.resize(),60); }
+  else show(a.v);
+  if(k==='regi') regiOpen();
+  drawRec();
 }
-document.querySelectorAll('.ap').forEach(a=>a.onclick=()=>openView(a.dataset.v));
+function openDash(){ cur='dash'; $('vMap').classList.add('dash'); show('vMap'); setTimeout(()=>M&&M.resize(),60); drawRec(); }
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-k]'); if(b) openApp(b.dataset.k); });
+/* botón de inicio: alterna entre el panel y la pantalla de inicio */
+$('hb').onclick=()=>{ if(cur==='home') openDash(); else { cur='home'; show('vHome'); drawRec(); } };
+$('dRg').onclick=()=>openApp('regi'); $('dCl').onclick=()=>openApp('cal');
+$('eEnd').onclick=()=>openDash();
+drawRec();
 
-let tt=0; function toast(h){ $('toT').innerHTML=h; $('toast').classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>$('toast').classList.remove('on'),4200); }
+let tt=0; function toast(h){ $('toT').innerHTML=h; $('toast').classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>$('toast').classList.remove('on'),3600); }
 
 /* ===== MAPA: Google Maps (estilo oscuro de auto); si la clave falla, OpenStreetMap. Ruta real, el auto avanza; se puede mover y hacer zoom ===== */
 const GKEY='AIzaSyD8BTnfaxjO6jSVzpodA4kwjNa7Z0-nsAM';
@@ -359,67 +432,111 @@ window.gReady=()=>{ try{ boot(gInit()); }catch(e){ console.error(e); useOSM(); }
 setTimeout(()=>{ if(!M) useOSM(); },8000);
 setRoute('casa'); requestAnimationFrame(frame);
 
+
 /* ===== MÚSICA ===== */
 const SONGS=[['Tu radio de la tarde','Lo que suena'],['Tren al sur','Los Prisioneros'],['Ella usó mi cabeza como un revólver','Soda Stereo'],['Lamento boliviano','Los Enanitos Verdes']];
 let si=0, playing=true, prog=.3;
-function drawMus(){ $('mT').textContent=SONGS[si][0]; $('mA').textContent=SONGS[si][1]; $('mPlay').innerHTML=playing?IC.pause:IC.play; $('mpp').innerHTML=(playing?IC.pause:IC.play).replace(/width="\d+" height="\d+"/,'width="16" height="16"'); document.querySelector('#mini b').textContent=SONGS[si][0]; document.querySelector('#mini small').textContent=SONGS[si][1]; }
-$('mPlay').onclick=$('mpp').onclick=e=>{ e.stopPropagation(); playing=!playing; drawMus(); };
-$('mNext').onclick=()=>{ si=(si+1)%SONGS.length; prog=0; playing=true; drawMus(); };
-$('mPrev').onclick=()=>{ si=(si+SONGS.length-1)%SONGS.length; prog=0; playing=true; drawMus(); };
-$('mini').onclick=()=>openView('vMus');
-setInterval(()=>{ if(!playing) return; prog+=.004; if(prog>=1){ prog=0; si=(si+1)%SONGS.length; drawMus(); } $('mB').style.width=(prog*100)+'%'; },250);
+function drawMus(){
+  document.querySelectorAll('.nT').forEach(e=>e.textContent=SONGS[si][0]); document.querySelectorAll('.nA').forEach(e=>e.textContent=SONGS[si][1]);
+  document.querySelectorAll('[data-m]').forEach(b=>b.innerHTML=b.dataset.m==='play'?(playing?IC.pause:IC.play):IC[b.dataset.m]);
+}
+document.querySelectorAll('[data-m]').forEach(b=>b.onclick=e=>{ e.stopPropagation(); const m=b.dataset.m;
+  if(m==='play') playing=!playing; else { si=(si+(m==='next'?1:SONGS.length-1))%SONGS.length; prog=0; playing=true; } drawMus(); });
+$('dNp').onclick=()=>openApp('mus');
+setInterval(()=>{ if(!playing) return; prog+=.004; if(prog>=1){ prog=0; si=(si+1)%SONGS.length; drawMus(); } $('mB').style.width=(prog*100)+'%'; const s=Math.round(prog*208); $('mC').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); },250);
 drawMus();
 
 /* ===== TELÉFONO ===== */
-const FAV=[['Mamá','#f5a3c7'],['Carla','#ffd166'],['Papá','#9ad1ff'],['Andrés','#b9e4a8']];
-$('fv').innerHTML=FAV.map(([n,c])=>`<button data-n="${n}" data-c="${c}"><span class="av" style="background:${c};color:#0b0c0f">${n[0]}</span><b>${n}</b><small>Celular</small></button>`).join('');
+const FAV=[['Mamá','#f5a3c7','Celular'],['Carla','#ffd166','Hermana'],['Papá','#9ad1ff','Celular'],['Andrés','#b9e4a8','Hermano']];
+$('fv').innerHTML=FAV.map(([n,c,s])=>`<button class="row" data-n="${n}" data-c="${c}"><span class="im" style="background:${c};color:#111;border-radius:50%">${n[0]}</span><span class="t"><b>${n}</b><small>${s}</small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--ok)"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></button>`).join('');
 let callT=0;
-$('fv').querySelectorAll('button').forEach(b=>b.onclick=()=>{ $('cA').textContent=b.dataset.n[0]; $('cA').style.cssText=`background:${b.dataset.c};color:#0b0c0f`; $('cN').textContent=b.dataset.n; $('cS').textContent='Llamando…'; $('call').classList.add('on'); clearTimeout(callT); callT=setTimeout(()=>$('cS').textContent='En llamada · 0:01',2600); });
+$('fv').querySelectorAll('.row').forEach(b=>b.onclick=()=>{ $('cA').textContent=b.dataset.n[0]; $('cA').style.background=b.dataset.c; $('cN').textContent=b.dataset.n; $('cS').textContent='Llamando…'; $('call').classList.add('on'); clearTimeout(callT); callT=setTimeout(()=>$('cS').textContent='0:01',2600); });
 $('cEnd').onclick=()=>{ clearTimeout(callT); $('call').classList.remove('on'); };
 
-/* ===== REGI en el auto ===== */
-const NEXT=[
-  {d:'2',m:'abr',n:'Andrés',s:'Cumpleaños · te aviso el 19 mar',st:'En mi radar',c:''},
-  {d:'21',m:'jun',n:'Papá',s:'Día del Padre',st:'Comprado',c:'k'},
-  {d:'3',m:'ago',n:'Abuela Rosa',s:'Cumpleaños · te aviso el 20 jul',st:'En mi radar',c:''}
+/* ===== CALENDARIO ===== */
+$('calL').innerHTML=`<p class="sec">Todo el día</p><button class="row" id="calM"><span class="im" style="background:rgba(255,159,10,.2);color:#ff9f0a">🎂</span><span class="t"><b>Cumpleaños de Mamá</b><small>Regi tiene su regalo listo</small></span>${IC.chev}</button>
+  <p class="sec">Más tarde</p><div class="row"><span class="im" style="background:rgba(10,132,255,.2);color:var(--blue)">19</span><span class="t"><b>Comida en casa de Mamá</b><small>20:30 · Av. Los Leones 1180</small></span></div>`;
+$('calM').onclick=()=>openApp('regi');
+
+/* ===== REGI: lista con pestañas + ficha ===== */
+const MAMA={img:'https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306',g:'Mamá ¿Cuál es tu Historia?',p:'$29.990'};
+const VIENE=[
+  {d:'2 abr',n:'Andrés',s:'Cumpleaños · te aviso el 19 mar',c:'#b9e4a8'},
+  {d:'3 ago',n:'Abuela Rosa',s:'Cumpleaños · te aviso el 20 jul',c:'#f5a3c7'},
+  {d:'12 sep',n:'Pareja',s:'Aniversario · te aviso el 29 ago',c:'#ffd166'}
 ];
-$('rNext').innerHTML=NEXT.filter(x=>x.n!=='Papá').map(x=>`<button class="it"><span class="d"><b>${x.d}</b><small>${x.m}</small></span><span class="t"><b>${x.n}</b><small>${x.s}</small></span><span class="st ${x.c}">${x.st}</span></button>`).join('');
-$('rNext').querySelectorAll('.it').forEach(b=>b.onclick=()=>{
-  const o=b.classList.toggle('open'); const x=b.querySelector('.xp'); if(x) x.remove();
-  if(o) b.insertAdjacentHTML('beforeend',`<span class="xp"><span><b>Ya lo estoy pensando</b>Te muestro la propuesta con tiempo para que llegue.</span></span>`);
-});
-
-let done=null; /* 'envio' | 'retiro' | 'no' */
-const ACTS=`<div class="bts"><button class="bt p" data-a="envio">Envíalo hoy a su casa <small>antes de las 20:00</small></button><button class="bt s" data-a="retiro">Lo retiro de camino <small>Creado MUT · 2 min</small></button><button class="bt g" data-a="no">Ahora no</button></div>`;
-function okHtml(){ return done==='envio'?`<div class="ok"><i>${IC.check}</i>Listo. Llega hoy antes de las 20:00 a casa de Mamá.</div>`
-  :done==='retiro'?`<div class="ok"><i>${IC.check}</i>Te espera envuelto en Creado MUT. Ya agregué la parada.</div>`
-  :`<div class="ok m">Ok. Te lo recuerdo al estacionar.</div>`; }
-function drawActs(){ ['rAct','bAct'].forEach(id=>{ $(id).innerHTML=done?okHtml():ACTS; $(id).querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>decide(b.dataset.a)); }); }
-let busy=0;
-function decide(a){
-  done=a; drawActs(); clearTimeout(busy);
-  if(a==='envio'){ CC.send('auto-si',{para:'Mamá',gift:'Mamá ¿Cuál es tu Historia?',modo:'envio'}); toast('Comprado<small>Llega hoy antes de las 20:00</small>'); }
-  if(a==='retiro'){ CC.send('auto-si',{para:'Mamá',gift:'Mamá ¿Cuál es tu Historia?',modo:'retiro'}); setRoute('mut',true);
-    setTimeout(()=>{ openView('vMap'); showStop(); },400); toast('Parada agregada<small>Creado MUT · te lo tienen envuelto</small>'); }
-  busy=setTimeout(()=>$('ban').classList.remove('on'),a==='no'?3500:6000);
+let done=null, rTab='hoy';
+const mamaState=()=>done==='envio'?['Comprado · llega hoy antes de las 20:00','k','Comprado']:done==='retiro'?['Listo para retiro en Creado MUT','k','Retiro']:['Regalo listo · falta tu OK','r','Hoy'];
+function regiList(){
+  $('rI').hidden=true; $('rL').hidden=false; $('rBk').classList.remove('on'); $('rSeg').style.visibility='visible';
+  document.querySelectorAll('#rSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===rTab));
+  let h='';
+  if(rTab==='hoy'){ const [s,c,st]=mamaState(); const x=VIENE[0];
+    h=`<p class="sec">Hoy</p><button class="row" data-r="mama"><img class="im" src="${MAMA.img}" alt=""><span class="t"><b>Cumpleaños de Mamá</b><small>${s}</small></span><span class="st ${c}">${st}</span>${IC.chev}</button>
+    <p class="sec">Lo próximo</p><button class="row" data-r="v0"><span class="im" style="background:${x.c};color:#111">${x.n[0]}</span><span class="t"><b>${x.n}</b><small>${x.d} · ${x.s}</small></span><span class="st">En mi radar</span>${IC.chev}</button>
+    <p class="sec">En camino</p><div class="row"><span class="im" style="background:#9ad1ff;color:#111">P</span><span class="t"><b>Papá</b><small>Día del Padre · llega el 19 jun</small></span><span class="st k">Preparando</span></div>`; }
+  if(rTab==='viene') h=VIENE.map((x,i)=>`<button class="row" data-r="v${i}"><span class="im" style="background:${x.c};color:#111">${x.n[0]}</span><span class="t"><b>${x.n}</b><small>${x.d} · ${x.s}</small></span><span class="st">En mi radar</span>${IC.chev}</button>`).join('');
+  if(rTab==='ped') h=(done&&done!=='no'?`<div class="row"><img class="im" src="${MAMA.img}" alt=""><span class="t"><b>Mamá</b><small>${done==='envio'?'Llega hoy antes de las 20:00':'Te espera en Creado MUT'}</small></span><span class="st k">${done==='envio'?'En camino':'Para retiro'}</span></div>`:'')
+    +`<div class="row"><span class="im" style="background:#9ad1ff;color:#111">P</span><span class="t"><b>Papá</b><small>Día del Padre · llega el 19 jun</small></span><span class="st k">Preparando</span></div>`;
+  $('rL').innerHTML=h;
+  $('rL').querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>regiInfo(b.dataset.r));
 }
-drawActs();
+function regiInfo(r){
+  $('rL').hidden=true; $('rI').hidden=false; $('rBk').classList.add('on'); $('rSeg').style.visibility='hidden';
+  if(r==='mama'){
+    $('rI').innerHTML=`<img src="${MAMA.img}" alt=""><div class="tx"><span class="kk">Hoy · Cumpleaños de Mamá</span><h2>${MAMA.g}</h2><p>${MAMA.p} · envuelto para regalo, con tarjeta. Lo elegí porque le gusta leer y guardar historias de la familia.</p><div id="rAct" style="margin-top:auto"></div></div>`;
+    drawActs(); return;
+  }
+  const x=VIENE[+r.slice(1)];
+  $('rI').innerHTML=`<div style="display:grid;place-items:center;background:${x.c};border-radius:24px;color:#111;font-size:120px;font-weight:700">${x.n[0]}</div><div class="tx"><span class="kk" style="color:var(--mut)">${x.d}</span><h2>${x.n}</h2><p>${x.s}. Ya lo estoy pensando: te muestro la propuesta con tiempo para que llegue.</p><div class="bts"><button class="bt" id="rOk">Ok</button></div></div>`;
+  $('rOk').onclick=regiList;
+}
+function regiOpen(){ rTab='hoy'; regiList(); }
+$('rBk').onclick=regiList;
+document.querySelectorAll('#rSeg button').forEach(b=>b.onclick=()=>{ rTab=b.dataset.t; regiList(); });
 
-/* rescate: llega encima de cualquier app */
-function rescue(){ clearTimeout(busy); busy=0; done=null; drawActs(); $('ban').classList.add('on'); document.querySelector('.ap.regi').classList.add('has'); chime(); }
-function reset(){ clearTimeout(busy); busy=0; $('ban').classList.remove('on'); done=null; setTimeout(drawActs,700); if(mode!=='casa') setRoute('casa',true); openView('vMap'); }
+/* acciones del regalo de Mamá (en la ficha y en el aviso) */
+function okHtml(){ return done==='envio'?`<div class="ok"><i>${IC.check}</i>Listo. Llega hoy antes de las 20:00 a casa de Mamá.</div>`
+  :done==='retiro'?`<div class="ok"><i>${IC.check}</i>Te espera envuelto en Creado MUT. Agregué la parada.</div>`
+  :`<div class="ok m">Ok. Te lo recuerdo al estacionar.</div>`; }
+function drawActs(){
+  const el=$('rAct'); if(!el) return;
+  el.innerHTML=done?okHtml():`<div class="bts"><button class="bt p" data-a="envio">Envíalo hoy a su casa <small>antes de las 20:00</small></button><button class="bt" data-a="retiro">Lo retiro de camino <small>Creado MUT · 2 min</small></button><button class="bt" data-a="no">Ahora no</button></div>`;
+  el.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>decide(b.dataset.a));
+}
+function dashCard(){
+  $('dRgT').textContent=done==='envio'?'Regalo de Mamá: comprado':done==='retiro'?'Pasa por Creado MUT':'Hoy es el cumple de Mamá';
+  $('dRgS').textContent=done==='envio'?'Llega hoy antes de las 20:00':done==='retiro'?'Te lo tienen envuelto · 2 min':'Tengo su regalo listo';
+}
+let nbT=0;
+function decide(a){
+  done=a; pending=false; badges(); drawActs(); dashCard(); clearTimeout(nbT);
+  $('nb').querySelector('.ac')&&( $('nb').querySelector('.ac').outerHTML=`<div class="ac">${okHtml().replace('class="ok','class="ok')}</div>` );
+  if(a==='envio'){ CC.send('auto-si',{para:'Mamá',gift:MAMA.g,modo:'envio'}); }
+  if(a==='retiro'){ CC.send('auto-si',{para:'Mamá',gift:MAMA.g,modo:'retiro'}); setRoute('mut',true); setTimeout(()=>{ if(cur!=='dash') openApp('map'); showStop(); },500); toast('Parada agregada<small>Creado MUT · te lo tienen envuelto</small>'); }
+  nbT=setTimeout(()=>$('nb').classList.remove('on'),a==='no'?2500:4500);
+}
 
-/* sala: la presentación (o la compu) manda 'auto'; 'reset' vuelve al mapa */
+/* ===== aviso de rescate: llega abajo, sobre cualquier pantalla ===== */
+function rescue(){
+  clearTimeout(nbT); done=null; pending=true; badges(); dashCard(); drawActs();
+  $('nb').innerHTML=`<span class="ai">${IC.gift.replace('width="20" height="20"','width="26" height="26"')}</span><img class="gi" src="${MAMA.img}" alt=""><span class="tx"><small>REGI · AHORA</small><b>¿Se te pasó el cumple de Mamá? Te lo llevo hoy.</b><span>${MAMA.g} · ${MAMA.p}</span></span><div class="ac"><button class="p" data-a="envio">Envíalo hoy</button><button data-a="retiro">Retirar de camino</button><button class="x" data-a="no" aria-label="Ahora no">${IC.x}</button></div>`;
+  $('nb').querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>decide(b.dataset.a));
+  $('nb').classList.add('on'); chime();
+}
+function reset(){ clearTimeout(nbT); $('nb').classList.remove('on'); done=null; pending=true; badges(); dashCard(); drawActs(); if(mode!=='casa') setRoute('casa',true); if($('vRegi').classList.contains('on')) regiList(); openDash(); }
+
+/* sala: la presentación (o la compu) manda 'auto'; 'reset' vuelve al panel */
 let seen=-1;
 CC.on('auto',()=>{ seen=-2; rescue(); });
 CC.on('estado',d=>{
-  if(d.mom==='auto'){ if(d.visit!==seen&&seen!==-2&&!$('ban').classList.contains('on')) rescue(); seen=d.visit; }
-  else { seen=-1; if($('ban').classList.contains('on')&&!busy) $('ban').classList.remove('on'); }
+  if(d.mom==='auto'){ if(d.visit!==seen&&seen!==-2&&!$('nb').classList.contains('on')) rescue(); seen=d.visit; }
+  else { seen=-1; }
 });
 CC.on('reset',reset);
 CC.onState(s=>{ const g=$('sig'); g.classList.toggle('live',s==='en vivo'); g.lastElementChild.textContent=s; });
 addEventListener('keydown',e=>{ if(e.key==='a'||e.key==='A') rescue(); if(e.key==='r'||e.key==='R') reset(); });
-$('clk').ondblclick=()=>$('ban').classList.contains('on')?reset():rescue();
+$('clk').ondblclick=()=>$('nb').classList.contains('on')?reset():rescue();
 </script>
 </body>
 </html>
