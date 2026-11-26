@@ -1,4 +1,4 @@
-// Cuenta conmigo · avisos al celular (demo de sincronización entre dispositivos).
+// Regi · avisos al celular (demo de sincronización entre dispositivos).
 // POST {action:'sub', sala, sub}  → guarda la suscripción del celular
 // POST {action:'send', sala, title, body, img?, k?, tag?, url?} → notifica a los celulares de la sala
 import postgres from "npm:postgres@3.4.4";

@@ -1,4 +1,4 @@
-/* Cuenta conmigo · sincronización entre dispositivos (demo).
+/* Regi · sincronización entre dispositivos (demo).
    Una "sala" agrupa los dispositivos de la mesa: ?sala=xxx en la URL; por defecto 'demo'.
    CC.push({title,body,img,k})  → notificación web a los celulares de la sala (función push de Supabase)
    CC.send(tipo, datos)         → mensaje en vivo a las páginas abiertas de la sala (Supabase Realtime)

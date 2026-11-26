@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>REGI · Comisión</title>
+<link rel="icon" href="assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* REGI · presentación para la comisión (metodología, pensamiento y tecnología).
+   Navegación: → / espacio / AvPág avanza · ← retrocede · #n abre la lámina n · F pantalla completa.
+   Diagramación basada en MAPI (comisión anterior): barra de etapas fija, grillas, arquitectura en 3 columnas, tablas de validación. */
+:root{--v:#3B00D1;--k:#0E0A1F;--l:#CCD100;--p:#D15CB5;--b:#598AD1;--r:#D13C00;--w:#fff;--w7:rgba(255,255,255,.72);--w5:rgba(255,255,255,.5);--w2:rgba(255,255,255,.16);--w1:rgba(255,255,255,.08)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#deck{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+.s{position:absolute;inset:0;background:var(--v);overflow:hidden;opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
+.s.k{background:var(--k)}
+.s.on{opacity:1;visibility:visible}
+.s .a{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
+.s.on .a{opacity:1;transform:none;transition-delay:calc(var(--i,0)*.07s + .1s)}
+/* barra de etapas */
+#bar{position:absolute;left:0;right:0;top:0;height:76px;display:flex;justify-content:center;gap:58px;align-items:center;z-index:10;font:500 19px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--w5);pointer-events:none;transition:opacity .4s}
+#bar span{position:relative;padding-bottom:6px}
+#bar span.on{color:var(--l)}
+#bar span.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--l)}
+#bar.off{opacity:0}
+#cnt{position:absolute;right:56px;bottom:40px;z-index:10;font:500 18px 'IBM Plex Mono',monospace;color:var(--w5);letter-spacing:.08em}
+#sig{position:absolute;left:56px;bottom:40px;z-index:10;display:flex;align-items:center;gap:12px;font:500 18px 'IBM Plex Mono',monospace;color:var(--w5);letter-spacing:.08em}
+/* tipografía */
+.T{margin:0;font-weight:900;font-stretch:125%;text-transform:uppercase;color:var(--l);font-size:72px;line-height:.92;letter-spacing:-.005em}
+.T2{margin:0;font-weight:800;font-stretch:112%;text-transform:uppercase;font-size:40px;line-height:1;letter-spacing:.005em}
+.m{font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:.05em;text-transform:uppercase}
+.lead{font-size:30px;line-height:1.32;color:var(--w7);margin:0}
+.hl{color:var(--l)}
+.wrap{position:absolute;left:120px;right:120px;top:150px;bottom:110px}
+/* placeholders visibles */
+.ph{position:absolute;display:grid;place-items:center;text-align:center;padding:20px;border:2px dashed rgba(255,255,255,.4);background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px);color:var(--w7);font:500 18px 'IBM Plex Mono',monospace;letter-spacing:.04em}
+.ph.on-dark{border-color:rgba(204,209,0,.6);color:var(--l)}
+.q-ph{color:var(--l);font:500 22px 'IBM Plex Mono',monospace}
+/* marca de Regi */
+.mk{display:inline-block;vertical-align:middle}
+/* foto en duotono (persona) */
+.duo{position:relative;overflow:hidden;background:var(--c,var(--l))}
+.duo img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2);mix-blend-mode:multiply}
+
+/* 1 · portada */
+#s1 .left{position:absolute;left:120px;top:250px;width:860px}
+#s1 .big{margin:22px 0 0;font-weight:900;font-stretch:125%;font-size:230px;line-height:.8;color:var(--l);letter-spacing:-.02em}
+#s1 .sub{margin:30px 0 0;font-weight:800;font-stretch:115%;text-transform:uppercase;font-size:54px;line-height:1}
+#s1 .desc{margin:24px 0 0;font-size:28px;color:var(--w7)}
+#s1 .team{position:absolute;left:120px;bottom:120px}
+#s1 .blk{position:absolute;right:0;top:0;bottom:0;width:240px;background:var(--l)}
+#s1 .shot{position:absolute;left:1060px;top:220px;width:1100px;transform:perspective(1800px) rotateY(-22deg) rotateZ(-3deg);transform-origin:100% 50%;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+#s1 .shot img{display:block;width:100%}
+
+/* 2 · proceso de diseño */
+#s2 .grid{position:absolute;left:120px;right:120px;top:310px;bottom:150px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:28px}
+.card{position:relative;background:var(--w1);border-top:4px solid var(--l);padding:34px 36px}
+.card .n{font:600 46px 'IBM Plex Mono',monospace;color:var(--l)}
+.card h3{margin:22px 0 0;font-weight:800;font-stretch:110%;font-size:38px;text-transform:uppercase;line-height:1}
+.card p{margin:12px 0 0;font-size:24px;line-height:1.3;color:var(--w7)}
+.card .pic{position:absolute;right:34px;top:34px}
+
+/* 3 · línea de tiempo del taller */
+#s3 .tl{position:absolute;left:120px;right:120px;top:300px;bottom:120px;display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+#s3 .tl::before{content:"";position:absolute;left:0;right:0;top:268px;height:3px;background:var(--w2)}
+#s3 .h{position:relative}
+#s3 .h .ph{position:relative;height:230px;width:100%;font-size:15px}
+#s3 .h .dot{position:absolute;top:258px;left:0;width:22px;height:22px;background:var(--v);border:4px solid var(--l)}
+#s3 .h:last-child .dot{background:var(--l)}
+#s3 .h .mo{margin-top:310px;color:var(--l)}
+#s3 .h h4{margin:10px 0 0;font-weight:800;font-stretch:108%;text-transform:uppercase;font-size:27px;line-height:1.05}
+#s3 .h p{margin:12px 0 0;font-size:19px;line-height:1.35;color:var(--w7)}
+#s3 .h p b{color:#fff;font-weight:600}
+#s3 .h .ph{position:absolute;top:0;left:0;right:0}
+
+/* 4 · lo que Creado hace bien */
+#s4 .row{position:absolute;left:120px;right:120px;top:330px;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+#s4 .it{border-left:4px solid var(--l);padding:6px 0 0 26px;min-height:440px}
+#s4 .it .n{font:600 22px 'IBM Plex Mono',monospace;color:var(--l)}
+#s4 .it h3{margin:150px 0 0;font-weight:800;font-stretch:108%;text-transform:uppercase;font-size:33px;line-height:1.02}
+#s4 .it p{margin:14px 0 0;font-size:22px;line-height:1.35;color:var(--w7)}
+#s4 .foot{position:absolute;left:120px;right:120px;bottom:130px;padding-top:26px;border-top:2px solid var(--w2);font-size:30px;color:var(--w7)}
+
+/* 5 · diagnóstico */
+#s5 .cols{position:absolute;left:120px;right:120px;top:300px;bottom:130px;display:grid;grid-template-columns:1.05fr 1fr;gap:70px}
+#s5 h3{margin:0 0 26px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:34px}
+#s5 .st{margin:0 0 30px;font-size:28px;line-height:1.35}
+#s5 .st b{color:var(--l);font-weight:600}
+#s5 .pr{display:flex;gap:24px;align-items:center;padding:22px 0;border-top:2px solid var(--w2);font-size:25px;line-height:1.3}
+#s5 .q{position:relative;padding:28px 34px;border-left:6px solid var(--l);background:var(--w1);margin-bottom:22px;min-height:150px;display:flex;align-items:center}
+
+/* 6 · dato duro */
+#s6 .n1{position:absolute;left:110px;top:150px;font-weight:900;font-stretch:125%;font-size:360px;line-height:.85;color:var(--l);letter-spacing:-.03em}
+#s6 .t1{position:absolute;left:120px;top:540px;width:900px;font-size:44px;line-height:1.2;font-weight:600}
+#s6 .n2{position:absolute;left:1240px;top:560px;font-weight:900;font-stretch:125%;font-size:190px;line-height:.85;color:var(--p)}
+#s6 .t2{position:absolute;left:1250px;top:740px;width:560px;font-size:34px;line-height:1.25}
+#s6 .src{position:absolute;left:120px;bottom:120px;color:var(--w5)}
+
+/* láminas con foto oscurecida y frase al centro (7, 10, 11) */
+.hero .bg{position:absolute;inset:0}
+.hero .bg .ph{inset:0;border:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 18px,transparent 18px 36px)}
+.hero .bg .ph span{position:absolute;left:120px;bottom:120px}
+.hero .sh{position:absolute;inset:0;background:rgba(14,10,31,.55)}
+.hero .c{position:absolute;left:220px;right:220px;top:50%;transform:translateY(-50%);text-align:center}
+.hero.on .c{transform:translateY(-50%)}
+.hero .c .kk{color:var(--l)}
+.hero .c .T{margin-top:18px}
+.hero .c .stm{margin:44px auto 0;max-width:1300px;font-size:46px;line-height:1.25;font-weight:500}
+.hero .c .stm b{color:var(--l);font-weight:700}
+
+/* 8 · usuarios */
+#s8 table{position:absolute;left:120px;right:120px;top:300px;border-collapse:collapse;font-size:24px;line-height:1.3}
+#s8 th{text-align:left;font:500 18px 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--l);padding:0 24px 18px 0;border-bottom:2px solid var(--l)}
+#s8 td{padding:26px 24px 26px 0;border-bottom:2px solid var(--w2);vertical-align:middle;color:var(--w7)}
+#s8 td.who{display:flex;align-items:center;gap:22px;color:#fff}
+#s8 td.who .duo{width:104px;height:104px;flex:none;border-radius:50%}
+#s8 td.who b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:32px}
+#s8 td.who small{display:block;margin-top:4px;color:var(--w5);font-size:18px}
+
+/* 9 · reencuadre */
+#s9 .ab{position:absolute;left:120px;right:120px;top:350px;height:440px;display:grid;grid-template-columns:1fr 140px 1fr}
+#s9 .x{padding:50px 56px;display:flex;flex-direction:column}
+#s9 .x.a1{background:var(--w1);border:2px solid var(--w2)}
+#s9 .x.a2{background:var(--l);color:var(--k)}
+#s9 .x .m{opacity:.75}
+#s9 .x h3{margin:auto 0 0;font-weight:900;font-stretch:118%;text-transform:uppercase;font-size:60px;line-height:.98}
+#s9 .x p{margin:18px 0 0;font-size:28px}
+#s9 .ar{display:grid;place-items:center}
+#s9 .foot{position:absolute;left:120px;right:120px;bottom:130px;font-size:28px;color:var(--w7)}
+
+/* 12 · naming */
+#s12 .ph{left:0;top:0;bottom:0;width:760px}
+#s12 .rv{position:absolute;left:880px;top:200px}
+#s12 .row{display:flex;align-items:center;gap:26px;height:150px}
+#s12 .lt{width:170px;height:130px;display:grid;place-items:center;font-weight:900;font-stretch:125%;font-size:96px;color:var(--k);background:var(--l);transform:scaleX(0);transform-origin:0 50%;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+#s12 .lt.p{background:var(--p);color:#fff}#s12 .lt.b{background:var(--b);color:#fff}
+#s12 .wd{font-weight:800;font-stretch:115%;text-transform:uppercase;font-size:64px;opacity:0;transform:translateX(-20px);transition:opacity .5s,transform .5s}
+#s12 .wd small{font-weight:500;font-stretch:100%;text-transform:none;font-size:34px;color:var(--w5)}
+#s12.on .lt{transform:none}#s12.on .wd{opacity:1;transform:none}
+#s12.on .row:nth-child(2) .lt,#s12.on .row:nth-child(2) .wd{transition-delay:.35s}
+#s12.on .row:nth-child(3) .lt,#s12.on .row:nth-child(3) .wd{transition-delay:.7s}
+#s12 .vals{position:absolute;left:880px;right:120px;bottom:120px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+#s12 .vals div{border-top:3px solid var(--l);padding-top:16px}
+#s12 .vals b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:28px}
+#s12 .vals span{display:block;margin-top:8px;font-size:22px;line-height:1.3;color:var(--w7)}
+
+/* 13 · arquitectura */
+#s13 .cols{position:absolute;left:120px;right:120px;top:270px;bottom:170px;display:grid;grid-template-columns:1fr 1.45fr 1fr;gap:26px}
+#s13 .col{background:var(--w1);border-top:4px solid var(--l);padding:30px 32px;position:relative}
+#s13 .col>h3{margin:0 0 20px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px}
+#s13 .in{padding:15px 0;border-top:1px solid var(--w2)}
+#s13 .in b{display:block;font-size:23px;font-weight:700}
+#s13 .in span{display:block;margin-top:4px;font-size:18px;color:var(--w7);line-height:1.3}
+#s13 .eng{position:relative;height:calc(100% - 50px)}
+#s13 .orq{position:absolute;left:50%;top:48%;width:170px;height:170px;margin:-85px 0 0 -85px;background:var(--l);color:var(--k);display:grid;place-items:center;text-align:center;font-weight:900;font-stretch:115%;text-transform:uppercase;font-size:22px;line-height:1.05}
+#s13 .ag{position:absolute;width:190px;text-align:center;transform:translate(-50%,-50%)}
+#s13 .ag i{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 8px;border-radius:50%;font:600 26px 'IBM Plex Mono',monospace;font-style:normal;color:#fff}
+#s13 .ag b{display:block;font-size:20px;font-weight:700;line-height:1.1}
+#s13 .ag span{display:block;margin-top:3px;font-size:15px;color:var(--w7);line-height:1.25}
+#s13 .loop{position:absolute;left:120px;right:120px;bottom:100px;height:52px;display:flex;align-items:center;gap:18px;font-size:24px;color:var(--w7)}
+#s13 .loop .m{color:var(--l)}
+
+/* 14 · capas */
+#s14 .stack{position:absolute;left:120px;top:290px;width:1120px;bottom:120px;display:flex;flex-direction:column;gap:10px}
+#s14 .ly{flex:1;display:grid;grid-template-columns:250px 1fr;align-items:center;background:var(--w1)}
+#s14 .ly .nm{height:100%;display:flex;align-items:center;padding:0 22px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:24px;color:var(--k)}
+#s14 .ly .ct{padding:0 26px;font-size:20px;line-height:1.35;color:var(--w7)}
+#s14 .ly .ct b{color:#fff;font-weight:600}
+#s14 .now{position:absolute;left:1290px;right:120px;top:290px;bottom:120px;border:2px solid var(--l);padding:30px 32px}
+#s14 .now h3{margin:0 0 6px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:28px;color:var(--l)}
+#s14 .now .it{padding:16px 0;border-top:1px solid var(--w2);font-size:19px;line-height:1.35;color:var(--w7)}
+#s14 .now .it b{display:block;color:#fff;font-size:21px;font-weight:700}
+#s14 .tag{position:absolute;left:120px;top:244px;color:var(--l)}
+
+/* 15 · swimlanes */
+#s15 .sw{position:absolute;left:120px;right:120px;top:280px;bottom:140px;display:grid;grid-template-columns:200px repeat(6,1fr);grid-template-rows:repeat(3,1fr)}
+#s15 .ln{display:flex;align-items:center;padding-left:6px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:26px;border-top:2px solid var(--w2)}
+#s15 .cl{border-top:2px solid var(--w2);border-left:1px dashed var(--w2);position:relative}
+#s15 .bx{position:absolute;left:14px;right:14px;top:50%;transform:translateY(-50%);padding:18px 18px;font-size:20px;line-height:1.25;font-weight:600}
+#s15 .bx .m{display:block;font-size:14px;margin-bottom:6px;opacity:.8}
+#s15 .u .bx{background:#fff;color:var(--k)}#s15 .r .bx{background:var(--l);color:var(--k)}#s15 .c .bx{background:var(--p);color:#fff}
+#s15 svg.arw{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+/* 16 · lógica de decisión */
+#s16 .fl{position:absolute;left:120px;top:270px;width:900px;bottom:130px}
+#s16 .nd{position:absolute;display:grid;place-items:center;text-align:center;padding:14px;font-size:22px;font-weight:600;line-height:1.2}
+#s16 .nd.ns{background:#fff;color:var(--k)}#s16 .nd.d{background:var(--l);color:var(--k);transform:rotate(45deg)}#s16 .nd.d span{transform:rotate(-45deg)}
+#s16 .nd.o{background:var(--w1);border:2px solid var(--w2)}
+#s16 .ur{position:absolute;left:1100px;right:120px;top:270px;bottom:130px}
+#s16 .ur h3{margin:0 0 24px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px}
+#s16 .st{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;padding:16px 0;border-top:2px solid var(--w2)}
+#s16 .st b{font-weight:900;font-stretch:115%;font-size:36px;white-space:nowrap;color:var(--l)}
+#s16 .st span{font-size:21px;line-height:1.3;color:var(--w7)}
+#s16 .st span strong{display:block;color:#fff;font-weight:700}
+#s16 .rule{margin-top:26px;padding:18px 22px;background:var(--l);color:var(--k);font-size:22px;font-weight:600}
+
+/* 17 · indicaciones de los agentes */
+#s17 .cur{position:absolute;left:120px;top:290px;width:960px;bottom:120px;background:var(--k);border-top:6px solid var(--l);padding:32px 40px}
+#s17 .cur h3{margin:0;font-weight:900;font-stretch:118%;text-transform:uppercase;font-size:48px;color:var(--l)}
+#s17 .cur .g{display:grid;grid-template-columns:200px 1fr;gap:14px 26px;margin-top:22px;font-size:21px;line-height:1.35;color:var(--w7)}
+#s17 .cur .g>.m{color:var(--l);font-size:16px;padding-top:4px}
+#s17 .cur ul{margin:0;padding-left:20px}
+#s17 .cur li{margin-bottom:4px}
+#s17 .cur code{font:500 17px 'IBM Plex Mono',monospace;color:#fff;background:var(--w1);padding:10px 14px;display:block;line-height:1.5}
+#s17 .rest{position:absolute;left:1120px;right:120px;top:290px;bottom:120px;display:grid;grid-template-rows:repeat(5,1fr);gap:12px}
+#s17 .ra{background:var(--w1);border-left:6px solid var(--c);padding:14px 20px;display:flex;flex-direction:column;justify-content:center}
+#s17 .ra b{font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:22px}
+#s17 .ra span{margin-top:4px;font-size:17px;line-height:1.3;color:var(--w7)}
+#s17 .src{position:absolute;left:120px;top:236px;color:var(--w5)}
+
+/* 18 · decisiones de diseño */
+#s18 .rows{position:absolute;left:120px;right:120px;top:260px;bottom:110px;display:grid;grid-template-rows:repeat(5,1fr);gap:8px}
+#s18 .dr{display:grid;grid-template-columns:330px 1fr;gap:40px;align-items:center;border-top:2px solid var(--w2)}
+#s18 .bf{display:flex;align-items:center;gap:16px}
+#s18 .bf span{display:grid;place-items:center;width:120px;height:72px;font:500 14px 'IBM Plex Mono',monospace;text-transform:uppercase;text-align:center;line-height:1.15;padding:6px}
+#s18 .bf .o{background:var(--r);color:#fff}#s18 .bf .n{background:var(--l);color:var(--k)}
+#s18 h4{margin:0;font-weight:800;font-stretch:108%;text-transform:uppercase;font-size:28px;line-height:1.05}
+#s18 p{margin:6px 0 0;font-size:21px;line-height:1.3;color:var(--w7)}
+
+/* 19 · omnicanalidad */
+#s19 .mo{position:absolute;left:120px;right:120px;top:270px;bottom:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+#s19 figure{margin:0;display:flex;flex-direction:column}
+#s19 .im{flex:1;overflow:hidden;background:#000}
+#s19 .im img{width:100%;height:100%;object-fit:cover;display:block}
+#s19 figcaption{padding-top:20px}
+#s19 figcaption b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px;color:var(--l)}
+#s19 figcaption span{display:block;margin-top:6px;font-size:22px;line-height:1.3;color:var(--w7)}
+
+/* 20 · usuarios sintéticos */
+#s20 .us{position:absolute;left:120px;right:120px;top:280px;height:430px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+#s20 .u{background:var(--w1);display:flex;flex-direction:column}
+#s20 .u .hd{display:flex;gap:20px;align-items:center;padding:24px 28px;border-bottom:2px solid var(--w2)}
+#s20 .u .duo{width:96px;height:96px;border-radius:50%;flex:none}
+#s20 .u .hd b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px}
+#s20 .u .hd small{display:block;margin-top:4px;font-size:18px;color:var(--w5)}
+#s20 .u .bd{padding:26px 30px;font-size:25px;line-height:1.4;color:var(--w7)}
+#s20 .u .bd p{margin:0 0 14px}
+#s20 .u .bd b{color:var(--l);font-weight:600}
+#s20 .mt{position:absolute;left:120px;right:120px;bottom:110px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+#s20 .mt div{border-left:4px solid var(--l);padding-left:20px}
+#s20 .mt b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:26px}
+#s20 .mt span{display:block;margin-top:4px;font-size:19px;color:var(--w7)}
+
+/* 21 · resultados + edge cases */
+#s21 table{position:absolute;left:120px;width:900px;top:280px;border-collapse:collapse}
+#s21 th{font:500 16px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--l);text-align:center;padding:0 0 14px}
+#s21 th:first-child{text-align:left}
+#s21 td{padding:18px 0;border-top:1px solid var(--w2);font-size:26px;text-align:center}
+#s21 td:first-child{text-align:left;font-weight:600}
+#s21 td .sc{font:600 26px 'IBM Plex Mono',monospace;color:var(--l)}
+#s21 td .br{display:block;width:120px;height:6px;margin:8px auto 0;border:1px dashed var(--w5)}
+#s21 tr.avg td{border-top:2px solid var(--l);color:var(--l);font-weight:700}
+#s21 .note{position:absolute;left:120px;width:900px;bottom:120px;font-size:19px;color:var(--w5)}
+#s21 .ec{position:absolute;left:1100px;right:120px;top:280px;bottom:120px;display:flex;flex-direction:column;gap:14px}
+#s21 .ec h3{margin:0 0 6px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px}
+#s21 .e{background:var(--w1);padding:18px 22px;display:grid;grid-template-columns:1fr;gap:6px}
+#s21 .e b{font-weight:800;font-stretch:108%;text-transform:uppercase;font-size:24px;color:var(--l)}
+#s21 .e span{font-size:21px;line-height:1.3;color:var(--w7)}
+#s21 .e em{font-style:normal;font-size:17px;color:#fff;border-top:1px solid var(--w2);padding-top:8px}
+
+/* 22 · aprendizajes */
+#s22 .key{position:absolute;left:120px;right:120px;top:250px;font-weight:800;font-stretch:112%;font-size:50px;line-height:1.12}
+#s22 .key b{color:var(--l);font-weight:800}
+#s22 .c3{position:absolute;left:120px;right:120px;top:520px;bottom:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+#s22 .c3 h3{margin:0 0 16px;padding-bottom:14px;border-bottom:3px solid var(--l);font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:28px}
+#s22 .c3 p{margin:0 0 18px;font-size:25px;line-height:1.35;color:var(--w7)}
+
+/* 23 · gracias */
+#s23 .c{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:50px}
+#s23 .T{font-size:220px}
+</style>
+</head>
+<body>
+<div id="deck">
+<div id="bar"><span>Diagnóstico</span><span>Definición</span><span>Oportunidad</span><span>Arquitectura</span><span>Validación</span><span>Iteración</span></div>
+
+<!-- 1 · PORTADA -->
+<section class="s" id="s1" data-st="">
+  <div class="blk"></div>
+  <div class="shot a" style="--i:3"><img src="assets/comision/planner.jpg" alt="El planner de REGI"></div>
+  <div class="left">
+    <div class="m a hl" style="--i:0">Taller Integrado · Diseño de Interacción Digital · UDD</div>
+    <div class="big a" style="--i:1">REGI</div>
+    <div class="sub a" style="--i:2">Planner de regalos</div>
+    <p class="desc a" style="--i:2">Propuesta conceptual para Creado en Chile</p>
+  </div>
+  <div class="team m a" style="--i:4">Equipo: <span class="q-ph">[NOMBRES DEL EQUIPO]</span></div>
+</section>
+
+<!-- 2 · PROCESO DE DISEÑO -->
+<section class="s" id="s2" data-st="">
+  <div class="wrap"><h2 class="T a">Proceso de diseño</h2></div>
+  <div class="grid">
+    <div class="card a" style="--i:1"><div class="n">01</div><span class="pic" data-pic="1"></span><h3>Diagnóstico</h3><p>Cómo se regala hoy con Creado</p></div>
+    <div class="card a" style="--i:2"><div class="n">02</div><span class="pic" data-pic="2"></span><h3>Definición</h3><p>El problema, acotado</p></div>
+    <div class="card a" style="--i:3"><div class="n">03</div><span class="pic" data-pic="3"></span><h3>Oportunidad</h3><p>Dónde un sistema puede ayudar</p></div>
+    <div class="card a" style="--i:4"><div class="n">04</div><span class="pic" data-pic="4"></span><h3>Arquitectura</h3><p>El sistema, sus agentes y su lógica</p></div>
+    <div class="card a" style="--i:5"><div class="n">05</div><span class="pic" data-pic="5"></span><h3>Validación</h3><p>Usuarios sintéticos que lo ponen a prueba</p></div>
+    <div class="card a" style="--i:6"><div class="n">06</div><span class="pic" data-pic="6"></span><h3>Iteración</h3><p>Lo que aprendimos y lo que sigue</p></div>
+  </div>
+</section>
+
+<!-- 3 · PROCESO DEL TALLER -->
+<section class="s" id="s3" data-st="">
+  <div class="wrap"><h2 class="T a">Proceso del taller</h2><p class="lead a" style="--i:1;margin-top:18px">Agosto → noviembre. Cada etapa cambió por una corrección.</p></div>
+  <div class="tl">
+    <div class="h a" style="--i:2"><div class="ph">FOTO: terreno en tiendas</div><i class="dot"></i><div class="m mo">Ago</div><h4>Terreno en tiendas</h4><p><b>Corrección:</b> <span class="q-ph">[CORRECCIÓN]</span></p></div>
+    <div class="h a" style="--i:3"><div class="ph">FOTO: exploración sugerida / escenas</div><i class="dot"></i><div class="m mo">Sep · Certamen I</div><h4>Exploración sugerida</h4><p><b>Corrección:</b> el problema era demasiado amplio; había que acotarlo.</p></div>
+    <div class="h a" style="--i:4"><div class="ph">FOTO: "Regalar con calma"</div><i class="dot"></i><div class="m mo">Oct</div><h4>Suscripción "Regalar con calma"</h4><p><b>Corrección:</b> el valor no está en cobrar, sino en proponer a tiempo.</p></div>
+    <div class="h a" style="--i:5"><div class="ph">FOTO: asistente de regalos</div><i class="dot"></i><div class="m mo">2 Nov</div><h4>Asistente de regalos</h4><p><b>Corrección (3 nov):</b> debe ser un planner, no un shopper.</p></div>
+    <div class="h a" style="--i:6"><div class="ph">FOTO: planner y conectores</div><i class="dot"></i><div class="m mo">Nov</div><h4>Planner</h4><p><b>Corrección del montaje:</b> más identidad humana, menos frases invasivas.</p></div>
+    <div class="h a" style="--i:7"><div class="ph">FOTO: equipo con REGI</div><i class="dot"></i><div class="m mo">26 Nov</div><h4>REGI</h4><p>Nombre, valores y esta propuesta para la comisión.</p></div>
+  </div>
+</section>
+
+<!-- 4 · LO QUE CREADO YA HACE BIEN -->
+<section class="s" id="s4" data-st="Diagnóstico">
+  <div class="wrap"><h2 class="T a">Lo que Creado ya hace bien</h2></div>
+  <div class="row">
+    <div class="it a" style="--i:1"><div class="n">01</div><h3>Curaduría de diseño chileno</h3><p>Cientos de creadores locales seleccionados, desde 2014.</p></div>
+    <div class="it a" style="--i:2"><div class="n">02</div><h3>Regalos en 3 horas</h3><p>Despacho express en Santiago.</p></div>
+    <div class="it a" style="--i:3"><div class="n">03</div><h3>Pensado para regalar</h3><p>Guía de regalos, filtros por precio y para quién, bolsa de regalo.</p></div>
+    <div class="it a" style="--i:4"><div class="n">04</div><h3>Ocho tiendas físicas</h3><p>Santiago, Valparaíso y Zapallar.</p></div>
+    <div class="it a" style="--i:5"><div class="n">05</div><h3>Compra en cuotas</h3><p>Sin interés.</p></div>
+  </div>
+  <div class="foot a" style="--i:6">Creado resuelve <span class="hl">qué</span> regalar y <span class="hl">cómo</span> llega. Falta resolver <span class="hl">cuándo</span>.</div>
+</section>
+
+<!-- 5 · DIAGNÓSTICO -->
+<section class="s" id="s5" data-st="Diagnóstico">
+  <div class="wrap"><h2 class="T a">Diagnóstico inicial</h2></div>
+  <div class="cols">
+    <div class="a" style="--i:1">
+      <h3>El cuello de botella</h3>
+      <p class="st">Regalar depende de que la persona <b>se acuerde a tiempo</b>, busque y decida sola.</p>
+      <div class="pr"><span data-pic="cal"></span>La fecha llega encima y la compra se hace con poca anticipación.</div>
+      <div class="pr"><span data-pic="many"></span>Elegir entre muchas opciones toma tiempo y genera estrés.</div>
+      <div class="pr"><span data-pic="late"></span>El despacho se vuelve el punto de falla cuando queda poco.</div>
+    </div>
+    <div class="a" style="--i:2">
+      <h3>Citas de terreno</h3>
+      <div class="q"><span class="q-ph">CITA: [usuario/a en tienda]</span></div>
+      <div class="q"><span class="q-ph">CITA: [vendedor/a de Creado]</span></div>
+      <div class="q"><span class="q-ph">CITA: [entrevista]</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · DATO DURO -->
+<section class="s k" id="s6" data-st="Diagnóstico">
+  <div class="n1 a">54%</div>
+  <div class="t1 a" style="--i:1">compró el regalo del Día de la Madre con <span class="hl">menos de una semana</span> de anticipación.</div>
+  <div class="n2 a" style="--i:2">+50%</div>
+  <div class="t2 a" style="--i:3">ya tuvo problemas con un despacho.</div>
+  <div class="src m a" style="--i:4">Fuente: Logisfashion 2026 · CNC 2025</div>
+</section>
+
+<!-- 7 · PLANTEAMIENTO -->
+<section class="s hero" id="s7" data-st="Definición">
+  <div class="bg"><div class="ph"><span>FOTO: terreno en tienda Creado</span></div></div><div class="sh"></div>
+  <div class="c">
+    <div class="m kk a">Planteamiento</div>
+    <h2 class="T a" style="--i:1">El problema</h2>
+    <p class="stm a" style="--i:2">El problema ocurre cuando <b>las fechas importantes llegan sin aviso</b> y elegir un regalo exige tiempo que la persona no tiene: compra con estrés, a última hora o fuera de Creado.</p>
+  </div>
+</section>
+
+<!-- 8 · USUARIOS -->
+<section class="s" id="s8" data-st="Definición">
+  <div class="wrap"><h2 class="T a">Usuarios</h2></div>
+  <table class="a" style="--i:1">
+    <tr><th style="width:470px">Perfil</th><th>Dolor principal</th><th>Necesidad clave</th></tr>
+    <tr><td class="who"><span class="duo" style="--c:var(--p)"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Marcela, 58</b><small>La que quiere, pero no alcanza</small></span></td><td>“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</td><td>Que le avisen con tiempo y le propongan algo bonito.</td></tr>
+    <tr><td class="who"><span class="duo" style="--c:var(--b)"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Andrés, 52</b><small>El que delega</small></span></td><td>“Yo pongo la plata, pero que lo vea otro.”</td><td>Delegar sin tener que revisar cada detalle.</td></tr>
+    <tr><td class="who"><span class="duo" style="--c:var(--l)"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Felipe, 34</b><small>Se le pasa la fecha</small></span></td><td>“Es hoy y no tengo nada, ¿qué hago?”</td><td>Que lo rescaten a tiempo, aunque sea el mismo día.</td></tr>
+  </table>
+</section>
+
+<!-- 9 · REENCUADRE -->
+<section class="s" id="s9" data-st="Definición">
+  <div class="wrap"><h2 class="T a">La decisión que reencuadró el proyecto</h2></div>
+  <div class="ab">
+    <div class="x a1 a" style="--i:1"><span class="m">Certamen I</span><h3>Exploración sugerida en tienda</h3><p>Problema amplio</p></div>
+    <div class="ar a" style="--i:2"><svg width="90" height="60" viewBox="0 0 90 60"><path d="M0 30h76M56 8l24 22-24 22" fill="none" stroke="#CCD100" stroke-width="7"/></svg></div>
+    <div class="x a2 a" style="--i:3"><span class="m">Hoy</span><h3>Un planner que se anticipa a las fechas</h3><p>Problema acotado</p></div>
+  </div>
+  <p class="foot a" style="--i:4">Corrección del 3 de noviembre: <span class="hl">planner, no shopper</span>. Dejamos de vender en la tienda para ordenar el año de regalos.</p>
+</section>
+
+<!-- 10 · OPORTUNIDAD -->
+<section class="s hero" id="s10" data-st="Oportunidad">
+  <div class="bg"><div class="ph"><span>FOTO: persona con su celular comprando un regalo</span></div></div><div class="sh"></div>
+  <div class="c">
+    <h2 class="T a">¿Nuestra oportunidad?</h2>
+    <p class="stm a" style="--i:1">Pasar de una tienda donde <b>vas a buscar</b>, a un sistema que <b>conoce tus fechas</b> y te propone a tiempo desde el catálogo de Creado.</p>
+  </div>
+</section>
+
+<!-- 11 · HIPÓTESIS -->
+<section class="s hero" id="s11" data-st="Oportunidad">
+  <div class="bg"><div class="ph"><span>FOTO: bocetos / proceso del equipo</span></div></div><div class="sh"></div>
+  <div class="c">
+    <h2 class="T a">Hipótesis</h2>
+    <p class="stm a" style="--i:1"><b>Si el sistema conoce las fechas y gustos de las personas y propone a tiempo,</b> la compra se adelanta, se repite y se hace en Creado.</p>
+  </div>
+</section>
+
+<!-- 12 · NAMING -->
+<section class="s" id="s12" data-st="Oportunidad">
+  <div class="ph a">FOTO: uso real de REGI en el celular</div>
+  <div class="rv">
+    <div class="row"><span class="lt">RE</span><span class="wd">Regalos</span></div>
+    <div class="row"><span class="lt p">G</span><span class="wd">Gestionados</span></div>
+    <div class="row"><span class="lt b">I</span><span class="wd"><small>por</small> Inteligencia</span></div>
+  </div>
+  <div class="vals">
+    <div class="a" style="--i:4"><b>Anticipa</b><span>Avisa antes de que la fecha llegue encima.</span></div>
+    <div class="a" style="--i:5"><b>Conoce</b><span>Aprende de tu gente con lo que ya usas.</span></div>
+    <div class="a" style="--i:6"><b>Propone</b><span>Llega con el regalo pensado y explica por qué.</span></div>
+    <div class="a" style="--i:7"><b>Respeta tu decisión</b><span>Nada se compra sin tu aprobación.</span></div>
+  </div>
+</section>
+
+<!-- 13 · ARQUITECTURA -->
+<section class="s" id="s13" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Arquitectura del sistema</h2></div>
+  <div class="cols">
+    <div class="col a" style="--i:1"><h3>Entradas</h3>
+      <div class="in"><b>Fuentes personales</b><span>Calendario, correo, contactos, WhatsApp, redes</span></div>
+      <div class="in"><b>Catálogo Creado</b><span>Shopify: productos, stock, precios</span></div>
+      <div class="in"><b>Logística</b><span>Zonas Express, tiempos de despacho</span></div>
+      <div class="in"><b>Historial</b><span>Compras y decisiones anteriores</span></div>
+    </div>
+    <div class="col a" style="--i:2"><h3>Motor · 6 agentes</h3><div class="eng" id="eng"><div class="orq">Orques&shy;tador</div></div></div>
+    <div class="col a" style="--i:3"><h3>Salidas</h3>
+      <div class="in"><b>Propuesta justificada</b><span>3 opciones o una elegida, con el porqué</span></div>
+      <div class="in"><b>Orden de compra y despacho</b><span>A la persona, a la oficina o retiro en tienda</span></div>
+      <div class="in"><b>Guía en tienda</b><span>Te lleva al regalo dentro de Creado</span></div>
+    </div>
+  </div>
+  <div class="loop a" style="--i:4"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#CCD100" stroke-width="2.4" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg><span class="m">Bucle de aprendizaje</span>Cada aprobación, rechazo o cambio ajusta el perfil de la persona.</div>
+</section>
+
+<!-- 14 · CAPAS TÉCNICAS -->
+<section class="s" id="s14" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Capas técnicas y stack</h2></div>
+  <div class="tag m a">Arquitectura propuesta</div>
+  <div class="stack">
+    <div class="ly a" style="--i:1"><span class="nm" style="background:var(--l)">Canales</span><span class="ct">Web, app, <b>push</b>, reloj, auto (CarPlay), tienda por geolocalización</span></div>
+    <div class="ly a" style="--i:2"><span class="nm" style="background:#fff">Orquestación</span><span class="ct">Programador de eventos según la cercanía de cada fecha</span></div>
+    <div class="ly a" style="--i:3"><span class="nm" style="background:var(--p)">Inteligencia</span><span class="ct"><b>Modelo de lenguaje</b> con agentes especializados + reglas de negocio y límites</span></div>
+    <div class="ly a" style="--i:4"><span class="nm" style="background:var(--b)">Datos</span><span class="ct">Grafo de personas y ocasiones + base vectorial de gustos</span></div>
+    <div class="ly a" style="--i:5"><span class="nm" style="background:#fff">Integraciones</span><span class="ct">OAuth: Google Calendar, Gmail, Contacts · WhatsApp Business API · Shopify Admin / Storefront API</span></div>
+    <div class="ly a" style="--i:6"><span class="nm" style="background:var(--r);color:#fff">Privacidad</span><span class="ct">Consentimiento por fuente · qué no se lee · borrado a pedido</span></div>
+  </div>
+  <div class="now a" style="--i:4"><h3>Ya funciona en el prototipo</h3>
+    <div class="it"><b>Chat con modelo de lenguaje</b>OpenAI a través de una función en el servidor (Supabase): la clave nunca llega al navegador.</div>
+    <div class="it"><b>Avisos push reales</b>Web Push al celular, con service worker.</div>
+    <div class="it"><b>Sincronización en vivo</b>Presentación, celular y auto conectados por Supabase Realtime.</div>
+    <div class="it"><b>Mapa y ruta reales</b>Google Maps + ruta por calles (OSRM) en la pantalla del auto.</div>
+    <div class="it"><b>Catálogo real de Creado</b>30 productos con precio, marca y descripción.</div>
+  </div>
+</section>
+
+<!-- 15 · MAPA DE FLUJO -->
+<section class="s" id="s15" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Mapa de flujo</h2></div>
+  <div class="sw a" style="--i:1" id="sw"></div>
+</section>
+
+<!-- 16 · LÓGICA DE DECISIÓN -->
+<section class="s" id="s16" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Lógica de decisión</h2></div>
+  <div class="fl a" style="--i:1">
+    <svg width="900" height="700" style="position:absolute;inset:0" viewBox="0 0 900 700" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3">
+      <path d="M450 92v70"/><path d="M450 362v0"/><path d="M330 262H150v120"/><path d="M570 262h180v120"/><path d="M150 482v70h300"/><path d="M750 482v70H450"/><path d="M450 552v40"/>
+      <text x="200" y="250" fill="#CCD100" stroke="none" font-family="IBM Plex Mono" font-size="20">SÍ</text><text x="660" y="250" fill="#CCD100" stroke="none" font-family="IBM Plex Mono" font-size="20">NO</text>
+    </svg>
+    <div class="nd ns" style="left:300px;top:20px;width:300px;height:72px">Se acerca una fecha</div>
+    <div class="nd d" style="left:365px;top:177px;width:170px;height:170px"><span>¿Es un regalo importante?</span></div>
+    <div class="nd o" style="left:20px;top:382px;width:260px;height:100px">Muestra 3 opciones y tú eliges</div>
+    <div class="nd o" style="left:620px;top:382px;width:260px;height:100px">Elige uno solo y te avisa</div>
+    <div class="nd ns" style="left:280px;top:592px;width:340px;height:80px">Tú apruebas → compra</div>
+  </div>
+  <div class="ur a" style="--i:2"><h3>Escalada según los días</h3>
+    <div class="st"><b>14 días</b><span><strong>Aviso con la propuesta</strong>Tiempo de sobra para que llegue.</span></div>
+    <div class="st"><b>7 días</b><span><strong>Recordatorio</strong>Por otro canal: reloj o celular.</span></div>
+    <div class="st"><b>2 días</b><span><strong>Urgente</strong>Prioriza despacho express.</span></div>
+    <div class="st"><b>Día D</b><span><strong>Respaldo</strong>Envío en 3 horas o retiro en tienda de camino.</span></div>
+    <div class="rule">Si no hay respuesta, insiste por otro canal. Nunca compra sin tu aprobación.</div>
+  </div>
+</section>
+
+<!-- 17 · INDICACIONES DE LOS AGENTES -->
+<section class="s" id="s17" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Indicaciones de los agentes</h2></div>
+  <div class="src m a">No solo el prompt: rol, reglas, restricciones y salida de cada agente</div>
+  <div class="cur a" style="--i:1">
+    <h3>4 · Curador</h3>
+    <div class="g">
+      <span class="m">Rol</span><span>Cruza a la persona con el catálogo y propone el regalo para una ocasión.</span>
+      <span class="m">Reglas</span><ul><li>Solo productos del catálogo de Creado.</li><li>Respeta el presupuesto o tope de la ocasión.</li><li>Justifica cada propuesta con lo que sabe de la persona.</li><li>Considera stock y tiempo de despacho a la fecha.</li></ul>
+      <span class="m">Restricciones</span><ul><li>No repite regalos ya dados a esa persona.</li><li>No inventa datos: si falta información, pregunta.</li></ul>
+      <span class="m">Salida</span><code>{ persona, ocasión, opciones: [1–3], elegida, porqué, llega_antes_de }</code>
+    </div>
+  </div>
+  <div class="rest">
+    <div class="ra a" style="--i:2;--c:var(--b)"><b>1 · Ingesta</b><span>Normaliza lo que llega de cada fuente y aplica el consentimiento.</span></div>
+    <div class="ra a" style="--i:3;--c:var(--p)"><b>2 · Detector de ocasiones</b><span>Encuentra fechas y define tipo e importancia.</span></div>
+    <div class="ra a" style="--i:4;--c:#fff"><b>3 · Perfilador</b><span>Relación, gustos y señales de cada persona.</span></div>
+    <div class="ra a" style="--i:5;--c:var(--l)"><b>5 · Planificador</b><span>Cuándo avisar y cuánta autonomía tomar.</span></div>
+    <div class="ra a" style="--i:6;--c:var(--r)"><b>6 · Mensajero</b><span>Elige canal y momento: celular, reloj, auto o tienda.</span></div>
+  </div>
+</section>
+
+<!-- 18 · DECISIONES DE DISEÑO -->
+<section class="s" id="s18" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Decisiones de diseño</h2></div>
+  <div class="rows">
+    <div class="dr a" style="--i:1"><div class="bf"><span class="o">Suscripción</span>→<span class="n">Propone a tiempo</span></div><div><h4>De suscripción con cobro a servicio que propone a tiempo</h4><p>El valor está en llegar antes de la fecha, no en pagar por adelantado.</p></div></div>
+    <div class="dr a" style="--i:2"><div class="bf"><span class="o">Shopper</span>→<span class="n">Planner</span></div><div><h4>De shopper a planner</h4><p>La esencia es ordenar el año de regalos, no empujar a comprar.</p></div></div>
+    <div class="dr a" style="--i:3"><div class="bf"><span class="o">Formularios</span>→<span class="n">Conectores</span></div><div><h4>De preguntar todo a aprender de lo que conectas</h4><p>Fechas, personas y gustos salen del calendario, el correo y los contactos.</p></div></div>
+    <div class="dr a" style="--i:4"><div class="bf"><span class="o">Delego / Elijo</span>→<span class="n">Según importancia</span></div><div><h4>De niveles fijos a autonomía según importancia</h4><p>Si el regalo importa más, muestra 3 opciones; si no, elige solo y avisa.</p></div></div>
+    <div class="dr a" style="--i:5"><div class="bf"><span class="o">Pantallas en tienda</span>→<span class="n">Celular guía</span></div><div><h4>De tienda con pantallas al celular como guía</h4><p>El aviso llega al entrar y el celular lleva al regalo.</p></div></div>
+  </div>
+</section>
+
+<!-- 19 · OMNICANALIDAD -->
+<section class="s k" id="s19" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Omnicanalidad</h2></div>
+  <div class="mo">
+    <figure class="a" style="--i:1"><div class="im"><img src="assets/comision/reloj.jpg" alt="Aviso en el reloj"></div><figcaption><b>Reloj</b><span>El aviso llega a la muñeca y se aprueba con un toque.</span></figcaption></figure>
+    <figure class="a" style="--i:2"><div class="im"><img src="assets/comision/auto.jpg" alt="Rescate en el auto" style="object-position:30% 50%"></div><figcaption><b>Auto</b><span>Si se pasó la fecha: envío hoy o retiro de camino.</span></figcaption></figure>
+    <figure class="a" style="--i:3"><div class="im"><img src="assets/comision/tienda.jpg" alt="Aviso en la tienda"></div><figcaption><b>Tienda</b><span>Al entrar a Creado, avisa que el regalo está ahí.</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- 20 · USUARIOS SINTÉTICOS -->
+<section class="s" id="s20" data-st="Validación">
+  <div class="wrap"><h2 class="T a">Usuarios sintéticos</h2></div>
+  <div class="us">
+    <div class="u a" style="--i:1"><div class="hd"><span class="duo" style="--c:var(--p)"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Marcela, 58</b><small>La que quiere, pero no alcanza</small></span></div><div class="bd"><p><b>Valida:</b> si REGI propone bien, algo bonito y con sentido para cada persona.</p><p><b>Métrica clave:</b> Acierto.</p></div></div>
+    <div class="u a" style="--i:2"><div class="hd"><span class="duo" style="--c:var(--b)"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Andrés, 52</b><small>El que delega</small></span></div><div class="bd"><p><b>Valida:</b> si puede delegar sin revisar cada detalle.</p><p><b>Métrica clave:</b> Esfuerzo.</p></div></div>
+    <div class="u a" style="--i:3"><div class="hd"><span class="duo" style="--c:var(--l)"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Felipe, 34</b><small>Se le pasa la fecha</small></span></div><div class="bd"><p><b>Valida:</b> si REGI lo rescata a tiempo, incluso el mismo día.</p><p><b>Métrica clave:</b> Anticipación.</p></div></div>
+  </div>
+  <div class="mt">
+    <div class="a" style="--i:4"><b>Acierto</b><span>¿Propone algo que la persona compraría?</span></div>
+    <div class="a" style="--i:5"><b>Anticipación</b><span>¿Avisa con tiempo para que llegue?</span></div>
+    <div class="a" style="--i:6"><b>Esfuerzo</b><span>¿Cuántos pasos para resolver?</span></div>
+    <div class="a" style="--i:7"><b>Confianza</b><span>¿Se siente invasivo?</span></div>
+  </div>
+</section>
+
+<!-- 21 · RESULTADOS + EDGE CASES -->
+<section class="s" id="s21" data-st="Validación">
+  <div class="wrap"><h2 class="T a">Validación</h2></div>
+  <table class="a" style="--i:1">
+    <tr><th>Métrica (1–5)</th><th>Marcela</th><th>Andrés</th><th>Felipe</th></tr>
+    <tr><td>Acierto</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
+    <tr><td>Anticipación</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
+    <tr><td>Esfuerzo</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
+    <tr><td>Confianza</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
+    <tr class="avg"><td>Promedio</td><td>—</td><td>—</td><td>—</td></tr>
+  </table>
+  <p class="note m a" style="--i:2">Puntajes pendientes: se completan al correr la validación con los agentes.</p>
+  <div class="ec">
+    <h3 class="a" style="--i:2">Edge cases</h3>
+    <div class="e a" style="--i:3"><b>Sin stock</b><span>Propone uno similar del mismo rango de precio.</span><em>La persona no queda sin regalo.</em></div>
+    <div class="e a" style="--i:4"><b>Fecha mal detectada</b><span>La persona la corrige y el sistema aprende.</span><em>El error no se repite el próximo año.</em></div>
+    <div class="e a" style="--i:5"><b>No llega a tiempo</b><span>Activa el respaldo: envío en 3 horas o retiro en tienda.</span><em>Se cumple la fecha igual.</em></div>
+  </div>
+</section>
+
+<!-- 22 · APRENDIZAJES -->
+<section class="s" id="s22" data-st="Iteración">
+  <div class="wrap"><h2 class="T a">Aprendizajes y a futuro</h2></div>
+  <p class="key a" style="--i:1">El valor no es automatizar el regalo, es <b>quitar el estrés sin quitarle la decisión a la persona.</b></p>
+  <div class="c3">
+    <div class="a" style="--i:2"><h3>Aprendizajes</h3><p>Los conectores reemplazan los formularios: preguntar menos es diseñar mejor.</p><p>La autonomía se gana: el sistema aprende de cada decisión.</p><p>Las frases importan: “se acuerda por ti” se sentía invasivo.</p></div>
+    <div class="a" style="--i:3"><h3>Limitaciones</h3><p>Fechas, conectores y compras son simulados en el prototipo.</p><p>La validación es con usuarios sintéticos, aún no con clientes reales.</p><p>Sin integración real con Shopify ni stock en vivo.</p></div>
+    <div class="a" style="--i:4"><h3>A futuro</h3><p>Piloto con clientes de Creado.</p><p>Integración con Shopify, stock y despacho en tiempo real.</p><p>Medir si la compra realmente se adelanta y se repite.</p></div>
+  </div>
+</section>
+
+<!-- 23 · GRACIAS -->
+<section class="s" id="s23" data-st="">
+  <div class="c"><span data-pic="mark" class="a"></span><h2 class="T a" style="--i:1">Gracias</h2><div class="m a" style="--i:2;color:var(--w5)">REGI · Planner de regalos · Creado en Chile</div></div>
+</section>
+
+<div id="sig"><span data-pic="mini"></span>REGI · Comisión</div>
+<div id="cnt">01 / 23</div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+/* pictogramas propios: la grilla de 4 piezas de la marca, con una pieza distinta por idea */
+const C={l:'#CCD100',p:'#D15CB5',b:'#598AD1',r:'#D13C00',w:'#fff',d:'rgba(255,255,255,.22)'};
+function grid(cells,size=64){ const s=size, g=s*.08, u=(s-g)/2; const pos=[[0,0],[u+g,0],[0,u+g],[u+g,u+g]];
+  return `<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}">${cells.map((c,i)=>{ const [x,y]=pos[i]; return c[0]==='o'?`<circle cx="${x+u/2}" cy="${y+u/2}" r="${u/2}" fill="${C[c[1]]}"/>`:`<rect x="${x}" y="${y}" width="${u}" height="${u}" rx="${u*.18}" fill="${C[c[1]]}"/>`; }).join('')}</svg>`; }
+const PIC={
+  1:grid([['s','l'],['s','d'],['s','d'],['s','d']]),2:grid([['s','l'],['s','l'],['s','d'],['s','d']]),3:grid([['s','l'],['s','l'],['s','l'],['s','d']]),
+  4:grid([['s','l'],['s','l'],['s','l'],['s','l']]),5:grid([['s','l'],['o','l'],['s','l'],['s','l']]),6:grid([['s','w'],['o','l'],['s','w'],['s','w']]),
+  cal:grid([['s','d'],['s','d'],['s','d'],['o','l']],56),many:grid([['o','d'],['o','d'],['o','d'],['o','l']],56),late:grid([['s','r'],['s','d'],['s','d'],['s','d']],56),
+  mark:grid([['s','w'],['o','l'],['s','w'],['s','w']],180),mini:grid([['s','w'],['o','l'],['s','w'],['s','w']],26)};
+$$('[data-pic]').forEach(e=>e.innerHTML=PIC[e.dataset.pic]||'');
+
+/* motor: orquestador + 6 agentes en círculo */
+const AG=[['Ingesta','Normaliza y aplica consentimiento',C.b],['Detector de ocasiones','Fecha, tipo e importancia',C.p],['Perfilador','Relación, gustos, señales','#fff'],['Curador','Persona × catálogo × presupuesto × stock',C.l],['Planificador','Cuándo avisar y cuánta autonomía','#8a6bff'],['Mensajero','Canal y momento',C.r]];
+(()=>{ const e=$('#eng'), W=e.clientWidth||600, H=e.clientHeight||560; let h='<svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,.2)" stroke-width=".4" stroke-dasharray="1 1.4" vector-effect="non-scaling-stroke"/></svg>';
+  AG.forEach((a,i)=>{ const t=-Math.PI/2+i*Math.PI/3, x=50+37*Math.cos(t), y=48+33*Math.sin(t);
+    h+=`<div class="ag" style="left:${x}%;top:${y}%"><i style="background:${a[2]};color:${a[2]==='#fff'||a[2]===C.l?'#0E0A1F':'#fff'}">${i+1}</i><b>${a[0]}</b><span>${a[1]}</span></div>`; });
+  e.insertAdjacentHTML('beforeend',h); })();
+
+/* swimlanes */
+(()=>{ const L=['Usuario','REGI','Creado'], S=[[0,'Conecta','Calendario, correo, contactos'],[1,'Detecta y ordena','Fechas, personas y gustos'],[0,'Ve su año','Lo resuelto y lo que viene'],[1,'Avisa con propuesta','14 días antes'],[0,'Aprueba o elige','Entre 3 si importa más'],[2,'Compra y despacho','A tiempo o retiro']];
+  let h='';
+  L.forEach((ln,r)=>{ h+=`<div class="ln" style="grid-row:${r+1};grid-column:1">${ln}</div>`; for(let c=0;c<6;c++){ const st=S[c]; h+=`<div class="cl ${['u','r','c'][r]}" style="grid-row:${r+1};grid-column:${c+2}">${st[0]===r?`<div class="bx"><span class="m">${String(c+1).padStart(2,'0')}</span>${st[1]}<br><small style="font-weight:400;opacity:.75">${st[2]}</small></div>`:''}</div>`; } });
+  /* el aprendizaje vuelve a REGI */
+  h+=`<div class="cl r" style="grid-row:2;grid-column:7;border:0;background:none"></div>`;
+  $('#sw').innerHTML=h;
+  requestAnimationFrame(()=>{ const sw=$('#sw'), bx=[...sw.querySelectorAll('.bx')].sort((x,y)=>+x.querySelector('.m').textContent-+y.querySelector('.m').textContent), R0=sw.getBoundingClientRect(), k=R0.width/sw.offsetWidth;
+    const P=bx.map(b=>{ const r=b.getBoundingClientRect(); return {x1:(r.left-R0.left)/k,x2:(r.right-R0.left)/k,y:(r.top+r.height/2-R0.top)/k,t:(r.top-R0.top)/k,b:(r.bottom-R0.top)/k}; });
+    const D=[]; for(let i=0;i<P.length-1;i++){ const a=P[i], c=P[i+1], mx=(a.x2+c.x1)/2; D.push(`M${a.x2} ${a.y} H${mx} V${c.y} H${c.x1-8}`); }
+    const last=P[P.length-1]; D.push(`M${(last.x1+last.x2)/2} ${last.t} V${P[1].y} H${(last.x1+last.x2)/2-30}`);
+    sw.insertAdjacentHTML('beforeend',`<svg class="arw" viewBox="0 0 ${sw.offsetWidth} ${sw.offsetHeight}"><defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#CCD100"/></marker></defs>${D.map((d,i)=>`<path d="${d}" fill="none" stroke="#CCD100" stroke-width="3" ${i===D.length-1?'stroke-dasharray="8 8"':''} marker-end="url(#ah)"/>`).join('')}</svg>`); });
+  const fb=document.createElement('div'); fb.className='m'; fb.style.cssText='position:absolute;right:0;bottom:-50px;color:#CCD100';
+  fb.textContent='06 → REGI aprende de la decisión y ajusta el perfil'; $('#sw').appendChild(fb);
+})();
+
+/* navegación */
+const S=$$('.s'), N=S.length, STAGES=['Diagnóstico','Definición','Oportunidad','Arquitectura','Validación','Iteración'];
+let cur=0;
+function fit(){ const k=Math.min(innerWidth/1920,innerHeight/1080); $('#deck').style.transform=`scale(${k}) translate(-50%,-50%)`; $('#deck').style.transformOrigin='0 0'; $('#deck').style.left='50%'; $('#deck').style.top='50%'; }
+function go(i,push=true){ cur=Math.max(0,Math.min(N-1,i)); S.forEach((s,j)=>s.classList.toggle('on',j===cur));
+  const st=S[cur].dataset.st; $$('#bar span').forEach(b=>b.classList.toggle('on',b.textContent===st)); $('#bar').classList.toggle('off',cur===0||cur===N-1);
+  $('#cnt').textContent=String(cur+1).padStart(2,'0')+' / '+N; if(push) history.replaceState(null,'','#'+(cur+1)); }
+addEventListener('keydown',e=>{ if(['ArrowRight',' ','PageDown','Enter'].includes(e.key)){ e.preventDefault(); go(cur+1); }
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){ e.preventDefault(); go(cur-1); }
+  else if(e.key==='Home') go(0); else if(e.key==='End') go(N-1);
+  else if(e.key==='f'||e.key==='F'){ const d=document.documentElement; document.fullscreenElement?document.exitFullscreen():d.requestFullscreen&&d.requestFullscreen(); } });
+addEventListener('click',e=>{ if(e.clientX>innerWidth*.6) go(cur+1); else if(e.clientX<innerWidth*.2) go(cur-1); });
+addEventListener('hashchange',()=>{ const n=parseInt(location.hash.slice(1),10); if(n&&n-1!==cur) go(n-1,false); });
+addEventListener('resize',fit); fit();
+go((parseInt(location.hash.slice(1),10)||1)-1,false);
+</script>
+</body>
+</html>
