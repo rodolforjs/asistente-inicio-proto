@@ -944,15 +944,16 @@ body.ch-on .chat{display:flex}
 .cm-a{align-self:stretch;color:#16181d}
 .cm-a .cm-tx{white-space:pre-wrap}
 .cm-a.cm-first{position:relative;padding-top:24px}
-.cm-a.cm-first::before{content:"";position:absolute;left:-2px;top:-3px;width:24px;height:24px;background:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="%230e1014" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"%3E%3Crect x="9" y="15" width="30" height="25" rx="10" fill="%23fff"/%3E%3Cpath d="M24 15c-3-6-9-6.5-9-3.2C15 14.6 20 15 24 15c4 0 9-.4 9-3.2 0-3.3-6-2.8-9 3.2Z" fill="%23fff"/%3E%3Cg class="ey" stroke="none" fill="%230e1014"%3E%3Ccircle cx="24" cy="27.5" r="2.2"/%3E%3C/g%3E%3C/svg%3E') center/contain no-repeat}
+.cm-a.cm-first::before{content:"";position:absolute;left:0;top:1px;width:18px;height:18px;background:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"%3E%3Cg fill="%230e1014"%3E%3Crect x="7" y="7" width="15.5" height="15.5" rx="4.5"/%3E%3Crect x="7" y="25.5" width="15.5" height="15.5" rx="4.5"/%3E%3Crect x="25.5" y="25.5" width="15.5" height="15.5" rx="4.5"/%3E%3Ccircle class="dt" cx="33.25" cy="14.75" r="7.75" fill="%23ff5924"/%3E%3C/g%3E%3C/svg%3E') center/contain no-repeat}
 .cm-a.cm-first:has(.cm-th)::before{animation:rghop .8s ease-in-out infinite}
-@keyframes rghop{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-6deg)}}
-.rg-av .ey{transform-box:fill-box;transform-origin:center;animation:rgblink 4.5s infinite}
+@keyframes rghop{0%,100%{transform:rotate(0)}50%{transform:rotate(90deg)}}
+.rg-av .dt{transform-box:fill-box;transform-origin:center;animation:rgdot 3.2s ease-in-out infinite}
+@keyframes rgdot{0%,100%{transform:scale(1)}50%{transform:scale(.82)}}
 @keyframes rgblink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.15)}}
-.ch-av{display:block;width:64px;height:64px;margin-bottom:16px;animation:rgfloat 3.2s ease-in-out infinite}
+.ch-av{display:block;width:52px;height:52px;margin-bottom:18px;animation:rgfloat 3.2s ease-in-out infinite}
 @keyframes rgfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .ch-ti{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em}
-.cm-a.cm-first::after{content:"Regi";position:absolute;left:28px;top:0;font-size:12.5px;font-weight:600;line-height:20px;color:#0e1014}
+.cm-a.cm-first::after{content:"Regi";position:absolute;left:25px;top:0;font-size:12.5px;font-weight:600;line-height:20px;color:#0e1014}
 .cm-u{align-self:flex-end;max-width:82%;border-radius:22px;background:#f1f3f6;color:#0e1014;padding:10px 15px}
 .cm-u img{display:block;width:200px;max-width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;margin:-4px -9px 8px auto}
 .cm-u .cm-lk{display:block;font-size:12.5px;color:#748297;word-break:break-all}
@@ -1661,7 +1662,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 <section id="sim" class="tn" aria-label="Simulación"><div class="tn-cap"><b id="simT"></b><p id="simP"></p></div><button id="simX" class="tn-cx">Cerrar</button><div id="simD" class="sim-d"></div></section>
 
 <!-- mándame algo: conversar con el planner desde cualquier pantalla -->
-<button id="fab" class="fab" aria-label="Abrir el chat" aria-expanded="false" aria-controls="ch"><span class="fab-o"><svg class="rg-av" width="32" height="32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#0e1014" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="15" width="30" height="25" rx="10" fill="#fff"/><path d="M24 15c-3-6-9-6.5-9-3.2C15 14.6 20 15 24 15c4 0 9-.4 9-3.2 0-3.3-6-2.8-9 3.2Z" fill="#fff"/><g class="ey" stroke="none" fill="#0e1014"><circle cx="24" cy="27.5" r="2.2"/></g></svg></span><span class="fab-t">Chat</span></button>
+<button id="fab" class="fab" aria-label="Abrir el chat" aria-expanded="false" aria-controls="ch"><span class="fab-o"><svg class="rg-av" width="22" height="22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g fill="#0e1014"><rect x="7" y="7" width="15.5" height="15.5" rx="4.5"/><rect x="7" y="25.5" width="15.5" height="15.5" rx="4.5"/><rect x="25.5" y="25.5" width="15.5" height="15.5" rx="4.5"/><circle class="dt" cx="33.25" cy="14.75" r="7.75" fill="#ff5924"/></g></svg></span><span class="fab-t">Chat</span></button>
 <section id="ch" class="chat" role="dialog" aria-label="Chat con Regi">
   <header class="ch-h"><b class="ch-ti">Chat</b>
     <button id="chN" class="ch-ib" aria-label="Nuevo chat" title="Nuevo chat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
@@ -3343,14 +3344,15 @@ async function chSay(html){ const t=chThink(); await wait(REDUCE?0:.7); t.innerH
 const chWho = top => { const l=yr().filter(p=>!SHARED.includes(p.n)&&!p.bought).sort(byDate); const t=l.find(p=>p.n===top); return [t,...l.filter(p=>p!==t)].filter(Boolean).slice(0,4); };
 const chChips = (top,why) => `<div class="cm-ppl">${chWho(top).map(p=>`<button data-chp="${esc(p.n)}" class="${p.n===top?'is-top':''}">${portrait(p.n)}${esc(p.n)}</button>`).join('')}</div>`;
 const prodCard = x => `<div class="cm-p">${img(x.u,'')}<span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${esc(x.v)} · ${clp(x.p)}</small></span></div>`;
-const RG_AV='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#0e1014" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="15" width="30" height="25" rx="10" fill="#fff"/><path d="M24 15c-3-6-9-6.5-9-3.2C15 14.6 20 15 24 15c4 0 9-.4 9-3.2 0-3.3-6-2.8-9 3.2Z" fill="#fff"/><g class="ey" stroke="none" fill="#0e1014"><circle cx="24" cy="27.5" r="2.2"/></g></svg>';
+const RG_AV='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g fill="#0e1014"><rect x="7" y="7" width="15.5" height="15.5" rx="4.5"/><rect x="7" y="25.5" width="15.5" height="15.5" rx="4.5"/><rect x="25.5" y="25.5" width="15.5" height="15.5" rx="4.5"/><circle class="dt" cx="33.25" cy="14.75" r="7.75" fill="#ff5924"/></g></svg>';
 const CH_SUG=[
   {q:'¿Qué le regalo a mi hermana?',s:'Ideas del catálogo de Creado',ic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>'},
-  {d:'foto'},{d:'link'},
+  {cam:1,q:'Sacar una foto',s:'Lo reconozco y lo guardo para alguien',ic:CH_IC.cam},
+  {q:'¿Qué fechas se vienen?',s:'Lo próximo de tu gente',ic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>'},
   {q:'A mi papá le encantó la botella',s:'Lo anoto en su ficha',ic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>'}];
 function chEmpty(){
   chL().innerHTML=`<div class="ch-e" id="chE">${RG_AV.replace('<svg ','<svg class="rg-av ch-av" ')}<h2>Hola${firstName()?', '+esc(firstName()):''}.</h2><p>¿Viste algo para alguien, o quieres ideas? Mándame una foto, un link o pregúntame.</p>
-    <div class="ch-sgg">${CH_SUG.map(x=>x.d?`<button data-chd="${x.d}"><span>${CH_IC[CH_DEMO[x.d].ic]}</span><b>${CH_DEMO[x.d].lbl}</b><small>“${esc(CH_DEMO[x.d].say)}”</small></button>`:`<button data-chq="${esc(x.q)}"><span>${x.ic}</span><b>${esc(x.q)}</b><small>${esc(x.s)}</small></button>`).join('')}</div></div>`; }
+    <div class="ch-sgg">${CH_SUG.map(x=>`<button ${x.cam?'data-chcam="1"':`data-chq="${esc(x.q)}"`}><span>${x.ic}</span><b>${esc(x.q)}</b><small>${esc(x.s)}</small></button>`).join('')}</div></div>`; }
 const chClearEmpty=()=>{ const e=$('chE'); if(e) e.remove(); };
 function chOpen(){
   if(document.body.classList.contains('ch-on')) return;
@@ -3464,7 +3466,8 @@ $('chImg').onchange=e=>{ const f=e.target.files&&e.target.files[0]; if(f) chAttS
 $('chTx').onclick=()=>chAttSet(null);
 $('ch').addEventListener('click',e=>{
   const d=e.target.closest('[data-chd]'), c=e.target.closest('[data-chp]'), g=e.target.closest('[data-chgo]'), q=e.target.closest('[data-chq]'), sv=e.target.closest('[data-chs]');
-  if(q) chSend({text:q.dataset.chq});
+  if(e.target.closest('[data-chcam]')){ const f=$('chImg'); f.setAttribute('capture','environment'); f.click(); setTimeout(()=>f.removeAttribute('capture'),500); }
+  else if(q) chSend({text:q.dataset.chq});
   else if(sv&&!sv.classList.contains('ok')){ const p=YEAR.find(x=>x.n===sv.dataset.n); if(p){ chSave(p,{kind:'prod',x:prod(sv.dataset.chs),src:'link'}); sv.classList.add('ok'); sv.textContent='Guardado'; renderChrome(); } }
   else if(d) chSend({demo:d.dataset.chd});
   else if(c) chPick(c.dataset.chp);
