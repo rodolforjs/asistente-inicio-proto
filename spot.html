@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cuenta conmigo · Spot</title>
+<title>Regi · Spot</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Spot de ~100 s: reproduce la web real (index.html?spot=1) dentro de un escenario 1920×1080 y la anima sola.
    Controles: barra al mover el mouse · espacio/K pausa · ← → toma · 1–9 ir a toma · R reiniciar · L repetir · F pantalla completa · H ocultar barra · Esc salir. ?loop=1 repite. */
@@ -15,35 +15,35 @@ html,body{margin:0;height:100%;background:#000;overflow:hidden;cursor:none}
 body.ui{cursor:default}
 /* modo presentación (presentacion.html lo maneja por tramos): sin controles ni barra propios */
 body.present #ctl,body.present #bar,body.present #tip,body.present #ffl{display:none!important}
-#c1x{display:none;font-family:'Newsreader',serif;font-size:52px;font-weight:400;letter-spacing:-.02em;color:#4b5563}
+#c1x{display:none;font-family:'Inter Tight',sans-serif;font-size:52px;font-weight:400;letter-spacing:-.02em;color:#4b5563}
 body.present #c1x{display:block}
 #c1x span{display:inline-block;opacity:0}
 #stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--paper)}
 #cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 #app{display:block;width:1440px;height:810px;transform:scale(1.3333334);transform-origin:0 0;border:0;pointer-events:none;background:#f3f4f6}
 /* placas limpias (T1, T7, T12) */
-.card{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;background:var(--paper);opacity:0;visibility:hidden;text-align:center;font-family:'Newsreader',serif;color:var(--ink)}
-.logo{font-family:'Newsreader',serif;font-size:44px;font-weight:500;letter-spacing:-.04em}.logo i{font-style:normal;color:var(--brand)}
+.card{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;background:var(--paper);opacity:0;visibility:hidden;text-align:center;font-family:'Inter Tight',sans-serif;color:var(--ink)}
+.logo{font-family:'Inter Tight',sans-serif;font-size:44px;font-weight:500;letter-spacing:-.04em}.logo i{font-style:normal;color:var(--brand)}
 .big{max-width:1400px;font-size:112px;font-weight:400;line-height:1;letter-spacing:-.045em}
-.big em{font-style:italic;color:var(--brand)}
-.sub{margin-top:-6px;font-family:'Newsreader',serif;font-style:italic;font-size:48px;font-weight:500;letter-spacing:-.01em;color:#4b5563}
-.cc{display:flex;flex-direction:column;align-items:center;justify-content:center;width:112px;height:112px;margin-top:22px;border:2.5px solid #a8452c;background:#fff;color:#a8452c;font-family:'Newsreader',serif;font-weight:500;line-height:.95}
+.big em{color:var(--brand)}
+.sub{margin-top:-6px;font-family:'Inter Tight',sans-serif;font-size:48px;font-weight:500;letter-spacing:-.01em;color:#4b5563}
+.cc{display:flex;flex-direction:column;align-items:center;justify-content:center;width:112px;height:112px;margin-top:22px;border:2.5px solid #a8452c;background:#fff;color:#a8452c;font-family:'Inter Tight',sans-serif;font-weight:500;line-height:.95}
 .cc b{font-weight:500;font-size:27px;letter-spacing:-.01em;transform:scaleX(.82);white-space:nowrap}
 /* textos sobre la web */
-.cap{position:absolute;left:96px;bottom:84px;z-index:4;max-width:1200px;border-radius:30px;background:rgba(255,255,255,.94);padding:34px 40px 34px;font-family:'Newsreader',serif;font-size:84px;font-weight:400;line-height:1.08;text-box:trim-both cap alphabetic;letter-spacing:-.04em;color:var(--ink);box-shadow:0 30px 60px -30px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.05);opacity:0}
-.cap em{font-style:italic;color:var(--brand)}
+.cap{position:absolute;left:96px;bottom:84px;z-index:4;max-width:1200px;border-radius:30px;background:rgba(255,255,255,.94);padding:34px 40px 34px;font-family:'Inter Tight',sans-serif;font-size:84px;font-weight:400;line-height:1.08;text-box:trim-both cap alphabetic;letter-spacing:-.04em;color:var(--ink);box-shadow:0 30px 60px -30px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.05);opacity:0}
+.cap em{color:var(--brand)}
 .cap.pl em{color:inherit}   /* en el onboarding el naranja ya lo pone el título de la web: un solo acento */
 .cap.sm{bottom:40px;max-width:1100px;font-size:60px;padding:27px 34px 27px}
 .cap.r{left:auto;right:96px}
 .cap.top{top:84px;bottom:auto;left:0;right:0;width:max-content;max-width:none;margin:0 auto;font-size:58px;padding:26px 34px 26px}
 .cap em .w{display:inline-block}
 /* placa "Me acuerdo por ti": fondo papel donde aparece el celular (sin el planner detrás) */
-#mem{position:absolute;inset:0;z-index:3;display:flex;align-items:center;background:var(--paper);opacity:0;visibility:hidden;font-family:'Newsreader',serif;color:var(--ink)}
+#mem{position:absolute;inset:0;z-index:3;display:flex;align-items:center;background:var(--paper);opacity:0;visibility:hidden;font-family:'Inter Tight',sans-serif;color:var(--ink)}
 #mem .in{width:100%;text-align:center}
 #mem .big{margin:0 auto}
 #mem .dt{display:inline-flex;align-items:center;gap:14px;margin-top:34px;border-radius:999px;background:#fff;padding:14px 26px;font-family:'Inter',sans-serif;font-size:26px;font-weight:600;color:#4b5563;box-shadow:0 20px 40px -24px rgba(15,23,42,.35),0 0 0 1px rgba(15,23,42,.05)}
 #mem .dt i{width:12px;height:12px;border-radius:50%;background:var(--brand)}
-#mem .sb2{margin-top:30px;font-style:italic;font-size:46px;font-weight:500;color:#4b5563;opacity:0}
+#mem .sb2{margin-top:30px;font-size:46px;font-weight:500;color:#4b5563;opacity:0}
 /* barra arrastrable */
 #chs{cursor:pointer;touch-action:none}
 #ph2{position:absolute;bottom:0;width:2px;height:22px;margin-left:-1px;background:#fff;border-radius:2px;pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
@@ -99,22 +99,25 @@ body.ui #ctl{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 #nm small{margin-left:8px;font-weight:500;color:rgba(255,255,255,.5)}
 .kb{color:rgba(255,255,255,.45);font-size:12px;margin-right:6px}
 @media(max-width:760px){.kb{display:none}}
+em,i{font-style:normal}
+#c12{gap:10px}#c12 .sub{margin-top:0}
+.rg{display:inline-flex;align-items:center;gap:16px}.rg img{display:block;width:56px;height:56px}
 </style>
 </head>
 <body>
 <div id="stage">
-  <div id="cam"><iframe id="app" title="Cuenta conmigo" tabindex="-1"></iframe></div>
+  <div id="cam"><iframe id="app" title="Regi" tabindex="-1"></iframe></div>
   <div id="dim"></div>
   <div id="mem"><div class="in"><p class="big" id="memT">Cuando se acerca <em>una fecha…</em></p><span class="dt"><i></i><b id="memD">miércoles 4 de noviembre</b></span><p class="sb2" id="memS">Si algo se acerca, te aviso.</p></div></div>
   <div id="ph" aria-hidden="true"><div class="scr"><span class="isl"></span><div class="sb"><span>9:12</span><span>●●● ᯤ ▮</span></div>
     <div class="clk"><small id="phD">lunes 9 de noviembre</small><b>9:12</b></div>
-    <div class="nt" id="phN"><span class="appi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span style="flex:1;min-width:0"><span class="urg"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Urgente</span><span class="nm"><span>Cuenta conmigo</span><span>ahora</span></span><b id="phT"></b><span class="bd" id="phB"></span></span></div>
+    <div class="nt" id="phN"><span class="appi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span style="flex:1;min-width:0"><span class="urg"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Urgente</span><span class="nm"><span>Regi</span><span>ahora</span></span><b id="phT"></b><span class="bd" id="phB"></span></span></div>
     <p class="tap" id="phTap">Toca para abrir</p><i class="tch" id="phTch"></i></div></div>
   <div id="cur"><i></i><svg width="46" height="46" viewBox="0 0 24 24" style="position:absolute;left:-8px;top:-4px"><path d="M5 2.5v17.2l4.3-4.1 2.8 6.4 3-1.3-2.8-6.3 6-.2Z" fill="#0e1014" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
   <p class="cap" id="cap"></p>
-  <section class="card" id="c1"><span class="logo">Cuenta conmigo<i>.</i></span><p class="big">Un asistente que <em>planifica</em> tus regalos del año.</p><p id="c1x"><span>Se acuerda</span><span>&nbsp;·&nbsp;</span><span>Te propone</span><span>&nbsp;·&nbsp;</span><span>Se adapta.</span></p></section>
+  <section class="card" id="c1"><span class="logo rg"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile">Regi</span><p class="big">Un asistente que <em>planifica</em> tus regalos del año.</p><p id="c1x"><span>Te avisa</span><span>&nbsp;·&nbsp;</span><span>Te propone</span><span>&nbsp;·&nbsp;</span><span>Se adapta.</span></p></section>
   <section class="card" id="c7"><p class="big" id="c7t">Y no solo <em>en la web.</em></p></section>
-  <section class="card" id="c12"><p class="big" style="font-size:150px">Cuenta conmigo<em>.</em></p><p class="sub">Tu planner para que no se te pase nada.</p><span class="cc" aria-label="Creado en Chile"><b>CREADO</b><b>EN CHILE</b></span></section>
+  <section class="card" id="c12"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile" width="120" height="120" style="display:block;width:120px;height:120px"><p class="big" style="font-size:150px">Regi</p><p class="sub">Tu planner de regalos.</p></section>
   <div id="veil"></div><div id="ffv" style="position:absolute;inset:0;z-index:10;background:#000;opacity:0;visibility:hidden;pointer-events:none"></div><div id="bar"></div>
 </div>
 <div id="tip"></div><div id="ffl"></div>
@@ -201,7 +204,7 @@ function memDays(){
   const D=['miércoles 4','jueves 5','viernes 6','sábado 7','domingo 8','lunes 9'], tl2=gsap.timeline();
   D.slice(1).forEach((d,i)=>tl2.to('#memD',{y:-10,opacity:0,duration:.12,delay:i?.2:0}).call(()=>{ $('memD').textContent=d+' de noviembre'; }).fromTo('#memD',{y:10,opacity:0},{y:0,opacity:1,duration:.16}));
 }
-function memSwap(){ gsap.timeline().to('#memT',{opacity:0,y:-20,duration:.3,ease:'power2.in'}).call(()=>{ $('memT').innerHTML='Me acuerdo <em>por ti.</em>'; }).fromTo('#memT',{opacity:0,y:26},{opacity:1,y:0,duration:.6,ease:'power3.out'}); }
+function memSwap(){ gsap.timeline().to('#memT',{opacity:0,y:-20,duration:.3,ease:'power2.in'}).call(()=>{ $('memT').innerHTML='Te aviso <em>a tiempo.</em>'; }).fromTo('#memT',{opacity:0,y:26},{opacity:1,y:0,duration:.6,ease:'power3.out'}); }
 function memSide(){ gsap.to('#mem .in',{x:-330,duration:1.1,ease:'power3.inOut'}); }
 function phoneIn(){
   const p=E('defaultFocus()'), l=E(`ordLeft(defaultFocus())`), D=E('TODAY');
@@ -236,7 +239,7 @@ const SHOTS=[
   {t:3.9,   name:'T2 Conectar'},
   {t:13.2,  name:'T3 Análisis'},
   {t:29.5,  name:'T4 Planner'},
-  {t:36.9,  name:'T5 Me acuerdo'},
+  {t:36.9,  name:'T5 Te aviso'},
   {t:49.6,  name:'T6 Pensando', join:4},
   {t:58.6,  name:'T7 Propuesta', join:4},
   {t:64.6,  name:'T8 Puente'},
@@ -255,7 +258,7 @@ function build(){
   /* T2 · Conectar: el paso 2 del onboarding tal cual, conectando uno por uno (ritmo ágil) */
   T.call(()=>{ cardOut('c1'); camReset(); capIn('Un planner <em>inteligente.</em>',{top:true,pl:true}); },null,4);
   tap(T,'.oc[data-k="cal"] button',5,.7); tap(T,'.oc[data-k="gmail"] button',6.1,.6); tap(T,'.oc[data-k="contacts"] button',7.2,.6); tap(T,'.oc[data-k="wa"] button',8.3,.6);
-  T.call(()=>capIn('Se conecta <em>a lo que usas.</em>',{top:true,pl:true}),null,5.9)
+  T.call(()=>capIn('Se conecta <em>a tus apps.</em>',{top:true,pl:true}),null,5.9)
    .call(()=>capIn('<em>Sin complicarte</em> la vida.',{top:true,pl:true}),null,7.8)
    .call(capOut,null,9.6)
    .call(()=>{ curOut(); frame('#obR',1.14,1.2,.46,.5); },null,9.6)
