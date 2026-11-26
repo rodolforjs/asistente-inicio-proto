@@ -106,22 +106,22 @@ em,i{font-style:normal}
 .dk .k .mi{width:22px;height:22px;border-radius:6px;display:grid;place-items:center}
 .dk .k .tm{margin-left:auto;font-weight:500;color:var(--mut2)}
 .dk.rg{flex:1;background:linear-gradient(170deg,#3a1d10 0%,#1c1c1f 55%)}
-.rg .bd2{display:flex;gap:14px;margin-top:12px;align-items:center}
-.rg .bd2 img{width:84px;height:84px;border-radius:14px;object-fit:cover;flex:none;box-shadow:0 8px 20px rgba(0,0,0,.35)}
-.rg h3{margin:0;font-size:21px;font-weight:700;line-height:1.15;letter-spacing:-.01em}
-.rg p{margin:4px 0 0;color:var(--mut);font-size:14.5px;line-height:1.3}
-#dRgA{margin-top:auto}
-.rg .up{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.rg h3{margin:14px 0 0;font-size:24px;font-weight:700;line-height:1.12;letter-spacing:-.015em}
+.rg p.s{margin:6px 0 0;color:var(--mut);font-size:15px;line-height:1.35}
+.rg .hero{display:flex;flex-direction:column;flex:1;min-height:0}
+.rg .hero img{width:100%;flex:1;min-height:90px;max-height:230px;object-fit:cover;border-radius:16px;margin-top:14px;background:#2a2d33}
+.rg .up{margin-top:18px;display:flex;flex-direction:column;gap:4px}
 .rg .up p{margin:0 0 6px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut2)}
-.rg .up div{display:flex;align-items:center;gap:12px;padding:6px 0}
-.rg .up .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#111;font-weight:700;font-size:15px;flex:none}
-.rg .up span:not(.av){flex:1;min-width:0}.rg .up b{display:block;font-size:15px}.rg .up small{display:block;color:var(--mut);font-size:13px}
-.rg .up em{font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px;background:rgba(255,255,255,.1);color:var(--mut)}.rg .up em.k{background:rgba(48,209,88,.16);color:var(--ok)}
-.rg .qa{display:flex;gap:8px;margin-top:auto;padding-top:14px}
-.rg .qa button{flex:1;height:50px;border-radius:14px;background:rgba(255,255,255,.12);font-weight:600;font-size:15px}
+.rg .up div{display:flex;align-items:center;gap:12px;padding:8px 0}
+.rg .up div+div{border-top:1px solid var(--line)}
+.rg .up .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#111;font-weight:700;font-size:16px;flex:none}
+.rg .up span:not(.av){flex:1;min-width:0}.rg .up b{display:block;font-size:16px}.rg .up small{display:block;color:var(--mut);font-size:13.5px;margin-top:1px}
+.rg .up em{font-size:12px;font-weight:600;border-radius:999px;padding:5px 10px;background:rgba(255,255,255,.1);color:var(--mut);flex:none}.rg .up em.k{background:rgba(48,209,88,.16);color:var(--ok)}
+.rg .qa{display:flex;gap:10px;margin-top:16px}
+.rg .qa button{flex:1;height:54px;border-radius:16px;background:rgba(255,255,255,.12);font-weight:600;font-size:15.5px}
 .rg .qa button.p{background:var(--brand);color:#fff}
-.rg .dn{margin-top:auto;padding-top:14px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:15.5px}
-.rg .dn i{width:28px;height:28px;border-radius:50%;background:var(--ok);display:grid;place-items:center;flex:none}
+.rg .dn{margin-top:16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;min-height:54px}
+.rg .dn i{width:30px;height:30px;border-radius:50%;background:var(--ok);display:grid;place-items:center;flex:none}
 .dk.np{flex:none}
 .np .r{display:flex;align-items:center;gap:14px;margin-top:12px}
 .np .cv{width:58px;height:58px;border-radius:10px;background:linear-gradient(135deg,#8a5cf6,#ec4899);flex:none}
@@ -186,19 +186,23 @@ em,i{font-style:normal}
 .call b{font-size:32px;margin-top:12px}.call small{color:var(--mut);font-size:17px}
 .call .end{margin-top:30px;width:76px;height:76px;border-radius:50%;background:#ff3b30;display:grid;place-items:center}
 /* aviso abajo (como las notificaciones del auto: no tapan el mapa) */
-.nb{position:absolute;left:50%;bottom:14px;z-index:800;width:min(92%,880px);border-radius:26px;padding:14px;display:flex;align-items:center;gap:14px;transform:translate(-50%,calc(100% + 40px));opacity:0;transition:transform .6s cubic-bezier(.2,.9,.25,1.1),opacity .35s}
-.nb.on{transform:translate(-50%,0);opacity:1}
-.nb .ai{width:52px;height:52px;border-radius:13px;background:linear-gradient(160deg,#ff8a5c,#ff4d12);display:grid;place-items:center;flex:none}
-.nb .gi{width:60px;height:60px;border-radius:12px;object-fit:cover;flex:none}
+.nb{position:absolute;left:28px;right:28px;bottom:22px;z-index:800;max-width:720px;margin:0 auto;border-radius:30px;padding:20px;display:flex;flex-direction:column;gap:18px;transform:translateY(calc(100% + 50px));opacity:0;transition:transform .65s cubic-bezier(.2,.9,.25,1.08),opacity .35s}
+.nb.on{transform:none;opacity:1}
+#vMap.dash.on~.nb{right:calc(min(36%,400px) + 42px)}
+.nb .top{display:flex;align-items:center;gap:18px}
+.nb .gi{width:88px;height:88px;border-radius:18px;object-fit:cover;flex:none;box-shadow:0 10px 24px rgba(0,0,0,.35)}
 .nb .tx{flex:1;min-width:0}
-.nb .tx small{display:block;font-size:13px;color:var(--mut);font-weight:600}
-.nb .tx b{display:block;font-size:18px;font-weight:600;line-height:1.2;margin-top:2px}
-.nb .tx span{display:block;font-size:14.5px;color:var(--mut);margin-top:2px}
-.nb .ac{display:flex;gap:8px;flex:none}
-.nb .ac button{height:52px;padding:0 18px;border-radius:15px;background:rgba(255,255,255,.14);font-weight:600;font-size:15.5px;white-space:nowrap}
+.nb .tx small{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mut);font-weight:600;letter-spacing:.02em}
+.nb .tx small i{width:22px;height:22px;border-radius:6px;background:linear-gradient(160deg,#ff8a5c,#ff4d12);display:grid;place-items:center}
+.nb .tx b{display:block;font-size:23px;font-weight:700;line-height:1.18;letter-spacing:-.015em;margin-top:6px}
+.nb .tx span{display:block;font-size:15.5px;color:var(--mut);margin-top:5px}
+.nb .ac{display:flex;gap:10px}
+.nb .ac button{flex:1;height:58px;border-radius:17px;background:rgba(255,255,255,.14);font-weight:600;font-size:17px;white-space:nowrap}
 .nb .ac button.p{background:var(--brand);color:#fff}
-.nb .ac button.x{width:52px;padding:0;display:grid;place-items:center}
-.nb .ok{margin:0;font-size:17px}
+.nb .ac button.x{flex:none;width:58px;display:grid;place-items:center}
+.nb .ok{margin:0;font-size:18px;min-height:58px}
+.nb-on .eta,.nb-on .spd,.nb-on .rc{opacity:0;pointer-events:none}
+.eta,.spd,.rc{transition:opacity .3s}
 .toast{position:absolute;left:50%;top:14px;z-index:900;transform:translate(-50%,-140%);display:flex;align-items:center;gap:12px;border-radius:18px;padding:12px 18px 12px 12px;font-size:16px;font-weight:600;transition:transform .5s cubic-bezier(.2,.9,.25,1);max-width:70%}
 .toast.on{transform:translate(-50%,0)}
 .toast .ai{width:34px;height:34px;border-radius:9px;background:var(--brand);display:grid;place-items:center;flex:none}
@@ -207,7 +211,7 @@ em,i{font-style:normal}
 #go{position:fixed;inset:0;z-index:2000;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;cursor:pointer}
 #go b{font-size:28px;font-weight:600}#go small{color:var(--mut);font-size:15px;max-width:36ch}
 #go.off{display:none}
-@media (max-width:900px){.dc{width:42%}.nb{flex-wrap:wrap}.nb .ac{width:100%}.nb .ac button{flex:1}.inf{grid-template-columns:1fr}.inf img{max-height:28vh}.npv{grid-template-columns:1fr;justify-items:center;text-align:center}.grid{grid-template-columns:repeat(3,96px)}}
+@media (max-width:900px){.dc{width:42%}.inf{grid-template-columns:1fr}.inf img{max-height:28vh}.npv{grid-template-columns:1fr;justify-items:center;text-align:center}.grid{grid-template-columns:repeat(3,96px)}}
 </style>
 </head>
 <body>
@@ -235,10 +239,7 @@ em,i{font-style:normal}
         <button class="rc gl" id="rc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></svg>Recentrar</button>
       </div>
       <div class="dc">
-        <div class="dk rg" id="dRg"><span class="k"><span class="mi" style="background:linear-gradient(160deg,#ff8a5c,#ff4d12)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span>Regi<span class="tm">ahora</span></span>
-          <div class="bd2"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/mamacualestuhistoria_600x.png?v=1773247306" alt=""><span><h3 id="dRgT">Hoy es el cumple de Mamá</h3><p id="dRgS">Su regalo está listo: Mamá ¿Cuál es tu Historia? · $29.990</p></span></div>
-          <div class="up"><p>Lo próximo</p><div><span class="av" style="background:#b9e4a8">A</span><span><b>Andrés</b><small>2 abr · cumpleaños</small></span><em>En mi radar</em></div><div><span class="av" style="background:#9ad1ff">P</span><span><b>Papá</b><small>Día del Padre · llega el 19 jun</small></span><em class="k">Preparando</em></div></div>
-          <div id="dRgA"></div></div>
+        <div class="dk rg" id="dRg"><span class="k"><span class="mi" style="background:linear-gradient(160deg,#ff8a5c,#ff4d12)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span>Regi<span class="tm" id="dRgM">hoy</span></span><div class="hero" id="dRgB"></div></div>
         <div class="dk np" id="dNp"><span class="k"><span class="mi" style="background:linear-gradient(160deg,#ff6b81,#e5254a)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 18V5l12-2v13"/></svg></span>Reproduciendo</span><span class="r"><span class="cv"></span><span style="min-width:0;flex:1"><b class="nT">Tu radio de la tarde</b><small class="nA">Lo que suena</small></span><span class="cs"><button data-m="prev" aria-label="Anterior"></button><button data-m="play" aria-label="Pausa"></button><button data-m="next" aria-label="Siguiente"></button></span></span><span class="pg"><i id="dPg"></i></span></div>
         <button class="dk cl" id="dCl"><span class="k"><span class="mi" style="background:#fff"><b style="color:#ff3b30;font-size:8px">SÁB</b></span>Calendario<span class="tm">hoy</span></span><span class="ev"><i style="background:#ff9f0a"></i><span><b>Cumpleaños de Mamá</b><small>Todo el día</small></span></span><span class="ev"><i style="background:#0a84ff"></i><span><b>Comida en casa de Mamá</b><small>20:30 · Av. Los Leones 1180</small></span></span></button>
       </div>
@@ -324,7 +325,7 @@ const APPS={
 };
 const icon=(k,big)=>{ const a=APPS[k]; return `<span class="ic ${k}">${a.cal?'<span><b>SÁB</b><span>14</span></span>':a.svg}<span class="bd">1</span></span>`; };
 $('grid').innerHTML=['map','mus','tel','regi','cal','msg','pod','set'].map(k=>`<button class="app" data-k="${k}">${icon(k)}<span>${APPS[k].n}</span></button>`).join('');
-let recent=['map','mus','regi'], cur='dash', pending=true;
+let recent=['map','mus','regi'], cur='dash', pending=false;
 function drawRec(){ $('rec').innerHTML=recent.map(k=>`<button data-k="${k}" aria-label="${APPS[k].n}" ${cur===k?'aria-current="true"':''}>${icon(k)}</button>`).join(''); badges(); }
 function badges(){ document.querySelectorAll('.ic.regi').forEach(i=>i.classList.toggle('has',pending)); }
 function show(id){ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id)); }
@@ -506,7 +507,7 @@ function regiList(){
   $('rI').hidden=true; $('rL').hidden=false; $('rBk').classList.remove('on'); $('rSeg').style.visibility='visible';
   document.querySelectorAll('#rSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===rTab));
   let h='';
-  if(rTab==='hoy'){ const [s,c,st]=mamaState(); const x=VIENE[0];
+  if(rTab==='hoy'){ const [s,c,st]=alerted?mamaState():['Su regalo está listo, te aviso hoy','','Hoy']; const x=VIENE[0];
     h=`<p class="sec">Hoy</p><button class="row" data-r="mama"><img class="im" src="${MAMA.img}" alt=""><span class="t"><b>Cumpleaños de Mamá</b><small>${s}</small></span><span class="st ${c}">${st}</span>${IC.chev}</button>
     <p class="sec">Lo próximo</p><button class="row" data-r="v0"><span class="im" style="background:${x.c};color:#111">${x.n[0]}</span><span class="t"><b>${x.n}</b><small>${x.d} · ${x.s}</small></span><span class="st">En mi radar</span>${IC.chev}</button>
     <p class="sec">En camino</p><div class="row"><span class="im" style="background:#9ad1ff;color:#111">P</span><span class="t"><b>Papá</b><small>Día del Padre · llega el 19 jun</small></span><span class="st k">Preparando</span></div>`; }
@@ -539,31 +540,39 @@ function drawActs(){
   el.innerHTML=done?okHtml():`<div class="bts"><button class="bt p" data-a="envio">Envíalo hoy a su casa <small>antes de las 20:00</small></button><button class="bt" data-a="retiro">Lo retiro de camino <small>Creado MUT · 2 min</small></button><button class="bt" data-a="no">Ahora no</button></div>`;
   el.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>decide(b.dataset.a));
 }
+let alerted=false;
+const UP=`<div class="up"><p>Lo próximo</p><div><span class="av" style="background:#b9e4a8">A</span><span><b>Andrés</b><small>2 abr · cumpleaños</small></span><em>En mi radar</em></div><div><span class="av" style="background:#9ad1ff">P</span><span><b>Papá</b><small>Día del Padre · llega el 19 jun</small></span><em class="k">Preparando</em></div></div>`;
 function dashCard(){
-  $('dRgT').textContent=done==='envio'?'Regalo de Mamá: comprado':done==='retiro'?'Pasa por Creado MUT':'Hoy es el cumple de Mamá';
-  $('dRgS').textContent=done==='envio'?'Llega hoy antes de las 20:00 a su casa.':done==='retiro'?'Te lo tienen envuelto. Queda de camino, a 2 min.':'Su regalo está listo: Mamá ¿Cuál es tu Historia? · $29.990';
-  $('dRgA').innerHTML=done&&done!=='no'?`<div class="dn"><i>${IC.check.replace('width="18" height="18"','width="15" height="15"')}</i>${done==='envio'?'En camino':'Parada agregada'}</div>`
-    :`<div class="qa"><button class="p" data-a="envio">Envíalo hoy</button><button data-a="retiro">Retirar de camino</button></div>`;
-  $('dRgA').querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>decide(b.dataset.a));
+  const b=$('dRgB'); $('dRgM').textContent=alerted?'ahora':'hoy';
+  if(!alerted){ b.innerHTML=`<h3>Todo al día</h3><p class="s">Sigo tus fechas mientras manejas. Si algo se acerca, te aviso.</p>${UP}`; return; }
+  const ok=done&&done!=='no';
+  b.innerHTML=`<h3>${done==='envio'?'Regalo de Mamá, comprado':done==='retiro'?'Pasa por Creado MUT':'Hoy es el cumple de Mamá'}</h3>
+    <p class="s">${done==='envio'?'Llega hoy antes de las 20:00 a su casa.':done==='retiro'?'Te lo tienen envuelto, queda a 2 min.':`${MAMA.g} · ${MAMA.p}`}</p>
+    <img src="${MAMA.img}" alt="">
+    ${ok?`<div class="dn"><i>${IC.check.replace('width="18" height="18"','width="15" height="15"')}</i>${done==='envio'?'En camino':'Parada agregada'}</div>`
+      :`<div class="qa"><button class="p" data-a="envio">Envíalo hoy</button><button data-a="retiro">Retirar de camino</button></div>`}`;
+  b.querySelectorAll('[data-a]').forEach(x=>x.onclick=()=>decide(x.dataset.a));
 }
 dashCard();
 let nbT=0;
 function decide(a){
   done=a; pending=false; badges(); drawActs(); dashCard(); clearTimeout(nbT);
-  $('nb').querySelector('.ac')&&( $('nb').querySelector('.ac').outerHTML=`<div class="ac">${okHtml().replace('class="ok','class="ok')}</div>` );
+  $('nb').querySelector('.ac')&&( $('nb').querySelector('.ac').outerHTML=`<div class="ac">${okHtml()}</div>` );
   if(a==='envio'){ CC.send('auto-si',{para:'Mamá',gift:MAMA.g,modo:'envio'}); }
   if(a==='retiro'){ CC.send('auto-si',{para:'Mamá',gift:MAMA.g,modo:'retiro'}); setRoute('mut',true); setTimeout(()=>{ if(cur!=='dash') openApp('map'); showStop(); },500); toast('Parada agregada<small>Creado MUT · te lo tienen envuelto</small>'); }
-  nbT=setTimeout(()=>$('nb').classList.remove('on'),a==='no'?2500:4500);
+  nbT=setTimeout(nbHide,a==='no'?2500:4500);
 }
 
 /* ===== aviso de rescate: llega abajo, sobre cualquier pantalla ===== */
+function nbHide(){ $('nb').classList.remove('on'); document.body.classList.remove('nb-on'); }
 function rescue(){
-  clearTimeout(nbT); done=null; pending=true; badges(); dashCard(); drawActs();
-  $('nb').innerHTML=`<span class="ai">${IC.gift.replace('width="20" height="20"','width="26" height="26"')}</span><img class="gi" src="${MAMA.img}" alt=""><span class="tx"><small>REGI · AHORA</small><b>¿Se te pasó el cumple de Mamá? Te lo llevo hoy.</b><span>${MAMA.g} · ${MAMA.p}</span></span><div class="ac"><button class="p" data-a="envio">Envíalo hoy</button><button data-a="retiro">Retirar de camino</button><button class="x" data-a="no" aria-label="Ahora no">${IC.x}</button></div>`;
+  clearTimeout(nbT); done=null; pending=true; alerted=true; badges(); dashCard(); drawActs();
+  $('nb').innerHTML=`<div class="top"><img class="gi" src="${MAMA.img}" alt=""><span class="tx"><small><i>${IC.gift.replace('width="20" height="20"','width="13" height="13"')}</i>REGI · AHORA</small><b>¿Se te pasó el cumple de Mamá? Te lo llevo hoy.</b><span>${MAMA.g} · ${MAMA.p} · envuelto</span></span></div>
+    <div class="ac"><button class="p" data-a="envio">Envíalo hoy</button><button data-a="retiro">Retirar de camino</button><button class="x" data-a="no" aria-label="Ahora no">${IC.x}</button></div>`;
   $('nb').querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>decide(b.dataset.a));
-  $('nb').classList.add('on'); chime();
+  $('nb').classList.add('on'); document.body.classList.add('nb-on'); chime();
 }
-function reset(){ clearTimeout(nbT); $('nb').classList.remove('on'); done=null; pending=true; badges(); dashCard(); drawActs(); if(mode!=='casa') setRoute('casa',true); if($('vRegi').classList.contains('on')) regiList(); openDash(); }
+function reset(){ clearTimeout(nbT); nbHide(); done=null; pending=false; alerted=false; badges(); dashCard(); drawActs(); if(mode!=='casa') setRoute('casa',true); if($('vRegi').classList.contains('on')) regiList(); openDash(); }
 
 /* sala: la presentación (o la compu) manda 'auto'; 'reset' vuelve al panel */
 let seen=-1;
