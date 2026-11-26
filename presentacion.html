@@ -41,14 +41,16 @@ body{cursor:none}body.mouse{cursor:default}
 #o1 .src{left:160px;right:auto;bottom:64px;color:rgba(244,242,238,.45)}
 /* 2 · usuarios */
 #o2{background:var(--cr)}
-#o2 .cols{position:absolute;left:80px;right:80px;top:320px;height:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-#o2 .c{display:grid;grid-template-columns:132px 1fr;grid-template-rows:auto auto 1fr;column-gap:26px;align-items:center;box-sizing:border-box;border-radius:32px;padding:40px 44px 44px;background:var(--t);overflow:hidden}
-#o2 .ph{grid-row:1/3;align-self:start;width:132px;height:132px;border-radius:50%;border:6px solid var(--k);box-sizing:border-box;overflow:hidden;background:#ddd}
-#o2 .ph img{display:block;width:100%;height:100%;object-fit:cover}
-#o2 h3{grid-column:2;align-self:end;margin:0;font-size:58px;font-weight:600;line-height:1;letter-spacing:-.03em}
-#o2 .tag{grid-column:2;align-self:start;justify-self:start;margin-top:10px;font:600 24px/1.2 'Inter',sans-serif;letter-spacing:.02em;color:var(--k)}
-#o2 .qt{grid-column:1/3;align-self:start;margin:34px 0 0;padding-top:30px;border-top:2px solid rgba(28,27,25,.12);font-size:42px;font-weight:400;line-height:1.2;letter-spacing:-.018em;color:#2b2a27}
-#o2 .un{position:absolute;left:80px;right:80px;bottom:120px;height:150px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
+#o2 .cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr)}
+#o2 .c{position:relative;overflow:hidden;background:var(--k);color:#fff}
+#o2 .ph{position:absolute;left:0;right:0;bottom:0;top:330px}
+#o2 .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:grayscale(1) contrast(1.15) brightness(1.05);mix-blend-mode:multiply}
+#o2 .c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--k) 0,var(--k) 330px,transparent 470px);pointer-events:none}
+#o2 .tx{position:absolute;left:64px;right:56px;top:84px;z-index:1}
+#o2 h3{margin:0;font-size:64px;font-weight:700;line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+#o2 .tag{display:block;margin-top:16px;font:600 22px/1.25 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+#o2 .qt{margin:26px 0 0;font-size:34px;font-weight:400;line-height:1.22;letter-spacing:-.015em;max-width:470px}
+#o2 .un{position:absolute;z-index:2;left:80px;right:80px;bottom:80px;height:150px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
 #o2 .un .h{display:flex;align-items:baseline;gap:26px}
 #o2 .un small{flex:none;font:600 21px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
 #o2 .un p{margin:0;font-size:44px;font-weight:600;line-height:1.1;letter-spacing:-.025em}
@@ -238,9 +240,9 @@ em,i,cite{font-style:normal}
   <!-- 2 · Usuarios (4 pasos: una columna por tecla · lo que los une) -->
   <section class="ov fr" id="o2">
     <div class="cols">
-      <div class="c" data-s="0" style="--t:#ffe5d6;--k:#ff6a1f"><div class="ph"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=600&h=600&fit=crop&crop=faces&q=80&auto=format" alt="Marcela"></div><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p></div>
-      <div class="c" data-s="0" data-d=".1" style="--t:#e2e4fc;--k:#2a35e6"><div class="ph"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=600&h=600&fit=crop&crop=faces&q=80&auto=format" alt="Andrés"></div><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p></div>
-      <div class="c" data-s="0" data-d=".2" style="--t:#ebe1fd;--k:#6b2bf0"><div class="ph"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=600&h=600&fit=crop&crop=faces&q=80&auto=format" alt="Felipe"></div><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p></div>
+      <div class="c" data-s="0" style="--t:#ffe5d6;--k:#ff6a1f"><div class="ph"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt="Marcela"></div><div class="tx"><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p></div></div>
+      <div class="c" data-s="0" data-d=".1" style="--t:#e2e4fc;--k:#2a35e6"><div class="ph"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt="Andrés"></div><div class="tx"><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p></div></div>
+      <div class="c" data-s="0" data-d=".2" style="--t:#ebe1fd;--k:#6b2bf0"><div class="ph"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt="Felipe"></div><div class="tx"><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p></div></div>
     </div>
     <div class="un" data-s="1" data-d=".25">
       <div class="h"><small>Lo que los une:</small><p>“Necesito ayuda con esto, <em>y que no sea una carga.</em>”</p></div>
@@ -491,7 +493,7 @@ function animOv(id,st,enter){
       if(enter){ gsap.killTweensOf(q); gsap.set(q,to); gsap.fromTo(q,{opacity:0},{opacity:1,duration:.8,delay:.15}); }
       else gsap.to(q,{...to,duration:.9,ease:'power2.inOut'});
     }
-    if(id==='o2') gsap.to('#o2 .cols',{top:st>=1?190:320,duration:enter?0:.7,ease:'power3.inOut'});
+    
     if(id==='o3'){ const off=st>=2, du=enter?0:.7; gsap.to('#o3 .hl',{xPercent:off?-100:0,duration:du,ease:'power3.inOut'}); gsap.to('#o3 .hr',{xPercent:off?100:0,duration:du,ease:'power3.inOut'}); }
     return;
   }
