@@ -997,17 +997,15 @@ body.ch-on .chat{display:flex}
 .ch-sgg button span img{width:16px;height:16px}
 .ch-q{display:none}
 /* caja para escribir */
-.ch-f{display:flex;flex-direction:column;margin:0 14px 14px;border-radius:26px;background:#fff;padding:10px 10px 10px 16px;box-shadow:0 0 0 1px #e3e7ed,0 12px 28px -18px rgba(14,16,20,.35);transition:box-shadow .15s}
+.ch-f{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px;margin:0 14px 14px;border-radius:28px;background:#fff;padding:8px;box-shadow:0 0 0 1px #e3e7ed,0 12px 28px -18px rgba(14,16,20,.35);transition:box-shadow .15s}
 .ch-f:focus-within{box-shadow:0 0 0 1.5px #0e1014,0 12px 28px -18px rgba(14,16,20,.35)}
-.ch-f textarea{width:100%;min-height:24px;max-height:140px;resize:none;border:0;outline:0;background:none;font:15px/1.5 Inter,sans-serif;color:#0e1014;padding:2px 4px 0 0}
+.ch-f textarea{flex:1;min-width:0;min-height:40px;max-height:140px;resize:none;border:0;outline:0;background:none;font:15px/1.5 Inter,sans-serif;color:#0e1014;padding:8px 4px}
 .ch-f textarea::placeholder{color:#9aa3b2}
-.ch-fb{display:flex;align-items:center;gap:8px;margin-top:8px}
-.ch-at{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;cursor:pointer;color:#0e1014;box-shadow:0 0 0 1px #e3e7ed;margin-left:-6px}.ch-at:hover{background:#f5f7f9}
-.ch-hint{font-size:12px;color:#9aa3b2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ch-send{margin-left:auto;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#0e1014;color:#fff;transition:background .15s,transform .15s;flex:none}
+.ch-at{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;cursor:pointer;color:#0e1014;background:#f3f5f8}.ch-at:hover{background:#e8ecf1}
+.ch-send{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#0e1014;color:#fff;transition:background .15s,transform .15s}
 .ch-send:disabled{background:#e5e8ed;color:#fff;cursor:default}
 .ch-send:not(:disabled):hover{transform:translateY(-1px)}
-.ch-tr{display:flex;align-items:center;gap:10px;margin:0 0 10px -6px}
+.ch-tr{flex-basis:100%;display:flex;align-items:center;gap:10px;padding:6px 4px 2px}
 .ch-tr[hidden]{display:none}
 .ch-th{position:relative;flex:none}.ch-th img{display:block;width:64px;height:64px;border-radius:14px;object-fit:cover}
 .ch-th button{position:absolute;top:-6px;right:-6px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#0e1014;color:#fff;font-size:14px;line-height:1;box-shadow:0 0 0 2px #fff}
@@ -1671,8 +1669,9 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
   <div id="chQ" class="ch-q"></div>
   <form id="chF" class="ch-f">
     <div id="chTr" class="ch-tr" hidden><span class="ch-th"><img id="chTi" alt="Foto adjunta"><button type="button" id="chTx" aria-label="Quitar foto">×</button></span></div>
+    <label class="ch-at" aria-label="Mandar una foto" title="Mandar una foto"><input id="chImg" type="file" accept="image/*" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></label>
     <textarea id="chT" rows="1" placeholder="Pregúntale a Regi…" aria-label="Mensaje para Regi"></textarea>
-    <div class="ch-fb"><label class="ch-at" aria-label="Mandar una foto" title="Mandar una foto"><input id="chImg" type="file" accept="image/*" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></label><span class="ch-hint">Fotos, links o algo de tu gente</span><button id="chS" class="ch-send" type="submit" aria-label="Enviar" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div>
+    <button id="chS" class="ch-send" type="submit" aria-label="Enviar" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
   </form>
 </section>
 <!-- en la tienda: el aviso que llega al celular -->
@@ -3346,13 +3345,11 @@ const chChips = (top,why) => `<div class="cm-ppl">${chWho(top).map(p=>`<button d
 const prodCard = x => `<div class="cm-p">${img(x.u,'')}<span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${esc(x.v)} · ${clp(x.p)}</small></span></div>`;
 const RG_AV='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g fill="#0e1014"><rect x="7" y="7" width="15.5" height="15.5" rx="4.5"/><rect x="7" y="25.5" width="15.5" height="15.5" rx="4.5"/><rect x="25.5" y="25.5" width="15.5" height="15.5" rx="4.5"/><circle class="dt" cx="33.25" cy="14.75" r="7.75" fill="#ff5924"/></g></svg>';
 const CH_SUG=[
-  {q:'¿Qué le regalo a mi hermana?',s:'Ideas del catálogo de Creado',ic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>'},
-  {cam:1,q:'Sacar una foto',s:'Lo reconozco y lo guardo para alguien',ic:CH_IC.cam},
-  {q:'¿Qué fechas se vienen?',s:'Lo próximo de tu gente',ic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>'},
-  {q:'A mi papá le encantó la botella',s:'Lo anoto en su ficha',ic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>'}];
+  {q:'¿Qué le regalo a mi hermana?',t:'Ideas para mi hermana',s:'Según lo que sé de ella',ic:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg>'},
+  {cam:1,t:'Foto de algo que viste',s:'Lo busco en Creado y lo guardo',ic:CH_IC.cam}];
 function chEmpty(){
-  chL().innerHTML=`<div class="ch-e" id="chE">${RG_AV.replace('<svg ','<svg class="rg-av ch-av" ')}<h2>Hola${firstName()?', '+esc(firstName()):''}.</h2><p>¿Viste algo para alguien, o quieres ideas? Mándame una foto, un link o pregúntame.</p>
-    <div class="ch-sgg">${CH_SUG.map(x=>`<button ${x.cam?'data-chcam="1"':`data-chq="${esc(x.q)}"`}><span>${x.ic}</span><b>${esc(x.q)}</b><small>${esc(x.s)}</small></button>`).join('')}</div></div>`; }
+  chL().innerHTML=`<div class="ch-e" id="chE">${RG_AV.replace('<svg ','<svg class="rg-av ch-av" ')}<h2>Hola${firstName()?', '+esc(firstName()):''}.</h2><p>¿Para quién buscamos hoy?</p>
+    <div class="ch-sgg">${CH_SUG.map(x=>`<button ${x.cam?'data-chcam="1"':`data-chq="${esc(x.q)}"`}><span>${x.ic}</span><b>${esc(x.t)}</b><small>${esc(x.s)}</small></button>`).join('')}</div></div>`; }
 const chClearEmpty=()=>{ const e=$('chE'); if(e) e.remove(); };
 function chOpen(){
   if(document.body.classList.contains('ch-on')) return;
