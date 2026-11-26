@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Regi</title>
-<meta name="theme-color" content="#f4f2ee">
+<meta name="theme-color" content="#f5f7f9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Regi">
@@ -16,14 +16,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* El celular de la demo: activa los avisos web y muestra lo que llega. */
+/* El celular de la demo = la app Regi (la web real en modo móvil) + los avisos que llegan encima.
+   Primero activa los avisos web (en iPhone, desde la app instalada en el inicio).
+   Ajustes ocultos: mantener presionada la franja de arriba (o tecla P en compu). */
 :root{--ink:#0e1014;--paper:#f4f2ee;--card:#fff;--muted:#6b6f76;--line:rgba(14,16,20,.09);--brand:#ff5924;--ok:#22a06b}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font:16px/1.45 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body{padding:calc(env(safe-area-inset-top) + 18px) 22px calc(env(safe-area-inset-bottom) + 24px);min-height:100dvh;display:flex;flex-direction:column}
-.logo{font:500 20px/1 'Inter Tight',sans-serif;letter-spacing:-.02em}.logo i{color:var(--brand);font-style:normal}
-h1{margin:0;font:400 40px/1.04 'Inter Tight',sans-serif;letter-spacing:-.035em}
-h1 em{font-style:normal}
+html,body{margin:0;height:100%;background:#f5f7f9;color:var(--ink);font:16px/1.45 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+em,i,cite{font-style:normal}
+button{font:inherit;color:inherit}
+/* configuración inicial */
+#setup{position:fixed;inset:0;z-index:20;background:var(--paper);display:none;flex-direction:column;padding:calc(env(safe-area-inset-top) + 18px) 22px calc(env(safe-area-inset-bottom) + 24px);overflow:auto}
+#setup.on{display:flex}
+.logo{display:flex;align-items:center;gap:9px;font:600 20px/1 'Inter Tight',sans-serif;letter-spacing:-.02em}
+.logo img{display:block;width:30px;height:30px}
+h1{margin:0;font:400 38px/1.05 'Inter Tight',sans-serif;letter-spacing:-.03em}
 p{margin:0}
 .lead{margin-top:14px;font-size:17px;color:var(--muted);max-width:32ch}
 .scr{display:none;flex:1;flex-direction:column}.scr.on{display:flex}
@@ -35,124 +41,155 @@ p{margin:0}
 .steps li{display:flex;gap:14px;align-items:center;background:var(--card);border-radius:18px;padding:14px 16px;font-size:15.5px}
 .steps b{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;background:var(--paper);font-size:13px}
 .steps svg{vertical-align:-4px}
-.note{margin-top:16px;font-size:14px;color:var(--muted)}
 .err{margin-top:14px;font-size:14px;color:#c2410c;min-height:1em}
-.live{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:8px 14px;border-radius:999px;background:var(--card);font-size:14px;font-weight:500}
-.live i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(34,160,107,.16)}
-.feed{margin-top:30px}.feed h2{margin:0 0 10px;font:600 13px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.n{display:flex;gap:12px;background:var(--card);border-radius:20px;padding:13px 14px;margin-bottom:8px;cursor:pointer;text-align:left;width:100%;border:0;font:inherit;color:inherit}
-.n .ai{flex:none;width:38px;height:38px;border-radius:10px;background:var(--brand);display:grid;place-items:center}
-.n small{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
-.n b{display:block;font-size:15px;font-weight:600;line-height:1.25;margin-top:1px}
-.n span.t{display:block;font-size:14px;line-height:1.3;color:#33363b}
-.empty{font-size:14.5px;color:var(--muted);background:var(--card);border-radius:18px;padding:16px}
-.foot{margin-top:auto;padding-top:28px;font-size:12.5px;color:#9a9ea5;display:flex;justify-content:space-between;align-items:center}
-.foot button{border:0;background:none;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;padding:6px 0}
-/* aviso abierto */
-#det{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;padding:calc(env(safe-area-inset-top) + 18px) 22px calc(env(safe-area-inset-bottom) + 24px);overflow:auto;z-index:5}
-#det.on{display:flex}
-.back{border:0;background:none;font:500 15px Inter,sans-serif;color:var(--muted);padding:6px 0;align-self:flex-start;cursor:pointer}
-.dk{display:flex;align-items:center;gap:8px;margin-top:26px;font-size:13px;color:var(--muted)}
-.dk .ai{width:24px;height:24px;border-radius:7px;background:var(--brand);display:grid;place-items:center}
-#det h1{margin-top:12px;font-size:36px}
-#det .lead{margin-top:10px}
-.gift{margin-top:24px;background:var(--card);border-radius:24px;overflow:hidden}
-.gift img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#ece8e1}
-.gift .gi{padding:16px 18px 18px}
-.gift b{display:block;font-size:17px}.gift small{font-size:14px;color:var(--muted)}
-.stamp{display:inline-block;margin-top:22px;padding:7px 14px;border-radius:999px;background:rgba(34,160,107,.12);color:var(--ok);font-weight:600;font-size:14px}
-.ok{margin-top:18px;font:400 24px/1.2 'Inter Tight',sans-serif;letter-spacing:-.02em}
-em,i,cite{font-style:normal}
+/* la app */
+#app{position:fixed;inset:0;padding-top:env(safe-area-inset-top);background:#f5f7f9}
+#app iframe{display:block;width:100%;height:100%;border:0}
+#grip{position:fixed;left:0;right:0;top:0;height:calc(env(safe-area-inset-top) + 14px);z-index:30}
+/* aviso que llega encima (estilo iOS) */
+#nb{position:fixed;left:10px;right:10px;top:calc(env(safe-area-inset-top) + 8px);z-index:40;display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:22px;background:rgba(246,246,248,.86);-webkit-backdrop-filter:blur(24px) saturate(1.8);backdrop-filter:blur(24px) saturate(1.8);box-shadow:0 18px 40px -12px rgba(0,0,0,.35),0 0 0 .5px rgba(0,0,0,.06);transform:translateY(calc(-100% - 30px));transition:transform .55s cubic-bezier(.2,.9,.25,1.15);touch-action:none;cursor:pointer;max-width:520px;margin:0 auto}
+#nb.on{transform:none}
+#nb.drag{transition:none}
+.ai{flex:none;width:40px;height:40px;border-radius:10px;background:var(--brand);display:grid;place-items:center}
+#nb .tx{flex:1;min-width:0}
+#nb small{display:flex;justify-content:space-between;font-size:12.5px;color:#6b6f76}
+#nb small b{font-weight:600;color:#3a3d42;letter-spacing:.01em}
+#nb small b.u{color:#e5484d}
+#nb strong{display:block;font-size:15px;line-height:1.25;margin-top:1px}
+#nb span.t{display:block;font-size:14.5px;line-height:1.3;color:#2b2e33;margin-top:1px}
+#nb img{flex:none;width:44px;height:44px;border-radius:9px;object-fit:cover;align-self:center}
+#nb .hd{position:absolute;left:50%;bottom:5px;width:36px;height:4px;margin-left:-18px;border-radius:2px;background:rgba(0,0,0,.18)}
+/* ajustes ocultos */
+#cfg{position:fixed;inset:0;z-index:50;background:rgba(14,16,20,.4);display:none;align-items:flex-end}
+#cfg.on{display:flex}
+#cfg .sh{width:100%;background:var(--paper);border-radius:26px 26px 0 0;padding:22px 22px calc(env(safe-area-inset-bottom) + 22px)}
+#cfg h2{margin:0 0 4px;font:600 20px 'Inter Tight',sans-serif}
+#cfg p{color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
-<div class="logo" style="display:flex;align-items:center;gap:9px"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile" width="30" height="30" style="display:block">Regi</div>
+<div id="app"><iframe id="f" title="Regi" allow="clipboard-write"></iframe></div>
+<div id="grip" aria-hidden="true"></div>
 
-<!-- 1 · activar -->
-<section class="scr" id="sSetup">
-  <div class="mid">
-    <h1>Este celular es parte <em>de la demo.</em></h1>
-    <p class="lead">Activa los avisos y déjalo bloqueado sobre la mesa. Te escribo cuando toque.</p>
-    <button class="btn" id="bOn">Activar avisos</button>
-    <p class="err" id="eOn" role="status"></p>
-  </div>
-</section>
+<!-- aviso -->
+<div id="nb" role="status" aria-live="polite"></div>
 
-<!-- 1b · iPhone desde Safari: primero hay que instalarla -->
-<section class="scr" id="sIos">
-  <div class="mid">
-    <h1>Primero, ponme en <em>tu inicio.</em></h1>
-    <p class="lead">En iPhone los avisos llegan cuando la app está en la pantalla de inicio.</p>
-    <ol class="steps">
-      <li><b>1</b><span>Toca <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f6fed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> Compartir, abajo</span></li>
-      <li><b>2</b><span>Elige <strong>Agregar a inicio</strong></span></li>
-      <li><b>3</b><span>Abre <strong>Regi</strong> desde tu inicio</span></li>
-    </ol>
-  </div>
-</section>
+<!-- configuración inicial -->
+<div id="setup">
+  <div class="logo"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile">Regi</div>
+  <section class="scr" id="sSetup">
+    <div class="mid">
+      <h1>Activa los avisos y te escribo cuando toque.</h1>
+      <p class="lead">Este celular es parte de la demo: los avisos llegan encima de la app, y también con la pantalla bloqueada.</p>
+      <button class="btn" id="bOn">Activar avisos</button>
+      <button class="btn sec" data-skip>Abrir la app sin avisos</button>
+      <p class="err" id="eOn" role="status"></p>
+    </div>
+  </section>
+  <section class="scr" id="sIos">
+    <div class="mid">
+      <h1>Primero, ponme en tu inicio.</h1>
+      <p class="lead">En iPhone los avisos llegan cuando la app está en la pantalla de inicio.</p>
+      <ol class="steps">
+        <li><b>1</b><span>Toca <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f6fed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> Compartir, abajo</span></li>
+        <li><b>2</b><span>Elige <strong>Agregar a inicio</strong></span></li>
+        <li><b>3</b><span>Abre <strong>Regi</strong> desde tu inicio</span></li>
+      </ol>
+      <button class="btn sec" data-skip>Ver la app igual (avisos solo con la app abierta)</button>
+    </div>
+  </section>
+  <section class="scr" id="sNo">
+    <div class="mid">
+      <h1>No puedo escribirte desde aquí.</h1>
+      <p class="lead" id="tNo">Este navegador no recibe avisos. Usa Chrome en Android o Safari en iPhone.</p>
+      <button class="btn sec" data-skip>Abrir la app (avisos solo con la app abierta)</button>
+    </div>
+  </section>
+</div>
 
-<!-- 1c · sin soporte o bloqueado -->
-<section class="scr" id="sNo">
-  <div class="mid">
-    <h1>No puedo escribirte <em>desde aquí.</em></h1>
-    <p class="lead" id="tNo">Este navegador no recibe avisos. Usa Chrome en Android o Safari en iPhone.</p>
-  </div>
-</section>
-
-<!-- 2 · listo -->
-<section class="scr" id="sReady">
-  <div style="margin-top:44px">
-    <h1>Listo. <em>Regi te avisa.</em></h1>
-    <p class="lead">Bloquea el celular y déjalo en la mesa: cuando se acerque una fecha, te aviso aquí.</p>
-    <span class="live"><i></i>Avisos activos</span>
-  </div>
-  <div class="feed"><h2>Últimos avisos</h2><div id="feed"></div></div>
-  <div class="foot"><span id="sala"></span><button id="bTest">Probar un aviso</button></div>
-</section>
-
-<!-- aviso abierto (desde la notificación) -->
-<section id="det" aria-live="polite"></section>
+<!-- ajustes ocultos -->
+<div id="cfg"><div class="sh">
+  <h2>Demo</h2><p id="cS">Sala demo</p>
+  <button class="btn" id="bTest">Probar un aviso</button>
+  <button class="btn sec" id="bRe">Volver a activar avisos</button>
+  <button class="btn sec" id="bX">Cerrar</button>
+</div></div>
 
 <script src="sync.js?v=3"></script>
 <script>
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ls=(k,v)=>{ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){} };
-const GI='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.5S9 7 12 7ZM12 7c2-4 6-4 6-1.5S15 7 12 7Z"/></svg>';
+const GI='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-4-6-1.5S9 7 12 7ZM12 7c2-4 6-4 6-1.5S15 7 12 7Z"/></svg>';
 const isIOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 const can='serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window;
-const show=id=>document.querySelectorAll('.scr').forEach(s=>s.classList.toggle('on',s.id===id));
-$('sala').textContent='Sala '+CC.sala;
+const show=id=>{ $('setup').classList.add('on'); document.querySelectorAll('.scr').forEach(s=>s.classList.toggle('on',s.id===id)); };
+$('cS').textContent='Sala '+CC.sala;
 
-/* avisos recibidos: se guardan en este celular para verlos al abrir la app */
-const feed=()=>{ try{ return JSON.parse(ls('cc-feed')||'[]'); }catch(e){ return []; } };
-function addFeed(m){ if(!m||!m.title) return; const f=feed().filter(x=>!(x.ts===m.ts&&x.title===m.title)); f.unshift(m); ls('cc-feed',JSON.stringify(f.slice(0,8))); drawFeed(); }
-const ago=ts=>{ const s=(Date.now()-ts)/1000; return s<60?'ahora':s<3600?`hace ${Math.round(s/60)} min`:new Date(ts).toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'}); };
-function drawFeed(){
-  const f=feed(); $('feed').innerHTML=f.length?f.map((m,i)=>`<button class="n" data-i="${i}"><span class="ai">${GI}</span><span style="min-width:0;flex:1"><small><span>Regi</span><span>${ago(m.ts||Date.now())}</span></small><b>${esc(m.title)}</b><span class="t">${esc(m.body)}</span></span></button>`).join('')
-    :'<p class="empty">Todavía nada. Cuando avance la presentación o apruebes un regalo en la compu, llega aquí.</p>';
-  $('feed').querySelectorAll('.n').forEach(b=>b.onclick=()=>openMsg(feed()[+b.dataset.i]));
+/* ===== la app: la web real en modo móvil ===== */
+const F=$('f'); const W=()=>F.contentWindow;
+const qs=new URLSearchParams(location.search); const sala=qs.get('sala');
+let appOn=false;
+function openApp(){
+  $('setup').classList.remove('on'); if(appOn) return; appOn=true;
+  F.src='index.html?app=1'+(sala?'&sala='+encodeURIComponent(sala):'')+'#planner';
 }
+F.addEventListener('load',()=>{ try{
+  const d=F.contentDocument, st=d.createElement('style');
+  st.textContent='.ob-kbs{display:none!important}'; d.head.appendChild(st);   /* en el celu no va "Simular en…" */
+  /* lo que la app avisa (p. ej. 'Listo, ya lo compré') también baja encima, aunque no haya aviso web */
+  const w=F.contentWindow; if(w.CC&&!w.CC._celu){ const op=w.CC.push; w.CC.push=m=>{ setTimeout(()=>notify(m),1200); return op(m); }; w.CC._celu=1; }
+}catch(e){} });
+document.querySelectorAll('[data-skip]').forEach(b=>b.onclick=()=>{ ls('cc-skip','1'); openApp(); });
 
-/* abrir un aviso: lo que llegó, con su acción */
+/* ===== avisos encima de la app ===== */
+let AC=null; const unlock=()=>{ if(AC) return; try{ AC=new (window.AudioContext||window.webkitAudioContext)(); AC.resume(); }catch(e){} };
+addEventListener('pointerdown',unlock,{once:true});
+function ding(){ if(!AC) return; const t=AC.currentTime; [[1318.5,0],[1760,.11]].forEach(([f,d])=>{ const o=AC.createOscillator(), g=AC.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(0,t+d); g.gain.linearRampToValueAtTime(.16,t+d+.01); g.gain.exponentialRampToValueAtTime(.001,t+d+.5); o.connect(g).connect(AC.destination); o.start(t+d); o.stop(t+d+.6); }); }
+const recent={};
+let cur=null, hideT=0;
+function notify(m){
+  if(!m||!m.title) return;
+  const key=(m.tag||'')+'|'+m.title; if(recent[key]&&Date.now()-recent[key]<15000) return; recent[key]=Date.now();
+  cur=m; const urg=m.k==='aviso';
+  $('nb').innerHTML=`<span class="ai">${GI}</span><span class="tx"><small><b class="${urg?'u':''}">${urg?'URGENTE · ':''}REGI</b><span>ahora</span></small><strong>${esc(m.title)}</strong><span class="t">${esc(m.body)}</span></span>${m.img?`<img src="${esc(m.img)}" alt="">`:''}<i class="hd"></i>`;
+  $('nb').style.transform=''; $('nb').classList.add('on'); ding(); if(navigator.vibrate) navigator.vibrate([160,80,160]);
+  clearTimeout(hideT); hideT=setTimeout(hide,7000);
+}
+function hide(){ $('nb').classList.remove('on'); $('nb').style.transform=''; }
+/* tocar el aviso = abrirlo en la app; deslizar hacia arriba = descartarlo */
+let y0=null, dy=0;
+$('nb').addEventListener('pointerdown',e=>{ y0=e.clientY; dy=0; $('nb').classList.add('drag'); $('nb').setPointerCapture(e.pointerId); clearTimeout(hideT); });
+$('nb').addEventListener('pointermove',e=>{ if(y0===null) return; dy=Math.min(0,e.clientY-y0)+Math.max(0,e.clientY-y0)*.15; $('nb').style.transform=`translateY(${dy}px)`; });
+$('nb').addEventListener('pointerup',()=>{ $('nb').classList.remove('drag'); const d=dy; y0=null;
+  if(d<-30){ hide(); return; }
+  $('nb').style.transform=''; if(Math.abs(d)<8) openMsg(cur); else hideT=setTimeout(hide,4000); });
 function openMsg(m){
-  if(!m) return; addFeed(m);
-  const img=m.img?`<div class="gift"><img src="${esc(m.img)}" alt=""><div class="gi"><b>${esc(m.gift||'')}</b><small>${esc(m.price||'')}</small></div></div>`:'';
-  let act='<button class="btn sec" id="dX">Cerrar</button>';
-  if(m.k==='aviso') act='<button class="btn" id="dOk">Aprobar regalo</button><button class="btn sec" id="dX">Ahora no</button>';
-  $('det').innerHTML=`<button class="back" id="dB">← Avisos</button><div class="dk"><span class="ai">${GI}</span>Regi · ${ago(m.ts||Date.now())}</div>
-    ${m.k==='compra'?'<span class="stamp">Comprado</span>':''}<h1>${esc(m.title)}</h1><p class="lead">${esc(m.body)}</p>${img}<div id="dAct" style="margin-top:auto;padding-top:20px">${act}</div>`;
-  $('det').classList.add('on'); $('det').scrollTop=0;
-  const close=()=>{ $('det').classList.remove('on'); history.replaceState(null,'',location.pathname+location.search); };
-  $('dB').onclick=close; $('dX').onclick=close;
-  if($('dOk')) $('dOk').onclick=()=>{ CC.send('aprobado',{gift:m.gift||'',para:m.para||''}); $('dAct').innerHTML=`<p class="ok">Listo. Lo compré y llega a tiempo.</p><button class="btn sec" id="dX2">Cerrar</button>`; $('dX2').onclick=close; };
+  hide(); if(!m) return; openApp();
+  const go=()=>{ try{ const w=W();
+    if(m.k==='aviso'){ w.eval("if(typeof TODAY!=='undefined'&&TODAY.getDate()!==9){ TODAY=new Date(2026,10,9); AVISO=14; co=null; }"); w.location.hash='#fecha/'+(m.slug||'amigo-secreto'); }
+    else if(m.k==='compra') w.location.hash='#pedidos';
+  }catch(e){} };
+  if(F.contentDocument&&F.contentDocument.readyState==='complete'&&F.src) go(); else F.addEventListener('load',()=>setTimeout(go,600),{once:true});
 }
-navigator.serviceWorker&&navigator.serviceWorker.addEventListener('message',e=>{ const d=e.data||{}; if(!d.cc) return; addFeed(d.cc); if(d.open) openMsg(d.cc); else if(navigator.vibrate) navigator.vibrate([180,90,180]); });
-function fromHash(){ const h=location.hash.match(/^#m=(.+)/); if(!h) return; try{ openMsg(JSON.parse(decodeURIComponent(h[1]))); }catch(e){} }
+/* llegan por el aviso web (service worker) o en vivo por la sala */
+navigator.serviceWorker&&navigator.serviceWorker.addEventListener('message',e=>{ const d=e.data||{}; if(!d.cc) return; if(d.open) openMsg(d.cc); else notify(d.cc); });
+CC.on('celu',m=>notify(m));
+function fromHash(){ const h=location.hash.match(/^#m=(.+)/); if(!h) return; try{ const m=JSON.parse(decodeURIComponent(h[1])); history.replaceState(null,'',location.pathname+location.search); openMsg(m); }catch(e){} }
 addEventListener('hashchange',fromHash);
 
-/* suscribir este celular a la sala */
+/* ===== ajustes ocultos: mantener presionada la franja de arriba, o P ===== */
+let lp=0;
+$('grip').addEventListener('pointerdown',()=>{ lp=setTimeout(()=>$('cfg').classList.add('on'),900); });
+['pointerup','pointerleave','pointercancel'].forEach(t=>$('grip').addEventListener(t,()=>clearTimeout(lp)));
+addEventListener('keydown',e=>{ if(e.key==='p'||e.key==='P') $('cfg').classList.add('on'); });
+$('bX').onclick=()=>$('cfg').classList.remove('on');
+$('bTest').onclick=async()=>{ const b=$('bTest'); b.textContent='Enviando…'; const m={k:'prueba',tag:'prueba',title:'Así te voy a escribir',body:'Cuando se acerque una fecha, te aviso con el regalo ya pensado.'};
+  const r=await CC.push(m); CC.send('celu',m); notify(m); b.textContent=r&&r.sent?'Enviado':'Aviso en pantalla (sin aviso web)'; setTimeout(()=>b.textContent='Probar un aviso',2500); };
+$('bRe').onclick=()=>{ $('cfg').classList.remove('on'); ls('cc-skip',''); start(true); };
+
+/* ===== suscribir este celular a la sala ===== */
 const u8=b=>{ const s=atob((b+'==='.slice((b.length+3)%4)).replace(/-/g,'+').replace(/_/g,'/')); return Uint8Array.from(s,c=>c.charCodeAt(0)); };
 async function subscribe(ask){
   if(ask){ const p=await Notification.requestPermission(); if(p!=='granted') throw new Error(p==='denied'?'denied':'Necesito tu permiso para escribirte.'); }
@@ -163,21 +200,22 @@ async function subscribe(ask){
 }
 $('bOn').onclick=async()=>{
   const b=$('bOn'); b.disabled=true; b.textContent='Activando…'; $('eOn').textContent='';
-  try{ await subscribe(true); show('sReady'); drawFeed(); }
+  try{ await subscribe(true); openApp(); }
   catch(e){ if(e.message==='denied'){ $('tNo').textContent='Los avisos quedaron bloqueados. Actívalos en los ajustes del navegador para esta página y vuelve a abrirla.'; show('sNo'); } else $('eOn').textContent=e.message||'Algo falló, intenta de nuevo.'; }
   b.disabled=false; b.textContent='Activar avisos';
 };
-$('bTest').onclick=async()=>{ const b=$('bTest'); b.textContent='Enviando…'; const r=await CC.push({k:'prueba',title:'Así te voy a escribir',body:'Cuando se acerque una fecha, te aviso con el regalo ya pensado.'}); b.textContent=r&&r.sent?'Enviado':'No llegó, revisa la conexión'; setTimeout(()=>b.textContent='Probar un aviso',2500); };
 
-/* arranque */
-(async()=>{
-  if(!CC.ready()){ $('tNo').textContent='Falta conectar el servidor de avisos.'; show('sNo'); return; }
+async function start(force){
+  const skip=!force&&ls('cc-skip')==='1';
+  if(!CC.ready()){ $('tNo').textContent='Falta conectar el servidor de avisos.'; skip?openApp():show('sNo'); return; }
+  if(can&&Notification.permission==='granted'){ try{ await subscribe(false); openApp(); fromHash(); return; }catch(e){} }
+  if(skip){ openApp(); fromHash(); return; }
   if(isIOS&&!standalone){ show('sIos'); return; }
   if(!can){ show('sNo'); return; }
   if(Notification.permission==='denied'){ $('tNo').textContent='Los avisos están bloqueados. Actívalos en los ajustes del navegador para esta página.'; show('sNo'); return; }
-  if(Notification.permission==='granted'){ try{ await subscribe(false); show('sReady'); drawFeed(); fromHash(); return; }catch(e){} }
   show('sSetup'); fromHash();
-})();
+}
+start();
 </script>
 </body>
 </html>

@@ -420,8 +420,8 @@ function momento(nombre){
 /* Dispositivos de la mesa (sync.js, sala ?sala=…): celular = avisos web; iPad = pantalla del auto (auto.html).
    Se disparan cada vez que se llega a la lámina (avanzando, retrocediendo o abriendo el enlace directo), un poco después de que entra. */
 const DEV={
-  aviso:()=>window.CC&&CC.push({k:'aviso',tag:'amigo-secreto',title:'Amigo secreto: quedan 2 días',body:'Para pedirlo y que llegue a tiempo. Ya tengo uno elegido.',
-    gift:'Libreta Picaflor',price:'$11.990 · llega antes del intercambio',para:'Amigo secreto',img:'https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936'}),
+  aviso:()=>{ if(!window.CC) return; const m={k:'aviso',tag:'amigo-secreto',title:'Amigo secreto: quedan 2 días',body:'Para pedirlo y que llegue a tiempo. Ya tengo uno elegido.',
+    gift:'Libreta Picaflor',price:'$11.990 · llega antes del intercambio',para:'Amigo secreto',img:'https://cdn.shopify.com/s/files/1/1481/4916/files/r2L9Hkc8kO_600x.jpg?v=1742827936'}; CC.push(m); CC.send('celu',m); },
   auto:()=>window.CC&&CC.send('auto',{para:'Mamá'})
 };
 let devT=0, visit=0;
