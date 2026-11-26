@@ -39,5 +39,7 @@
   const send=(t,d={})=>chan().then(ch=>ch.send({type:'broadcast',event:'m',payload:{t,d,ts:Date.now()}})).catch(()=>{});
   const on=(t,f)=>{ (H[t]=H[t]||[]).push(f); chan().catch(()=>{}); };
   const onState=f=>{ ST.push(f); f(state); };
-  window.CC={sala,ready,push,send,on,onState,subscribe,vapid:CFG.vapid};
+  /* CC.fn('regi-chat', {...}) → llama a una función del servidor (la clave de OpenAI vive allá, nunca en la web) */
+  const call=(name,body)=>fetch(CFG.url+'/functions/v1/'+name,{method:'POST',headers:{'content-type':'application/json',apikey:CFG.key,authorization:'Bearer '+CFG.key},body:JSON.stringify(body)}).then(r=>r.json());
+  window.CC={sala,ready,push,send,on,onState,subscribe,fn:call,vapid:CFG.vapid};
 })();
