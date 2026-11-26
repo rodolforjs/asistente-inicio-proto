@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Cuenta conmigo</title>
+<title>Regi</title>
 <meta name="theme-color" content="#f4f2ee">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Cuenta conmigo">
+<meta name="apple-mobile-web-app-title" content="Regi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="celu.webmanifest">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -66,7 +66,7 @@ em,i,cite{font-style:normal}
 </style>
 </head>
 <body>
-<div class="logo">Cuenta conmigo<i>.</i></div>
+<div class="logo" style="display:flex;align-items:center;gap:9px"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile" width="30" height="30" style="display:block">Regi</div>
 
 <!-- 1 · activar -->
 <section class="scr" id="sSetup">
@@ -86,7 +86,7 @@ em,i,cite{font-style:normal}
     <ol class="steps">
       <li><b>1</b><span>Toca <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f6fed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> Compartir, abajo</span></li>
       <li><b>2</b><span>Elige <strong>Agregar a inicio</strong></span></li>
-      <li><b>3</b><span>Abre <strong>Cuenta conmigo</strong> desde tu inicio</span></li>
+      <li><b>3</b><span>Abre <strong>Regi</strong> desde tu inicio</span></li>
     </ol>
   </div>
 </section>
@@ -102,7 +102,7 @@ em,i,cite{font-style:normal}
 <!-- 2 · listo -->
 <section class="scr" id="sReady">
   <div style="margin-top:44px">
-    <h1>Listo. <em>Cuenta conmigo.</em></h1>
+    <h1>Listo. <em>Regi te avisa.</em></h1>
     <p class="lead">Bloquea el celular y déjalo en la mesa: cuando se acerque una fecha, te aviso aquí.</p>
     <span class="live"><i></i>Avisos activos</span>
   </div>
@@ -130,7 +130,7 @@ const feed=()=>{ try{ return JSON.parse(ls('cc-feed')||'[]'); }catch(e){ return 
 function addFeed(m){ if(!m||!m.title) return; const f=feed().filter(x=>!(x.ts===m.ts&&x.title===m.title)); f.unshift(m); ls('cc-feed',JSON.stringify(f.slice(0,8))); drawFeed(); }
 const ago=ts=>{ const s=(Date.now()-ts)/1000; return s<60?'ahora':s<3600?`hace ${Math.round(s/60)} min`:new Date(ts).toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'}); };
 function drawFeed(){
-  const f=feed(); $('feed').innerHTML=f.length?f.map((m,i)=>`<button class="n" data-i="${i}"><span class="ai">${GI}</span><span style="min-width:0;flex:1"><small><span>Cuenta conmigo</span><span>${ago(m.ts||Date.now())}</span></small><b>${esc(m.title)}</b><span class="t">${esc(m.body)}</span></span></button>`).join('')
+  const f=feed(); $('feed').innerHTML=f.length?f.map((m,i)=>`<button class="n" data-i="${i}"><span class="ai">${GI}</span><span style="min-width:0;flex:1"><small><span>Regi</span><span>${ago(m.ts||Date.now())}</span></small><b>${esc(m.title)}</b><span class="t">${esc(m.body)}</span></span></button>`).join('')
     :'<p class="empty">Todavía nada. Cuando avance la presentación o apruebes un regalo en la compu, llega aquí.</p>';
   $('feed').querySelectorAll('.n').forEach(b=>b.onclick=()=>openMsg(feed()[+b.dataset.i]));
 }
@@ -141,7 +141,7 @@ function openMsg(m){
   const img=m.img?`<div class="gift"><img src="${esc(m.img)}" alt=""><div class="gi"><b>${esc(m.gift||'')}</b><small>${esc(m.price||'')}</small></div></div>`:'';
   let act='<button class="btn sec" id="dX">Cerrar</button>';
   if(m.k==='aviso') act='<button class="btn" id="dOk">Aprobar regalo</button><button class="btn sec" id="dX">Ahora no</button>';
-  $('det').innerHTML=`<button class="back" id="dB">← Avisos</button><div class="dk"><span class="ai">${GI}</span>Cuenta conmigo · ${ago(m.ts||Date.now())}</div>
+  $('det').innerHTML=`<button class="back" id="dB">← Avisos</button><div class="dk"><span class="ai">${GI}</span>Regi · ${ago(m.ts||Date.now())}</div>
     ${m.k==='compra'?'<span class="stamp">Comprado</span>':''}<h1>${esc(m.title)}</h1><p class="lead">${esc(m.body)}</p>${img}<div id="dAct" style="margin-top:auto;padding-top:20px">${act}</div>`;
   $('det').classList.add('on'); $('det').scrollTop=0;
   const close=()=>{ $('det').classList.remove('on'); history.replaceState(null,'',location.pathname+location.search); };

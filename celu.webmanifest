@@ -1,6 +1,6 @@
 {
-  "name": "Cuenta conmigo",
-  "short_name": "Cuenta conmigo",
+  "name": "Regi",
+  "short_name": "Regi",
   "start_url": "celu.html",
   "scope": "./",
   "display": "standalone",

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cuenta conmigo · asistente de regalos (prototipo)</title>
+<title>Regi · Tu planner de regalos (prototipo)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,6 +25,10 @@ button{cursor:pointer}
 .num{font-variant-numeric:tabular-nums}
 .sum-n{font-weight:600}
 em,i,cite,address{font-style:normal}
+.regi-lg{display:inline-flex;align-items:center;gap:10px}.regi-lg img{display:block;flex:none;width:34px;height:34px}.regi-lg b{font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1;color:#0e1014}
+.regi-hero img{width:40px;height:40px}.regi-hero b{font-size:27px}
+.regi-tag{margin-left:14px;padding-left:14px;border-left:1px solid #d5dbe4;font-size:13.5px;font-weight:500;color:#748297}
+@media(max-width:767px){.regi-tag{display:none}}
 /* Inter Tight necesita ~1.21em de alto: las líneas con recorte (ellipsis) llevan aire arriba y abajo sin mover el layout */
 .pe-b b,.pl-h.dh-1{padding-block:.1em;margin-block:-.1em}
 /* boleto */
@@ -965,7 +969,7 @@ body.ch-on .chat{display:flex}
 .cm-u span.block{margin-top:2px}
 .cm-a.cm-first{position:relative;margin-top:6px}
 .cm-a.cm-first::before{content:"";position:absolute;left:-2px;top:-22px;width:16px;height:16px;border-radius:50%;background:conic-gradient(#ff5924,#ff3d8b,#ffd23d,#27d9a6,#5b7cff,#ff5924)}
-.cm-a.cm-first::after{content:"Cuenta conmigo";position:absolute;left:20px;top:-22px;font-size:11px;font-weight:600;line-height:16px;color:#748297}
+.cm-a.cm-first::after{content:"Regi";position:absolute;left:20px;top:-22px;font-size:11px;font-weight:600;line-height:16px;color:#748297}
 .ch-l{padding-top:30px!important;gap:8px!important}
 .cm-a+.cm-a{margin-top:-3px;border-top-left-radius:20px}
 .cm-u+.cm-u{margin-top:-3px}
@@ -1483,7 +1487,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 
   <!-- navbar -->
   <nav class="relative z-20 flex items-center justify-between px-6 py-5 lg:px-14">
-    <span class="font-serif text-[26px] font-medium tracking-[-0.025em]">Cuenta conmigo<span class="text-brand">.</span></span>
+    <span class="flex items-center"><span class="regi-lg regi-hero"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile" width="40" height="40"><b>Regi</b></span><span class="regi-tag">Tu planner de regalos</span></span>
   </nav>
 
   <!-- hero único -->
@@ -1509,9 +1513,9 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
             <div class="absolute inset-x-6 top-3 flex justify-between text-[12px] font-semibold text-black/80"><span>9:41</span><span class="mr-0.5 opacity-0">.</span></div>
             <div class="pt-14 text-center text-black/80"><p class="text-[13px] font-semibold">Miércoles 4 de noviembre</p><p class="font-sans text-[78px] font-semibold leading-[1] tracking-[-0.045em] text-black/85">9:41</p></div>
             <div id="nts" class="absolute inset-x-3 top-[218px] flex flex-col gap-2">
-              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">ahora</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Te dejé lista la propuesta para el cumpleaños de Mamá. Es en 14 días.</p></div></div>
-              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">hace 2 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Ya compré el regalo de Papá. Llega el 18.</p></div></div>
-              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Cuenta conmigo</b><span class="text-[11px] text-black/45">hace 5 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Encontré 3 fechas nuevas en tu calendario.</p></div></div>
+              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Regi</b><span class="text-[11px] text-black/45">ahora</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Te dejé lista la propuesta para el cumpleaños de Mamá. Es en 14 días.</p></div></div>
+              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Regi</b><span class="text-[11px] text-black/45">hace 2 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Ya compré el regalo de Papá. Llega el 18.</p></div></div>
+              <div class="nt"><div class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8h14v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg></div><div class="min-w-0 flex-1 leading-tight"><div class="flex justify-between"><b class="text-[12.5px]">Regi</b><span class="text-[11px] text-black/45">hace 5 min</span></div><p class="mt-0.5 text-[12.5px] text-black/80">Encontré 3 fechas nuevas en tu calendario.</p></div></div>
             </div>
             
             <div id="scr-cal" class="scr"><p class="text-[22px] font-semibold tracking-tight">Marzo</p><div class="mt-3 grid grid-cols-7 gap-y-2 text-center text-[11px] text-black/50"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="mt-1 grid grid-cols-7 gap-y-1.5 text-center text-[13px] font-medium"><span class="grid size-8 place-items-center justify-self-center rounded-full ">1</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">2</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">3</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">4</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">5</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">6</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">7</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">8</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">9</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">10</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">11</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">12</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">13</span><span class="grid size-8 place-items-center justify-self-center rounded-full bg-brand text-white font-semibold">14</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">15</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">16</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">17</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">18</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">19</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">20</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">21</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">22</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">23</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">24</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">25</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">26</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">27</span><span class="grid size-8 place-items-center justify-self-center rounded-full ">28</span></div><div class="mt-4 flex gap-2.5 rounded-2xl bg-black/[.04] p-3"><i class="w-1 rounded-full bg-brand"></i><div class="leading-tight"><p class="text-[13px] font-semibold">Cumpleaños de Mamá</p><p class="text-[11.5px] text-black/50">Todo el día · 🎁 14 días antes</p></div></div></div>
@@ -1567,7 +1571,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 <!-- sincronización (misma paleta clara) -->
 <section id="ob" class="hidden" aria-label="Configura tu cuenta">
   <div class="ob-bg" aria-hidden="true"></div>
-  <header class="ob-h"><span class="ob-logo">Cuenta conmigo<i>.</i></span><ol id="obSteps" class="ob-st" aria-label="Pasos"></ol><button id="obX" class="ob-x">Salir</button></header>
+  <header class="ob-h"><span class="regi-lg"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile" width="34" height="34"><b>Regi</b></span><ol id="obSteps" class="ob-st" aria-label="Pasos"></ol><button id="obX" class="ob-x">Salir</button></header>
   <div class="ob-w"><div id="obL" class="ob-l"></div><aside id="obR" class="ob-r" aria-hidden="true"></aside></div>
 </section>
 <section id="sync" aria-live="polite" class="fixed inset-0 z-[150] hidden flex-col overflow-auto bg-fog px-6 pt-6 lg:px-14">
@@ -1599,7 +1603,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 <!-- Mi planner -->
 <section id="year" class="fixed inset-0 z-[160] hidden overflow-auto bg-fog">
   <header class="ap-top">
-    <button data-act="home" class="font-serif text-[23px] font-medium tracking-[-0.02em] justify-self-start">Cuenta conmigo<span class="text-brand">.</span></button>
+    <button data-act="home" class="justify-self-start" aria-label="Regi, ir al inicio"><span class="regi-lg"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile" width="34" height="34"><b>Regi</b></span></button>
     <nav id="apTabs" class="ap-tabs" aria-label="Secciones"></nav>
     <div class="relative flex items-center justify-self-end gap-2">
       <span id="apLive" class="ap-live" aria-live="off"><canvas id="apOrb" aria-hidden="true"></canvas><span id="apLiveT">Calendario al día</span></span>
@@ -3053,7 +3057,7 @@ async function pay(){
 /* la notificación se abre y se convierte en la tarjeta de la fecha */
 async function arrive(){
   dash=false; const p=defaultFocus(), n=$('apNotif'); { const i=ACT.findIndex(x=>x.k==='think'&&x.n===p.n); const it=i>=0?ACT.splice(i,1)[0]:{k:'think',t:`Pensé el regalo de ${p.n}`,s:'Tope de $15.000 · 3 finalistas',n:p.n}; it.day=0; it.unread=true; ACT.unshift({...it,id:++actId}); }
-  n.innerHTML=`<span class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span class="min-w-0 flex-1"><span class="flex justify-between gap-3 text-[12px] text-[#5f6b7d]"><span>Cuenta conmigo</span><span>ahora</span></span><b class="mt-0.5 block text-[15px] font-semibold leading-snug">${esc(p.n)} es ${days(dleft(p))}</b><span class="block text-[14px] leading-snug">Ya pensé en algo. Tócame y te muestro.</span></span>`;
+  n.innerHTML=`<span class="appi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span class="min-w-0 flex-1"><span class="flex justify-between gap-3 text-[12px] text-[#5f6b7d]"><span>Regi</span><span>ahora</span></span><b class="mt-0.5 block text-[15px] font-semibold leading-snug">${esc(p.n)} es ${days(dleft(p))}</b><span class="block text-[14px] leading-snug">Ya pensé en algo. Tócame y te muestro.</span></span>`;
   n.style.display='flex'; document.querySelector('.ap-top').style.opacity=0;
   gsap.fromTo(n,{y:-90,opacity:0},{y:0,opacity:1,duration:.65,ease:'back.out(1.5)'});
   await new Promise(r=>{ let done=false; const go=()=>{ if(!done){ done=true; call.kill(); r(); } }; n.onclick=go; const call=gsap.delayedCall(3.5,go); });
@@ -3171,7 +3175,7 @@ function obPreview(){
     const ad=(cfg.addr||'').trim()||'la dirección que me digas';
     R.innerHTML=`<div class="ov ob-sy"><p class="ov-cap" style="margin-top:0">Así te acompaño, <span id="ovN">${esc(nm)}</span></p>
     <div class="ob-tm"><span class="ob-ln"><i></i></span>
-      <div class="ob-ro" data-d="14"><span class="ob-dt"><b>14</b> días antes</span><div class="ov-n"><span class="ov-ap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><div><p>Cuenta conmigo · ahora</p><b><span id="ovT">${esc(nm)}</span>, el cumpleaños de Mamá es pronto. Ya lo estoy pensando.</b></div></div></div>
+      <div class="ob-ro" data-d="14"><span class="ob-dt"><b>14</b> días antes</span><div class="ov-n"><span class="ov-ap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><div><p>Regi · ahora</p><b><span id="ovT">${esc(nm)}</span>, el cumpleaños de Mamá es pronto. Ya lo estoy pensando.</b></div></div></div>
       <div class="ob-ro" data-d="10"><span class="ob-dt"><b>10</b> días antes</span><div class="ov-n ob-pr"><img src="${OB_IMG('mama-cual-es-tu-historia')}" alt=""><div><p>Te dejé la propuesta</p><b>Mamá ¿Cuál es tu Historia?</b><span class="ob-ap" id="obAp">Aprobar</span></div></div></div>
       <div class="ob-ro" data-d="3"><span class="ob-dt"><b>3</b> días antes</span><div class="ov-n"><span class="ov-ap" style="background:#10b981"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.400-7-10a7 7 0 0 1 14 0c0 5.600-7 10-7 10Z"/><circle cx="12" cy="11" r="2.500"/></svg></span><div><p>Llega a tiempo</p><b>Entregado en <span id="ovA">${esc(ad)}</span></b><span class="ob-bar"><i></i></span></div></div></div>
     </div></div>`;
@@ -3375,7 +3379,7 @@ const tnTarget = () => yr().filter(p=>phase(p)==='now'&&!p.bought).sort(byDate)[
 function tnLock(){
   const p=tnP, x=prod(GIFT[p.n][0][tnPick]);
   $('tnS').innerHTML=`<div class="tn-lk">${tnSb(true)}<div class="tn-clk"><small>${DIAS[TODAY.getDay()]} ${TODAY.getDate()} de ${MESES[TODAY.getMonth()]}</small><b class="num">18:42</b></div>
-    <button id="tnN" class="tn-nt"><span class="appi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span class="min-w-0 flex-1"><span class="tn-nm"><span>Cuenta conmigo</span><span>ahora</span></span><b>Estás en Creado. El de ${esc(p.n)} está aquí, en ${TN_LOC[tnPick][0]}.</b><span class="tn-nb">${esc(p.n)} es ${days(dleft(p))}. ${esc(x.t)} ya está elegido.</span></span></button>
+    <button id="tnN" class="tn-nt"><span class="appi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13"/></svg></span><span class="min-w-0 flex-1"><span class="tn-nm"><span>Regi</span><span>ahora</span></span><b>Estás en Creado. El de ${esc(p.n)} está aquí, en ${TN_LOC[tnPick][0]}.</b><span class="tn-nb">${esc(p.n)} es ${days(dleft(p))}. ${esc(x.t)} ya está elegido.</span></span></button>
     <p class="tn-tap" id="tnTap">Toca para abrir</p>
     <div class="tn-geo"><span><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Creado en Chile · MUT</span></div></div>`;
   $('tnN').onclick=tnApp;
@@ -3586,7 +3590,7 @@ function simCar(p){
   const x=chosen(p);
   $('simD').innerHTML=phMount('auto',{screen:`<div class="car-s"><div class="car-dock"><span></span><span></span><span></span><small class="num">18:42</small></div>
     <div class="car-map">${CAR_MAP}<span class="car-eta"><i></i>Casa de ${esc(p.n)} · 25 min</span>
-      <div class="car-ban" id="carB" style="visibility:hidden"><div class="flex items-center" style="gap:1.2cqw"><span class="appi">${GIFT_I}</span><small class="car-k">Cuenta conmigo · 14 mar · cumple de ${esc(p.n)}</small></div>
+      <div class="car-ban" id="carB" style="visibility:hidden"><div class="flex items-center" style="gap:1.2cqw"><span class="appi">${GIFT_I}</span><small class="car-k">Regi · 14 mar · cumple de ${esc(p.n)}</small></div>
         <h4>No alcanzaste a responder mis avisos. Pídelo ya, te lo llevo hoy antes de las 20:00.</h4>
         <div class="car-g">${img(x.u,'')}<span class="min-w-0"><b class="block truncate">${esc(x.t)}</b><small class="num">${clp(x.p)}</small><em>Hoy antes de las 20:00</em></span></div>
         <div class="car-bt" id="carBt"><button class="sim-b1" data-s="yes">Sí, mándalo</button><button class="sim-b2" data-s="no">Ahora no</button></div></div></div></div>`});
@@ -3645,7 +3649,7 @@ function simRefri(){
           <div class="fh-card fh-cal"><p>Calendario de la casa<i>4 personas</i></p><ul id="frL">${B.map(([d,t,n],k)=>`<li class="${n?'is-new':''}"><i style="background:${col[k]}"></i><b>${d}</b><span>${t}${n?'<small>Nuevo · lo anotó Sofía</small>':''}</span></li>`).join('')}</ul></div>
           <div class="fh-row"><div class="fh-card fh-note"><p>Nota</p><span>Comprar huevos y pan</span></div><div class="fh-card"><p>Adentro</p><span>Leche · vence mañana</span></div></div>
           <div class="fh-dock"><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="fh-n" id="frN"><span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div>
+          <div class="fh-n" id="frN"><span class="fh-a"><span class="appi">${GIFT_I}</span>Regi · ahora</span><p>Anotaron el cumple de la tía Ana, el 3 de enero. No lo tenía. ¿Lo sumo a tus fechas?</p><button class="sim-b1" data-s="yes">Sumar</button></div>
         </div></div></div></div>
       <div class="frg-dw a"><span class="frg-hb"></span></div><div class="frg-dw b"><span class="frg-hb"></span></div></div>
     <div class="kt-light"></div></div>`});
@@ -3667,7 +3671,7 @@ function simRefri(){
       REL[N]='Tu tía'; CAL_OF[N]='Familia'; LEARN[N]=[['La anotaron en el calendario de la cocina','home']]; PORT[N]={bg:C.green,d:PORT['Carla'].d};
       addAct({k:'new',t:'Sumé una fecha nueva',s:'Tía Ana · 3 ene. La vi en el refri',n:N,unread:false}); }
     simAfter={tab:'personas',p};
-    $('frN').innerHTML=`<span class="fh-a"><span class="appi">${GIFT_I}</span>Cuenta conmigo</span><p>${simOk(`Sumada. Te aviso el ${fdate(avisoD(p))}.`)}</p>${simEnd()}`; };
+    $('frN').innerHTML=`<span class="fh-a"><span class="appi">${GIFT_I}</span>Regi</span><p>${simOk(`Sumada. Te aviso el ${fdate(avisoD(p))}.`)}</p>${simEnd()}`; };
 }
 
 /* reloj: el mismo aviso de 14 días del planner, en la muñeca (foto real; la interfaz se proyecta sobre la pantalla del reloj) */
@@ -3680,7 +3684,7 @@ function simReloj(){
   $('simD').innerHTML=phMount('reloj',{screen:`<div class="rw"><span class="rw-t num">9:41</span><div class="rw-s" id="rlS"></div></div>`});
   const cam=phCamera('reloj',{zoomTo:(vw,vh,qw)=>Math.max(qw*1.08,vw<=620?Math.min(vw-110,250):Math.min(270,(vh-220)*.82)),at:[.5,.53]});
   const buzz=()=>{ const V=$('phV'); if(V&&!REDUCE) gsap.fromTo(V,{x:-3},{x:3,duration:.06,repeat:7,yoyo:true,ease:'none',clearProps:'x'}); };
-  const first=()=>{ scr(`<span class="appi">${GIFT_I}</span><small class="rw-k">Cuenta conmigo · ahora</small><b>${esc(p.n)} es ${days(dleft(p))}.</b><span class="rw-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`); buzz(); };
+  const first=()=>{ scr(`<span class="appi">${GIFT_I}</span><small class="rw-k">Regi · ahora</small><b>${esc(p.n)} es ${days(dleft(p))}.</b><span class="rw-sub">Ya lo pensé.</span><button class="sim-b1" data-s="see">Ver</button>`); buzz(); };
   scr('');
   if(REDUCE){ cam.st.k=1; cam.draw(); first(); }
   else { first(); cam.go({duration:2.2,delay:.3,ease:'power2.inOut'}); }   // el aviso ya está en pantalla mientras la cámara se acerca (antes quedaba negra ~2,7 s)
@@ -3698,12 +3702,12 @@ function simLentes(p,S){
     PINCH=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M11 12h2"/></svg>`;
   /* estilo Ray-Ban Display: pantalla pequeña en un solo lente (el derecho); la luz se suma a lo que ves, no hay ventanas pegadas a los objetos */
   $('simD').innerHTML=phMount('lentes',{layer:`<div class="hud" id="hud" aria-live="polite">
-      <div class="hud-c" id="hudC"><p class="hud-k"><span class="hud-ap">${GIFT_I}</span>Cuenta conmigo</p><p class="hud-scan"><i></i>Mirando la tienda…</p></div></div>
+      <div class="hud-c" id="hudC"><p class="hud-k"><span class="hud-ap">${GIFT_I}</span>Regi</p><p class="hud-scan"><i></i>Mirando la tienda…</p></div></div>
     <div class="hud-band" id="hudB"><span class="hud-bi"></span>Pulsera conectada</div>`});
   const C=$('hudC');
   const cam=phCamera('lentes',{focus:[.338,.564],zoomTo:(vw)=>vw<=620?1.5:1.35,at:[.42,.5],par:REDUCE?0:.03,wc:true});
   const card=()=>{ if(!C.isConnected) return;
-    C.innerHTML=`<p class="hud-k"><span class="hud-ap">${GIFT_I}</span>Cuenta conmigo</p>
+    C.innerHTML=`<p class="hud-k"><span class="hud-ap">${GIFT_I}</span>Regi</p>
       <b class="hud-t">Esto le gustaría a ${rel(p)}.</b>
       <div class="hud-p"><img src="${x.u}" alt=""><span class="min-w-0"><b>${esc(x.t)}</b><small class="num">${clp(x.p)} · Creado</small></span></div>
       <div class="hud-a"><button data-s="yes">${PINCH}Guardar</button><button data-s="voz">${MIC}«Guárdalo»</button></div>`;
