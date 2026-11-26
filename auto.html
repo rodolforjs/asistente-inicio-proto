@@ -43,7 +43,7 @@ em,i{font-style:normal}
 .leaflet-control-attribution{background:rgba(0,0,0,.45)!important;color:rgba(255,255,255,.5)!important;font-size:9px!important}
 .leaflet-control-attribution a{color:rgba(255,255,255,.65)!important}
 .leaflet-control-zoom{display:none}
-.leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.85) saturate(.35)}
+.osm .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.85) saturate(.35)}
 .carm{width:44px;height:44px;display:grid;place-items:center}
 .carm b{display:block;width:44px;height:44px;border-radius:50%;background:rgba(47,111,237,.22);display:grid;place-items:center}
 .carm svg{transition:transform .4s linear;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
@@ -233,7 +233,7 @@ document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==
 $('go').onclick=()=>{
   try{ AC=new (window.AudioContext||window.webkitAudioContext)(); AC.resume(); }catch(e){}
   const el=document.documentElement, fs=el.requestFullscreen||el.webkitRequestFullscreen; if(fs) try{ const r=fs.call(el); r&&r.catch&&r.catch(()=>{}); }catch(e){}
-  wake(); $('go').classList.add('off'); setTimeout(()=>map.invalidateSize(),300);
+  wake(); $('go').classList.add('off'); setTimeout(()=>M&&M.resize(),300);
 };
 
 /* apps del dock */
@@ -241,53 +241,44 @@ function openView(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));
   document.querySelectorAll('.ap').forEach(a=>a.setAttribute('aria-current',a.dataset.v===id));
   if(id==='vRegi') document.querySelector('.ap.regi').classList.remove('has');
-  if(id==='vMap') setTimeout(()=>map.invalidateSize(),50);
+  if(id==='vMap') setTimeout(()=>M&&M.resize(),50);
 }
 document.querySelectorAll('.ap').forEach(a=>a.onclick=()=>openView(a.dataset.v));
 
 let tt=0; function toast(h){ $('toT').innerHTML=h; $('toast').classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>$('toast').classList.remove('on'),4200); }
 
-/* ===== MAPA: ruta real, el auto avanza; se puede mover y hacer zoom ===== */
-const map=L.map('map',{zoomControl:false,attributionControl:true,zoomSnap:.25,inertia:true,inertiaMaxSpeed:900,inertiaDeceleration:4000,minZoom:13,maxZoom:18,maxBounds:[[-33.52,-70.76],[-33.32,-70.46]],maxBoundsViscosity:1}).setView(RUTAS.casa.c[0],16);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+/* ===== MAPA: Google Maps (estilo oscuro de auto); si la clave falla, OpenStreetMap. Ruta real, el auto avanza; se puede mover y hacer zoom ===== */
+const GKEY='AIzaSyD8BTnfaxjO6jSVzpodA4kwjNa7Z0-nsAM';
 const HOME=RUTAS.casa.c[RUTAS.casa.c.length-1];
 const MUTP=RUTAS.mut.s.find(s=>s.t==='arrive').p;
-L.marker(HOME,{icon:L.divIcon({className:'',html:`<span class="pin home"><span>${IC.home}</span></span>`,iconSize:[40,40],iconAnchor:[6,40]})}).addTo(map);
-const shopM=L.marker(MUTP,{icon:L.divIcon({className:'',html:`<span class="pin shop"><span>${IC.gift}</span></span><div class="tag">Creado MUT<small>Regalo de Mamá, listo para retiro</small></div>`,iconSize:[40,40],iconAnchor:[6,40]})});
-const casing=L.polyline([], {color:'#173b8a',weight:12,opacity:.9,lineCap:'round',lineJoin:'round'}).addTo(map);
-const line=L.polyline([], {color:'#4f8cff',weight:7,lineCap:'round',lineJoin:'round'}).addTo(map);
-const carI=L.divIcon({className:'',html:'<div class="carm"><b><svg id="carA" width="30" height="30" viewBox="0 0 24 24"><path d="M12 2 20 21l-8-4-8 4Z" fill="#fff" stroke="#2f6fed" stroke-width="1.6" stroke-linejoin="round"/></svg></b></div>',iconSize:[44,44],iconAnchor:[22,22]});
-const car=L.marker(RUTAS.casa.c[0],{icon:carI,zIndexOffset:1000,interactive:false}).addTo(map);
-
-const R=L.latLng; let RT, cum=[], total=0, stepAt=[], pos=0, follow=true, mode='casa';
+const PIN_HOME=`<span class="pin home"><span>${IC.home}</span></span>`;
+const PIN_SHOP=`<span class="pin shop"><span>${IC.gift}</span></span><div class="tag">Creado MUT<small>Regalo de Mamá, listo para retiro</small></div>`;
+const CAR_H='<div class="carm"><b><svg class="carA" width="30" height="30" viewBox="0 0 24 24"><path d="M12 2 20 21l-8-4-8 4Z" fill="#fff" stroke="#2f6fed" stroke-width="1.6" stroke-linejoin="round"/></svg></b></div>';
+const dist=(a,b)=>{ const R=6371000,t=Math.PI/180,dl=(b[0]-a[0])*t,dg=(b[1]-a[1])*t,x=Math.sin(dl/2)**2+Math.cos(a[0]*t)*Math.cos(b[0]*t)*Math.sin(dg/2)**2; return 2*R*Math.asin(Math.sqrt(x)); };
+let M=null, RT, pts=[], cum=[], total=0, stepAt=[], pos=0, follow=true, mode='casa', carLL=RUTAS.casa.c[0], byCode=0;
+const near=(ll)=>{ let bi=0,bd=1e9; pts.forEach((q,i)=>{ const d=dist(q,ll); if(d<bd){bd=d;bi=i;} }); return bi; };
 function setRoute(k,keep){
-  mode=k; RT=RUTAS[k]; const c=RT.c.map(p=>R(p[0],p[1]));
-  cum=[0]; for(let i=1;i<c.length;i++) cum.push(cum[i-1]+c[i-1].distanceTo(c[i])); total=cum[cum.length-1];
-  /* distancia a lo largo de la ruta de cada maniobra (vértice más cercano) */
-  stepAt=RT.s.map(s=>{ let bi=0,bd=1e9; c.forEach((q,i)=>{ const d=q.distanceTo(R(s.p[0],s.p[1])); if(d<bd){bd=d;bi=i;} }); return {...s,at:cum[bi]}; });
-  if(keep){ /* seguir desde donde va el auto, proyectado sobre la nueva ruta */
-    const here=car.getLatLng(); let bi=0,bd=1e9; c.forEach((q,i)=>{ const d=q.distanceTo(here); if(d<bd){bd=d;bi=i;} }); pos=cum[bi];
-  } else pos=0;
-  casing.setLatLngs(c); line.setLatLngs(c);
+  mode=k; RT=RUTAS[k]; pts=RT.c;
+  cum=[0]; for(let i=1;i<pts.length;i++) cum.push(cum[i-1]+dist(pts[i-1],pts[i])); total=cum[cum.length-1];
+  stepAt=RT.s.map(s=>({...s,at:cum[near(s.p)]}));
+  pos=keep?cum[near(carLL)]:0;
+  if(M){ M.route(pts); M.shop(k==='mut'); }
   $('eta').classList.toggle('mut',k==='mut');
-  if(k==='mut') shopM.addTo(map); else shopM.remove();
 }
-function at(d){ const c=line.getLatLngs(); let i=1; while(i<cum.length-1&&cum[i]<d) i++; const a=c[i-1], b=c[i], f=Math.min(1,Math.max(0,(d-cum[i-1])/((cum[i]-cum[i-1])||1)));
-  return {p:R(a.lat+(b.lat-a.lat)*f,a.lng+(b.lng-a.lng)*f), brg:Math.atan2((b.lng-a.lng)*Math.cos(a.lat*Math.PI/180),b.lat-a.lat)*180/Math.PI}; }
+function at(d){ let i=1; while(i<cum.length-1&&cum[i]<d) i++; const a=pts[i-1], b=pts[i], f=Math.min(1,Math.max(0,(d-cum[i-1])/((cum[i]-cum[i-1])||1)));
+  return {p:[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f], brg:Math.atan2((b[1]-a[1])*Math.cos(a[0]*Math.PI/180),b[0]-a[0])*180/Math.PI}; }
 const fmtD=m=>m>=1000?(m/1000).toFixed(1).replace('.',',')+' km':(Math.max(10,Math.round(m/10)*10))+' m';
 const SPEED=9; /* m/s en la demo (≈32 km/h, tráfico de tarde) */
-let last=performance.now(), shopShown=false;
+let last=performance.now();
 function frame(now){
   const dt=Math.min(.25,(now-last)/1000); last=now;
   pos+=SPEED*dt;
   if(pos>=total){ pos=0; if(mode==='mut') setRoute('casa'); }
-  const {p,brg}=at(pos); car.setLatLng(p);
-  const a=document.getElementById('carA'); if(a) a.style.transform=`rotate(${brg}deg)`;
-  if(follow) map.panTo(p,{animate:false});
-  /* próxima maniobra */
+  const {p,brg}=at(pos); carLL=p;
+  if(M){ M.car(p,brg); if(follow&&!byCode) M.pan(p); }
   const nx=stepAt.find(s=>s.at>pos+5&&s.t!=='depart')||stepAt[stepAt.length-1];
   const arrive=nx.t==='arrive';
-  $('mvI').innerHTML=arrive?IC.gift.replace('#fff','#fff'):turn(nx.m);
+  $('mvI').innerHTML=arrive?IC.gift:turn(nx.m);
   $('mvD').textContent=fmtD(nx.at-pos);
   $('mvN').textContent=arrive?(mode==='mut'&&nx===stepAt.find(s=>s.t==='arrive')?'Llegas a Creado MUT':'Llegas a casa'):nx.n||'Sigue derecho';
   const rest=total-pos, min=Math.max(1,Math.round(rest/SPEED/60*1.6));
@@ -295,11 +286,78 @@ function frame(now){
   const t=new Date(Date.now()+min*60000); $('eT').textContent=t.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit',hour12:false});
   requestAnimationFrame(frame);
 }
+function userMoved(){ if(byCode) return; follow=false; $('rc').classList.add('on'); }
+const code=(ms,f)=>{ byCode++; f(); setTimeout(()=>byCode--,ms); };
+$('rc').onclick=()=>{ follow=true; $('rc').classList.remove('on'); M&&code(800,()=>M.view(carLL,16)); };
+$('zIn').onclick=()=>M&&code(500,()=>M.zoom(1)); $('zOut').onclick=()=>M&&code(500,()=>M.zoom(-1));
+function showStop(){ follow=false; M&&code(3000,()=>M.fit(pts)); setTimeout(()=>{ follow=true; $('rc').classList.remove('on'); M&&code(800,()=>M.view(carLL,16)); },3200); }
+const BOUNDS={north:-33.32,south:-33.52,west:-70.76,east:-70.46};
+
+/* Google Maps */
+const DARK=[{elementType:'geometry',stylers:[{color:'#1d2026'}]},{elementType:'labels.text.fill',stylers:[{color:'#8b919b'}]},{elementType:'labels.text.stroke',stylers:[{color:'#15171b'}]},
+ {featureType:'poi',stylers:[{visibility:'off'}]},{featureType:'poi.park',elementType:'geometry',stylers:[{visibility:'on'},{color:'#1e2a23'}]},
+ {featureType:'road',elementType:'geometry.fill',stylers:[{color:'#2d3139'}]},{featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#1b1d22'}]},
+ {featureType:'road.arterial',elementType:'geometry.fill',stylers:[{color:'#353a44'}]},{featureType:'road.highway',elementType:'geometry.fill',stylers:[{color:'#454b57'}]},
+ {featureType:'road',elementType:'labels.icon',stylers:[{visibility:'off'}]},{featureType:'transit',stylers:[{visibility:'off'}]},
+ {featureType:'water',elementType:'geometry',stylers:[{color:'#0f1b27'}]},{featureType:'administrative',elementType:'geometry',stylers:[{visibility:'off'}]},
+ {featureType:'landscape.man_made',elementType:'geometry.stroke',stylers:[{color:'#262a31'}]}];
+function gInit(){
+  const g=google.maps, LL=p=>({lat:p[0],lng:p[1]});
+  const map=new g.Map($('map'),{center:LL(carLL),zoom:16,disableDefaultUI:true,gestureHandling:'greedy',clickableIcons:false,keyboardShortcuts:false,styles:DARK,backgroundColor:'#1b1d22',minZoom:13,maxZoom:19,restriction:{latLngBounds:BOUNDS,strictBounds:false}});
+  const casing=new g.Polyline({map,strokeColor:'#173b8a',strokeWeight:12,strokeOpacity:.95,zIndex:1});
+  const line=new g.Polyline({map,strokeColor:'#4f8cff',strokeWeight:7,strokeOpacity:1,zIndex:2});
+  class H extends g.OverlayView{
+    constructor(html,ll,ax,ay,z){ super(); this.el=document.createElement('div'); this.el.style.cssText=`position:absolute;z-index:${z||1}`; this.el.innerHTML=html; this.ll=ll; this.ax=ax; this.ay=ay; }
+    onAdd(){ this.getPanes().floatPane.appendChild(this.el); }
+    draw(){ const pr=this.getProjection(); if(!pr) return; const q=pr.fromLatLngToDivPixel(new g.LatLng(this.ll[0],this.ll[1])); if(q){ this.el.style.left=(q.x-this.ax)+'px'; this.el.style.top=(q.y-this.ay)+'px'; } }
+    onRemove(){ this.el.remove(); }
+    moveTo(ll){ this.ll=ll; this.draw(); }
+  }
+  new H(PIN_HOME,HOME,6,40).setMap(map);
+  const shop=new H(PIN_SHOP,MUTP,6,40,2), car=new H(CAR_H,carLL,22,22,3); car.setMap(map);
+  const arrow=car.el.querySelector('.carA');
+  map.addListener('dragstart',userMoved);
+  return {kind:'g',
+    route(p){ const path=p.map(LL); casing.setPath(path); line.setPath(path); },
+    shop(on){ shop.setMap(on?map:null); },
+    car(p,b){ car.moveTo(p); arrow.style.transform=`rotate(${b}deg)`; },
+    pan(p){ map.setCenter(LL(p)); },
+    view(p,z){ map.setOptions({zoom:z,center:LL(p)}); },
+    zoom(d){ map.setZoom(map.getZoom()+d); },
+    fit(p){ const b=new g.LatLngBounds(); p.forEach(x=>b.extend(LL(x))); map.fitBounds(b,90); },
+    resize(){}
+  };
+}
+
+/* OpenStreetMap (respaldo) */
+function lInit(){
+  const map=L.map('map',{zoomControl:false,attributionControl:true,zoomSnap:.25,inertia:true,inertiaMaxSpeed:900,inertiaDeceleration:4000,minZoom:13,maxZoom:18,maxBounds:[[BOUNDS.south,BOUNDS.west],[BOUNDS.north,BOUNDS.east]],maxBoundsViscosity:1}).setView(carLL,16);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  $('map').classList.add('osm');
+  L.marker(HOME,{icon:L.divIcon({className:'',html:PIN_HOME,iconSize:[40,40],iconAnchor:[6,40]})}).addTo(map);
+  const shop=L.marker(MUTP,{icon:L.divIcon({className:'',html:PIN_SHOP,iconSize:[40,40],iconAnchor:[6,40]})});
+  const casing=L.polyline([],{color:'#173b8a',weight:12,opacity:.9,lineCap:'round',lineJoin:'round'}).addTo(map);
+  const line=L.polyline([],{color:'#4f8cff',weight:7,lineCap:'round',lineJoin:'round'}).addTo(map);
+  const car=L.marker(carLL,{icon:L.divIcon({className:'',html:CAR_H,iconSize:[44,44],iconAnchor:[22,22]}),zIndexOffset:1000,interactive:false}).addTo(map);
+  map.on('dragstart',userMoved);
+  return {kind:'l',
+    route(p){ casing.setLatLngs(p); line.setLatLngs(p); },
+    shop(on){ on?shop.addTo(map):shop.remove(); },
+    car(p,b){ car.setLatLng(p); const a=car.getElement()&&car.getElement().querySelector('.carA'); if(a) a.style.transform=`rotate(${b}deg)`; },
+    pan(p){ map.panTo(p,{animate:false}); },
+    view(p,z){ map.setView(p,z,{animate:true}); },
+    zoom(d){ map.setZoom(map.getZoom()+d); },
+    fit(p){ map.flyToBounds(L.latLngBounds(p),{padding:[90,90],duration:1.2}); },
+    resize(){ map.invalidateSize(); }
+  };
+}
+function boot(m){ M=m; M.route(pts); M.shop(mode==='mut'); M.car(carLL,0); }
+function useOSM(){ if(M&&M.kind==='l') return; const old=$('map'), n=document.createElement('div'); n.id='map'; old.replaceWith(n); boot(lInit()); }
+window.gm_authFailure=()=>{ console.warn('Google Maps rechazó la clave: uso OpenStreetMap'); useOSM(); };
+window.gReady=()=>{ try{ boot(gInit()); }catch(e){ console.error(e); useOSM(); } };
+(()=>{ const sc=document.createElement('script'); sc.async=true; sc.src=`https://maps.googleapis.com/maps/api/js?key=${GKEY}&loading=async&callback=gReady&v=weekly&language=es&region=CL`; sc.onerror=useOSM; document.head.appendChild(sc); })();
+setTimeout(()=>{ if(!M) useOSM(); },8000);
 setRoute('casa'); requestAnimationFrame(frame);
-map.on('dragstart zoomstart',e=>{ if(e.type==='dragstart'||!map._zoomingByCode){ follow=false; $('rc').classList.add('on'); } });
-$('rc').onclick=()=>{ follow=true; $('rc').classList.remove('on'); map.setView(car.getLatLng(),16,{animate:true}); };
-const zoomBy=d=>{ map._zoomingByCode=1; map.setZoom(map.getZoom()+d); setTimeout(()=>map._zoomingByCode=0,400); };
-$('zIn').onclick=()=>zoomBy(1); $('zOut').onclick=()=>zoomBy(-1);
 
 /* ===== MÚSICA ===== */
 const SONGS=[['Tu radio de la tarde','Lo que suena'],['Tren al sur','Los Prisioneros'],['Ella usó mi cabeza como un revólver','Soda Stereo'],['Lamento boliviano','Los Enanitos Verdes']];
@@ -341,8 +399,8 @@ let busy=0;
 function decide(a){
   done=a; drawActs(); clearTimeout(busy);
   if(a==='envio'){ CC.send('auto-si',{para:'Mamá',gift:'Mamá ¿Cuál es tu Historia?',modo:'envio'}); toast('Comprado<small>Llega hoy antes de las 20:00</small>'); }
-  if(a==='retiro'){ CC.send('auto-si',{para:'Mamá',gift:'Mamá ¿Cuál es tu Historia?',modo:'retiro'}); setRoute('mut',true); follow=true; $('rc').classList.remove('on');
-    setTimeout(()=>{ openView('vMap'); follow=false; map._zoomingByCode=1; map.flyToBounds(line.getBounds(),{padding:[90,90],duration:1.2}); setTimeout(()=>{ map._zoomingByCode=0; follow=true; $('rc').classList.remove('on'); map.flyTo(car.getLatLng(),16,{duration:1}); },3200); },400); toast('Parada agregada<small>Creado MUT · te lo tienen envuelto</small>'); }
+  if(a==='retiro'){ CC.send('auto-si',{para:'Mamá',gift:'Mamá ¿Cuál es tu Historia?',modo:'retiro'}); setRoute('mut',true);
+    setTimeout(()=>{ openView('vMap'); showStop(); },400); toast('Parada agregada<small>Creado MUT · te lo tienen envuelto</small>'); }
   busy=setTimeout(()=>$('ban').classList.remove('on'),a==='no'?3500:6000);
 }
 drawActs();
