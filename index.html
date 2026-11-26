@@ -25,6 +25,8 @@ button{cursor:pointer}
 .num{font-variant-numeric:tabular-nums}
 .sum-n{font-weight:600}
 em,i,cite,address{font-style:normal}
+/* Inter Tight necesita ~1.21em de alto: las líneas con recorte (ellipsis) llevan aire arriba y abajo sin mover el layout */
+.pe-b b,.pl-h.dh-1{padding-block:.1em;margin-block:-.1em}
 /* boleto */
 .ticket{-webkit-mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 9px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat}
 .grid12{background:repeating-linear-gradient(90deg,#e5eaf2 0 1px,transparent 1px calc(100%/12))}
@@ -301,13 +303,13 @@ body.in-app #toast{top:auto;bottom:24px;white-space:nowrap;max-width:calc(100vw 
 #ob.on{display:flex}
 .ob-bg{position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 420px at 80% -10%,rgba(255,89,36,.10),transparent 70%),radial-gradient(700px 380px at 0% 100%,rgba(120,140,255,.10),transparent 70%)}
 .ob-h{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 40px}
-.ob-logo{font-family:'Inter Tight',sans-serif;font-size:23px;font-weight:500;letter-spacing:-.03em}.ob-logo i{font-style:normal;color:#ff5924}
+.ob-logo{font-family:'Inter Tight',sans-serif;font-size:23px;font-weight:500;letter-spacing:-.02em}.ob-logo i{font-style:normal;color:#ff5924}
 .ob-st{display:flex;gap:6px}.ob-st li{width:56px;height:4px;border-radius:2px;background:#dde3ec;overflow:hidden}.ob-st li b{display:block;height:100%;width:0;background:#0e1014;border-radius:2px}
 .ob-x{justify-self:end;font-size:13.5px;font-weight:600;color:#5f6b7d}.ob-x:hover{color:#0e1014}
 .ob-w{position:relative;display:grid;flex:1;grid-template-columns:minmax(0,520px) minmax(0,480px);justify-content:center;align-items:center;gap:72px;padding:8px 40px 48px}
 .ob-l{min-width:0}
 .ob-k{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#748297}
-.ob-t{margin-top:10px;font-family:'Inter Tight',sans-serif;font-weight:400;font-size:clamp(34px,4vw,50px);line-height:1.03;letter-spacing:-.03em}
+.ob-t{margin-top:0;font-family:'Inter Tight',sans-serif;font-weight:400;font-size:clamp(34px,4vw,50px);line-height:1.03;letter-spacing:-.03em}
 .ob-t em{font-style:normal}
 .ob-p{margin-top:12px;font-size:16.5px;line-height:1.5;color:#4b5565}
 .ob-f{display:grid;gap:14px;margin-top:28px}
@@ -1402,7 +1404,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
   main.h-dvh{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
   #months{bottom:calc(96px + env(safe-area-inset-bottom))!important}
   #ctaw{position:fixed;left:0;right:0;bottom:0;z-index:30;display:block;margin:0;padding:14px 20px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(245,247,249,0),#f5f7f9 30%);filter:none!important}
-  #ctaw #connect{display:flex;width:100%;justify-content:center;padding:17px 0;filter:drop-shadow(0 14px 16px rgba(15,23,42,.25))}
+  #ctaw #connect{display:flex;width:100%;justify-content:center;padding:17px 0}
 }
 
 /* ===== jerarquía 2026-11-15 b ===== */
@@ -1481,7 +1483,7 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 
   <!-- navbar -->
   <nav class="relative z-20 flex items-center justify-between px-6 py-5 lg:px-14">
-    <span class="font-serif text-[26px] font-medium tracking-[-0.04em]">Cuenta conmigo<span class="text-brand">.</span></span>
+    <span class="font-serif text-[26px] font-medium tracking-[-0.025em]">Cuenta conmigo<span class="text-brand">.</span></span>
   </nav>
 
   <!-- hero único -->
@@ -1489,14 +1491,12 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
     <div class="max-w-[660px]">
       <h1 id="h1" class="font-serif font-normal leading-[.86] tracking-[-0.045em] text-black" style="font-size:min(11vw,20vh)">
         <span class="block overflow-hidden pb-[.08em] pt-[.1em] -mt-[.1em]"><span id="w1" class="block">Regalos</span></span>
-        <span class="block overflow-hidden pb-[.12em] pt-[.04em]"><span class="relative inline-block"><em id="w2" class="block not-italic">a tiempo.</em>
-          <svg viewBox="0 0 300 20" preserveAspectRatio="none" class="absolute -bottom-[.02em] left-0 h-[.2em] w-full overflow-visible" aria-hidden="true"><path id="ul" d="M4 12 C 60 2, 110 18, 160 9 S 250 4, 296 11" fill="none" stroke="#ff5924" stroke-width="5" stroke-linecap="round"/></svg></span></span>
+        <span class="block overflow-hidden pb-[.12em] pt-[.04em]"><span class="relative inline-block"><em id="w2" class="block not-italic">a tiempo.</em></span></span>
       </h1>
       <p id="sub" class="mt-7 max-w-[480px] text-xl leading-relaxed text-gray-600"><span class="sub-d">Soy tu asistente: me hago parte de tu día para acompañarte y guiarte cuando toca regalar. <span class="font-semibold text-black">Juntos no se nos pasará nada</span> y tendremos el mejor regalo para cada ocasión.</span><span class="sub-m">Tu asistente para regalar. <span class="font-semibold text-black">Juntos no se nos pasará nada.</span></span></p>
-      <div id="ctaw" class="mt-9 inline-block drop-shadow-[0_14px_16px_rgba(15,23,42,.3)]">
-        <button id="connect" class="ticket inline-flex items-center gap-3 bg-black px-9 py-[19px] text-[17px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand">
+      <div id="ctaw" class="mt-9 inline-block">
+        <button id="connect" class="inline-flex items-center gap-3 rounded-full bg-brand px-8 py-4 text-[17px] font-semibold text-white transition hover:bg-[#e8471a]">
           Comenzar
-          <svg class="size-[22px]" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
@@ -1593,13 +1593,13 @@ button.tn-gd:hover{box-shadow:0 0 0 1.5px #0e1014}
 
   <div class="sticky bottom-0 -mx-6 mt-auto flex flex-wrap items-center justify-between gap-4 bg-gradient-to-t from-fog via-fog/95 to-transparent px-6 pb-5 pt-8 lg:-mx-14 lg:px-14">
     <p id="summary" class="font-serif text-[clamp(24px,3vw,38px)] font-normal tracking-[-0.04em]"></p>
-    <div class="flex items-center gap-5"><button id="enter" class="rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold text-white opacity-0 shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-brand" style="pointer-events:none">Ver mi planner →</button></div>
+    <div class="flex items-center gap-5"><button id="enter" class="rounded-full bg-black px-7 py-3.5 text-[15px] font-semibold text-white opacity-0 shadow-[0_14px_24px_-10px_rgba(0,0,0,.6)] transition hover:bg-[#2a2d33]" style="pointer-events:none">Ver mi planner</button></div>
   </div>
 </section>
 <!-- Mi planner -->
 <section id="year" class="fixed inset-0 z-[160] hidden overflow-auto bg-fog">
   <header class="ap-top">
-    <button data-act="home" class="font-serif text-[23px] font-medium tracking-[-0.03em] justify-self-start">Cuenta conmigo<span class="text-brand">.</span></button>
+    <button data-act="home" class="font-serif text-[23px] font-medium tracking-[-0.02em] justify-self-start">Cuenta conmigo<span class="text-brand">.</span></button>
     <nav id="apTabs" class="ap-tabs" aria-label="Secciones"></nav>
     <div class="relative flex items-center justify-self-end gap-2">
       <span id="apLive" class="ap-live" aria-live="off"><canvas id="apOrb" aria-hidden="true"></canvas><span id="apLiveT">Calendario al día</span></span>
@@ -1755,7 +1755,6 @@ function initHover(){
   document.querySelectorAll('#h1 > span').forEach(e=>e.style.overflow='visible');
   (window.__chars||[]).forEach(c=>{ c.classList.add('ch'); c.style.display='inline-block'; c.addEventListener('pointerenter',()=>gsap.fromTo(c,{y:0,rotation:0},{keyframes:[{y:-18,rotation:gsap.utils.random(-8,8),duration:.18,ease:'power2.out'},{y:0,rotation:0,duration:.9,ease:'elastic.out(1,.4)'}],overwrite:'auto'})); });
   // CTA: el icono del calendario se anima
-  $('connect').addEventListener('pointerenter',()=>gsap.fromTo('#connect svg',{rotation:0,scale:1},{keyframes:[{rotation:-14,scale:1.2,duration:.15},{rotation:0,scale:1,duration:.6,ease:'elastic.out(1,.4)'}]}));
 }
 
 function intro(){
@@ -1764,7 +1763,6 @@ function intro(){
   tl.from('nav',{y:-24,opacity:0,duration:.7})
     .from(s1.chars,{yPercent:115,rotate:8,duration:1,stagger:.035},'-=.3')
     .from(s2.chars,{yPercent:115,rotate:-8,duration:1,stagger:.035},'-=.85')
-    .from('#ul',{drawSVG:0,duration:.8,ease:'power2.inOut'},'-=.5')
     .from(['#sub','#ctaw'],{opacity:0,y:18,duration:.7,stagger:.09},'-=.7')
     .from('#phone',{y:90,opacity:0,scale:.94,duration:1.2,ease:'expo.out'},'-=1.2')
     .from(fls(),{scale:.55,opacity:0,y:'+=40',duration:1,stagger:{each:.09,from:'random'},ease:'back.out(1.8)',clearProps:'scale,opacity',onComplete(){float();initHover();}},'-=.8')
@@ -2599,7 +2597,7 @@ function viewHome(){
   const dl=p=>{ const l=ordLeft(p); return l===0?'Hoy es el último día':`Quedan ${l} ${l===1?'día':'días'}`; };
   const col=(t,n,sub,body,cls='')=>`<section class="dh-k ${cls}"><header><h3>${t}</h3><span class="num">${n}</span></header><p>${sub}</p><div class="dh-l">${body||'<p class="dh-e">Nada por ahora</p>'}</div></section>`;
   const nowItem=p=>{ const u=ordLeft(p)<=3, span=Math.max(1,Math.round((lastOrder(p)-avisoD(p))/864e5)), pct=Math.min(100,Math.max(8,(1-ordLeft(p)/span)*100));
-    return u?`<div class="dh-n u">${chip(p)}<p class="dh-ul"><b>${dl(p)}</b> para decidir · hasta el ${fdate(lastOrder(p))}</p><i class="dh-ub"><b style="width:${pct}%"></b></i><button data-act="flow" data-i="${idx(p)}" class="dh-cta">Resolver ahora <span aria-hidden="true">→</span></button></div>`:chip(p); };
+    return u?`<div class="dh-n u">${chip(p)}<p class="dh-ul"><b>${dl(p)}</b> para decidir · hasta el ${fdate(lastOrder(p))}</p><i class="dh-ub"><b style="width:${pct}%"></b></i><button data-act="flow" data-i="${idx(p)}" class="dh-cta">Resolver ahora</button></div>`:chip(p); };
   const more=later.length>3?`<p class="dh-m">y ${later.length-3} fechas más que sigo</p>`:'';
   const h1=hot?`${nm}, resuelve ${who(hot)} ya.`:now.length?`${now.length===1?'Tienes un regalo':'Tienes '+now.length+' regalos'} por decidir, ${nm}.`:`Todo en orden, ${nm}.`;
   const n0=nx[0], n1=now[0];
@@ -2773,7 +2771,7 @@ function viewRegalos(){
       <p class="mr-t"><span>${esc(x.t)}</span><b class="num">${clp(x.p)}</b></p>
       <div class="mr-sg" role="img" aria-label="Paso ${c2+1} de ${st.length}">${segs(c2,fin)}</div>
       <dl class="mr-m"><div><dt>Entrega</dt><dd>${esc(destOf(p,od.ship))}</dd></div><div><dt>Pedido</dt><dd class="num">${od.no}</dd></div></dl>
-      <div class="mr-ac"><button data-act="pedido" data-i="${idx(p)}" class="mr-bt">Ver seguimiento <span aria-hidden="true">→</span></button>${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="mr-cx">Cancelar compra</button>`:''}</div></div></article>`; };
+      <div class="mr-ac"><button data-act="pedido" data-i="${idx(p)}" class="mr-bt">Ver seguimiento</button>${p.justBought?`<button data-act="undo" data-i="${idx(p)}" class="mr-cx">Cancelar compra</button>`:''}</div></div></article>`; };
   const dcard=o=>{ const pr=PRODS[o.h]; return `<article class="mr"><div class="mr-ph"><img src="${pr[3]}" alt="" loading="lazy"></div><div class="mr-b">
       <div class="mr-top"><span class="mr-pill ok"><i></i>Entregado</span><span class="mr-eta">${esc(o.on)}</span></div>
       <p class="mr-o">${esc(o.o)} · ${fdate(o.d)}</p><h2>${esc(o.n)}</h2>
@@ -3198,15 +3196,15 @@ function obStory(){
 }
 function obView(){
   const L=$('obL'), i=ob.step;
-  if(i===0) L.innerHTML=`<p class="ob-k" data-in>Paso 1 de 2 · Tú</p><h1 class="ob-t" data-in>Empecemos por <em>conocernos</em>.</h1><p class="ob-p" data-in>Con tu nombre te hablo como corresponde, y con tu dirección te dejo los regalos listos para recibirlos.</p>
+  if(i===0) L.innerHTML=`<h1 class="ob-t" data-in>Empecemos por <em>conocernos</em>.</h1><p class="ob-p" data-in>Con tu nombre te hablo como corresponde, y con tu dirección te dejo los regalos listos para recibirlos.</p>
     <div class="ob-f" data-in><label><span>¿Cómo te llamo?</span><input id="obName" class="ob-i" value="${esc(cfg.name==='Rodolfo Rojas'?'Rodolfo':cfg.name)}" autocomplete="given-name" placeholder="Tu nombre"></label>
     <label><span>¿Dónde te llegan los regalos?</span><input id="obAddr" class="ob-i" value="${esc(cfg.addr)}" autocomplete="street-address" placeholder="Calle, número, comuna"><small>Lo puedes cambiar en cada compra.</small></label></div>
     <ul class="ob-ch" data-in><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Toma 1 minuto</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6Z"/></svg>Solo lectura</li><li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Lo cambias cuando quieras</li></ul>
-    <div class="ob-a" data-in><button id="obNext" class="ob-b">Continuar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>`;
-  else L.innerHTML=`<p class="ob-k" data-in>Paso 2 de 2 · Conectores</p><h1 class="ob-t" data-in>Conecta <em>lo que ya usas</em>.</h1><p class="ob-p" data-in>Aprendo sin preguntarte. Solo leo; nunca escribo a nadie por ti.</p>
+    <div class="ob-a" data-in><button id="obNext" class="ob-b">Continuar</button></div>`;
+  else L.innerHTML=`<h1 class="ob-t" data-in>Conecta <em>lo que ya usas</em>.</h1><p class="ob-p" data-in>Aprendo sin preguntarte. Solo leo; nunca escribo a nadie por ti.</p>
     <div class="ob-c ob-c2" data-in>${OB_GRID.map(c=>`<div class="oc" data-k="${c.k}" data-on="${ob.conn[c.k]}"><span class="oc-lg"><img src="${c.img}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${c.t[0]}'}))"></span><div class="min-w-0"><b>${OB_T[c.k]||c.t}</b><small>${OB_S[c.k]}</small></div><button data-c="${c.k}" aria-label="${ob.conn[c.k]?'Conectado':'Conectar'} ${c.t}">${OB_B(ob.conn[c.k])}</button></div>`).join('')}</div>
     <p class="ob-n" id="obNote" data-in>Conecta al menos el calendario para que pueda empezar.</p>
-    <div class="ob-a" data-in><button id="obNext" class="ob-b" ${ob.conn.cal?'':'disabled'}>Analizar mi calendario <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button id="obBack" class="ob-bk">Atrás</button></div>`;
+    <div class="ob-a" data-in><button id="obNext" class="ob-b" ${ob.conn.cal?'':'disabled'}>Analizar mi calendario</button><button id="obBack" class="ob-bk">Atrás</button></div>`;
   obPreview(); obBind();
 }
 function obBind(){
@@ -3345,7 +3343,7 @@ function chSave(p,it,via='',lead=''){
   else msg=`Guardado en la ficha de ${esc(n)}. Te lo propongo para ${para}, el ${fdate(occ(p))}.`;
   addAct({k:'learn',t:`Guardé una idea para ${n}`,s:t,n,unread:false});
   if(tab==='personas') gsap.delayedCall(.1,render);
-  return `${lead}<span class="cm-ok${lead?' mt-2.5':''}"><i>${CK}</i><span>${via}${msg}</span></span><div class="cm-ppl"><button data-chgo="${esc(n)}">Ver su ficha →</button></div>`;
+  return `${lead}<span class="cm-ok${lead?' mt-2.5':''}"><i>${CK}</i><span>${via}${msg}</span></span><div class="cm-ppl"><button data-chgo="${esc(n)}">Ver su ficha</button></div>`;
 }
 async function chPick(n,typed){
   const p=YEAR.find(q=>q.n===n), it=chPend; if(!p||!it) return; chPend=null; const via=typed?chViaTxt(p):'';
