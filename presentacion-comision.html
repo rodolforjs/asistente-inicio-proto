@@ -7,12 +7,12 @@
 <link rel="icon" href="assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* REGI · presentación para la comisión (metodología, pensamiento y tecnología).
    Navegación: → / espacio / AvPág avanza · ← retrocede · #n abre la lámina n · F pantalla completa.
    Diagramación basada en MAPI (comisión anterior): barra de etapas fija, grillas, arquitectura en 3 columnas, tablas de validación. */
-:root{--v:#3B00D1;--k:#0E0A1F;--l:#CCD100;--p:#D15CB5;--b:#598AD1;--r:#D13C00;--w:#fff;--w7:rgba(255,255,255,.72);--w5:rgba(255,255,255,.5);--w2:rgba(255,255,255,.16);--w1:rgba(255,255,255,.08)}
+:root{--v:#3B00D1;--k:#0E0A1F;--l:#ff6a1f;--p:#D15CB5;--b:#598AD1;--r:#D13C00;--w:#fff;--w7:rgba(255,255,255,.72);--w5:rgba(255,255,255,.5);--w2:rgba(255,255,255,.16);--w1:rgba(255,255,255,.08)}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 #deck{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
@@ -49,10 +49,11 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 /* 1 · portada */
 #s1 .left{position:absolute;left:120px;top:250px;width:860px}
 #s1 .big{margin:22px 0 0;font-weight:900;font-stretch:125%;font-size:230px;line-height:.8;color:var(--l);letter-spacing:-.02em}
-#s1 .sub{margin:30px 0 0;font-weight:800;font-stretch:115%;text-transform:uppercase;font-size:54px;line-height:1}
+#s1 .sub{margin:34px 0 0;font-weight:400;font-size:64px;line-height:1;color:var(--w7)}
 #s1 .desc{margin:24px 0 0;font-size:28px;color:var(--w7)}
 #s1 .team{position:absolute;left:120px;bottom:120px}
-#s1 .blk{position:absolute;right:0;top:0;bottom:0;width:240px;background:var(--l)}
+#s1 .blk{position:absolute;right:0;top:0;bottom:0;width:420px;background:var(--l)}
+#s1 .lock{display:flex;align-items:center;gap:34px;margin-top:40px}#s1 .lock img{width:150px;height:150px}#s1 .lock span{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:230px;line-height:.85;letter-spacing:-.05em}
 #s1 .shot{position:absolute;left:1060px;top:220px;width:1100px;transform:perspective(1800px) rotateY(-22deg) rotateZ(-3deg);transform-origin:100% 50%;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
 #s1 .shot img{display:block;width:100%}
 
@@ -77,14 +78,16 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 #s3 .h p b{color:#fff;font-weight:600}
 #s3 .h .ph{position:absolute;top:0;left:0;right:0}
 
-/* 4 · lo que Creado hace bien */
-#s4 .row{position:absolute;left:120px;right:120px;top:330px;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
-#s4 .it{border-left:4px solid var(--l);padding:6px 0 0 26px;min-height:440px}
-#s4 .it .n{font:600 22px 'IBM Plex Mono',monospace;color:var(--l)}
-#s4 .it h3{margin:150px 0 0;font-weight:800;font-stretch:108%;text-transform:uppercase;font-size:33px;line-height:1.02}
-#s4 .it p{margin:14px 0 0;font-size:22px;line-height:1.35;color:var(--w7)}
-#s4 .foot{position:absolute;left:120px;right:120px;bottom:130px;padding-top:26px;border-top:2px solid var(--w2);font-size:30px;color:var(--w7)}
-
+/* 4 · lámina partida (reciclada de la presentación para Creado) */
+#s4 .hlf,#s4 .hr{position:absolute;top:0;bottom:0;width:960px;padding:200px 130px 0 130px}
+#s4 .hlf{left:0}#s4 .hr{left:960px;background:var(--l);padding-left:150px}
+#s4 .kk{margin:0;font:600 22px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--l)}#s4 .hr .kk{color:#1c1b19}
+#s4 ul{list-style:none;margin:40px 0 0;padding:0}
+#s4 li{display:flex;gap:26px;align-items:baseline;border-top:1.5px solid rgba(28,27,25,.16);padding:20px 0;font-family:'Inter Tight',sans-serif;font-size:42px;line-height:1.05;letter-spacing:-.03em}
+#s4 li i{flex:none;font:600 20px Inter,sans-serif;font-style:normal;color:var(--l)}
+#s4 li small{display:block;margin-top:6px;font:400 21px/1.3 Inter,sans-serif;letter-spacing:0;color:#6b665e}
+#s4 .bp{margin:60px 0 0;font-family:'Inter Tight',sans-serif;font-size:72px;line-height:1.05;letter-spacing:-.04em;color:#1c1b19}
+#s4 .bp b{font-weight:700}
 /* 5 · diagnóstico */
 #s5 .cols{position:absolute;left:120px;right:120px;top:300px;bottom:130px;display:grid;grid-template-columns:1.05fr 1fr;gap:70px}
 #s5 h3{margin:0 0 26px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:34px}
@@ -93,18 +96,20 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 #s5 .pr{display:flex;gap:24px;align-items:center;padding:22px 0;border-top:2px solid var(--w2);font-size:25px;line-height:1.3}
 #s5 .q{position:relative;padding:28px 34px;border-left:6px solid var(--l);background:var(--w1);margin-bottom:22px;min-height:150px;display:flex;align-items:center}
 
-/* 6 · dato duro */
-#s6 .n1{position:absolute;left:110px;top:150px;font-weight:900;font-stretch:125%;font-size:360px;line-height:.85;color:var(--l);letter-spacing:-.03em}
-#s6 .t1{position:absolute;left:120px;top:540px;width:900px;font-size:44px;line-height:1.2;font-weight:600}
-#s6 .n2{position:absolute;left:1240px;top:560px;font-weight:900;font-stretch:125%;font-size:190px;line-height:.85;color:var(--p)}
-#s6 .t2{position:absolute;left:1250px;top:740px;width:560px;font-size:34px;line-height:1.25}
-#s6 .src{position:absolute;left:120px;bottom:120px;color:var(--w5)}
-
+/* 6 · dato duro (reciclada) */
+#s6 .q{position:absolute;left:0;right:0;top:130px;margin:0;text-align:center;font-family:'Inter Tight',sans-serif;font-size:84px;letter-spacing:-.045em}
+#s6 .body{position:absolute;left:160px;right:160px;top:300px;bottom:170px;display:grid;grid-template-columns:1fr 820px;gap:110px;align-items:center}
+#s6 .tt{margin:0;font-family:'Inter Tight',sans-serif;font-size:100px;line-height:.98;letter-spacing:-.05em}
+#s6 .d{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:center;padding:34px 0}
+#s6 .d+.d{border-top:1px solid rgba(244,242,238,.22)}
+#s6 .d b{font-family:'Inter Tight',sans-serif;font-size:100px;font-weight:400;line-height:.9;letter-spacing:-.05em;color:var(--l)}
+#s6 .d span{font-size:30px;line-height:1.38;color:rgba(244,242,238,.88)}
+#s6 .src{position:absolute;left:160px;bottom:110px;color:rgba(244,242,238,.45)}
 /* láminas con foto oscurecida y frase al centro (7, 10, 11) */
 .hero .bg{position:absolute;inset:0}
 .hero .bg .ph{inset:0;border:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 18px,transparent 18px 36px)}
 .hero .bg .ph span{position:absolute;left:120px;bottom:120px}
-.hero .sh{position:absolute;inset:0;background:rgba(14,10,31,.55)}
+.hero .sh{position:absolute;inset:0;background:rgba(28,27,25,.55)}
 .hero .c{position:absolute;left:220px;right:220px;top:50%;transform:translateY(-50%);text-align:center}
 .hero.on .c{transform:translateY(-50%)}
 .hero .c .kk{color:var(--l)}
@@ -112,15 +117,17 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 .hero .c .stm{margin:44px auto 0;max-width:1300px;font-size:46px;line-height:1.25;font-weight:500}
 .hero .c .stm b{color:var(--l);font-weight:700}
 
-/* 8 · usuarios */
-#s8 table{position:absolute;left:120px;right:120px;top:300px;border-collapse:collapse;font-size:24px;line-height:1.3}
-#s8 th{text-align:left;font:500 18px 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--l);padding:0 24px 18px 0;border-bottom:2px solid var(--l)}
-#s8 td{padding:26px 24px 26px 0;border-bottom:2px solid var(--w2);vertical-align:middle;color:var(--w7)}
-#s8 td.who{display:flex;align-items:center;gap:22px;color:#fff}
-#s8 td.who .duo{width:104px;height:104px;flex:none;border-radius:50%}
-#s8 td.who b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:32px}
-#s8 td.who small{display:block;margin-top:4px;color:var(--w5);font-size:18px}
-
+/* 8 · usuarios (reciclada: columnas de color, foto en duotono) */
+#s8 .cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr)}
+#s8 .c{position:relative;overflow:hidden;background:var(--k2);color:#fff}
+#s8 .ph2{position:absolute;left:0;right:0;bottom:0;top:430px}
+#s8 .ph2 img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:grayscale(1) contrast(1.15) brightness(1.05);mix-blend-mode:multiply}
+#s8 .c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--k2) 0,var(--k2) 430px,transparent 560px);pointer-events:none}
+#s8 .tx{position:absolute;left:64px;right:56px;top:120px;z-index:1}
+#s8 h3{margin:0;font-family:'Inter Tight',sans-serif!important;font-size:62px;font-weight:700;line-height:1;letter-spacing:-.02em!important;text-transform:uppercase!important}
+#s8 .tag{display:block;margin-top:14px;font:600 20px/1.25 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+#s8 .qt{margin:22px 0 0;font-family:'Inter Tight',sans-serif;font-size:32px;line-height:1.22;letter-spacing:-.015em}
+#s8 .nd{margin:16px 0 0;font-size:20px;line-height:1.35;opacity:.92}
 /* 9 · reencuadre */
 #s9 .ab{position:absolute;left:120px;right:120px;top:350px;height:440px;display:grid;grid-template-columns:1fr 140px 1fr}
 #s9 .x{padding:50px 56px;display:flex;flex-direction:column}
@@ -132,6 +139,11 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 #s9 .ar{display:grid;place-items:center}
 #s9 .foot{position:absolute;left:120px;right:120px;bottom:130px;font-size:28px;color:var(--w7)}
 
+/* 10 · oportunidad (ilustraciones recicladas) */
+#s10 .fx{position:absolute;left:120px;right:120px;top:360px;bottom:110px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+#s10 .f{position:relative;overflow:hidden;border-radius:28px;background:#8f897e}
+#s10 .f .sc{position:absolute;inset:0;width:100%;height:100%}
+#s10 .f h3{position:absolute;left:36px;top:30px;margin:0;color:#fff;font-size:48px;font-weight:600;line-height:1;text-shadow:0 2px 18px rgba(0,0,0,.18)}
 /* 12 · naming */
 #s12 .ph{left:0;top:0;bottom:0;width:760px}
 #s12 .rv{position:absolute;left:880px;top:200px}
@@ -165,16 +177,16 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 #s13 .loop .m{color:var(--l)}
 
 /* 14 · capas */
-#s14 .stack{position:absolute;left:120px;top:290px;width:1120px;bottom:120px;display:flex;flex-direction:column;gap:10px}
+#s14 .stack{position:absolute;left:120px;top:310px;width:1120px;bottom:120px;display:flex;flex-direction:column;gap:10px}
 #s14 .ly{flex:1;display:grid;grid-template-columns:250px 1fr;align-items:center;background:var(--w1)}
 #s14 .ly .nm{height:100%;display:flex;align-items:center;padding:0 22px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:24px;color:var(--k)}
 #s14 .ly .ct{padding:0 26px;font-size:20px;line-height:1.35;color:var(--w7)}
 #s14 .ly .ct b{color:#fff;font-weight:600}
-#s14 .now{position:absolute;left:1290px;right:120px;top:290px;bottom:120px;border:2px solid var(--l);padding:30px 32px}
+#s14 .now{position:absolute;left:1290px;right:120px;top:310px;bottom:120px;border:2px solid var(--l);padding:30px 32px}
 #s14 .now h3{margin:0 0 6px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:28px;color:var(--l)}
 #s14 .now .it{padding:16px 0;border-top:1px solid var(--w2);font-size:19px;line-height:1.35;color:var(--w7)}
 #s14 .now .it b{display:block;color:#fff;font-size:21px;font-weight:700}
-#s14 .tag{position:absolute;left:120px;top:244px;color:var(--l)}
+#s14 .tag{position:absolute;left:120px;top:268px;color:var(--l)}
 
 /* 15 · swimlanes */
 #s15 .sw{position:absolute;left:120px;right:120px;top:280px;bottom:140px;display:grid;grid-template-columns:200px repeat(6,1fr);grid-template-rows:repeat(3,1fr)}
@@ -199,18 +211,18 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 #s16 .rule{margin-top:26px;padding:18px 22px;background:var(--l);color:var(--k);font-size:22px;font-weight:600}
 
 /* 17 · indicaciones de los agentes */
-#s17 .cur{position:absolute;left:120px;top:290px;width:960px;bottom:120px;background:var(--k);border-top:6px solid var(--l);padding:32px 40px}
+#s17 .cur{position:absolute;left:120px;top:310px;width:960px;bottom:120px;background:var(--k);border-top:6px solid var(--l);padding:32px 40px}
 #s17 .cur h3{margin:0;font-weight:900;font-stretch:118%;text-transform:uppercase;font-size:48px;color:var(--l)}
 #s17 .cur .g{display:grid;grid-template-columns:200px 1fr;gap:14px 26px;margin-top:22px;font-size:21px;line-height:1.35;color:var(--w7)}
 #s17 .cur .g>.m{color:var(--l);font-size:16px;padding-top:4px}
 #s17 .cur ul{margin:0;padding-left:20px}
 #s17 .cur li{margin-bottom:4px}
 #s17 .cur code{font:500 17px 'IBM Plex Mono',monospace;color:#fff;background:var(--w1);padding:10px 14px;display:block;line-height:1.5}
-#s17 .rest{position:absolute;left:1120px;right:120px;top:290px;bottom:120px;display:grid;grid-template-rows:repeat(5,1fr);gap:12px}
+#s17 .rest{position:absolute;left:1120px;right:120px;top:310px;bottom:120px;display:grid;grid-template-rows:repeat(5,1fr);gap:12px}
 #s17 .ra{background:var(--w1);border-left:6px solid var(--c);padding:14px 20px;display:flex;flex-direction:column;justify-content:center}
 #s17 .ra b{font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:22px}
 #s17 .ra span{margin-top:4px;font-size:17px;line-height:1.3;color:var(--w7)}
-#s17 .src{position:absolute;left:120px;top:236px;color:var(--w5)}
+#s17 .src{position:absolute;left:120px;top:268px;color:var(--w5)}
 
 /* 18 · decisiones de diseño */
 #s18 .rows{position:absolute;left:120px;right:120px;top:260px;bottom:110px;display:grid;grid-template-rows:repeat(5,1fr);gap:8px}
@@ -271,7 +283,47 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 
 /* 23 · gracias */
 #s23 .c{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:50px}
-#s23 .T{font-size:220px}
+#s23 .T{font-size:200px}
+#s23 .c img{display:block}
+
+/* ===== Tema homologado con la presentación para Creado: crema, negro suave y un acento naranja; Inter Tight + Inter ===== */
+:root{--v:#f4f2ee;--k:#1c1b19;--l:#ff6a1f;--p:#6b2bf0;--b:#2a35e6;--r:#8a857c;--w:#1c1b19;--w7:rgba(28,27,25,.72);--w5:rgba(28,27,25,.5);--w2:rgba(28,27,25,.14);--w1:rgba(28,27,25,.05)}
+html,body{background:#d9d6cf;color:#1c1b19;font-family:Inter,system-ui,sans-serif}
+.s{color:#1c1b19}
+.s.k,.dk-scope{color:#f4f2ee;--w7:rgba(244,242,238,.8);--w5:rgba(244,242,238,.5);--w2:rgba(244,242,238,.18);--w1:rgba(244,242,238,.07)}
+.T{font-family:'Inter Tight',sans-serif;font-weight:400;font-stretch:100%;text-transform:none;color:#1c1b19;font-size:96px;line-height:1;letter-spacing:-.045em}
+.s.k .T{color:#f4f2ee}
+.s h3,.s h4,.T2,#s1 .sub,#s9 .x h3,#s12 .wd,#s12 .vals b,#s13 .col>h3,#s14 .ly .nm,#s14 .now h3,#s15 .ln,#s16 .ur h3,#s17 .cur h3,#s17 .ra b,#s18 h4,#s19 figcaption b,#s20 .u .hd b,#s20 .mt b,#s21 .ec h3,#s21 .e b,#s22 .c3 h3,#s22 .key,.card h3{font-family:'Inter Tight',sans-serif!important;font-stretch:100%!important;text-transform:none!important;letter-spacing:-.025em!important}
+.m{font-family:Inter,sans-serif;font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase}
+code{font-family:'IBM Plex Mono',monospace}
+#bar{font:600 15px Inter,sans-serif;letter-spacing:.14em;color:rgba(28,27,25,.42)}
+#bar.lt{color:rgba(244,242,238,.55)}
+#cnt,#sig{font:600 15px Inter,sans-serif;letter-spacing:.12em;color:rgba(28,27,25,.42)}
+.lt-ui #cnt,.lt-ui #sig{color:rgba(244,242,238,.5)}
+.ph{border-color:rgba(28,27,25,.3);background:repeating-linear-gradient(135deg,rgba(28,27,25,.04) 0 14px,transparent 14px 28px);color:rgba(28,27,25,.6);font:600 16px Inter,sans-serif;letter-spacing:.06em}
+.s.k .ph{border-color:rgba(244,242,238,.35);color:rgba(244,242,238,.7)}
+.q-ph{font:600 20px Inter,sans-serif;letter-spacing:.04em}
+.card{background:#fff;border-top:0;border-radius:24px}
+.card .n{font:600 22px Inter,sans-serif;letter-spacing:.1em}
+#s14 .nm[style*="--p"],#s14 .nm[style*="--b"],#s14 .nm[style*="--r"]{color:#fff!important}
+#s14 .nm[style*="#fff"]{background:#1c1b19!important;color:#f4f2ee!important}
+#s15 .u .bx{background:#1c1b19;color:#f4f2ee}#s15 .c .bx{background:var(--p)}
+#s16 .nd.ns{background:#1c1b19;color:#f4f2ee}
+#s17 .cur{color:#f4f2ee;--w7:rgba(244,242,238,.8);--w1:rgba(244,242,238,.08);border-radius:24px}
+#s17 .ra{background:#fff;border-radius:14px}
+#s13 .col,#s20 .u,#s21 .e,#s5 .q{background:#fff;border-radius:20px}
+#s13 .col{border-top:0}
+#s9 .x.a1{background:#fff;border:0;border-radius:24px}#s9 .x.a2{border-radius:24px;color:#1c1b19}
+#s18 .bf span{border-radius:10px;font-family:Inter,sans-serif;font-weight:600;letter-spacing:.04em}
+#s12 .lt{border-radius:16px;font-family:'Inter Tight',sans-serif;font-stretch:100%;font-weight:600}
+#s3 .h .dot{border-radius:50%}
+#s3 .h .mo{color:var(--l)}
+#s16 .nd.o{background:#fff;border:0;border-radius:14px}
+#s16 .rule{border-radius:14px}
+#s19 .im{border-radius:20px}
+#s20 .u .duo,#s8 td.who .duo{border-radius:50%}
+#s3 .h p b,#s14 .ly .ct b,#s14 .now .it b,#s16 .st span strong,#s21 .e em{color:#1c1b19}
+#s13 .in b{color:#1c1b19}
 </style>
 </head>
 <body>
@@ -283,9 +335,9 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
   <div class="blk"></div>
   <div class="shot a" style="--i:3"><img src="assets/comision/planner.jpg" alt="El planner de REGI"></div>
   <div class="left">
-    <div class="m a hl" style="--i:0">Taller Integrado · Diseño de Interacción Digital · UDD</div>
-    <div class="big a" style="--i:1">REGI</div>
-    <div class="sub a" style="--i:2">Planner de regalos</div>
+    <div class="m a" style="--i:0;color:var(--w5)">Taller Integrado · Diseño de Interacción Digital · UDD</div>
+    <div class="lock a" style="--i:1"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile"><span>Regi</span></div>
+    <div class="sub a" style="--i:2">Tu planner de regalos</div>
     <p class="desc a" style="--i:2">Propuesta conceptual para Creado en Chile</p>
   </div>
   <div class="team m a" style="--i:4">Equipo: <span class="q-ph">[NOMBRES DEL EQUIPO]</span></div>
@@ -319,15 +371,13 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 
 <!-- 4 · LO QUE CREADO YA HACE BIEN -->
 <section class="s" id="s4" data-st="Diagnóstico">
-  <div class="wrap"><h2 class="T a">Lo que Creado ya hace bien</h2></div>
-  <div class="row">
-    <div class="it a" style="--i:1"><div class="n">01</div><h3>Curaduría de diseño chileno</h3><p>Cientos de creadores locales seleccionados, desde 2014.</p></div>
-    <div class="it a" style="--i:2"><div class="n">02</div><h3>Regalos en 3 horas</h3><p>Despacho express en Santiago.</p></div>
-    <div class="it a" style="--i:3"><div class="n">03</div><h3>Pensado para regalar</h3><p>Guía de regalos, filtros por precio y para quién, bolsa de regalo.</p></div>
-    <div class="it a" style="--i:4"><div class="n">04</div><h3>Ocho tiendas físicas</h3><p>Santiago, Valparaíso y Zapallar.</p></div>
-    <div class="it a" style="--i:5"><div class="n">05</div><h3>Compra en cuotas</h3><p>Sin interés.</p></div>
-  </div>
-  <div class="foot a" style="--i:6">Creado resuelve <span class="hl">qué</span> regalar y <span class="hl">cómo</span> llega. Falta resolver <span class="hl">cuándo</span>.</div>
+  <div class="hlf"><h2 class="kk a">Lo que Creado ya hace bien</h2>
+    <ul><li class="a" style="--i:1"><i>01</i><span>Curaduría de diseño chileno<small>Cientos de creadores locales seleccionados, desde 2014.</small></span></li>
+    <li class="a" style="--i:2"><i>02</i><span>Regalos en 3 horas<small>Despacho express en Santiago.</small></span></li>
+    <li class="a" style="--i:3"><i>03</i><span>Pensado para regalar<small>Guía de regalos, filtros por precio y para quién, bolsa de regalo.</small></span></li>
+    <li class="a" style="--i:4"><i>04</i><span>Ocho tiendas físicas<small>Santiago, Valparaíso y Zapallar.</small></span></li>
+    <li class="a" style="--i:5"><i>05</i><span>Compra en cuotas<small>Sin interés.</small></span></li></ul></div>
+  <div class="hr"><h2 class="kk a" style="--i:2">Lo que falta</h2><p class="bp a" style="--i:3">Creado resuelve <b>qué</b> regalar y <b>cómo</b> llega.<br>Falta resolver <b>cuándo</b>.</p></div>
 </section>
 
 <!-- 5 · DIAGNÓSTICO -->
@@ -352,15 +402,15 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 
 <!-- 6 · DATO DURO -->
 <section class="s k" id="s6" data-st="Diagnóstico">
-  <div class="n1 a">54%</div>
-  <div class="t1 a" style="--i:1">compró el regalo del Día de la Madre con <span class="hl">menos de una semana</span> de anticipación.</div>
-  <div class="n2 a" style="--i:2">+50%</div>
-  <div class="t2 a" style="--i:3">ya tuvo problemas con un despacho.</div>
-  <div class="src m a" style="--i:4">Fuente: Logisfashion 2026 · CNC 2025</div>
+  <p class="q a">¿Alguna vez se te pasó un regalo?</p>
+  <div class="body"><p class="tt a" style="--i:1">Regalar suele<br>complicarse<br>y se vive como<br><span class="hl">un “cacho”.</span></p>
+    <div><div class="d a" style="--i:2"><b>54%</b><span>compró el regalo del Día de la Madre con menos de una semana de anticipación.</span></div>
+    <div class="d a" style="--i:3"><b>+50%</b><span>ya tuvo problemas con un despacho.</span></div></div></div>
+  <p class="src m a" style="--i:4">Fuente: Logisfashion 2026 · CNC 2025</p>
 </section>
 
 <!-- 7 · PLANTEAMIENTO -->
-<section class="s hero" id="s7" data-st="Definición">
+<section class="s hero k" id="s7" data-st="Definición">
   <div class="bg"><div class="ph"><span>FOTO: terreno en tienda Creado</span></div></div><div class="sh"></div>
   <div class="c">
     <div class="m kk a">Planteamiento</div>
@@ -370,38 +420,31 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 </section>
 
 <!-- 8 · USUARIOS -->
-<section class="s" id="s8" data-st="Definición">
-  <div class="wrap"><h2 class="T a">Usuarios</h2></div>
-  <table class="a" style="--i:1">
-    <tr><th style="width:470px">Perfil</th><th>Dolor principal</th><th>Necesidad clave</th></tr>
-    <tr><td class="who"><span class="duo" style="--c:var(--p)"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Marcela, 58</b><small>La que quiere, pero no alcanza</small></span></td><td>“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</td><td>Que le avisen con tiempo y le propongan algo bonito.</td></tr>
-    <tr><td class="who"><span class="duo" style="--c:var(--b)"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Andrés, 52</b><small>El que delega</small></span></td><td>“Yo pongo la plata, pero que lo vea otro.”</td><td>Delegar sin tener que revisar cada detalle.</td></tr>
-    <tr><td class="who"><span class="duo" style="--c:var(--l)"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Felipe, 34</b><small>Se le pasa la fecha</small></span></td><td>“Es hoy y no tengo nada, ¿qué hago?”</td><td>Que lo rescaten a tiempo, aunque sea el mismo día.</td></tr>
-  </table>
-</section>
+<section class="s" id="s8" data-st="Definición" data-bar="lt"><div class="cols"><div class="c a" style="--i:0;--k2:#ff6a1f"><div class="ph2"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt=""></div><div class="tx"><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p><p class="nd"><b>Necesita:</b> Que le avisen con tiempo y le propongan algo bonito.</p></div></div><div class="c a" style="--i:1;--k2:#2a35e6"><div class="ph2"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt=""></div><div class="tx"><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p><p class="nd"><b>Necesita:</b> Delegar sin revisar cada detalle.</p></div></div><div class="c a" style="--i:2;--k2:#6b2bf0"><div class="ph2"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt=""></div><div class="tx"><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p><p class="nd"><b>Necesita:</b> Que lo rescaten a tiempo, aunque sea el mismo día.</p></div></div></div></section>
 
 <!-- 9 · REENCUADRE -->
 <section class="s" id="s9" data-st="Definición">
   <div class="wrap"><h2 class="T a">La decisión que reencuadró el proyecto</h2></div>
   <div class="ab">
     <div class="x a1 a" style="--i:1"><span class="m">Certamen I</span><h3>Exploración sugerida en tienda</h3><p>Problema amplio</p></div>
-    <div class="ar a" style="--i:2"><svg width="90" height="60" viewBox="0 0 90 60"><path d="M0 30h76M56 8l24 22-24 22" fill="none" stroke="#CCD100" stroke-width="7"/></svg></div>
+    <div class="ar a" style="--i:2"><svg width="90" height="60" viewBox="0 0 90 60"><path d="M0 30h76M56 8l24 22-24 22" fill="none" stroke="#ff6a1f" stroke-width="7"/></svg></div>
     <div class="x a2 a" style="--i:3"><span class="m">Hoy</span><h3>Un planner que se anticipa a las fechas</h3><p>Problema acotado</p></div>
   </div>
   <p class="foot a" style="--i:4">Corrección del 3 de noviembre: <span class="hl">planner, no shopper</span>. Dejamos de vender en la tienda para ordenar el año de regalos.</p>
 </section>
 
 <!-- 10 · OPORTUNIDAD -->
-<section class="s hero" id="s10" data-st="Oportunidad">
-  <div class="bg"><div class="ph"><span>FOTO: persona con su celular comprando un regalo</span></div></div><div class="sh"></div>
-  <div class="c">
-    <h2 class="T a">¿Nuestra oportunidad?</h2>
-    <p class="stm a" style="--i:1">Pasar de una tienda donde <b>vas a buscar</b>, a un sistema que <b>conoce tus fechas</b> y te propone a tiempo desde el catálogo de Creado.</p>
+<section class="s" id="s10" data-st="Oportunidad">
+  <div class="wrap"><h2 class="T a">La oportunidad</h2><p class="lead a" style="--i:1;margin-top:16px">Un sistema inteligente que te ayuda a:</p></div>
+  <div class="fx">
+    <div class="f a" style="--i:2"><svg class="sc" viewBox="0 0 540 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><filter id="gr1" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" seed="1"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .5"/></feComponentTransfer></filter><pattern id="hz1" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(80)"><rect width="5" height="5" fill="#8f897e"/><path d="M0 0v5" stroke="#6f6a61" stroke-width="1.6"/></pattern><radialGradient id="vg1" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></radialGradient></defs><rect width="540" height="600" fill="#a8a196"/><path d="M-10 210 L550 186 L550 236 L-10 256Z" fill="#4a463f"/><path d="M-10 256 L550 236 L550 250 L-10 272Z" fill="url(#hz1)"/><path d="M-10 390 L550 366 L550 416 L-10 436Z" fill="#4a463f"/><path d="M-10 436 L550 416 L550 430 L-10 452Z" fill="url(#hz1)"/><path d="M180 -10 L226 -10 L210 610 L164 610Z" fill="#4a463f"/><path d="M226 -10 L240 -10 L224 610 L210 610Z" fill="url(#hz1)"/><path d="M360 -10 L406 -10 L390 610 L344 610Z" fill="#4a463f"/><path d="M406 -10 L420 -10 L404 610 L390 610Z" fill="url(#hz1)"/><circle cx="372" cy="403" r="12" fill="#ff6a1f"/><ellipse cx="381" cy="410" rx="11" ry="4" fill="#000" opacity=".3"/><g transform="translate(305,380) scale(1.05,1.05)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/><path d="M5 -28 L36 -6" stroke="#f4f2ee" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(96,540) scale(0.9,0.9)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#2a2622"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(470,150) scale(-0.85,0.85)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(120,330) scale(0.85,0.85)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#5d574e"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><rect width="540" height="600" fill="url(#vg1)"/><rect width="540" height="600" filter="url(#gr1)" opacity=".55" style="mix-blend-mode:overlay"/></svg><h3>Gestionar tus fechas</h3></div>
+    <div class="f a" style="--i:3"><svg class="sc" viewBox="0 0 540 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><filter id="gr2" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" seed="2"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .5"/></feComponentTransfer></filter><pattern id="hz2" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(80)"><rect width="5" height="5" fill="#8f897e"/><path d="M0 0v5" stroke="#6f6a61" stroke-width="1.6"/></pattern><radialGradient id="vg2" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></radialGradient></defs><rect width="540" height="600" fill="#a8a196"/><ellipse cx="270" cy="300" rx="190" ry="150" fill="#8f897e"/><ellipse cx="262" cy="292" rx="112" ry="84" fill="#2e2b27"/><path d="M150 292 A112 84 0 0 1 374 292 L374 302 A112 84 0 0 0 150 302Z" fill="url(#hz2)" opacity=".9"/><g transform="translate(300,316) rotate(-14)"><rect x="-44" y="-38" width="88" height="76" rx="10" fill="#ff6a1f"/><path d="M0 -38v76M-44 0h88" stroke="#c94b0e" stroke-width="8"/></g><g transform="translate(408,214) scale(-1.15,1.15)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/><path d="M5 -28 L-36 -6" stroke="#f4f2ee" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(96,520) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#2a2622"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(134,532) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(470,486) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#5d574e"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><rect width="540" height="600" fill="url(#vg2)"/><rect width="540" height="600" filter="url(#gr2)" opacity=".55" style="mix-blend-mode:overlay"/></svg><h3>Avisarte a tiempo</h3></div>
+    <div class="f a" style="--i:4"><svg class="sc" viewBox="0 0 540 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><filter id="gr3" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" seed="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .5"/></feComponentTransfer></filter><pattern id="hz3" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(80)"><rect width="5" height="5" fill="#8f897e"/><path d="M0 0v5" stroke="#6f6a61" stroke-width="1.6"/></pattern><radialGradient id="vg3" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></radialGradient></defs><rect width="540" height="600" fill="#a8a196"/><g transform="translate(446,286) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(322,291) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#2a2622"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(387,301) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#5d574e"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(142,319) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/><rect x="-9" y="-30" width="18" height="14" rx="2.5" fill="#ff6a1f"/><path d="M0 -30v14" stroke="#c94b0e" stroke-width="2.4"/></g><g transform="translate(56,319) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(256,329) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#2a2622"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(443,346) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#5d574e"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(63,399) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(289,434) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/><rect x="-9" y="-30" width="18" height="14" rx="2.5" fill="#ff6a1f"/><path d="M0 -30v14" stroke="#c94b0e" stroke-width="2.4"/></g><g transform="translate(183,443) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#2a2622"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(465,458) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#2a2622"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#5d574e"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(324,487) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/><rect x="-9" y="-30" width="18" height="14" rx="2.5" fill="#ff6a1f"/><path d="M0 -30v14" stroke="#c94b0e" stroke-width="2.4"/></g><g transform="translate(482,529) scale(0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#4a463f"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#f4f2ee"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(400,552) scale(-0.95,0.95)"><path d="M0 0 L46 -10 L48 -4 L2 5Z" fill="#000" opacity=".22"/><rect x="-5.5" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="0.9" y="-17" width="4.6" height="17" rx="2" fill="#1a1815"/><rect x="-7" y="-36" width="14" height="21" rx="5" fill="#2a2622"/><circle cx="0" cy="-42.5" r="5.6" fill="#d9bb9c"/><path d="M-5.6 -43 A5.6 5.6 0 0 1 5.6 -43Z" fill="#2a2622"/></g><g transform="translate(470,196) rotate(32) scale(1.15)"><rect x="-10" y="-30" width="140" height="58" rx="6" fill="#2a2622"/><rect x="-24" y="-24" width="20" height="46" rx="4" fill="#f4f2ee"/><path d="M-24 -18 C-60 -22 -96 -20 -122 -12 C-130 -9 -128 0 -120 1 L-70 2 C-74 10 -70 22 -58 22 L-28 22Z" fill="#d9bb9c"/><path d="M-70 2 L-40 4" stroke="#b8987a" stroke-width="2"/></g><rect width="540" height="600" fill="url(#vg3)"/><rect width="540" height="600" filter="url(#gr3)" opacity=".55" style="mix-blend-mode:overlay"/></svg><h3>Proponerte regalos</h3></div>
   </div>
 </section>
 
 <!-- 11 · HIPÓTESIS -->
-<section class="s hero" id="s11" data-st="Oportunidad">
+<section class="s hero k" id="s11" data-st="Oportunidad">
   <div class="bg"><div class="ph"><span>FOTO: bocetos / proceso del equipo</span></div></div><div class="sh"></div>
   <div class="c">
     <h2 class="T a">Hipótesis</h2>
@@ -442,7 +485,7 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
       <div class="in"><b>Guía en tienda</b><span>Te lleva al regalo dentro de Creado</span></div>
     </div>
   </div>
-  <div class="loop a" style="--i:4"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#CCD100" stroke-width="2.4" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg><span class="m">Bucle de aprendizaje</span>Cada aprobación, rechazo o cambio ajusta el perfil de la persona.</div>
+  <div class="loop a" style="--i:4"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#ff6a1f" stroke-width="2.4" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg><span class="m">Bucle de aprendizaje</span>Cada aprobación, rechazo o cambio ajusta el perfil de la persona.</div>
 </section>
 
 <!-- 14 · CAPAS TÉCNICAS -->
@@ -476,9 +519,9 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 <section class="s" id="s16" data-st="Arquitectura">
   <div class="wrap"><h2 class="T a">Lógica de decisión</h2></div>
   <div class="fl a" style="--i:1">
-    <svg width="900" height="700" style="position:absolute;inset:0" viewBox="0 0 900 700" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3">
+    <svg width="900" height="700" style="position:absolute;inset:0" viewBox="0 0 900 700" fill="none" stroke="rgba(28,27,25,.45)" stroke-width="3">
       <path d="M450 92v70"/><path d="M450 362v0"/><path d="M330 262H150v120"/><path d="M570 262h180v120"/><path d="M150 482v70h300"/><path d="M750 482v70H450"/><path d="M450 552v40"/>
-      <text x="200" y="250" fill="#CCD100" stroke="none" font-family="IBM Plex Mono" font-size="20">SÍ</text><text x="660" y="250" fill="#CCD100" stroke="none" font-family="IBM Plex Mono" font-size="20">NO</text>
+      <text x="200" y="250" fill="#ff6a1f" stroke="none" font-family="IBM Plex Mono" font-size="20">SÍ</text><text x="660" y="250" fill="#ff6a1f" stroke="none" font-family="IBM Plex Mono" font-size="20">NO</text>
     </svg>
     <div class="nd ns" style="left:300px;top:20px;width:300px;height:72px">Se acerca una fecha</div>
     <div class="nd d" style="left:365px;top:177px;width:170px;height:170px"><span>¿Es un regalo importante?</span></div>
@@ -588,7 +631,7 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 
 <!-- 23 · GRACIAS -->
 <section class="s" id="s23" data-st="">
-  <div class="c"><span data-pic="mark" class="a"></span><h2 class="T a" style="--i:1">Gracias</h2><div class="m a" style="--i:2;color:var(--w5)">REGI · Planner de regalos · Creado en Chile</div></div>
+  <div class="c"><img class="a" src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile" width="130" height="130"><h2 class="T a" style="--i:1">Gracias.</h2><div class="a" style="--i:2;font-family:'Inter Tight',sans-serif;font-size:44px;color:var(--w7)">Regi · Tu planner de regalos</div></div>
 </section>
 
 <div id="sig"><span data-pic="mini"></span>REGI · Comisión</div>
@@ -598,7 +641,7 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 /* pictogramas propios: la grilla de 4 piezas de la marca, con una pieza distinta por idea */
-const C={l:'#CCD100',p:'#D15CB5',b:'#598AD1',r:'#D13C00',w:'#fff',d:'rgba(255,255,255,.22)'};
+const C={l:'#ff6a1f',p:'#6b2bf0',b:'#2a35e6',r:'#8a857c',w:'#1c1b19',d:'rgba(28,27,25,.16)'};
 function grid(cells,size=64){ const s=size, g=s*.08, u=(s-g)/2; const pos=[[0,0],[u+g,0],[0,u+g],[u+g,u+g]];
   return `<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}">${cells.map((c,i)=>{ const [x,y]=pos[i]; return c[0]==='o'?`<circle cx="${x+u/2}" cy="${y+u/2}" r="${u/2}" fill="${C[c[1]]}"/>`:`<rect x="${x}" y="${y}" width="${u}" height="${u}" rx="${u*.18}" fill="${C[c[1]]}"/>`; }).join('')}</svg>`; }
 const PIC={
@@ -609,10 +652,10 @@ const PIC={
 $$('[data-pic]').forEach(e=>e.innerHTML=PIC[e.dataset.pic]||'');
 
 /* motor: orquestador + 6 agentes en círculo */
-const AG=[['Ingesta','Normaliza y aplica consentimiento',C.b],['Detector de ocasiones','Fecha, tipo e importancia',C.p],['Perfilador','Relación, gustos, señales','#fff'],['Curador','Persona × catálogo × presupuesto × stock',C.l],['Planificador','Cuándo avisar y cuánta autonomía','#8a6bff'],['Mensajero','Canal y momento',C.r]];
-(()=>{ const e=$('#eng'), W=e.clientWidth||600, H=e.clientHeight||560; let h='<svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,.2)" stroke-width=".4" stroke-dasharray="1 1.4" vector-effect="non-scaling-stroke"/></svg>';
+const AG=[['Ingesta','Normaliza y aplica consentimiento',C.b],['Detector de ocasiones','Fecha, tipo e importancia',C.p],['Perfilador','Relación, gustos, señales','#1c1b19'],['Curador','Persona × catálogo × presupuesto × stock',C.l],['Planificador','Cuándo avisar y cuánta autonomía','#8a857c'],['Mensajero','Canal y momento',C.r]];
+(()=>{ const e=$('#eng'), W=e.clientWidth||600, H=e.clientHeight||560; let h='<svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="50" r="36" fill="none" stroke="rgba(28,27,25,.22)" stroke-width=".4" stroke-dasharray="1 1.4" vector-effect="non-scaling-stroke"/></svg>';
   AG.forEach((a,i)=>{ const t=-Math.PI/2+i*Math.PI/3, x=50+37*Math.cos(t), y=48+33*Math.sin(t);
-    h+=`<div class="ag" style="left:${x}%;top:${y}%"><i style="background:${a[2]};color:${a[2]==='#fff'||a[2]===C.l?'#0E0A1F':'#fff'}">${i+1}</i><b>${a[0]}</b><span>${a[1]}</span></div>`; });
+    h+=`<div class="ag" style="left:${x}%;top:${y}%"><i style="background:${a[2]};color:#fff">${i+1}</i><b>${a[0]}</b><span>${a[1]}</span></div>`; });
   e.insertAdjacentHTML('beforeend',h); })();
 
 /* swimlanes */
@@ -626,8 +669,8 @@ const AG=[['Ingesta','Normaliza y aplica consentimiento',C.b],['Detector de ocas
     const P=bx.map(b=>{ const r=b.getBoundingClientRect(); return {x1:(r.left-R0.left)/k,x2:(r.right-R0.left)/k,y:(r.top+r.height/2-R0.top)/k,t:(r.top-R0.top)/k,b:(r.bottom-R0.top)/k}; });
     const D=[]; for(let i=0;i<P.length-1;i++){ const a=P[i], c=P[i+1], mx=(a.x2+c.x1)/2; D.push(`M${a.x2} ${a.y} H${mx} V${c.y} H${c.x1-8}`); }
     const last=P[P.length-1]; D.push(`M${(last.x1+last.x2)/2} ${last.t} V${P[1].y} H${(last.x1+last.x2)/2-30}`);
-    sw.insertAdjacentHTML('beforeend',`<svg class="arw" viewBox="0 0 ${sw.offsetWidth} ${sw.offsetHeight}"><defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#CCD100"/></marker></defs>${D.map((d,i)=>`<path d="${d}" fill="none" stroke="#CCD100" stroke-width="3" ${i===D.length-1?'stroke-dasharray="8 8"':''} marker-end="url(#ah)"/>`).join('')}</svg>`); });
-  const fb=document.createElement('div'); fb.className='m'; fb.style.cssText='position:absolute;right:0;bottom:-50px;color:#CCD100';
+    sw.insertAdjacentHTML('beforeend',`<svg class="arw" viewBox="0 0 ${sw.offsetWidth} ${sw.offsetHeight}"><defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ff6a1f"/></marker></defs>${D.map((d,i)=>`<path d="${d}" fill="none" stroke="#ff6a1f" stroke-width="3" ${i===D.length-1?'stroke-dasharray="8 8"':''} marker-end="url(#ah)"/>`).join('')}</svg>`); });
+  const fb=document.createElement('div'); fb.className='m'; fb.style.cssText='position:absolute;right:0;bottom:-50px;color:#ff6a1f';
   fb.textContent='06 → REGI aprende de la decisión y ajusta el perfil'; $('#sw').appendChild(fb);
 })();
 
@@ -636,7 +679,7 @@ const S=$$('.s'), N=S.length, STAGES=['Diagnóstico','Definición','Oportunidad'
 let cur=0;
 function fit(){ const k=Math.min(innerWidth/1920,innerHeight/1080); $('#deck').style.transform=`scale(${k}) translate(-50%,-50%)`; $('#deck').style.transformOrigin='0 0'; $('#deck').style.left='50%'; $('#deck').style.top='50%'; }
 function go(i,push=true){ cur=Math.max(0,Math.min(N-1,i)); S.forEach((s,j)=>s.classList.toggle('on',j===cur));
-  const st=S[cur].dataset.st; $$('#bar span').forEach(b=>b.classList.toggle('on',b.textContent===st)); $('#bar').classList.toggle('off',cur===0||cur===N-1);
+  const st=S[cur].dataset.st; $$('#bar span').forEach(b=>b.classList.toggle('on',b.textContent===st)); $('#bar').classList.toggle('off',cur===0||cur===N-1); const dk=S[cur].classList.contains('k')||S[cur].dataset.bar==='lt'; $('#bar').classList.toggle('lt',dk); document.body.classList.toggle('lt-ui',dk);
   $('#cnt').textContent=String(cur+1).padStart(2,'0')+' / '+N; if(push) history.replaceState(null,'','#'+(cur+1)); }
 addEventListener('keydown',e=>{ if(['ArrowRight',' ','PageDown','Enter'].includes(e.key)){ e.preventDefault(); go(cur+1); }
   else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){ e.preventDefault(); go(cur-1); }
