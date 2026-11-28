@@ -50,11 +50,6 @@ body{cursor:none}body.mouse{cursor:default}
 #o2 h3{margin:0;font-size:64px;font-weight:700;line-height:1;letter-spacing:-.02em;text-transform:uppercase}
 #o2 .tag{display:block;margin-top:16px;font:600 22px/1.25 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
 #o2 .qt{margin:26px 0 0;font-size:34px;font-weight:400;line-height:1.22;letter-spacing:-.015em;max-width:470px}
-#o2 .un{position:absolute;z-index:2;left:80px;right:80px;bottom:80px;height:150px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:24px;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
-#o2 .un .h{display:flex;align-items:baseline;gap:26px}
-#o2 .un small{flex:none;font:600 21px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
-#o2 .un p{margin:0;font-size:44px;font-weight:600;line-height:1.1;letter-spacing:-.025em}
-#o2 .un p em{font-style:normal}
 /* 3 · oportunidad (pantalla partida) */
 #o3{background:var(--cr)}
 #o3 .half{position:absolute;top:0;bottom:0;width:960px;box-sizing:border-box;padding:200px 130px 0 130px}
@@ -244,15 +239,12 @@ em,i,cite{font-style:normal}
     <p class="src" data-s="1" data-d=".7" data-y="0">Logisfashion 2026 · CNC 2025</p>
   </section>
 
-  <!-- 2 · Usuarios (4 pasos: una columna por tecla · lo que los une) -->
+  <!-- 2 · Usuarios: tres columnas -->
   <section class="ov fr" id="o2">
     <div class="cols">
       <div class="c" data-s="0" style="--t:#ffe5d6;--k:#ff6a1f"><div class="ph"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt="Marcela"></div><div class="tx"><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p></div></div>
       <div class="c" data-s="0" data-d=".1" style="--t:#e2e4fc;--k:#2a35e6"><div class="ph"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt="Andrés"></div><div class="tx"><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p></div></div>
       <div class="c" data-s="0" data-d=".2" style="--t:#ebe1fd;--k:#6b2bf0"><div class="ph"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt="Felipe"></div><div class="tx"><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p></div></div>
-    </div>
-    <div class="un" data-s="1" data-d=".25">
-      <div class="h"><small>Lo que los une:</small><p>“Necesito ayuda con esto, <em>y que no sea una carga.</em>”</p></div>
     </div>
   </section>
 
@@ -400,7 +392,7 @@ addEventListener('resize',fit); fit();
 const N=['Levanten la mano a quien le ha pasado. Al 54% le pasa, y más de la mitad ya tuvo problemas con un despacho. Regalar suele complicarse y se vive como un cacho.', 'Marcela quiere regalar bonito, pero la pilla el tiempo. Andrés pone la plata, pero que lo vea otro. A Felipe le pasa que es hoy y no tiene nada. A cada uno se le olvida algo distinto, pero los tres quieren lo mismo.', 'Creado ya hace mucho bien: curaduría de diseño chileno desde 2014, regalos en 3 horas en Santiago, una tienda pensada para regalar y ocho tiendas físicas. Lo que falta es asistencia inteligente: un sistema que te ayude a gestionar tus fechas, te avise a tiempo y te proponga regalos. Al final, regalar es quedar bien con los que quieres. Este sistema te ayuda a lograrlo sin el estrés.', 'Regi te avisa a tiempo, te propone el regalo listo y aprende cuánto quieres participar.', 'El asistente se conecta a tus apps: calendario, correo, contactos. De ahí saca fechas, personas y gustos sin que llenes nada; mientras más conectas, menos te pregunta.', 'Analiza lo que conectaste: encuentra las fechas que importan según su contexto, rescata la información clave, como invitaciones, topes o quién participa, y sabe de quién es cada fecha.', 'Con eso arma tu planner: todas tus fechas de regalo en un vistazo. Lo que viene, lo que ya pensó y espera tu decisión, y tu año mes a mes.', 'Te notifica a tiempo: sigue tus fechas y te envía una notificación cuando corresponde. Te notifica antes de cada fecha, con tiempo para que llegue y con el regalo ya pensado; si queda poco, te envía una alerta urgente.', 'Esta es la inteligencia. Analiza la información que recuperó de cada fecha, hace la limpieza por ti descartando lo que no calza, y te hace la mejor propuesta explicándote por qué. Nada se compra sin tu aprobación.', 'Y no vive solo en la web: el mismo sistema llega a las pantallas que ya usas en tu día a día, para que no se te escape ni un regalo ni un detalle. En el reloj apruebas con un toque; y si igual se te pasa, en el auto te lo resuelve camino a casa.', 'Y si detecta que estás en Creado con una fecha encima, te avisa y te guía directo al regalo. Y si ves algo que le gustaría a alguien, se lo mandas por el chat: reconoce el producto y lo guarda en la ficha de esa persona.', 'Así respondemos al desafío: la persona deja de comprar un regalo suelto y empieza a resolver su año con Creado.', 'Regi. Tu planner para que no se te pase nada.'];
 const S=[
   {t:'Problema', obj:30, ov:'o1', steps:2, dark:true},
-  {t:'Usuarios', obj:35, ov:'o2', steps:2},
+  {t:'Usuarios', obj:35, ov:'o2'},
   {t:'Oportunidad', obj:15, ov:'o3', steps:3},
   {t:'Propuesta', obj:20, ov:'o4', steps:2},
   {t:'Parte con lo que ya tienes', obj:20, ov:'o5'},
