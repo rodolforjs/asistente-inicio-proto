@@ -11,7 +11,7 @@
 <style>
 /* REGI · presentación para la comisión (metodología, pensamiento y tecnología).
    Navegación: → / espacio / AvPág avanza · ← retrocede · #n abre la lámina n · F pantalla completa.
-   Diagramación basada en MAPI (comisión anterior): barra de etapas fija, grillas, arquitectura en 3 columnas, tablas de validación. */
+   Diagramación basada en MAPI (comisión anterior): barra de etapas fija, grillas, arquitectura en 3 columnas, casos límite. */
 :root{--v:#3B00D1;--k:#0E0A1F;--l:#ff6a1f;--p:#D15CB5;--b:#598AD1;--r:#D13C00;--w:#fff;--w7:rgba(255,255,255,.72);--w5:rgba(255,255,255,.5);--w2:rgba(255,255,255,.16);--w1:rgba(255,255,255,.08)}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -242,31 +242,22 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 #s19 figcaption b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px;color:var(--l)}
 #s19 figcaption span{display:block;margin-top:6px;font-size:22px;line-height:1.3;color:var(--w7)}
 
-/* 20 · usuarios sintéticos */
-#s20 .us{position:absolute;left:120px;right:120px;top:280px;height:430px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+/* 20 · prototipo por perfil */
+#s20 .us{position:absolute;left:120px;right:120px;top:280px;bottom:150px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 #s20 .u{background:var(--w1);display:flex;flex-direction:column}
 #s20 .u .hd{display:flex;gap:20px;align-items:center;padding:24px 28px;border-bottom:2px solid var(--w2)}
 #s20 .u .duo{width:96px;height:96px;border-radius:50%;flex:none}
 #s20 .u .hd b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px}
 #s20 .u .hd small{display:block;margin-top:4px;font-size:18px;color:var(--w5)}
-#s20 .u .bd{padding:26px 30px;font-size:25px;line-height:1.4;color:var(--w7)}
-#s20 .u .bd p{margin:0 0 14px}
+#s20 .u .bd{padding:34px 34px;font-size:28px;line-height:1.4;color:var(--w7)}
+#s20 .u .bd p{margin:0 0 26px}
 #s20 .u .bd b{color:var(--l);font-weight:600}
-#s20 .mt{position:absolute;left:120px;right:120px;bottom:110px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
-#s20 .mt div{border-left:4px solid var(--l);padding-left:20px}
-#s20 .mt b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:26px}
-#s20 .mt span{display:block;margin-top:4px;font-size:19px;color:var(--w7)}
-
 /* 21 · resultados + edge cases */
-#s21 table{position:absolute;left:120px;width:900px;top:280px;border-collapse:collapse}
-#s21 th{font:500 16px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--l);text-align:center;padding:0 0 14px}
-#s21 th:first-child{text-align:left}
-#s21 td{padding:18px 0;border-top:1px solid var(--w2);font-size:26px;text-align:center}
-#s21 td:first-child{text-align:left;font-weight:600}
-#s21 td .sc{font:600 26px 'IBM Plex Mono',monospace;color:var(--l)}
-#s21 td .br{display:block;width:120px;height:6px;margin:8px auto 0;border:1px dashed var(--w5)}
-#s21 tr.avg td{border-top:2px solid var(--l);color:var(--l);font-weight:700}
-#s21 .note{position:absolute;left:120px;width:900px;bottom:120px;font-size:19px;color:var(--w5)}
+#s21 .pv{position:absolute;left:120px;width:880px;top:280px;display:flex;flex-direction:column;gap:22px}
+#s21 .pv p{margin:0 0 8px;font-size:28px;line-height:1.35;color:var(--w7)}
+#s21 .pv div{border-left:4px solid var(--l);padding-left:22px}
+#s21 .pv b{display:block;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:28px}
+#s21 .pv span{display:block;margin-top:4px;font-size:22px;color:var(--w7)}
 #s21 .ec{position:absolute;left:1100px;right:120px;top:280px;bottom:120px;display:flex;flex-direction:column;gap:14px}
 #s21 .ec h3{margin:0 0 6px;font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:30px}
 #s21 .e{background:var(--w1);padding:18px 22px;display:grid;grid-template-columns:1fr;gap:6px}
@@ -293,7 +284,7 @@ html,body{background:#d9d6cf;color:#1c1b19;font-family:Inter,system-ui,sans-seri
 .s.k,.dk-scope{color:#f4f2ee;--w7:rgba(244,242,238,.8);--w5:rgba(244,242,238,.5);--w2:rgba(244,242,238,.18);--w1:rgba(244,242,238,.07)}
 .T{font-family:'Inter Tight',sans-serif;font-weight:400;font-stretch:100%;text-transform:none;color:#1c1b19;font-size:96px;line-height:1;letter-spacing:-.045em}
 .s.k .T{color:#f4f2ee}
-.s h3,.s h4,.T2,#s1 .sub,#s9 .x h3,#s12 .wd,#s12 .vals b,#s13 .col>h3,#s14 .ly .nm,#s14 .now h3,#s15 .ln,#s16 .ur h3,#s17 .cur h3,#s17 .ra b,#s18 h4,#s19 figcaption b,#s20 .u .hd b,#s20 .mt b,#s21 .ec h3,#s21 .e b,#s22 .c3 h3,#s22 .key,.card h3{font-family:'Inter Tight',sans-serif!important;font-stretch:100%!important;text-transform:none!important;letter-spacing:-.025em!important}
+.s h3,.s h4,.T2,#s1 .sub,#s9 .x h3,#s12 .wd,#s12 .vals b,#s13 .col>h3,#s14 .ly .nm,#s14 .now h3,#s15 .ln,#s16 .ur h3,#s17 .cur h3,#s17 .ra b,#s18 h4,#s19 figcaption b,#s20 .u .hd b,#s21 .pv b,#s21 .ec h3,#s21 .e b,#s22 .c3 h3,#s22 .key,.card h3{font-family:'Inter Tight',sans-serif!important;font-stretch:100%!important;text-transform:none!important;letter-spacing:-.025em!important}
 .m{font-family:Inter,sans-serif;font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase}
 code{font-family:'IBM Plex Mono',monospace}
 #bar{font:600 15px Inter,sans-serif;letter-spacing:.14em;color:rgba(28,27,25,.42)}
@@ -328,7 +319,7 @@ code{font-family:'IBM Plex Mono',monospace}
 </head>
 <body>
 <div id="deck">
-<div id="bar"><span>Diagnóstico</span><span>Definición</span><span>Oportunidad</span><span>Arquitectura</span><span>Validación</span><span>Iteración</span></div>
+<div id="bar"><span>Diagnóstico</span><span>Definición</span><span>Oportunidad</span><span>Arquitectura</span><span>Prototipo</span><span>Iteración</span></div>
 
 <!-- 1 · PORTADA -->
 <section class="s" id="s1" data-st="">
@@ -351,7 +342,7 @@ code{font-family:'IBM Plex Mono',monospace}
     <div class="card a" style="--i:2"><div class="n">02</div><span class="pic" data-pic="2"></span><h3>Definición</h3><p>El problema, acotado</p></div>
     <div class="card a" style="--i:3"><div class="n">03</div><span class="pic" data-pic="3"></span><h3>Oportunidad</h3><p>Dónde un sistema puede ayudar</p></div>
     <div class="card a" style="--i:4"><div class="n">04</div><span class="pic" data-pic="4"></span><h3>Arquitectura</h3><p>El sistema, sus agentes y su lógica</p></div>
-    <div class="card a" style="--i:5"><div class="n">05</div><span class="pic" data-pic="5"></span><h3>Validación</h3><p>Usuarios sintéticos que lo ponen a prueba</p></div>
+    <div class="card a" style="--i:5"><div class="n">05</div><span class="pic" data-pic="5"></span><h3>Prototipo</h3><p>Cómo responde a cada perfil</p></div>
     <div class="card a" style="--i:6"><div class="n">06</div><span class="pic" data-pic="6"></span><h3>Iteración</h3><p>Lo que aprendimos y lo que sigue</p></div>
   </div>
 </section>
@@ -582,36 +573,28 @@ code{font-family:'IBM Plex Mono',monospace}
   </div>
 </section>
 
-<!-- 20 · USUARIOS SINTÉTICOS -->
-<section class="s" id="s20" data-st="Validación">
-  <div class="wrap"><h2 class="T a">Usuarios sintéticos</h2></div>
+<!-- 20 · EL PROTOTIPO POR PERFIL -->
+<section class="s" id="s20" data-st="Prototipo">
+  <div class="wrap"><h2 class="T a">El prototipo, perfil por perfil</h2></div>
   <div class="us">
-    <div class="u a" style="--i:1"><div class="hd"><span class="duo" style="--c:var(--p)"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Marcela, 58</b><small>La que quiere, pero no alcanza</small></span></div><div class="bd"><p><b>Valida:</b> si REGI propone bien, algo bonito y con sentido para cada persona.</p><p><b>Métrica clave:</b> Acierto.</p></div></div>
-    <div class="u a" style="--i:2"><div class="hd"><span class="duo" style="--c:var(--b)"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Andrés, 52</b><small>El que delega</small></span></div><div class="bd"><p><b>Valida:</b> si puede delegar sin revisar cada detalle.</p><p><b>Métrica clave:</b> Esfuerzo.</p></div></div>
-    <div class="u a" style="--i:3"><div class="hd"><span class="duo" style="--c:var(--l)"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Felipe, 34</b><small>Se le pasa la fecha</small></span></div><div class="bd"><p><b>Valida:</b> si REGI lo rescata a tiempo, incluso el mismo día.</p><p><b>Métrica clave:</b> Anticipación.</p></div></div>
-  </div>
-  <div class="mt">
-    <div class="a" style="--i:4"><b>Acierto</b><span>¿Propone algo que la persona compraría?</span></div>
-    <div class="a" style="--i:5"><b>Anticipación</b><span>¿Avisa con tiempo para que llegue?</span></div>
-    <div class="a" style="--i:6"><b>Esfuerzo</b><span>¿Cuántos pasos para resolver?</span></div>
-    <div class="a" style="--i:7"><b>Confianza</b><span>¿Se siente invasivo?</span></div>
+    <div class="u a" style="--i:1"><div class="hd"><span class="duo" style="--c:var(--p)"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Marcela, 58</b><small>La que quiere, pero no alcanza</small></span></div><div class="bd"><p><b>Necesita:</b> algo bonito y con sentido para cada persona.</p><p><b>En el prototipo:</b> 3 opciones del catálogo y por qué se eligió cada una.</p></div></div>
+    <div class="u a" style="--i:2"><div class="hd"><span class="duo" style="--c:var(--b)"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Andrés, 52</b><small>El que delega</small></span></div><div class="bd"><p><b>Necesita:</b> delegar sin revisar cada detalle.</p><p><b>En el prototipo:</b> si el regalo importa menos, REGI elige solo y avisa; se aprueba con un toque en el reloj.</p></div></div>
+    <div class="u a" style="--i:3"><div class="hd"><span class="duo" style="--c:var(--l)"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=300&h=300&fit=crop&crop=faces&q=80&auto=format" alt=""></span><span><b>Felipe, 34</b><small>Se le pasa la fecha</small></span></div><div class="bd"><p><b>Necesita:</b> que no se le pase la fecha.</p><p><b>En el prototipo:</b> aviso 14 días antes y, si igual se pasa, plan B en el auto.</p></div></div>
   </div>
 </section>
 
-<!-- 21 · RESULTADOS + EDGE CASES -->
-<section class="s" id="s21" data-st="Validación">
-  <div class="wrap"><h2 class="T a">Validación</h2></div>
-  <table class="a" style="--i:1">
-    <tr><th>Métrica (1–5)</th><th>Marcela</th><th>Andrés</th><th>Felipe</th></tr>
-    <tr><td>Acierto</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
-    <tr><td>Anticipación</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
-    <tr><td>Esfuerzo</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
-    <tr><td>Confianza</td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td><td><span class="sc">—</span><i class="br"></i></td></tr>
-    <tr class="avg"><td>Promedio</td><td>—</td><td>—</td><td>—</td></tr>
-  </table>
-  <p class="note m a" style="--i:2">Puntajes pendientes: se completan al correr la validación con los agentes.</p>
+<!-- 21 · CÓMO LO VALIDARÍAMOS + CASOS LÍMITE -->
+<section class="s" id="s21" data-st="Prototipo">
+  <div class="wrap"><h2 class="T a">Próximo paso: validar</h2></div>
+  <div class="pv">
+    <p class="a" style="--i:1">Aún no se ha probado con personas. Con clientes de Creado mediríamos:</p>
+    <div class="a" style="--i:2"><b>Acierto</b><span>¿Propone algo que la persona compraría?</span></div>
+    <div class="a" style="--i:3"><b>Anticipación</b><span>¿Avisa con tiempo para que llegue?</span></div>
+    <div class="a" style="--i:4"><b>Esfuerzo</b><span>¿Cuántos pasos para resolver?</span></div>
+    <div class="a" style="--i:5"><b>Confianza</b><span>¿Se siente invasivo?</span></div>
+  </div>
   <div class="ec">
-    <h3 class="a" style="--i:2">Edge cases</h3>
+    <h3 class="a" style="--i:2">Casos límite</h3>
     <div class="e a" style="--i:3"><b>Sin stock</b><span>Propone uno similar del mismo rango de precio.</span><em>La persona no queda sin regalo.</em></div>
     <div class="e a" style="--i:4"><b>Fecha mal detectada</b><span>La persona la corrige y el sistema aprende.</span><em>El error no se repite el próximo año.</em></div>
     <div class="e a" style="--i:5"><b>No llega a tiempo</b><span>Activa el respaldo: envío en 3 horas o retiro en tienda.</span><em>Se cumple la fecha igual.</em></div>
@@ -624,8 +607,8 @@ code{font-family:'IBM Plex Mono',monospace}
   <p class="key a" style="--i:1">El valor no es automatizar el regalo, es <b>quitar el estrés sin quitarle la decisión a la persona.</b></p>
   <div class="c3">
     <div class="a" style="--i:2"><h3>Aprendizajes</h3><p>Los conectores reemplazan los formularios: preguntar menos es diseñar mejor.</p><p>La autonomía se gana: el sistema aprende de cada decisión.</p><p>Las frases importan: “se acuerda por ti” se sentía invasivo.</p></div>
-    <div class="a" style="--i:3"><h3>Limitaciones</h3><p>Fechas, conectores y compras son simulados en el prototipo.</p><p>La validación es con usuarios sintéticos, aún no con clientes reales.</p><p>Sin integración real con Shopify ni stock en vivo.</p></div>
-    <div class="a" style="--i:4"><h3>A futuro</h3><p>Piloto con clientes de Creado.</p><p>Integración con Shopify, stock y despacho en tiempo real.</p><p>Medir si la compra realmente se adelanta y se repite.</p></div>
+    <div class="a" style="--i:3"><h3>Limitaciones</h3><p>Fechas, conectores y compras son simulados en el prototipo.</p><p>Aún no se valida con personas reales.</p><p>Sin integración real con Shopify ni stock en vivo.</p></div>
+    <div class="a" style="--i:4"><h3>A futuro</h3><p>Piloto con clientes de Creado para medir acierto, anticipación, esfuerzo y confianza.</p><p>Integración con Shopify, stock y despacho en tiempo real.</p><p>Medir si la compra realmente se adelanta y se repite.</p></div>
   </div>
 </section>
 
@@ -675,7 +658,7 @@ const AG=[['Ingesta','Normaliza y aplica consentimiento',C.b],['Detector de ocas
 })();
 
 /* navegación */
-const S=$$('.s'), N=S.length, STAGES=['Diagnóstico','Definición','Oportunidad','Arquitectura','Validación','Iteración'];
+const S=$$('.s'), N=S.length, STAGES=['Diagnóstico','Definición','Oportunidad','Arquitectura','Prototipo','Iteración'];
 let cur=0;
 function fit(){ const k=Math.min(innerWidth/1920,innerHeight/1080); $('#deck').style.transform=`scale(${k}) translate(-50%,-50%)`; $('#deck').style.transformOrigin='0 0'; $('#deck').style.left='50%'; $('#deck').style.top='50%'; }
 function go(i,push=true){ cur=Math.max(0,Math.min(N-1,i)); S.forEach((s,j)=>s.classList.toggle('on',j===cur));
