@@ -139,21 +139,6 @@ body{cursor:none}body.mouse{cursor:default}
 #o11b .steps{position:absolute;left:14px;right:14px;bottom:22px;display:flex;align-items:center;gap:14px;border-radius:22px;background:#fff;padding:14px 18px;box-shadow:0 12px 30px -14px rgba(0,0,0,.5)}
 #o11b .steps b{font-family:'Inter Tight',sans-serif;font-size:44px;font-weight:400;line-height:1;color:#111}
 #o11b .steps span{font-size:14px;color:#6b7280}#o11b .steps strong{display:block;font-size:17px;color:#111}
-#o11b .sc{background:#f5f7f9}
-#o11b .chh{display:flex;align-items:center;gap:10px;margin-top:60px;border-bottom:1px solid #e5eaf2;padding:0 22px 14px;font-size:19px}
-#o11b .chh b{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:22px}
-#o11b .cho{width:30px;height:30px;border-radius:50%;background:conic-gradient(#ff5924,#ff3d8b,#ffd23d,#27d9a6,#5b7cff,#ff5924)}
-#o11b .cu{margin:18px 16px 0 70px;overflow:hidden;border-radius:22px 22px 6px 22px;background:#0e1014;color:#fff;font-size:15px;line-height:1.35;opacity:0}
-#o11b .cu img{display:block;width:100%;height:190px;object-fit:cover}
-#o11b .cu span{display:block;padding:10px 14px 12px}
-#o11b .ca{margin:14px 50px 0 16px;border-radius:22px 22px 22px 6px;background:#fff;padding:14px 16px;font-size:15px;line-height:1.35;color:#222;box-shadow:0 1px 0 #e5eaf2;opacity:0}
-#o11b .ca small{font-size:12px;font-weight:600;color:#6b7280}
-#o11b .ca p{margin:4px 0 0}
-#o11b .cp{display:flex;gap:10px;align-items:center;margin-top:10px;border-radius:14px;background:#f5f7f9;padding:8px}
-#o11b .cp img{width:46px;height:46px;border-radius:10px;object-fit:cover}
-#o11b .cp span{font-size:12.5px;color:#6b7280}#o11b .cp b{display:block;font-size:14px;color:#111}
-#o11b .cok{display:flex;gap:8px;margin-top:10px!important;font-size:14px}
-#o11b .cok i{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#22a06b}
 #o8 .ptap{position:absolute;left:0;right:0;bottom:46px;margin:0;font-size:16px;font-weight:500;opacity:.85}
 /* ventana de la web (láminas 5, 6 y 9): la interfaz recreada en HTML, nítida y con su propia animación */
 .win{position:absolute;left:720px;top:190px;width:1120px;height:700px;box-sizing:border-box;border-radius:26px;background:#f5f7f9;box-shadow:0 40px 80px -40px rgba(15,23,42,.45),0 0 0 1px rgba(15,23,42,.06);overflow:hidden;font-family:'Inter',sans-serif;color:#0e1014;text-align:left}
@@ -185,14 +170,42 @@ body{cursor:none}body.mouse{cursor:default}
 #o13 h2 i{font-style:normal;color:var(--brand)}
 #o13 p{margin:34px 0 0;font-family:'Inter Tight',sans-serif;font-size:48px;color:#4b5563}
 #o13 .cc{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:120px;height:120px;margin-top:70px;border:2.5px solid #a8452c;color:#a8452c;font:600 18px/1.15 'Inter Tight',sans-serif;letter-spacing:.02em}
-#o10 .hd{position:absolute;left:110px;right:110px;top:90px}
 #o7 .stt{font-size:68px}
-#o10 .sub{max-width:1300px}
-#o10 .figs{position:absolute;left:110px;right:110px;top:330px;display:flex;justify-content:center;gap:40px}
-#o10 figure{margin:0}
-#o10 figure img{display:block;height:500px;border-radius:24px;box-shadow:0 40px 80px -40px rgba(15,23,42,.45)}
-#o10 figcaption{margin-top:22px;font:400 27px/1.35 'Inter',sans-serif;color:#2f343c}
-#o10 figcaption b{font-weight:600;color:var(--ink)}
+#o10{background:var(--cr)}
+#o10 .cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(2,1fr)}
+#o10 .c{position:relative;overflow:hidden;background:var(--k);color:#fff}
+#o10 .ph{position:absolute;left:0;right:0;bottom:0;top:380px}
+#o10 .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+#o10 .c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--k) 0,var(--k) 380px,transparent 600px);pointer-events:none}
+#o10 .tx{position:absolute;left:80px;right:80px;top:90px;z-index:1}
+#o10 h3{margin:0;font-size:72px;font-weight:700;line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+#o10 .tag{display:block;margin-top:16px;font:600 22px/1.25 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+#o10 .qt{margin:24px 0 0;font-size:36px;font-weight:400;line-height:1.2;letter-spacing:-.015em;max-width:700px}
+#o10 .un{position:absolute;z-index:2;left:80px;right:80px;bottom:80px;height:130px;box-sizing:border-box;display:flex;align-items:center;border-radius:32px;background:var(--dk);padding:0 52px;color:var(--cr)}
+#o10 .un .h{display:flex;align-items:baseline;gap:26px}
+#o10 .un small{flex:none;font:600 21px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
+#o10 .un p{margin:0;font-size:42px;font-weight:600;line-height:1.1;letter-spacing:-.025em}
+#o10 .un p em{font-style:normal}
+#o11b .sc{background:#fff}
+#o11b .chh{display:flex;align-items:center;margin-top:58px;padding:0 18px 10px 24px}
+#o11b .chh b{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em;color:#0e1014}
+#o11b .chx{margin-left:auto;display:grid;place-items:center;width:36px;height:36px;color:#5f6b7d}
+#o11b .cu{margin:14px 18px 0 auto;width:250px;border-radius:22px;background:#f1f3f6;color:#0e1014;padding:10px 14px 12px;font-size:15px;line-height:1.4;opacity:0}
+#o11b .cu img{display:block;width:200px;height:200px;object-fit:cover;border-radius:16px;margin:0 -4px 8px auto}
+#o11b .cu span{display:block}
+#o11b .ca{margin:18px 22px 0 24px;font-size:15px;line-height:1.5;color:#16181d;opacity:0}
+#o11b .cwho{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+#o11b .cwho b{font-size:13px;font-weight:600;color:#0e1014}
+#o11b .ca p{margin:0}
+#o11b .cp{display:flex;gap:12px;align-items:center;margin-top:10px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px #e8ebf0;padding:8px}
+#o11b .cp img{width:52px;height:52px;flex:none;border-radius:11px;object-fit:cover}
+#o11b .cp span{font-size:12.5px;line-height:1.3;color:#748297}#o11b .cp b{display:block;font-size:14px;font-weight:600;color:#0e1014}
+#o11b .cok{display:flex;align-items:center;gap:10px;margin-top:10px!important;border-radius:14px;background:#f2faf6;padding:9px 12px;font-size:14px;font-weight:500;color:#13623f}
+#o11b .cok i{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#22a06b}
+#o11b .cin{position:absolute;left:14px;right:14px;bottom:30px;display:flex;align-items:center;gap:8px;border-radius:28px;background:#fff;padding:7px;box-shadow:0 0 0 1px #e3e7ed,0 12px 28px -18px rgba(14,16,20,.35)}
+#o11b .cpl{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#f3f5f8;color:#0e1014}
+#o11b .cph{flex:1;font-size:15px;color:#9aa3b2}
+#o11b .csd{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#e5e8ed;color:#fff}
 /* contador y barra */
 #cnt{position:absolute;right:42px;bottom:26px;z-index:9;font:600 20px/1 'Inter',sans-serif;letter-spacing:.06em;color:rgba(14,16,20,.35);font-variant-numeric:tabular-nums}
 #cnt.dk{color:rgba(255,255,255,.45)}
@@ -310,12 +323,14 @@ em,i,cite{font-style:normal}
     </div>
   </section>
 
-  <!-- 10 · Donde estés: reloj y auto (pantallazos) -->
-  <section class="ov fr sx" id="o10">
-    <div class="hd" data-s="0"><h2 class="stt">Te acompaña <em>en tu día a día.</em></h2><p class="sub">El mismo sistema llega a las pantallas que ya usas, para que no se te escape ni un regalo ni un detalle.</p></div>
-    <div class="figs">
-      <figure data-s="0" data-d=".15"><img src="assets/slides/reloj.jpg" alt="Reloj con el regalo elegido y botón Aprobar"><figcaption><b>En tu reloj:</b> apruebas con un toque, sin sacar el celular.</figcaption></figure>
-      <figure data-s="0" data-d=".28"><img src="assets/slides/auto.jpg" alt="Pantalla del auto con el aviso y el regalo"><figcaption><b>En el auto:</b> si se te pasó, te lo resuelve camino a casa.</figcaption></figure>
+  <!-- 10 · Donde estés: reloj y auto en columnas a toda la altura (como la de personas), foto grande con degradé del color -->
+  <section class="ov fr" id="o10">
+    <div class="cols">
+      <div class="c" data-s="0" style="--k:#ff6a1f"><div class="ph"><img src="assets/slides/reloj.jpg" alt="Reloj con el regalo elegido y botón Aprobar"></div><div class="tx"><h3>En tu reloj</h3><span class="tag">Sin sacar el celular</span><p class="qt">Ves el regalo elegido y lo apruebas con un toque.</p></div></div>
+      <div class="c" data-s="0" data-d=".1" style="--k:#2a35e6"><div class="ph"><img src="assets/slides/auto.jpg" alt="Pantalla del auto con la notificación y el regalo"></div><div class="tx"><h3>En el auto</h3><span class="tag">Si se te pasó la fecha</span><p class="qt">Te lo resuelve camino a casa: envío hoy o retiro de pasada.</p></div></div>
+    </div>
+    <div class="un" data-s="0" data-d=".25">
+      <div class="h"><small>Te acompaña en tu día a día:</small><p>el mismo sistema, <em>en las pantallas que ya usas.</em></p></div>
     </div>
   </section>
 
@@ -333,11 +348,12 @@ em,i,cite{font-style:normal}
     <div class="dev d2" data-s="0" data-d=".28" data-y="0"><p class="dl">Le mandas lo que viste</p>
       <div class="phone"><div class="ps sc">
         <span class="pisl"></span>
-        <div class="chh"><span class="cho"></span><b>Chat</b></div>
+        <div class="chh"><b>Chat</b><span class="chx"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span></div>
         <div class="cu"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634" alt="Foto de una vela vista en la tienda"><span>Vi esto en la tienda, para mi hermana</span></div>
-        <div class="ca"><small>Lo reconocí</small><p>Está en Creado.</p>
+        <div class="ca"><div class="cwho"><svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><g fill="#0e1014"><rect x="7" y="7" width="15.5" height="15.5" rx="4.5"/><rect x="7" y="25.5" width="15.5" height="15.5" rx="4.5"/><rect x="25.5" y="25.5" width="15.5" height="15.5" rx="4.5"/><circle cx="33.25" cy="14.75" r="7.75" fill="#ff5924"/></g></svg><b>Regi</b></div><p>Lo reconocí: está en Creado.</p>
           <div class="cp"><img src="https://cdn.shopify.com/s/files/1/1481/4916/files/C92EF4A9-865F-4BAD-8927-E7026775D75B_600x.jpg?v=1791212634" alt=""><span><b>Vela Anillo de Fuego</b>Esencia Andina · $18.990</span></div>
-          <p class="cok"><i><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Tu hermana es Carla. La guardé en su ficha y va primera.</p></div>
+          <p class="cok"><i><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Guardada en la ficha de Carla</p></div>
+        <div class="cin"><span class="cpl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="cph">Pregúntale a Regi…</span><span class="csd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div>
       </div></div></div>
   </section>
 
