@@ -80,7 +80,7 @@ html,body{margin:0;height:100%;background:#07051a;overflow:hidden;color:#fff;fon
 
 /* 4 · lámina partida (reciclada de la presentación para Creado) */
 #s4 .hlf,#s4 .hr{position:absolute;top:0;bottom:0;width:960px;padding:200px 130px 0 130px}
-#s4 .hlf{left:0}#s4 .hr{left:960px;background:var(--l);padding-left:150px}
+#s4 .hlf{left:0}#s4 .rt{left:960px;background:var(--l);padding-left:150px}
 #s4 .kk{margin:0;font:600 22px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--l)}#s4 .hr .kk{color:#1c1b19}
 #s4 ul{list-style:none;margin:40px 0 0;padding:0}
 #s4 li{display:flex;gap:26px;align-items:baseline;border-top:1.5px solid rgba(28,27,25,.16);padding:20px 0;font-family:'Inter Tight',sans-serif;font-size:42px;line-height:1.05;letter-spacing:-.03em}
@@ -315,6 +315,83 @@ code{font-family:'IBM Plex Mono',monospace}
 #s20 .u .duo,#s8 td.who .duo{border-radius:50%}
 #s3 .h p b,#s14 .ly .ct b,#s14 .now .it b,#s16 .st span strong,#s21 .e em{color:#1c1b19}
 #s13 .in b{color:#1c1b19}
+
+/* ===== Pasada editorial: filetes en vez de tarjetas, números livianos grandes, aire, sin perspectivas ===== */
+.fnum{font-family:'Inter Tight',sans-serif;font-weight:300;letter-spacing:-.04em}
+/* 1 · portada */
+#s1 .blk{display:none}
+#s1 .top{position:absolute;left:120px;right:120px;top:90px;display:flex;justify-content:space-between;padding-bottom:22px;border-bottom:1.5px solid #1c1b19;color:#1c1b19}
+#s1 .left{left:120px;top:250px;width:820px}
+#s1 .lock{margin:0}#s1 .lock span{font-size:300px;font-weight:500;letter-spacing:-.06em;line-height:.8}
+#s1 .sub{margin:110px 0 0!important;font-size:64px!important;font-weight:300!important;color:#1c1b19!important;letter-spacing:-.035em!important}
+#s1 .shot{position:absolute;left:1010px;right:0;top:160px;bottom:0;margin:0;transform:none;box-shadow:none;overflow:hidden;background:var(--l)}
+#s1 .shot img{position:absolute;left:70px;top:70px;width:1500px;max-width:none;display:block;box-shadow:0 0 0 1px rgba(28,27,25,.12)}
+#s1 .foot{position:absolute;left:120px;width:820px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding-top:22px;border-top:1.5px solid #1c1b19}
+#s1 .foot>div{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+#s1 .foot .m{color:rgba(28,27,25,.5)}
+#s1 .foot img{width:84px;height:84px}
+#s1 .team{display:none}
+/* 2 · índice */
+#s2 .intro{position:absolute;left:120px;top:190px;width:560px}
+#s2 .intro .T{font-size:96px}
+#s2 .intro p{margin:36px 0 0;font-size:26px;line-height:1.4;color:var(--w7)}
+#s2 .toc{list-style:none;margin:0;padding:0;position:absolute;left:800px;right:120px;top:190px;bottom:140px;display:grid;grid-template-rows:repeat(6,1fr);border-bottom:1.5px solid #1c1b19}
+#s2 .toc li{display:grid;grid-template-columns:130px 1fr 1fr;align-items:center;border-top:1.5px solid #1c1b19}
+#s2 .toc i{font-style:normal;font-family:'Inter Tight',sans-serif;font-weight:300;font-size:64px;letter-spacing:-.04em;color:var(--l);line-height:1}
+#s2 .toc b{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:48px;letter-spacing:-.035em}
+#s2 .toc span{font-size:22px;color:var(--w7)}
+/* 3 · taller */
+#s3 .wrap .lead{margin-top:22px;font-size:26px}
+#s3 .tl{top:330px;gap:0;border-top:1.5px solid #1c1b19}
+#s3 .tl::before{display:none}
+#s3 .h{padding:26px 22px 0;border-left:1px solid var(--w2)}
+#s3 .h:first-child{padding-left:0;border-left:0}
+#s3 .h .ph{position:relative!important;top:auto;left:auto;right:auto;height:270px;border:0;background:#e7e4dd;color:rgba(28,27,25,.4);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+#s3 .h .mo{margin-top:26px;font-size:15px}
+#s3 .h h4{margin-top:10px;font-size:28px!important;font-weight:600}
+#s3 .h p{font-size:18px}
+#s3 .h:last-child .mo,#s3 .h:last-child h4{color:var(--l)}
+/* 4 · igual a la presentación para Creado */
+#s4{background:#f4f2ee}
+#s4 .half{position:absolute;top:0;bottom:0;width:960px;padding:200px 130px 0 130px}
+#s4 .lf{left:0;color:#1c1b19}
+#s4 .rt{left:960px;background:var(--l);color:#1c1b19;padding-left:170px}
+#s4 h2{margin:0;font:600 24px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+#s4 .lf h2{color:var(--l)}
+#s4 ul{list-style:none;margin:48px 0 0;padding:0}
+#s4 li{display:flex;gap:28px;align-items:baseline;border-top:1.5px solid rgba(28,27,25,.16);padding:26px 0;font-family:'Inter Tight',sans-serif;font-size:46px;line-height:1.08;letter-spacing:-.03em}
+#s4 li i{flex:none;font:600 22px/1 Inter,sans-serif;font-style:normal;color:var(--l)}
+#s4 li small{display:block;margin-top:8px;font:400 22px/1.3 Inter,sans-serif;text-wrap:balance;letter-spacing:0;color:#6b665e}
+#s4 .bp{margin:64px 0 0;font-family:'Inter Tight',sans-serif;font-size:48px;font-weight:400;line-height:1.1;letter-spacing:-.03em;text-wrap:balance}
+#s4 .fx{list-style:none;margin:40px 0 0;padding:0}
+#s4 .fx li{border-top:1.5px solid rgba(28,27,25,.22);font-size:66px;font-weight:600;line-height:1.05;letter-spacing:-.035em}
+#s4 .fx li i{color:rgba(28,27,25,.6)}
+#s4 .ar{position:absolute;left:890px;top:470px;z-index:2;width:140px;height:140px;border-radius:50%;background:#1c1b19;color:#f4f2ee;display:flex;align-items:center;justify-content:center;font:400 64px/1 Inter,sans-serif}
+/* 5 · diagnóstico */
+#s5 .cols{top:310px;gap:120px;grid-template-columns:1fr 1fr}
+#s5 .kk{color:var(--l);margin-bottom:30px}
+#s5 .st{font-family:'Inter Tight',sans-serif;font-size:44px;line-height:1.12;letter-spacing:-.03em;margin:0 0 44px}
+#s5 .pr{gap:30px;align-items:baseline;border-top:1.5px solid var(--w2);font-size:24px}
+#s5 .pr i{font-style:normal;font:600 18px Inter,sans-serif;color:var(--l);flex:none}
+#s5 .qs{border-left:1.5px solid #1c1b19;padding-left:60px}
+#s5 .qs .kk{margin-bottom:70px}
+#s5 .q{background:none!important;border:0;border-radius:0!important;margin:0 0 56px;padding:0;min-height:0;display:block;position:relative}
+#s5 .q::before{content:"“";position:absolute;left:-6px;top:-34px;font-family:'Inter Tight',sans-serif;font-size:110px;line-height:1;color:var(--l)}
+#s5 .q .q-ph{display:block;padding-top:44px;font-family:'Inter Tight',sans-serif;font-size:34px;letter-spacing:-.02em;line-height:1.2;color:var(--l)}
+#s5 .q cite{display:block;margin-top:12px;font:600 14px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--w5)}
+/* 13 · orquestador */
+#s13 .orq{width:176px;height:176px;margin:-88px 0 0 -88px;border-radius:50%;background:#1c1b19;color:#f4f2ee;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 0 0 12px #fff,0 0 0 13.5px rgba(28,27,25,.18)}
+#s13 .orq span{font-family:'Inter Tight',sans-serif;font-weight:600;text-transform:none;font-size:22px;letter-spacing:-.01em}
+#s13 .orq small{font:500 13px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--l)}
+#s13 .eng svg.sp{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* 17 · indicaciones */
+#s17 .cur{border-radius:0!important;border-top:0;padding:44px 52px}
+#s17 .cur h3{font-weight:500!important;font-size:56px}
+#s17 .rest{display:flex;flex-direction:column;gap:0;border-top:1.5px solid #1c1b19}
+#s17 .ra{flex:1;background:none!important;border-radius:0!important;border-left:0;border-bottom:1px solid var(--w2);padding:0;display:grid;grid-template-columns:70px 1fr;grid-template-rows:auto auto;align-content:center;column-gap:10px}
+#s17 .ra i{grid-row:1/3;font-style:normal;font-family:'Inter Tight',sans-serif;font-weight:300;font-size:56px;line-height:1;letter-spacing:-.04em;color:var(--c)}
+#s17 .ra b{font-size:26px!important;font-weight:600}
+#s17 .ra span{font-size:18px}
 </style>
 </head>
 <body>
@@ -323,52 +400,55 @@ code{font-family:'IBM Plex Mono',monospace}
 
 <!-- 1 · PORTADA -->
 <section class="s" id="s1" data-st="">
-  <div class="blk"></div>
-  <div class="shot a" style="--i:3"><img src="assets/comision/planner.jpg" alt="El planner de REGI"></div>
+  <div class="top m a"><span>Taller Integrado</span><span>Diseño de Interacción Digital · UDD</span><span>Noviembre 2026</span></div>
   <div class="left">
-    <div class="m a" style="--i:0;color:var(--w5)">Taller Integrado · Diseño de Interacción Digital · UDD</div>
-    <div class="lock a" style="--i:1"><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile"><span>Regi</span></div>
+    <div class="lock a" style="--i:1"><span>Regi</span></div>
     <div class="sub a" style="--i:2">Tu planner de regalos</div>
-    <p class="desc a" style="--i:2">Propuesta conceptual para Creado en Chile</p>
   </div>
-  <div class="team m a" style="--i:4">Equipo: <span class="q-ph">[NOMBRES DEL EQUIPO]</span></div>
+  <figure class="shot a" style="--i:3"><img src="assets/comision/planner.jpg" alt="El planner de REGI"></figure>
+  <div class="foot a" style="--i:4">
+    <div><span class="m">Propuesta conceptual para</span><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile"></div>
+    <div><span class="m">Equipo</span><span class="q-ph">[NOMBRES DEL EQUIPO]</span></div>
+  </div>
 </section>
 
 <!-- 2 · PROCESO DE DISEÑO -->
 <section class="s" id="s2" data-st="">
-  <div class="wrap"><h2 class="T a">Proceso de diseño</h2></div>
-  <div class="grid">
-    <div class="card a" style="--i:1"><div class="n">01</div><span class="pic" data-pic="1"></span><h3>Diagnóstico</h3><p>Cómo se regala hoy con Creado</p></div>
-    <div class="card a" style="--i:2"><div class="n">02</div><span class="pic" data-pic="2"></span><h3>Definición</h3><p>El problema, acotado</p></div>
-    <div class="card a" style="--i:3"><div class="n">03</div><span class="pic" data-pic="3"></span><h3>Oportunidad</h3><p>Dónde un sistema puede ayudar</p></div>
-    <div class="card a" style="--i:4"><div class="n">04</div><span class="pic" data-pic="4"></span><h3>Arquitectura</h3><p>El sistema, sus agentes y su lógica</p></div>
-    <div class="card a" style="--i:5"><div class="n">05</div><span class="pic" data-pic="5"></span><h3>Prototipo</h3><p>Cómo responde a cada perfil</p></div>
-    <div class="card a" style="--i:6"><div class="n">06</div><span class="pic" data-pic="6"></span><h3>Iteración</h3><p>Lo que aprendimos y lo que sigue</p></div>
-  </div>
+  <div class="intro"><h2 class="T a">Proceso de diseño</h2><p class="a" style="--i:1">Seis etapas, de mirar cómo se regala hoy a lo que aprendimos al construirlo.</p></div>
+  <ol class="toc">
+    <li class="a" style="--i:2"><i>01</i><b>Diagnóstico</b><span>Cómo se regala hoy con Creado</span></li>
+    <li class="a" style="--i:3"><i>02</i><b>Definición</b><span>El problema, acotado</span></li>
+    <li class="a" style="--i:4"><i>03</i><b>Oportunidad</b><span>Dónde un sistema puede ayudar</span></li>
+    <li class="a" style="--i:5"><i>04</i><b>Arquitectura</b><span>El sistema, sus agentes y su lógica</span></li>
+    <li class="a" style="--i:6"><i>05</i><b>Prototipo</b><span>Cómo responde a cada perfil</span></li>
+    <li class="a" style="--i:7"><i>06</i><b>Iteración</b><span>Lo que aprendimos y lo que sigue</span></li>
+  </ol>
 </section>
 
 <!-- 3 · PROCESO DEL TALLER -->
 <section class="s" id="s3" data-st="">
-  <div class="wrap"><h2 class="T a">Proceso del taller</h2><p class="lead a" style="--i:1;margin-top:18px">Agosto → noviembre. Cada etapa cambió por una corrección.</p></div>
+  <div class="wrap"><h2 class="T a">Proceso del taller</h2><p class="lead a" style="--i:1">Agosto → noviembre. Cada etapa cambió por una corrección.</p></div>
   <div class="tl">
-    <div class="h a" style="--i:2"><div class="ph">FOTO: terreno en tiendas</div><i class="dot"></i><div class="m mo">Ago</div><h4>Terreno en tiendas</h4><p><b>Corrección:</b> <span class="q-ph">[CORRECCIÓN]</span></p></div>
-    <div class="h a" style="--i:3"><div class="ph">FOTO: exploración sugerida / escenas</div><i class="dot"></i><div class="m mo">Sep · Certamen I</div><h4>Exploración sugerida</h4><p><b>Corrección:</b> el problema era demasiado amplio; había que acotarlo.</p></div>
-    <div class="h a" style="--i:4"><div class="ph">FOTO: "Regalar con calma"</div><i class="dot"></i><div class="m mo">Oct</div><h4>Suscripción "Regalar con calma"</h4><p><b>Corrección:</b> el valor no está en cobrar, sino en proponer a tiempo.</p></div>
-    <div class="h a" style="--i:5"><div class="ph">FOTO: asistente de regalos</div><i class="dot"></i><div class="m mo">2 Nov</div><h4>Asistente de regalos</h4><p><b>Corrección (3 nov):</b> debe ser un planner, no un shopper.</p></div>
-    <div class="h a" style="--i:6"><div class="ph">FOTO: planner y conectores</div><i class="dot"></i><div class="m mo">Nov</div><h4>Planner</h4><p><b>Corrección del montaje:</b> más identidad humana, menos frases invasivas.</p></div>
-    <div class="h a" style="--i:7"><div class="ph">FOTO: equipo con REGI</div><i class="dot"></i><div class="m mo">26 Nov</div><h4>REGI</h4><p>Nombre, valores y esta propuesta para la comisión.</p></div>
+    <div class="h a" style="--i:2"><div class="ph">FOTO: terreno en tiendas</div><div class="m mo">Ago</div><h4>Terreno en tiendas</h4><p><b>Corrección:</b> <span class="q-ph">[CORRECCIÓN]</span></p></div>
+    <div class="h a" style="--i:3"><div class="ph">FOTO: exploración sugerida / escenas</div><div class="m mo">Sep · Certamen I</div><h4>Exploración sugerida</h4><p><b>Corrección:</b> el problema era demasiado amplio; había que acotarlo.</p></div>
+    <div class="h a" style="--i:4"><div class="ph">FOTO: "Regalar con calma"</div><div class="m mo">Oct</div><h4>Suscripción "Regalar con calma"</h4><p><b>Corrección:</b> el valor no está en cobrar, sino en proponer a tiempo.</p></div>
+    <div class="h a" style="--i:5"><div class="ph">FOTO: asistente de regalos</div><div class="m mo">2 Nov</div><h4>Asistente de regalos</h4><p><b>Corrección (3 nov):</b> debe ser un planner, no un shopper.</p></div>
+    <div class="h a" style="--i:6"><div class="ph">FOTO: planner y conectores</div><div class="m mo">Nov</div><h4>Planner</h4><p><b>Corrección del montaje:</b> más identidad humana, menos frases invasivas.</p></div>
+    <div class="h a" style="--i:7"><div class="ph">FOTO: equipo con REGI</div><div class="m mo">26 Nov</div><h4>REGI</h4><p>Nombre, valores y esta propuesta para la comisión.</p></div>
   </div>
 </section>
 
-<!-- 4 · LO QUE CREADO YA HACE BIEN -->
+<!-- 4 · CREADO YA RESUELVE / LO QUE FALTA (igual a la presentación para Creado) -->
 <section class="s" id="s4" data-st="Diagnóstico">
-  <div class="hlf"><h2 class="kk a">Lo que Creado ya hace bien</h2>
-    <ul><li class="a" style="--i:1"><i>01</i><span>Curaduría de diseño chileno<small>Cientos de creadores locales seleccionados, desde 2014.</small></span></li>
-    <li class="a" style="--i:2"><i>02</i><span>Regalos en 3 horas<small>Despacho express en Santiago.</small></span></li>
-    <li class="a" style="--i:3"><i>03</i><span>Pensado para regalar<small>Guía de regalos, filtros por precio y para quién, bolsa de regalo.</small></span></li>
-    <li class="a" style="--i:4"><i>04</i><span>Ocho tiendas físicas<small>Santiago, Valparaíso y Zapallar.</small></span></li>
-    <li class="a" style="--i:5"><i>05</i><span>Compra en cuotas<small>Sin interés.</small></span></li></ul></div>
-  <div class="hr"><h2 class="kk a" style="--i:2">Lo que falta</h2><p class="bp a" style="--i:3">Creado resuelve <b>qué</b> regalar y <b>cómo</b> llega.<br>Falta resolver <b>cuándo</b>.</p></div>
+  <div class="half lf">
+    <h2 class="a">Creado ya resuelve</h2>
+    <ul><li class="a" style="--i:1"><i>01</i><span>Curaduría de diseño chileno<small>Cientos de creadores locales seleccionados, desde 2014.</small></span></li><li class="a" style="--i:2"><i>02</i><span>Regalos en 3 horas<small>Despacho express en Santiago, para el regalo de hoy.</small></span></li><li class="a" style="--i:3"><i>03</i><span>Pensado para regalar<small>Guía de regalos, filtros por precio y para quién, y bolsa de regalo.</small></span></li><li class="a" style="--i:4"><i>04</i><span>Ocho tiendas físicas<small>En Santiago, Valparaíso y Zapallar, para ver, tocar y llevarse el regalo al tiro.</small></span></li></ul>
+  </div>
+  <div class="half rt">
+    <h2 class="a" style="--i:3">Lo que falta</h2>
+    <p class="bp a" style="--i:4">Un sistema inteligente que te ayuda a:</p><ol class="fx"><li class="a" style="--i:5"><i>01</i>Gestionar tus fechas</li><li class="a" style="--i:6"><i>02</i>Avisarte a tiempo</li><li class="a" style="--i:7"><i>03</i>Proponerte regalos</li></ol>
+  </div>
+  <div class="ar a" style="--i:5">→</div>
 </section>
 
 <!-- 5 · DIAGNÓSTICO -->
@@ -376,17 +456,17 @@ code{font-family:'IBM Plex Mono',monospace}
   <div class="wrap"><h2 class="T a">Diagnóstico inicial</h2></div>
   <div class="cols">
     <div class="a" style="--i:1">
-      <h3>El cuello de botella</h3>
+      <div class="m kk">El cuello de botella</div>
       <p class="st">Regalar depende de que la persona <b>se acuerde a tiempo</b>, busque y decida sola.</p>
-      <div class="pr"><span data-pic="cal"></span>La fecha llega encima y la compra se hace con poca anticipación.</div>
-      <div class="pr"><span data-pic="many"></span>Elegir entre muchas opciones toma tiempo y genera estrés.</div>
-      <div class="pr"><span data-pic="late"></span>El despacho se vuelve el punto de falla cuando queda poco.</div>
+      <div class="pr"><i>01</i>La fecha llega encima y la compra se hace con poca anticipación.</div>
+      <div class="pr"><i>02</i>Elegir entre muchas opciones toma tiempo y genera estrés.</div>
+      <div class="pr"><i>03</i>El despacho se vuelve el punto de falla cuando queda poco.</div>
     </div>
-    <div class="a" style="--i:2">
-      <h3>Citas de terreno</h3>
-      <div class="q"><span class="q-ph">CITA: [usuario/a en tienda]</span></div>
-      <div class="q"><span class="q-ph">CITA: [vendedor/a de Creado]</span></div>
-      <div class="q"><span class="q-ph">CITA: [entrevista]</span></div>
+    <div class="qs a" style="--i:2">
+      <div class="m kk">Citas de terreno</div>
+      <blockquote class="q"><span class="q-ph">[cita de usuario/a en tienda]</span><cite>Usuario/a en tienda</cite></blockquote>
+      <blockquote class="q"><span class="q-ph">[cita de vendedor/a de Creado]</span><cite>Vendedor/a de Creado</cite></blockquote>
+      <blockquote class="q"><span class="q-ph">[cita de entrevista]</span><cite>Entrevista</cite></blockquote>
     </div>
   </div>
 </section>
@@ -469,7 +549,7 @@ code{font-family:'IBM Plex Mono',monospace}
       <div class="in"><b>Logística</b><span>Zonas Express, tiempos de despacho</span></div>
       <div class="in"><b>Historial</b><span>Compras y decisiones anteriores</span></div>
     </div>
-    <div class="col a" style="--i:2"><h3>Motor · 6 agentes</h3><div class="eng" id="eng"><div class="orq">Orques&shy;tador</div></div></div>
+    <div class="col a" style="--i:2"><h3>Motor · 6 agentes</h3><div class="eng" id="eng"><div class="orq"><span>Orquestador</span><small>coordina a los 6</small></div></div></div>
     <div class="col a" style="--i:3"><h3>Salidas</h3>
       <div class="in"><b>Propuesta justificada</b><span>3 opciones o una elegida, con el porqué</span></div>
       <div class="in"><b>Orden de compra y despacho</b><span>A la persona, a la oficina o retiro en tienda</span></div>
@@ -543,11 +623,11 @@ code{font-family:'IBM Plex Mono',monospace}
     </div>
   </div>
   <div class="rest">
-    <div class="ra a" style="--i:2;--c:var(--b)"><b>1 · Ingesta</b><span>Normaliza lo que llega de cada fuente y aplica el consentimiento.</span></div>
-    <div class="ra a" style="--i:3;--c:var(--p)"><b>2 · Detector de ocasiones</b><span>Encuentra fechas y define tipo e importancia.</span></div>
-    <div class="ra a" style="--i:4;--c:#fff"><b>3 · Perfilador</b><span>Relación, gustos y señales de cada persona.</span></div>
-    <div class="ra a" style="--i:5;--c:var(--l)"><b>5 · Planificador</b><span>Cuándo avisar y cuánta autonomía tomar.</span></div>
-    <div class="ra a" style="--i:6;--c:var(--r)"><b>6 · Mensajero</b><span>Elige canal y momento: celular, reloj, auto o tienda.</span></div>
+    <div class="ra a" style="--i:2;--c:var(--b)"><i>1</i><b>Ingesta</b><span>Normaliza lo que llega de cada fuente y aplica el consentimiento.</span></div>
+    <div class="ra a" style="--i:3;--c:var(--p)"><i>2</i><b>Detector de ocasiones</b><span>Encuentra fechas y define tipo e importancia.</span></div>
+    <div class="ra a" style="--i:4;--c:#1c1b19"><i>3</i><b>Perfilador</b><span>Relación, gustos y señales de cada persona.</span></div>
+    <div class="ra a" style="--i:5;--c:var(--r)"><i>5</i><b>Planificador</b><span>Cuándo avisar y cuánta autonomía tomar.</span></div>
+    <div class="ra a" style="--i:6;--c:var(--r)"><i>6</i><b>Mensajero</b><span>Elige canal y momento: celular, reloj, auto o tienda.</span></div>
   </div>
 </section>
 
@@ -636,7 +716,7 @@ $$('[data-pic]').forEach(e=>e.innerHTML=PIC[e.dataset.pic]||'');
 
 /* motor: orquestador + 6 agentes en círculo */
 const AG=[['Ingesta','Normaliza y aplica consentimiento',C.b],['Detector de ocasiones','Fecha, tipo e importancia',C.p],['Perfilador','Relación, gustos, señales','#1c1b19'],['Curador','Persona × catálogo × presupuesto × stock',C.l],['Planificador','Cuándo avisar y cuánta autonomía','#8a857c'],['Mensajero','Canal y momento',C.r]];
-(()=>{ const e=$('#eng'), W=e.clientWidth||600, H=e.clientHeight||560; let h='<svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="50" r="36" fill="none" stroke="rgba(28,27,25,.22)" stroke-width=".4" stroke-dasharray="1 1.4" vector-effect="non-scaling-stroke"/></svg>';
+(()=>{ const e=$('#eng'), W=e.clientWidth||600, H=e.clientHeight||560; let h='<svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="48" r="35" fill="none" stroke="rgba(28,27,25,.18)" stroke-width="1" vector-effect="non-scaling-stroke"/>'+AG.map((a,i)=>{ const t=-Math.PI/2+i*Math.PI/3; return `<line x1="${50+14*Math.cos(t)}" y1="${48+14*Math.sin(t)}" x2="${50+27*Math.cos(t)}" y2="${48+24*Math.sin(t)}" stroke="rgba(28,27,25,.3)" stroke-width="1" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"/>`; }).join('')+'</svg>';
   AG.forEach((a,i)=>{ const t=-Math.PI/2+i*Math.PI/3, x=50+37*Math.cos(t), y=48+33*Math.sin(t);
     h+=`<div class="ag" style="left:${x}%;top:${y}%"><i style="background:${a[2]};color:#fff">${i+1}</i><b>${a[0]}</b><span>${a[1]}</span></div>`; });
   e.insertAdjacentHTML('beforeend',h); })();
