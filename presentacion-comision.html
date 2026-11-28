@@ -829,6 +829,28 @@ code{font-family:'IBM Plex Mono',monospace}
 #w20 .stk p{margin:0;font-size:21px;line-height:1.35;color:var(--w7)}
 #w20 .stk span{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
 #w20 .stk em{font-style:normal;padding:7px 14px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(34,41,31,.22);font:600 14px Inter,sans-serif;color:#22291f;white-space:nowrap}
+
+/* 21 · capturas reales, sin línea bajo el título */
+#t21 .dv{border-top:0}
+#t21 .ph3 figure{position:relative;margin:0;overflow:hidden;background:#e4e0d8}
+#t21 .ph3 img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+#t21 .ph3 figcaption{position:absolute;left:16px;bottom:14px;padding:6px 12px;border-radius:999px;background:rgba(34,41,31,.85);color:#f4f2ee;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+/* 24 · cierre: aprendizaje + listas a la izquierda, bloque amarillo con Gracias a la derecha */
+#w25 .pth,#w25 .nd{display:none}
+#w25 .lf{position:absolute;left:120px;width:1080px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+#w25 .lf .kk{position:static}
+#w25 .key{position:static;margin:26px 0 0;font-size:72px}
+#w25 .two{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:70px}
+#w25 .two .m{display:block;padding-bottom:14px;border-bottom:1.5px solid rgba(248,238,106,.6);color:#f8ee6a}
+#w25 .two ol{list-style:none;margin:0;padding:0;counter-reset:n}
+#w25 .two li{counter-increment:n;display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(244,242,238,.15);font-size:24px;color:rgba(244,242,238,.88)}
+#w25 .two li::before{content:"0" counter(n);font:600 14px Inter,sans-serif;letter-spacing:.1em;color:#f8ee6a}
+#w25 .end{position:absolute;right:0;top:0;bottom:0;width:560px;background:#f8ee6a;color:#22291f;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:18px;padding:0 64px 90px;text-align:left}
+#w25 .end b{font-size:150px;color:#22291f}
+#w25 .end span{font-size:34px;line-height:1.15;color:rgba(34,41,31,.75)}
+#w25 .end img{margin-top:24px;width:104px;height:104px;background:#fff}
+#w25 .end b{font-size:118px;letter-spacing:-.055em}
+#w25 .end{width:580px;padding:0 56px 90px}
 </style>
 </head>
 <body>
@@ -1094,7 +1116,7 @@ code{font-family:'IBM Plex Mono',monospace}
     <div><span class="m">El equipo definió</span><p>Problema · perfiles · reglas de autonomía · nombres · descartes</p></div>
     <div><span class="m">La herramienta ejecutó</span><p>Código e interfaces</p></div>
   </div>
-  <div class="ph3 a" style="--i:5"><div class="ph">FOTO: Doc del equipo</div><div class="ph">FOTO: versiones del prototipo</div><div class="ph">FOTO: historial de commits</div></div>
+  <div class="ph3 a" style="--i:5"><figure><img src="assets/comision/dev-doc.jpg" alt="Doc del equipo"><figcaption>Doc del equipo</figcaption></figure><figure><img src="assets/comision/dev-proto.jpg" alt="Prototipo"><figcaption>Prototipo</figcaption></figure><figure><img src="assets/comision/dev-commits.jpg" alt="Historial de cambios"><figcaption>Historial de cambios</figcaption></figure></div>
 </section>
 
 <!-- 22 · DECISIONES DE DISEÑO -->
@@ -1137,12 +1159,15 @@ code{font-family:'IBM Plex Mono',monospace}
 
 <!-- 25 · APRENDIZAJES + CIERRE -->
 <section class="s k" id="w25" data-st="Iteración">
-  <div class="m kk a">Aprendizaje principal</div>
-  <p class="key a" style="--i:1">El valor no está en automatizar el regalo, sino en <mark>quitar el estrés</mark> sin quitarle la decisión ni el sentido a la persona.</p>
-  <svg class="pth a" style="--i:2" viewBox="0 0 1680 330" preserveAspectRatio="none"><path d="M20 40 C 300 40, 360 260, 640 250 S 1000 60, 1240 90 S 1520 290, 1660 280" fill="none" stroke="#f8ee6a" stroke-opacity=".55" stroke-width="2.5" stroke-dasharray="3 10" vector-effect="non-scaling-stroke"/></svg>
-  <div class="nd a" style="--i:3;left:120px;top:560px"><i></i><span class="m">Limitaciones</span><p>Datos simulados · sin validación con personas · sin integración real con Shopify.</p></div>
-  <div class="nd a" style="--i:4;left:760px;top:770px"><i></i><span class="m">A futuro</span><p>Piloto con clientes de Creado · integración con Shopify · medir si la compra se adelanta y se repite.</p></div>
-  <div class="end a" style="--i:5"><b>Gracias.</b><span>REGI · Tu planner de regalos</span><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile"></div>
+  <div class="lf">
+    <div class="m kk a">Aprendizaje principal</div>
+    <p class="key a" style="--i:1">El valor no está en automatizar el regalo, sino en <mark>quitar el estrés</mark> sin quitarle la decisión ni el sentido a la persona.</p>
+    <div class="two">
+      <div class="a" style="--i:2"><span class="m">Limitaciones</span><ol><li>Datos simulados</li><li>Sin validación con personas</li><li>Sin integración real con Shopify</li></ol></div>
+      <div class="a" style="--i:3"><span class="m">A futuro</span><ol><li>Piloto con clientes de Creado</li><li>Integración con Shopify</li><li>Medir si la compra se adelanta y se repite</li></ol></div>
+    </div>
+  </div>
+  <div class="end a" style="--i:4"><b>Gracias.</b><span>REGI<br>Tu planner de regalos</span><img src="https://creadoenchile.cl/cdn/shop/files/LOGO_NUEVO_3340b203-5dde-420d-abc5-60b616bafb77.png?v=1789483894&width=200" alt="Creado en Chile"></div>
 </section>
 
 <div id="sig"><span data-pic="mini"></span>REGI · Comisión</div>
