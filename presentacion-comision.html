@@ -761,6 +761,40 @@ code{font-family:'IBM Plex Mono',monospace}
 #t8 .hd i{font-family:'Inter Tight',sans-serif;font-style:normal;font-weight:600;letter-spacing:-.045em;color:#e0561c}
 #t8 .nd{width:880px}
 #t8 .pho{background-position:42% 30%}
+
+/* 10 · reencuadre: dos tarjetas con acabado, antes apagado / ahora vivo */
+#w10 .hd{position:absolute;left:120px;right:120px;top:140px}
+#w10 .hd .kk{color:var(--l)}
+#w10 .hd .T{margin-top:14px;font-size:80px}
+#w10 .cmp{position:absolute;left:120px;right:120px;top:330px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+#w10 .cd{position:relative;overflow:hidden;border-radius:28px}
+#w10 .cd svg{position:absolute;inset:0;width:100%;height:100%}
+#w10 .tx{position:absolute;left:48px;top:44px;width:360px}
+#w10 .tx .m{font-size:13px;letter-spacing:.14em}
+#w10 .tx b{display:block;margin-top:12px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:76px;line-height:1;letter-spacing:-.045em}
+#w10 .tx p{margin:16px 0 0;font-size:21px;line-height:1.4}
+#w10 .old .tx{color:#22291f}#w10 .old .tx .m{color:rgba(34,41,31,.55)}#w10 .old .tx b{color:rgba(34,41,31,.55)}#w10 .old .tx p{color:rgba(34,41,31,.65)}
+#w10 .new .tx{color:#fff}#w10 .new .tx .m{color:#f8ee6a}
+#w10 .arr{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:#22291f;color:#f4f2ee;display:grid;place-items:center;box-shadow:0 0 0 10px var(--v)}
+#w10.on .arr{transform:none}
+
+/* 13 · REGI + un solo sistema (fusión) */
+#w13 .cl3{height:520px}
+#w13 .cl3 b{margin-top:100px;font-size:300px}
+#w13 .cl3 span{bottom:36px;font-size:54px}
+#w13 .vals{display:none}
+#w13 .lead2{position:absolute;left:120px;right:120px;top:560px;margin:0;font-family:'Inter Tight',sans-serif;font-size:34px;letter-spacing:-.025em;color:#22291f}
+#w13 .chain{list-style:none;margin:0;padding:0;position:absolute;left:120px;right:120px;top:630px;display:grid;grid-template-columns:repeat(5,1fr);border-top:3px solid #22291f}
+#w13 .chain li{position:relative;padding:18px 26px 0 0}
+#w13 .chain li+li{padding-left:26px;border-left:1px solid var(--w2)}
+#w13 .chain li+li::before{content:"→";position:absolute;left:-12px;top:-20px;width:24px;height:24px;line-height:22px;text-align:center;border-radius:50%;background:#f4f2ee;color:var(--l);font:600 16px Inter,sans-serif}
+#w13 .chain i{font-style:normal;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:44px;line-height:1;color:var(--l)}
+#w13 .chain b{display:block;margin-top:8px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:32px;letter-spacing:-.025em}
+#w13 .chain em{display:block;margin-top:4px;font-style:normal;font:600 13px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#5c9a4f}
+#w13 .chain span{display:block;margin-top:10px;font-size:18px;line-height:1.35;color:var(--w7)}
+#w13 .by{position:absolute;left:120px;right:120px;bottom:70px;display:flex;align-items:center;gap:10px}
+#w13 .by .m{margin-right:10px;color:var(--w5)}
+#w13 .by em{font-style:normal;border:1.5px solid #22291f;border-radius:999px;padding:6px 16px;font:600 15px Inter,sans-serif}
 </style>
 </head>
 <body>
@@ -860,18 +894,14 @@ code{font-family:'IBM Plex Mono',monospace}
 
 <!-- 10 · LA DECISIÓN QUE REENCUADRÓ EL PROYECTO -->
 <section class="s" id="w10" data-st="Definición">
-  <div class="hl2">
-    <div class="m kk a">La decisión que reencuadró el proyecto</div>
-    <span class="m lb a" style="--i:1">Certamen I · Exploración sugerida en tienda</span>
-    <b class="big a" style="--i:2">Shopper</b>
-    <p class="a" style="--i:3">Problema amplio: vender dentro de la tienda.</p>
+  <div class="hd"><div class="m kk a">Definición</div><h2 class="T a" style="--i:1">La decisión que reencuadró el proyecto</h2></div>
+  <div class="cmp">
+    <div class="cd old a" style="--i:2"><svg viewBox="0 0 760 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="b71" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#e7e3dc"/><stop offset="1" stop-color="#cfc9bf"/></linearGradient><radialGradient id="g71" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5f2ec" stop-opacity=".9"/><stop offset=".6" stop-color="#f5f2ec" stop-opacity=".3"/><stop offset="1" stop-color="#f5f2ec" stop-opacity="0"/></radialGradient><filter id="s71" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter><filter id="n71" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="71" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .1  0 0 0 0 .08  0 0 0 0 .08  0 0 0 .6 0"/></filter></defs><rect width="760" height="520" fill="url(#b71)"/><circle cx="471.2" cy="374.4" r="300" fill="url(#g71)"/><ellipse cx="520" cy="475" rx="150" ry="18" fill="#2a241d" opacity=".25" filter="url(#s71)"/><g transform="translate(520 300) rotate(-6)"><defs><linearGradient id="bf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8cfc2"/><stop offset="1" stop-color="#b9ae9f"/></linearGradient><linearGradient id="bs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a89c8c"/><stop offset="1" stop-color="#8f8373"/></linearGradient></defs><path d="M-60 -150 C -60 -230, 60 -230, 60 -150" fill="none" stroke="#8f8373" stroke-width="9" stroke-linecap="round"/><polygon points="-130,-150 130,-150 150,170 -150,170" fill="url(#bf)"/><polygon points="130,-150 175,-125 185,150 150,170" fill="url(#bs)"/><polygon points="-130,-150 130,-150 175,-125 -85,-125" fill="#e9e2d7"/><path d="M-60 -150 C -60 -205, 60 -205, 60 -150" fill="none" stroke="#a89c8c" stroke-width="7" stroke-linecap="round"/><text x="0" y="30" text-anchor="middle" font-family="Inter Tight,Inter,sans-serif" font-size="30" font-weight="600" fill="#8f8373" letter-spacing="-.5">tienda</text></g><rect width="760" height="520" filter="url(#n71)" opacity=".35" style="mix-blend-mode:multiply"/></svg>
+      <div class="tx"><span class="m">Antes · Certamen I</span><b>Shopper</b><p>Exploración sugerida en tienda. Un problema amplio: vender dentro de la tienda.</p></div></div>
+    <div class="cd new a" style="--i:3"><svg viewBox="0 0 760 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="b72" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#7fb06f"/><stop offset="1" stop-color="#4e8a43"/></linearGradient><radialGradient id="g72" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#dff2d2" stop-opacity=".9"/><stop offset=".6" stop-color="#dff2d2" stop-opacity=".3"/><stop offset="1" stop-color="#dff2d2" stop-opacity="0"/></radialGradient><filter id="s72" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter><filter id="n72" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="72" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .1  0 0 0 0 .08  0 0 0 0 .08  0 0 0 .6 0"/></filter></defs><rect width="760" height="520" fill="url(#b72)"/><circle cx="471.2" cy="374.4" r="300" fill="url(#g72)"/><g transform="translate(540 345) rotate(-5) scale(.78) translate(-210 -175)"><rect x="8" y="16" width="420" height="350" rx="18" fill="#1b130e" opacity="0.3" filter="url(#s72)"/><rect width="420" height="350" rx="18" fill="#fffaf3"/><text x="26" y="44" font-family="Inter Tight,Inter,sans-serif" font-size="24" font-weight="600" fill="#22291f">2027</text><text x="394" y="44" text-anchor="end" font-family="Inter,sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="#22291f" opacity=".5">MI PLANNER</text><text x="38" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">E</text><rect x="26" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="26" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="26" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="26" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="69" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">F</text><rect x="57" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="57" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="57" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="57" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="100" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">M</text><rect x="88" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="88" y="154" width="24" height="48" rx="6" fill="#22a06b"/><path d="M94 178 l4 4 l8 -9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="88" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="88" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="131" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">A</text><rect x="119" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="119" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="119" y="212" width="24" height="48" rx="6" fill="#22a06b"/><path d="M125 236 l4 4 l8 -9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="119" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="162" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">M</text><rect x="150" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="150" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="150" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="150" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="193" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">J</text><rect x="181" y="96" width="24" height="48" rx="6" fill="#22a06b"/><path d="M187 120 l4 4 l8 -9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="181" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="181" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="181" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="224" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">J</text><rect x="212" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="212" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="212" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="212" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="255" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">A</text><rect x="243" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="243" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="243" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="243" y="270" width="24" height="48" rx="6" fill="#22a06b"/><path d="M249 294 l4 4 l8 -9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><text x="286" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">S</text><rect x="274" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="274" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="274" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="274" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="317" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">O</text><rect x="305" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="305" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="305" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="305" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="348" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">N</text><rect x="336" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="336" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="336" y="212" width="24" height="48" rx="6" fill="#ff5924"/><rect x="336" y="270" width="24" height="48" rx="6" fill="#ece6dc"/><text x="379" y="82" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22291f" opacity=".45">D</text><rect x="367" y="96" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="367" y="154" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="367" y="212" width="24" height="48" rx="6" fill="#ece6dc"/><rect x="367" y="270" width="24" height="48" rx="6" fill="#f8ee6a"/></g><g transform="translate(500 60) rotate(3)"><rect x="8" y="16" width="230" height="48" rx="24" fill="#1b130e" opacity="0.2" filter="url(#s72)"/><rect width="230" height="48" rx="24" fill="#fffaf3"/><circle cx="25" cy="24" r="8" fill="#ff5924"/><text x="42" y="30" font-family="Inter,sans-serif" font-size="15" font-weight="600" fill="#22291f">Te notifico 14 días antes</text></g><rect width="760" height="520" filter="url(#n72)" opacity=".35" style="mix-blend-mode:multiply"/></svg>
+      <div class="tx"><span class="m">Desde el 3 de noviembre</span><b>Planner</b><p>Un problema acotado: ordenar el año de regalos y anticiparse a cada fecha.</p></div></div>
+    <div class="arr a" style="--i:3"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h14.5M13 6l6 6-6 6"/></svg></div>
   </div>
-  <div class="hr2">
-    <span class="m lb a" style="--i:3">Corrección del 3 de noviembre</span>
-    <b class="big a" style="--i:4">Planner</b>
-    <p class="a" style="--i:5">Problema acotado: ordenar el año de regalos y anticiparse a cada fecha.</p>
-  </div>
-  <div class="ar a" style="--i:4">→</div>
 </section>
 
 <!-- 11 · OPORTUNIDAD + HIPÓTESIS -->
@@ -892,36 +922,23 @@ code{font-family:'IBM Plex Mono',monospace}
   </div>
 </section>
 
-<!-- 13 · REGI: NAMING + VALORES -->
 <section class="s" id="w13" data-st="Oportunidad">
   <div class="cl3">
     <div class="a" style="--i:1;--c:#ee7a50"><b>RE</b><span>Regalos</span></div>
     <div class="a" style="--i:2;--c:#f8ee6a;color:#22291f"><b>G</b><span>Gestionados</span></div>
     <div class="a" style="--i:3;--c:#5c9a4f"><b>I</b><span><small>por</small> Inteligencia</span></div>
   </div>
-  <div class="vals">
-    <div class="a" style="--i:4"><i>01</i><b>Anticipa</b><span>Te notifica antes de que la fecha llegue encima.</span></div>
-    <div class="a" style="--i:5"><i>02</i><b>Conoce</b><span>Aprende de tu gente con lo que ya usas.</span></div>
-    <div class="a" style="--i:6"><i>03</i><b>Propone</b><span>Llega con el regalo pensado y explica por qué.</span></div>
-    <div class="a" style="--i:7"><i>04</i><b>Respeta tu decisión</b><span>Nada se compra sin tu aprobación o autorización previa.</span></div>
-  </div>
+  <p class="lead2 a" style="--i:4">Un solo sistema: cada valor es un paso de la misma asistencia.</p>
+  <ol class="chain">
+    <li class="a" style="--i:5"><i>1</i><b>Fechas</b><em>Conoce</em><span>Detecta y registra las ocasiones de tu gente.</span></li>
+    <li class="a" style="--i:6"><i>2</i><b>Tiempos</b><em>Anticipa</em><span>Te notifica antes de que la fecha llegue encima.</span></li>
+    <li class="a" style="--i:7"><i>3</i><b>Propuestas</b><em>Propone</em><span>Llega con el regalo pensado y explica por qué.</span></li>
+    <li class="a" style="--i:8"><i>4</i><b>Compra</b><em>Respeta tu decisión</em><span>Solo con tu aprobación o autorización previa.</span></li>
+    <li class="a" style="--i:9"><i>5</i><b>Aprende</b><em>Mejora</em><span>Ajusta el perfil para la próxima fecha.</span></li>
+  </ol>
+  <div class="by a" style="--i:10"><span class="m">Llega por</span><em>Web</em><em>App</em><em>Notificaciones</em><em>Reloj</em><em>Auto</em><em>Tienda</em></div>
 </section>
 
-<!-- 14 · UN SOLO SISTEMA -->
-<section class="s" id="w14" data-st="Arquitectura">
-  <div class="hd"><h2 class="T a">Un solo sistema</h2>
-    <p class="a" style="--i:1">Fechas, tiempos y propuestas no son tres funciones sueltas: <b>son pasos de la misma asistencia.</b></p></div>
-  <div class="row">
-    <div class="a" style="--i:2;--c:#5c9a4f"><i>1</i><b>Fechas</b><span>Detecta y registra las ocasiones.</span></div>
-    <div class="a" style="--i:3;--c:#ee7a50"><i>2</i><b>Tiempos</b><span>Planifica, notifica y escala.</span></div>
-    <div class="a" style="--i:4;--c:#1f8a78"><i>3</i><b>Propuestas</b><span>Sugiere y explica por qué.</span></div>
-    <div class="a" style="--i:5;--c:#22291f"><i>4</i><b>Compra</b><span>Con aprobación o autorización previa.</span></div>
-    <div class="a" style="--i:6;--c:#f8ee6a;color:#22291f"><i>5</i><b>Aprende</b><span>Ajusta el perfil para la próxima.</span></div>
-  </div>
-  <svg class="loop a" style="--i:7" viewBox="0 0 1680 120" preserveAspectRatio="none"><path d="M1580 0 V60 Q1580 90 1550 90 H130 Q100 90 100 60 V8" fill="none" stroke="#ff6a1f" stroke-width="3" stroke-dasharray="3 12" stroke-linecap="round" vector-effect="non-scaling-stroke"/><path d="M90 22 L100 4 L110 22" fill="none" stroke="#ff6a1f" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>
-  <p class="lp m a" style="--i:7">Y vuelve a empezar en la próxima fecha</p>
-  <div class="ch a" style="--i:8"><span class="m">Llega por</span><em>Web</em><em>App</em><em>Notificaciones</em><em>Reloj</em><em>Auto</em><em>Tienda</em></div>
-</section>
 
 <!-- 15 · ARQUITECTURA DE INFORMACIÓN -->
 <section class="s k" id="w15" data-st="Arquitectura">
