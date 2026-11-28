@@ -795,6 +795,31 @@ code{font-family:'IBM Plex Mono',monospace}
 #w13 .by{position:absolute;left:120px;right:120px;bottom:70px;display:flex;align-items:center;gap:10px}
 #w13 .by .m{margin-right:10px;color:var(--w5)}
 #w13 .by em{font-style:normal;border:1.5px solid #22291f;border-radius:999px;padding:6px 16px;font:600 15px Inter,sans-serif}
+
+/* 15 · arquitectura de información como flujo Entra → Se organiza → Sale */
+#w15 .kk{position:static}
+#w15 .hd{position:absolute;left:120px;right:120px;top:130px}
+#w15 .hd .T{margin-top:12px;font-size:76px;color:#f4f2ee}
+#w15 .wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#w15 .col{position:absolute;top:300px;color:#f8ee6a}
+#w15 .src{position:absolute;left:120px;width:440px;top:345px;display:grid;grid-template-rows:repeat(3,170px);gap:40px}
+#w15 .src>div{border-radius:16px;background:rgba(244,242,238,.07);box-shadow:inset 0 0 0 1px rgba(244,242,238,.14);padding:22px 26px}
+#w15 .src b{display:block;font:600 13px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f8ee6a}
+#w15 .src p{margin:10px 0 0;font-size:20px;line-height:1.38;color:rgba(244,242,238,.85)}
+#w15 .core{position:absolute;left:680px;width:564px;top:345px;height:590px;border-radius:24px;box-shadow:inset 0 0 0 2px rgba(248,238,106,.55);background:rgba(244,242,238,.04)}
+#w15 .core .tag{position:absolute;left:28px;top:-16px;padding:6px 16px;border-radius:999px;background:#f8ee6a;color:#22291f;font:700 14px Inter,sans-serif;letter-spacing:.14em}
+#w15 .tabs{position:absolute;left:28px;right:28px;top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#w15 .tabs em{font-style:normal;text-align:center;padding:12px 4px;border-radius:10px;background:#f4f2ee;color:#22291f;font:600 15px Inter,sans-serif}
+#w15 .ent{position:absolute;left:0;right:0;top:140px;display:flex;flex-direction:column;align-items:center;gap:6px}
+#w15 .ent span{width:300px;text-align:center;padding:16px 0;border-radius:14px;box-shadow:inset 0 0 0 1.5px rgba(244,242,238,.45);font-family:'Inter Tight',sans-serif;font-size:26px;font-weight:500;color:#f4f2ee}
+#w15 .ent span.o{background:#f8ee6a;color:#22291f;box-shadow:none;font-weight:600}
+#w15 .ent i{font-style:normal;font:600 14px Inter,sans-serif;letter-spacing:.1em;color:#f8ee6a}
+#w15 .fun{list-style:none;margin:0;padding:0;position:absolute;left:1360px;width:440px;top:345px;display:flex;flex-direction:column;align-items:center;gap:12px}
+#w15 .fun li{width:var(--w);min-height:96px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:10px 16px;border-radius:14px;background:rgba(244,242,238,.1);color:#f4f2ee}
+#w15 .fun li:nth-child(2){background:rgba(244,242,238,.14)}#w15 .fun li:nth-child(3){background:rgba(244,242,238,.18)}#w15 .fun li:nth-child(4){background:rgba(244,242,238,.24)}
+#w15 .fun b{font-family:'Inter Tight',sans-serif;font-size:28px;font-weight:600;letter-spacing:-.02em}
+#w15 .fun small{margin-top:4px;font-size:14px;line-height:1.3;opacity:.8}
+#w15 .fun li.o{background:#f8ee6a;color:#22291f}
 </style>
 </head>
 <body>
@@ -942,18 +967,34 @@ code{font-family:'IBM Plex Mono',monospace}
 
 <!-- 15 · ARQUITECTURA DE INFORMACIÓN -->
 <section class="s k" id="w15" data-st="Arquitectura">
-  <div class="m kk a">Arquitectura de información</div>
-  <div class="ai">
-    <div class="a" style="--i:1"><i>A</i><h3>Qué datos entran</h3>
-      <p><b>De la persona</b>Sus personas y relación, fechas confirmadas, presupuesto por ocasión, cuánto quiere involucrarse, aprobaciones.</p>
-      <p><b>Del sistema, con permiso</b>Calendario, correo, contactos, mensajes, redes, historial de compras.</p>
-      <p><b>De Creado</b>Catálogo, precio, stock, zonas y tiempos de despacho.</p></div>
-    <div class="a" style="--i:2"><i>B</i><h3>Cómo se organiza</h3>
-      <div class="sx"><span>Mi planner</span><span>Personas</span><span>Pedidos</span><span>Configuración<small>conexiones</small></span></div>
-      <div class="rel"><span>Persona</span><em>1 : N</em><span>Ocasiones</span><em>1 : N</em><span>Propuestas</span><em>→</em><span class="o">Producto</span></div></div>
-    <div class="a" style="--i:3"><i>C</i><h3>Cómo se genera una recomendación</h3>
-      <ol class="pp"><li><b>Señales</b></li><li><b>Perfil</b></li><li><b>Filtro</b><small>presupuesto · stock · llega a tiempo · no repetido</small></li><li><b>Orden</b><small>afinidad · sentido · oportunidad</small></li><li class="o"><b>Propuesta con motivo</b></li></ol></div>
+  <div class="hd"><div class="m kk a">Arquitectura de información</div><h2 class="T a" style="--i:1">De los datos a la propuesta</h2></div>
+  <svg class="wires a" style="--i:2" viewBox="0 0 1920 1080" aria-hidden="true">
+    <defs><marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#f8ee6a"/></marker></defs>
+    <g fill="none" stroke="#f8ee6a" stroke-opacity=".6" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round">
+      <path d="M560 430 C 630 430, 610 640, 676 640" marker-end="url(#aw)"/>
+      <path d="M560 640 C 610 640, 620 640, 676 640"/>
+      <path d="M560 850 C 630 850, 610 640, 676 640"/>
+      <path d="M1244 640 C 1300 640, 1300 410, 1352 410" marker-end="url(#aw)"/>
+    </g>
+  </svg>
+  <span class="col m a" style="--i:2;left:120px">01 · Entra</span><span class="col m a" style="--i:2;left:680px">02 · Se organiza</span><span class="col m a" style="--i:2;left:1360px">03 · Sale</span>
+  <div class="src">
+    <div class="a" style="--i:3"><b>De la persona</b><p>Sus personas y relación, fechas confirmadas, presupuesto, cuánto quiere involucrarse, aprobaciones.</p></div>
+    <div class="a" style="--i:4"><b>Del sistema, con permiso</b><p>Calendario, correo, contactos, mensajes, redes, historial de compras.</p></div>
+    <div class="a" style="--i:5"><b>De Creado</b><p>Catálogo, precio, stock, zonas y tiempos de despacho.</p></div>
   </div>
+  <div class="core a" style="--i:4">
+    <span class="tag">REGI</span>
+    <div class="tabs"><em>Mi planner</em><em>Personas</em><em>Pedidos</em><em>Configuración</em></div>
+    <div class="ent"><span>Persona</span><i>1 : N</i><span>Ocasión</span><i>1 : N</i><span>Propuesta</span><i>→</i><span class="o">Producto de Creado</span></div>
+  </div>
+  <ol class="fun">
+    <li class="a" style="--i:5;--w:440px"><b>Señales</b></li>
+    <li class="a" style="--i:6;--w:390px"><b>Perfil</b></li>
+    <li class="a" style="--i:7;--w:340px"><b>Filtro</b><small>presupuesto · stock · llega a tiempo · no repetido</small></li>
+    <li class="a" style="--i:8;--w:290px"><b>Orden</b><small>afinidad · sentido · oportunidad</small></li>
+    <li class="a o" style="--i:9;--w:240px"><b>Propuesta con motivo</b></li>
+  </ol>
 </section>
 
 <!-- 15 · MAPA DE FLUJO -->
