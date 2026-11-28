@@ -7,7 +7,7 @@
 <link rel="icon" href="assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* REGI · presentación para la comisión (metodología, pensamiento y tecnología).
    Navegación: → / espacio / AvPág avanza · ← retrocede · #n abre la lámina n · F pantalla completa.
@@ -731,6 +731,18 @@ code{font-family:'IBM Plex Mono',monospace}
 #s8 .c::after{background:linear-gradient(180deg,var(--k2) 0,var(--k2) 640px,transparent 760px)}
 #s8 .qt{font-size:28px}
 #s8 .fd{font-size:19px;max-width:520px}
+
+/* 8 · lo que cuesta olvidar: foto a sangre + titular con cursivas serif (referencia editorial) */
+#t8{background:#c9c9c4}
+#t8 .bgb{position:absolute;inset:-60px;background:url(assets/comision/felipe.jpg) center 30%/cover;filter:blur(38px) saturate(.8) brightness(1.05);transform:scale(1.1)}
+#t8 .bgb::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(244,242,238,.92) 0,rgba(244,242,238,.75) 45%,rgba(244,242,238,0) 75%)}
+#t8 .pho{position:absolute;right:0;top:0;bottom:0;width:900px;background:url(assets/comision/felipe.jpg) 50% 18%/cover;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
+#t8 .kk{position:absolute;left:120px;top:140px;color:#22291f}
+#t8 .hd{position:absolute;left:120px;width:1100px;top:200px;margin:0;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:96px;line-height:1;letter-spacing:-.045em;color:#22291f}
+#t8 .hd i{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;color:#c9481a}
+#t8 .nd{position:absolute;left:120px;width:880px;bottom:120px;margin:0;padding:28px 32px;border-radius:18px;background:rgba(34,41,31,.9);font-family:'Inter Tight',sans-serif;font-size:36px;line-height:1.15;letter-spacing:-.025em;color:#f4f2ee}
+#t8 .nd b{color:#f8ee6a;font-weight:700}
+#sig,#cnt{display:none!important}
 </style>
 </head>
 <body>
@@ -811,10 +823,12 @@ code{font-family:'IBM Plex Mono',monospace}
 <section class="s" id="s8" data-st="Definición" data-bar="lt"><div class="cols"><div class="c a" style="--i:0;--k2:#ee7a50"><div class="ph2"><img src="https://images.unsplash.com/photo-1675179182019-3c0804f517af?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt=""></div><div class="tx"><h3>Marcela, 58</h3><span class="tag">La que quiere, pero no alcanza</span><p class="qt">“Me encanta regalar cosas bonitas, pero siempre me pilla el tiempo.”</p><p class="fd"><b>Situación</b>El domingo es el cumpleaños de su hermana. Quería algo chileno, con historia, pero no pasó por ninguna tienda; el sábado compra algo correcto.</p><p class="fd"><b>Cuando olvida, siente</b>Ilusión, después apuro y resignación; al final, una culpa suave.</p><p class="fd"><b>Necesita</b>Que le avisen y le propongan algo bonito.</p></div></div><div class="c a" style="--i:1;--k2:#5c9a4f"><div class="ph2"><img src="https://images.unsplash.com/photo-1661343909971-9d5af2503415?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt=""></div><div class="tx"><h3>Andrés, 52</h3><span class="tag">El que delega</span><p class="qt">“Yo pongo la plata, pero que lo vea otro.”</p><p class="fd"><b>Situación</b>Su señora le avisa que faltan tres días para el cumpleaños de su hermano. Ella busca y compra; él paga.</p><p class="fd"><b>Cuando olvida, siente</b>Indiferencia, después fastidio; al final, alivio.</p><p class="fd"><b>Necesita</b>Delegar sin revisar cada detalle.</p></div></div><div class="c a" style="--i:2;--k2:#6a4be0"><div class="ph2"><img src="https://images.unsplash.com/photo-1771340184267-8cacc8afc2d5?w=800&h=900&fit=crop&crop=faces&q=80&auto=format" alt=""></div><div class="tx"><h3>Felipe, 34</h3><span class="tag">Se le pasa la fecha</span><p class="qt">“Es hoy y no tengo nada, ¿qué hago?”</p><p class="fd"><b>Situación</b>Viernes 18:40, su hermana le escribe: “mañana es el cumple de la mamá”. Lo que le gusta no alcanza a llegar.</p><p class="fd"><b>Cuando olvida, siente</b>Pánico; al final, alivio con culpa por el regalo genérico.</p><p class="fd"><b>Necesita</b>Que lo rescaten a tiempo.</p></div></div></div></section>
 
 <!-- 8 · LO QUE CUESTA OLVIDAR + LA NECESIDAD -->
-<section class="s k" id="t8" data-st="Definición">
-  <div class="m kk a">Lo que cuesta olvidar</div>
-  <div class="cs"><span class="a" style="--i:1">Culpa.</span><span class="a" style="--i:2">Quedar mal.</span><span class="a" style="--i:3">Regalo genérico.</span><span class="a" style="--i:4">Tensión en la relación.</span></div>
-  <p class="nd a" style="--i:5">“<b>Necesito ayuda</b> para recordar, anticipar y elegir regalos significativos, sin que esto se convierta en una carga.”</p>
+<section class="s" id="t8" data-st="Definición">
+  <div class="bgb"></div>
+  <div class="pho a" style="--i:1"></div>
+  <div class="m kk a">Definición · Lo que cuesta olvidar</div>
+  <h2 class="hd a" style="--i:1">Olvidar una fecha cuesta <i>culpa,</i> <i>quedar mal,</i> un regalo <i>genérico</i> y <i>tensión</i> en la relación.</h2>
+  <p class="nd a" style="--i:3"><b>“Necesito ayuda</b> para recordar, anticipar y elegir regalos significativos, sin que esto se convierta en una carga.”</p>
 </section>
 
 <!-- 9 · POR QUÉ HOY NO ALCANZA -->
