@@ -820,6 +820,15 @@ code{font-family:'IBM Plex Mono',monospace}
 #w15 .fun b{font-family:'Inter Tight',sans-serif;font-size:28px;font-weight:600;letter-spacing:-.02em}
 #w15 .fun small{margin-top:4px;font-size:14px;line-height:1.3;opacity:.8}
 #w15 .fun li.o{background:#f8ee6a;color:#22291f}
+
+/* 20 · tecnología: una sola arquitectura por capas */
+#w20 .stk{position:absolute;left:120px;right:120px;top:300px;bottom:110px;display:grid;grid-template-rows:repeat(6,1fr);border-top:3px solid #22291f}
+#w20 .stk>div{display:grid;grid-template-columns:70px 300px 1fr 560px;align-items:center;gap:20px;border-bottom:1px solid var(--w2)}
+#w20 .stk i{font-style:normal;font:600 15px Inter,sans-serif;letter-spacing:.1em;color:var(--c)}
+#w20 .stk b{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:40px;letter-spacing:-.03em;color:var(--c)}
+#w20 .stk p{margin:0;font-size:21px;line-height:1.35;color:var(--w7)}
+#w20 .stk span{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+#w20 .stk em{font-style:normal;padding:7px 14px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(34,41,31,.22);font:600 14px Inter,sans-serif;color:#22291f;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -1068,25 +1077,9 @@ code{font-family:'IBM Plex Mono',monospace}
   </div>
 </section>
 
-<!-- 20 · TECNOLOGÍA -->
-<section class="s" id="s14" data-st="Arquitectura">
-  <div class="wrap"><h2 class="T a">Tecnología: propuesta vs. prototipo</h2></div>
-  
-  <div class="stack">
-    <div class="ly a" style="--i:1"><span class="nm" style="background:var(--l)">Canales</span><span class="ct">Web, app, <b>push</b>, reloj, auto (CarPlay), tienda por geolocalización</span></div>
-    <div class="ly a" style="--i:2"><span class="nm" style="background:#fff">Orquestación</span><span class="ct">Programador de eventos según la cercanía de cada fecha</span></div>
-    <div class="ly a" style="--i:3"><span class="nm" style="background:var(--p)">Inteligencia</span><span class="ct"><b>Modelo de lenguaje</b> con agentes especializados + reglas de negocio y límites</span></div>
-    <div class="ly a" style="--i:4"><span class="nm" style="background:var(--b)">Datos</span><span class="ct">Grafo de personas y ocasiones + base vectorial de gustos</span></div>
-    <div class="ly a" style="--i:5"><span class="nm" style="background:#fff">Integraciones</span><span class="ct">OAuth: Google Calendar, Gmail, Contacts · WhatsApp Business API · Shopify Admin / Storefront API</span></div>
-    <div class="ly a" style="--i:6"><span class="nm" style="background:var(--r);color:#fff">Privacidad</span><span class="ct">Consentimiento por fuente · qué no se lee · borrado a pedido</span></div>
-  </div>
-  <div class="now a" style="--i:4"><h3>✓ Ya funciona en el prototipo</h3>
-    <div class="it"><b>Chat con modelo de lenguaje</b>OpenAI a través de una función en el servidor (Supabase): la clave nunca llega al navegador.</div>
-    <div class="it"><b>Avisos push reales</b>Web Push al celular, con service worker.</div>
-    <div class="it"><b>Sincronización en vivo</b>Presentación, celular y auto conectados por Supabase Realtime.</div>
-    <div class="it"><b>Mapa y ruta reales</b>Google Maps + ruta por calles (OSRM) en la pantalla del auto.</div>
-    <div class="it"><b>Catálogo real de Creado</b>30 productos con precio, marca y descripción.</div>
-  </div>
+<section class="s" id="w20" data-st="Arquitectura">
+  <div class="wrap"><h2 class="T a">Tecnología</h2></div>
+  <div class="stk"><div class="a" style="--i:1;--c:#ff6a1f"><i>01</i><b>Canales</b><p>Web y app, notificaciones al celular, reloj, auto y tienda por geolocalización.</p><span><em>Web Push</em><em>PWA</em><em>CarPlay</em><em>Geolocalización</em></span></div><div class="a" style="--i:2;--c:#22291f"><i>02</i><b>Orquestación</b><p>Programa cada aviso según la cercanía de la fecha y mantiene sincronizados todos los dispositivos.</p><span><em>Programador de eventos</em><em>Realtime</em></span></div><div class="a" style="--i:3;--c:#6a4be0"><i>03</i><b>Inteligencia</b><p>Modelo de lenguaje con agentes especializados, reglas de negocio y límites; corre en un servidor seguro.</p><span><em>Modelo de lenguaje</em><em>Agentes</em><em>Funciones de servidor</em></span></div><div class="a" style="--i:4;--c:#1f8a78"><i>04</i><b>Datos</b><p>Grafo de personas y ocasiones, base de gustos y catálogo de Creado con precio, marca y stock.</p><span><em>Grafo</em><em>Base vectorial</em><em>Catálogo</em></span></div><div class="a" style="--i:5;--c:#5c9a4f"><i>05</i><b>Integraciones</b><p>Calendario, correo, contactos y mensajes de la persona; tienda, despacho y mapas de Creado.</p><span><em>Google Calendar</em><em>Gmail</em><em>WhatsApp</em><em>Shopify</em><em>Google Maps</em></span></div><div class="a" style="--i:6;--c:#ee7a50"><i>06</i><b>Privacidad</b><p>Consentimiento por fuente, qué no se lee y borrado a pedido.</p><span><em>OAuth</em><em>Permisos por fuente</em></span></div></div>
 </section>
 
 <!-- 21 · CÓMO LO DESARROLLAMOS -->
